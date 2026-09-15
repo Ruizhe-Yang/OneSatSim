@@ -1,0 +1,67 @@
+within NISSA_12UCubeSat.Foundation.Calculations;
+model MomentumUnloadingCalculation "磁力矩器动量卸载与消旋计算"
+  parameter Real safeModeActivationBodyRate(unit="rad/s")=0.02;
+  parameter Real detumbleDampingTorque(unit="N.m.s")=2e-5;
+  parameter Real minimumFieldSquared(unit="T2")=4e-10;
+  parameter Modelica.Units.SI.Current coilCurrentLimit=0.28;
+  parameter Real dipolePerAmpere[3]={3.571428571,3.571428571,3.571428571};
+  parameter Real momentumDumpTorque(unit="N.m")=3e-4;
+  parameter Real normalRateDampingGain(unit="N.m.s")=5e-4;
+  parameter Real wheelInertia[4](each unit="kg.m2")={9.5e-5,9.8e-5,9.3e-5,1.02e-4};
+  Modelica.Blocks.Interfaces.RealInput wheelSpeed[4](each unit="rad/s") annotation(Placement(transformation(extent={{-120,65},{-80,85}})));
+  Modelica.Blocks.Interfaces.RealInput bodyRateMagnitude(unit="rad/s") annotation(Placement(transformation(extent={{-120,35},{-80,55}})));
+  Modelica.Blocks.Interfaces.RealInput bodyRate[3](each unit="rad/s") annotation(Placement(transformation(extent={{-120,5},{-80,25}})));
+  Modelica.Blocks.Interfaces.RealInput magneticField[3](each unit="T") annotation(Placement(transformation(extent={{-120,-25},{-80,-5}})));
+  Modelica.Blocks.Interfaces.RealInput supplyVoltage(unit="V") annotation(Placement(transformation(extent={{-120,-55},{-80,-35}})));
+  Modelica.Blocks.Interfaces.BooleanInput safeMode annotation(Placement(transformation(extent={{-120,-85},{-80,-65}})));
+  NISSA_12UCubeSat.Foundation.Interfaces.ControlModeInput desiredControlMode annotation(Placement(transformation(extent={{-110,-105},{-90,-85}})));
+  Modelica.Blocks.Interfaces.BooleanInput momentumDumpLatched annotation(Placement(transformation(extent={{-20,90},{20,110}})));
+  Modelica.Blocks.Interfaces.BooleanInput rateDampingLatched annotation(Placement(transformation(extent={{25,90},{65,110}})));
+  Modelica.Blocks.Interfaces.RealOutput maximumWheelSpeed(unit="rad/s") annotation(Placement(transformation(extent={{80,75},{100,95}})));
+  Modelica.Blocks.Interfaces.RealOutput bodyRateForDamping(unit="rad/s") annotation(Placement(transformation(extent={{80,50},{100,70}})));
+  Modelica.Blocks.Interfaces.BooleanOutput momentumDumpActive annotation(Placement(transformation(extent={{80,25},{100,45}})));
+  Modelica.Blocks.Interfaces.RealOutput coilCurrentCommand[3](each unit="A") annotation(Placement(transformation(extent={{80,-5},{100,15}})));
+  Modelica.Blocks.Interfaces.RealOutput coilConductanceCommand[3](each unit="S") annotation(Placement(transformation(extent={{80,-35},{100,-15}})));
+  Modelica.Blocks.Interfaces.RealOutput magneticTorque[3](each unit="N.m") annotation(Placement(transformation(extent={{80,-65},{100,-45}})));
+  Modelica.Blocks.Interfaces.BooleanOutput safeDetumbleActive annotation(Placement(transformation(extent={{80,-95},{100,-75}})));
+protected
+  Real magneticFieldSquared(unit="T2");
+  Boolean normalDumpEligible;
+  Boolean normalMomentumDump;
+  Boolean normalRateDamping;
+  Boolean magneticControlEnabled;
+  Real wheelMomentumBody[3](each unit="kg.m2/s");
+  Real wheelMomentumMagnitude(unit="kg.m2/s");
+  Real unloadingTorque[3](each unit="N.m");
+  Real rateDampingTorque[3](each unit="N.m");
+  Real safeDampingTorque[3](each unit="N.m");
+  Real desiredMagneticTorque[3](each unit="N.m");
+  Real inverseMappingDenominator[3];
+  Real rawCoilCurrent[3](each unit="A");
+  Real dipoleMoment[3](each unit="A.m2");
+equation
+  magneticFieldSquared=magneticField*magneticField;
+  maximumWheelSpeed=max(abs(wheelSpeed));
+  bodyRateForDamping=bodyRateMagnitude;
+  safeDetumbleActive=safeMode and bodyRateMagnitude > safeModeActivationBodyRate and magneticFieldSquared > minimumFieldSquared;
+  normalDumpEligible=desiredControlMode == NISSA_12UCubeSat.Foundation.Types.ControlMode.SunPointing and not safeMode and magneticFieldSquared > minimumFieldSquared;
+  normalMomentumDump=momentumDumpLatched and normalDumpEligible;
+  normalRateDamping=rateDampingLatched and normalDumpEligible;
+  momentumDumpActive=normalMomentumDump or normalRateDamping;
+  wheelMomentumBody={wheelInertia[1]*wheelSpeed[1]+0.577350269*wheelInertia[4]*wheelSpeed[4],wheelInertia[2]*wheelSpeed[2]+0.577350269*wheelInertia[4]*wheelSpeed[4],wheelInertia[3]*wheelSpeed[3]+0.577350269*wheelInertia[4]*wheelSpeed[4]};
+  wheelMomentumMagnitude=sqrt(wheelMomentumBody*wheelMomentumBody);
+  unloadingTorque=if normalMomentumDump then -momentumDumpTorque*wheelMomentumBody/max(1e-6,wheelMomentumMagnitude) else {0,0,0};
+  rateDampingTorque=if normalRateDamping then -normalRateDampingGain*bodyRate else {0,0,0};
+  safeDampingTorque=if safeDetumbleActive then -detumbleDampingTorque*bodyRate else {0,0,0};
+  desiredMagneticTorque=if safeDetumbleActive then safeDampingTorque else unloadingTorque+rateDampingTorque;
+  magneticControlEnabled=safeDetumbleActive or momentumDumpActive;
+  inverseMappingDenominator={max(minimumFieldSquared,magneticFieldSquared)*dipolePerAmpere[i] for i in 1:3};
+  rawCoilCurrent={(magneticField[2]*desiredMagneticTorque[3]-magneticField[3]*desiredMagneticTorque[2])/inverseMappingDenominator[1],(magneticField[3]*desiredMagneticTorque[1]-magneticField[1]*desiredMagneticTorque[3])/inverseMappingDenominator[2],(magneticField[1]*desiredMagneticTorque[2]-magneticField[2]*desiredMagneticTorque[1])/inverseMappingDenominator[3]};
+  coilCurrentCommand={if magneticControlEnabled then noEvent(max(-coilCurrentLimit,min(coilCurrentLimit,rawCoilCurrent[i]))) else 0 for i in 1:3};
+  coilConductanceCommand={abs(coilCurrentCommand[i])/max(0.1,abs(supplyVoltage)) for i in 1:3};
+  dipoleMoment={dipolePerAmpere[i]*coilCurrentCommand[i] for i in 1:3};
+  magneticTorque={dipoleMoment[2]*magneticField[3]-dipoleMoment[3]*magneticField[2],dipoleMoment[3]*magneticField[1]-dipoleMoment[1]*magneticField[3],dipoleMoment[1]*magneticField[2]-dipoleMoment[2]*magneticField[1]};
+  annotation(
+    Icon(graphics={Rectangle(extent={{-100,75},{100,-75}},lineColor={105,65,135},fillColor={243,235,249},fillPattern=FillPattern.Solid),Line(points={{-70,34},{70,34}},color={145,70,170},thickness=3),Line(points={{-70,0},{70,0}},color={60,135,80},thickness=3),Line(points={{-70,-34},{70,-34}},color={45,90,180},thickness=3),Text(extent={{-94,-70},{94,-48}},textString="H / B -> I / TAU")}),
+    Documentation(info="<html><h4>功能定位</h4><p>集中完成四轮角动量估算、正常卸载、残余速率阻尼、安全消旋以及磁矩到线圈电流的低阶映射。</p><h4>输入与物理含义</h4><p>输入包含四轮速度、本体角速度及模、三轴地磁场、5 V电压、安全/控制模式和两个外部回差锁存状态。</p><h4>输出与物理含义</h4><p>输出最大轮速、阻尼判据量、卸载与安全消旋状态、三轴线圈电流/电导及实际磁力矩。</p><h4>主要计算关系</h4><p>先按各轮惯量与斜轮轴向合成轮系动量，再选择卸载或速率阻尼目标力矩；利用磁场叉乘逆映射求磁矩和电流，并按coilCurrentLimit限幅，最后以m×B复算可实现力矩。</p><h4>状态、事件与假设</h4><p>本模型无离散状态，回差记忆由父组件Hysteresis承担；不包含PWM、H桥、线圈电感和磁滞。低于minimumFieldSquared时禁止磁控，避免病态除法。</p><h4>调用与结果使用</h4><p>由MagnetorquerUnit调用。重点查看momentumDumpActive、safeDetumbleActive、coilCurrentCommand和magneticTorque；受保护中间向量仅用于诊断。</p></html>"));
+end MomentumUnloadingCalculation;

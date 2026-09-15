@@ -1,0 +1,10 @@
+StartTime=0.0
+StopTime=86400.0
+OutputInterval=1.0
+Tolerance=1e-05
+Solver=ida
+IDALinearSolver=spgmr
+Jacobian=coloredNumerical
+MaxSizeLinearTearing=1000.0
+StartUTC=2026-09-06T00:00:00.000Z
+EndUTC=2026-09-07T00:00:00.000Z

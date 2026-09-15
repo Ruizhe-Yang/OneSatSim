@@ -1,0 +1,23 @@
+within NISSA_12UCubeSat.Scenarios;
+record InitialConditionConfig "任务场景初始条件"
+  import SI=Modelica.Units.SI;
+  parameter SI.Angle roll "初始Roll";
+  parameter SI.Angle pitch "初始Pitch";
+  parameter SI.Angle yaw "初始Yaw";
+  parameter SI.AngularVelocity wx "初始本体X角速度";
+  parameter SI.AngularVelocity wy "初始本体Y角速度";
+  parameter SI.AngularVelocity wz "初始本体Z角速度";
+  parameter Real batterySOC "电池初始SOC，0..1";
+  parameter SI.Temperature batteryCellTemperature "蓄电池电芯初温";
+  parameter SI.Temperature batteryEnclosureTemperature "蓄电池外壳初温";
+  parameter SI.Temperature obcCpuTemperature "OBC CPU初温";
+  parameter SI.Temperature obcBoardTemperature "OBC电路板初温";
+  parameter SI.Temperature busDeckTemperature "内部设备舱板初温";
+  parameter SI.Temperature externalShellTemperature "外表面等效热节点初温";
+  parameter SI.Temperature pcduBoardTemperature "PCDU电路板初温";
+  parameter SI.Temperature cameraOpticalBenchTemperature "对地观测相机光机结构初温";
+  parameter SI.Temperature cameraFocalBoxTemperature "对地观测相机焦面盒初温";
+  parameter Real dataRecorderStoredBytes(unit="1") "数据记录器初始存储量，byte";
+  parameter SI.AngularVelocity wheelSpeed[4] "X/Y/Z/S飞轮初始角速度";
+  annotation(Documentation(info="<html><p>只包含仿真场景初值，不外部化电阻、热容、质量、惯量等卫星设计参数。内部温度为K、角度为rad、角速度为rad/s。</p></html>"));
+end InitialConditionConfig;

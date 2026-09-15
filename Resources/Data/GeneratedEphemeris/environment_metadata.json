@@ -1,0 +1,100 @@
+{
+  "startUTC": "2026-09-06T00:00:00.000Z",
+  "durationSeconds": 86400.0,
+  "stateEpochUTC": "2026-09-06T00:00:00.000Z",
+  "inputState": [
+    -493801.273999,
+    -752595.496556,
+    -6776165.492715,
+    -5490.252537677,
+    5304.349223451,
+    -172.811574358
+  ],
+  "stateFrame": "GCRS",
+  "stateInputMode": "Cartesian",
+  "model": "J2SunMoon",
+  "requestedSampleInterval": 10.0,
+  "finalSampleInterval": 2.5,
+  "resources": {
+    "spkSHA256": "c1c7feeab882263fc493a9d5a5b2ddd71b54826cdf65d8d17a76126b260a49f2",
+    "iersSHA256": "80119694522717471744a78b28bc872e998523f8b1e2007424f9cd08af7ac4c6",
+    "leapSecondsSHA256": "6cb6f5d4b819f2e568e25db4b0b26d89dedf031fdffb18bc94d40f4e94e268d7"
+  },
+  "constants": {
+    "muEarth_m3_s2": 398600441800000.0,
+    "earthRadius_m": 6378137.0,
+    "J2": 0.00108262668,
+    "muSun_m3_s2": 1.32712440018e+20,
+    "muMoon_m3_s2": 4902800066000.0
+  },
+  "cacheKey": "f366c7f27417c58003a6c301543e042f6bc32a907c0d480256f914ea236c437d",
+  "endUTC": "2026-09-07T00:00:00.000Z",
+  "inputFrame": "GCRS",
+  "internalFrame": "GCRS",
+  "stateAtSimulationStart": [
+    -493801.2739989999,
+    -752595.4965559999,
+    -6776165.492715,
+    -5490.252537677,
+    5304.349223451001,
+    -172.81157435800003
+  ],
+  "derivedElementsAtSimulationStart": {
+    "semiMajorAxis": 6835361.40000093,
+    "eccentricity": 0.0021067000329468163,
+    "inclination": 1.7005001741660246,
+    "raan": 2.370461993248976,
+    "argumentOfPerigee": 6.283185307179586,
+    "meanAnomaly": 4.69167029863507,
+    "period": 5624.102185366477
+  },
+  "spkCoverageTDB_JD": [
+    2396752.5,
+    2506352.5
+  ],
+  "iers": {
+    "coverageMJD": [
+      41684.0,
+      61659.0
+    ],
+    "requestedMJD": [
+      61288.996412037035,
+      61290.003587962965
+    ],
+    "flags": [
+      "P"
+    ],
+    "usesPredicted": true,
+    "label": "PREDICTED"
+  },
+  "tableRows": 34563,
+  "tableColumns": 16,
+  "tableCoverageSeconds": [
+    -2.5,
+    86402.5
+  ],
+  "tableSHA256": "7d6372e7d8e2c950c9e6ea8c5adc0a2b1b490944fecdb272d92b4517236d0c83",
+  "propagationConvergenceMaxPosition_m": 0.007273582983030732,
+  "interpolationValidation": {
+    "maxPositionError_m": 0.009260415667292063,
+    "maxVelocityError_m_s": 0.019964948504626392,
+    "maxEarthRotationAngleError_arcsec": 0.007528715240946743,
+    "maxEarthRotationOrthogonalityError": 1.6096273281147435e-15,
+    "maxEarthRotationDeterminantError": 1.1102230246251565e-15,
+    "maxSunDirectionError_arcsec": 0.005323605600495954
+  },
+  "software": {
+    "python": "3.9.7",
+    "numpy": "1.21.5",
+    "scipy": "1.9.1",
+    "astropy": "5.1",
+    "pyerfa": "2.0.0",
+    "jplephem": "2.23"
+  },
+  "sourceURLs": {
+    "spk": "https://naif.jpl.nasa.gov/pub/naif/generic_kernels/spk/planets/de440s.bsp",
+    "iers": "https://datacenter.iers.org/data/9/finals2000A.all",
+    "leapSeconds": "https://hpiers.obspm.fr/iers/bul/bulc/Leap_Second.dat"
+  },
+  "modelBoundary": "Given initial state propagated with central gravity, J2 and Sun/Moon third bodies; not a measured or precision-determined satellite ephemeris."
+}

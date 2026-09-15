@@ -1,0 +1,19 @@
+within NISSA_12UCubeSat.Foundation.Interfaces;
+connector ActiveGeometrySignals "Geometry evaluated for the currently selected mission object"
+  BooleanSignal activeTargetVisible;
+  BooleanSignal activeTargetPreparationOpportunity;
+  BooleanSignal activeTargetEarlyPrePointOpportunity;
+  BooleanSignal activeGroundContact;
+  RealSignal targetElevationRate(unit="1/s");
+  RealSignal groundElevationRate(unit="1/s");
+  BooleanSignal targetElevationIncreasing;
+  BooleanSignal groundElevationIncreasing;
+  RealSignal offNadirAngle(unit="rad");
+  RealSignal cameraLookAngle(unit="rad");
+  RealSignal targetSunElevation(unit="rad");
+  BooleanSignal offNadirValid;
+  BooleanSignal cameraFOVValid;
+  BooleanSignal targetIlluminationValid;
+  BooleanSignal imagingValid;
+  annotation(Icon(graphics={Rectangle(extent={{-100,60},{100,-60}},lineColor={45,100,145},fillColor={231,241,250},fillPattern=FillPattern.Solid),Text(extent={{-94,18},{94,-18}},textString="ACTIVE GEO")}),Documentation(info="<html><p>仅表示状态机锁存目标或地面站的活动任务几何，避免与原始候选机会混合。</p></html>"));
+end ActiveGeometrySignals;

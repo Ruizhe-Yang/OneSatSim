@@ -1,0 +1,78 @@
+within NISSA_12UCubeSat.Foundation.Calculations;
+model PowerConditioningCalculation "12 V平均值调节与充电支路计算"
+  parameter Real regulatorEfficiency(min=0.8,max=1)=0.94;
+  parameter Modelica.Units.SI.Voltage minimumInputVoltage=10.2;
+  parameter Modelica.Units.SI.Current maximumInputCurrent=12;
+  parameter Modelica.Units.SI.Current maximumOutputCurrent=8;
+  parameter Modelica.Units.SI.Power maximumOutputPower=96;
+  parameter Modelica.Units.SI.Resistance outputResistance12=0.035;
+  parameter Modelica.Units.SI.Resistance overloadDroop12=0.65;
+  Modelica.Blocks.Interfaces.RealInput batterySOC annotation(Placement(transformation(extent={{-120,75},{-80,95}})));
+  Modelica.Blocks.Interfaces.BooleanInput batteryChargeAllowed annotation(Placement(transformation(extent={{-120,50},{-80,70}})));
+  Modelica.Blocks.Interfaces.RealInput batteryBranchCurrent(unit="A") annotation(Placement(transformation(extent={{-120,25},{-80,45}})));
+  Modelica.Blocks.Interfaces.IntegerInput batteryHeaterState[2] annotation(Placement(transformation(extent={{-120,0},{-80,20}})));
+  Modelica.Blocks.Interfaces.RealInput availableSolarPower[3](each unit="W") annotation(Placement(transformation(extent={{-120,-25},{-80,-5}})));
+  Modelica.Blocks.Interfaces.RealInput sourceVoltageAverage(unit="V") annotation(Placement(transformation(extent={{-120,-50},{-80,-30}})));
+  Modelica.Blocks.Interfaces.RealInput loadCurrentAverage(unit="A") annotation(Placement(transformation(extent={{-120,-75},{-80,-55}})));
+  Modelica.Blocks.Interfaces.RealInput sourceVoltage(unit="V") annotation(Placement(transformation(extent={{-60,-110},{-40,-90}})));
+  Modelica.Blocks.Interfaces.RealInput busVoltage12(unit="V") annotation(Placement(transformation(extent={{-20,-110},{0,-90}})));
+  Modelica.Blocks.Interfaces.RealInput loadBusCurrent(unit="A") annotation(Placement(transformation(extent={{20,-110},{40,-90}})));
+  Modelica.Blocks.Interfaces.RealOutput batteryOCVEstimate(unit="V")
+    "仅供诊断的SOC开路电压估算，不参与稳压反馈" annotation(Placement(transformation(extent={{80,80},{100,100}})));
+  Modelica.Blocks.Interfaces.RealOutput loadCurrentMeasurement(unit="A") annotation(Placement(transformation(extent={{80,60},{100,80}})));
+  Modelica.Blocks.Interfaces.RealOutput regulatedVoltageCommand(unit="V") annotation(Placement(transformation(extent={{80,40},{100,60}})));
+  Modelica.Blocks.Interfaces.RealOutput sourceCurrentCommand(unit="A") annotation(Placement(transformation(extent={{80,20},{100,40}})));
+  Modelica.Blocks.Interfaces.RealOutput regulatorLossPower(unit="W") annotation(Placement(transformation(extent={{80,0},{100,20}})));
+  Modelica.Blocks.Interfaces.RealOutput solarCurtailmentCommand annotation(Placement(transformation(extent={{80,-20},{100,0}})));
+  Modelica.Blocks.Interfaces.RealOutput chargerVoltage[2](each unit="V") annotation(Placement(transformation(extent={{80,-40},{100,-20}})));
+  Modelica.Blocks.Interfaces.RealOutput chargerCurrent[2](each unit="A") annotation(Placement(transformation(extent={{80,-60},{100,-40}})));
+  Modelica.Blocks.Interfaces.RealOutput regulatedOutputPower(unit="W") annotation(Placement(transformation(extent={{80,-80},{100,-60}})));
+  Modelica.Blocks.Interfaces.RealOutput weightedAvailableSolarPower(unit="W") annotation(Placement(transformation(extent={{80,-100},{100,-80}})));
+protected
+  Real positiveLoadCurrent(unit="A");
+  Real positiveOutputVoltage(unit="V");
+  Real sourceCurrentDenominator(unit="V");
+  Real rawInputPower(unit="W");
+  Real rawConversionLoss(unit="W");
+  Real activeBatteryHeaterBranchCount;
+  Real directBatteryHeaterPower(unit="W");
+  Real solarCurtailmentDemandPower(unit="W");
+  Real solarCurtailmentRatio;
+  Real limitedSolarCurtailmentRatio;
+  Real powerCurrentLimit(unit="A");
+  Real inputCurrentLimitAtOutput(unit="A");
+  Real currentAndPowerLimit(unit="A");
+  Real capabilityCurrentLimit(unit="A");
+  Real overloadCurrent(unit="A");
+  Real sourceAvailability;
+equation
+  batteryOCVEstimate=noEvent(4*(3.2+min(1,max(0,batterySOC))));
+  loadCurrentMeasurement=positiveLoadCurrent;
+  positiveLoadCurrent=0.5*(loadBusCurrent+sqrt(loadBusCurrent^2+1e-8));
+  positiveOutputVoltage=0.5*(busVoltage12+sqrt(busVoltage12^2+1e-6));
+  sourceCurrentDenominator=sqrt(sourceVoltageAverage^2+1);
+  rawInputPower=sourceVoltage*sourceCurrentCommand;
+  regulatedOutputPower=busVoltage12*positiveLoadCurrent;
+  rawConversionLoss=rawInputPower-regulatedOutputPower;
+  activeBatteryHeaterBranchCount=(if batteryHeaterState[1] == 170 then 1 else 0)+(if batteryHeaterState[2] == 170 then 1 else 0);
+  directBatteryHeaterPower=sourceVoltageAverage^2/110*activeBatteryHeaterBranchCount;
+  weightedAvailableSolarPower=0.965*availableSolarPower[1]+0.95*availableSolarPower[2]+0.96*availableSolarPower[3];
+  solarCurtailmentDemandPower=regulatedOutputPower/regulatorEfficiency+directBatteryHeaterPower;
+  solarCurtailmentRatio=solarCurtailmentDemandPower/max(1,weightedAvailableSolarPower);
+  limitedSolarCurtailmentRatio=noEvent(min(1,solarCurtailmentRatio));
+  solarCurtailmentCommand=if batteryChargeAllowed then 1 else limitedSolarCurtailmentRatio;
+  powerCurrentLimit=maximumOutputPower/sqrt(12.10^2+0.01);
+  inputCurrentLimitAtOutput=maximumInputCurrent*regulatorEfficiency*sqrt(sourceVoltageAverage^2+0.01)/sqrt(12.10^2+0.01);
+  currentAndPowerLimit=0.5*(maximumOutputCurrent+powerCurrentLimit-sqrt((maximumOutputCurrent-powerCurrentLimit)^2+1e-6));
+  capabilityCurrentLimit=0.5*(currentAndPowerLimit+inputCurrentLimitAtOutput-sqrt((currentAndPowerLimit-inputCurrentLimitAtOutput)^2+1e-6));
+  overloadCurrent=0.5*((loadCurrentAverage-capabilityCurrentLimit)+sqrt((loadCurrentAverage-capabilityCurrentLimit)^2+1e-8));
+  sourceAvailability=0.5+0.5*tanh((sourceVoltageAverage-(minimumInputVoltage+0.25))/0.10);
+  regulatedVoltageCommand=sourceAvailability*(12.10+0.015*tanh((sourceVoltageAverage-12.05)/0.10)-outputResistance12*loadCurrentAverage-overloadDroop12*overloadCurrent);
+  sourceCurrentCommand=positiveLoadCurrent*positiveOutputVoltage/(regulatorEfficiency*sourceCurrentDenominator);
+  regulatorLossPower=0.5*(rawConversionLoss+sqrt(rawConversionLoss^2+1e-8));
+  chargerVoltage={busVoltage12,busVoltage12};
+  chargerCurrent={0.260*batteryBranchCurrent,0.222*batteryBranchCurrent};
+  annotation(
+    Icon(graphics={Rectangle(extent={{-100,75},{100,-75}},lineColor={40,115,75},fillColor={231,246,236},fillPattern=FillPattern.Solid),Line(points={{-72,20},{68,20}},color={40,115,75},arrow={Arrow.None,Arrow.Filled}),Text(extent={{-92,64},{92,28}},textString="12 V AVG PATH"),Text(extent={{-92,-20},{92,-58}},textString="LIMIT / DROOP / LOSS")}),
+    Documentation(info="<html><h4>功能定位</h4><p>计算连续平均值12 V稳压、源侧功率需求、调节损耗、太阳限功率和双路充电工程量。</p><h4>输入与物理含义</h4><p>sourceVoltage是原始电源端实际传感电压；sourceVoltageAverage是父组件对该传感量做30 s一阶平滑后的反馈。batterySOC只用于充电逻辑和batteryOCVEstimate诊断，不能代替实际源电压。</p><h4>输出与物理含义</h4><p>输出有限压降的12 V指令、源电流命令、损耗、curtailment、Charger工程量、受控输出功率与SOC开路电压诊断。</p><h4>主要计算关系</h4><p>先按输出电流/功率约束和有限输出阻抗形成电压指令，再以Pin=Pout/效率换算源电流；欠压和过载采用连续降额。太阳功率优先支持负载与允许充电，过剩时形成限功率。</p><h4>状态、事件与假设</h4><p>纯代数、无PWM与控制器动态；不使用理想恒压硬钳位或无限电容。限幅和正则化避免低压除零，损耗保持非负并进入父组件热节点。</p></html>"));
+end PowerConditioningCalculation;

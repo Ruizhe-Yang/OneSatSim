@@ -1,0 +1,22 @@
+within NISSA_12UCubeSat.Foundation.Interfaces;
+connector ImagingActionSignals "Imaging action state and event identifiers"
+  ImagingPhaseSignal phase;
+  BooleanSignal payloadPowerCommand;
+  BooleanSignal captureCommand;
+  BooleanSignal busy;
+  BooleanSignal active;
+  BooleanSignal completed;
+  BooleanSignal failed;
+  BooleanSignal aborted;
+  BooleanSignal timeout;
+  BooleanSignal captureStarted "当前/最近一次成像任务已进入Capture";
+  BooleanSignal imageComplete "当前/最近一次成像任务完成完整10 s图像";
+  RealSignal validImageBytes(unit="1") "当前/最近一次任务形成的有效图像字节数";
+  RejectReasonSignal failureReason;
+  IntegerSignal startedEventId;
+  IntegerSignal completedEventId;
+  IntegerSignal failedEventId;
+  IntegerSignal abortedEventId;
+  IntegerSignal timeoutEventId;
+  annotation(Icon(graphics={Rectangle(extent={{-100,60},{100,-60}},lineColor={30,115,135},fillColor={228,246,248},fillPattern=FillPattern.Solid),Text(extent={{-94,18},{94,-18}},textString="IMAGING")}),Documentation(info="<html><p>成像动作时序器的状态、单调事件标识和持久化KPI。captureStarted表示是否进入曝光，imageComplete只在完整曝光和存储/关机时序完成后成立，validImageBytes保留部分成像的有效字节数，failureReason保留最近一次任务的真实终止原因。</p></html>"));
+end ImagingActionSignals;

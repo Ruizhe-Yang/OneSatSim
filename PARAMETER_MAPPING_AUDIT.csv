@@ -1,0 +1,455 @@
+﻿Subsystem,Instance,Parameter,CurrentModelTarget,PlannedConfigKey,ConfigRecordCreated,ComponentParameterCreated,ActualTargetConnected,DefaultMatched,UnitConversion,Status
+EPS,battery,SeriesCellCount,Components.BatteryUnit.cells.Ns,SpacecraftDesignConfig.eps.battery.SeriesCellCount,True,True,True,True,identity,PASS
+EPS,battery,ParallelCellCount,Components.BatteryUnit.cells.Np,SpacecraftDesignConfig.eps.battery.ParallelCellCount,True,True,True,True,identity,PASS
+EPS,battery,CellCapacity_Ah,Components.BatteryUnit.cellData.Qnom,SpacecraftDesignConfig.eps.battery.CellCapacity_Ah,True,True,True,True,Ah -> SI,PASS
+EPS,battery,CellOCVMax,Components.BatteryUnit.cellData.OCVmax,SpacecraftDesignConfig.eps.battery.CellOCVMax,True,True,True,True,V -> SI,PASS
+EPS,battery,CellOCVMin,Components.BatteryUnit.cellData.OCVmin,SpacecraftDesignConfig.eps.battery.CellOCVMin,True,True,True,True,V -> SI,PASS
+EPS,battery,CellInternalResistance,Components.BatteryUnit.cellData.Ri,SpacecraftDesignConfig.eps.battery.CellInternalResistance,True,True,True,True,Ω -> SI,PASS
+EPS,battery,CellSOCMin,Components.BatteryUnit.cellData.SOCmin,SpacecraftDesignConfig.eps.battery.CellSOCMin,True,True,True,True,identity,PASS
+EPS,battery,CellSOCMax,Components.BatteryUnit.cellData.SOCmax,SpacecraftDesignConfig.eps.battery.CellSOCMax,True,True,True,True,identity,PASS
+EPS,battery,EOLCapacityFactor,Components.BatteryUnit.batteryEOLCapacityFactor,SpacecraftDesignConfig.eps.battery.EOLCapacityFactor,True,True,True,True,identity,PASS
+EPS,battery,UseEOLCapacity,Components.BatteryUnit.useEOLCapacity,SpacecraftDesignConfig.eps.battery.UseEOLCapacity,True,True,True,True,identity,PASS
+EPS,battery,ContactResistance,Components.BatteryUnit.contact.R,SpacecraftDesignConfig.eps.battery.ContactResistance,True,True,True,True,Ω -> SI,PASS
+EPS,battery,HeaterResistance,Components.BatteryUnit.batteryHeaterResistance,SpacecraftDesignConfig.eps.battery.HeaterResistance,True,True,True,True,Ω -> SI,PASS
+EPS,battery,CellHeatCapacity,Components.BatteryUnit.cellThermalMass.C,SpacecraftDesignConfig.eps.battery.CellHeatCapacity,True,True,True,True,J/K -> SI,PASS
+EPS,battery,EnclosureHeatCapacity,Components.BatteryUnit.enclosureThermalMass.C,SpacecraftDesignConfig.eps.battery.EnclosureHeatCapacity,True,True,True,True,J/K -> SI,PASS
+EPS,battery,InternalThermalConductance,Components.BatteryUnit.internalPath.G,SpacecraftDesignConfig.eps.battery.InternalThermalConductance,True,True,True,True,W/K -> SI,PASS
+EPS,battery,MountThermalConductance,Components.BatteryUnit.mountPath.G,SpacecraftDesignConfig.eps.battery.MountThermalConductance,True,True,True,True,W/K -> SI,PASS
+EPS,battery,Mass,Components.BatteryUnit.housing.m,SpacecraftDesignConfig.eps.battery.Mass,True,True,True,True,kg -> SI,PASS
+EPS,battery,RCM_X,Components.BatteryUnit.housing.r_CM[1],SpacecraftDesignConfig.eps.battery.RCM_X,True,True,True,True,m -> SI,PASS
+EPS,battery,RCM_Y,Components.BatteryUnit.housing.r_CM[2],SpacecraftDesignConfig.eps.battery.RCM_Y,True,True,True,True,m -> SI,PASS
+EPS,battery,RCM_Z,Components.BatteryUnit.housing.r_CM[3],SpacecraftDesignConfig.eps.battery.RCM_Z,True,True,True,True,m -> SI,PASS
+EPS,battery,Inertia_XX,Components.BatteryUnit.housing.I_11,SpacecraftDesignConfig.eps.battery.Inertia_XX,True,True,True,True,kg·m² -> SI,PASS
+EPS,battery,Inertia_YY,Components.BatteryUnit.housing.I_22,SpacecraftDesignConfig.eps.battery.Inertia_YY,True,True,True,True,kg·m² -> SI,PASS
+EPS,battery,Inertia_ZZ,Components.BatteryUnit.housing.I_33,SpacecraftDesignConfig.eps.battery.Inertia_ZZ,True,True,True,True,kg·m² -> SI,PASS
+EPS,solarArrayPlusX,ActiveArea,Components.BodyMountedSolarArrayPlusXUnit.activeArea,SpacecraftDesignConfig.eps.solarArrayPlusX.ActiveArea,True,True,True,True,m² -> SI,PASS
+EPS,solarArrayPlusX,CellEfficiency,Components.BodyMountedSolarArrayPlusXUnit.cellEfficiency,SpacecraftDesignConfig.eps.solarArrayPlusX.CellEfficiency,True,True,True,True,identity,PASS
+EPS,solarArrayPlusX,SolarEOLFactor,Components.BodyMountedSolarArrayPlusXUnit.solarEOLFactor,SpacecraftDesignConfig.eps.solarArrayPlusX.SolarEOLFactor,True,True,True,True,identity,PASS
+EPS,solarArrayPlusX,UseSolarEOL,Components.BodyMountedSolarArrayPlusXUnit.useSolarEOL,SpacecraftDesignConfig.eps.solarArrayPlusX.UseSolarEOL,True,True,True,True,identity,PASS
+EPS,solarArrayPlusX,MPPTDeliveryEfficiency,Components.BodyMountedSolarArrayPlusXUnit.etaMPPT,SpacecraftDesignConfig.eps.solarArrayPlusX.MPPTDeliveryEfficiency,True,True,True,True,identity,PASS
+EPS,solarArrayPlusX,SolarAbsorptivity,Components.BodyMountedSolarArrayPlusXUnit.panelSolarAbsorptivity,SpacecraftDesignConfig.eps.solarArrayPlusX.SolarAbsorptivity,True,True,True,True,identity,PASS
+EPS,solarArrayPlusX,InfraredAbsorptivity,Components.BodyMountedSolarArrayPlusXUnit.panelInfraredAbsorptivity,SpacecraftDesignConfig.eps.solarArrayPlusX.InfraredAbsorptivity,True,True,True,True,identity,PASS
+EPS,solarArrayPlusX,Emissivity,Components.BodyMountedSolarArrayPlusXUnit.panelEmissivity,SpacecraftDesignConfig.eps.solarArrayPlusX.Emissivity,True,True,True,True,identity,PASS
+EPS,solarArrayPlusX,MountConductance,Components.BodyMountedSolarArrayPlusXUnit.panelMountConductance,SpacecraftDesignConfig.eps.solarArrayPlusX.MountConductance,True,True,True,True,W/K -> SI,PASS
+EPS,solarArrayPlusX,HarnessResistance,Components.BodyMountedSolarArrayPlusXUnit.blockingHarness.R,SpacecraftDesignConfig.eps.solarArrayPlusX.HarnessResistance,True,True,True,True,Ω -> SI,PASS
+EPS,solarArrayPlusX,PanelHeatCapacity,Components.BodyMountedSolarArrayPlusXUnit.panelThermalMass.C,SpacecraftDesignConfig.eps.solarArrayPlusX.PanelHeatCapacity,True,True,True,True,J/K -> SI,PASS
+EPS,solarArrayPlusX,Normal_X,Components.BodyMountedSolarArrayPlusXUnit.panelNormalBody[1],SpacecraftDesignConfig.eps.solarArrayPlusX.Normal_X,True,True,True,True,identity,PASS
+EPS,solarArrayPlusX,Normal_Y,Components.BodyMountedSolarArrayPlusXUnit.panelNormalBody[2],SpacecraftDesignConfig.eps.solarArrayPlusX.Normal_Y,True,True,True,True,identity,PASS
+EPS,solarArrayPlusX,Normal_Z,Components.BodyMountedSolarArrayPlusXUnit.panelNormalBody[3],SpacecraftDesignConfig.eps.solarArrayPlusX.Normal_Z,True,True,True,True,identity,PASS
+EPS,solarArrayPlusX,Mass,Components.BodyMountedSolarArrayPlusXUnit.panelBody.m,SpacecraftDesignConfig.eps.solarArrayPlusX.Mass,True,True,True,True,kg -> SI,PASS
+EPS,solarArrayPlusX,RCM_X,Components.BodyMountedSolarArrayPlusXUnit.panelBody.r_CM[1],SpacecraftDesignConfig.eps.solarArrayPlusX.RCM_X,True,True,True,True,m -> SI,PASS
+EPS,solarArrayPlusX,RCM_Y,Components.BodyMountedSolarArrayPlusXUnit.panelBody.r_CM[2],SpacecraftDesignConfig.eps.solarArrayPlusX.RCM_Y,True,True,True,True,m -> SI,PASS
+EPS,solarArrayPlusX,RCM_Z,Components.BodyMountedSolarArrayPlusXUnit.panelBody.r_CM[3],SpacecraftDesignConfig.eps.solarArrayPlusX.RCM_Z,True,True,True,True,m -> SI,PASS
+EPS,solarArrayPlusX,Inertia_XX,Components.BodyMountedSolarArrayPlusXUnit.panelBody.I_11,SpacecraftDesignConfig.eps.solarArrayPlusX.Inertia_XX,True,True,True,True,kg·m² -> SI,PASS
+EPS,solarArrayPlusX,Inertia_YY,Components.BodyMountedSolarArrayPlusXUnit.panelBody.I_22,SpacecraftDesignConfig.eps.solarArrayPlusX.Inertia_YY,True,True,True,True,kg·m² -> SI,PASS
+EPS,solarArrayPlusX,Inertia_ZZ,Components.BodyMountedSolarArrayPlusXUnit.panelBody.I_33,SpacecraftDesignConfig.eps.solarArrayPlusX.Inertia_ZZ,True,True,True,True,kg·m² -> SI,PASS
+EPS,solarArrayPlusY,ActiveArea,Components.BodyMountedSolarArrayPlusYUnit.activeArea,SpacecraftDesignConfig.eps.solarArrayPlusY.ActiveArea,True,True,True,True,m² -> SI,PASS
+EPS,solarArrayPlusY,CellEfficiency,Components.BodyMountedSolarArrayPlusYUnit.cellEfficiency,SpacecraftDesignConfig.eps.solarArrayPlusY.CellEfficiency,True,True,True,True,identity,PASS
+EPS,solarArrayPlusY,SolarEOLFactor,Components.BodyMountedSolarArrayPlusYUnit.solarEOLFactor,SpacecraftDesignConfig.eps.solarArrayPlusY.SolarEOLFactor,True,True,True,True,identity,PASS
+EPS,solarArrayPlusY,UseSolarEOL,Components.BodyMountedSolarArrayPlusYUnit.useSolarEOL,SpacecraftDesignConfig.eps.solarArrayPlusY.UseSolarEOL,True,True,True,True,identity,PASS
+EPS,solarArrayPlusY,MPPTDeliveryEfficiency,Components.BodyMountedSolarArrayPlusYUnit.etaMPPT,SpacecraftDesignConfig.eps.solarArrayPlusY.MPPTDeliveryEfficiency,True,True,True,True,identity,PASS
+EPS,solarArrayPlusY,SolarAbsorptivity,Components.BodyMountedSolarArrayPlusYUnit.panelSolarAbsorptivity,SpacecraftDesignConfig.eps.solarArrayPlusY.SolarAbsorptivity,True,True,True,True,identity,PASS
+EPS,solarArrayPlusY,InfraredAbsorptivity,Components.BodyMountedSolarArrayPlusYUnit.panelInfraredAbsorptivity,SpacecraftDesignConfig.eps.solarArrayPlusY.InfraredAbsorptivity,True,True,True,True,identity,PASS
+EPS,solarArrayPlusY,Emissivity,Components.BodyMountedSolarArrayPlusYUnit.panelEmissivity,SpacecraftDesignConfig.eps.solarArrayPlusY.Emissivity,True,True,True,True,identity,PASS
+EPS,solarArrayPlusY,MountConductance,Components.BodyMountedSolarArrayPlusYUnit.panelMountConductance,SpacecraftDesignConfig.eps.solarArrayPlusY.MountConductance,True,True,True,True,W/K -> SI,PASS
+EPS,solarArrayPlusY,HarnessResistance,Components.BodyMountedSolarArrayPlusYUnit.equivalentDualHarness.R,SpacecraftDesignConfig.eps.solarArrayPlusY.HarnessResistance,True,True,True,True,Ω -> SI,PASS
+EPS,solarArrayPlusY,PanelHeatCapacity,Components.BodyMountedSolarArrayPlusYUnit.panelThermalMass.C,SpacecraftDesignConfig.eps.solarArrayPlusY.PanelHeatCapacity,True,True,True,True,J/K -> SI,PASS
+EPS,solarArrayPlusY,Normal_X,Components.BodyMountedSolarArrayPlusYUnit.panelNormalBody[1],SpacecraftDesignConfig.eps.solarArrayPlusY.Normal_X,True,True,True,True,identity,PASS
+EPS,solarArrayPlusY,Normal_Y,Components.BodyMountedSolarArrayPlusYUnit.panelNormalBody[2],SpacecraftDesignConfig.eps.solarArrayPlusY.Normal_Y,True,True,True,True,identity,PASS
+EPS,solarArrayPlusY,Normal_Z,Components.BodyMountedSolarArrayPlusYUnit.panelNormalBody[3],SpacecraftDesignConfig.eps.solarArrayPlusY.Normal_Z,True,True,True,True,identity,PASS
+EPS,solarArrayPlusY,Mass,Components.BodyMountedSolarArrayPlusYUnit.panelBody.m,SpacecraftDesignConfig.eps.solarArrayPlusY.Mass,True,True,True,True,kg -> SI,PASS
+EPS,solarArrayPlusY,RCM_X,Components.BodyMountedSolarArrayPlusYUnit.panelBody.r_CM[1],SpacecraftDesignConfig.eps.solarArrayPlusY.RCM_X,True,True,True,True,m -> SI,PASS
+EPS,solarArrayPlusY,RCM_Y,Components.BodyMountedSolarArrayPlusYUnit.panelBody.r_CM[2],SpacecraftDesignConfig.eps.solarArrayPlusY.RCM_Y,True,True,True,True,m -> SI,PASS
+EPS,solarArrayPlusY,RCM_Z,Components.BodyMountedSolarArrayPlusYUnit.panelBody.r_CM[3],SpacecraftDesignConfig.eps.solarArrayPlusY.RCM_Z,True,True,True,True,m -> SI,PASS
+EPS,solarArrayPlusY,Inertia_XX,Components.BodyMountedSolarArrayPlusYUnit.panelBody.I_11,SpacecraftDesignConfig.eps.solarArrayPlusY.Inertia_XX,True,True,True,True,kg·m² -> SI,PASS
+EPS,solarArrayPlusY,Inertia_YY,Components.BodyMountedSolarArrayPlusYUnit.panelBody.I_22,SpacecraftDesignConfig.eps.solarArrayPlusY.Inertia_YY,True,True,True,True,kg·m² -> SI,PASS
+EPS,solarArrayPlusY,Inertia_ZZ,Components.BodyMountedSolarArrayPlusYUnit.panelBody.I_33,SpacecraftDesignConfig.eps.solarArrayPlusY.Inertia_ZZ,True,True,True,True,kg·m² -> SI,PASS
+EPS,solarArrayMinusX,ActiveArea,Components.BodyMountedSolarArrayMinusXUnit.activeArea,SpacecraftDesignConfig.eps.solarArrayMinusX.ActiveArea,True,True,True,True,m² -> SI,PASS
+EPS,solarArrayMinusX,CellEfficiency,Components.BodyMountedSolarArrayMinusXUnit.cellEfficiency,SpacecraftDesignConfig.eps.solarArrayMinusX.CellEfficiency,True,True,True,True,identity,PASS
+EPS,solarArrayMinusX,SolarEOLFactor,Components.BodyMountedSolarArrayMinusXUnit.solarEOLFactor,SpacecraftDesignConfig.eps.solarArrayMinusX.SolarEOLFactor,True,True,True,True,identity,PASS
+EPS,solarArrayMinusX,UseSolarEOL,Components.BodyMountedSolarArrayMinusXUnit.useSolarEOL,SpacecraftDesignConfig.eps.solarArrayMinusX.UseSolarEOL,True,True,True,True,identity,PASS
+EPS,solarArrayMinusX,MPPTDeliveryEfficiency,Components.BodyMountedSolarArrayMinusXUnit.etaMPPT,SpacecraftDesignConfig.eps.solarArrayMinusX.MPPTDeliveryEfficiency,True,True,True,True,identity,PASS
+EPS,solarArrayMinusX,SolarAbsorptivity,Components.BodyMountedSolarArrayMinusXUnit.panelSolarAbsorptivity,SpacecraftDesignConfig.eps.solarArrayMinusX.SolarAbsorptivity,True,True,True,True,identity,PASS
+EPS,solarArrayMinusX,InfraredAbsorptivity,Components.BodyMountedSolarArrayMinusXUnit.panelInfraredAbsorptivity,SpacecraftDesignConfig.eps.solarArrayMinusX.InfraredAbsorptivity,True,True,True,True,identity,PASS
+EPS,solarArrayMinusX,Emissivity,Components.BodyMountedSolarArrayMinusXUnit.panelEmissivity,SpacecraftDesignConfig.eps.solarArrayMinusX.Emissivity,True,True,True,True,identity,PASS
+EPS,solarArrayMinusX,MountConductance,Components.BodyMountedSolarArrayMinusXUnit.panelMountConductance,SpacecraftDesignConfig.eps.solarArrayMinusX.MountConductance,True,True,True,True,W/K -> SI,PASS
+EPS,solarArrayMinusX,HarnessResistance,Components.BodyMountedSolarArrayMinusXUnit.blockingHarness.R,SpacecraftDesignConfig.eps.solarArrayMinusX.HarnessResistance,True,True,True,True,Ω -> SI,PASS
+EPS,solarArrayMinusX,PanelHeatCapacity,Components.BodyMountedSolarArrayMinusXUnit.panelThermalMass.C,SpacecraftDesignConfig.eps.solarArrayMinusX.PanelHeatCapacity,True,True,True,True,J/K -> SI,PASS
+EPS,solarArrayMinusX,Normal_X,Components.BodyMountedSolarArrayMinusXUnit.panelNormalBody[1],SpacecraftDesignConfig.eps.solarArrayMinusX.Normal_X,True,True,True,True,identity,PASS
+EPS,solarArrayMinusX,Normal_Y,Components.BodyMountedSolarArrayMinusXUnit.panelNormalBody[2],SpacecraftDesignConfig.eps.solarArrayMinusX.Normal_Y,True,True,True,True,identity,PASS
+EPS,solarArrayMinusX,Normal_Z,Components.BodyMountedSolarArrayMinusXUnit.panelNormalBody[3],SpacecraftDesignConfig.eps.solarArrayMinusX.Normal_Z,True,True,True,True,identity,PASS
+EPS,solarArrayMinusX,Mass,Components.BodyMountedSolarArrayMinusXUnit.panelBody.m,SpacecraftDesignConfig.eps.solarArrayMinusX.Mass,True,True,True,True,kg -> SI,PASS
+EPS,solarArrayMinusX,RCM_X,Components.BodyMountedSolarArrayMinusXUnit.panelBody.r_CM[1],SpacecraftDesignConfig.eps.solarArrayMinusX.RCM_X,True,True,True,True,m -> SI,PASS
+EPS,solarArrayMinusX,RCM_Y,Components.BodyMountedSolarArrayMinusXUnit.panelBody.r_CM[2],SpacecraftDesignConfig.eps.solarArrayMinusX.RCM_Y,True,True,True,True,m -> SI,PASS
+EPS,solarArrayMinusX,RCM_Z,Components.BodyMountedSolarArrayMinusXUnit.panelBody.r_CM[3],SpacecraftDesignConfig.eps.solarArrayMinusX.RCM_Z,True,True,True,True,m -> SI,PASS
+EPS,solarArrayMinusX,Inertia_XX,Components.BodyMountedSolarArrayMinusXUnit.panelBody.I_11,SpacecraftDesignConfig.eps.solarArrayMinusX.Inertia_XX,True,True,True,True,kg·m² -> SI,PASS
+EPS,solarArrayMinusX,Inertia_YY,Components.BodyMountedSolarArrayMinusXUnit.panelBody.I_22,SpacecraftDesignConfig.eps.solarArrayMinusX.Inertia_YY,True,True,True,True,kg·m² -> SI,PASS
+EPS,solarArrayMinusX,Inertia_ZZ,Components.BodyMountedSolarArrayMinusXUnit.panelBody.I_33,SpacecraftDesignConfig.eps.solarArrayMinusX.Inertia_ZZ,True,True,True,True,kg·m² -> SI,PASS
+EPS,pcdu,RegulatorEfficiency12,Components.PowerConditioningUnit.regulatorEfficiency,SpacecraftDesignConfig.eps.pcdu.RegulatorEfficiency12,True,True,True,True,identity,PASS
+EPS,pcdu,MinimumInputVoltage12,Components.PowerConditioningUnit.minimumInputVoltage,SpacecraftDesignConfig.eps.pcdu.MinimumInputVoltage12,True,True,True,True,V -> SI,PASS
+EPS,pcdu,MaximumInputCurrent12,Components.PowerConditioningUnit.maximumInputCurrent,SpacecraftDesignConfig.eps.pcdu.MaximumInputCurrent12,True,True,True,True,A -> SI,PASS
+EPS,pcdu,MaximumOutputCurrent12,Components.PowerConditioningUnit.maximumOutputCurrent,SpacecraftDesignConfig.eps.pcdu.MaximumOutputCurrent12,True,True,True,True,A -> SI,PASS
+EPS,pcdu,MaximumOutputPower12,Components.PowerConditioningUnit.maximumOutputPower,SpacecraftDesignConfig.eps.pcdu.MaximumOutputPower12,True,True,True,True,W -> SI,PASS
+EPS,pcdu,OutputResistance12,Components.PowerConditioningUnit.outputResistance12,SpacecraftDesignConfig.eps.pcdu.OutputResistance12,True,True,True,True,Ω -> SI,PASS
+EPS,pcdu,OverloadDroop12,Components.PowerConditioningUnit.overloadDroop12,SpacecraftDesignConfig.eps.pcdu.OverloadDroop12,True,True,True,True,Ω -> SI,PASS
+EPS,pcdu,Efficiency5V,Components.PowerConditioningUnit.eta5,SpacecraftDesignConfig.eps.pcdu.Efficiency5V,True,True,True,True,identity,PASS
+EPS,pcdu,CurrentLimit5V,Components.PowerConditioningUnit.currentLimit5,SpacecraftDesignConfig.eps.pcdu.CurrentLimit5V,True,True,True,True,A -> SI,PASS
+EPS,pcdu,NominalVoltage5V,Components.PowerConditioningUnit.converter5.nominalOutputVoltage,SpacecraftDesignConfig.eps.pcdu.NominalVoltage5V,True,True,True,True,V -> SI,PASS
+EPS,pcdu,PowerLimit5V,Components.PowerConditioningUnit.converter5.outputPowerLimit,SpacecraftDesignConfig.eps.pcdu.PowerLimit5V,True,True,True,True,W -> SI,PASS
+EPS,pcdu,MinimumInputVoltage5V,Components.PowerConditioningUnit.converter5.minimumInputVoltage,SpacecraftDesignConfig.eps.pcdu.MinimumInputVoltage5V,True,True,True,True,V -> SI,PASS
+EPS,pcdu,OutputResistance5V,Components.PowerConditioningUnit.converter5.outputResistance,SpacecraftDesignConfig.eps.pcdu.OutputResistance5V,True,True,True,True,Ω -> SI,PASS
+EPS,pcdu,OverloadDroop5V,Components.PowerConditioningUnit.converter5.overloadDroop,SpacecraftDesignConfig.eps.pcdu.OverloadDroop5V,True,True,True,True,Ω -> SI,PASS
+EPS,pcdu,Efficiency3V3,Components.PowerConditioningUnit.eta3V3,SpacecraftDesignConfig.eps.pcdu.Efficiency3V3,True,True,True,True,identity,PASS
+EPS,pcdu,CurrentLimit3V3,Components.PowerConditioningUnit.currentLimit3V3,SpacecraftDesignConfig.eps.pcdu.CurrentLimit3V3,True,True,True,True,A -> SI,PASS
+EPS,pcdu,NominalVoltage3V3,Components.PowerConditioningUnit.converter3V3.nominalOutputVoltage,SpacecraftDesignConfig.eps.pcdu.NominalVoltage3V3,True,True,True,True,V -> SI,PASS
+EPS,pcdu,PowerLimit3V3,Components.PowerConditioningUnit.converter3V3.outputPowerLimit,SpacecraftDesignConfig.eps.pcdu.PowerLimit3V3,True,True,True,True,W -> SI,PASS
+EPS,pcdu,MinimumInputVoltage3V3,Components.PowerConditioningUnit.converter3V3.minimumInputVoltage,SpacecraftDesignConfig.eps.pcdu.MinimumInputVoltage3V3,True,True,True,True,V -> SI,PASS
+EPS,pcdu,OutputResistance3V3,Components.PowerConditioningUnit.converter3V3.outputResistance,SpacecraftDesignConfig.eps.pcdu.OutputResistance3V3,True,True,True,True,Ω -> SI,PASS
+EPS,pcdu,OverloadDroop3V3,Components.PowerConditioningUnit.converter3V3.overloadDroop,SpacecraftDesignConfig.eps.pcdu.OverloadDroop3V3,True,True,True,True,Ω -> SI,PASS
+EPS,pcdu,HousekeepingResistance12,Components.PowerConditioningUnit.pcdHousekeeping12.R,SpacecraftDesignConfig.eps.pcdu.HousekeepingResistance12,True,True,True,True,Ω -> SI,PASS
+EPS,pcdu,BoardHeatCapacity,Components.PowerConditioningUnit.boardHeat.C,SpacecraftDesignConfig.eps.pcdu.BoardHeatCapacity,True,True,True,True,J/K -> SI,PASS
+EPS,pcdu,MountConductance,Components.PowerConditioningUnit.mounting.G,SpacecraftDesignConfig.eps.pcdu.MountConductance,True,True,True,True,W/K -> SI,PASS
+EPS,pcdu,Mass,Components.PowerConditioningUnit.boardBody.m,SpacecraftDesignConfig.eps.pcdu.Mass,True,True,True,True,kg -> SI,PASS
+EPS,pcdu,RCM_X,Components.PowerConditioningUnit.boardBody.r_CM[1],SpacecraftDesignConfig.eps.pcdu.RCM_X,True,True,True,True,m -> SI,PASS
+EPS,pcdu,RCM_Y,Components.PowerConditioningUnit.boardBody.r_CM[2],SpacecraftDesignConfig.eps.pcdu.RCM_Y,True,True,True,True,m -> SI,PASS
+EPS,pcdu,RCM_Z,Components.PowerConditioningUnit.boardBody.r_CM[3],SpacecraftDesignConfig.eps.pcdu.RCM_Z,True,True,True,True,m -> SI,PASS
+EPS,pcdu,Inertia_XX,Components.PowerConditioningUnit.boardBody.I_11,SpacecraftDesignConfig.eps.pcdu.Inertia_XX,True,True,True,True,kg·m² -> SI,PASS
+EPS,pcdu,Inertia_YY,Components.PowerConditioningUnit.boardBody.I_22,SpacecraftDesignConfig.eps.pcdu.Inertia_YY,True,True,True,True,kg·m² -> SI,PASS
+EPS,pcdu,Inertia_ZZ,Components.PowerConditioningUnit.boardBody.I_33,SpacecraftDesignConfig.eps.pcdu.Inertia_ZZ,True,True,True,True,kg·m² -> SI,PASS
+GNC,computer,ProcessorLoadResistance,Components.GNCComputerUnit.processorLoad.R,SpacecraftDesignConfig.gnc.computer.ProcessorLoadResistance,True,True,True,True,Ω -> SI,PASS
+GNC,computer,HeatCapacity,Components.GNCComputerUnit.electronics.C,SpacecraftDesignConfig.gnc.computer.HeatCapacity,True,True,True,True,J/K -> SI,PASS
+GNC,computer,MountConductance,Components.GNCComputerUnit.baseplate.G,SpacecraftDesignConfig.gnc.computer.MountConductance,True,True,True,True,W/K -> SI,PASS
+GNC,computer,Mass,Components.GNCComputerUnit.unitBody.m,SpacecraftDesignConfig.gnc.computer.Mass,True,True,True,True,kg -> SI,PASS
+GNC,computer,RCM_X,Components.GNCComputerUnit.unitBody.r_CM[1],SpacecraftDesignConfig.gnc.computer.RCM_X,True,True,True,True,m -> SI,PASS
+GNC,computer,RCM_Y,Components.GNCComputerUnit.unitBody.r_CM[2],SpacecraftDesignConfig.gnc.computer.RCM_Y,True,True,True,True,m -> SI,PASS
+GNC,computer,RCM_Z,Components.GNCComputerUnit.unitBody.r_CM[3],SpacecraftDesignConfig.gnc.computer.RCM_Z,True,True,True,True,m -> SI,PASS
+GNC,computer,Inertia_XX,Components.GNCComputerUnit.unitBody.I_11,SpacecraftDesignConfig.gnc.computer.Inertia_XX,True,True,True,True,kg·m² -> SI,PASS
+GNC,computer,Inertia_YY,Components.GNCComputerUnit.unitBody.I_22,SpacecraftDesignConfig.gnc.computer.Inertia_YY,True,True,True,True,kg·m² -> SI,PASS
+GNC,computer,Inertia_ZZ,Components.GNCComputerUnit.unitBody.I_33,SpacecraftDesignConfig.gnc.computer.Inertia_ZZ,True,True,True,True,kg·m² -> SI,PASS
+GNC,wheelX,SpeedLimit,Components.ReactionWheelXUnit.wheelSpeedLimit,SpacecraftDesignConfig.gnc.wheelX.SpeedLimit,True,True,True,True,rad/s -> SI,PASS
+GNC,wheelX,MotorEfficiency,Components.ReactionWheelXUnit.motorEfficiency,SpacecraftDesignConfig.gnc.wheelX.MotorEfficiency,True,True,True,True,identity,PASS
+GNC,wheelX,StandbyResistance,Components.ReactionWheelXUnit.driveElectronics.R,SpacecraftDesignConfig.gnc.wheelX.StandbyResistance,True,True,True,True,Ω -> SI,PASS
+GNC,wheelX,MaxTorque,Components.ReactionWheelXUnit.torqueLimit.uMax,SpacecraftDesignConfig.gnc.wheelX.MaxTorque,True,True,True,True,N·m -> SI,PASS
+GNC,wheelX,RotorInertia,Components.ReactionWheelXUnit.rotor.J,SpacecraftDesignConfig.gnc.wheelX.RotorInertia,True,True,True,True,kg·m² -> SI,PASS
+GNC,wheelX,BearingDamping,Components.ReactionWheelXUnit.bearing.d,SpacecraftDesignConfig.gnc.wheelX.BearingDamping,True,True,True,True,N·m·s/rad -> SI,PASS
+GNC,wheelX,HeatCapacity,Components.ReactionWheelXUnit.wheelThermalMass.C,SpacecraftDesignConfig.gnc.wheelX.HeatCapacity,True,True,True,True,J/K -> SI,PASS
+GNC,wheelX,MountConductance,Components.ReactionWheelXUnit.casePath.G,SpacecraftDesignConfig.gnc.wheelX.MountConductance,True,True,True,True,W/K -> SI,PASS
+GNC,wheelX,Axis_X,Components.ReactionWheelXUnit.mount.n[1],SpacecraftDesignConfig.gnc.wheelX.Axis_X,True,True,True,True,identity,PASS
+GNC,wheelX,Axis_Y,Components.ReactionWheelXUnit.mount.n[2],SpacecraftDesignConfig.gnc.wheelX.Axis_Y,True,True,True,True,identity,PASS
+GNC,wheelX,Axis_Z,Components.ReactionWheelXUnit.mount.n[3],SpacecraftDesignConfig.gnc.wheelX.Axis_Z,True,True,True,True,identity,PASS
+GNC,wheelX,Mass,Components.ReactionWheelXUnit.wheelHousing.m,SpacecraftDesignConfig.gnc.wheelX.Mass,True,True,True,True,kg -> SI,PASS
+GNC,wheelX,RCM_X,Components.ReactionWheelXUnit.wheelHousing.r_CM[1],SpacecraftDesignConfig.gnc.wheelX.RCM_X,True,True,True,True,m -> SI,PASS
+GNC,wheelX,RCM_Y,Components.ReactionWheelXUnit.wheelHousing.r_CM[2],SpacecraftDesignConfig.gnc.wheelX.RCM_Y,True,True,True,True,m -> SI,PASS
+GNC,wheelX,RCM_Z,Components.ReactionWheelXUnit.wheelHousing.r_CM[3],SpacecraftDesignConfig.gnc.wheelX.RCM_Z,True,True,True,True,m -> SI,PASS
+GNC,wheelX,Inertia_XX,Components.ReactionWheelXUnit.wheelHousing.I_11,SpacecraftDesignConfig.gnc.wheelX.Inertia_XX,True,True,True,True,kg·m² -> SI,PASS
+GNC,wheelX,Inertia_YY,Components.ReactionWheelXUnit.wheelHousing.I_22,SpacecraftDesignConfig.gnc.wheelX.Inertia_YY,True,True,True,True,kg·m² -> SI,PASS
+GNC,wheelX,Inertia_ZZ,Components.ReactionWheelXUnit.wheelHousing.I_33,SpacecraftDesignConfig.gnc.wheelX.Inertia_ZZ,True,True,True,True,kg·m² -> SI,PASS
+GNC,wheelY,SpeedLimit,Components.ReactionWheelYUnit.wheelSpeedLimit,SpacecraftDesignConfig.gnc.wheelY.SpeedLimit,True,True,True,True,rad/s -> SI,PASS
+GNC,wheelY,MotorEfficiency,Components.ReactionWheelYUnit.motorEfficiency,SpacecraftDesignConfig.gnc.wheelY.MotorEfficiency,True,True,True,True,identity,PASS
+GNC,wheelY,StandbyResistance,Components.ReactionWheelYUnit.driverLoss.R,SpacecraftDesignConfig.gnc.wheelY.StandbyResistance,True,True,True,True,Ω -> SI,PASS
+GNC,wheelY,MaxTorque,Components.ReactionWheelYUnit.torqueLimit.uMax,SpacecraftDesignConfig.gnc.wheelY.MaxTorque,True,True,True,True,N·m -> SI,PASS
+GNC,wheelY,RotorInertia,Components.ReactionWheelYUnit.rotor.J,SpacecraftDesignConfig.gnc.wheelY.RotorInertia,True,True,True,True,kg·m² -> SI,PASS
+GNC,wheelY,BearingDamping,Components.ReactionWheelYUnit.bearing.d,SpacecraftDesignConfig.gnc.wheelY.BearingDamping,True,True,True,True,N·m·s/rad -> SI,PASS
+GNC,wheelY,HeatCapacity,Components.ReactionWheelYUnit.thermalMass.C,SpacecraftDesignConfig.gnc.wheelY.HeatCapacity,True,True,True,True,J/K -> SI,PASS
+GNC,wheelY,MountConductance,Components.ReactionWheelYUnit.mountingPath.G,SpacecraftDesignConfig.gnc.wheelY.MountConductance,True,True,True,True,W/K -> SI,PASS
+GNC,wheelY,Axis_X,Components.ReactionWheelYUnit.mount.n[1],SpacecraftDesignConfig.gnc.wheelY.Axis_X,True,True,True,True,identity,PASS
+GNC,wheelY,Axis_Y,Components.ReactionWheelYUnit.mount.n[2],SpacecraftDesignConfig.gnc.wheelY.Axis_Y,True,True,True,True,identity,PASS
+GNC,wheelY,Axis_Z,Components.ReactionWheelYUnit.mount.n[3],SpacecraftDesignConfig.gnc.wheelY.Axis_Z,True,True,True,True,identity,PASS
+GNC,wheelY,Mass,Components.ReactionWheelYUnit.wheelHousing.m,SpacecraftDesignConfig.gnc.wheelY.Mass,True,True,True,True,kg -> SI,PASS
+GNC,wheelY,RCM_X,Components.ReactionWheelYUnit.wheelHousing.r_CM[1],SpacecraftDesignConfig.gnc.wheelY.RCM_X,True,True,True,True,m -> SI,PASS
+GNC,wheelY,RCM_Y,Components.ReactionWheelYUnit.wheelHousing.r_CM[2],SpacecraftDesignConfig.gnc.wheelY.RCM_Y,True,True,True,True,m -> SI,PASS
+GNC,wheelY,RCM_Z,Components.ReactionWheelYUnit.wheelHousing.r_CM[3],SpacecraftDesignConfig.gnc.wheelY.RCM_Z,True,True,True,True,m -> SI,PASS
+GNC,wheelY,Inertia_XX,Components.ReactionWheelYUnit.wheelHousing.I_11,SpacecraftDesignConfig.gnc.wheelY.Inertia_XX,True,True,True,True,kg·m² -> SI,PASS
+GNC,wheelY,Inertia_YY,Components.ReactionWheelYUnit.wheelHousing.I_22,SpacecraftDesignConfig.gnc.wheelY.Inertia_YY,True,True,True,True,kg·m² -> SI,PASS
+GNC,wheelY,Inertia_ZZ,Components.ReactionWheelYUnit.wheelHousing.I_33,SpacecraftDesignConfig.gnc.wheelY.Inertia_ZZ,True,True,True,True,kg·m² -> SI,PASS
+GNC,wheelZ,SpeedLimit,Components.ReactionWheelZUnit.wheelSpeedLimit,SpacecraftDesignConfig.gnc.wheelZ.SpeedLimit,True,True,True,True,rad/s -> SI,PASS
+GNC,wheelZ,MotorEfficiency,Components.ReactionWheelZUnit.motorEfficiency,SpacecraftDesignConfig.gnc.wheelZ.MotorEfficiency,True,True,True,True,identity,PASS
+GNC,wheelZ,StandbyResistance,Components.ReactionWheelZUnit.inverterLoss.R,SpacecraftDesignConfig.gnc.wheelZ.StandbyResistance,True,True,True,True,Ω -> SI,PASS
+GNC,wheelZ,MaxTorque,Components.ReactionWheelZUnit.torqueLimit.uMax,SpacecraftDesignConfig.gnc.wheelZ.MaxTorque,True,True,True,True,N·m -> SI,PASS
+GNC,wheelZ,RotorInertia,Components.ReactionWheelZUnit.rotor.J,SpacecraftDesignConfig.gnc.wheelZ.RotorInertia,True,True,True,True,kg·m² -> SI,PASS
+GNC,wheelZ,BearingDamping,Components.ReactionWheelZUnit.bearing.d,SpacecraftDesignConfig.gnc.wheelZ.BearingDamping,True,True,True,True,N·m·s/rad -> SI,PASS
+GNC,wheelZ,HeatCapacity,Components.ReactionWheelZUnit.thermalMass.C,SpacecraftDesignConfig.gnc.wheelZ.HeatCapacity,True,True,True,True,J/K -> SI,PASS
+GNC,wheelZ,MountConductance,Components.ReactionWheelZUnit.chassisPath.G,SpacecraftDesignConfig.gnc.wheelZ.MountConductance,True,True,True,True,W/K -> SI,PASS
+GNC,wheelZ,Axis_X,Components.ReactionWheelZUnit.mount.n[1],SpacecraftDesignConfig.gnc.wheelZ.Axis_X,True,True,True,True,identity,PASS
+GNC,wheelZ,Axis_Y,Components.ReactionWheelZUnit.mount.n[2],SpacecraftDesignConfig.gnc.wheelZ.Axis_Y,True,True,True,True,identity,PASS
+GNC,wheelZ,Axis_Z,Components.ReactionWheelZUnit.mount.n[3],SpacecraftDesignConfig.gnc.wheelZ.Axis_Z,True,True,True,True,identity,PASS
+GNC,wheelZ,Mass,Components.ReactionWheelZUnit.wheelHousing.m,SpacecraftDesignConfig.gnc.wheelZ.Mass,True,True,True,True,kg -> SI,PASS
+GNC,wheelZ,RCM_X,Components.ReactionWheelZUnit.wheelHousing.r_CM[1],SpacecraftDesignConfig.gnc.wheelZ.RCM_X,True,True,True,True,m -> SI,PASS
+GNC,wheelZ,RCM_Y,Components.ReactionWheelZUnit.wheelHousing.r_CM[2],SpacecraftDesignConfig.gnc.wheelZ.RCM_Y,True,True,True,True,m -> SI,PASS
+GNC,wheelZ,RCM_Z,Components.ReactionWheelZUnit.wheelHousing.r_CM[3],SpacecraftDesignConfig.gnc.wheelZ.RCM_Z,True,True,True,True,m -> SI,PASS
+GNC,wheelZ,Inertia_XX,Components.ReactionWheelZUnit.wheelHousing.I_11,SpacecraftDesignConfig.gnc.wheelZ.Inertia_XX,True,True,True,True,kg·m² -> SI,PASS
+GNC,wheelZ,Inertia_YY,Components.ReactionWheelZUnit.wheelHousing.I_22,SpacecraftDesignConfig.gnc.wheelZ.Inertia_YY,True,True,True,True,kg·m² -> SI,PASS
+GNC,wheelZ,Inertia_ZZ,Components.ReactionWheelZUnit.wheelHousing.I_33,SpacecraftDesignConfig.gnc.wheelZ.Inertia_ZZ,True,True,True,True,kg·m² -> SI,PASS
+GNC,wheelS,SpeedLimit,Components.ReactionWheelSUnit.wheelSpeedLimit,SpacecraftDesignConfig.gnc.wheelS.SpeedLimit,True,True,True,True,rad/s -> SI,PASS
+GNC,wheelS,MotorEfficiency,Components.ReactionWheelSUnit.motorEfficiency,SpacecraftDesignConfig.gnc.wheelS.MotorEfficiency,True,True,True,True,identity,PASS
+GNC,wheelS,StandbyResistance,Components.ReactionWheelSUnit.controllerLoss.R,SpacecraftDesignConfig.gnc.wheelS.StandbyResistance,True,True,True,True,Ω -> SI,PASS
+GNC,wheelS,MaxTorque,Components.ReactionWheelSUnit.torqueLimit.uMax,SpacecraftDesignConfig.gnc.wheelS.MaxTorque,True,True,True,True,N·m -> SI,PASS
+GNC,wheelS,RotorInertia,Components.ReactionWheelSUnit.rotor.J,SpacecraftDesignConfig.gnc.wheelS.RotorInertia,True,True,True,True,kg·m² -> SI,PASS
+GNC,wheelS,BearingDamping,Components.ReactionWheelSUnit.bearing.d,SpacecraftDesignConfig.gnc.wheelS.BearingDamping,True,True,True,True,N·m·s/rad -> SI,PASS
+GNC,wheelS,HeatCapacity,Components.ReactionWheelSUnit.thermalMass.C,SpacecraftDesignConfig.gnc.wheelS.HeatCapacity,True,True,True,True,J/K -> SI,PASS
+GNC,wheelS,MountConductance,Components.ReactionWheelSUnit.isolatorPath.G,SpacecraftDesignConfig.gnc.wheelS.MountConductance,True,True,True,True,W/K -> SI,PASS
+GNC,wheelS,Axis_X,Components.ReactionWheelSUnit.mount.n[1],SpacecraftDesignConfig.gnc.wheelS.Axis_X,True,True,True,True,identity,PASS
+GNC,wheelS,Axis_Y,Components.ReactionWheelSUnit.mount.n[2],SpacecraftDesignConfig.gnc.wheelS.Axis_Y,True,True,True,True,identity,PASS
+GNC,wheelS,Axis_Z,Components.ReactionWheelSUnit.mount.n[3],SpacecraftDesignConfig.gnc.wheelS.Axis_Z,True,True,True,True,identity,PASS
+GNC,wheelS,Mass,Components.ReactionWheelSUnit.wheelHousing.m,SpacecraftDesignConfig.gnc.wheelS.Mass,True,True,True,True,kg -> SI,PASS
+GNC,wheelS,RCM_X,Components.ReactionWheelSUnit.wheelHousing.r_CM[1],SpacecraftDesignConfig.gnc.wheelS.RCM_X,True,True,True,True,m -> SI,PASS
+GNC,wheelS,RCM_Y,Components.ReactionWheelSUnit.wheelHousing.r_CM[2],SpacecraftDesignConfig.gnc.wheelS.RCM_Y,True,True,True,True,m -> SI,PASS
+GNC,wheelS,RCM_Z,Components.ReactionWheelSUnit.wheelHousing.r_CM[3],SpacecraftDesignConfig.gnc.wheelS.RCM_Z,True,True,True,True,m -> SI,PASS
+GNC,wheelS,Inertia_XX,Components.ReactionWheelSUnit.wheelHousing.I_11,SpacecraftDesignConfig.gnc.wheelS.Inertia_XX,True,True,True,True,kg·m² -> SI,PASS
+GNC,wheelS,Inertia_YY,Components.ReactionWheelSUnit.wheelHousing.I_22,SpacecraftDesignConfig.gnc.wheelS.Inertia_YY,True,True,True,True,kg·m² -> SI,PASS
+GNC,wheelS,Inertia_ZZ,Components.ReactionWheelSUnit.wheelHousing.I_33,SpacecraftDesignConfig.gnc.wheelS.Inertia_ZZ,True,True,True,True,kg·m² -> SI,PASS
+GNC,starY,LoadResistance,Components.StarTrackerYUnit.imagerLoad.R,SpacecraftDesignConfig.gnc.starY.LoadResistance,True,True,True,True,Ω -> SI,PASS
+GNC,starY,HeatCapacity,Components.StarTrackerYUnit.opticalHead.C,SpacecraftDesignConfig.gnc.starY.HeatCapacity,True,True,True,True,J/K -> SI,PASS
+GNC,starY,MountConductance,Components.StarTrackerYUnit.baffleMount.G,SpacecraftDesignConfig.gnc.starY.MountConductance,True,True,True,True,W/K -> SI,PASS
+GNC,starY,Mass,Components.StarTrackerYUnit.opticalBody.m,SpacecraftDesignConfig.gnc.starY.Mass,True,True,True,True,kg -> SI,PASS
+GNC,starY,RCM_X,Components.StarTrackerYUnit.opticalBody.r_CM[1],SpacecraftDesignConfig.gnc.starY.RCM_X,True,True,True,True,m -> SI,PASS
+GNC,starY,RCM_Y,Components.StarTrackerYUnit.opticalBody.r_CM[2],SpacecraftDesignConfig.gnc.starY.RCM_Y,True,True,True,True,m -> SI,PASS
+GNC,starY,RCM_Z,Components.StarTrackerYUnit.opticalBody.r_CM[3],SpacecraftDesignConfig.gnc.starY.RCM_Z,True,True,True,True,m -> SI,PASS
+GNC,starY,Inertia_XX,Components.StarTrackerYUnit.opticalBody.I_11,SpacecraftDesignConfig.gnc.starY.Inertia_XX,True,True,True,True,kg·m² -> SI,PASS
+GNC,starY,Inertia_YY,Components.StarTrackerYUnit.opticalBody.I_22,SpacecraftDesignConfig.gnc.starY.Inertia_YY,True,True,True,True,kg·m² -> SI,PASS
+GNC,starY,Inertia_ZZ,Components.StarTrackerYUnit.opticalBody.I_33,SpacecraftDesignConfig.gnc.starY.Inertia_ZZ,True,True,True,True,kg·m² -> SI,PASS
+GNC,starZ,LoadResistance,Components.StarTrackerZUnit.trackerCalculation.activeResistance.R,SpacecraftDesignConfig.gnc.starZ.LoadResistance,True,True,True,True,Ω -> SI,PASS
+GNC,starZ,HeatCapacity,Components.StarTrackerZUnit.focalPlane.C,SpacecraftDesignConfig.gnc.starZ.HeatCapacity,True,True,True,True,J/K -> SI,PASS
+GNC,starZ,ThermalResistance,Components.StarTrackerZUnit.isolator.R,SpacecraftDesignConfig.gnc.starZ.ThermalResistance,True,True,True,True,K/W -> SI,PASS
+GNC,starZ,EMIResistance,Components.StarTrackerZUnit.emiFilter.R,SpacecraftDesignConfig.gnc.starZ.EMIResistance,True,True,True,True,Ω -> SI,PASS
+GNC,starZ,Mass,Components.StarTrackerZUnit.trackerBody.m,SpacecraftDesignConfig.gnc.starZ.Mass,True,True,True,True,kg -> SI,PASS
+GNC,starZ,RCM_X,Components.StarTrackerZUnit.trackerBody.r_CM[1],SpacecraftDesignConfig.gnc.starZ.RCM_X,True,True,True,True,m -> SI,PASS
+GNC,starZ,RCM_Y,Components.StarTrackerZUnit.trackerBody.r_CM[2],SpacecraftDesignConfig.gnc.starZ.RCM_Y,True,True,True,True,m -> SI,PASS
+GNC,starZ,RCM_Z,Components.StarTrackerZUnit.trackerBody.r_CM[3],SpacecraftDesignConfig.gnc.starZ.RCM_Z,True,True,True,True,m -> SI,PASS
+GNC,starZ,Inertia_XX,Components.StarTrackerZUnit.trackerBody.I_11,SpacecraftDesignConfig.gnc.starZ.Inertia_XX,True,True,True,True,kg·m² -> SI,PASS
+GNC,starZ,Inertia_YY,Components.StarTrackerZUnit.trackerBody.I_22,SpacecraftDesignConfig.gnc.starZ.Inertia_YY,True,True,True,True,kg·m² -> SI,PASS
+GNC,starZ,Inertia_ZZ,Components.StarTrackerZUnit.trackerBody.I_33,SpacecraftDesignConfig.gnc.starZ.Inertia_ZZ,True,True,True,True,kg·m² -> SI,PASS
+GNC,rateGyro,LoadResistance,Components.RateGyroUnit.opticalLoad.R,SpacecraftDesignConfig.gnc.rateGyro.LoadResistance,True,True,True,True,Ω -> SI,PASS
+GNC,rateGyro,HeatCapacity,Components.RateGyroUnit.gyroThermalMass.C,SpacecraftDesignConfig.gnc.rateGyro.HeatCapacity,True,True,True,True,J/K -> SI,PASS
+GNC,rateGyro,MountConductance,Components.RateGyroUnit.flangePath.G,SpacecraftDesignConfig.gnc.rateGyro.MountConductance,True,True,True,True,W/K -> SI,PASS
+GNC,rateGyro,Mass,Components.RateGyroUnit.gyroBody.m,SpacecraftDesignConfig.gnc.rateGyro.Mass,True,True,True,True,kg -> SI,PASS
+GNC,rateGyro,RCM_X,Components.RateGyroUnit.gyroBody.r_CM[1],SpacecraftDesignConfig.gnc.rateGyro.RCM_X,True,True,True,True,m -> SI,PASS
+GNC,rateGyro,RCM_Y,Components.RateGyroUnit.gyroBody.r_CM[2],SpacecraftDesignConfig.gnc.rateGyro.RCM_Y,True,True,True,True,m -> SI,PASS
+GNC,rateGyro,RCM_Z,Components.RateGyroUnit.gyroBody.r_CM[3],SpacecraftDesignConfig.gnc.rateGyro.RCM_Z,True,True,True,True,m -> SI,PASS
+GNC,rateGyro,Inertia_XX,Components.RateGyroUnit.gyroBody.I_11,SpacecraftDesignConfig.gnc.rateGyro.Inertia_XX,True,True,True,True,kg·m² -> SI,PASS
+GNC,rateGyro,Inertia_YY,Components.RateGyroUnit.gyroBody.I_22,SpacecraftDesignConfig.gnc.rateGyro.Inertia_YY,True,True,True,True,kg·m² -> SI,PASS
+GNC,rateGyro,Inertia_ZZ,Components.RateGyroUnit.gyroBody.I_33,SpacecraftDesignConfig.gnc.rateGyro.Inertia_ZZ,True,True,True,True,kg·m² -> SI,PASS
+GNC,memsIMU,LoadResistance,Components.MEMSIMUUnit.sensorLoad.R,SpacecraftDesignConfig.gnc.memsIMU.LoadResistance,True,True,True,True,Ω -> SI,PASS
+GNC,memsIMU,HeatCapacity,Components.MEMSIMUUnit.packageNode.C,SpacecraftDesignConfig.gnc.memsIMU.HeatCapacity,True,True,True,True,J/K -> SI,PASS
+GNC,memsIMU,MountConductance,Components.MEMSIMUUnit.pcbPath.G,SpacecraftDesignConfig.gnc.memsIMU.MountConductance,True,True,True,True,W/K -> SI,PASS
+GNC,memsIMU,Mass,Components.MEMSIMUUnit.imuBody.m,SpacecraftDesignConfig.gnc.memsIMU.Mass,True,True,True,True,kg -> SI,PASS
+GNC,memsIMU,RCM_X,Components.MEMSIMUUnit.imuBody.r_CM[1],SpacecraftDesignConfig.gnc.memsIMU.RCM_X,True,True,True,True,m -> SI,PASS
+GNC,memsIMU,RCM_Y,Components.MEMSIMUUnit.imuBody.r_CM[2],SpacecraftDesignConfig.gnc.memsIMU.RCM_Y,True,True,True,True,m -> SI,PASS
+GNC,memsIMU,RCM_Z,Components.MEMSIMUUnit.imuBody.r_CM[3],SpacecraftDesignConfig.gnc.memsIMU.RCM_Z,True,True,True,True,m -> SI,PASS
+GNC,memsIMU,Inertia_XX,Components.MEMSIMUUnit.imuBody.I_11,SpacecraftDesignConfig.gnc.memsIMU.Inertia_XX,True,True,True,True,kg·m² -> SI,PASS
+GNC,memsIMU,Inertia_YY,Components.MEMSIMUUnit.imuBody.I_22,SpacecraftDesignConfig.gnc.memsIMU.Inertia_YY,True,True,True,True,kg·m² -> SI,PASS
+GNC,memsIMU,Inertia_ZZ,Components.MEMSIMUUnit.imuBody.I_33,SpacecraftDesignConfig.gnc.memsIMU.Inertia_ZZ,True,True,True,True,kg·m² -> SI,PASS
+GNC,magnetometer,LoadResistance,Components.MagnetometerUnit.bridgeLoad.R,SpacecraftDesignConfig.gnc.magnetometer.LoadResistance,True,True,True,True,Ω -> SI,PASS
+GNC,magnetometer,HeatCapacity,Components.MagnetometerUnit.sensorNode.C,SpacecraftDesignConfig.gnc.magnetometer.HeatCapacity,True,True,True,True,J/K -> SI,PASS
+GNC,magnetometer,MountConductance,Components.MagnetometerUnit.boom.G,SpacecraftDesignConfig.gnc.magnetometer.MountConductance,True,True,True,True,W/K -> SI,PASS
+GNC,magnetometer,Mass,Components.MagnetometerUnit.sensorBody.m,SpacecraftDesignConfig.gnc.magnetometer.Mass,True,True,True,True,kg -> SI,PASS
+GNC,magnetometer,RCM_X,Components.MagnetometerUnit.sensorBody.r_CM[1],SpacecraftDesignConfig.gnc.magnetometer.RCM_X,True,True,True,True,m -> SI,PASS
+GNC,magnetometer,RCM_Y,Components.MagnetometerUnit.sensorBody.r_CM[2],SpacecraftDesignConfig.gnc.magnetometer.RCM_Y,True,True,True,True,m -> SI,PASS
+GNC,magnetometer,RCM_Z,Components.MagnetometerUnit.sensorBody.r_CM[3],SpacecraftDesignConfig.gnc.magnetometer.RCM_Z,True,True,True,True,m -> SI,PASS
+GNC,magnetometer,Inertia_XX,Components.MagnetometerUnit.sensorBody.I_11,SpacecraftDesignConfig.gnc.magnetometer.Inertia_XX,True,True,True,True,kg·m² -> SI,PASS
+GNC,magnetometer,Inertia_YY,Components.MagnetometerUnit.sensorBody.I_22,SpacecraftDesignConfig.gnc.magnetometer.Inertia_YY,True,True,True,True,kg·m² -> SI,PASS
+GNC,magnetometer,Inertia_ZZ,Components.MagnetometerUnit.sensorBody.I_33,SpacecraftDesignConfig.gnc.magnetometer.Inertia_ZZ,True,True,True,True,kg·m² -> SI,PASS
+GNC,sunSensor,LoadResistance,Components.SunSensorUnit.quadrantLoad.R,SpacecraftDesignConfig.gnc.sunSensor.LoadResistance,True,True,True,True,Ω -> SI,PASS
+GNC,sunSensor,HeatCapacity,Components.SunSensorUnit.head.C,SpacecraftDesignConfig.gnc.sunSensor.HeatCapacity,True,True,True,True,J/K -> SI,PASS
+GNC,sunSensor,MountConductance,Components.SunSensorUnit.mount.G,SpacecraftDesignConfig.gnc.sunSensor.MountConductance,True,True,True,True,W/K -> SI,PASS
+GNC,sunSensor,Mass,Components.SunSensorUnit.headBody.m,SpacecraftDesignConfig.gnc.sunSensor.Mass,True,True,True,True,kg -> SI,PASS
+GNC,sunSensor,RCM_X,Components.SunSensorUnit.headBody.r_CM[1],SpacecraftDesignConfig.gnc.sunSensor.RCM_X,True,True,True,True,m -> SI,PASS
+GNC,sunSensor,RCM_Y,Components.SunSensorUnit.headBody.r_CM[2],SpacecraftDesignConfig.gnc.sunSensor.RCM_Y,True,True,True,True,m -> SI,PASS
+GNC,sunSensor,RCM_Z,Components.SunSensorUnit.headBody.r_CM[3],SpacecraftDesignConfig.gnc.sunSensor.RCM_Z,True,True,True,True,m -> SI,PASS
+GNC,sunSensor,Inertia_XX,Components.SunSensorUnit.headBody.I_11,SpacecraftDesignConfig.gnc.sunSensor.Inertia_XX,True,True,True,True,kg·m² -> SI,PASS
+GNC,sunSensor,Inertia_YY,Components.SunSensorUnit.headBody.I_22,SpacecraftDesignConfig.gnc.sunSensor.Inertia_YY,True,True,True,True,kg·m² -> SI,PASS
+GNC,sunSensor,Inertia_ZZ,Components.SunSensorUnit.headBody.I_33,SpacecraftDesignConfig.gnc.sunSensor.Inertia_ZZ,True,True,True,True,kg·m² -> SI,PASS
+GNC,magnetorquer,CoilCurrentLimit,Components.MagnetorquerUnit.coilCurrentLimit,SpacecraftDesignConfig.gnc.magnetorquer.CoilCurrentLimit,True,True,True,True,A -> SI,PASS
+GNC,magnetorquer,DipolePerAmpere_X,Components.MagnetorquerUnit.dipolePerAmpere[1],SpacecraftDesignConfig.gnc.magnetorquer.DipolePerAmpere_X,True,True,True,True,A·m²/A -> SI,PASS
+GNC,magnetorquer,DipolePerAmpere_Y,Components.MagnetorquerUnit.dipolePerAmpere[2],SpacecraftDesignConfig.gnc.magnetorquer.DipolePerAmpere_Y,True,True,True,True,A·m²/A -> SI,PASS
+GNC,magnetorquer,DipolePerAmpere_Z,Components.MagnetorquerUnit.dipolePerAmpere[3],SpacecraftDesignConfig.gnc.magnetorquer.DipolePerAmpere_Z,True,True,True,True,A·m²/A -> SI,PASS
+GNC,magnetorquer,HeatCapacity,Components.MagnetorquerUnit.coilThermalMass.C,SpacecraftDesignConfig.gnc.magnetorquer.HeatCapacity,True,True,True,True,J/K -> SI,PASS
+GNC,magnetorquer,MountConductance,Components.MagnetorquerUnit.framePath.G,SpacecraftDesignConfig.gnc.magnetorquer.MountConductance,True,True,True,True,W/K -> SI,PASS
+GNC,magnetorquer,Mass,Components.MagnetorquerUnit.rods.m,SpacecraftDesignConfig.gnc.magnetorquer.Mass,True,True,True,True,kg -> SI,PASS
+GNC,magnetorquer,RCM_X,Components.MagnetorquerUnit.rods.r_CM[1],SpacecraftDesignConfig.gnc.magnetorquer.RCM_X,True,True,True,True,m -> SI,PASS
+GNC,magnetorquer,RCM_Y,Components.MagnetorquerUnit.rods.r_CM[2],SpacecraftDesignConfig.gnc.magnetorquer.RCM_Y,True,True,True,True,m -> SI,PASS
+GNC,magnetorquer,RCM_Z,Components.MagnetorquerUnit.rods.r_CM[3],SpacecraftDesignConfig.gnc.magnetorquer.RCM_Z,True,True,True,True,m -> SI,PASS
+GNC,magnetorquer,Inertia_XX,Components.MagnetorquerUnit.rods.I_11,SpacecraftDesignConfig.gnc.magnetorquer.Inertia_XX,True,True,True,True,kg·m² -> SI,PASS
+GNC,magnetorquer,Inertia_YY,Components.MagnetorquerUnit.rods.I_22,SpacecraftDesignConfig.gnc.magnetorquer.Inertia_YY,True,True,True,True,kg·m² -> SI,PASS
+GNC,magnetorquer,Inertia_ZZ,Components.MagnetorquerUnit.rods.I_33,SpacecraftDesignConfig.gnc.magnetorquer.Inertia_ZZ,True,True,True,True,kg·m² -> SI,PASS
+Payload,earthCamera,RawImageSize,Components.EarthObservationCameraUnit.rawImageSize,SpacecraftDesignConfig.payload.earthCamera.RawImageSize,True,True,True,True,identity,PASS
+Payload,earthCamera,StoredImageSize,Components.EarthObservationCameraUnit.storedImageSize,SpacecraftDesignConfig.payload.earthCamera.StoredImageSize,True,True,True,True,identity,PASS
+Payload,earthCamera,CaptureDuration,Components.EarthObservationCameraUnit.nominalCaptureDuration,SpacecraftDesignConfig.payload.earthCamera.CaptureDuration,True,True,True,True,s -> SI,PASS
+Payload,earthCamera,FocalElectronicsResistance,Components.EarthObservationCameraUnit.focalElectronics.R,SpacecraftDesignConfig.payload.earthCamera.FocalElectronicsResistance,True,True,True,True,Ω -> SI,PASS
+Payload,earthCamera,FocalHeaterResistance,Components.EarthObservationCameraUnit.cameraCalculation.focalHeaterResistance,SpacecraftDesignConfig.payload.earthCamera.FocalHeaterResistance,True,True,True,True,Ω -> SI,PASS
+Payload,earthCamera,OpticalBenchHeatCapacity,Components.EarthObservationCameraUnit.opticalBench.C,SpacecraftDesignConfig.payload.earthCamera.OpticalBenchHeatCapacity,True,True,True,True,J/K -> SI,PASS
+Payload,earthCamera,FocalBoxHeatCapacity,Components.EarthObservationCameraUnit.focalBox.C,SpacecraftDesignConfig.payload.earthCamera.FocalBoxHeatCapacity,True,True,True,True,J/K -> SI,PASS
+Payload,earthCamera,OpticalMountConductance,Components.EarthObservationCameraUnit.opticalMount.G,SpacecraftDesignConfig.payload.earthCamera.OpticalMountConductance,True,True,True,True,W/K -> SI,PASS
+Payload,earthCamera,FocalCouplingConductance,Components.EarthObservationCameraUnit.focalCoupling.G,SpacecraftDesignConfig.payload.earthCamera.FocalCouplingConductance,True,True,True,True,W/K -> SI,PASS
+Payload,earthCamera,FocalMountConductance,Components.EarthObservationCameraUnit.focalMount.G,SpacecraftDesignConfig.payload.earthCamera.FocalMountConductance,True,True,True,True,W/K -> SI,PASS
+Payload,earthCamera,Mass,Components.EarthObservationCameraUnit.telescopeBody.m,SpacecraftDesignConfig.payload.earthCamera.Mass,True,True,True,True,kg -> SI,PASS
+Payload,earthCamera,RCM_X,Components.EarthObservationCameraUnit.telescopeBody.r_CM[1],SpacecraftDesignConfig.payload.earthCamera.RCM_X,True,True,True,True,m -> SI,PASS
+Payload,earthCamera,RCM_Y,Components.EarthObservationCameraUnit.telescopeBody.r_CM[2],SpacecraftDesignConfig.payload.earthCamera.RCM_Y,True,True,True,True,m -> SI,PASS
+Payload,earthCamera,RCM_Z,Components.EarthObservationCameraUnit.telescopeBody.r_CM[3],SpacecraftDesignConfig.payload.earthCamera.RCM_Z,True,True,True,True,m -> SI,PASS
+Payload,earthCamera,Inertia_XX,Components.EarthObservationCameraUnit.telescopeBody.I_11,SpacecraftDesignConfig.payload.earthCamera.Inertia_XX,True,True,True,True,kg·m² -> SI,PASS
+Payload,earthCamera,Inertia_YY,Components.EarthObservationCameraUnit.telescopeBody.I_22,SpacecraftDesignConfig.payload.earthCamera.Inertia_YY,True,True,True,True,kg·m² -> SI,PASS
+Payload,earthCamera,Inertia_ZZ,Components.EarthObservationCameraUnit.telescopeBody.I_33,SpacecraftDesignConfig.payload.earthCamera.Inertia_ZZ,True,True,True,True,kg·m² -> SI,PASS
+Payload,selfieCamera,ImagingDataRate,Components.SelfieCameraUnit.imagingDataRate,SpacecraftDesignConfig.payload.selfieCamera.ImagingDataRate,True,True,True,True,identity,PASS
+Payload,selfieCamera,CMOSLoadResistance,Components.SelfieCameraUnit.cmosLoad.R,SpacecraftDesignConfig.payload.selfieCamera.CMOSLoadResistance,True,True,True,True,Ω -> SI,PASS
+Payload,selfieCamera,ImagerHeatCapacity,Components.SelfieCameraUnit.imager.C,SpacecraftDesignConfig.payload.selfieCamera.ImagerHeatCapacity,True,True,True,True,J/K -> SI,PASS
+Payload,selfieCamera,MountConductance,Components.SelfieCameraUnit.bracket.G,SpacecraftDesignConfig.payload.selfieCamera.MountConductance,True,True,True,True,W/K -> SI,PASS
+Payload,selfieCamera,Mass,Components.SelfieCameraUnit.cameraBody.m,SpacecraftDesignConfig.payload.selfieCamera.Mass,True,True,True,True,kg -> SI,PASS
+Payload,selfieCamera,RCM_X,Components.SelfieCameraUnit.cameraBody.r_CM[1],SpacecraftDesignConfig.payload.selfieCamera.RCM_X,True,True,True,True,m -> SI,PASS
+Payload,selfieCamera,RCM_Y,Components.SelfieCameraUnit.cameraBody.r_CM[2],SpacecraftDesignConfig.payload.selfieCamera.RCM_Y,True,True,True,True,m -> SI,PASS
+Payload,selfieCamera,RCM_Z,Components.SelfieCameraUnit.cameraBody.r_CM[3],SpacecraftDesignConfig.payload.selfieCamera.RCM_Z,True,True,True,True,m -> SI,PASS
+Payload,selfieCamera,Inertia_XX,Components.SelfieCameraUnit.cameraBody.I_11,SpacecraftDesignConfig.payload.selfieCamera.Inertia_XX,True,True,True,True,kg·m² -> SI,PASS
+Payload,selfieCamera,Inertia_YY,Components.SelfieCameraUnit.cameraBody.I_22,SpacecraftDesignConfig.payload.selfieCamera.Inertia_YY,True,True,True,True,kg·m² -> SI,PASS
+Payload,selfieCamera,Inertia_ZZ,Components.SelfieCameraUnit.cameraBody.I_33,SpacecraftDesignConfig.payload.selfieCamera.Inertia_ZZ,True,True,True,True,kg·m² -> SI,PASS
+Payload,naviEnhance,ActiveResistance,Components.NaviEnhancePayloadUnit.modeCalculation.activeResistance,SpacecraftDesignConfig.payload.naviEnhance.ActiveResistance,True,True,True,True,Ω -> SI,PASS
+Payload,naviEnhance,StandbyResistance,Components.NaviEnhancePayloadUnit.modeCalculation.standbyResistance,SpacecraftDesignConfig.payload.naviEnhance.StandbyResistance,True,True,True,True,Ω -> SI,PASS
+Payload,naviEnhance,HeatCapacity,Components.NaviEnhancePayloadUnit.processorNode.C,SpacecraftDesignConfig.payload.naviEnhance.HeatCapacity,True,True,True,True,J/K -> SI,PASS
+Payload,naviEnhance,MountConductance,Components.NaviEnhancePayloadUnit.deckPath.G,SpacecraftDesignConfig.payload.naviEnhance.MountConductance,True,True,True,True,W/K -> SI,PASS
+Payload,naviEnhance,Mass,Components.NaviEnhancePayloadUnit.unitBody.m,SpacecraftDesignConfig.payload.naviEnhance.Mass,True,True,True,True,kg -> SI,PASS
+Payload,naviEnhance,RCM_X,Components.NaviEnhancePayloadUnit.unitBody.r_CM[1],SpacecraftDesignConfig.payload.naviEnhance.RCM_X,True,True,True,True,m -> SI,PASS
+Payload,naviEnhance,RCM_Y,Components.NaviEnhancePayloadUnit.unitBody.r_CM[2],SpacecraftDesignConfig.payload.naviEnhance.RCM_Y,True,True,True,True,m -> SI,PASS
+Payload,naviEnhance,RCM_Z,Components.NaviEnhancePayloadUnit.unitBody.r_CM[3],SpacecraftDesignConfig.payload.naviEnhance.RCM_Z,True,True,True,True,m -> SI,PASS
+Payload,naviEnhance,Inertia_XX,Components.NaviEnhancePayloadUnit.unitBody.I_11,SpacecraftDesignConfig.payload.naviEnhance.Inertia_XX,True,True,True,True,kg·m² -> SI,PASS
+Payload,naviEnhance,Inertia_YY,Components.NaviEnhancePayloadUnit.unitBody.I_22,SpacecraftDesignConfig.payload.naviEnhance.Inertia_YY,True,True,True,True,kg·m² -> SI,PASS
+Payload,naviEnhance,Inertia_ZZ,Components.NaviEnhancePayloadUnit.unitBody.I_33,SpacecraftDesignConfig.payload.naviEnhance.Inertia_ZZ,True,True,True,True,kg·m² -> SI,PASS
+Payload,spaceTime,ActiveResistance,Components.SpaceTimePayloadUnit.modeCalculation.activeResistance,SpacecraftDesignConfig.payload.spaceTime.ActiveResistance,True,True,True,True,Ω -> SI,PASS
+Payload,spaceTime,StandbyResistance,Components.SpaceTimePayloadUnit.modeCalculation.standbyResistance,SpacecraftDesignConfig.payload.spaceTime.StandbyResistance,True,True,True,True,Ω -> SI,PASS
+Payload,spaceTime,EMIResistance,Components.SpaceTimePayloadUnit.emiChoke.R,SpacecraftDesignConfig.payload.spaceTime.EMIResistance,True,True,True,True,Ω -> SI,PASS
+Payload,spaceTime,HeatCapacity,Components.SpaceTimePayloadUnit.clockNode.C,SpacecraftDesignConfig.payload.spaceTime.HeatCapacity,True,True,True,True,J/K -> SI,PASS
+Payload,spaceTime,ThermalResistance,Components.SpaceTimePayloadUnit.isolator.R,SpacecraftDesignConfig.payload.spaceTime.ThermalResistance,True,True,True,True,K/W -> SI,PASS
+Payload,spaceTime,Mass,Components.SpaceTimePayloadUnit.clockBody.m,SpacecraftDesignConfig.payload.spaceTime.Mass,True,True,True,True,kg -> SI,PASS
+Payload,spaceTime,RCM_X,Components.SpaceTimePayloadUnit.clockBody.r_CM[1],SpacecraftDesignConfig.payload.spaceTime.RCM_X,True,True,True,True,m -> SI,PASS
+Payload,spaceTime,RCM_Y,Components.SpaceTimePayloadUnit.clockBody.r_CM[2],SpacecraftDesignConfig.payload.spaceTime.RCM_Y,True,True,True,True,m -> SI,PASS
+Payload,spaceTime,RCM_Z,Components.SpaceTimePayloadUnit.clockBody.r_CM[3],SpacecraftDesignConfig.payload.spaceTime.RCM_Z,True,True,True,True,m -> SI,PASS
+Payload,spaceTime,Inertia_XX,Components.SpaceTimePayloadUnit.clockBody.I_11,SpacecraftDesignConfig.payload.spaceTime.Inertia_XX,True,True,True,True,kg·m² -> SI,PASS
+Payload,spaceTime,Inertia_YY,Components.SpaceTimePayloadUnit.clockBody.I_22,SpacecraftDesignConfig.payload.spaceTime.Inertia_YY,True,True,True,True,kg·m² -> SI,PASS
+Payload,spaceTime,Inertia_ZZ,Components.SpaceTimePayloadUnit.clockBody.I_33,SpacecraftDesignConfig.payload.spaceTime.Inertia_ZZ,True,True,True,True,kg·m² -> SI,PASS
+Payload,fotonAmur,MissionEnabled,Components.FotonAmurPayloadUnit.fotonAmurMissionEnabled,SpacecraftDesignConfig.payload.fotonAmur.MissionEnabled,True,True,True,True,identity,PASS
+Payload,fotonAmur,ElectronicsResistance,Components.FotonAmurPayloadUnit.sensorElectronics.R,SpacecraftDesignConfig.payload.fotonAmur.ElectronicsResistance,True,True,True,True,Ω -> SI,PASS
+Payload,fotonAmur,EMIResistance,Components.FotonAmurPayloadUnit.emiChoke.R,SpacecraftDesignConfig.payload.fotonAmur.EMIResistance,True,True,True,True,Ω -> SI,PASS
+Payload,fotonAmur,HeatCapacity,Components.FotonAmurPayloadUnit.sensorHead.C,SpacecraftDesignConfig.payload.fotonAmur.HeatCapacity,True,True,True,True,J/K -> SI,PASS
+Payload,fotonAmur,MountConductance,Components.FotonAmurPayloadUnit.deckPath.G,SpacecraftDesignConfig.payload.fotonAmur.MountConductance,True,True,True,True,W/K -> SI,PASS
+Payload,fotonAmur,Mass,Components.FotonAmurPayloadUnit.payloadBody.m,SpacecraftDesignConfig.payload.fotonAmur.Mass,True,True,True,True,kg -> SI,PASS
+Payload,fotonAmur,RCM_X,Components.FotonAmurPayloadUnit.payloadBody.r_CM[1],SpacecraftDesignConfig.payload.fotonAmur.RCM_X,True,True,True,True,m -> SI,PASS
+Payload,fotonAmur,RCM_Y,Components.FotonAmurPayloadUnit.payloadBody.r_CM[2],SpacecraftDesignConfig.payload.fotonAmur.RCM_Y,True,True,True,True,m -> SI,PASS
+Payload,fotonAmur,RCM_Z,Components.FotonAmurPayloadUnit.payloadBody.r_CM[3],SpacecraftDesignConfig.payload.fotonAmur.RCM_Z,True,True,True,True,m -> SI,PASS
+Payload,fotonAmur,Inertia_XX,Components.FotonAmurPayloadUnit.payloadBody.I_11,SpacecraftDesignConfig.payload.fotonAmur.Inertia_XX,True,True,True,True,kg·m² -> SI,PASS
+Payload,fotonAmur,Inertia_YY,Components.FotonAmurPayloadUnit.payloadBody.I_22,SpacecraftDesignConfig.payload.fotonAmur.Inertia_YY,True,True,True,True,kg·m² -> SI,PASS
+Payload,fotonAmur,Inertia_ZZ,Components.FotonAmurPayloadUnit.payloadBody.I_33,SpacecraftDesignConfig.payload.fotonAmur.Inertia_ZZ,True,True,True,True,kg·m² -> SI,PASS
+DataHandling,obc,ProcessorLoadResistance,Components.OnboardComputerUnit.cpuLoad.R,SpacecraftDesignConfig.dataHandling.obc.ProcessorLoadResistance,True,True,True,True,Ω -> SI,PASS
+DataHandling,obc,CPUHeatCapacity,Components.OnboardComputerUnit.cpuNode.C,SpacecraftDesignConfig.dataHandling.obc.CPUHeatCapacity,True,True,True,True,J/K -> SI,PASS
+DataHandling,obc,BoardHeatCapacity,Components.OnboardComputerUnit.boardNode.C,SpacecraftDesignConfig.dataHandling.obc.BoardHeatCapacity,True,True,True,True,J/K -> SI,PASS
+DataHandling,obc,CPUBoardConductance,Components.OnboardComputerUnit.cpuBoard.G,SpacecraftDesignConfig.dataHandling.obc.CPUBoardConductance,True,True,True,True,W/K -> SI,PASS
+DataHandling,obc,BoardMountConductance,Components.OnboardComputerUnit.boardMount.G,SpacecraftDesignConfig.dataHandling.obc.BoardMountConductance,True,True,True,True,W/K -> SI,PASS
+DataHandling,obc,Mass,Components.OnboardComputerUnit.obcBody.m,SpacecraftDesignConfig.dataHandling.obc.Mass,True,True,True,True,kg -> SI,PASS
+DataHandling,obc,RCM_X,Components.OnboardComputerUnit.obcBody.r_CM[1],SpacecraftDesignConfig.dataHandling.obc.RCM_X,True,True,True,True,m -> SI,PASS
+DataHandling,obc,RCM_Y,Components.OnboardComputerUnit.obcBody.r_CM[2],SpacecraftDesignConfig.dataHandling.obc.RCM_Y,True,True,True,True,m -> SI,PASS
+DataHandling,obc,RCM_Z,Components.OnboardComputerUnit.obcBody.r_CM[3],SpacecraftDesignConfig.dataHandling.obc.RCM_Z,True,True,True,True,m -> SI,PASS
+DataHandling,obc,Inertia_XX,Components.OnboardComputerUnit.obcBody.I_11,SpacecraftDesignConfig.dataHandling.obc.Inertia_XX,True,True,True,True,kg·m² -> SI,PASS
+DataHandling,obc,Inertia_YY,Components.OnboardComputerUnit.obcBody.I_22,SpacecraftDesignConfig.dataHandling.obc.Inertia_YY,True,True,True,True,kg·m² -> SI,PASS
+DataHandling,obc,Inertia_ZZ,Components.OnboardComputerUnit.obcBody.I_33,SpacecraftDesignConfig.dataHandling.obc.Inertia_ZZ,True,True,True,True,kg·m² -> SI,PASS
+DataHandling,recorder,CapacityBytes,Components.DataRecorderUnit.capacity,SpacecraftDesignConfig.dataHandling.recorder.CapacityBytes,True,True,True,True,identity,PASS
+DataHandling,recorder,NANDLoadResistance,Components.DataRecorderUnit.nandLoad.R,SpacecraftDesignConfig.dataHandling.recorder.NANDLoadResistance,True,True,True,True,Ω -> SI,PASS
+DataHandling,recorder,MemoryHeatCapacity,Components.DataRecorderUnit.memoryNode.C,SpacecraftDesignConfig.dataHandling.recorder.MemoryHeatCapacity,True,True,True,True,J/K -> SI,PASS
+DataHandling,recorder,CardGuideConductance,Components.DataRecorderUnit.cardGuide.G,SpacecraftDesignConfig.dataHandling.recorder.CardGuideConductance,True,True,True,True,W/K -> SI,PASS
+DataHandling,recorder,Mass,Components.DataRecorderUnit.recorderBody.m,SpacecraftDesignConfig.dataHandling.recorder.Mass,True,True,True,True,kg -> SI,PASS
+DataHandling,recorder,RCM_X,Components.DataRecorderUnit.recorderBody.r_CM[1],SpacecraftDesignConfig.dataHandling.recorder.RCM_X,True,True,True,True,m -> SI,PASS
+DataHandling,recorder,RCM_Y,Components.DataRecorderUnit.recorderBody.r_CM[2],SpacecraftDesignConfig.dataHandling.recorder.RCM_Y,True,True,True,True,m -> SI,PASS
+DataHandling,recorder,RCM_Z,Components.DataRecorderUnit.recorderBody.r_CM[3],SpacecraftDesignConfig.dataHandling.recorder.RCM_Z,True,True,True,True,m -> SI,PASS
+DataHandling,recorder,Inertia_XX,Components.DataRecorderUnit.recorderBody.I_11,SpacecraftDesignConfig.dataHandling.recorder.Inertia_XX,True,True,True,True,kg·m² -> SI,PASS
+DataHandling,recorder,Inertia_YY,Components.DataRecorderUnit.recorderBody.I_22,SpacecraftDesignConfig.dataHandling.recorder.Inertia_YY,True,True,True,True,kg·m² -> SI,PASS
+DataHandling,recorder,Inertia_ZZ,Components.DataRecorderUnit.recorderBody.I_33,SpacecraftDesignConfig.dataHandling.recorder.Inertia_ZZ,True,True,True,True,kg·m² -> SI,PASS
+Communication,ttcReceiver,ReceiverLoadResistance,Components.RadioReceiverUnit.receiverLoad.R,SpacecraftDesignConfig.communication.ttcReceiver.ReceiverLoadResistance,True,True,True,True,Ω -> SI,PASS
+Communication,ttcReceiver,RFChokeResistance,Components.RadioReceiverUnit.rfChoke.R,SpacecraftDesignConfig.communication.ttcReceiver.RFChokeResistance,True,True,True,True,Ω -> SI,PASS
+Communication,ttcReceiver,HeatCapacity,Components.RadioReceiverUnit.rfNode.C,SpacecraftDesignConfig.communication.ttcReceiver.HeatCapacity,True,True,True,True,J/K -> SI,PASS
+Communication,ttcReceiver,MountConductance,Components.RadioReceiverUnit.chassis.G,SpacecraftDesignConfig.communication.ttcReceiver.MountConductance,True,True,True,True,W/K -> SI,PASS
+Communication,ttcReceiver,Mass,Components.RadioReceiverUnit.receiverBody.m,SpacecraftDesignConfig.communication.ttcReceiver.Mass,True,True,True,True,kg -> SI,PASS
+Communication,ttcReceiver,RCM_X,Components.RadioReceiverUnit.receiverBody.r_CM[1],SpacecraftDesignConfig.communication.ttcReceiver.RCM_X,True,True,True,True,m -> SI,PASS
+Communication,ttcReceiver,RCM_Y,Components.RadioReceiverUnit.receiverBody.r_CM[2],SpacecraftDesignConfig.communication.ttcReceiver.RCM_Y,True,True,True,True,m -> SI,PASS
+Communication,ttcReceiver,RCM_Z,Components.RadioReceiverUnit.receiverBody.r_CM[3],SpacecraftDesignConfig.communication.ttcReceiver.RCM_Z,True,True,True,True,m -> SI,PASS
+Communication,ttcReceiver,Inertia_XX,Components.RadioReceiverUnit.receiverBody.I_11,SpacecraftDesignConfig.communication.ttcReceiver.Inertia_XX,True,True,True,True,kg·m² -> SI,PASS
+Communication,ttcReceiver,Inertia_YY,Components.RadioReceiverUnit.receiverBody.I_22,SpacecraftDesignConfig.communication.ttcReceiver.Inertia_YY,True,True,True,True,kg·m² -> SI,PASS
+Communication,ttcReceiver,Inertia_ZZ,Components.RadioReceiverUnit.receiverBody.I_33,SpacecraftDesignConfig.communication.ttcReceiver.Inertia_ZZ,True,True,True,True,kg·m² -> SI,PASS
+Communication,baseband,FPGALoadResistance,Components.LowRateTelemetryTransmitterUnit.fpgaLoad.R,SpacecraftDesignConfig.communication.baseband.FPGALoadResistance,True,True,True,True,Ω -> SI,PASS
+Communication,baseband,BoardHeatCapacity,Components.LowRateTelemetryTransmitterUnit.board.C,SpacecraftDesignConfig.communication.baseband.BoardHeatCapacity,True,True,True,True,J/K -> SI,PASS
+Communication,baseband,MountConductance,Components.LowRateTelemetryTransmitterUnit.guide.G,SpacecraftDesignConfig.communication.baseband.MountConductance,True,True,True,True,W/K -> SI,PASS
+Communication,baseband,Mass,Components.LowRateTelemetryTransmitterUnit.basebandBody.m,SpacecraftDesignConfig.communication.baseband.Mass,True,True,True,True,kg -> SI,PASS
+Communication,baseband,RCM_X,Components.LowRateTelemetryTransmitterUnit.basebandBody.r_CM[1],SpacecraftDesignConfig.communication.baseband.RCM_X,True,True,True,True,m -> SI,PASS
+Communication,baseband,RCM_Y,Components.LowRateTelemetryTransmitterUnit.basebandBody.r_CM[2],SpacecraftDesignConfig.communication.baseband.RCM_Y,True,True,True,True,m -> SI,PASS
+Communication,baseband,RCM_Z,Components.LowRateTelemetryTransmitterUnit.basebandBody.r_CM[3],SpacecraftDesignConfig.communication.baseband.RCM_Z,True,True,True,True,m -> SI,PASS
+Communication,baseband,Inertia_XX,Components.LowRateTelemetryTransmitterUnit.basebandBody.I_11,SpacecraftDesignConfig.communication.baseband.Inertia_XX,True,True,True,True,kg·m² -> SI,PASS
+Communication,baseband,Inertia_YY,Components.LowRateTelemetryTransmitterUnit.basebandBody.I_22,SpacecraftDesignConfig.communication.baseband.Inertia_YY,True,True,True,True,kg·m² -> SI,PASS
+Communication,baseband,Inertia_ZZ,Components.LowRateTelemetryTransmitterUnit.basebandBody.I_33,SpacecraftDesignConfig.communication.baseband.Inertia_ZZ,True,True,True,True,kg·m² -> SI,PASS
+Communication,xband,NominalDataRate,Components.XBandTransmitterUnit.nominalPayloadDataRate,SpacecraftDesignConfig.communication.xband.NominalDataRate,True,True,True,True,identity,PASS
+Communication,xband,HighPerformanceDataRate,Components.XBandTransmitterUnit.highPerformancePayloadDataRate,SpacecraftDesignConfig.communication.xband.HighPerformanceDataRate,True,True,True,True,identity,PASS
+Communication,xband,UseHighPerformanceDataRate,Components.XBandTransmitterUnit.useHighPerformanceDataRate,SpacecraftDesignConfig.communication.xband.UseHighPerformanceDataRate,True,True,True,True,identity,PASS
+Communication,xband,PowerAmplifierResistance,Components.XBandTransmitterUnit.powerAmplifier.R,SpacecraftDesignConfig.communication.xband.PowerAmplifierResistance,True,True,True,True,Ω -> SI,PASS
+Communication,xband,OutputMatchResistance,Components.XBandTransmitterUnit.outputMatch.R,SpacecraftDesignConfig.communication.xband.OutputMatchResistance,True,True,True,True,Ω -> SI,PASS
+Communication,xband,PAHeatCapacity,Components.XBandTransmitterUnit.paNode.C,SpacecraftDesignConfig.communication.xband.PAHeatCapacity,True,True,True,True,J/K -> SI,PASS
+Communication,xband,RadiatorConductance,Components.XBandTransmitterUnit.radiatorPath.G,SpacecraftDesignConfig.communication.xband.RadiatorConductance,True,True,True,True,W/K -> SI,PASS
+Communication,xband,Mass,Components.XBandTransmitterUnit.transmitterBody.m,SpacecraftDesignConfig.communication.xband.Mass,True,True,True,True,kg -> SI,PASS
+Communication,xband,RCM_X,Components.XBandTransmitterUnit.transmitterBody.r_CM[1],SpacecraftDesignConfig.communication.xband.RCM_X,True,True,True,True,m -> SI,PASS
+Communication,xband,RCM_Y,Components.XBandTransmitterUnit.transmitterBody.r_CM[2],SpacecraftDesignConfig.communication.xband.RCM_Y,True,True,True,True,m -> SI,PASS
+Communication,xband,RCM_Z,Components.XBandTransmitterUnit.transmitterBody.r_CM[3],SpacecraftDesignConfig.communication.xband.RCM_Z,True,True,True,True,m -> SI,PASS
+Communication,xband,Inertia_XX,Components.XBandTransmitterUnit.transmitterBody.I_11,SpacecraftDesignConfig.communication.xband.Inertia_XX,True,True,True,True,kg·m² -> SI,PASS
+Communication,xband,Inertia_YY,Components.XBandTransmitterUnit.transmitterBody.I_22,SpacecraftDesignConfig.communication.xband.Inertia_YY,True,True,True,True,kg·m² -> SI,PASS
+Communication,xband,Inertia_ZZ,Components.XBandTransmitterUnit.transmitterBody.I_33,SpacecraftDesignConfig.communication.xband.Inertia_ZZ,True,True,True,True,kg·m² -> SI,PASS
+Communication,antenna,PatchHeatCapacity,Components.AntennaUnit.patchNode.C,SpacecraftDesignConfig.communication.antenna.PatchHeatCapacity,True,True,True,True,J/K -> SI,PASS
+Communication,antenna,RFDeckConductance,Components.AntennaUnit.rfDeck.G,SpacecraftDesignConfig.communication.antenna.RFDeckConductance,True,True,True,True,W/K -> SI,PASS
+Communication,antenna,MastOffsetZ,Components.AntennaUnit.antennaMast.r[3],SpacecraftDesignConfig.communication.antenna.MastOffsetZ,True,True,True,True,m -> SI,PASS
+Communication,antenna,Mass,Components.AntennaUnit.antennaMass.m,SpacecraftDesignConfig.communication.antenna.Mass,True,True,True,True,kg -> SI,PASS
+Communication,antenna,RCM_X,Components.AntennaUnit.antennaMass.r_CM[1],SpacecraftDesignConfig.communication.antenna.RCM_X,True,True,True,True,m -> SI,PASS
+Communication,antenna,RCM_Y,Components.AntennaUnit.antennaMass.r_CM[2],SpacecraftDesignConfig.communication.antenna.RCM_Y,True,True,True,True,m -> SI,PASS
+Communication,antenna,RCM_Z,Components.AntennaUnit.antennaMass.r_CM[3],SpacecraftDesignConfig.communication.antenna.RCM_Z,True,True,True,True,m -> SI,PASS
+Communication,antenna,Inertia_XX,Components.AntennaUnit.antennaMass.I_11,SpacecraftDesignConfig.communication.antenna.Inertia_XX,True,True,True,True,kg·m² -> SI,PASS
+Communication,antenna,Inertia_YY,Components.AntennaUnit.antennaMass.I_22,SpacecraftDesignConfig.communication.antenna.Inertia_YY,True,True,True,True,kg·m² -> SI,PASS
+Communication,antenna,Inertia_ZZ,Components.AntennaUnit.antennaMass.I_33,SpacecraftDesignConfig.communication.antenna.Inertia_ZZ,True,True,True,True,kg·m² -> SI,PASS
+Navigation,gnss,RFDigitalLoadResistance,Components.GPSReceiverUnit.rfDigitalLoad.R,SpacecraftDesignConfig.navigation.gnss.RFDigitalLoadResistance,True,True,True,True,Ω -> SI,PASS
+Navigation,gnss,HeatCapacity,Components.GPSReceiverUnit.receiverNode.C,SpacecraftDesignConfig.navigation.gnss.HeatCapacity,True,True,True,True,J/K -> SI,PASS
+Navigation,gnss,MountConductance,Components.GPSReceiverUnit.baseplate.G,SpacecraftDesignConfig.navigation.gnss.MountConductance,True,True,True,True,W/K -> SI,PASS
+Navigation,gnss,Mass,Components.GPSReceiverUnit.boardBody.m,SpacecraftDesignConfig.navigation.gnss.Mass,True,True,True,True,kg -> SI,PASS
+Navigation,gnss,RCM_X,Components.GPSReceiverUnit.boardBody.r_CM[1],SpacecraftDesignConfig.navigation.gnss.RCM_X,True,True,True,True,m -> SI,PASS
+Navigation,gnss,RCM_Y,Components.GPSReceiverUnit.boardBody.r_CM[2],SpacecraftDesignConfig.navigation.gnss.RCM_Y,True,True,True,True,m -> SI,PASS
+Navigation,gnss,RCM_Z,Components.GPSReceiverUnit.boardBody.r_CM[3],SpacecraftDesignConfig.navigation.gnss.RCM_Z,True,True,True,True,m -> SI,PASS
+Navigation,gnss,Inertia_XX,Components.GPSReceiverUnit.boardBody.I_11,SpacecraftDesignConfig.navigation.gnss.Inertia_XX,True,True,True,True,kg·m² -> SI,PASS
+Navigation,gnss,Inertia_YY,Components.GPSReceiverUnit.boardBody.I_22,SpacecraftDesignConfig.navigation.gnss.Inertia_YY,True,True,True,True,kg·m² -> SI,PASS
+Navigation,gnss,Inertia_ZZ,Components.GPSReceiverUnit.boardBody.I_33,SpacecraftDesignConfig.navigation.gnss.Inertia_ZZ,True,True,True,True,kg·m² -> SI,PASS
+ThermalControl,controller,BoardLoadResistance,Components.ThermalControllerUnit.boardLoad.R,SpacecraftDesignConfig.thermalControl.controller.BoardLoadResistance,True,True,True,True,Ω -> SI,PASS
+ThermalControl,controller,BoardHeatCapacity,Components.ThermalControllerUnit.boardNode.C,SpacecraftDesignConfig.thermalControl.controller.BoardHeatCapacity,True,True,True,True,J/K -> SI,PASS
+ThermalControl,controller,MountConductance,Components.ThermalControllerUnit.baseplate.G,SpacecraftDesignConfig.thermalControl.controller.MountConductance,True,True,True,True,W/K -> SI,PASS
+ThermalControl,controller,Mass,Components.ThermalControllerUnit.tcbBody.m,SpacecraftDesignConfig.thermalControl.controller.Mass,True,True,True,True,kg -> SI,PASS
+ThermalControl,controller,RCM_X,Components.ThermalControllerUnit.tcbBody.r_CM[1],SpacecraftDesignConfig.thermalControl.controller.RCM_X,True,True,True,True,m -> SI,PASS
+ThermalControl,controller,RCM_Y,Components.ThermalControllerUnit.tcbBody.r_CM[2],SpacecraftDesignConfig.thermalControl.controller.RCM_Y,True,True,True,True,m -> SI,PASS
+ThermalControl,controller,RCM_Z,Components.ThermalControllerUnit.tcbBody.r_CM[3],SpacecraftDesignConfig.thermalControl.controller.RCM_Z,True,True,True,True,m -> SI,PASS
+ThermalControl,controller,Inertia_XX,Components.ThermalControllerUnit.tcbBody.I_11,SpacecraftDesignConfig.thermalControl.controller.Inertia_XX,True,True,True,True,kg·m² -> SI,PASS
+ThermalControl,controller,Inertia_YY,Components.ThermalControllerUnit.tcbBody.I_22,SpacecraftDesignConfig.thermalControl.controller.Inertia_YY,True,True,True,True,kg·m² -> SI,PASS
+ThermalControl,controller,Inertia_ZZ,Components.ThermalControllerUnit.tcbBody.I_33,SpacecraftDesignConfig.thermalControl.controller.Inertia_ZZ,True,True,True,True,kg·m² -> SI,PASS
+ThermalControl,heaters,HeaterResistance,Components.HeaterRadiatorUnit.heaterCalculation[*].heaterResistance,SpacecraftDesignConfig.thermalControl.heaters.HeaterResistance,True,True,True,True,Ω -> SI,PASS
+ThermalControl,heaters,HeaterDeckHeatCapacity,Components.HeaterRadiatorUnit.heaterDeck.C,SpacecraftDesignConfig.thermalControl.heaters.HeaterDeckHeatCapacity,True,True,True,True,J/K -> SI,PASS
+ThermalControl,heaters,RadiatorConductance,Components.HeaterRadiatorUnit.radiator.G,SpacecraftDesignConfig.thermalControl.heaters.RadiatorConductance,True,True,True,True,W/K -> SI,PASS
+ThermalControl,heaters,Mass,Components.HeaterRadiatorUnit.harnessMass.m,SpacecraftDesignConfig.thermalControl.heaters.Mass,True,True,True,True,kg -> SI,PASS
+ThermalControl,heaters,RCM_X,Components.HeaterRadiatorUnit.harnessMass.r_CM[1],SpacecraftDesignConfig.thermalControl.heaters.RCM_X,True,True,True,True,m -> SI,PASS
+ThermalControl,heaters,RCM_Y,Components.HeaterRadiatorUnit.harnessMass.r_CM[2],SpacecraftDesignConfig.thermalControl.heaters.RCM_Y,True,True,True,True,m -> SI,PASS
+ThermalControl,heaters,RCM_Z,Components.HeaterRadiatorUnit.harnessMass.r_CM[3],SpacecraftDesignConfig.thermalControl.heaters.RCM_Z,True,True,True,True,m -> SI,PASS
+ThermalControl,heaters,Inertia_XX,Components.HeaterRadiatorUnit.harnessMass.I_11,SpacecraftDesignConfig.thermalControl.heaters.Inertia_XX,True,True,True,True,kg·m² -> SI,PASS
+ThermalControl,heaters,Inertia_YY,Components.HeaterRadiatorUnit.harnessMass.I_22,SpacecraftDesignConfig.thermalControl.heaters.Inertia_YY,True,True,True,True,kg·m² -> SI,PASS
+ThermalControl,heaters,Inertia_ZZ,Components.HeaterRadiatorUnit.harnessMass.I_33,SpacecraftDesignConfig.thermalControl.heaters.Inertia_ZZ,True,True,True,True,kg·m² -> SI,PASS
+ThermalControl,thermalOverall,BodySolarAbsorptivity,Systems.Four_systems.ThermalOverall.bodySolarAbsorptivity,SpacecraftDesignConfig.thermalControl.overall.BodySolarAbsorptivity,True,True,True,True,identity,PASS
+ThermalControl,thermalOverall,BodyInfraredAbsorptivity,Systems.Four_systems.ThermalOverall.bodyInfraredAbsorptivity,SpacecraftDesignConfig.thermalControl.overall.BodyInfraredAbsorptivity,True,True,True,True,identity,PASS
+ThermalControl,thermalOverall,ExternalEmissivity,Systems.Four_systems.ThermalOverall.externalEmissivity,SpacecraftDesignConfig.thermalControl.overall.ExternalEmissivity,True,True,True,True,identity,PASS
+ThermalControl,thermalOverall,BusDeckHeatCapacity,Systems.Four_systems.ThermalOverall.busDeck.C,SpacecraftDesignConfig.thermalControl.overall.BusDeckHeatCapacity,True,True,True,True,J/K -> SI,PASS
+ThermalControl,thermalOverall,ExternalShellHeatCapacity,Systems.Four_systems.ThermalOverall.externalShell.C,SpacecraftDesignConfig.thermalControl.overall.ExternalShellHeatCapacity,True,True,True,True,J/K -> SI,PASS
+ThermalControl,thermalOverall,ShellToBusConductance,Systems.Four_systems.ThermalOverall.shellToBus.G,SpacecraftDesignConfig.thermalControl.overall.ShellToBusConductance,True,True,True,True,W/K -> SI,PASS
+Structure,structure,PrimaryStructureMass,Foundation.Types.MassProperties.primaryStructureMass,SpacecraftDesignConfig.structure.structure.PrimaryStructureMass,True,True,True,True,kg -> SI,PASS
+Structure,structure,PrimaryFrameWidth,Components.StructureAssembly12U.primaryFrame.width,SpacecraftDesignConfig.structure.structure.PrimaryFrameWidth,True,True,True,True,m -> SI,PASS
+Structure,structure,PrimaryFrameHeight,Components.StructureAssembly12U.primaryFrame.height,SpacecraftDesignConfig.structure.structure.PrimaryFrameHeight,True,True,True,True,m -> SI,PASS
+Structure,structure,PrimaryFrameLength,Components.StructureAssembly12U.primaryFrame.length / r[3],SpacecraftDesignConfig.structure.structure.PrimaryFrameLength,True,True,True,True,m -> SI,PASS
+Structure,structure,PayloadDeckOffsetZ,Components.StructureAssembly12U.payloadDeck.r[3],SpacecraftDesignConfig.structure.structure.PayloadDeckOffsetZ,True,True,True,True,m -> SI,PASS
+Structure,structure,AvionicsDeckOffsetZ,Components.StructureAssembly12U.avionicsDeck.r[3],SpacecraftDesignConfig.structure.structure.AvionicsDeckOffsetZ,True,True,True,True,m -> SI,PASS
+Structure,structure,LowerDeckWidth,Components.StructureAssembly12U.lowerDeck.width,SpacecraftDesignConfig.structure.structure.LowerDeckWidth,True,True,True,True,m -> SI,PASS
+Structure,structure,LowerDeckHeight,Components.StructureAssembly12U.lowerDeck.height,SpacecraftDesignConfig.structure.structure.LowerDeckHeight,True,True,True,True,m -> SI,PASS
+Structure,structure,LowerDeckThickness,Components.StructureAssembly12U.lowerDeck.length / r[3],SpacecraftDesignConfig.structure.structure.LowerDeckThickness,True,True,True,True,m -> SI,PASS
+Structure,structure,LowerDeckDensity,Components.StructureAssembly12U.lowerDeck.density,SpacecraftDesignConfig.structure.structure.LowerDeckDensity,True,True,True,True,kg/m³ -> SI,PASS
+Structure,structure,RailHeatCapacity,Components.StructureAssembly12U.railNode.C,SpacecraftDesignConfig.structure.structure.RailHeatCapacity,True,True,True,True,J/K -> SI,PASS
+Structure,structure,PanelHeatCapacity,Components.StructureAssembly12U.panelNode.C,SpacecraftDesignConfig.structure.structure.PanelHeatCapacity,True,True,True,True,J/K -> SI,PASS
+Structure,structure,RailPanelConductance,Components.StructureAssembly12U.railPanel.G,SpacecraftDesignConfig.structure.structure.RailPanelConductance,True,True,True,True,W/K -> SI,PASS
+Structure,structure,MountInterfaceConductance,Components.StructureAssembly12U.mountInterface.G,SpacecraftDesignConfig.structure.structure.MountInterfaceConductance,True,True,True,True,W/K -> SI,PASS

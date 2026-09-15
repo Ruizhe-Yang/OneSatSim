@@ -1,0 +1,6 @@
+openpyxl==3.0.10
+numpy==1.21.5
+scipy==1.9.1
+astropy==5.1
+pyerfa==2.0.0
+jplephem==2.23

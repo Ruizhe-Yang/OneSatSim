@@ -1,0 +1,31 @@
+﻿Section,Metric,Value
+mission,completedImages,5
+mission,realXBandTransmissions,16
+mission,groundContactWindows,14
+mission,eclipseEntries,15
+mission,safeModeRequired,False
+mission,storedBytesFinal,11316343292.940357
+eps,batterySOC,"{""min"": 0.8, ""max"": 0.960000001960027, ""mean"": 0.9224293246162651, ""final"": 0.921467936113699}"
+eps,bus12Voltage_V,"{""min"": 11.992797470619697, ""max"": 12.093306367490573, ""mean"": 12.081787794499753, ""final"": 12.091148907808794}"
+wheelsPeak_rpm,X,2627.4587098322027
+wheelsPeak_rpm,Y,3485.873767600908
+wheelsPeak_rpm,Z,2547.483912911575
+wheelsPeak_rpm,S,1088.1168547595514
+earthOrientationProbe,maxOrthogonalityError,9.12358636815439e-16
+earthOrientationProbe,maxDeterminantError,8.881784197001252e-16
+performance,equations,37191
+performance,variables,37191
+performance,trivialEquations,32387
+performance,integrationAndOutput_s,35.7561
+performance,frontend_s,1.7608867
+performance,backend_s,21.3306977
+performance,compile_s,14.973714
+performance,simulationAPI_s,36.9311479
+performance,totalOMC_s,79.1779948
+performance,idaSteps,43023
+performance,stateEvents,896
+performance,timeEvents,0
+performance,resultFileBytes,246209139
+performance,environmentTableBytes,12909621
+performance,samplesIncludingEvents,88194
+performance,uniqueOutputTimes,87297

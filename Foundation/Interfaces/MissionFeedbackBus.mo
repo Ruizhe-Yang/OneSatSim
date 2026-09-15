@@ -1,0 +1,28 @@
+within NISSA_12UCubeSat.Foundation.Interfaces;
+connector MissionFeedbackBus "Selected physical feedback used by mission control"
+  RealSignal batterySOC;
+  RealSignal busVoltage(unit="V");
+  RealSignal generatedPower(unit="W");
+  RealSignal loadPower(unit="W");
+  RealSignal batteryTemperature(unit="K");
+  RealSignal payloadTemperature(unit="K");
+  RealSignal transmitterTemperature(unit="K");
+  RealSignal attitudeError(unit="rad");
+  BooleanSignal attitudeSettled;
+  BooleanSignal imagingAttitudeReady;
+  BooleanSignal groundLinkAttitudeReady;
+  BooleanSignal attitudeEstimateValid;
+  BooleanSignal wheelActuationAvailable;
+  BooleanSignal aocsAvailable;
+  BooleanSignal cameraReady;
+  BooleanSignal transmitterReady;
+  RealSignal usedStorage(unit="1");
+  RealSignal capacityStorage(unit="1");
+  RealSignal remainingStorage(unit="1");
+  RealSignal storageUtilization "0..1 operational payload-buffer utilization";
+  RealSignal downlinkReadRate(unit="1/s") "byte/s";
+  BooleanSignal dataAvailable;
+  BooleanSignal storageHigh;
+  BooleanSignal storageFull;
+  annotation(Icon(graphics={Rectangle(extent={{-100,60},{100,-60}},lineColor={20,105,125},fillColor={225,244,243},fillPattern=FillPattern.Solid),Text(extent={{-92,22},{92,-18}},textString="MISSION FB")}),Documentation(info="<html><p>从现有多领域设备状态中筛选任务决策需要的物理反馈，形成指令—设备—物理响应—下一决策闭环。</p></html>"));
+end MissionFeedbackBus;

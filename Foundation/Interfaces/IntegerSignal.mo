@@ -1,0 +1,2 @@
+within NISSA_12UCubeSat.Foundation.Interfaces;
+connector IntegerSignal=Integer "无因果整数标量" annotation(Documentation(info="<html><h4>接口语义</h4><p><b>用途：</b>承载状态码、索引、计数器和离散通道状态</p><p><b>字段与单位：</b>标量Integer，无默认单位</p><p><b>信号方向语义：</b>无固定因果；用于星上共享总线</p><p><b>典型连接：</b>设备状态、调度元数据、遥测状态字段</p><p><b>建模注意：</b>该连接器用于Modelica无因果连接网络；字段名称表达工程语义，不能仅凭曲线数组序号判断来源。</p></html>"));

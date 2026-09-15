@@ -1,0 +1,26 @@
+within NISSA_12UCubeSat.Scenarios;
+record OrbitConfig "真实历元轨道输入与生成环境资源配置"
+  import SI=Modelica.Units.SI;
+  parameter SI.Length semiMajorAxis "半长轴";
+  parameter Real eccentricity "偏心率";
+  parameter SI.Angle inclination "倾角";
+  parameter SI.Angle initialRAAN "初始升交点赤经";
+  parameter SI.Angle initialMeanAnomaly "初始平近点角";
+  parameter SI.Angle argumentOfPerigee "近地点幅角";
+  parameter SI.Time initialEpoch "相对仿真初始时刻的轨道历元";
+  parameter String stateInputMode "Cartesian或Keplerian；由生成器严格校验";
+  parameter String stateFrame "输入状态坐标系；本实现仅支持GCRS";
+  parameter String simulationStartUTC "规范化UTC仿真起始时刻";
+  parameter String stateEpochUTC "输入状态对应的规范化UTC历元";
+  parameter SI.Position inputPosition[3] "状态历元处的GCRS输入位置";
+  parameter SI.Velocity inputVelocity[3] "状态历元处的GCRS输入速度";
+  parameter SI.Position propagatedPositionAtStart[3] "传播到仿真起点的GCRS位置";
+  parameter SI.Velocity propagatedVelocityAtStart[3] "传播到仿真起点的GCRS速度";
+  parameter SI.Length referenceSemiMajorAxis "由生效起点状态推导的参考半长轴";
+  parameter SI.Time simulationDuration "生成环境覆盖的仿真时长";
+  parameter SI.Time environmentSampleInterval "环境表最终采样间隔";
+  parameter Integer environmentTableRows(min=2) "环境表行数";
+  parameter String environmentDataURI "Modelica资源URI";
+  parameter String environmentTableName "MSL外部表名称";
+  annotation(Documentation(info="<html><h4>功能定位</h4><p>保存用户轨道输入语义及离线生成环境表的定位信息。旧六根数继续用于Keplerian输入模式，Cartesian模式只使用完整六维状态。</p><h4>时间与坐标</h4><p>Modelica time仍从0 s开始；simulationStartUTC和stateEpochUTC只记录绝对历元。输入与在线环境状态均采用GCRS轴向和SI单位。</p><h4>资源边界</h4><p>轨道、太阳方向和地球定向由UpdateConfig离线生成；运行时通过MSL表读取，不调用Python或网络。initialEpoch保留旧字段语义但不再参与新传播链。</p></html>"));
+end OrbitConfig;

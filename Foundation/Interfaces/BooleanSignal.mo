@@ -1,0 +1,2 @@
+within NISSA_12UCubeSat.Foundation.Interfaces;
+connector BooleanSignal=Boolean "无因果布尔标量" annotation(Documentation(info="<html><h4>接口语义</h4><p><b>用途：</b>在复合连接器中承载模式、使能和状态标志</p><p><b>字段与单位：</b>标量Boolean，无物理单位</p><p><b>信号方向语义：</b>无固定input/output因果；由连接网络中唯一或一致的定义方提供值</p><p><b>典型连接：</b>CommandBus、EnvironmentPort、OnboardTelemetryPort等复合接口</p><p><b>建模注意：</b>该连接器用于Modelica无因果连接网络；字段名称表达工程语义，不能仅凭曲线数组序号判断来源。</p></html>"));

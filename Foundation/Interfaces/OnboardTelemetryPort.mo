@@ -1,0 +1,82 @@
+within NISSA_12UCubeSat.Foundation.Interfaces;
+expandable connector OnboardTelemetryPort "星上工程遥测接口"
+  RealSignal SAT_S0_busVoltage_V[3];
+  RealSignal SAT_S0_busCurrent_A[3];
+  RealSignal SAT_S0_subArray_V[3];
+  RealSignal SAT_S0_MPPT_V[3];
+  RealSignal SAT_S0_MPPT_A[3];
+  RealSignal SAT_S0_charger_V[2];
+  RealSignal SAT_S0_charger_A[2];
+  RealSignal SAT_S0_batteryCurrent_A "Positive discharge, negative charge";
+  RealSignal SAT_S0_batteryVoltage_V;
+  RealSignal SAT_S0_batterySOC;
+
+  RealSignal SAT_S1_thermistor_degC[20];
+
+  RealSignal SAT_S2_wheel_rpm[4];
+  RealSignal SAT_S2_wheel_A[4];
+  IntegerSignal SAT_S2_wheelStatus[4];
+  RealSignal SAT_S2_starY_q[4];
+  RealSignal SAT_S2_starZ_q[4];
+  RealSignal SAT_S2_starY_w_deg_s[3];
+  RealSignal SAT_S2_starZ_w_deg_s[3];
+  RealSignal SAT_S2_YH50_deg_s[3];
+  RealSignal SAT_S2_GNSS_position_m[3];
+  RealSignal SAT_S2_GNSS_velocity_m_s[3];
+  RealSignal SAT_S2_magneticField_Gauss[3];
+  RealSignal SAT_S2_MEMS_gyro_deg_s[3];
+  RealSignal SAT_S2_MEMS_accel_m_s2[3];
+  RealSignal SAT_S2_sunAngle_deg[2];
+
+  IntegerSignal SAT_S3_commandErrorCount;
+  IntegerSignal SAT_S3_watchdogCount;
+  IntegerSignal SAT_S3_bootSeconds;
+  IntegerSignal SAT_S3_milliseconds;
+  RealSignal SAT_S3_cpuTemperature_degC;
+  RealSignal SAT_S3_boardTemperature_degC;
+  IntegerSignal SAT_S3_missionMode;
+  IntegerSignal SAT_S3_controlMode;
+  IntegerSignal SAT_S3_commandType;
+  IntegerSignal SAT_S3_commandExecutionStatus;
+  IntegerSignal SAT_S3_rejectReason;
+  IntegerSignal SAT_S3_commandId;
+  IntegerSignal SAT_S3_transitionCounter;
+  RealSignal SAT_S3_executionTime_s;
+  BooleanSignal SAT_S3_commandAccepted;
+  BooleanSignal SAT_S3_commandRejected;
+  BooleanSignal SAT_S3_commandExecuting;
+  BooleanSignal SAT_S3_commandCompleted;
+  BooleanSignal SAT_S3_commandFailed;
+  BooleanSignal SAT_S3_commandAborted;
+  BooleanSignal SAT_S3_commandTimeout;
+  BooleanSignal SAT_S3_imagingOpportunity;
+  BooleanSignal SAT_S3_downlinkOpportunity;
+  BooleanSignal SAT_S3_imagingAllowed;
+  BooleanSignal SAT_S3_downlinkAllowed;
+  BooleanSignal SAT_S3_safeModeRequired;
+  RealSignal SAT_S3_usedStorage_MB;
+  RealSignal SAT_S3_remainingStorage_MB;
+  RealSignal SAT_S3_attitudeError_deg;
+  BooleanSignal SAT_S3_attitudeSettled;
+  BooleanSignal SAT_S3_imagingCaptureStarted;
+  BooleanSignal SAT_S3_imagingImageComplete;
+  RealSignal SAT_S3_imagingValidImageBytes(unit="1");
+  IntegerSignal SAT_S3_imagingFailureReason;
+
+  IntegerSignal PDB_S0_channelState[24];
+  RealSignal PDB_S0_channelCurrent_A[24];
+
+  IntegerSignal TCB_S0_channelState[24];
+  RealSignal TCB_S0_channelCurrent_A[24];
+  RealSignal TCB_S0_heaterUpper_degC[14];
+  RealSignal TCB_S0_heaterLower_degC[14];
+  RealSignal TCB_S0_thermistor_degC[32];
+
+  IntegerSignal GNSS_fix;
+  IntegerSignal Camera_status;
+  IntegerSignal Baseband_status;
+  IntegerSignal TTC_status;
+  IntegerSignal StarTrackerY_status;
+  IntegerSignal StarTrackerZ_status;
+  annotation(Icon(graphics={Rectangle(extent={{-100,65},{100,-65}},lineColor={0,105,165},fillColor={221,242,250},fillPattern=FillPattern.Solid),Line(points={{-70,0},{60,0}},color={0,105,165},thickness=2),Polygon(points={{60,18},{88,0},{60,-18},{60,18}},fillColor={0,105,165},fillPattern=FillPattern.Solid),Text(extent={{-92,-58},{92,-34}},textString="ONBOARD TM")}),Documentation(info="<html><h4>接口语义</h4><p>以可读工程单位连续输出SAT-S0/S1/S2/S3、PDB-S0、TCB-S0和关键状态标志。</p><p>本接口只包含有物理/任务状态来源的工程量；固定协议占位字段及SAT/PDB间重复别名已删除。报文编码、RSSI/SNR和协议计数不属于本系统级物理仿真。</p></html>"));
+end OnboardTelemetryPort;

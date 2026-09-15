@@ -1,0 +1,24 @@
+within NISSA_12UCubeSat.Foundation.Interfaces;
+connector MissionStateSignals "Authoritative mission state and action requests"
+  MissionModeSignal missionMode;
+  ControlModeSignal controlMode;
+  CommandTypeSignal currentCommand;
+  IntegerSignal activeRequestId;
+  IntegerSignal activeTargetIndex;
+  IntegerSignal activeGroundStationIndex;
+  CommandExecutionStatusSignal executionStatus;
+  IntegerSignal transitionCounter;
+  RealSignal stateElapsed(unit="s");
+  RealSignal executionTime(unit="s");
+  BooleanSignal commandExecuting;
+  BooleanSignal commandCompleted;
+  BooleanSignal commandFailed;
+  BooleanSignal commandAborted;
+  BooleanSignal commandTimeout;
+  IntegerSignal imagingActionRequestId;
+  IntegerSignal downlinkActionRequestId;
+  IntegerSignal safeModeActionRequestId;
+  CommandTypeSignal safeModeActionCommand;
+  RejectReasonSignal lastRejectReason "最近一次规划/队列拒绝原因";
+  annotation(Icon(graphics={Rectangle(extent={{-100,60},{100,-60}},lineColor={85,65,140},fillColor={240,234,248},fillPattern=FillPattern.Solid),Text(extent={{-94,18},{94,-18}},textString="MISSION STATE")}),Documentation(info="<html><p>任务状态机的唯一输出接口。动作请求标识形成状态机到三个动作时序器的单向触发链。</p></html>"));
+end MissionStateSignals;

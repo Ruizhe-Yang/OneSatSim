@@ -1,0 +1,175 @@
+{
+  "status": "PASS",
+  "checks": {
+    "timeGrid": true,
+    "finiteTrajectory": true,
+    "initialState": true,
+    "modelicaMatchesGeneratedTable": true,
+    "positionVelocityConsistency": true,
+    "sunNormalized": true,
+    "rotationOrthogonal": true,
+    "closedLoopFinite": true,
+    "onboardTelemetryPresent": true
+  },
+  "absoluteTime": {
+    "startUTC": "2026-09-06T00:00:00.000Z",
+    "endUTC": "2026-09-07T00:00:00.000Z",
+    "durationSeconds": 86400.0,
+    "stateEpochUTC": "2026-09-06T00:00:00.000Z",
+    "stateFrame": "GCRS",
+    "stateInputMode": "Cartesian"
+  },
+  "trajectory": {
+    "initialPosition_m": [
+      -493801.2739989999,
+      -752595.4965559999,
+      -6776165.492715
+    ],
+    "initialVelocity_m_s": [
+      -5490.2559411325565,
+      5304.352742484158,
+      -172.81169512453502
+    ],
+    "radius_m": {
+      "min": 6830433.023967547,
+      "max": 6868630.0588463405,
+      "mean": 6849208.405957529,
+      "final": 6843065.232856466
+    },
+    "maxModelicaVsTablePositionError_m": 1.3969838619232178e-09,
+    "maxModelicaVsTableVelocityError_m_s": 7.346668290394296e-12,
+    "maxFiniteDifferenceVelocityError_m_s": 0.019168411750501272,
+    "maxOneSecondPositionStep_m": 7648.250575571466,
+    "maxOneSecondVelocityStep_m_s": 8.544402611027975,
+    "maxSunNormError": 4.440892098500626e-16
+  },
+  "mission": {
+    "completedImages": 5,
+    "realXBandTransmissions": 16,
+    "groundContactWindows": 14,
+    "eclipseEntries": 15,
+    "safeModeRequired": false,
+    "storedBytesFinal": 11316343292.940357
+  },
+  "eps": {
+    "batterySOC": {
+      "min": 0.8,
+      "max": 0.960000001960027,
+      "mean": 0.9224293246162651,
+      "final": 0.921467936113699
+    },
+    "bus12Voltage_V": {
+      "min": 11.992797470619697,
+      "max": 12.093306367490573,
+      "mean": 12.081787794499753,
+      "final": 12.091148907808794
+    }
+  },
+  "wheelsPeak_rpm": {
+    "X": 2627.4587098322027,
+    "Y": 3485.873767600908,
+    "Z": 2547.483912911575,
+    "S": 1088.1168547595514
+  },
+  "thermal_C": {
+    "ExternalShell": {
+      "min": -16.948265213001775,
+      "max": 8.128724851433844,
+      "mean": -6.320204977678014,
+      "final": -6.444615769980658
+    },
+    "BusDeck": {
+      "min": -3.4362497236602394,
+      "max": 12.770037060425523,
+      "mean": 2.7838539949861647,
+      "final": 2.4099112814849946
+    },
+    "OBC_CPU": {
+      "min": 1.5642351420916611,
+      "max": 14.038836984773525,
+      "mean": 5.51953772275541,
+      "final": 3.189925991934331
+    },
+    "OBC_Board": {
+      "min": 0.48539767791442046,
+      "max": 13.176672944439815,
+      "mean": 4.532405282949549,
+      "final": 2.5632645017712434
+    },
+    "CameraOpticalBench": {
+      "min": 1.741417945607509,
+      "max": 5.98714196197011,
+      "mean": 3.173613645643606,
+      "final": 1.7499102629611798
+    },
+    "CameraFocalBox": {
+      "min": -5.731504302275425e-07,
+      "max": 11.17348158671723,
+      "mean": 3.285436038309395,
+      "final": 1.203948258677599
+    },
+    "SolarArrayPlusX": {
+      "min": -19.919259106250934,
+      "max": 83.89268522529505,
+      "mean": 28.56734736133417,
+      "final": 55.803666252184144
+    },
+    "SolarArrayPlusY": {
+      "min": -18.703003448299853,
+      "max": 65.83441979739058,
+      "mean": 29.98074730004648,
+      "final": 55.67385448540699
+    },
+    "SolarArrayMinusX": {
+      "min": -32.19309723543054,
+      "max": 23.96309208385577,
+      "mean": -12.715697399961552,
+      "final": 9.778213780302963
+    },
+    "WheelY": {
+      "min": -1.6261152958306866,
+      "max": 13.667171408024444,
+      "mean": 4.015689292508711,
+      "final": 2.970796363370823
+    },
+    "WheelZ": {
+      "min": 6.5553737864509,
+      "max": 17.865022016038495,
+      "mean": 10.031573021363148,
+      "final": 7.880390636151844
+    },
+    "WheelS": {
+      "min": -0.7235143804073232,
+      "max": 10.665593573712897,
+      "mean": 2.7853272782353002,
+      "final": 0.605428584767651
+    }
+  },
+  "onboardTelemetry": {
+    "namedFields": 284,
+    "finiteDynamicFields": 244
+  },
+  "earthOrientationProbe": {
+    "maxOrthogonalityError": 9.12358636815439e-16,
+    "maxDeterminantError": 8.881784197001252e-16
+  },
+  "performance": {
+    "equations": 37191,
+    "variables": 37191,
+    "trivialEquations": 32387,
+    "integrationAndOutput_s": 35.7561,
+    "frontend_s": 1.7608867,
+    "backend_s": 21.3306977,
+    "compile_s": 14.973714,
+    "simulationAPI_s": 36.9311479,
+    "totalOMC_s": 79.1779948,
+    "idaSteps": 43023,
+    "stateEvents": 896,
+    "timeEvents": 0,
+    "resultFileBytes": 246209139,
+    "environmentTableBytes": 12909621,
+    "samplesIncludingEvents": 88194,
+    "uniqueOutputTimes": 87297
+  },
+  "source": "E:\\Modelica\\NISSA_12UCubeSat\\work\\real_epoch\\CompleteMission_epoch_24h.mat"
+}

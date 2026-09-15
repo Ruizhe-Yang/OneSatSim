@@ -1,0 +1,2 @@
+within NISSA_12UCubeSat.Foundation.Interfaces;
+connector RealSignal=Real "无因果实数标量" annotation(Documentation(info="<html><h4>接口语义</h4><p><b>用途：</b>承载带工程单位的测量、指令和连续状态</p><p><b>字段与单位：</b>标量Real；具体单位由上层字段声明</p><p><b>信号方向语义：</b>无固定因果；连接模型通过方程共同约束</p><p><b>典型连接：</b>所有复合信息接口</p><p><b>建模注意：</b>该连接器用于Modelica无因果连接网络；字段名称表达工程语义，不能仅凭曲线数组序号判断来源。</p></html>"));

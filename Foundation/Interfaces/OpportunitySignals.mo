@@ -1,0 +1,24 @@
+within NISSA_12UCubeSat.Foundation.Interfaces;
+connector OpportunitySignals "Raw mission opportunities generated from the orbit environment"
+  BooleanSignal imagingOpportunity;
+  BooleanSignal downlinkOpportunity;
+  BooleanSignal targetPrePointOpportunity;
+  BooleanSignal earlyTargetPrePointOpportunity;
+  BooleanSignal groundPrePointOpportunity;
+  RealSignal imagingOpportunityTimeRemaining(unit="s");
+  RealSignal downlinkOpportunityTimeRemaining(unit="s");
+  BooleanSignal imagingOpportunityFeasible;
+  BooleanSignal downlinkOpportunityFeasible;
+  IntegerSignal targetPrePointIndex;
+  IntegerSignal earlyTargetPrePointIndex;
+  IntegerSignal groundPrePointIndex;
+  IntegerSignal targetWindowId;
+  IntegerSignal groundWindowId;
+  BooleanSignal eclipse;
+  BooleanSignal sunlightAvailable;
+  BooleanSignal groundContact;
+  BooleanSignal targetVisible;
+  IntegerSignal groundStationIndex;
+  IntegerSignal targetIndex;
+  annotation(Icon(graphics={Rectangle(extent={{-100,60},{100,-60}},lineColor={45,120,80},fillColor={232,247,238},fillPattern=FillPattern.Solid),Text(extent={{-94,18},{94,-18}},textString="OPPORTUNITY")}),Documentation(info="<html><p>轨道环境产生的原始目标和地面站机会。任务规划器只读取本接口，不读取已锁存任务几何。</p></html>"));
+end OpportunitySignals;

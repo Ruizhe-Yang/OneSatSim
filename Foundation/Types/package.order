@@ -1,0 +1,10 @@
+TelemetryCatalog
+MassProperties
+CommandType
+RejectReason
+MissionMode
+ControlMode
+AttitudeControlState
+CommandExecutionStatus
+ImagingPhase
+DownlinkPhase
