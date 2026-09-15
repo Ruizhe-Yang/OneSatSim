@@ -1,4 +1,4 @@
-within NISSA_12UCubeSat.Foundation.Calculations;
+within OneSatSim.Foundation.Calculations;
 model PowerDistributionStatusCalculation "PDB通道状态派生"
   Modelica.Blocks.Interfaces.RealInput pdCurrent[24](each unit="A") annotation(Placement(transformation(extent={{-120,35},{-80,55}})));
   Modelica.Blocks.Interfaces.IntegerInput equipmentStatus[6] annotation(Placement(transformation(extent={{-120,-55},{-80,-35}})));

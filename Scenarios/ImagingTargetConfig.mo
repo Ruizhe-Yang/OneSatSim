@@ -1,4 +1,4 @@
-within NISSA_12UCubeSat.Scenarios;
+within OneSatSim.Scenarios;
 record ImagingTargetConfig "单个拍摄目标配置"
   import SI=Modelica.Units.SI;
   parameter Boolean enabled "是否参与可见性计算";

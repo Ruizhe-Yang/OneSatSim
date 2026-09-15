@@ -1,6 +1,6 @@
-within NISSA_12UCubeSat.Components;
+within OneSatSim.Components;
 model StructureAssembly12U "12U主承力结构组件"
-  parameter NISSA_12UCubeSat.Scenarios.DesignConfigRecords.StructureComponentConfig config
+  parameter OneSatSim.Scenarios.DesignConfigRecords.StructureComponentConfig config
     "由所属N-System传入的硬件设计配置";
   parameter Modelica.Units.SI.Mass primaryStructureMass=config.PrimaryStructureMass
     "主结构总质量；Excel单位kg，当前设计基线";

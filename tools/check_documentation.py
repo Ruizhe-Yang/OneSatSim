@@ -29,7 +29,7 @@ FORBIDDEN = {
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(description="检查NISSA_12UCubeSat的Documentation覆盖率和中性措辞")
+    parser = argparse.ArgumentParser(description="检查OneSatSim的Documentation覆盖率和中性措辞")
     parser.add_argument("--root", type=Path, default=DEFAULT_ROOT)
     parser.add_argument("--output", type=Path, default=DEFAULT_OUTPUT)
     args = parser.parse_args()

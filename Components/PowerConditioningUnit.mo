@@ -1,6 +1,6 @@
-within NISSA_12UCubeSat.Components;
+within OneSatSim.Components;
 model PowerConditioningUnit "电源调节与配电组件"
-  parameter NISSA_12UCubeSat.Scenarios.DesignConfigRecords.PcduComponentConfig config
+  parameter OneSatSim.Scenarios.DesignConfigRecords.PcduComponentConfig config
     "由所属N-System传入的硬件设计配置";
   parameter Modelica.Units.SI.Voltage nominalVoltage5V=config.NominalVoltage5V
     "5V名义输出电压；Excel单位V，当前设计基线";

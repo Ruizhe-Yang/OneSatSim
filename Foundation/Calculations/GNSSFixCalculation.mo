@@ -1,4 +1,4 @@
-within NISSA_12UCubeSat.Foundation.Calculations;
+within OneSatSim.Foundation.Calculations;
 model GNSSFixCalculation "GNSS定位状态计算"
   Modelica.Blocks.Interfaces.BooleanInput eclipse annotation(Placement(transformation(extent={{-120,-20},{-80,20}})));
   Modelica.Blocks.Interfaces.IntegerOutput fixStatus annotation(Placement(transformation(extent={{80,-10},{100,10}})));

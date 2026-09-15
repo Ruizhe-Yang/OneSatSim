@@ -13,10 +13,10 @@ CATALOG = REF / "ASRTU_PACKET_CATALOG_CROSSCHECK.csv"
 FIELDS = REF / "ASRTU_REAL_TELEMETRY_FIELDS_NORMALIZED.csv"
 TRACE = ROOT / "docs" / "ASRTU_TM_TRACEABILITY.csv"
 OUT = ROOT / "docs" / "TELEMETRY_SCHEMA_AUDIT.csv"
-PACKER = ROOT / "NISSA_12UCubeSat" / "Foundation" / "Models" / "ASRTUTelemetryPacker.mo"
-SCHEDULER = ROOT / "NISSA_12UCubeSat" / "Foundation" / "Models" / "ASRTUTelemetryScheduler.mo"
-GROUND = ROOT / "NISSA_12UCubeSat" / "Foundation" / "Interfaces" / "GroundTelemetryPort.mo"
-DECODER = ROOT / "NISSA_12UCubeSat" / "Foundation" / "Models" / "ASRTUGroundDecoder.mo"
+PACKER = ROOT / "Foundation" / "Models" / "ASRTUTelemetryPacker.mo"
+SCHEDULER = ROOT / "Foundation" / "Models" / "ASRTUTelemetryScheduler.mo"
+GROUND = ROOT / "Foundation" / "Interfaces" / "GroundTelemetryPort.mo"
+DECODER = ROOT / "Foundation" / "Models" / "ASRTUGroundDecoder.mo"
 
 
 def read(path: Path) -> list[dict[str, str]]:

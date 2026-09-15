@@ -1,4 +1,4 @@
-within NISSA_12UCubeSat.Foundation.Interfaces;
+within OneSatSim.Foundation.Interfaces;
 connector CommandStatusBus "Mission command lifecycle and execution feedback"
   CommandTypeSignal currentCommand;
   CommandExecutionStatusSignal executionStatus;

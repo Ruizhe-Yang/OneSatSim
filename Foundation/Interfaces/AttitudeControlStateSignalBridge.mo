@@ -1,8 +1,8 @@
-within NISSA_12UCubeSat.Foundation.Interfaces;
+within OneSatSim.Foundation.Interfaces;
 model AttitudeControlStateSignalBridge "姿态控制状态因果输出到可扩展信息总线的无状态恒等桥"
-  NISSA_12UCubeSat.Foundation.Interfaces.AttitudeControlStateInput u
+  OneSatSim.Foundation.Interfaces.AttitudeControlStateInput u
     annotation(Placement(transformation(extent={{-110,-10},{-90,10}})));
-  NISSA_12UCubeSat.Foundation.Interfaces.AttitudeControlStateOutput y
+  OneSatSim.Foundation.Interfaces.AttitudeControlStateOutput y
     annotation(Placement(transformation(extent={{90,-10},{110,10}})));
 equation
   y=u;

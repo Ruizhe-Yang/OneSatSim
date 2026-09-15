@@ -1,6 +1,6 @@
-within NISSA_12UCubeSat.Components;
+within OneSatSim.Components;
 model HeaterRadiatorUnit "加热器与散热执行组件"
-  parameter NISSA_12UCubeSat.Scenarios.DesignConfigRecords.HeatersComponentConfig config
+  parameter OneSatSim.Scenarios.DesignConfigRecords.HeatersComponentConfig config
     "由所属N-System传入的硬件设计配置";
   parameter Modelica.Units.SI.Resistance heaterResistance=config.HeaterResistance
     "分布式加热器电阻；Excel单位Ω，当前设计基线";

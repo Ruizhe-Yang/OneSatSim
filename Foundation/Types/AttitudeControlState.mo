@@ -1,4 +1,4 @@
-within NISSA_12UCubeSat.Foundation.Types;
+within OneSatSim.Foundation.Types;
 type AttitudeControlState = enumeration(
     Initialization "Controller is initializing",
     Slewing "Reference changed and the spacecraft is slewing",

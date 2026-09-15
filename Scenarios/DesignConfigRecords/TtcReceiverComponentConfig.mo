@@ -1,4 +1,4 @@
-within NISSA_12UCubeSat.Scenarios.DesignConfigRecords;
+within OneSatSim.Scenarios.DesignConfigRecords;
 record TtcReceiverComponentConfig "ttcReceiver硬件设计配置"
   parameter Modelica.Units.SI.Resistance ReceiverLoadResistance
     "测控接收机负载电阻；Excel工程单位Ω";

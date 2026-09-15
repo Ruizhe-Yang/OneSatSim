@@ -1,6 +1,6 @@
-within NISSA_12UCubeSat.Systems.Four_systems;
+within OneSatSim.Systems.Four_systems;
 model ThermalOverall "热学总体"
-  parameter NISSA_12UCubeSat.Scenarios.DesignConfigRecords.OverallComponentConfig config
+  parameter OneSatSim.Scenarios.DesignConfigRecords.OverallComponentConfig config
     "由所属N-System传入的硬件设计配置";
   parameter Modelica.Units.SI.HeatCapacity busDeckHeatCapacity=config.BusDeckHeatCapacity
     "内部设备舱板热容；Excel单位J/K，当前设计基线";

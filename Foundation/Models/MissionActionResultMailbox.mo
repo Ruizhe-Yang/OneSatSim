@@ -1,4 +1,4 @@
-within NISSA_12UCubeSat.Foundation.Models;
+within OneSatSim.Foundation.Models;
 model MissionActionResultMailbox "任务动作结果事件邮箱"
   Modelica.Blocks.Interfaces.IntegerInput imagingStartedIn annotation(Placement(transformation(extent={{-112,78},{-92,98}})));
   Modelica.Blocks.Interfaces.IntegerInput imagingCompletedIn annotation(Placement(transformation(extent={{-112,58},{-92,78}})));

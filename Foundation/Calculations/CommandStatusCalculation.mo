@@ -1,4 +1,4 @@
-within NISSA_12UCubeSat.Foundation.Calculations;
+within OneSatSim.Foundation.Calculations;
 model CommandStatusCalculation "布尔指令状态码计算"
   Modelica.Blocks.Interfaces.BooleanInput command annotation(Placement(transformation(extent={{-120,-20},{-80,20}})));
   Modelica.Blocks.Interfaces.IntegerOutput status annotation(Placement(transformation(extent={{80,-10},{100,10}})));

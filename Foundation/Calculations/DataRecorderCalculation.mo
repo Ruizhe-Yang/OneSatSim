@@ -1,4 +1,4 @@
-within NISSA_12UCubeSat.Foundation.Calculations;
+within OneSatSim.Foundation.Calculations;
 model DataRecorderCalculation "星上数据记录器业务量计算"
   parameter Real capacity(unit="1")=128e9 "可用存储容量，byte";
   Modelica.Blocks.Interfaces.RealInput earthCameraWriteRate annotation(Placement(transformation(extent={{-120,55},{-80,75}})));

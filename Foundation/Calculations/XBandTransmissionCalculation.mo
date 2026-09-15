@@ -1,4 +1,4 @@
-within NISSA_12UCubeSat.Foundation.Calculations;
+within OneSatSim.Foundation.Calculations;
 model XBandTransmissionCalculation "X波段发射任务门控计算"
   parameter Real payloadDataRate(unit="1/s")=6.25e6 "载荷缓存读取率，数值单位byte/s";
   Modelica.Blocks.Interfaces.BooleanInput communicationPowerCommand annotation(Placement(transformation(extent={{-120,50},{-80,90}})));

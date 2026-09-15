@@ -1,7 +1,7 @@
-within NISSA_12UCubeSat.Systems;
+within OneSatSim.Systems;
 model SpacecraftSystem "12U立方星总体系统"
-  parameter NISSA_12UCubeSat.Scenarios.SpacecraftDesignConfig designConfig "由顶层传入的整星硬件设计配置";
-  parameter NISSA_12UCubeSat.Scenarios.ScenarioConfig scenario "由顶层传入的静态场景";
+  parameter OneSatSim.Scenarios.SpacecraftDesignConfig designConfig "由顶层传入的整星硬件设计配置";
+  parameter OneSatSim.Scenarios.ScenarioConfig scenario "由顶层传入的静态场景";
   inner Modelica.Mechanics.MultiBody.World world(gravityType=Modelica.Mechanics.MultiBody.Types.GravityTypes.NoGravity,driveTrainMechanics3D=true) annotation(Placement(transformation(extent={{-178,130},{-158,150}})));
   Foundation.Interfaces.OnboardTelemetryPort onboardTelemetry annotation(Placement(transformation(origin={140,-60},
 extent={{-10,-10},{10,10}}),

@@ -1,4 +1,4 @@
-within NISSA_12UCubeSat.Scenarios.DesignConfigRecords;
+within OneSatSim.Scenarios.DesignConfigRecords;
 record PayloadDesignConfig "payload分系统设计配置"
   parameter EarthCameraComponentConfig earthCamera;
   parameter FotonAmurComponentConfig fotonAmur;

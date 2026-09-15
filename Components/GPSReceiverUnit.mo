@@ -1,6 +1,6 @@
-within NISSA_12UCubeSat.Components;
+within OneSatSim.Components;
 model GPSReceiverUnit "GNSS接收机组件"
-  parameter NISSA_12UCubeSat.Scenarios.DesignConfigRecords.GnssComponentConfig config
+  parameter OneSatSim.Scenarios.DesignConfigRecords.GnssComponentConfig config
     "由所属N-System传入的硬件设计配置";
   parameter Modelica.Units.SI.Resistance rfDigitalLoadResistance=config.RFDigitalLoadResistance
     "GNSS射频/数字负载电阻；Excel单位Ω，当前设计基线";

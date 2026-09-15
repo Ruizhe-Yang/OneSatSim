@@ -1,6 +1,6 @@
-within NISSA_12UCubeSat.Components;
+within OneSatSim.Components;
 model SelfieCameraUnit "自拍相机组件"
-  parameter NISSA_12UCubeSat.Scenarios.DesignConfigRecords.SelfieCameraComponentConfig config
+  parameter OneSatSim.Scenarios.DesignConfigRecords.SelfieCameraComponentConfig config
     "由所属N-System传入的硬件设计配置";
   parameter Modelica.Units.SI.Resistance cmosLoadResistance=config.CMOSLoadResistance
     "CMOS相机负载电阻；Excel单位Ω，当前设计基线";

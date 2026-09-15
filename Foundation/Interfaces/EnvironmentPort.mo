@@ -1,4 +1,4 @@
-within NISSA_12UCubeSat.Foundation.Interfaces;
+within OneSatSim.Foundation.Interfaces;
 expandable connector EnvironmentPort "轨道与空间环境接口"
   RealSignal position[3](each unit="m") "卫星相对地心的GCRS位置";
   RealSignal velocity[3](each unit="m/s") "卫星相对地心的GCRS速度";

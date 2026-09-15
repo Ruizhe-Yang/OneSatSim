@@ -1,21 +1,21 @@
-within NISSA_12UCubeSat.Foundation.Models;
+within OneSatSim.Foundation.Models;
 model CommandArbiter "任务请求的单入口事件锁存仲裁器"
-  NISSA_12UCubeSat.Foundation.Interfaces.PlannerRequestSignals request annotation(Placement(transformation(extent={{-112,50},{-92,70}})));
-  NISSA_12UCubeSat.Foundation.Interfaces.SafetySignals safety annotation(Placement(transformation(extent={{-112,10},{-92,30}})));
-  NISSA_12UCubeSat.Foundation.Interfaces.ArbiterDecisionSignals decision annotation(Placement(transformation(extent={{92,-10},{112,10}})));
+  OneSatSim.Foundation.Interfaces.PlannerRequestSignals request annotation(Placement(transformation(extent={{-112,50},{-92,70}})));
+  OneSatSim.Foundation.Interfaces.SafetySignals safety annotation(Placement(transformation(extent={{-112,10},{-92,30}})));
+  OneSatSim.Foundation.Interfaces.ArbiterDecisionSignals decision annotation(Placement(transformation(extent={{92,-10},{112,10}})));
 protected
   discrete Integer decisionCounter(start=0,fixed=true);
   discrete Integer lastHandledRequest(start=-999,fixed=true);
   discrete Boolean acceptedLatch(start=false,fixed=true);
   discrete Boolean rejectedLatch(start=false,fixed=true);
-  discrete NISSA_12UCubeSat.Foundation.Types.CommandType acceptedCommandLatch(
-    start=NISSA_12UCubeSat.Foundation.Types.CommandType.None,fixed=true);
+  discrete OneSatSim.Foundation.Types.CommandType acceptedCommandLatch(
+    start=OneSatSim.Foundation.Types.CommandType.None,fixed=true);
   discrete Integer acceptedCommandIdLatch(start=0,fixed=true);
   discrete Integer acceptedTargetLatch(start=0,fixed=true);
   discrete Integer acceptedStationLatch(start=0,fixed=true);
   discrete Real acceptedOpportunityTimeRemainingLatch(start=0,fixed=true);
-  discrete NISSA_12UCubeSat.Foundation.Types.RejectReason rejectReasonLatch(
-    start=NISSA_12UCubeSat.Foundation.Types.RejectReason.None,fixed=true);
+  discrete OneSatSim.Foundation.Types.RejectReason rejectReasonLatch(
+    start=OneSatSim.Foundation.Types.RejectReason.None,fixed=true);
 equation
   decision.decisionId=decisionCounter;
   decision.accepted=acceptedLatch;
@@ -33,40 +33,40 @@ algorithm
     lastHandledRequest:=-999;
     acceptedLatch:=false;
     rejectedLatch:=false;
-    acceptedCommandLatch:=NISSA_12UCubeSat.Foundation.Types.CommandType.None;
+    acceptedCommandLatch:=OneSatSim.Foundation.Types.CommandType.None;
     acceptedCommandIdLatch:=0;
     acceptedTargetLatch:=0;
     acceptedStationLatch:=0;
     acceptedOpportunityTimeRemainingLatch:=0;
-    rejectReasonLatch:=NISSA_12UCubeSat.Foundation.Types.RejectReason.None;
+    rejectReasonLatch:=OneSatSim.Foundation.Types.RejectReason.None;
   elsewhen edge(safety.safeModeRequired) then
     decisionCounter:=pre(decisionCounter)+1;
     acceptedLatch:=true;
     rejectedLatch:=false;
-    acceptedCommandLatch:=NISSA_12UCubeSat.Foundation.Types.CommandType.EnterSafeMode;
+    acceptedCommandLatch:=OneSatSim.Foundation.Types.CommandType.EnterSafeMode;
     acceptedCommandIdLatch:=-1;
     acceptedTargetLatch:=0;
     acceptedStationLatch:=0;
     acceptedOpportunityTimeRemainingLatch:=1e100;
-    rejectReasonLatch:=NISSA_12UCubeSat.Foundation.Types.RejectReason.None;
+    rejectReasonLatch:=OneSatSim.Foundation.Types.RejectReason.None;
   elsewhen change(request.requestId) then
     if request.requestValid and request.requestId <> pre(lastHandledRequest) then
       decisionCounter:=pre(decisionCounter)+1;
       lastHandledRequest:=request.requestId;
-      acceptedLatch:=(request.requestedCommand == NISSA_12UCubeSat.Foundation.Types.CommandType.Imaging and safety.imagingAllowed) or
-         (request.requestedCommand == NISSA_12UCubeSat.Foundation.Types.CommandType.Downlink and safety.downlinkAllowed);
-      rejectedLatch:=not ((request.requestedCommand == NISSA_12UCubeSat.Foundation.Types.CommandType.Imaging and safety.imagingAllowed) or
-         (request.requestedCommand == NISSA_12UCubeSat.Foundation.Types.CommandType.Downlink and safety.downlinkAllowed));
-      acceptedCommandLatch:=if (request.requestedCommand == NISSA_12UCubeSat.Foundation.Types.CommandType.Imaging and safety.imagingAllowed) or
-         (request.requestedCommand == NISSA_12UCubeSat.Foundation.Types.CommandType.Downlink and safety.downlinkAllowed) then request.requestedCommand
-        else NISSA_12UCubeSat.Foundation.Types.CommandType.None;
+      acceptedLatch:=(request.requestedCommand == OneSatSim.Foundation.Types.CommandType.Imaging and safety.imagingAllowed) or
+         (request.requestedCommand == OneSatSim.Foundation.Types.CommandType.Downlink and safety.downlinkAllowed);
+      rejectedLatch:=not ((request.requestedCommand == OneSatSim.Foundation.Types.CommandType.Imaging and safety.imagingAllowed) or
+         (request.requestedCommand == OneSatSim.Foundation.Types.CommandType.Downlink and safety.downlinkAllowed));
+      acceptedCommandLatch:=if (request.requestedCommand == OneSatSim.Foundation.Types.CommandType.Imaging and safety.imagingAllowed) or
+         (request.requestedCommand == OneSatSim.Foundation.Types.CommandType.Downlink and safety.downlinkAllowed) then request.requestedCommand
+        else OneSatSim.Foundation.Types.CommandType.None;
       acceptedCommandIdLatch:=request.requestId;
       acceptedTargetLatch:=request.requestedTargetIndex;
       acceptedStationLatch:=request.requestedGroundStationIndex;
       acceptedOpportunityTimeRemainingLatch:=request.requestedOpportunityTimeRemaining;
-      rejectReasonLatch:=if request.requestedCommand == NISSA_12UCubeSat.Foundation.Types.CommandType.Imaging and not safety.imagingAllowed then safety.safetyReason else
-        if request.requestedCommand == NISSA_12UCubeSat.Foundation.Types.CommandType.Downlink and not safety.downlinkAllowed then safety.safetyReason else
-        NISSA_12UCubeSat.Foundation.Types.RejectReason.InvalidState;
+      rejectReasonLatch:=if request.requestedCommand == OneSatSim.Foundation.Types.CommandType.Imaging and not safety.imagingAllowed then safety.safetyReason else
+        if request.requestedCommand == OneSatSim.Foundation.Types.CommandType.Downlink and not safety.downlinkAllowed then safety.safetyReason else
+        OneSatSim.Foundation.Types.RejectReason.InvalidState;
     else
       acceptedLatch:=false;
       rejectedLatch:=false;

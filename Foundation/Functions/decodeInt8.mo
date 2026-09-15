@@ -1,4 +1,4 @@
-within NISSA_12UCubeSat.Foundation.Functions;
+within OneSatSim.Foundation.Functions;
 
 function decodeInt8 "8位有符号整数解码函数"input Integer byte;
 

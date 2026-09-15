@@ -1,4 +1,4 @@
-within NISSA_12UCubeSat.Foundation.Interfaces;
+within OneSatSim.Foundation.Interfaces;
 connector PowerPort "三电压轨电源接口"
   Modelica.Electrical.Analog.Interfaces.Pin p12;
   Modelica.Electrical.Analog.Interfaces.Pin n12;

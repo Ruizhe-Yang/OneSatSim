@@ -1,6 +1,6 @@
-within NISSA_12UCubeSat.Components;
+within OneSatSim.Components;
 model OnboardComputerUnit "星务计算机与遥测处理组件"
-  parameter NISSA_12UCubeSat.Scenarios.DesignConfigRecords.ObcComponentConfig config
+  parameter OneSatSim.Scenarios.DesignConfigRecords.ObcComponentConfig config
     "由所属N-System传入的硬件设计配置";
   parameter Modelica.Units.SI.Resistance processorLoadResistance=config.ProcessorLoadResistance
     "OBC处理器等效负载电阻；Excel单位Ω，当前设计基线";
@@ -38,7 +38,7 @@ model OnboardComputerUnit "星务计算机与遥测处理组件"
   Foundation.Interfaces.EnvironmentPort environment annotation(Placement(transformation(extent={{-110,-62},{-90,-42}}),iconTransformation(extent={{-110,-62},{-90,-42}})));
   Foundation.Interfaces.InformationPort information annotation(Placement(transformation(extent={{90,15},{110,35}}),iconTransformation(extent={{90,15},{110,35}})));
   Foundation.Interfaces.ActiveMissionSelectionOutput activeMissionSelection annotation(Placement(transformation(extent={{90,-35},{110,-15}}),iconTransformation(extent={{90,-35},{110,-15}})));
-  NISSA_12UCubeSat.Components.MissionControlUnit missionControl(
+  OneSatSim.Components.MissionControlUnit missionControl(
     operationalSnapshotStart=operationalSnapshotStart) annotation(Placement(transformation(extent={{-88,22},{-44,58}})));
   Modelica.Electrical.Analog.Sensors.CurrentSensor currentSensor annotation(Placement(transformation(extent={{-72,-4},{-52,16}})));
   Modelica.Electrical.Analog.Basic.Resistor cpuLoad(R=processorLoadResistance,useHeatPort=true) "系统级 nominal OBC 5 V work point" annotation(Placement(transformation(extent={{-40,-4},{-20,16}})));

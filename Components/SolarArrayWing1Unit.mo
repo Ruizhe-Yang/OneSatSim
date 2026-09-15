@@ -1,4 +1,4 @@
-within NISSA_12UCubeSat.Components;
+within OneSatSim.Components;
 model SolarArrayWing1Unit "太阳翼1组件"
   parameter Modelica.Units.SI.Area activeArea=0.145 "SYSTEM-LEVEL EQUIVALENT area for 24 h battery charge balance";
   parameter Real panelNormalBody[3]={1,0,0}

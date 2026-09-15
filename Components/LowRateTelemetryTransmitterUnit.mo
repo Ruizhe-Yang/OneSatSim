@@ -1,6 +1,6 @@
-within NISSA_12UCubeSat.Components;
+within OneSatSim.Components;
 model LowRateTelemetryTransmitterUnit "低速遥测基带组件"
-  parameter NISSA_12UCubeSat.Scenarios.DesignConfigRecords.BasebandComponentConfig config
+  parameter OneSatSim.Scenarios.DesignConfigRecords.BasebandComponentConfig config
     "由所属N-System传入的硬件设计配置";
   parameter Modelica.Units.SI.Resistance fpgaLoadResistance=config.FPGALoadResistance
     "低速遥测基带负载电阻；Excel单位Ω，当前设计基线";

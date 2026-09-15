@@ -1,6 +1,6 @@
-within NISSA_12UCubeSat.Foundation.Models;
+within OneSatSim.Foundation.Models;
 model MissionStateMachine "单向动作握手的事件驱动任务状态机"
-  NISSA_12UCubeSat.Foundation.Interfaces.ArbiterDecisionSignals decision annotation(Placement(transformation(extent={{-112,60},{-92,80}})));
+  OneSatSim.Foundation.Interfaces.ArbiterDecisionSignals decision annotation(Placement(transformation(extent={{-112,60},{-92,80}})));
   Modelica.Blocks.Interfaces.IntegerInput imagingStartedEventId;
   Modelica.Blocks.Interfaces.IntegerInput imagingCompletedEventId;
   Modelica.Blocks.Interfaces.IntegerInput imagingFailedEventId;
@@ -20,9 +20,9 @@ model MissionStateMachine "单向动作握手的事件驱动任务状态机"
   Modelica.Blocks.Interfaces.IntegerOutput imagingActionRequestIdOut;
   Modelica.Blocks.Interfaces.IntegerOutput downlinkActionRequestIdOut;
   Modelica.Blocks.Interfaces.IntegerOutput safeModeActionRequestIdOut;
-  NISSA_12UCubeSat.Foundation.Interfaces.CommandTypeOutput safeModeActionCommandOut;
-  NISSA_12UCubeSat.Foundation.Interfaces.MissionStateSignals state annotation(Placement(transformation(extent={{92,25},{112,45}})));
-  NISSA_12UCubeSat.Foundation.Interfaces.ActiveMissionSelectionOutput selection annotation(Placement(transformation(extent={{92,-45},{112,-25}})));
+  OneSatSim.Foundation.Interfaces.CommandTypeOutput safeModeActionCommandOut;
+  OneSatSim.Foundation.Interfaces.MissionStateSignals state annotation(Placement(transformation(extent={{92,25},{112,45}})));
+  OneSatSim.Foundation.Interfaces.ActiveMissionSelectionOutput selection annotation(Placement(transformation(extent={{92,-45},{112,-25}})));
   parameter Real bootDuration(unit="s")=10;
   parameter Boolean operationalSnapshotStart=true;
   parameter Real imagingPreparationTimeout(unit="s")=90;
@@ -32,11 +32,11 @@ model MissionStateMachine "单向动作握手的事件驱动任务状态机"
   parameter Real requiredDownlinkOpportunityTime(unit="s")=30;
   parameter Real eventSettleDelay(unit="s")=1e-4;
 protected
-  discrete NISSA_12UCubeSat.Foundation.Types.MissionMode mode(
-    start=if operationalSnapshotStart then NISSA_12UCubeSat.Foundation.Types.MissionMode.Idle else NISSA_12UCubeSat.Foundation.Types.MissionMode.Boot,fixed=true);
-  discrete NISSA_12UCubeSat.Foundation.Types.CommandType command(start=NISSA_12UCubeSat.Foundation.Types.CommandType.None,fixed=true);
-  discrete NISSA_12UCubeSat.Foundation.Types.CommandExecutionStatus resultStatus(
-    start=NISSA_12UCubeSat.Foundation.Types.CommandExecutionStatus.Idle,fixed=true);
+  discrete OneSatSim.Foundation.Types.MissionMode mode(
+    start=if operationalSnapshotStart then OneSatSim.Foundation.Types.MissionMode.Idle else OneSatSim.Foundation.Types.MissionMode.Boot,fixed=true);
+  discrete OneSatSim.Foundation.Types.CommandType command(start=OneSatSim.Foundation.Types.CommandType.None,fixed=true);
+  discrete OneSatSim.Foundation.Types.CommandExecutionStatus resultStatus(
+    start=OneSatSim.Foundation.Types.CommandExecutionStatus.Idle,fixed=true);
   discrete Real entryTime(start=0,fixed=true);
   discrete Real commandStartTime(start=0,fixed=true);
   discrete Integer transitions(start=0,fixed=true);
@@ -45,24 +45,24 @@ protected
   discrete Real preSlewDeadline(start=1e100,fixed=true);
   discrete Boolean preSlewElapsed(start=false,fixed=true);
   discrete Integer pendingEvent(start=0,fixed=true);
-  discrete NISSA_12UCubeSat.Foundation.Types.CommandType pendingCommand(start=NISSA_12UCubeSat.Foundation.Types.CommandType.None,fixed=true);
+  discrete OneSatSim.Foundation.Types.CommandType pendingCommand(start=OneSatSim.Foundation.Types.CommandType.None,fixed=true);
   discrete Integer pendingId(start=0,fixed=true);
   discrete Integer pendingTarget(start=0,fixed=true);
   discrete Integer pendingStation(start=0,fixed=true);
   discrete Boolean pendingAccepted(start=false,fixed=true);
-  discrete NISSA_12UCubeSat.Foundation.Types.RejectReason pendingRejectReason(
-    start=NISSA_12UCubeSat.Foundation.Types.RejectReason.None,fixed=true);
+  discrete OneSatSim.Foundation.Types.RejectReason pendingRejectReason(
+    start=OneSatSim.Foundation.Types.RejectReason.None,fixed=true);
   discrete Real pendingOpportunityTimeRemaining(start=0,fixed=true);
   discrete Boolean queuedDecisionValid(start=false,fixed=true);
-  discrete NISSA_12UCubeSat.Foundation.Types.CommandType queuedCommand(start=NISSA_12UCubeSat.Foundation.Types.CommandType.None,fixed=true);
+  discrete OneSatSim.Foundation.Types.CommandType queuedCommand(start=OneSatSim.Foundation.Types.CommandType.None,fixed=true);
   discrete Integer queuedId(start=0,fixed=true);
   discrete Integer queuedTarget(start=0,fixed=true);
   discrete Integer queuedStation(start=0,fixed=true);
   discrete Integer queuedWindow(start=0,fixed=true);
   discrete Real queuedOpportunityTimeRemaining(start=0,fixed=true);
   discrete Real queuedCaptureTime(start=0,fixed=true);
-  discrete NISSA_12UCubeSat.Foundation.Types.RejectReason lastRejectReasonLatch(
-    start=NISSA_12UCubeSat.Foundation.Types.RejectReason.None,fixed=true);
+  discrete OneSatSim.Foundation.Types.RejectReason lastRejectReasonLatch(
+    start=OneSatSim.Foundation.Types.RejectReason.None,fixed=true);
   discrete Boolean timeoutLatch(start=false,fixed=true);
   discrete Integer activeId(start=0,fixed=true);
   discrete Integer activeTarget(start=0,fixed=true);
@@ -70,14 +70,14 @@ protected
   discrete Integer imagingRequestId(start=0,fixed=true);
   discrete Integer downlinkRequestId(start=0,fixed=true);
   discrete Integer safeRequestId(start=0,fixed=true);
-  discrete NISSA_12UCubeSat.Foundation.Types.CommandType safeRequestCommand(start=NISSA_12UCubeSat.Foundation.Types.CommandType.None,fixed=true);
+  discrete OneSatSim.Foundation.Types.CommandType safeRequestCommand(start=OneSatSim.Foundation.Types.CommandType.None,fixed=true);
   Modelica.Blocks.Interfaces.IntegerOutput activeRequestIdPublisher annotation(Placement(visible=false, transformation(extent={{-4,-4},{4,4}})));
   Modelica.Blocks.Interfaces.IntegerOutput activeTargetIndexPublisher annotation(Placement(visible=false, transformation(extent={{-4,-4},{4,4}})));
   Modelica.Blocks.Interfaces.IntegerOutput activeGroundStationIndexPublisher annotation(Placement(visible=false, transformation(extent={{-4,-4},{4,4}})));
   Modelica.Blocks.Interfaces.IntegerOutput imagingActionRequestIdPublisher annotation(Placement(visible=false, transformation(extent={{-4,-4},{4,4}})));
   Modelica.Blocks.Interfaces.IntegerOutput downlinkActionRequestIdPublisher annotation(Placement(visible=false, transformation(extent={{-4,-4},{4,4}})));
   Modelica.Blocks.Interfaces.IntegerOutput safeModeActionRequestIdPublisher annotation(Placement(visible=false, transformation(extent={{-4,-4},{4,4}})));
-  NISSA_12UCubeSat.Foundation.Interfaces.IntegerSignalBridge stateIntegerBridge[6] annotation(Placement(visible=false, transformation(extent={{-4,-4},{4,4}})));
+  OneSatSim.Foundation.Interfaces.IntegerSignalBridge stateIntegerBridge[6] annotation(Placement(visible=false, transformation(extent={{-4,-4},{4,4}})));
 equation
   state.missionMode=mode;
   state.currentCommand=command;
@@ -87,15 +87,15 @@ equation
   activeRequestIdPublisher=activeId;
   activeTargetIndexPublisher=activeTarget;
   activeGroundStationIndexPublisher=activeStation;
-  state.controlMode=if mode == NISSA_12UCubeSat.Foundation.Types.MissionMode.Boot then NISSA_12UCubeSat.Foundation.Types.ControlMode.Initialization else
-    if mode == NISSA_12UCubeSat.Foundation.Types.MissionMode.TargetPreSlew or mode == NISSA_12UCubeSat.Foundation.Types.MissionMode.ImagingPreparation or mode == NISSA_12UCubeSat.Foundation.Types.MissionMode.Imaging then NISSA_12UCubeSat.Foundation.Types.ControlMode.TargetPointing else
-    if mode == NISSA_12UCubeSat.Foundation.Types.MissionMode.DownlinkPreparation or mode == NISSA_12UCubeSat.Foundation.Types.MissionMode.Downlink then NISSA_12UCubeSat.Foundation.Types.ControlMode.GroundPointing else
-    if mode == NISSA_12UCubeSat.Foundation.Types.MissionMode.SafeEntry or mode == NISSA_12UCubeSat.Foundation.Types.MissionMode.SafeHold then NISSA_12UCubeSat.Foundation.Types.ControlMode.SafeMode else NISSA_12UCubeSat.Foundation.Types.ControlMode.SunPointing;
+  state.controlMode=if mode == OneSatSim.Foundation.Types.MissionMode.Boot then OneSatSim.Foundation.Types.ControlMode.Initialization else
+    if mode == OneSatSim.Foundation.Types.MissionMode.TargetPreSlew or mode == OneSatSim.Foundation.Types.MissionMode.ImagingPreparation or mode == OneSatSim.Foundation.Types.MissionMode.Imaging then OneSatSim.Foundation.Types.ControlMode.TargetPointing else
+    if mode == OneSatSim.Foundation.Types.MissionMode.DownlinkPreparation or mode == OneSatSim.Foundation.Types.MissionMode.Downlink then OneSatSim.Foundation.Types.ControlMode.GroundPointing else
+    if mode == OneSatSim.Foundation.Types.MissionMode.SafeEntry or mode == OneSatSim.Foundation.Types.MissionMode.SafeHold then OneSatSim.Foundation.Types.ControlMode.SafeMode else OneSatSim.Foundation.Types.ControlMode.SunPointing;
   state.executionStatus=resultStatus;
-  state.commandExecuting=mode <> NISSA_12UCubeSat.Foundation.Types.MissionMode.Idle and mode <> NISSA_12UCubeSat.Foundation.Types.MissionMode.Boot;
-  state.commandCompleted=resultStatus == NISSA_12UCubeSat.Foundation.Types.CommandExecutionStatus.Completed;
-  state.commandFailed=resultStatus == NISSA_12UCubeSat.Foundation.Types.CommandExecutionStatus.Failed;
-  state.commandAborted=resultStatus == NISSA_12UCubeSat.Foundation.Types.CommandExecutionStatus.Aborted;
+  state.commandExecuting=mode <> OneSatSim.Foundation.Types.MissionMode.Idle and mode <> OneSatSim.Foundation.Types.MissionMode.Boot;
+  state.commandCompleted=resultStatus == OneSatSim.Foundation.Types.CommandExecutionStatus.Completed;
+  state.commandFailed=resultStatus == OneSatSim.Foundation.Types.CommandExecutionStatus.Failed;
+  state.commandAborted=resultStatus == OneSatSim.Foundation.Types.CommandExecutionStatus.Aborted;
   state.commandTimeout=timeoutLatch;
   imagingActionRequestIdPublisher=imagingRequestId;
   downlinkActionRequestIdPublisher=downlinkRequestId;
@@ -118,9 +118,9 @@ algorithm
       change(recoveryCompleteEventId),change(geometryEventId),time >= eventDeadline,
       time >= preSlewDeadline,time >= timeoutDeadline} then
     if initial() then
-      mode:=if operationalSnapshotStart then NISSA_12UCubeSat.Foundation.Types.MissionMode.Idle else NISSA_12UCubeSat.Foundation.Types.MissionMode.Boot;
-      command:=NISSA_12UCubeSat.Foundation.Types.CommandType.None;
-      resultStatus:=NISSA_12UCubeSat.Foundation.Types.CommandExecutionStatus.Idle;
+      mode:=if operationalSnapshotStart then OneSatSim.Foundation.Types.MissionMode.Idle else OneSatSim.Foundation.Types.MissionMode.Boot;
+      command:=OneSatSim.Foundation.Types.CommandType.None;
+      resultStatus:=OneSatSim.Foundation.Types.CommandExecutionStatus.Idle;
       entryTime:=time;
       commandStartTime:=time;
       transitions:=0;
@@ -129,22 +129,22 @@ algorithm
       preSlewDeadline:=1e100;
       preSlewElapsed:=false;
       pendingEvent:=0;
-      pendingCommand:=NISSA_12UCubeSat.Foundation.Types.CommandType.None;
+      pendingCommand:=OneSatSim.Foundation.Types.CommandType.None;
       pendingId:=0;
       pendingTarget:=0;
       pendingStation:=0;
       pendingAccepted:=false;
-      pendingRejectReason:=NISSA_12UCubeSat.Foundation.Types.RejectReason.None;
+      pendingRejectReason:=OneSatSim.Foundation.Types.RejectReason.None;
       pendingOpportunityTimeRemaining:=0;
       queuedDecisionValid:=false;
-      queuedCommand:=NISSA_12UCubeSat.Foundation.Types.CommandType.None;
+      queuedCommand:=OneSatSim.Foundation.Types.CommandType.None;
       queuedId:=0;
       queuedTarget:=0;
       queuedStation:=0;
       queuedWindow:=0;
       queuedOpportunityTimeRemaining:=0;
       queuedCaptureTime:=time;
-      lastRejectReasonLatch:=NISSA_12UCubeSat.Foundation.Types.RejectReason.None;
+      lastRejectReasonLatch:=OneSatSim.Foundation.Types.RejectReason.None;
       timeoutLatch:=false;
       activeId:=0;
       activeTarget:=0;
@@ -152,7 +152,7 @@ algorithm
       imagingRequestId:=0;
       downlinkRequestId:=0;
       safeRequestId:=0;
-      safeRequestCommand:=NISSA_12UCubeSat.Foundation.Types.CommandType.None;
+      safeRequestCommand:=OneSatSim.Foundation.Types.CommandType.None;
     elseif change(decision.decisionId) then
         pendingEvent:=1;
         pendingCommand:=decision.acceptedCommand;
@@ -218,18 +218,18 @@ algorithm
       elseif time >= pre(preSlewDeadline) then
         preSlewDeadline:=1e100;
         preSlewElapsed:=true;
-        if pre(mode) == NISSA_12UCubeSat.Foundation.Types.MissionMode.TargetPreSlew and pre(targetPreparationReady) and
+        if pre(mode) == OneSatSim.Foundation.Types.MissionMode.TargetPreSlew and pre(targetPreparationReady) and
             pre(targetPreparationIndex) == pre(activeTarget) then
-          mode:=NISSA_12UCubeSat.Foundation.Types.MissionMode.ImagingPreparation;
+          mode:=OneSatSim.Foundation.Types.MissionMode.ImagingPreparation;
           entryTime:=time;
           transitions:=pre(transitions)+1;
           timeoutDeadline:=time+imagingPreparationTimeout;
           imagingRequestId:=pre(activeId);
           preSlewElapsed:=false;
-        elseif pre(mode) == NISSA_12UCubeSat.Foundation.Types.MissionMode.TargetPreSlew and not pre(targetEarlyOpportunity) then
-          mode:=NISSA_12UCubeSat.Foundation.Types.MissionMode.Idle;
-          command:=NISSA_12UCubeSat.Foundation.Types.CommandType.Imaging;
-          resultStatus:=NISSA_12UCubeSat.Foundation.Types.CommandExecutionStatus.Failed;
+        elseif pre(mode) == OneSatSim.Foundation.Types.MissionMode.TargetPreSlew and not pre(targetEarlyOpportunity) then
+          mode:=OneSatSim.Foundation.Types.MissionMode.Idle;
+          command:=OneSatSim.Foundation.Types.CommandType.Imaging;
+          resultStatus:=OneSatSim.Foundation.Types.CommandExecutionStatus.Failed;
           entryTime:=time;
           transitions:=pre(transitions)+1;
           activeId:=0;
@@ -243,12 +243,12 @@ algorithm
         if pre(pendingEvent) == 1 then
           timeoutLatch:=false;
           if not pre(pendingAccepted) then
-            resultStatus:=NISSA_12UCubeSat.Foundation.Types.CommandExecutionStatus.Rejected;
+            resultStatus:=OneSatSim.Foundation.Types.CommandExecutionStatus.Rejected;
             lastRejectReasonLatch:=pre(pendingRejectReason);
-          elseif pre(pendingCommand) == NISSA_12UCubeSat.Foundation.Types.CommandType.EnterSafeMode then
-            mode:=NISSA_12UCubeSat.Foundation.Types.MissionMode.SafeEntry;
-            command:=NISSA_12UCubeSat.Foundation.Types.CommandType.EnterSafeMode;
-            resultStatus:=NISSA_12UCubeSat.Foundation.Types.CommandExecutionStatus.Executing;
+          elseif pre(pendingCommand) == OneSatSim.Foundation.Types.CommandType.EnterSafeMode then
+            mode:=OneSatSim.Foundation.Types.MissionMode.SafeEntry;
+            command:=OneSatSim.Foundation.Types.CommandType.EnterSafeMode;
+            resultStatus:=OneSatSim.Foundation.Types.CommandExecutionStatus.Executing;
             entryTime:=time;
             commandStartTime:=time;
             transitions:=pre(transitions)+1;
@@ -259,28 +259,28 @@ algorithm
             activeTarget:=0;
             activeStation:=0;
             safeRequestId:=pre(pendingId);
-            safeRequestCommand:=NISSA_12UCubeSat.Foundation.Types.CommandType.EnterSafeMode;
-          elseif pre(mode) == NISSA_12UCubeSat.Foundation.Types.MissionMode.SafeHold and pre(pendingCommand) == NISSA_12UCubeSat.Foundation.Types.CommandType.ExitSafeMode then
-            mode:=NISSA_12UCubeSat.Foundation.Types.MissionMode.Recovery;
-            command:=NISSA_12UCubeSat.Foundation.Types.CommandType.ExitSafeMode;
-            resultStatus:=NISSA_12UCubeSat.Foundation.Types.CommandExecutionStatus.Executing;
+            safeRequestCommand:=OneSatSim.Foundation.Types.CommandType.EnterSafeMode;
+          elseif pre(mode) == OneSatSim.Foundation.Types.MissionMode.SafeHold and pre(pendingCommand) == OneSatSim.Foundation.Types.CommandType.ExitSafeMode then
+            mode:=OneSatSim.Foundation.Types.MissionMode.Recovery;
+            command:=OneSatSim.Foundation.Types.CommandType.ExitSafeMode;
+            resultStatus:=OneSatSim.Foundation.Types.CommandExecutionStatus.Executing;
             entryTime:=time;
             commandStartTime:=time;
             transitions:=pre(transitions)+1;
             timeoutDeadline:=time+30;
             safeRequestId:=pre(pendingId);
-            safeRequestCommand:=NISSA_12UCubeSat.Foundation.Types.CommandType.ExitSafeMode;
+            safeRequestCommand:=OneSatSim.Foundation.Types.CommandType.ExitSafeMode;
           elseif pre(pendingAccepted) and
-              pre(pendingCommand) == NISSA_12UCubeSat.Foundation.Types.CommandType.Imaging and
-              (pre(mode) == NISSA_12UCubeSat.Foundation.Types.MissionMode.DownlinkPreparation or
-               pre(mode) == NISSA_12UCubeSat.Foundation.Types.MissionMode.Downlink) and
+              pre(pendingCommand) == OneSatSim.Foundation.Types.CommandType.Imaging and
+              (pre(mode) == OneSatSim.Foundation.Types.MissionMode.DownlinkPreparation or
+               pre(mode) == OneSatSim.Foundation.Types.MissionMode.Downlink) and
               pre(pendingOpportunityTimeRemaining) >= requiredImagingOpportunityTime then
             // A time-limited imaging opportunity has priority over a restartable
             // downlink.  Clearing the active station asks the downlink sequencer
             // to stop at its discrete action boundary; stored data remains intact.
-            mode:=NISSA_12UCubeSat.Foundation.Types.MissionMode.TargetPreSlew;
-            command:=NISSA_12UCubeSat.Foundation.Types.CommandType.Imaging;
-            resultStatus:=NISSA_12UCubeSat.Foundation.Types.CommandExecutionStatus.Executing;
+            mode:=OneSatSim.Foundation.Types.MissionMode.TargetPreSlew;
+            command:=OneSatSim.Foundation.Types.CommandType.Imaging;
+            resultStatus:=OneSatSim.Foundation.Types.CommandExecutionStatus.Executing;
             entryTime:=time;
             commandStartTime:=time;
             transitions:=pre(transitions)+1;
@@ -290,11 +290,11 @@ algorithm
             activeId:=pre(pendingId);
             activeTarget:=pre(pendingTarget);
             activeStation:=0;
-            lastRejectReasonLatch:=NISSA_12UCubeSat.Foundation.Types.RejectReason.None;
-          elseif pre(mode) == NISSA_12UCubeSat.Foundation.Types.MissionMode.Idle and pre(pendingCommand) == NISSA_12UCubeSat.Foundation.Types.CommandType.Imaging then
-            mode:=NISSA_12UCubeSat.Foundation.Types.MissionMode.TargetPreSlew;
-            command:=NISSA_12UCubeSat.Foundation.Types.CommandType.Imaging;
-            resultStatus:=NISSA_12UCubeSat.Foundation.Types.CommandExecutionStatus.Executing;
+            lastRejectReasonLatch:=OneSatSim.Foundation.Types.RejectReason.None;
+          elseif pre(mode) == OneSatSim.Foundation.Types.MissionMode.Idle and pre(pendingCommand) == OneSatSim.Foundation.Types.CommandType.Imaging then
+            mode:=OneSatSim.Foundation.Types.MissionMode.TargetPreSlew;
+            command:=OneSatSim.Foundation.Types.CommandType.Imaging;
+            resultStatus:=OneSatSim.Foundation.Types.CommandExecutionStatus.Executing;
             entryTime:=time;
             commandStartTime:=time;
             transitions:=pre(transitions)+1;
@@ -304,11 +304,11 @@ algorithm
             activeId:=pre(pendingId);
             activeTarget:=pre(pendingTarget);
             activeStation:=0;
-            lastRejectReasonLatch:=NISSA_12UCubeSat.Foundation.Types.RejectReason.None;
-          elseif pre(mode) == NISSA_12UCubeSat.Foundation.Types.MissionMode.Idle and pre(pendingCommand) == NISSA_12UCubeSat.Foundation.Types.CommandType.Downlink then
-            mode:=NISSA_12UCubeSat.Foundation.Types.MissionMode.DownlinkPreparation;
-            command:=NISSA_12UCubeSat.Foundation.Types.CommandType.Downlink;
-            resultStatus:=NISSA_12UCubeSat.Foundation.Types.CommandExecutionStatus.Executing;
+            lastRejectReasonLatch:=OneSatSim.Foundation.Types.RejectReason.None;
+          elseif pre(mode) == OneSatSim.Foundation.Types.MissionMode.Idle and pre(pendingCommand) == OneSatSim.Foundation.Types.CommandType.Downlink then
+            mode:=OneSatSim.Foundation.Types.MissionMode.DownlinkPreparation;
+            command:=OneSatSim.Foundation.Types.CommandType.Downlink;
+            resultStatus:=OneSatSim.Foundation.Types.CommandExecutionStatus.Executing;
             entryTime:=time;
             commandStartTime:=time;
             transitions:=pre(transitions)+1;
@@ -317,39 +317,39 @@ algorithm
             activeTarget:=0;
             activeStation:=pre(pendingStation);
             downlinkRequestId:=pre(pendingId);
-            lastRejectReasonLatch:=NISSA_12UCubeSat.Foundation.Types.RejectReason.None;
+            lastRejectReasonLatch:=OneSatSim.Foundation.Types.RejectReason.None;
           elseif pre(pendingAccepted) and
-              (pre(pendingCommand) == NISSA_12UCubeSat.Foundation.Types.CommandType.Imaging or
-               pre(pendingCommand) == NISSA_12UCubeSat.Foundation.Types.CommandType.Downlink) then
+              (pre(pendingCommand) == OneSatSim.Foundation.Types.CommandType.Imaging or
+               pre(pendingCommand) == OneSatSim.Foundation.Types.CommandType.Downlink) then
             if not pre(queuedDecisionValid) then
               queuedDecisionValid:=true;
               queuedCommand:=pre(pendingCommand);
               queuedId:=pre(pendingId);
               queuedTarget:=pre(pendingTarget);
               queuedStation:=pre(pendingStation);
-              queuedWindow:=if pre(pendingCommand) == NISSA_12UCubeSat.Foundation.Types.CommandType.Imaging then
+              queuedWindow:=if pre(pendingCommand) == OneSatSim.Foundation.Types.CommandType.Imaging then
                 div(pre(pendingId)-1000000,1000) else div(pre(pendingId)-2000000,1000);
               queuedOpportunityTimeRemaining:=pre(pendingOpportunityTimeRemaining);
               queuedCaptureTime:=time;
             else
-              lastRejectReasonLatch:=NISSA_12UCubeSat.Foundation.Types.RejectReason.Busy;
+              lastRejectReasonLatch:=OneSatSim.Foundation.Types.RejectReason.Busy;
             end if;
           end if;
-        elseif pre(pendingEvent) == 2 and pre(pendingId) == pre(activeId) and pre(mode) == NISSA_12UCubeSat.Foundation.Types.MissionMode.ImagingPreparation then
-          mode:=NISSA_12UCubeSat.Foundation.Types.MissionMode.Imaging;
+        elseif pre(pendingEvent) == 2 and pre(pendingId) == pre(activeId) and pre(mode) == OneSatSim.Foundation.Types.MissionMode.ImagingPreparation then
+          mode:=OneSatSim.Foundation.Types.MissionMode.Imaging;
           entryTime:=time;
           transitions:=pre(transitions)+1;
           timeoutDeadline:=1e100;
-        elseif pre(pendingEvent) == 7 and pre(pendingId) == pre(activeId) and pre(mode) == NISSA_12UCubeSat.Foundation.Types.MissionMode.DownlinkPreparation then
-          mode:=NISSA_12UCubeSat.Foundation.Types.MissionMode.Downlink;
+        elseif pre(pendingEvent) == 7 and pre(pendingId) == pre(activeId) and pre(mode) == OneSatSim.Foundation.Types.MissionMode.DownlinkPreparation then
+          mode:=OneSatSim.Foundation.Types.MissionMode.Downlink;
           entryTime:=time;
           transitions:=pre(transitions)+1;
           timeoutDeadline:=1e100;
         elseif pre(pendingEvent) >= 3 and pre(pendingEvent) <= 6 and pre(pendingId) == pre(activeId) then
-          mode:=NISSA_12UCubeSat.Foundation.Types.MissionMode.Idle;
-          command:=NISSA_12UCubeSat.Foundation.Types.CommandType.None;
-          resultStatus:=if pre(pendingEvent) == 3 then NISSA_12UCubeSat.Foundation.Types.CommandExecutionStatus.Completed else
-            if pre(pendingEvent) == 5 then NISSA_12UCubeSat.Foundation.Types.CommandExecutionStatus.Aborted else NISSA_12UCubeSat.Foundation.Types.CommandExecutionStatus.Failed;
+          mode:=OneSatSim.Foundation.Types.MissionMode.Idle;
+          command:=OneSatSim.Foundation.Types.CommandType.None;
+          resultStatus:=if pre(pendingEvent) == 3 then OneSatSim.Foundation.Types.CommandExecutionStatus.Completed else
+            if pre(pendingEvent) == 5 then OneSatSim.Foundation.Types.CommandExecutionStatus.Aborted else OneSatSim.Foundation.Types.CommandExecutionStatus.Failed;
           timeoutLatch:=pre(pendingEvent) == 6;
           entryTime:=time;
           transitions:=pre(transitions)+1;
@@ -358,7 +358,7 @@ algorithm
           activeTarget:=0;
           if pre(queuedDecisionValid) then
             if pre(queuedOpportunityTimeRemaining)-(time-pre(queuedCaptureTime)) >=
-                (if pre(queuedCommand) == NISSA_12UCubeSat.Foundation.Types.CommandType.Imaging then
+                (if pre(queuedCommand) == OneSatSim.Foundation.Types.CommandType.Imaging then
                   requiredImagingOpportunityTime else requiredDownlinkOpportunityTime) then
               pendingEvent:=1;
               pendingCommand:=pre(queuedCommand);
@@ -369,18 +369,18 @@ algorithm
               pendingOpportunityTimeRemaining:=pre(queuedOpportunityTimeRemaining)-(time-pre(queuedCaptureTime));
               eventDeadline:=time+eventSettleDelay;
             else
-              resultStatus:=NISSA_12UCubeSat.Foundation.Types.CommandExecutionStatus.Rejected;
+              resultStatus:=OneSatSim.Foundation.Types.CommandExecutionStatus.Rejected;
               lastRejectReasonLatch:=if pre(queuedOpportunityTimeRemaining)-(time-pre(queuedCaptureTime)) > 0 then
-                NISSA_12UCubeSat.Foundation.Types.RejectReason.InsufficientOpportunityTime else
-                NISSA_12UCubeSat.Foundation.Types.RejectReason.StaleOpportunity;
+                OneSatSim.Foundation.Types.RejectReason.InsufficientOpportunityTime else
+                OneSatSim.Foundation.Types.RejectReason.StaleOpportunity;
             end if;
             queuedDecisionValid:=false;
           end if;
         elseif pre(pendingEvent) >= 8 and pre(pendingEvent) <= 11 and pre(pendingId) == pre(activeId) then
-          mode:=NISSA_12UCubeSat.Foundation.Types.MissionMode.Idle;
-          command:=NISSA_12UCubeSat.Foundation.Types.CommandType.None;
-          resultStatus:=if pre(pendingEvent) == 8 then NISSA_12UCubeSat.Foundation.Types.CommandExecutionStatus.Completed else
-            if pre(pendingEvent) == 10 then NISSA_12UCubeSat.Foundation.Types.CommandExecutionStatus.Aborted else NISSA_12UCubeSat.Foundation.Types.CommandExecutionStatus.Failed;
+          mode:=OneSatSim.Foundation.Types.MissionMode.Idle;
+          command:=OneSatSim.Foundation.Types.CommandType.None;
+          resultStatus:=if pre(pendingEvent) == 8 then OneSatSim.Foundation.Types.CommandExecutionStatus.Completed else
+            if pre(pendingEvent) == 10 then OneSatSim.Foundation.Types.CommandExecutionStatus.Aborted else OneSatSim.Foundation.Types.CommandExecutionStatus.Failed;
           timeoutLatch:=pre(pendingEvent) == 11;
           entryTime:=time;
           transitions:=pre(transitions)+1;
@@ -389,7 +389,7 @@ algorithm
           activeStation:=0;
           if pre(queuedDecisionValid) then
             if pre(queuedOpportunityTimeRemaining)-(time-pre(queuedCaptureTime)) >=
-                (if pre(queuedCommand) == NISSA_12UCubeSat.Foundation.Types.CommandType.Imaging then
+                (if pre(queuedCommand) == OneSatSim.Foundation.Types.CommandType.Imaging then
                   requiredImagingOpportunityTime else requiredDownlinkOpportunityTime) then
               pendingEvent:=1;
               pendingCommand:=pre(queuedCommand);
@@ -400,37 +400,37 @@ algorithm
               pendingOpportunityTimeRemaining:=pre(queuedOpportunityTimeRemaining)-(time-pre(queuedCaptureTime));
               eventDeadline:=time+eventSettleDelay;
             else
-              resultStatus:=NISSA_12UCubeSat.Foundation.Types.CommandExecutionStatus.Rejected;
+              resultStatus:=OneSatSim.Foundation.Types.CommandExecutionStatus.Rejected;
               lastRejectReasonLatch:=if pre(queuedOpportunityTimeRemaining)-(time-pre(queuedCaptureTime)) > 0 then
-                NISSA_12UCubeSat.Foundation.Types.RejectReason.InsufficientOpportunityTime else
-                NISSA_12UCubeSat.Foundation.Types.RejectReason.StaleOpportunity;
+                OneSatSim.Foundation.Types.RejectReason.InsufficientOpportunityTime else
+                OneSatSim.Foundation.Types.RejectReason.StaleOpportunity;
             end if;
             queuedDecisionValid:=false;
           end if;
-        elseif pre(pendingEvent) == 12 and pre(mode) == NISSA_12UCubeSat.Foundation.Types.MissionMode.SafeEntry then
-          mode:=NISSA_12UCubeSat.Foundation.Types.MissionMode.SafeHold;
+        elseif pre(pendingEvent) == 12 and pre(mode) == OneSatSim.Foundation.Types.MissionMode.SafeEntry then
+          mode:=OneSatSim.Foundation.Types.MissionMode.SafeHold;
           entryTime:=time;
           transitions:=pre(transitions)+1;
           timeoutDeadline:=1e100;
-        elseif pre(pendingEvent) == 13 and pre(mode) == NISSA_12UCubeSat.Foundation.Types.MissionMode.Recovery then
-          mode:=NISSA_12UCubeSat.Foundation.Types.MissionMode.Idle;
-          command:=NISSA_12UCubeSat.Foundation.Types.CommandType.None;
-          resultStatus:=NISSA_12UCubeSat.Foundation.Types.CommandExecutionStatus.Completed;
+        elseif pre(pendingEvent) == 13 and pre(mode) == OneSatSim.Foundation.Types.MissionMode.Recovery then
+          mode:=OneSatSim.Foundation.Types.MissionMode.Idle;
+          command:=OneSatSim.Foundation.Types.CommandType.None;
+          resultStatus:=OneSatSim.Foundation.Types.CommandExecutionStatus.Completed;
           entryTime:=time;
           transitions:=pre(transitions)+1;
           timeoutDeadline:=1e100;
-        elseif pre(pendingEvent) == 14 and pre(mode) == NISSA_12UCubeSat.Foundation.Types.MissionMode.TargetPreSlew and pre(preSlewElapsed) then
+        elseif pre(pendingEvent) == 14 and pre(mode) == OneSatSim.Foundation.Types.MissionMode.TargetPreSlew and pre(preSlewElapsed) then
           if pre(targetPreparationReady) and pre(targetPreparationIndex) == pre(activeTarget) then
-            mode:=NISSA_12UCubeSat.Foundation.Types.MissionMode.ImagingPreparation;
+            mode:=OneSatSim.Foundation.Types.MissionMode.ImagingPreparation;
             entryTime:=time;
             transitions:=pre(transitions)+1;
             timeoutDeadline:=time+imagingPreparationTimeout;
             imagingRequestId:=pre(activeId);
             preSlewElapsed:=false;
           elseif not pre(targetEarlyOpportunity) then
-            mode:=NISSA_12UCubeSat.Foundation.Types.MissionMode.Idle;
-            command:=NISSA_12UCubeSat.Foundation.Types.CommandType.Imaging;
-            resultStatus:=NISSA_12UCubeSat.Foundation.Types.CommandExecutionStatus.Failed;
+            mode:=OneSatSim.Foundation.Types.MissionMode.Idle;
+            command:=OneSatSim.Foundation.Types.CommandType.Imaging;
+            resultStatus:=OneSatSim.Foundation.Types.CommandExecutionStatus.Failed;
             entryTime:=time;
             transitions:=pre(transitions)+1;
             activeId:=0;
@@ -441,16 +441,16 @@ algorithm
         end if;
       elseif time >= pre(timeoutDeadline) then
         timeoutDeadline:=1e100;
-        if pre(mode) == NISSA_12UCubeSat.Foundation.Types.MissionMode.Boot then
-          mode:=NISSA_12UCubeSat.Foundation.Types.MissionMode.Idle;
-          command:=NISSA_12UCubeSat.Foundation.Types.CommandType.None;
-          resultStatus:=NISSA_12UCubeSat.Foundation.Types.CommandExecutionStatus.Idle;
+        if pre(mode) == OneSatSim.Foundation.Types.MissionMode.Boot then
+          mode:=OneSatSim.Foundation.Types.MissionMode.Idle;
+          command:=OneSatSim.Foundation.Types.CommandType.None;
+          resultStatus:=OneSatSim.Foundation.Types.CommandExecutionStatus.Idle;
           entryTime:=time;
           transitions:=pre(transitions)+1;
-        elseif pre(mode) == NISSA_12UCubeSat.Foundation.Types.MissionMode.ImagingPreparation or pre(mode) == NISSA_12UCubeSat.Foundation.Types.MissionMode.DownlinkPreparation then
-          mode:=NISSA_12UCubeSat.Foundation.Types.MissionMode.Idle;
-          command:=NISSA_12UCubeSat.Foundation.Types.CommandType.None;
-          resultStatus:=NISSA_12UCubeSat.Foundation.Types.CommandExecutionStatus.Failed;
+        elseif pre(mode) == OneSatSim.Foundation.Types.MissionMode.ImagingPreparation or pre(mode) == OneSatSim.Foundation.Types.MissionMode.DownlinkPreparation then
+          mode:=OneSatSim.Foundation.Types.MissionMode.Idle;
+          command:=OneSatSim.Foundation.Types.CommandType.None;
+          resultStatus:=OneSatSim.Foundation.Types.CommandExecutionStatus.Failed;
           timeoutLatch:=true;
           entryTime:=time;
           transitions:=pre(transitions)+1;
@@ -459,14 +459,14 @@ algorithm
           activeStation:=0;
           preSlewDeadline:=1e100;
           preSlewElapsed:=false;
-        elseif pre(mode) == NISSA_12UCubeSat.Foundation.Types.MissionMode.SafeEntry then
-          mode:=NISSA_12UCubeSat.Foundation.Types.MissionMode.SafeHold;
+        elseif pre(mode) == OneSatSim.Foundation.Types.MissionMode.SafeEntry then
+          mode:=OneSatSim.Foundation.Types.MissionMode.SafeHold;
           entryTime:=time;
           transitions:=pre(transitions)+1;
-        elseif pre(mode) == NISSA_12UCubeSat.Foundation.Types.MissionMode.Recovery then
-          mode:=NISSA_12UCubeSat.Foundation.Types.MissionMode.Idle;
-          command:=NISSA_12UCubeSat.Foundation.Types.CommandType.None;
-          resultStatus:=NISSA_12UCubeSat.Foundation.Types.CommandExecutionStatus.Completed;
+        elseif pre(mode) == OneSatSim.Foundation.Types.MissionMode.Recovery then
+          mode:=OneSatSim.Foundation.Types.MissionMode.Idle;
+          command:=OneSatSim.Foundation.Types.CommandType.None;
+          resultStatus:=OneSatSim.Foundation.Types.CommandExecutionStatus.Completed;
           entryTime:=time;
           transitions:=pre(transitions)+1;
         end if;

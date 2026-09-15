@@ -1,4 +1,4 @@
-within NISSA_12UCubeSat.Scenarios;
+within OneSatSim.Scenarios;
 record SpacecraftDesignConfig "整星分层硬件设计配置类型"
   parameter DesignConfigRecords.CommunicationDesignConfig communication;
   parameter DesignConfigRecords.DataHandlingDesignConfig dataHandling;

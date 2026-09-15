@@ -1,8 +1,8 @@
-within NISSA_12UCubeSat.Systems.N_systems;
+within OneSatSim.Systems.N_systems;
 model GNCSystem "姿轨控分系统"
-  parameter NISSA_12UCubeSat.Scenarios.DesignConfigRecords.GncDesignConfig designConfig "分系统硬件设计配置";
-  parameter NISSA_12UCubeSat.Scenarios.InitialConditionConfig initialConditions "场景初始条件";
-  parameter NISSA_12UCubeSat.Foundation.Types.MassProperties massProperties;
+  parameter OneSatSim.Scenarios.DesignConfigRecords.GncDesignConfig designConfig "分系统硬件设计配置";
+  parameter OneSatSim.Scenarios.InitialConditionConfig initialConditions "场景初始条件";
+  parameter OneSatSim.Foundation.Types.MassProperties massProperties;
   Foundation.Interfaces.PowerPort power annotation(Placement(transformation(extent={{-10,90},{10,110}})));
   Foundation.Interfaces.ThermalPort thermal annotation(Placement(transformation(extent={{-10,-110},{10,-90}})));
   Foundation.Interfaces.MechanicalPort mechanical annotation(Placement(transformation(extent={{-112,-10},{-92,10}})));

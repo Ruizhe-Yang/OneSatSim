@@ -1,4 +1,4 @@
-within NISSA_12UCubeSat.Scenarios.DesignConfigRecords;
+within OneSatSim.Scenarios.DesignConfigRecords;
 record ObcComponentConfig "obc硬件设计配置"
   parameter Modelica.Units.SI.Resistance ProcessorLoadResistance
     "OBC处理器等效负载电阻；Excel工程单位Ω";

@@ -1,7 +1,7 @@
-within NISSA_12UCubeSat.Systems.N_systems;
+within OneSatSim.Systems.N_systems;
 model DataHandlingSystem "数管分系统"
-  parameter NISSA_12UCubeSat.Scenarios.DesignConfigRecords.DataHandlingDesignConfig designConfig "分系统硬件设计配置";
-  parameter NISSA_12UCubeSat.Scenarios.InitialConditionConfig initialConditions "场景初始条件";
+  parameter OneSatSim.Scenarios.DesignConfigRecords.DataHandlingDesignConfig designConfig "分系统硬件设计配置";
+  parameter OneSatSim.Scenarios.InitialConditionConfig initialConditions "场景初始条件";
   parameter Boolean operationalSnapshotStart=true "从正常在轨快照启动任务控制";
   Foundation.Interfaces.PowerPort power annotation(Placement(transformation(extent={{-10,90},{10,110}})));
   Foundation.Interfaces.ThermalPort thermal annotation(Placement(transformation(extent={{-10,-110},{10,-90}})));

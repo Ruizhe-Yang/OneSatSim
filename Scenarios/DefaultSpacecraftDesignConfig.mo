@@ -1,4 +1,4 @@
-within NISSA_12UCubeSat.Scenarios;
+within OneSatSim.Scenarios;
 record DefaultSpacecraftDesignConfig "当前标准整星硬件设计基线"
   extends SpacecraftDesignConfig(
     communication=DesignConfigRecords.CommunicationDesignConfig(

@@ -1,4 +1,4 @@
-within NISSA_12UCubeSat.Foundation.Interfaces;
+within OneSatSim.Foundation.Interfaces;
 connector SourcePowerPort "太阳阵/电池/PCDU之间的原始双线电源端口"
   Modelica.Electrical.Analog.Interfaces.Pin p "原始电源正端";
   Modelica.Electrical.Analog.Interfaces.Pin n "原始电源负端";

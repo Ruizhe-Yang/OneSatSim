@@ -1,4 +1,4 @@
-within NISSA_12UCubeSat.Foundation.Models;
+within OneSatSim.Foundation.Models;
 model MissionGeometryEventMailbox "活动目标几何事件邮箱"
   Modelica.Blocks.Interfaces.BooleanInput targetPreparationReadyIn
     annotation(Placement(transformation(extent={{-112,30},{-92,50}})));

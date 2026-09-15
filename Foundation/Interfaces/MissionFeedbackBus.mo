@@ -1,4 +1,4 @@
-within NISSA_12UCubeSat.Foundation.Interfaces;
+within OneSatSim.Foundation.Interfaces;
 connector MissionFeedbackBus "Selected physical feedback used by mission control"
   RealSignal batterySOC;
   RealSignal busVoltage(unit="V");

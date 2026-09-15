@@ -1,6 +1,6 @@
-within NISSA_12UCubeSat.Components;
+within OneSatSim.Components;
 model ReactionWheelYUnit "Y轴反作用飞轮组件"
-  parameter NISSA_12UCubeSat.Scenarios.DesignConfigRecords.WheelYComponentConfig config
+  parameter OneSatSim.Scenarios.DesignConfigRecords.WheelYComponentConfig config
     "由所属N-System传入的硬件设计配置";
   parameter Modelica.Units.SI.Resistance standbyResistance=config.StandbyResistance
     "飞轮驱动电子学待机电阻；Excel单位Ω，当前设计基线";

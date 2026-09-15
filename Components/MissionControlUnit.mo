@@ -1,4 +1,4 @@
-within NISSA_12UCubeSat.Components;
+within OneSatSim.Components;
 model MissionControlUnit "星务任务与指令控制组件"
   parameter Boolean operationalSnapshotStart=true;
   Foundation.Interfaces.EnvironmentPort environment annotation(Placement(transformation(extent={{-110,-10},{-90,10}}),iconTransformation(extent={{-110,-10},{-90,10}})));

@@ -1,4 +1,4 @@
-within NISSA_12UCubeSat.Scenarios.DesignConfigRecords;
+within OneSatSim.Scenarios.DesignConfigRecords;
 record MagnetorquerComponentConfig "magnetorquer硬件设计配置"
   parameter Modelica.Units.SI.Current CoilCurrentLimit
     "磁力矩器线圈电流上限；Excel工程单位A";

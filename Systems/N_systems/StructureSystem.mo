@@ -1,6 +1,6 @@
-within NISSA_12UCubeSat.Systems.N_systems;
+within OneSatSim.Systems.N_systems;
 model StructureSystem "结构分系统"
-  parameter NISSA_12UCubeSat.Scenarios.DesignConfigRecords.StructureDesignConfig designConfig "分系统硬件设计配置";
+  parameter OneSatSim.Scenarios.DesignConfigRecords.StructureDesignConfig designConfig "分系统硬件设计配置";
   Foundation.Interfaces.PowerPort power annotation(Placement(transformation(extent={{-10,90},{10,110}})));
   Foundation.Interfaces.ThermalPort thermal annotation(Placement(transformation(extent={{-10,-110},{10,-90}})));
   Foundation.Interfaces.MechanicalPort mechanical annotation(Placement(transformation(extent={{-112,-10},{-92,10}})));

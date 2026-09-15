@@ -1,4 +1,4 @@
-within NISSA_12UCubeSat.Foundation.Interfaces;
+within OneSatSim.Foundation.Interfaces;
 connector MissionStateSignals "Authoritative mission state and action requests"
   MissionModeSignal missionMode;
   ControlModeSignal controlMode;

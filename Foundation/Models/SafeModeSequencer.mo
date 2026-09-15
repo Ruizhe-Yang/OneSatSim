@@ -1,11 +1,11 @@
-within NISSA_12UCubeSat.Foundation.Models;
+within OneSatSim.Foundation.Models;
 model SafeModeSequencer "请求驱动的安全进入、保持与恢复时序器"
   Modelica.Blocks.Interfaces.IntegerInput actionRequestId annotation(Placement(transformation(extent={{-112,25},{-92,45}})));
-  NISSA_12UCubeSat.Foundation.Interfaces.CommandTypeInput actionCommand;
+  OneSatSim.Foundation.Interfaces.CommandTypeInput actionCommand;
   Modelica.Blocks.Interfaces.IntegerOutput safeEntryCompleteEventId;
   Modelica.Blocks.Interfaces.IntegerOutput recoveryCompleteEventId;
-  NISSA_12UCubeSat.Foundation.Interfaces.SafetySignals safety annotation(Placement(transformation(extent={{-112,-45},{-92,-25}})));
-  NISSA_12UCubeSat.Foundation.Interfaces.SafeModeActionSignals action annotation(Placement(transformation(extent={{92,-10},{112,10}})));
+  OneSatSim.Foundation.Interfaces.SafetySignals safety annotation(Placement(transformation(extent={{-112,-45},{-92,-25}})));
+  OneSatSim.Foundation.Interfaces.SafeModeActionSignals action annotation(Placement(transformation(extent={{92,-10},{112,10}})));
   parameter Real safeEntryTime(unit="s")=5;
   parameter Real recoveryHoldTime(unit="s")=600;
   parameter Real stagedRecoveryTime(unit="s")=30;
@@ -21,7 +21,7 @@ protected
   discrete Integer recoveryEventId(start=0,fixed=true);
   Modelica.Blocks.Interfaces.IntegerOutput safeEntryCompleteEventIdPublisher annotation(Placement(visible=false, transformation(extent={{-4,-4},{4,4}})));
   Modelica.Blocks.Interfaces.IntegerOutput recoveryCompleteEventIdPublisher annotation(Placement(visible=false, transformation(extent={{-4,-4},{4,4}})));
-  NISSA_12UCubeSat.Foundation.Interfaces.IntegerSignalBridge actionIntegerBridge[2] annotation(Placement(visible=false, transformation(extent={{-4,-4},{4,4}})));
+  OneSatSim.Foundation.Interfaces.IntegerSignalBridge actionIntegerBridge[2] annotation(Placement(visible=false, transformation(extent={{-4,-4},{4,4}})));
 equation
   action.safeEntryComplete=safeEntryCompleteLatch;
   action.recoveryReady=recoveryReadyLatch;
@@ -34,7 +34,7 @@ algorithm
   when {change(actionRequestId),change(safety.recoveryAllowed),
       time >= safeEntryDeadline,time >= recoveryDeadline,time >= stagedRecoveryDeadline} then
     if change(actionRequestId) and
-        actionCommand == NISSA_12UCubeSat.Foundation.Types.CommandType.EnterSafeMode then
+        actionCommand == OneSatSim.Foundation.Types.CommandType.EnterSafeMode then
       activeRequest:=actionRequestId;
       safeEntryDeadline:=time+safeEntryTime;
       recoveryDeadline:=1e100;
@@ -43,7 +43,7 @@ algorithm
       recoveryReadyLatch:=false;
       recoveryCompleteLatch:=false;
     elseif change(actionRequestId) and
-        actionCommand == NISSA_12UCubeSat.Foundation.Types.CommandType.ExitSafeMode then
+        actionCommand == OneSatSim.Foundation.Types.CommandType.ExitSafeMode then
       activeRequest:=actionRequestId;
       safeEntryDeadline:=1e100;
       recoveryDeadline:=1e100;

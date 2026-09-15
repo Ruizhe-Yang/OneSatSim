@@ -1,6 +1,6 @@
-within NISSA_12UCubeSat.Components;
+within OneSatSim.Components;
 model BodyMountedSolarArrayPlusXUnit "+X长侧面体装太阳电池组件"
-  parameter NISSA_12UCubeSat.Scenarios.DesignConfigRecords.SolarArrayPlusXComponentConfig config
+  parameter OneSatSim.Scenarios.DesignConfigRecords.SolarArrayPlusXComponentConfig config
     "由所属N-System传入的硬件设计配置";
   parameter Modelica.Units.SI.Resistance harnessResistance=config.HarnessResistance
     "太阳阵线束/阻断路径电阻；Excel单位Ω，当前设计基线";

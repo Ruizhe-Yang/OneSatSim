@@ -1,4 +1,4 @@
-within NISSA_12UCubeSat.Foundation.Models;
+within OneSatSim.Foundation.Models;
 model BatteryCellStackCore "带SOC信号接口的电化学电池栈核心"
   parameter Integer Ns(min=1)=1 "串联电芯数";
   parameter Integer Np(min=1)=1 "并联电芯数";

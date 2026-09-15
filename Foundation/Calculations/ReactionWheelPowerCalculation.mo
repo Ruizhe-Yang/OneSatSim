@@ -1,4 +1,4 @@
-within NISSA_12UCubeSat.Foundation.Calculations;
+within OneSatSim.Foundation.Calculations;
 model ReactionWheelPowerCalculation "反作用飞轮平均值机电热功率计算"
   parameter Real etaMotor(min=0.1,max=1)=1
     "电动工况平均效率；缺少器件数据时取1作为透明功率闭合基线";

@@ -16,8 +16,8 @@ ROOT = Path(__file__).resolve().parents[1]
 REF = ROOT / "work" / "asrtu_refactor" / "references" / "ASRTU_Codex_Reference_Assets"
 CATALOG = REF / "ASRTU_PACKET_CATALOG_CROSSCHECK.csv"
 FIELDS = REF / "ASRTU_REAL_TELEMETRY_FIELDS_NORMALIZED.csv"
-TYPES = ROOT / "NISSA_12UCubeSat" / "Foundation" / "Types"
-FUNCS = ROOT / "NISSA_12UCubeSat" / "Foundation" / "Functions"
+TYPES = ROOT / "Foundation" / "Types"
+FUNCS = ROOT / "Foundation" / "Functions"
 DOCS = ROOT / "docs"
 
 
@@ -54,7 +54,7 @@ def generate_catalog(rows: list[dict[str, str]]) -> None:
     opaque_names = {"NVE-S0", "SPT-S0", "FAM-S0"}
     scheduled = ["false" if r["packet_code"] in schema_only | opaque_names else "true" for r in rows]
     opaque = ["true" if r["packet_code"] in opaque_names else "false" for r in rows]
-    content = f'''within NISSA_12UCubeSat.Foundation.Types;
+    content = f'''within OneSatSim.Foundation.Types;
 package TelemetryCatalog "ASRTU-1真实遥测包目录（生成文件）"
   constant Integer packetCount={len(rows)};
   constant String packetCode[packetCount]={{{','.join(map(quote, names))}}};
@@ -71,7 +71,7 @@ end TelemetryCatalog;
 
 
 FUNCTIONS: dict[str, str] = {
-"encodeUInt8.mo": '''within NISSA_12UCubeSat.Foundation.Functions;
+"encodeUInt8.mo": '''within OneSatSim.Foundation.Functions;
 function encodeUInt8
   input Integer value;
   output Integer byte;
@@ -79,7 +79,7 @@ algorithm
   byte := mod(max(0, min(255, value)), 256);
 end encodeUInt8;
 ''',
-"decodeUInt8.mo": '''within NISSA_12UCubeSat.Foundation.Functions;
+"decodeUInt8.mo": '''within OneSatSim.Foundation.Functions;
 function decodeUInt8
   input Integer byte;
   output Integer value;
@@ -87,7 +87,7 @@ algorithm
   value := mod(byte, 256);
 end decodeUInt8;
 ''',
-"encodeInt8.mo": '''within NISSA_12UCubeSat.Foundation.Functions;
+"encodeInt8.mo": '''within OneSatSim.Foundation.Functions;
 function encodeInt8
   input Integer value;
   output Integer byte;
@@ -95,7 +95,7 @@ algorithm
   byte := if value < 0 then 256 + max(-128, value) else min(127, value);
 end encodeInt8;
 ''',
-"decodeInt8.mo": '''within NISSA_12UCubeSat.Foundation.Functions;
+"decodeInt8.mo": '''within OneSatSim.Foundation.Functions;
 function decodeInt8
   input Integer byte;
   output Integer value;
@@ -103,7 +103,7 @@ algorithm
   value := if mod(byte, 256) >= 128 then mod(byte, 256) - 256 else mod(byte, 256);
 end decodeInt8;
 ''',
-"encodeUInt16BE.mo": '''within NISSA_12UCubeSat.Foundation.Functions;
+"encodeUInt16BE.mo": '''within OneSatSim.Foundation.Functions;
 function encodeUInt16BE
   input Integer value;
   output Integer bytes[2];
@@ -114,7 +114,7 @@ algorithm
   bytes := {div(v,256), mod(v,256)};
 end encodeUInt16BE;
 ''',
-"decodeUInt16BE.mo": '''within NISSA_12UCubeSat.Foundation.Functions;
+"decodeUInt16BE.mo": '''within OneSatSim.Foundation.Functions;
 function decodeUInt16BE
   input Integer bytes[2];
   output Integer value;
@@ -122,7 +122,7 @@ algorithm
   value := 256*mod(bytes[1],256) + mod(bytes[2],256);
 end decodeUInt16BE;
 ''',
-"encodeInt16BE.mo": '''within NISSA_12UCubeSat.Foundation.Functions;
+"encodeInt16BE.mo": '''within OneSatSim.Foundation.Functions;
 function encodeInt16BE
   input Integer value;
   output Integer bytes[2];
@@ -130,21 +130,21 @@ protected
   Integer v;
 algorithm
   v := if value < 0 then 65536 + max(-32768,value) else min(32767,value);
-  bytes := NISSA_12UCubeSat.Foundation.Functions.encodeUInt16BE(v);
+  bytes := OneSatSim.Foundation.Functions.encodeUInt16BE(v);
 end encodeInt16BE;
 ''',
-"decodeInt16BE.mo": '''within NISSA_12UCubeSat.Foundation.Functions;
+"decodeInt16BE.mo": '''within OneSatSim.Foundation.Functions;
 function decodeInt16BE
   input Integer bytes[2];
   output Integer value;
 protected
   Integer u;
 algorithm
-  u := NISSA_12UCubeSat.Foundation.Functions.decodeUInt16BE(bytes);
+  u := OneSatSim.Foundation.Functions.decodeUInt16BE(bytes);
   value := if u >= 32768 then u - 65536 else u;
 end decodeInt16BE;
 ''',
-"encodeUInt24BE.mo": '''within NISSA_12UCubeSat.Foundation.Functions;
+"encodeUInt24BE.mo": '''within OneSatSim.Foundation.Functions;
 function encodeUInt24BE
   input Integer value;
   output Integer bytes[3];
@@ -154,7 +154,7 @@ algorithm
   bytes := {mod(div(v,65536),256),mod(div(v,256),256),mod(v,256)};
 end encodeUInt24BE;
 ''',
-"decodeUInt24BE.mo": '''within NISSA_12UCubeSat.Foundation.Functions;
+"decodeUInt24BE.mo": '''within OneSatSim.Foundation.Functions;
 function decodeUInt24BE
   input Integer bytes[3];
   output Integer value;
@@ -162,7 +162,7 @@ algorithm
   value := mod(bytes[1],256)*65536+mod(bytes[2],256)*256+mod(bytes[3],256);
 end decodeUInt24BE;
 ''',
-"encodeInt24BE.mo": '''within NISSA_12UCubeSat.Foundation.Functions;
+"encodeInt24BE.mo": '''within OneSatSim.Foundation.Functions;
 function encodeInt24BE
   input Integer value;
   output Integer bytes[3];
@@ -170,20 +170,20 @@ protected Integer limited; Integer raw;
 algorithm
   limited := min(8388607,max(-8388608,value));
   raw := if limited < 0 then 16777216+limited else limited;
-  bytes := NISSA_12UCubeSat.Foundation.Functions.encodeUInt24BE(raw);
+  bytes := OneSatSim.Foundation.Functions.encodeUInt24BE(raw);
 end encodeInt24BE;
 ''',
-"decodeInt24BE.mo": '''within NISSA_12UCubeSat.Foundation.Functions;
+"decodeInt24BE.mo": '''within OneSatSim.Foundation.Functions;
 function decodeInt24BE
   input Integer bytes[3];
   output Integer value;
 protected Integer raw;
 algorithm
-  raw := NISSA_12UCubeSat.Foundation.Functions.decodeUInt24BE(bytes);
+  raw := OneSatSim.Foundation.Functions.decodeUInt24BE(bytes);
   value := if raw >= 8388608 then raw-16777216 else raw;
 end decodeInt24BE;
 ''',
-"encodeUInt32BE.mo": '''within NISSA_12UCubeSat.Foundation.Functions;
+"encodeUInt32BE.mo": '''within OneSatSim.Foundation.Functions;
 function encodeUInt32BE
   input Integer value;
   output Integer bytes[4];
@@ -194,7 +194,7 @@ algorithm
   bytes := {mod(div(v,16777216),256),mod(div(v,65536),256),mod(div(v,256),256),mod(v,256)};
 end encodeUInt32BE;
 ''',
-"decodeUInt32BE.mo": '''within NISSA_12UCubeSat.Foundation.Functions;
+"decodeUInt32BE.mo": '''within OneSatSim.Foundation.Functions;
 function decodeUInt32BE
   input Integer bytes[4];
   output Integer value;
@@ -202,7 +202,7 @@ algorithm
   value := 16777216*mod(bytes[1],256) + 65536*mod(bytes[2],256) + 256*mod(bytes[3],256) + mod(bytes[4],256);
 end decodeUInt32BE;
 ''',
-"encodeInt32BE.mo": '''within NISSA_12UCubeSat.Foundation.Functions;
+"encodeInt32BE.mo": '''within OneSatSim.Foundation.Functions;
 function encodeInt32BE
   input Integer value;
   output Integer bytes[4];
@@ -210,21 +210,21 @@ protected
   Integer v;
 algorithm
   v := if value < 0 then 4294967296 + max(-2147483648,value) else min(2147483647,value);
-  bytes := NISSA_12UCubeSat.Foundation.Functions.encodeUInt32BE(v);
+  bytes := OneSatSim.Foundation.Functions.encodeUInt32BE(v);
 end encodeInt32BE;
 ''',
-"decodeInt32BE.mo": '''within NISSA_12UCubeSat.Foundation.Functions;
+"decodeInt32BE.mo": '''within OneSatSim.Foundation.Functions;
 function decodeInt32BE
   input Integer bytes[4];
   output Integer value;
 protected
   Integer u;
 algorithm
-  u := NISSA_12UCubeSat.Foundation.Functions.decodeUInt32BE(bytes);
+  u := OneSatSim.Foundation.Functions.decodeUInt32BE(bytes);
   value := if u >= 2147483648 then u - 4294967296 else u;
 end decodeInt32BE;
 ''',
-"encodeFloat32BE.mo": '''within NISSA_12UCubeSat.Foundation.Functions;
+"encodeFloat32BE.mo": '''within OneSatSim.Foundation.Functions;
 function encodeFloat32BE "IEEE-754 binary32, big-endian"
   input Real value;
   output Integer bytes[4];
@@ -248,10 +248,10 @@ algorithm
     end if;
     word := signBit*2147483648 + (exponent + 127)*8388608 + mantissa;
   end if;
-  bytes := NISSA_12UCubeSat.Foundation.Functions.encodeUInt32BE(word);
+  bytes := OneSatSim.Foundation.Functions.encodeUInt32BE(word);
 end encodeFloat32BE;
 ''',
-"decodeFloat32BE.mo": '''within NISSA_12UCubeSat.Foundation.Functions;
+"decodeFloat32BE.mo": '''within OneSatSim.Foundation.Functions;
 function decodeFloat32BE "IEEE-754 binary32, big-endian"
   input Integer bytes[4];
   output Real value;
@@ -261,7 +261,7 @@ protected
   Integer exponentBits;
   Integer mantissa;
 algorithm
-  word := NISSA_12UCubeSat.Foundation.Functions.decodeUInt32BE(bytes);
+  word := OneSatSim.Foundation.Functions.decodeUInt32BE(bytes);
   signBit := div(word,2147483648);
   exponentBits := mod(div(word,8388608),256);
   mantissa := mod(word,8388608);

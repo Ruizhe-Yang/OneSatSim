@@ -1,4 +1,4 @@
-within NISSA_12UCubeSat.Foundation.Functions;
+within OneSatSim.Foundation.Functions;
 
 function decodeUInt24BE "大端24位无符号整数解码函数"input Integer bytes[3];
 

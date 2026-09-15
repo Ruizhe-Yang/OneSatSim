@@ -1,4 +1,4 @@
-within NISSA_12UCubeSat.Foundation.Functions;
+within OneSatSim.Foundation.Functions;
 function estimateGroundContactDuration
   "按当前相对运动估算预测时域内超过最低仰角的累计时长"
   input Real stationRelative[3] "地面站到航天器的相对位置";

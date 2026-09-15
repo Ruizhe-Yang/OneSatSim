@@ -1,10 +1,10 @@
-within NISSA_12UCubeSat.Simulation;
+within OneSatSim.Simulation;
 model CompleteMission "真实历元完整任务仿真入口"
-  parameter NISSA_12UCubeSat.Scenarios.GeneratedScenario scenario=
-    NISSA_12UCubeSat.Scenarios.GeneratedScenario()
+  parameter OneSatSim.Scenarios.GeneratedScenario scenario=
+    OneSatSim.Scenarios.GeneratedScenario()
     "由根目录DesignConfig.xlsx离线生成的任务场景与初始条件";
-  parameter NISSA_12UCubeSat.Scenarios.GeneratedSpacecraftDesignConfig designConfig=
-    NISSA_12UCubeSat.Scenarios.GeneratedSpacecraftDesignConfig()
+  parameter OneSatSim.Scenarios.GeneratedSpacecraftDesignConfig designConfig=
+    OneSatSim.Scenarios.GeneratedSpacecraftDesignConfig()
     "由根目录DesignConfig.xlsx离线生成的整星硬件设计配置";
   Systems.SpacecraftSystem spacecraft(scenario=scenario,designConfig=designConfig) annotation(Placement(transformation(origin={-17,-8.88178e-16},
 extent={{-45,-45},{45,45}})));

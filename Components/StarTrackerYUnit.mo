@@ -1,6 +1,6 @@
-within NISSA_12UCubeSat.Components;
+within OneSatSim.Components;
 model StarTrackerYUnit "Y向星敏感器组件"
-  parameter NISSA_12UCubeSat.Scenarios.DesignConfigRecords.StarYComponentConfig config
+  parameter OneSatSim.Scenarios.DesignConfigRecords.StarYComponentConfig config
     "由所属N-System传入的硬件设计配置";
   parameter Modelica.Units.SI.Resistance loadResistance=config.LoadResistance
     "starY等效负载电阻；Excel单位Ω，当前设计基线";

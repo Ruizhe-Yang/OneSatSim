@@ -1,4 +1,4 @@
-within NISSA_12UCubeSat.Scenarios;
+within OneSatSim.Scenarios;
 record OrbitConfig "真实历元轨道输入与生成环境资源配置"
   import SI=Modelica.Units.SI;
   parameter SI.Length semiMajorAxis "半长轴";

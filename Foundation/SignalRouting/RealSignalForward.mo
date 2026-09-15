@@ -1,4 +1,4 @@
-within NISSA_12UCubeSat.Foundation.SignalRouting;
+within OneSatSim.Foundation.SignalRouting;
 model RealSignalForward "Real信号显式转发"
   Modelica.Blocks.Interfaces.RealInput u annotation(Placement(transformation(extent={{-120,-20},{-80,20}})));
   Modelica.Blocks.Interfaces.RealOutput y annotation(Placement(transformation(extent={{80,-10},{100,10}})));

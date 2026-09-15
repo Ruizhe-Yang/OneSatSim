@@ -1,4 +1,4 @@
-within NISSA_12UCubeSat.Foundation.Functions;
+within OneSatSim.Foundation.Functions;
 
 function decodeInt24BE "大端24位有符号整数解码函数"input Integer bytes[3];
 
@@ -8,7 +8,7 @@ protected Integer raw;
 
 algorithm
 
-  raw := NISSA_12UCubeSat.Foundation.Functions.decodeUInt24BE(bytes);
+  raw := OneSatSim.Foundation.Functions.decodeUInt24BE(bytes);
 
   value := if raw >= 8388608 then raw-16777216 else raw;
 

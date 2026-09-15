@@ -12,7 +12,7 @@ import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-COMP = ROOT / "NISSA_12UCubeSat" / "Components"
+COMP = ROOT / "Components"
 
 RAILS = {
     "12": ("p12", "n12", "{{-98,-94},{-86,-82}}", "{-98,-88}", "{-86,-88}"),

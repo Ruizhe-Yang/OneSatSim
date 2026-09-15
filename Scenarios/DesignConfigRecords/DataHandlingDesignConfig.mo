@@ -1,4 +1,4 @@
-within NISSA_12UCubeSat.Scenarios.DesignConfigRecords;
+within OneSatSim.Scenarios.DesignConfigRecords;
 record DataHandlingDesignConfig "dataHandling分系统设计配置"
   parameter ObcComponentConfig obc;
   parameter RecorderComponentConfig recorder;

@@ -1,4 +1,4 @@
-within NISSA_12UCubeSat.Scenarios.DesignConfigRecords;
+within OneSatSim.Scenarios.DesignConfigRecords;
 record XbandComponentConfig "xband硬件设计配置"
   parameter Real NominalDataRate(unit="1/s")
     "X波段名义数据率；Excel工程单位byte/s";

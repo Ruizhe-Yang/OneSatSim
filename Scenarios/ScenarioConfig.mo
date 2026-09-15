@@ -1,6 +1,6 @@
-within NISSA_12UCubeSat.Scenarios;
+within OneSatSim.Scenarios;
 record ScenarioConfig "完整静态场景配置"
-  parameter NISSA_12UCubeSat.Foundation.Types.MassProperties massProperties
+  parameter OneSatSim.Foundation.Types.MassProperties massProperties
     "由活动机械刚体离线汇总的统一整星质量、质心与惯量";
   parameter Boolean operationalSnapshotStart
     "从已进入稳定在轨运行状态的快照开始24 h试验";

@@ -1,4 +1,4 @@
-within NISSA_12UCubeSat.Scenarios.DesignConfigRecords;
+within OneSatSim.Scenarios.DesignConfigRecords;
 record GnssComponentConfig "gnss硬件设计配置"
   parameter Modelica.Units.SI.Resistance RFDigitalLoadResistance
     "GNSS射频/数字负载电阻；Excel工程单位Ω";

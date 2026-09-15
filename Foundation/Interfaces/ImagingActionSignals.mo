@@ -1,4 +1,4 @@
-within NISSA_12UCubeSat.Foundation.Interfaces;
+within OneSatSim.Foundation.Interfaces;
 connector ImagingActionSignals "Imaging action state and event identifiers"
   ImagingPhaseSignal phase;
   BooleanSignal payloadPowerCommand;

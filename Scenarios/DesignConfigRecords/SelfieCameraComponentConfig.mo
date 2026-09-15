@@ -1,4 +1,4 @@
-within NISSA_12UCubeSat.Scenarios.DesignConfigRecords;
+within OneSatSim.Scenarios.DesignConfigRecords;
 record SelfieCameraComponentConfig "selfieCamera硬件设计配置"
   parameter Real ImagingDataRate(unit="1/s")
     "自拍相机写入率；Excel工程单位byte/s";

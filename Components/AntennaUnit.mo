@@ -1,6 +1,6 @@
-within NISSA_12UCubeSat.Components;
+within OneSatSim.Components;
 model AntennaUnit "X波段贴片与测控天线组件"
-  parameter NISSA_12UCubeSat.Scenarios.DesignConfigRecords.AntennaComponentConfig config
+  parameter OneSatSim.Scenarios.DesignConfigRecords.AntennaComponentConfig config
     "由所属N-System传入的硬件设计配置";
   parameter Modelica.Units.SI.HeatCapacity patchHeatCapacity=config.PatchHeatCapacity
     "天线贴片等效热容；Excel单位J/K，当前设计基线";

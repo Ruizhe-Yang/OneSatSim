@@ -27,7 +27,7 @@ from prepare_ephemeris import (  # noqa: E402
     parse_absolute_time,
     prepare_environment,
 )
-from update_nissa_config import parse_orbit, parse_simulation  # noqa: E402
+from update_onesatsim_config import parse_orbit, parse_simulation  # noqa: E402
 
 
 def set_parameter(workbook: Any, sheet: str, name: str, value: Any, unit: str | None = None) -> None:

@@ -1,4 +1,4 @@
-within NISSA_12UCubeSat.Components;
+within OneSatSim.Components;
 model SolarArrayWing2Unit "太阳翼2双串组件"
   parameter Modelica.Units.SI.Area stringAreaA=0.0725 "SYSTEM-LEVEL EQUIVALENT area for 24 h battery charge balance";
   parameter Modelica.Units.SI.Area stringAreaB=0.0725 "SYSTEM-LEVEL EQUIVALENT area for 24 h battery charge balance";

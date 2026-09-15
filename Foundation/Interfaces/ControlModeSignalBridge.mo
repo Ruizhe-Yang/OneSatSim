@@ -1,8 +1,8 @@
-within NISSA_12UCubeSat.Foundation.Interfaces;
+within OneSatSim.Foundation.Interfaces;
 model ControlModeSignalBridge "控制模式因果输出到可扩展信息总线的无状态恒等桥"
-  NISSA_12UCubeSat.Foundation.Interfaces.ControlModeInput u
+  OneSatSim.Foundation.Interfaces.ControlModeInput u
     annotation(Placement(transformation(extent={{-110,-10},{-90,10}})));
-  NISSA_12UCubeSat.Foundation.Interfaces.ControlModeOutput y
+  OneSatSim.Foundation.Interfaces.ControlModeOutput y
     annotation(Placement(transformation(extent={{90,-10},{110,10}})));
 equation
   y=u;

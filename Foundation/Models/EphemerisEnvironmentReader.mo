@@ -1,4 +1,4 @@
-within NISSA_12UCubeSat.Foundation.Models;
+within OneSatSim.Foundation.Models;
 model EphemerisEnvironmentReader "真实历元轨道与地球定向环境表读取器"
   import SI=Modelica.Units.SI;
   parameter String dataURI "modelica://资源URI";

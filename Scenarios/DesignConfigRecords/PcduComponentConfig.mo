@@ -1,4 +1,4 @@
-within NISSA_12UCubeSat.Scenarios.DesignConfigRecords;
+within OneSatSim.Scenarios.DesignConfigRecords;
 record PcduComponentConfig "pcdu硬件设计配置"
   parameter Real RegulatorEfficiency12
     "12V主变换效率；Excel工程单位1";

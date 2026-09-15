@@ -1,4 +1,4 @@
-within NISSA_12UCubeSat.Scenarios.DesignConfigRecords;
+within OneSatSim.Scenarios.DesignConfigRecords;
 record GncDesignConfig "gnc分系统设计配置"
   parameter ComputerComponentConfig computer;
   parameter MagnetometerComponentConfig magnetometer;

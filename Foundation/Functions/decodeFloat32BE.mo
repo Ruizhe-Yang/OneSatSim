@@ -1,4 +1,4 @@
-within NISSA_12UCubeSat.Foundation.Functions;
+within OneSatSim.Foundation.Functions;
 
 function decodeFloat32BE "大端IEEE-754 binary32解码函数"
 
@@ -18,7 +18,7 @@ protected
 
 algorithm
 
-  word := NISSA_12UCubeSat.Foundation.Functions.decodeUInt32BE(bytes);
+  word := OneSatSim.Foundation.Functions.decodeUInt32BE(bytes);
 
   signBit := div(word,2147483648);
 

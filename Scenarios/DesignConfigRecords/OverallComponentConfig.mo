@@ -1,4 +1,4 @@
-within NISSA_12UCubeSat.Scenarios.DesignConfigRecords;
+within OneSatSim.Scenarios.DesignConfigRecords;
 record OverallComponentConfig "overall硬件设计配置"
   parameter Real BodySolarAbsorptivity
     "裸露本体太阳吸收率；Excel工程单位1";

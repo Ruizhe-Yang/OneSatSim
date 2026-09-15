@@ -1,4 +1,4 @@
-within NISSA_12UCubeSat.Foundation.Interfaces;
+within OneSatSim.Foundation.Interfaces;
 expandable connector OnboardTelemetryPort "星上工程遥测接口"
   RealSignal SAT_S0_busVoltage_V[3];
   RealSignal SAT_S0_busCurrent_A[3];

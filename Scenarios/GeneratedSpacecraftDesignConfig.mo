@@ -1,4 +1,4 @@
-within NISSA_12UCubeSat.Scenarios;
+within OneSatSim.Scenarios;
 record GeneratedSpacecraftDesignConfig "由根目录DesignConfig.xlsx生成的整星设计配置"
   extends SpacecraftDesignConfig(
     communication=DesignConfigRecords.CommunicationDesignConfig(

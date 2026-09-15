@@ -1,4 +1,4 @@
-within NISSA_12UCubeSat.Foundation.Functions;
+within OneSatSim.Foundation.Functions;
 
 function decodeInt16BE "大端16位有符号整数解码函数"input Integer bytes[2];
 
@@ -10,7 +10,7 @@ protected
 
 algorithm
 
-  u := NISSA_12UCubeSat.Foundation.Functions.decodeUInt16BE(bytes);
+  u := OneSatSim.Foundation.Functions.decodeUInt16BE(bytes);
 
   value := if u >= 32768 then u - 65536 else u;
 

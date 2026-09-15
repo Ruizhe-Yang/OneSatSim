@@ -1,4 +1,4 @@
-"""NISSA 根目录 DesignConfig.xlsx 的结构与物理合法性规则。"""
+"""OneSatSim 根目录 DesignConfig.xlsx 的结构与物理合法性规则。"""
 
 from __future__ import annotations
 

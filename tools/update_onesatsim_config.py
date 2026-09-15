@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate DesignConfig.xlsx and update the single NISSA Modelica configuration chain."""
+"""Validate DesignConfig.xlsx and update the single OneSatSim Modelica configuration chain."""
 
 from __future__ import annotations
 
@@ -236,7 +236,7 @@ def generated_design_text(rows: list[dict[str, Any]], overrides: list[dict[str, 
             f"{subsystem}=DesignConfigRecords.{subsystem_record}(\n      " + ",\n      ".join(instance_bindings) + ")"
         )
     extends_clause = "  extends SpacecraftDesignConfig(\n    " + ",\n    ".join(subsystem_bindings) + ");"
-    return f'''within NISSA_12UCubeSat.Scenarios;
+    return f'''within OneSatSim.Scenarios;
 record GeneratedSpacecraftDesignConfig "由根目录DesignConfig.xlsx生成的整星设计配置"
 {extends_clause}
   annotation(Documentation(info="<html><h4>生成规则</h4><p>UseDefault=FALSE字段保存经SI转换的Excel覆盖；其余字段均引用包常量defaultSpacecraftDesignConfig中的DefaultSpacecraftDesignConfig，不复制数值默认值。</p></html>"));
@@ -489,7 +489,7 @@ def orbit_record_literal(orbit: dict[str, Any], metadata: dict[str, Any]) -> str
         f"simulationDuration={modelica_literal(metadata['durationSeconds'])}",
         f"environmentSampleInterval={modelica_literal(metadata['finalSampleInterval'])}",
         f"environmentTableRows={int(metadata['tableRows'])}",
-        'environmentDataURI="modelica://NISSA_12UCubeSat/Resources/Data/GeneratedEphemeris/environment.txt"',
+        'environmentDataURI="modelica://OneSatSim/Resources/Data/GeneratedEphemeris/environment.txt"',
         'environmentTableName="environment"',
     ]
     return "OrbitConfig(" + ",".join(fields) + ")"
@@ -502,11 +502,11 @@ def generated_scenario_text(orbit_literal: str, top: list[str], initial: list[st
         modifiers.append("initialConditions(" + ",".join(initial) + ")")
     modifiers.append("groundStations=" + ground)
     modifiers.append("imagingTargets=" + targets)
-    return '''within NISSA_12UCubeSat.Scenarios;
+    return '''within OneSatSim.Scenarios;
 record GeneratedScenario "由根目录DesignConfig.xlsx生成的任务场景"
   extends DefaultScenario(
     %s);
-  annotation(Documentation(info="<html><p>场景、初值与站点/目标数据库由tools/update_nissa_config.py离线生成；硬件设计参数由GeneratedSpacecraftDesignConfig提供。</p></html>"));
+  annotation(Documentation(info="<html><p>场景、初值与站点/目标数据库由tools/update_onesatsim_config.py离线生成；硬件设计参数由GeneratedSpacecraftDesignConfig提供。</p></html>"));
 end GeneratedScenario;
 ''' % ",\n    ".join(modifiers)
 
@@ -861,7 +861,7 @@ def main() -> int:
     collector.raise_if_errors()
 
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
-    with tempfile.TemporaryDirectory(prefix="nissa_ephemeris_") as temporary_name:
+    with tempfile.TemporaryDirectory(prefix="onesatsim_ephemeris_") as temporary_name:
         staging = Path(temporary_name)
         metadata = prepare_environment({
             "resources": resources,
@@ -940,7 +940,7 @@ def main() -> int:
             raise RuntimeError("mass-properties audit failed:\n" + result.stdout)
 
     report = [
-        "# NISSA 设计配置更新报告",
+        "# OneSatSim 设计配置更新报告",
         "",
         f"- 场景名称：`{meta['scenarioName']}`",
         f"- 参数表：`{excel_path.name}`",
@@ -965,7 +965,7 @@ def main() -> int:
         "",
         "## 下一步",
         "",
-        "在 OpenModelica/OMEdit 中运行 `NISSA_12UCubeSat.Simulation.CompleteMission`。配置更新工具不会自动启动 MWorks，也不会自动运行24 h仿真。",
+        "在 OpenModelica/OMEdit 中运行 `OneSatSim.Simulation.CompleteMission`。配置更新工具不会自动启动 MWorks，也不会自动运行24 h仿真。",
         "",
     ]
     (OUTPUT_DIR / "config_update_report.md").write_text("\n".join(report), encoding="utf-8")
@@ -974,7 +974,7 @@ def main() -> int:
         error_log.unlink()
     print(f"[SUCCESS] 配置更新成功 / configuration updated: {len(components)} component parameters")
     print(f"[SUCCESS] 参数映射 / mapping audit: {len(audit)}/{len(audit)} PASS")
-    print("[INFO] Simulation entry: NISSA_12UCubeSat.Simulation.CompleteMission")
+    print("[INFO] Simulation entry: OneSatSim.Simulation.CompleteMission")
     return 0
 
 

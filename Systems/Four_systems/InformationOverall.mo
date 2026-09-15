@@ -1,4 +1,4 @@
-within NISSA_12UCubeSat.Systems.Four_systems;
+within OneSatSim.Systems.Four_systems;
 model InformationOverall "信息总体"
   Foundation.Interfaces.InformationPort subsystem[8] annotation(Placement(transformation(extent={{-112,-10},{-92,10}})));
 equation

@@ -1,6 +1,6 @@
-within NISSA_12UCubeSat.Components;
+within OneSatSim.Components;
 model FotonAmurPayloadUnit "科学载荷组件"
-  parameter NISSA_12UCubeSat.Scenarios.DesignConfigRecords.FotonAmurComponentConfig config
+  parameter OneSatSim.Scenarios.DesignConfigRecords.FotonAmurComponentConfig config
     "由所属N-System传入的硬件设计配置";
   parameter Modelica.Units.SI.Resistance electronicsResistance=config.ElectronicsResistance
     "FotonAmur电子学负载电阻；Excel单位Ω，当前设计基线";

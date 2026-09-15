@@ -1,4 +1,4 @@
-within NISSA_12UCubeSat.Foundation.Interfaces;
+within OneSatSim.Foundation.Interfaces;
 model RealSignalReader "可扩展总线实数信号到因果计算端口的无状态恒等读取器"
   Modelica.Blocks.Interfaces.RealInput u
     annotation(Placement(transformation(extent={{-110,-10},{-90,10}})));

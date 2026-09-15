@@ -1,4 +1,4 @@
-"""NISSA 设计配置的集中单位转换与 Modelica 字面量格式化。"""
+"""OneSatSim 设计配置的集中单位转换与 Modelica 字面量格式化。"""
 
 from __future__ import annotations
 

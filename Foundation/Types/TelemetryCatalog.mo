@@ -1,4 +1,4 @@
-within NISSA_12UCubeSat.Foundation.Types;
+within OneSatSim.Foundation.Types;
 
 package TelemetryCatalog "工程遥测包目录"
 

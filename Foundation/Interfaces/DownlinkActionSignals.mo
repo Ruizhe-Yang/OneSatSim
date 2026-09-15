@@ -1,4 +1,4 @@
-within NISSA_12UCubeSat.Foundation.Interfaces;
+within OneSatSim.Foundation.Interfaces;
 connector DownlinkActionSignals "Downlink action state and event identifiers"
   DownlinkPhaseSignal phase;
   BooleanSignal communicationPowerCommand;

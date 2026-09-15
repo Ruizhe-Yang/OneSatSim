@@ -1,4 +1,4 @@
-within NISSA_12UCubeSat.Scenarios.DesignConfigRecords;
+within OneSatSim.Scenarios.DesignConfigRecords;
 record BatteryComponentConfig "battery硬件设计配置"
   parameter Integer SeriesCellCount
     "串联电芯数；Excel工程单位1";

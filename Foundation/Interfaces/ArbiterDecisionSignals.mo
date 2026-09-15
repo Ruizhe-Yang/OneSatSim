@@ -1,4 +1,4 @@
-within NISSA_12UCubeSat.Foundation.Interfaces;
+within OneSatSim.Foundation.Interfaces;
 connector ArbiterDecisionSignals "Discrete command-arbitration decision"
   IntegerSignal decisionId;
   BooleanSignal accepted;

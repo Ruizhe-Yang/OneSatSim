@@ -1,4 +1,4 @@
-within NISSA_12UCubeSat.Foundation.Interfaces;
+within OneSatSim.Foundation.Interfaces;
 connector ActiveGeometrySignals "Geometry evaluated for the currently selected mission object"
   BooleanSignal activeTargetVisible;
   BooleanSignal activeTargetPreparationOpportunity;

@@ -1,4 +1,4 @@
-within NISSA_12UCubeSat.Foundation.Calculations;
+within OneSatSim.Foundation.Calculations;
 model HeaterChannelCalculation "单路加热器指令与平均电导计算"
   parameter Integer activeState=170 "加热有效状态字";
   parameter Modelica.Units.SI.Resistance heaterResistance=144 "等效加热电阻";

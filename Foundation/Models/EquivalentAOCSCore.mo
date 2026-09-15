@@ -1,9 +1,9 @@
-within NISSA_12UCubeSat.Foundation.Models;
+within OneSatSim.Foundation.Models;
 model EquivalentAOCSCore "低阶双矢量姿态控制核心"
-  parameter NISSA_12UCubeSat.Foundation.Types.MassProperties massProperties;
-  NISSA_12UCubeSat.Foundation.Interfaces.EnvironmentPort environment
+  parameter OneSatSim.Foundation.Types.MassProperties massProperties;
+  OneSatSim.Foundation.Interfaces.EnvironmentPort environment
     annotation(Placement(transformation(extent={{-112,-10},{-92,10}})));
-  NISSA_12UCubeSat.Foundation.Interfaces.InformationPort information
+  OneSatSim.Foundation.Interfaces.InformationPort information
     annotation(Placement(transformation(extent={{92,-10},{112,10}})));
   parameter Real maxManeuverRate(unit="rad/s")=2*Modelica.Constants.pi/180
     "系统级 finite attitude-service slew limit";
@@ -61,8 +61,8 @@ protected
   Modelica.Blocks.Interfaces.BooleanOutput imagingWindowReadyPublisher annotation(Placement(visible=false, transformation(extent={{-4,-4},{4,4}})));
   Modelica.Blocks.Interfaces.BooleanOutput imagingAttitudeReadyPublisher annotation(Placement(visible=false, transformation(extent={{-4,-4},{4,4}})));
   Modelica.Blocks.Interfaces.BooleanOutput groundLinkAttitudeReadyPublisher annotation(Placement(visible=false, transformation(extent={{-4,-4},{4,4}})));
-  NISSA_12UCubeSat.Foundation.Interfaces.ControlModeOutput actualControlModePublisher annotation(Placement(visible=false, transformation(extent={{-4,-4},{4,4}})));
-  NISSA_12UCubeSat.Foundation.Interfaces.AttitudeControlStateOutput attitudeControlStatePublisher annotation(Placement(visible=false, transformation(extent={{-4,-4},{4,4}})));
+  OneSatSim.Foundation.Interfaces.ControlModeOutput actualControlModePublisher annotation(Placement(visible=false, transformation(extent={{-4,-4},{4,4}})));
+  OneSatSim.Foundation.Interfaces.AttitudeControlStateOutput attitudeControlStatePublisher annotation(Placement(visible=false, transformation(extent={{-4,-4},{4,4}})));
   // ReferenceGenerator：依据任务模式构造太阳、目标或地面站双矢量参考
   Real quaternionSign;
   Real quaternionError[3];
@@ -148,10 +148,10 @@ equation
   quaternionSign=noEvent(if environment.quaternion[1] >= 0 then 1 else -1);
   quaternionError=2*quaternionSign*environment.quaternion[2:4];
   quaternionAngle=2*acos(noEvent(max(0,min(1,abs(environment.quaternion[1])))));
-  sunMode=information.command.desiredControlMode == NISSA_12UCubeSat.Foundation.Types.ControlMode.SunPointing or
-    information.command.desiredControlMode == NISSA_12UCubeSat.Foundation.Types.ControlMode.SafeMode;
-  targetMode=information.command.desiredControlMode == NISSA_12UCubeSat.Foundation.Types.ControlMode.TargetPointing;
-  groundMode=information.command.desiredControlMode == NISSA_12UCubeSat.Foundation.Types.ControlMode.GroundPointing;
+  sunMode=information.command.desiredControlMode == OneSatSim.Foundation.Types.ControlMode.SunPointing or
+    information.command.desiredControlMode == OneSatSim.Foundation.Types.ControlMode.SafeMode;
+  targetMode=information.command.desiredControlMode == OneSatSim.Foundation.Types.ControlMode.TargetPointing;
+  groundMode=information.command.desiredControlMode == OneSatSim.Foundation.Types.ControlMode.GroundPointing;
   vectorMode=sunMode or targetMode or groundMode;
   taskVectorMode=targetMode or groundMode;
   rawPrimaryReference=if targetMode then environment.activeTargetVectorBody else
@@ -222,7 +222,7 @@ equation
       (-wheelTorqueLimit[i]-rotorTorqueBase[i])/nullVector[i],
       ( wheelTorqueLimit[i]-rotorTorqueBase[i])/nullVector[i]));
   end for;
-  balanceEnabled=information.command.desiredControlMode == NISSA_12UCubeSat.Foundation.Types.ControlMode.SunPointing and
+  balanceEnabled=information.command.desiredControlMode == OneSatSim.Foundation.Types.ControlMode.SunPointing and
     not information.command.safeMode;
   balanceActivation=noEvent(max(wheelPenaltyActivation));
   balanceError=nullVector*weightedWheelMomentum;
@@ -277,13 +277,13 @@ equation
   groundLinkSettlingTimer.u=groundLinkQuality;
   groundLinkAttitudeReadyPublisher=groundLinkSettlingTimer.y >= settleDwellTime;
   actualControlModePublisher=if dwellComplete then information.command.desiredControlMode else
-    NISSA_12UCubeSat.Foundation.Types.ControlMode.Initialization;
-  attitudeControlStatePublisher=if anyWheelSaturated then NISSA_12UCubeSat.Foundation.Types.AttitudeControlState.Saturated else
-    if information.command.desiredControlMode == NISSA_12UCubeSat.Foundation.Types.ControlMode.Initialization then NISSA_12UCubeSat.Foundation.Types.AttitudeControlState.Initialization else
-    if not pointingQuality then NISSA_12UCubeSat.Foundation.Types.AttitudeControlState.Slewing else
-    if not dwellComplete then NISSA_12UCubeSat.Foundation.Types.AttitudeControlState.Settling else
-    if information.command.desiredControlMode == NISSA_12UCubeSat.Foundation.Types.ControlMode.SafeMode then NISSA_12UCubeSat.Foundation.Types.AttitudeControlState.SafeMode else
-    if information.command.desiredControlMode == NISSA_12UCubeSat.Foundation.Types.ControlMode.SunPointing then NISSA_12UCubeSat.Foundation.Types.AttitudeControlState.SunPointing else NISSA_12UCubeSat.Foundation.Types.AttitudeControlState.Tracking;
+    OneSatSim.Foundation.Types.ControlMode.Initialization;
+  attitudeControlStatePublisher=if anyWheelSaturated then OneSatSim.Foundation.Types.AttitudeControlState.Saturated else
+    if information.command.desiredControlMode == OneSatSim.Foundation.Types.ControlMode.Initialization then OneSatSim.Foundation.Types.AttitudeControlState.Initialization else
+    if not pointingQuality then OneSatSim.Foundation.Types.AttitudeControlState.Slewing else
+    if not dwellComplete then OneSatSim.Foundation.Types.AttitudeControlState.Settling else
+    if information.command.desiredControlMode == OneSatSim.Foundation.Types.ControlMode.SafeMode then OneSatSim.Foundation.Types.AttitudeControlState.SafeMode else
+    if information.command.desiredControlMode == OneSatSim.Foundation.Types.ControlMode.SunPointing then OneSatSim.Foundation.Types.AttitudeControlState.SunPointing else OneSatSim.Foundation.Types.AttitudeControlState.Tracking;
   connect(wheelCommandPublisher[1],informationRealBridge[1].u) annotation(Line(points={{78,60},{102,60},{102,0}},color={0,0,127}));
   connect(informationRealBridge[1].y,information.command.wheelCommand[1]) annotation(Line(points={{78,60},{102,60},{102,0}},color={0,0,127}));
   connect(wheelCommandPublisher[2],informationRealBridge[2].u) annotation(Line(points={{78,60},{102,60},{102,0}},color={0,0,127}));

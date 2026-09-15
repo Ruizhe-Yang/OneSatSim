@@ -1,4 +1,4 @@
-within NISSA_12UCubeSat.Foundation.Calculations;
+within OneSatSim.Foundation.Calculations;
 model BodyMountedSolarArrayPlusYCalculation "+Y双串体装太阳电池阵性能计算"
   parameter Modelica.Units.SI.Area activeArea=0.069156;
   parameter Real cellEfficiency(min=0,max=1)=0.32;

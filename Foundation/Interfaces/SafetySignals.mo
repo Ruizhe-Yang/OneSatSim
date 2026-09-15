@@ -1,4 +1,4 @@
-within NISSA_12UCubeSat.Foundation.Interfaces;
+within OneSatSim.Foundation.Interfaces;
 connector SafetySignals "Mission safety permissions and safe-mode demand"
   BooleanSignal spacecraftHealthy;
   BooleanSignal imagingAllowed;

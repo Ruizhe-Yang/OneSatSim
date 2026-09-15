@@ -1,4 +1,4 @@
-within NISSA_12UCubeSat.Scenarios.DesignConfigRecords;
+within OneSatSim.Scenarios.DesignConfigRecords;
 record EpsDesignConfig "eps分系统设计配置"
   parameter BatteryComponentConfig battery;
   parameter PcduComponentConfig pcdu;

@@ -1,6 +1,6 @@
-within NISSA_12UCubeSat.Systems.Four_systems;
+within OneSatSim.Systems.Four_systems;
 model MechanicsOverall "机械动力学总体"
-  parameter NISSA_12UCubeSat.Scenarios.ScenarioConfig scenario "轨道、站点、目标和姿态场景";
+  parameter OneSatSim.Scenarios.ScenarioConfig scenario "轨道、站点、目标和姿态场景";
   Foundation.Interfaces.MechanicalPort subsystem[8] annotation(Placement(transformation(extent={{-112,-10},{-92,10}})));
   Foundation.Interfaces.EnvironmentPort environment annotation(Placement(transformation(extent={{92,-10},{112,10}})));
   Foundation.Interfaces.ActiveMissionSelectionInput activeMissionSelection annotation(Placement(transformation(extent={{42,-112},{62,-92}})));

@@ -1,6 +1,6 @@
-within NISSA_12UCubeSat.Components;
+within OneSatSim.Components;
 model XBandTransmitterUnit "X波段数传发射机组件"
-  parameter NISSA_12UCubeSat.Scenarios.DesignConfigRecords.XbandComponentConfig config
+  parameter OneSatSim.Scenarios.DesignConfigRecords.XbandComponentConfig config
     "由所属N-System传入的硬件设计配置";
   parameter Modelica.Units.SI.Resistance powerAmplifierResistance=config.PowerAmplifierResistance
     "功率放大器等效负载电阻；Excel单位Ω，当前设计基线";

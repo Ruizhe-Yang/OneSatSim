@@ -1,4 +1,4 @@
-within NISSA_12UCubeSat.Foundation.Calculations;
+within OneSatSim.Foundation.Calculations;
 model PayloadCaptureCalculation "载荷拍摄状态与写入率计算"
   parameter Real imagingDataRate(unit="1/s")=2e6;
   Modelica.Blocks.Interfaces.BooleanInput captureCommand annotation(Placement(transformation(extent={{-120,-20},{-80,20}})));

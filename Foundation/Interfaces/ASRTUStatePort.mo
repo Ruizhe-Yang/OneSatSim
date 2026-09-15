@@ -1,4 +1,4 @@
-within NISSA_12UCubeSat.Foundation.Interfaces;
+within OneSatSim.Foundation.Interfaces;
 connector ASRTUStatePort "星上状态数据库接口"
   RealSignal busVoltage[3]; RealSignal busCurrent[3]; RealSignal subArrayVoltage[3];
   RealSignal mpptVoltage[3]; RealSignal mpptCurrent[3];
@@ -14,11 +14,11 @@ connector ASRTUStatePort "星上状态数据库接口"
   IntegerSignal bootSeconds; IntegerSignal milliseconds; IntegerSignal commandErrorCount; IntegerSignal watchdogCount;
   RealSignal batteryVoltage(unit="V"); RealSignal batterySOC;
   RealSignal cpuTemperature; RealSignal boardTemperature;
-  NISSA_12UCubeSat.Foundation.Types.CommandType currentCommand;
-  NISSA_12UCubeSat.Foundation.Types.CommandExecutionStatus executionStatus;
-  NISSA_12UCubeSat.Foundation.Types.RejectReason rejectReason;
-  NISSA_12UCubeSat.Foundation.Types.MissionMode missionMode;
-  NISSA_12UCubeSat.Foundation.Types.ControlMode controlMode;
+  OneSatSim.Foundation.Types.CommandType currentCommand;
+  OneSatSim.Foundation.Types.CommandExecutionStatus executionStatus;
+  OneSatSim.Foundation.Types.RejectReason rejectReason;
+  OneSatSim.Foundation.Types.MissionMode missionMode;
+  OneSatSim.Foundation.Types.ControlMode controlMode;
   IntegerSignal commandId; IntegerSignal transitionCounter;
   BooleanSignal commandAccepted; BooleanSignal commandRejected; BooleanSignal commandExecuting;
   BooleanSignal commandCompleted; BooleanSignal commandFailed; BooleanSignal commandAborted; BooleanSignal commandTimeout;

@@ -1,4 +1,4 @@
-within NISSA_12UCubeSat.Foundation.Interfaces;
+within OneSatSim.Foundation.Interfaces;
 connector MissionControlBus "Internal OBC mission-control coordination bus"
   BooleanSignal imagingOpportunity;
   BooleanSignal downlinkOpportunity;
@@ -17,7 +17,7 @@ connector MissionControlBus "Internal OBC mission-control coordination bus"
   IntegerSignal groundStationIndex;
   IntegerSignal targetIndex;
   BooleanSignal requestValid;
-  NISSA_12UCubeSat.Foundation.Types.CommandType requestedCommand;
+  OneSatSim.Foundation.Types.CommandType requestedCommand;
   IntegerSignal requestedTargetIndex;
   IntegerSignal requestedGroundStationIndex;
   IntegerSignal requestWindowId;
@@ -32,15 +32,15 @@ connector MissionControlBus "Internal OBC mission-control coordination bus"
   BooleanSignal storageHealthy;
   BooleanSignal safeModeRequired;
   BooleanSignal recoveryAllowed;
-  NISSA_12UCubeSat.Foundation.Types.RejectReason safetyReason;
+  OneSatSim.Foundation.Types.RejectReason safetyReason;
   BooleanSignal arbiterAccepted;
   BooleanSignal arbiterRejected;
-  NISSA_12UCubeSat.Foundation.Types.CommandType acceptedCommand;
+  OneSatSim.Foundation.Types.CommandType acceptedCommand;
   IntegerSignal acceptedCommandId;
-  NISSA_12UCubeSat.Foundation.Types.RejectReason rejectReason;
-  NISSA_12UCubeSat.Foundation.Types.MissionMode missionMode;
-  NISSA_12UCubeSat.Foundation.Types.ControlMode controlMode;
-  NISSA_12UCubeSat.Foundation.Types.CommandType currentCommand;
+  OneSatSim.Foundation.Types.RejectReason rejectReason;
+  OneSatSim.Foundation.Types.MissionMode missionMode;
+  OneSatSim.Foundation.Types.ControlMode controlMode;
+  OneSatSim.Foundation.Types.CommandType currentCommand;
   IntegerSignal activeRequestId;
   IntegerSignal activeTargetIndex;
   IntegerSignal activeGroundStationIndex;
@@ -61,7 +61,7 @@ connector MissionControlBus "Internal OBC mission-control coordination bus"
   BooleanSignal imagingValid;
   RealSignal storageUtilization "Stored bytes divided by operational buffer capacity";
   BooleanSignal storageDrainMode "50/20 percent hysteresis latch";
-  NISSA_12UCubeSat.Foundation.Types.CommandExecutionStatus executionStatus;
+  OneSatSim.Foundation.Types.CommandExecutionStatus executionStatus;
   IntegerSignal transitionCounter;
   RealSignal stateElapsed(unit="s");
   RealSignal executionTime(unit="s");
@@ -70,7 +70,7 @@ connector MissionControlBus "Internal OBC mission-control coordination bus"
   BooleanSignal commandFailed;
   BooleanSignal commandAborted;
   BooleanSignal commandTimeout;
-  NISSA_12UCubeSat.Foundation.Types.ImagingPhase imagingPhase;
+  OneSatSim.Foundation.Types.ImagingPhase imagingPhase;
   BooleanSignal payloadPowerCommand;
   BooleanSignal captureCommand;
   BooleanSignal imagingBusy;
@@ -79,8 +79,8 @@ connector MissionControlBus "Internal OBC mission-control coordination bus"
   BooleanSignal imagingFailed;
   BooleanSignal imagingAborted;
   BooleanSignal imagingTimeout;
-  NISSA_12UCubeSat.Foundation.Types.RejectReason imagingFailureReason;
-  NISSA_12UCubeSat.Foundation.Types.DownlinkPhase downlinkPhase;
+  OneSatSim.Foundation.Types.RejectReason imagingFailureReason;
+  OneSatSim.Foundation.Types.DownlinkPhase downlinkPhase;
   BooleanSignal communicationPowerCommand;
   BooleanSignal transmitCommand;
   BooleanSignal downlinkBusy;

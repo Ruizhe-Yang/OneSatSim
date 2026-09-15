@@ -1,6 +1,6 @@
-within NISSA_12UCubeSat.Components;
+within OneSatSim.Components;
 model RateGyroUnit "三轴角速率陀螺组件"
-  parameter NISSA_12UCubeSat.Scenarios.DesignConfigRecords.RateGyroComponentConfig config
+  parameter OneSatSim.Scenarios.DesignConfigRecords.RateGyroComponentConfig config
     "由所属N-System传入的硬件设计配置";
   parameter Modelica.Units.SI.Resistance loadResistance=config.LoadResistance
     "rateGyro等效负载电阻；Excel单位Ω，当前设计基线";

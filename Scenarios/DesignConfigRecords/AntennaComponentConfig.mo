@@ -1,4 +1,4 @@
-within NISSA_12UCubeSat.Scenarios.DesignConfigRecords;
+within OneSatSim.Scenarios.DesignConfigRecords;
 record AntennaComponentConfig "antenna硬件设计配置"
   parameter Modelica.Units.SI.HeatCapacity PatchHeatCapacity
     "天线贴片等效热容；Excel工程单位J/K";

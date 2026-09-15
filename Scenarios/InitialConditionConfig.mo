@@ -1,4 +1,4 @@
-within NISSA_12UCubeSat.Scenarios;
+within OneSatSim.Scenarios;
 record InitialConditionConfig "任务场景初始条件"
   import SI=Modelica.Units.SI;
   parameter SI.Angle roll "初始Roll";

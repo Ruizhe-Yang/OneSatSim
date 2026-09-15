@@ -1,4 +1,4 @@
-within NISSA_12UCubeSat.Scenarios.DesignConfigRecords;
+within OneSatSim.Scenarios.DesignConfigRecords;
 record FotonAmurComponentConfig "fotonAmur硬件设计配置"
   parameter Boolean MissionEnabled
     "FotonAmur载荷启用；Excel工程单位Boolean";

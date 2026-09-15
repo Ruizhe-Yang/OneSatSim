@@ -1,6 +1,6 @@
-within NISSA_12UCubeSat.Components;
+within OneSatSim.Components;
 model SpaceTimePayloadUnit "时空基准载荷组件"
-  parameter NISSA_12UCubeSat.Scenarios.DesignConfigRecords.SpaceTimeComponentConfig config
+  parameter OneSatSim.Scenarios.DesignConfigRecords.SpaceTimeComponentConfig config
     "由所属N-System传入的硬件设计配置";
   parameter Modelica.Units.SI.Resistance activeResistance=config.ActiveResistance
     "时空基准激活负载电阻；Excel单位Ω，当前设计基线";

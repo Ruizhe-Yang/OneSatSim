@@ -1,10 +1,10 @@
-within NISSA_12UCubeSat.Foundation.Models;
+within OneSatSim.Foundation.Models;
 model MissionPlanner "对象感知的任务规划器"
-  NISSA_12UCubeSat.Foundation.Interfaces.OpportunitySignals opportunity annotation(Placement(transformation(extent={{-112,30},{-92,50}})));
-  NISSA_12UCubeSat.Foundation.Interfaces.MissionFeedbackBus feedback annotation(Placement(transformation(extent={{-112,-50},{-92,-30}})));
-  NISSA_12UCubeSat.Foundation.Interfaces.PlannerRequestSignals request annotation(Placement(transformation(extent={{92,-10},{112,10}})));
+  OneSatSim.Foundation.Interfaces.OpportunitySignals opportunity annotation(Placement(transformation(extent={{-112,30},{-92,50}})));
+  OneSatSim.Foundation.Interfaces.MissionFeedbackBus feedback annotation(Placement(transformation(extent={{-112,-50},{-92,-30}})));
+  OneSatSim.Foundation.Interfaces.PlannerRequestSignals request annotation(Placement(transformation(extent={{92,-10},{112,10}})));
 protected
-  NISSA_12UCubeSat.Foundation.Types.CommandType candidate;
+  OneSatSim.Foundation.Types.CommandType candidate;
   Integer candidateTarget;
   Integer candidateStation;
   Integer candidateWindow;
@@ -12,32 +12,32 @@ protected
   discrete Boolean drainMode(start=false,fixed=true);
 equation
   candidate=if drainMode then
-      (if opportunity.downlinkOpportunityFeasible and feedback.dataAvailable then NISSA_12UCubeSat.Foundation.Types.CommandType.Downlink else
-       if opportunity.imagingOpportunityFeasible and not feedback.storageHigh then NISSA_12UCubeSat.Foundation.Types.CommandType.Imaging else NISSA_12UCubeSat.Foundation.Types.CommandType.None)
+      (if opportunity.downlinkOpportunityFeasible and feedback.dataAvailable then OneSatSim.Foundation.Types.CommandType.Downlink else
+       if opportunity.imagingOpportunityFeasible and not feedback.storageHigh then OneSatSim.Foundation.Types.CommandType.Imaging else OneSatSim.Foundation.Types.CommandType.None)
     else
-      (if opportunity.imagingOpportunityFeasible and not feedback.storageHigh then NISSA_12UCubeSat.Foundation.Types.CommandType.Imaging else
-       if opportunity.downlinkOpportunityFeasible and feedback.dataAvailable then NISSA_12UCubeSat.Foundation.Types.CommandType.Downlink else NISSA_12UCubeSat.Foundation.Types.CommandType.None);
-  candidateTarget=if candidate == NISSA_12UCubeSat.Foundation.Types.CommandType.Imaging then opportunity.earlyTargetPrePointIndex else 0;
-  candidateStation=if candidate == NISSA_12UCubeSat.Foundation.Types.CommandType.Downlink then opportunity.groundPrePointIndex else 0;
-  candidateWindow=if candidate == NISSA_12UCubeSat.Foundation.Types.CommandType.Imaging then opportunity.targetWindowId else
-    if candidate == NISSA_12UCubeSat.Foundation.Types.CommandType.Downlink then opportunity.groundWindowId else 0;
-  id=if candidate == NISSA_12UCubeSat.Foundation.Types.CommandType.Imaging then 1000000+1000*candidateWindow+candidateTarget else
-    if candidate == NISSA_12UCubeSat.Foundation.Types.CommandType.Downlink then 2000000+1000*candidateWindow+candidateStation else 0;
+      (if opportunity.imagingOpportunityFeasible and not feedback.storageHigh then OneSatSim.Foundation.Types.CommandType.Imaging else
+       if opportunity.downlinkOpportunityFeasible and feedback.dataAvailable then OneSatSim.Foundation.Types.CommandType.Downlink else OneSatSim.Foundation.Types.CommandType.None);
+  candidateTarget=if candidate == OneSatSim.Foundation.Types.CommandType.Imaging then opportunity.earlyTargetPrePointIndex else 0;
+  candidateStation=if candidate == OneSatSim.Foundation.Types.CommandType.Downlink then opportunity.groundPrePointIndex else 0;
+  candidateWindow=if candidate == OneSatSim.Foundation.Types.CommandType.Imaging then opportunity.targetWindowId else
+    if candidate == OneSatSim.Foundation.Types.CommandType.Downlink then opportunity.groundWindowId else 0;
+  id=if candidate == OneSatSim.Foundation.Types.CommandType.Imaging then 1000000+1000*candidateWindow+candidateTarget else
+    if candidate == OneSatSim.Foundation.Types.CommandType.Downlink then 2000000+1000*candidateWindow+candidateStation else 0;
   request.requestedCommand=candidate;
   request.requestedTargetIndex=candidateTarget;
   request.requestedGroundStationIndex=candidateStation;
   request.requestWindowId=candidateWindow;
-  request.requestValid=candidate <> NISSA_12UCubeSat.Foundation.Types.CommandType.None;
+  request.requestValid=candidate <> OneSatSim.Foundation.Types.CommandType.None;
   request.requestId=id;
   request.storageUtilization=feedback.storageUtilization;
   request.storageDrainMode=drainMode;
   request.planningRejectReason=if opportunity.earlyTargetPrePointOpportunity and not opportunity.imagingOpportunityFeasible then
-      NISSA_12UCubeSat.Foundation.Types.RejectReason.InsufficientOpportunityTime else
+      OneSatSim.Foundation.Types.RejectReason.InsufficientOpportunityTime else
     if opportunity.groundPrePointOpportunity and not opportunity.downlinkOpportunityFeasible then
-      NISSA_12UCubeSat.Foundation.Types.RejectReason.InsufficientOpportunityTime else
-      NISSA_12UCubeSat.Foundation.Types.RejectReason.None;
-  request.requestedOpportunityTimeRemaining=if candidate == NISSA_12UCubeSat.Foundation.Types.CommandType.Imaging then opportunity.imagingOpportunityTimeRemaining else
-    if candidate == NISSA_12UCubeSat.Foundation.Types.CommandType.Downlink then opportunity.downlinkOpportunityTimeRemaining else
+      OneSatSim.Foundation.Types.RejectReason.InsufficientOpportunityTime else
+      OneSatSim.Foundation.Types.RejectReason.None;
+  request.requestedOpportunityTimeRemaining=if candidate == OneSatSim.Foundation.Types.CommandType.Imaging then opportunity.imagingOpportunityTimeRemaining else
+    if candidate == OneSatSim.Foundation.Types.CommandType.Downlink then opportunity.downlinkOpportunityTimeRemaining else
     max(opportunity.imagingOpportunityTimeRemaining,opportunity.downlinkOpportunityTimeRemaining);
 algorithm
   when {initial(),feedback.storageUtilization >= 0.50,feedback.storageUtilization <= 0.20} then

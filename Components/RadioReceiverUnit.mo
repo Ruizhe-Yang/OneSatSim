@@ -1,6 +1,6 @@
-within NISSA_12UCubeSat.Components;
+within OneSatSim.Components;
 model RadioReceiverUnit "测控接收机组件"
-  parameter NISSA_12UCubeSat.Scenarios.DesignConfigRecords.TtcReceiverComponentConfig config
+  parameter OneSatSim.Scenarios.DesignConfigRecords.TtcReceiverComponentConfig config
     "由所属N-System传入的硬件设计配置";
   parameter Modelica.Units.SI.Resistance receiverLoadResistance=config.ReceiverLoadResistance
     "测控接收机负载电阻；Excel单位Ω，当前设计基线";

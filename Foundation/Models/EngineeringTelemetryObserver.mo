@@ -1,7 +1,7 @@
-within NISSA_12UCubeSat.Foundation.Models;
+within OneSatSim.Foundation.Models;
 model EngineeringTelemetryObserver "整星信息总线的只读工程遥测观察器"
-  NISSA_12UCubeSat.Foundation.Interfaces.InformationPort live annotation(Placement(transformation(extent={{-112,-10},{-92,10}})));
-  NISSA_12UCubeSat.Foundation.Interfaces.OnboardTelemetryPort telemetry annotation(Placement(transformation(extent={{92,-10},{112,10}})));
+  OneSatSim.Foundation.Interfaces.InformationPort live annotation(Placement(transformation(extent={{-112,-10},{-92,10}})));
+  OneSatSim.Foundation.Interfaces.OnboardTelemetryPort telemetry annotation(Placement(transformation(extent={{92,-10},{112,10}})));
 protected
   parameter Integer thermistorMap[20]={1,3,6,7,10,11,14,20,21,22,23,24,25,26,27,28,29,30,31,32};
   Modelica.Blocks.Interfaces.RealOutput SAT_S0_busVoltage_VPublisher[3] annotation(Placement(visible=false, transformation(extent={{-4,-4},{4,4}})));

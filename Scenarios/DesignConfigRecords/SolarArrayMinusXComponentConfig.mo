@@ -1,4 +1,4 @@
-within NISSA_12UCubeSat.Scenarios.DesignConfigRecords;
+within OneSatSim.Scenarios.DesignConfigRecords;
 record SolarArrayMinusXComponentConfig "solarArrayMinusX硬件设计配置"
   parameter Modelica.Units.SI.Area ActiveArea
     "有效电池片面积；Excel工程单位m²";

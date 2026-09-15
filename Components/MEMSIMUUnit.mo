@@ -1,6 +1,6 @@
-within NISSA_12UCubeSat.Components;
+within OneSatSim.Components;
 model MEMSIMUUnit "MEMS惯性测量组件"
-  parameter NISSA_12UCubeSat.Scenarios.DesignConfigRecords.MemsIMUComponentConfig config
+  parameter OneSatSim.Scenarios.DesignConfigRecords.MemsIMUComponentConfig config
     "由所属N-System传入的硬件设计配置";
   parameter Modelica.Units.SI.Resistance loadResistance=config.LoadResistance
     "memsIMU等效负载电阻；Excel单位Ω，当前设计基线";

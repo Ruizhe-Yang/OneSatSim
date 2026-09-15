@@ -1,4 +1,4 @@
-within NISSA_12UCubeSat.Foundation.Calculations;
+within OneSatSim.Foundation.Calculations;
 model PowerConditioningCalculation "12 V平均值调节与充电支路计算"
   parameter Real regulatorEfficiency(min=0.8,max=1)=0.94;
   parameter Modelica.Units.SI.Voltage minimumInputVoltage=10.2;

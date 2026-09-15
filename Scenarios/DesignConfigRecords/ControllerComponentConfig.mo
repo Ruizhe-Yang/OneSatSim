@@ -1,4 +1,4 @@
-within NISSA_12UCubeSat.Scenarios.DesignConfigRecords;
+within OneSatSim.Scenarios.DesignConfigRecords;
 record ControllerComponentConfig "controller硬件设计配置"
   parameter Modelica.Units.SI.Resistance BoardLoadResistance
     "热控控制器板负载电阻；Excel工程单位Ω";

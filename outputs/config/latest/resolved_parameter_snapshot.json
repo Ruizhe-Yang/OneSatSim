@@ -1,7 +1,7 @@
 {
-  "generatedAtUTC": "2026-09-08T07:37:54.148370+00:00",
-  "sourceWorkbook": "E:\\Modelica\\NISSA_12UCubeSat\\NISSA_12UCubeSat\\DesignConfig.xlsx",
-  "scenarioName": "NISSA_12U_DefaultDesign",
+  "generatedAtUTC": "2026-09-15T16:02:29.671860+00:00",
+  "sourceWorkbook": "E:\\GitYang\\OneSatSim\\DesignConfig.xlsx",
+  "scenarioName": "OneSatSim_DefaultDesign",
   "modelicaDefaultSource": "Scenarios\\DefaultSpacecraftDesignConfig.mo",
   "absoluteTimeEnvironment": {
     "startUTC": "2026-09-06T00:00:00.000Z",

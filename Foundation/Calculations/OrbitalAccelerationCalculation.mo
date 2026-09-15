@@ -1,4 +1,4 @@
-within NISSA_12UCubeSat.Foundation.Calculations;
+within OneSatSim.Foundation.Calculations;
 model OrbitalAccelerationCalculation "轨道中心引力加速度计算"
   parameter Real gravitationalParameter(unit="m3/s2")=3.986004418e14;
   Modelica.Blocks.Interfaces.RealInput position[3](each unit="m") annotation(Placement(transformation(extent={{-120,-20},{-80,20}})));

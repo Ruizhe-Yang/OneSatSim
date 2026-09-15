@@ -1,4 +1,4 @@
-within NISSA_12UCubeSat.Scenarios.DesignConfigRecords;
+within OneSatSim.Scenarios.DesignConfigRecords;
 record EarthCameraComponentConfig "earthCamera硬件设计配置"
   parameter Real RawImageSize(unit="1")
     "单景原始数据量；Excel工程单位byte";

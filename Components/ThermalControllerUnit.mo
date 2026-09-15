@@ -1,6 +1,6 @@
-within NISSA_12UCubeSat.Components;
+within OneSatSim.Components;
 model ThermalControllerUnit "热控控制器组件"
-  parameter NISSA_12UCubeSat.Scenarios.DesignConfigRecords.ControllerComponentConfig config
+  parameter OneSatSim.Scenarios.DesignConfigRecords.ControllerComponentConfig config
     "由所属N-System传入的硬件设计配置";
   parameter Modelica.Units.SI.Resistance boardLoadResistance=config.BoardLoadResistance
     "热控控制器板负载电阻；Excel单位Ω，当前设计基线";

@@ -1,7 +1,7 @@
-within NISSA_12UCubeSat.Foundation.Calculations;
+within OneSatSim.Foundation.Calculations;
 model StarTrackerCalculation "星敏任务门控与测量计算"
   parameter Modelica.Units.SI.Resistance activeResistance=51.9;
-  NISSA_12UCubeSat.Foundation.Interfaces.ControlModeInput desiredControlMode annotation(Placement(transformation(extent={{-110,55},{-90,75}})));
+  OneSatSim.Foundation.Interfaces.ControlModeInput desiredControlMode annotation(Placement(transformation(extent={{-110,55},{-90,75}})));
   Modelica.Blocks.Interfaces.RealInput quaternion[4] annotation(Placement(transformation(extent={{-120,-5},{-80,15}})));
   Modelica.Blocks.Interfaces.RealInput bodyRate[3](each unit="rad/s") annotation(Placement(transformation(extent={{-120,-65},{-80,-45}})));
   Modelica.Blocks.Interfaces.BooleanOutput active annotation(Placement(transformation(extent={{80,65},{100,85}})));
@@ -10,8 +10,8 @@ model StarTrackerCalculation "星敏任务门控与测量计算"
   Modelica.Blocks.Interfaces.RealOutput measuredBodyRate[3](each unit="rad/s") annotation(Placement(transformation(extent={{80,-35},{100,-15}})));
   Modelica.Blocks.Interfaces.IntegerOutput status annotation(Placement(transformation(extent={{80,-75},{100,-55}})));
 equation
-  active=desiredControlMode == NISSA_12UCubeSat.Foundation.Types.ControlMode.TargetPointing or
-    desiredControlMode == NISSA_12UCubeSat.Foundation.Types.ControlMode.GroundPointing;
+  active=desiredControlMode == OneSatSim.Foundation.Types.ControlMode.TargetPointing or
+    desiredControlMode == OneSatSim.Foundation.Types.ControlMode.GroundPointing;
   loadConductance=if active then 1/activeResistance else 0;
   measuredQuaternion=if active then quaternion else {0,0,0,0};
   measuredBodyRate=if active then bodyRate else {0,0,0};

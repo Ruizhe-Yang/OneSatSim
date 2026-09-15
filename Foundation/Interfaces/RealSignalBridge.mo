@@ -1,4 +1,4 @@
-within NISSA_12UCubeSat.Foundation.Interfaces;
+within OneSatSim.Foundation.Interfaces;
 model RealSignalBridge "实数因果输出到可扩展信息总线的无状态恒等桥"
   Modelica.Blocks.Interfaces.RealInput u
     annotation(Placement(transformation(extent={{-110,-10},{-90,10}})));

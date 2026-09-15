@@ -1,4 +1,4 @@
-within NISSA_12UCubeSat.Foundation.Calculations;
+within OneSatSim.Foundation.Calculations;
 model SunSensorCalculation "太阳敏感器视线角计算"
   Modelica.Blocks.Interfaces.RealInput sunVectorBody[3] annotation(Placement(transformation(extent={{-120,-20},{-80,20}})));
   Modelica.Blocks.Interfaces.RealOutput alpha(unit="rad") annotation(Placement(transformation(extent={{80,25},{100,45}})));

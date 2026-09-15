@@ -1,4 +1,4 @@
-within NISSA_12UCubeSat.Scenarios;
+within OneSatSim.Scenarios;
 record DefaultScenario "固定标准场景"
   extends ScenarioConfig(
     massProperties=GeneratedMassProperties(),
@@ -25,7 +25,7 @@ record DefaultScenario "固定标准场景"
       simulationDuration=86400,
       environmentSampleInterval=10,
       environmentTableRows=8643,
-      environmentDataURI="modelica://NISSA_12UCubeSat/Resources/Data/GeneratedEphemeris/environment.txt",
+      environmentDataURI="modelica://OneSatSim/Resources/Data/GeneratedEphemeris/environment.txt",
       environmentTableName="environment"),
     initialConditions=InitialConditionConfig(
       roll=0,

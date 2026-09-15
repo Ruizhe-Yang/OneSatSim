@@ -1,4 +1,4 @@
-within NISSA_12UCubeSat.Foundation.Interfaces;
+within OneSatSim.Foundation.Interfaces;
 model IntegerSignalBridge "整数因果输出到可扩展信息总线的无状态恒等桥"
   Modelica.Blocks.Interfaces.IntegerInput u
     annotation(Placement(transformation(extent={{-110,-10},{-90,10}})));

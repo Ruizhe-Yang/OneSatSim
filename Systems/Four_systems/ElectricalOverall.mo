@@ -1,4 +1,4 @@
-within NISSA_12UCubeSat.Systems.Four_systems;
+within OneSatSim.Systems.Four_systems;
 model ElectricalOverall "电气总体"
   Foundation.Interfaces.PowerPort subsystem[8] annotation(Placement(transformation(extent={{-112,-10},{-92,10}})));
   Modelica.Electrical.Analog.Basic.Ground ground12 annotation(Placement(transformation(extent={{-45,-55},{-25,-35}})));

@@ -1,4 +1,4 @@
-within NISSA_12UCubeSat.Foundation.Interfaces;
+within OneSatSim.Foundation.Interfaces;
 connector ActiveMissionSelectionInput "Narrow causal input for active target and station selection"
   input Integer targetIndex;
   input Integer groundStationIndex;

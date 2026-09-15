@@ -1,4 +1,4 @@
-within NISSA_12UCubeSat.Foundation.Interfaces;
+within OneSatSim.Foundation.Interfaces;
 connector SafeModeActionSignals "Safe-entry and recovery action events"
   BooleanSignal safeEntryComplete;
   BooleanSignal recoveryReady;

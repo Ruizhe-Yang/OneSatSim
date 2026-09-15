@@ -1,4 +1,4 @@
-within NISSA_12UCubeSat.Foundation.Functions;
+within OneSatSim.Foundation.Functions;
 function clamp "标量上下限约束函数"
   input Real u;
   input Real uMin;

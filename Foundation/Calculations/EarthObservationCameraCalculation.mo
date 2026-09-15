@@ -1,4 +1,4 @@
-within NISSA_12UCubeSat.Foundation.Calculations;
+within OneSatSim.Foundation.Calculations;
 model EarthObservationCameraCalculation "对地观测相机任务状态计算"
   parameter Real imagingDataRate(unit="1/s")=10e6;
   parameter Modelica.Units.SI.Resistance focalHeaterResistance=36;

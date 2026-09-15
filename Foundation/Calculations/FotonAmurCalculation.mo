@@ -1,4 +1,4 @@
-within NISSA_12UCubeSat.Foundation.Calculations;
+within OneSatSim.Foundation.Calculations;
 model FotonAmurCalculation "科学载荷任务门控计算"
   parameter Boolean missionEnabled=false;
   Modelica.Blocks.Interfaces.BooleanInput missionOn annotation(Placement(transformation(extent={{-120,-20},{-80,20}})));

@@ -1,6 +1,6 @@
-within NISSA_12UCubeSat.Components;
+within OneSatSim.Components;
 model GNCComputerUnit "姿轨控计算机组件"
-  parameter NISSA_12UCubeSat.Scenarios.DesignConfigRecords.ComputerComponentConfig config
+  parameter OneSatSim.Scenarios.DesignConfigRecords.ComputerComponentConfig config
     "由所属N-System传入的硬件设计配置";
   parameter Modelica.Units.SI.Resistance processorLoadResistance=config.ProcessorLoadResistance
     "GNC计算机负载电阻；Excel单位Ω，当前设计基线";
@@ -22,7 +22,7 @@ model GNCComputerUnit "姿轨控计算机组件"
     "局部惯量 Iyy；Excel单位kg·m²，当前设计基线";
   parameter Modelica.Units.SI.Inertia inertia_ZZ=config.Inertia_ZZ
     "局部惯量 Izz；Excel单位kg·m²，当前设计基线";
-  parameter NISSA_12UCubeSat.Foundation.Types.MassProperties massProperties;
+  parameter OneSatSim.Foundation.Types.MassProperties massProperties;
   Foundation.Interfaces.PowerPort power annotation(Placement(transformation(extent={{-10,90},{10,110}}),iconTransformation(extent={{-10,90},{10,110}})));
   Modelica.Electrical.Analog.Basic.Conductor unused12Rail(G=0) annotation(Placement(transformation(extent={{42,76},{54,88}})));
   Modelica.Electrical.Analog.Basic.Conductor unused5Rail(G=0) annotation(Placement(transformation(extent={{66,76},{78,88}})));

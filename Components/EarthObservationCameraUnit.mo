@@ -1,6 +1,6 @@
-within NISSA_12UCubeSat.Components;
+within OneSatSim.Components;
 model EarthObservationCameraUnit "对地观测相机组件"
-  parameter NISSA_12UCubeSat.Scenarios.DesignConfigRecords.EarthCameraComponentConfig config
+  parameter OneSatSim.Scenarios.DesignConfigRecords.EarthCameraComponentConfig config
     "由所属N-System传入的硬件设计配置";
   parameter Modelica.Units.SI.Resistance focalElectronicsResistance=config.FocalElectronicsResistance
     "焦面电子学负载电阻；Excel单位Ω，当前设计基线";

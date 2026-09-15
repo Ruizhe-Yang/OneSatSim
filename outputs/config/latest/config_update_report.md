@@ -1,6 +1,6 @@
-# NISSA 设计配置更新报告
+# OneSatSim 设计配置更新报告
 
-- 场景名称：`NISSA_12U_DefaultDesign`
+- 场景名称：`OneSatSim_DefaultDesign`
 - 参数表：`DesignConfig.xlsx`
 - 组件参数：454
 - Excel 显式覆盖：0
@@ -22,4 +22,4 @@
 
 ## 下一步
 
-在 OpenModelica/OMEdit 中运行 `NISSA_12UCubeSat.Simulation.CompleteMission`。配置更新工具不会自动启动 MWorks，也不会自动运行24 h仿真。
+在 OpenModelica/OMEdit 中运行 `OneSatSim.Simulation.CompleteMission`。配置更新工具不会自动启动 MWorks，也不会自动运行24 h仿真。

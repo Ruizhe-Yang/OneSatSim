@@ -1,4 +1,4 @@
-within NISSA_12UCubeSat.Foundation.Interfaces;
+within OneSatSim.Foundation.Interfaces;
 connector ThermalPort "设备壳体热端口"
   extends Modelica.Thermal.HeatTransfer.Interfaces.HeatPort_a;
   annotation(Icon(graphics={Rectangle(extent={{-100,100},{100,-100}},lineColor={191,0,0},fillColor={255,225,220},fillPattern=FillPattern.Solid),Line(points={{0,70},{0,-45}},color={191,0,0},thickness=2),Ellipse(extent={{-35,-35},{35,-95}},lineColor={191,0,0},fillColor={235,50,35},fillPattern=FillPattern.Solid)}));

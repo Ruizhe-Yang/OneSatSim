@@ -1,4 +1,4 @@
-within NISSA_12UCubeSat.Foundation.Interfaces;
+within OneSatSim.Foundation.Interfaces;
 connector CommandBus "任务与执行指令总线"
   BooleanSignal missionOn;
   BooleanSignal safeMode;

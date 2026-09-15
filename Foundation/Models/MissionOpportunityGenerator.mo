@@ -1,12 +1,12 @@
-within NISSA_12UCubeSat.Foundation.Models;
+within OneSatSim.Foundation.Models;
 model MissionOpportunityGenerator "原始机会与活动对象几何生成器"
   parameter Real requiredImagingOpportunityTime(unit="s")=126
     "96 s预转、相机准备、8 s驻留、10 s有效拍摄及余量";
   parameter Real requiredDownlinkOpportunityTime(unit="s")=30
     "上电、初始化、主视轴驻留、建链、最小有效发送和关机余量";
-  NISSA_12UCubeSat.Foundation.Interfaces.EnvironmentPort environment annotation(Placement(transformation(extent={{-112,-10},{-92,10}})));
-  NISSA_12UCubeSat.Foundation.Interfaces.OpportunitySignals opportunity annotation(Placement(transformation(extent={{92,30},{112,50}})));
-  NISSA_12UCubeSat.Foundation.Interfaces.ActiveGeometrySignals activeGeometry annotation(Placement(transformation(extent={{92,-50},{112,-30}})));
+  OneSatSim.Foundation.Interfaces.EnvironmentPort environment annotation(Placement(transformation(extent={{-112,-10},{-92,10}})));
+  OneSatSim.Foundation.Interfaces.OpportunitySignals opportunity annotation(Placement(transformation(extent={{92,30},{112,50}})));
+  OneSatSim.Foundation.Interfaces.ActiveGeometrySignals activeGeometry annotation(Placement(transformation(extent={{92,-50},{112,-30}})));
 protected
   discrete Integer targetWindow(start=0,fixed=true);
   discrete Integer groundWindow(start=0,fixed=true);

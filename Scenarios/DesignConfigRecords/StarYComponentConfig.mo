@@ -1,4 +1,4 @@
-within NISSA_12UCubeSat.Scenarios.DesignConfigRecords;
+within OneSatSim.Scenarios.DesignConfigRecords;
 record StarYComponentConfig "starY硬件设计配置"
   parameter Modelica.Units.SI.Resistance LoadResistance
     "starY等效负载电阻；Excel工程单位Ω";

@@ -323,9 +323,9 @@ def main() -> int:
     ]), encoding="utf-8")
     if args.generate_record:
         record = PACKAGE_ROOT / "Scenarios" / "GeneratedMassProperties.mo"
-        record.write_text(f'''within NISSA_12UCubeSat.Scenarios;
+        record.write_text(f'''within OneSatSim.Scenarios;
 record GeneratedMassProperties "由机械组件离线汇总的整星质量特性"
-  extends NISSA_12UCubeSat.Foundation.Types.MassProperties(
+  extends OneSatSim.Foundation.Types.MassProperties(
     modeledRigidBodyMass={total_mass:.12g},
     wheelHousingAllowance=0,
     centerOfMass={vector(com)},

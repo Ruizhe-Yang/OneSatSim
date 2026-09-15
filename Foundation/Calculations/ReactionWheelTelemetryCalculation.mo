@@ -1,4 +1,4 @@
-within NISSA_12UCubeSat.Foundation.Calculations;
+within OneSatSim.Foundation.Calculations;
 model ReactionWheelTelemetryCalculation "反作用飞轮角动量与饱和状态计算"
   parameter Modelica.Units.SI.Inertia rotorInertia=1e-4;
   parameter Modelica.Units.SI.AngularVelocity wheelSpeedLimit=628.3185307;

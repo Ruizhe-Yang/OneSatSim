@@ -1,7 +1,7 @@
-within NISSA_12UCubeSat.Foundation.Models;
+within OneSatSim.Foundation.Models;
 model MissionTimelineCore "Deprecated compatibility timeline: mission opportunities only"
-  NISSA_12UCubeSat.Foundation.Interfaces.EnvironmentPort environment;
-  NISSA_12UCubeSat.Foundation.Interfaces.MissionControlBus control;
+  OneSatSim.Foundation.Interfaces.EnvironmentPort environment;
+  OneSatSim.Foundation.Interfaces.MissionControlBus control;
 equation
   control.imagingOpportunity=environment.targetVisible;
   control.downlinkOpportunity=environment.groundContact;

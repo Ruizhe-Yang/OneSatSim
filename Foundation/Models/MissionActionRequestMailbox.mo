@@ -1,15 +1,15 @@
-within NISSA_12UCubeSat.Foundation.Models;
+within OneSatSim.Foundation.Models;
 model MissionActionRequestMailbox "任务动作请求事件邮箱"
   Modelica.Blocks.Interfaces.IntegerInput imagingRequestIn annotation(Placement(transformation(extent={{-112,58},{-92,78}})));
   Modelica.Blocks.Interfaces.IntegerInput downlinkRequestIn annotation(Placement(transformation(extent={{-112,18},{-92,38}})));
   Modelica.Blocks.Interfaces.IntegerInput safeRequestIn annotation(Placement(transformation(extent={{-112,-22},{-92,-2}})));
-  NISSA_12UCubeSat.Foundation.Interfaces.CommandTypeInput safeCommandIn annotation(Placement(transformation(extent={{-112,-62},{-92,-42}})));
-  NISSA_12UCubeSat.Foundation.Interfaces.ActiveMissionSelectionInput selectionIn annotation(Placement(transformation(extent={{-112,-98},{-92,-78}})));
+  OneSatSim.Foundation.Interfaces.CommandTypeInput safeCommandIn annotation(Placement(transformation(extent={{-112,-62},{-92,-42}})));
+  OneSatSim.Foundation.Interfaces.ActiveMissionSelectionInput selectionIn annotation(Placement(transformation(extent={{-112,-98},{-92,-78}})));
   Modelica.Blocks.Interfaces.IntegerOutput imagingRequestOut annotation(Placement(transformation(extent={{92,58},{112,78}})));
   Modelica.Blocks.Interfaces.IntegerOutput downlinkRequestOut annotation(Placement(transformation(extent={{92,18},{112,38}})));
   Modelica.Blocks.Interfaces.IntegerOutput safeRequestOut annotation(Placement(transformation(extent={{92,-22},{112,-2}})));
-  NISSA_12UCubeSat.Foundation.Interfaces.CommandTypeOutput safeCommandOut annotation(Placement(transformation(extent={{92,-62},{112,-42}})));
-  NISSA_12UCubeSat.Foundation.Interfaces.ActiveMissionSelectionOutput selectionOut annotation(Placement(transformation(extent={{92,-98},{112,-78}})));
+  OneSatSim.Foundation.Interfaces.CommandTypeOutput safeCommandOut annotation(Placement(transformation(extent={{92,-62},{112,-42}})));
+  OneSatSim.Foundation.Interfaces.ActiveMissionSelectionOutput selectionOut annotation(Placement(transformation(extent={{92,-98},{112,-78}})));
   parameter Real dispatchBoundary(unit="s")=1e-4
     "单次请求交付边界；不是周期采样或物理通信延迟";
 protected
@@ -17,16 +17,16 @@ protected
   discrete Integer pendingId(start=0,fixed=true);
   discrete Integer pendingTarget(start=0,fixed=true);
   discrete Integer pendingStation(start=0,fixed=true);
-  discrete NISSA_12UCubeSat.Foundation.Types.CommandType pendingSafeCommand(
-    start=NISSA_12UCubeSat.Foundation.Types.CommandType.None,fixed=true);
+  discrete OneSatSim.Foundation.Types.CommandType pendingSafeCommand(
+    start=OneSatSim.Foundation.Types.CommandType.None,fixed=true);
   discrete Real dispatchDeadline(start=1e100,fixed=true);
   discrete Integer imagingRequestId(start=0,fixed=true);
   discrete Integer downlinkRequestId(start=0,fixed=true);
   discrete Integer safeRequestId(start=0,fixed=true);
   discrete Integer targetIndex(start=0,fixed=true);
   discrete Integer stationIndex(start=0,fixed=true);
-  discrete NISSA_12UCubeSat.Foundation.Types.CommandType safeCommand(
-    start=NISSA_12UCubeSat.Foundation.Types.CommandType.None,fixed=true);
+  discrete OneSatSim.Foundation.Types.CommandType safeCommand(
+    start=OneSatSim.Foundation.Types.CommandType.None,fixed=true);
 equation
   imagingRequestOut=imagingRequestId;
   downlinkRequestOut=downlinkRequestId;
@@ -43,7 +43,7 @@ algorithm
       pendingId:=0;
       pendingTarget:=0;
       pendingStation:=0;
-      pendingSafeCommand:=NISSA_12UCubeSat.Foundation.Types.CommandType.None;
+      pendingSafeCommand:=OneSatSim.Foundation.Types.CommandType.None;
       dispatchDeadline:=1e100;
     elseif change(imagingRequestIn) then
       pendingKind:=1;
@@ -73,7 +73,7 @@ algorithm
       safeRequestId:=0;
       targetIndex:=0;
       stationIndex:=0;
-      safeCommand:=NISSA_12UCubeSat.Foundation.Types.CommandType.None;
+      safeCommand:=OneSatSim.Foundation.Types.CommandType.None;
     else
       if pre(pendingKind) == 1 then
         targetIndex:=pre(pendingTarget);

@@ -1,4 +1,4 @@
-within NISSA_12UCubeSat.Foundation.Types;
+within OneSatSim.Foundation.Types;
 record MassProperties "整星质量特性唯一配置记录"
   parameter Modelica.Units.SI.Mass modeledRigidBodyMass
     "Components中显式Body/BodyBox静态质量审计总和，包含四台飞轮壳体与安装件";

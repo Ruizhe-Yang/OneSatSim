@@ -1,4 +1,4 @@
-within NISSA_12UCubeSat.Scenarios.DesignConfigRecords;
+within OneSatSim.Scenarios.DesignConfigRecords;
 record RecorderComponentConfig "recorder硬件设计配置"
   parameter Real CapacityBytes(unit="1")
     "数据记录器容量；Excel工程单位byte";

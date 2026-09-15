@@ -1,4 +1,4 @@
-within NISSA_12UCubeSat.Foundation.Interfaces;
+within OneSatSim.Foundation.Interfaces;
 connector OpportunitySignals "Raw mission opportunities generated from the orbit environment"
   BooleanSignal imagingOpportunity;
   BooleanSignal downlinkOpportunity;

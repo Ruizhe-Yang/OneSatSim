@@ -1,4 +1,4 @@
-within NISSA_12UCubeSat.Foundation.Models;
+within OneSatSim.Foundation.Models;
 model AverageDCDCConverterCore "连续低阶非理想直流变换核心"
   parameter Modelica.Units.SI.Voltage nominalOutputVoltage=5;
   parameter Real efficiency(min=0.5,max=1)=0.90;

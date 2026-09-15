@@ -1,6 +1,6 @@
-within NISSA_12UCubeSat.Components;
+within OneSatSim.Components;
 model DataRecorderUnit "星上数据记录器组件"
-  parameter NISSA_12UCubeSat.Scenarios.DesignConfigRecords.RecorderComponentConfig config
+  parameter OneSatSim.Scenarios.DesignConfigRecords.RecorderComponentConfig config
     "由所属N-System传入的硬件设计配置";
   parameter Modelica.Units.SI.Resistance nandLoadResistance=config.NANDLoadResistance
     "存储器等效负载电阻；Excel单位Ω，当前设计基线";

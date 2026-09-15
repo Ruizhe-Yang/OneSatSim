@@ -1,7 +1,7 @@
-within NISSA_12UCubeSat.Foundation.Models;
+within OneSatSim.Foundation.Models;
 model SafetyMonitor "带回差的任务安全许可监视器"
-  NISSA_12UCubeSat.Foundation.Interfaces.MissionFeedbackBus feedback annotation(Placement(transformation(extent={{-112,-10},{-92,10}})));
-  NISSA_12UCubeSat.Foundation.Interfaces.SafetySignals safety annotation(Placement(transformation(extent={{92,-10},{112,10}})));
+  OneSatSim.Foundation.Interfaces.MissionFeedbackBus feedback annotation(Placement(transformation(extent={{-112,-10},{-92,10}})));
+  OneSatSim.Foundation.Interfaces.SafetySignals safety annotation(Placement(transformation(extent={{92,-10},{112,10}})));
   parameter Real SOC_safe_enter=0.30;
   parameter Real SOC_safe_exit=0.40;
   parameter Real SOC_critical=0.20;
@@ -32,13 +32,13 @@ equation
   safety.downlinkAllowed=feedback.batterySOC > downlinkSOC and feedback.busVoltage > 11.2 and safety.thermalHealthy and safety.attitudeHealthy and feedback.dataAvailable and not unsafeLatched;
   safety.safeModeRequired=unsafeLatched;
   safety.recoveryAllowed=not unsafeLatched and recoveryConditions;
-  safety.safetyReason=if feedback.batterySOC <= SOC_critical then NISSA_12UCubeSat.Foundation.Types.RejectReason.LowSOC else
-    if feedback.batterySOC <= imagingSOC then NISSA_12UCubeSat.Foundation.Types.RejectReason.LowSOC else
-    if feedback.busVoltage <= 11.2 then NISSA_12UCubeSat.Foundation.Types.RejectReason.LowBusVoltage else
-    if not safety.thermalHealthy or not payloadTemperatureOperational then NISSA_12UCubeSat.Foundation.Types.RejectReason.ThermalLimit else
-    if feedback.storageHigh then NISSA_12UCubeSat.Foundation.Types.RejectReason.StorageFull else
-    if not feedback.dataAvailable then NISSA_12UCubeSat.Foundation.Types.RejectReason.NoData else
-    if not feedback.aocsAvailable then NISSA_12UCubeSat.Foundation.Types.RejectReason.AttitudeUnavailable else NISSA_12UCubeSat.Foundation.Types.RejectReason.None;
+  safety.safetyReason=if feedback.batterySOC <= SOC_critical then OneSatSim.Foundation.Types.RejectReason.LowSOC else
+    if feedback.batterySOC <= imagingSOC then OneSatSim.Foundation.Types.RejectReason.LowSOC else
+    if feedback.busVoltage <= 11.2 then OneSatSim.Foundation.Types.RejectReason.LowBusVoltage else
+    if not safety.thermalHealthy or not payloadTemperatureOperational then OneSatSim.Foundation.Types.RejectReason.ThermalLimit else
+    if feedback.storageHigh then OneSatSim.Foundation.Types.RejectReason.StorageFull else
+    if not feedback.dataAvailable then OneSatSim.Foundation.Types.RejectReason.NoData else
+    if not feedback.aocsAvailable then OneSatSim.Foundation.Types.RejectReason.AttitudeUnavailable else OneSatSim.Foundation.Types.RejectReason.None;
 algorithm
   when initial() then
     unsafeLatched:=criticalUnsafe;

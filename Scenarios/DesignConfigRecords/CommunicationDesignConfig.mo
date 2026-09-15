@@ -1,4 +1,4 @@
-within NISSA_12UCubeSat.Scenarios.DesignConfigRecords;
+within OneSatSim.Scenarios.DesignConfigRecords;
 record CommunicationDesignConfig "communication分系统设计配置"
   parameter AntennaComponentConfig antenna;
   parameter BasebandComponentConfig baseband;

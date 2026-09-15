@@ -1,4 +1,4 @@
-within NISSA_12UCubeSat.Scenarios.DesignConfigRecords;
+within OneSatSim.Scenarios.DesignConfigRecords;
 record HeatersComponentConfig "heaters硬件设计配置"
   parameter Modelica.Units.SI.Resistance HeaterResistance
     "分布式加热器电阻；Excel工程单位Ω";

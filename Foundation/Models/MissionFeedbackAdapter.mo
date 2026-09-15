@@ -1,8 +1,8 @@
-within NISSA_12UCubeSat.Foundation.Models;
+within OneSatSim.Foundation.Models;
 model MissionFeedbackAdapter "物理状态到任务反馈的选择适配器"
-  NISSA_12UCubeSat.Foundation.Interfaces.DeviceStatusBus device annotation(Placement(transformation(extent={{-112,35},{-92,55}})));
-  NISSA_12UCubeSat.Foundation.Interfaces.PayloadDataPort payload annotation(Placement(transformation(extent={{-112,-55},{-92,-35}})));
-  NISSA_12UCubeSat.Foundation.Interfaces.MissionFeedbackBus feedback annotation(Placement(transformation(extent={{92,-10},{112,10}})));
+  OneSatSim.Foundation.Interfaces.DeviceStatusBus device annotation(Placement(transformation(extent={{-112,35},{-92,55}})));
+  OneSatSim.Foundation.Interfaces.PayloadDataPort payload annotation(Placement(transformation(extent={{-112,-55},{-92,-35}})));
+  OneSatSim.Foundation.Interfaces.MissionFeedbackBus feedback annotation(Placement(transformation(extent={{92,-10},{112,10}})));
 protected
   Modelica.Blocks.Interfaces.RealOutput totalAvailableSolarPowerPublisher(unit="W") annotation(Placement(visible=false, transformation(extent={{-4,-4},{4,4}})));
   Modelica.Blocks.Interfaces.RealOutput totalDeliveredSolarPowerPublisher(unit="W") annotation(Placement(visible=false, transformation(extent={{-4,-4},{4,4}})));

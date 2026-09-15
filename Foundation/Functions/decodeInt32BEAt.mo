@@ -1,4 +1,4 @@
-within NISSA_12UCubeSat.Foundation.Functions;
+within OneSatSim.Foundation.Functions;
 function decodeInt32BEAt "字节数组指定位置的大端32位有符号整数解码函数"
   input Integer bytes[:];
   input Integer startIndex;

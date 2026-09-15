@@ -1,4 +1,4 @@
-within NISSA_12UCubeSat.Foundation.Interfaces;
+within OneSatSim.Foundation.Interfaces;
 connector MechanicalPort "三维刚性安装接口"
   extends Modelica.Mechanics.MultiBody.Interfaces.Frame_a;
   annotation(Icon(graphics={Rectangle(extent={{-100,100},{100,-100}},lineColor={95,95,95},fillColor={215,215,215},fillPattern=FillPattern.Solid),Ellipse(extent={{-45,45},{45,-45}},lineColor={80,80,80}),Line(points={{-70,0},{70,0}},color={80,80,80}),Line(points={{0,-70},{0,70}},color={80,80,80})}));

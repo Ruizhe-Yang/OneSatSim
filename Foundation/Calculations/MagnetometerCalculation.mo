@@ -1,4 +1,4 @@
-within NISSA_12UCubeSat.Foundation.Calculations;
+within OneSatSim.Foundation.Calculations;
 model MagnetometerCalculation "三轴轨道磁场低阶计算"
   parameter Real fieldXAmplitude(unit="T")=25e-6;
   parameter Real fieldYAmplitude(unit="T")=18e-6;

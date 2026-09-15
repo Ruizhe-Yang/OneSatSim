@@ -1,4 +1,4 @@
-within NISSA_12UCubeSat.Foundation.Calculations;
+within OneSatSim.Foundation.Calculations;
 model MomentumUnloadingCalculation "磁力矩器动量卸载与消旋计算"
   parameter Real safeModeActivationBodyRate(unit="rad/s")=0.02;
   parameter Real detumbleDampingTorque(unit="N.m.s")=2e-5;
@@ -14,7 +14,7 @@ model MomentumUnloadingCalculation "磁力矩器动量卸载与消旋计算"
   Modelica.Blocks.Interfaces.RealInput magneticField[3](each unit="T") annotation(Placement(transformation(extent={{-120,-25},{-80,-5}})));
   Modelica.Blocks.Interfaces.RealInput supplyVoltage(unit="V") annotation(Placement(transformation(extent={{-120,-55},{-80,-35}})));
   Modelica.Blocks.Interfaces.BooleanInput safeMode annotation(Placement(transformation(extent={{-120,-85},{-80,-65}})));
-  NISSA_12UCubeSat.Foundation.Interfaces.ControlModeInput desiredControlMode annotation(Placement(transformation(extent={{-110,-105},{-90,-85}})));
+  OneSatSim.Foundation.Interfaces.ControlModeInput desiredControlMode annotation(Placement(transformation(extent={{-110,-105},{-90,-85}})));
   Modelica.Blocks.Interfaces.BooleanInput momentumDumpLatched annotation(Placement(transformation(extent={{-20,90},{20,110}})));
   Modelica.Blocks.Interfaces.BooleanInput rateDampingLatched annotation(Placement(transformation(extent={{25,90},{65,110}})));
   Modelica.Blocks.Interfaces.RealOutput maximumWheelSpeed(unit="rad/s") annotation(Placement(transformation(extent={{80,75},{100,95}})));
@@ -44,7 +44,7 @@ equation
   maximumWheelSpeed=max(abs(wheelSpeed));
   bodyRateForDamping=bodyRateMagnitude;
   safeDetumbleActive=safeMode and bodyRateMagnitude > safeModeActivationBodyRate and magneticFieldSquared > minimumFieldSquared;
-  normalDumpEligible=desiredControlMode == NISSA_12UCubeSat.Foundation.Types.ControlMode.SunPointing and not safeMode and magneticFieldSquared > minimumFieldSquared;
+  normalDumpEligible=desiredControlMode == OneSatSim.Foundation.Types.ControlMode.SunPointing and not safeMode and magneticFieldSquared > minimumFieldSquared;
   normalMomentumDump=momentumDumpLatched and normalDumpEligible;
   normalRateDamping=rateDampingLatched and normalDumpEligible;
   momentumDumpActive=normalMomentumDump or normalRateDamping;

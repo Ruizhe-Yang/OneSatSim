@@ -1,4 +1,4 @@
-within NISSA_12UCubeSat.Foundation.Interfaces;
+within OneSatSim.Foundation.Interfaces;
 model BooleanSignalBridgeArray "布尔因果输出数组到可扩展信息总线的无状态恒等桥"
   parameter Integer n(min=1)=1 "桥接标量数量";
   Modelica.Blocks.Interfaces.BooleanInput u[n]

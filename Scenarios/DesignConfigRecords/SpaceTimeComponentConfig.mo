@@ -1,4 +1,4 @@
-within NISSA_12UCubeSat.Scenarios.DesignConfigRecords;
+within OneSatSim.Scenarios.DesignConfigRecords;
 record SpaceTimeComponentConfig "spaceTime硬件设计配置"
   parameter Modelica.Units.SI.Resistance ActiveResistance
     "时空基准激活负载电阻；Excel工程单位Ω";

@@ -1,4 +1,4 @@
-within NISSA_12UCubeSat.Foundation.Interfaces;
+within OneSatSim.Foundation.Interfaces;
 expandable connector PayloadDataPort "载荷业务数据接口"
   RealSignal earthCameraWriteRate(unit="1/s") "字节写入率，数值单位byte/s";
   RealSignal selfieCameraWriteRate(unit="1/s") "字节写入率，数值单位byte/s";

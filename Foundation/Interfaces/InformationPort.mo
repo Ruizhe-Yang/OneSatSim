@@ -1,4 +1,4 @@
-within NISSA_12UCubeSat.Foundation.Interfaces;
+within OneSatSim.Foundation.Interfaces;
 expandable connector InformationPort "统一星上信息接口"
   CommandBus command;
   CommandStatusBus commandStatus;

@@ -1,4 +1,4 @@
-within NISSA_12UCubeSat.Foundation.Functions;
+within OneSatSim.Foundation.Functions;
 
 function encodeUInt8 "8位无符号整数编码函数"input Integer value;
 

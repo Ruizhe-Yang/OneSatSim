@@ -1,16 +1,16 @@
-within NISSA_12UCubeSat.Foundation.Models;
+within OneSatSim.Foundation.Models;
 model DownlinkSequencer "请求驱动的下行动作时序器"
-  NISSA_12UCubeSat.Foundation.Interfaces.MissionFeedbackBus feedback annotation(Placement(transformation(extent={{-112,45},{-92,65}})));
-  NISSA_12UCubeSat.Foundation.Interfaces.ActiveGeometrySignals activeGeometry annotation(Placement(transformation(extent={{-112,10},{-92,30}})));
-  NISSA_12UCubeSat.Foundation.Interfaces.SafetySignals safety annotation(Placement(transformation(extent={{-112,-25},{-92,-5}})));
+  OneSatSim.Foundation.Interfaces.MissionFeedbackBus feedback annotation(Placement(transformation(extent={{-112,45},{-92,65}})));
+  OneSatSim.Foundation.Interfaces.ActiveGeometrySignals activeGeometry annotation(Placement(transformation(extent={{-112,10},{-92,30}})));
+  OneSatSim.Foundation.Interfaces.SafetySignals safety annotation(Placement(transformation(extent={{-112,-25},{-92,-5}})));
   Modelica.Blocks.Interfaces.IntegerInput actionRequestId annotation(Placement(transformation(extent={{-112,-60},{-92,-40}})));
-  NISSA_12UCubeSat.Foundation.Interfaces.ActiveMissionSelectionInput activeMissionSelection;
+  OneSatSim.Foundation.Interfaces.ActiveMissionSelectionInput activeMissionSelection;
   Modelica.Blocks.Interfaces.IntegerOutput startedEventId;
   Modelica.Blocks.Interfaces.IntegerOutput completedEventId;
   Modelica.Blocks.Interfaces.IntegerOutput failedEventId;
   Modelica.Blocks.Interfaces.IntegerOutput abortedEventId;
   Modelica.Blocks.Interfaces.IntegerOutput timeoutEventId;
-  NISSA_12UCubeSat.Foundation.Interfaces.DownlinkActionSignals action annotation(Placement(transformation(extent={{92,-10},{112,10}})));
+  OneSatSim.Foundation.Interfaces.DownlinkActionSignals action annotation(Placement(transformation(extent={{92,-10},{112,10}})));
   parameter Real powerOnTime(unit="s")=2;
   parameter Real initializationTime(unit="s")=5;
   parameter Real pointingWaitTimeout(unit="s")=171;
@@ -18,7 +18,7 @@ model DownlinkSequencer "请求驱动的下行动作时序器"
   parameter Real shutdownTime(unit="s")=2;
   parameter Real eventSettleDelay(unit="s")=1e-4;
 protected
-  discrete NISSA_12UCubeSat.Foundation.Types.DownlinkPhase phase(start=NISSA_12UCubeSat.Foundation.Types.DownlinkPhase.Idle,fixed=true);
+  discrete OneSatSim.Foundation.Types.DownlinkPhase phase(start=OneSatSim.Foundation.Types.DownlinkPhase.Idle,fixed=true);
   discrete Real phaseDeadline(start=1e100,fixed=true);
   discrete Real resetDeadline(start=1e100,fixed=true);
   discrete Integer activeRequest(start=0,fixed=true);
@@ -33,7 +33,7 @@ protected
   Modelica.Blocks.Interfaces.IntegerOutput failedEventIdPublisher annotation(Placement(visible=false, transformation(extent={{-4,-4},{4,4}})));
   Modelica.Blocks.Interfaces.IntegerOutput abortedEventIdPublisher annotation(Placement(visible=false, transformation(extent={{-4,-4},{4,4}})));
   Modelica.Blocks.Interfaces.IntegerOutput timeoutEventIdPublisher annotation(Placement(visible=false, transformation(extent={{-4,-4},{4,4}})));
-  NISSA_12UCubeSat.Foundation.Interfaces.IntegerSignalBridge actionIntegerBridge[5] annotation(Placement(visible=false, transformation(extent={{-4,-4},{4,4}})));
+  OneSatSim.Foundation.Interfaces.IntegerSignalBridge actionIntegerBridge[5] annotation(Placement(visible=false, transformation(extent={{-4,-4},{4,4}})));
   Boolean linkReady;
   Boolean transmitReady;
 equation
@@ -45,17 +45,17 @@ equation
     pre(feedback.transmitterReady) and feedback.dataAvailable;
   transmitReady=linkReady;
   action.phase=phase;
-  action.communicationPowerCommand=phase == NISSA_12UCubeSat.Foundation.Types.DownlinkPhase.PowerOn or
-    phase == NISSA_12UCubeSat.Foundation.Types.DownlinkPhase.Initialize or
-    phase == NISSA_12UCubeSat.Foundation.Types.DownlinkPhase.WaitGroundPointing or
-    phase == NISSA_12UCubeSat.Foundation.Types.DownlinkPhase.EstablishLink or
-    phase == NISSA_12UCubeSat.Foundation.Types.DownlinkPhase.Transmit or
-    phase == NISSA_12UCubeSat.Foundation.Types.DownlinkPhase.Shutdown;
-  action.transmitCommand=phase == NISSA_12UCubeSat.Foundation.Types.DownlinkPhase.Transmit;
+  action.communicationPowerCommand=phase == OneSatSim.Foundation.Types.DownlinkPhase.PowerOn or
+    phase == OneSatSim.Foundation.Types.DownlinkPhase.Initialize or
+    phase == OneSatSim.Foundation.Types.DownlinkPhase.WaitGroundPointing or
+    phase == OneSatSim.Foundation.Types.DownlinkPhase.EstablishLink or
+    phase == OneSatSim.Foundation.Types.DownlinkPhase.Transmit or
+    phase == OneSatSim.Foundation.Types.DownlinkPhase.Shutdown;
+  action.transmitCommand=phase == OneSatSim.Foundation.Types.DownlinkPhase.Transmit;
   action.busy=action.communicationPowerCommand;
-  action.active=phase == NISSA_12UCubeSat.Foundation.Types.DownlinkPhase.Transmit or phase == NISSA_12UCubeSat.Foundation.Types.DownlinkPhase.Shutdown;
-  action.completed=phase == NISSA_12UCubeSat.Foundation.Types.DownlinkPhase.Complete;
-  action.failed=phase == NISSA_12UCubeSat.Foundation.Types.DownlinkPhase.Failed;
+  action.active=phase == OneSatSim.Foundation.Types.DownlinkPhase.Transmit or phase == OneSatSim.Foundation.Types.DownlinkPhase.Shutdown;
+  action.completed=phase == OneSatSim.Foundation.Types.DownlinkPhase.Complete;
+  action.failed=phase == OneSatSim.Foundation.Types.DownlinkPhase.Failed;
   action.aborted=abortedLatch;
   action.timeout=timeoutLatch;
   startedEventIdPublisher=startedId;
@@ -77,74 +77,74 @@ algorithm
       edge(safety.safeModeRequired),time >= phaseDeadline,time >= resetDeadline} then
     if change(actionRequestId) and actionRequestId > 0 then
       activeRequest:=actionRequestId;
-      phase:=NISSA_12UCubeSat.Foundation.Types.DownlinkPhase.PowerOn;
+      phase:=OneSatSim.Foundation.Types.DownlinkPhase.PowerOn;
       phaseDeadline:=time+powerOnTime;
       resetDeadline:=1e100;
       abortedLatch:=false;
       timeoutLatch:=false;
     elseif safety.safeModeRequired and activeRequest > 0 and
-        not (pre(phase) == NISSA_12UCubeSat.Foundation.Types.DownlinkPhase.Idle or
-             pre(phase) == NISSA_12UCubeSat.Foundation.Types.DownlinkPhase.Complete or
-             pre(phase) == NISSA_12UCubeSat.Foundation.Types.DownlinkPhase.Failed) then
-      phase:=NISSA_12UCubeSat.Foundation.Types.DownlinkPhase.Failed;
+        not (pre(phase) == OneSatSim.Foundation.Types.DownlinkPhase.Idle or
+             pre(phase) == OneSatSim.Foundation.Types.DownlinkPhase.Complete or
+             pre(phase) == OneSatSim.Foundation.Types.DownlinkPhase.Failed) then
+      phase:=OneSatSim.Foundation.Types.DownlinkPhase.Failed;
       phaseDeadline:=1e100;
       resetDeadline:=time+eventSettleDelay;
       abortedLatch:=true;
       timeoutLatch:=false;
       abortedId:=activeRequest;
     elseif pre(activeRequest) > 0 and activeMissionSelection.groundStationIndex <= 0 and
-        not (pre(phase) == NISSA_12UCubeSat.Foundation.Types.DownlinkPhase.Idle or
-             pre(phase) == NISSA_12UCubeSat.Foundation.Types.DownlinkPhase.Complete or
-             pre(phase) == NISSA_12UCubeSat.Foundation.Types.DownlinkPhase.Failed) then
-      phase:=NISSA_12UCubeSat.Foundation.Types.DownlinkPhase.Failed;
+        not (pre(phase) == OneSatSim.Foundation.Types.DownlinkPhase.Idle or
+             pre(phase) == OneSatSim.Foundation.Types.DownlinkPhase.Complete or
+             pre(phase) == OneSatSim.Foundation.Types.DownlinkPhase.Failed) then
+      phase:=OneSatSim.Foundation.Types.DownlinkPhase.Failed;
       phaseDeadline:=1e100;
       resetDeadline:=time+eventSettleDelay;
       abortedLatch:=true;
       timeoutLatch:=false;
       abortedId:=pre(activeRequest);
     elseif time >= pre(resetDeadline) then
-      phase:=NISSA_12UCubeSat.Foundation.Types.DownlinkPhase.Idle;
+      phase:=OneSatSim.Foundation.Types.DownlinkPhase.Idle;
       phaseDeadline:=1e100;
       resetDeadline:=1e100;
       activeRequest:=0;
       abortedLatch:=false;
       timeoutLatch:=false;
-    elseif pre(phase) == NISSA_12UCubeSat.Foundation.Types.DownlinkPhase.WaitGroundPointing and linkReady and
+    elseif pre(phase) == OneSatSim.Foundation.Types.DownlinkPhase.WaitGroundPointing and linkReady and
         time+linkAcquisitionTime <= pre(phaseDeadline) then
-      phase:=NISSA_12UCubeSat.Foundation.Types.DownlinkPhase.EstablishLink;
+      phase:=OneSatSim.Foundation.Types.DownlinkPhase.EstablishLink;
       phaseDeadline:=time+linkAcquisitionTime;
       startedId:=activeRequest;
-    elseif pre(phase) == NISSA_12UCubeSat.Foundation.Types.DownlinkPhase.Transmit and not transmitReady then
-      phase:=NISSA_12UCubeSat.Foundation.Types.DownlinkPhase.Shutdown;
+    elseif pre(phase) == OneSatSim.Foundation.Types.DownlinkPhase.Transmit and not transmitReady then
+      phase:=OneSatSim.Foundation.Types.DownlinkPhase.Shutdown;
       phaseDeadline:=time+shutdownTime;
-    elseif pre(phase) == NISSA_12UCubeSat.Foundation.Types.DownlinkPhase.EstablishLink and not linkReady then
-      phase:=NISSA_12UCubeSat.Foundation.Types.DownlinkPhase.Shutdown;
+    elseif pre(phase) == OneSatSim.Foundation.Types.DownlinkPhase.EstablishLink and not linkReady then
+      phase:=OneSatSim.Foundation.Types.DownlinkPhase.Shutdown;
       phaseDeadline:=time+shutdownTime;
     elseif time >= pre(phaseDeadline) then
-      if pre(phase) == NISSA_12UCubeSat.Foundation.Types.DownlinkPhase.PowerOn then
-        phase:=NISSA_12UCubeSat.Foundation.Types.DownlinkPhase.Initialize;
+      if pre(phase) == OneSatSim.Foundation.Types.DownlinkPhase.PowerOn then
+        phase:=OneSatSim.Foundation.Types.DownlinkPhase.Initialize;
         phaseDeadline:=time+initializationTime;
-      elseif pre(phase) == NISSA_12UCubeSat.Foundation.Types.DownlinkPhase.Initialize and linkReady then
-        phase:=NISSA_12UCubeSat.Foundation.Types.DownlinkPhase.EstablishLink;
+      elseif pre(phase) == OneSatSim.Foundation.Types.DownlinkPhase.Initialize and linkReady then
+        phase:=OneSatSim.Foundation.Types.DownlinkPhase.EstablishLink;
         phaseDeadline:=time+linkAcquisitionTime;
         startedId:=activeRequest;
-      elseif pre(phase) == NISSA_12UCubeSat.Foundation.Types.DownlinkPhase.Initialize then
-        phase:=NISSA_12UCubeSat.Foundation.Types.DownlinkPhase.WaitGroundPointing;
+      elseif pre(phase) == OneSatSim.Foundation.Types.DownlinkPhase.Initialize then
+        phase:=OneSatSim.Foundation.Types.DownlinkPhase.WaitGroundPointing;
         phaseDeadline:=time+pointingWaitTimeout;
-      elseif pre(phase) == NISSA_12UCubeSat.Foundation.Types.DownlinkPhase.WaitGroundPointing then
-        phase:=NISSA_12UCubeSat.Foundation.Types.DownlinkPhase.Failed;
+      elseif pre(phase) == OneSatSim.Foundation.Types.DownlinkPhase.WaitGroundPointing then
+        phase:=OneSatSim.Foundation.Types.DownlinkPhase.Failed;
         phaseDeadline:=1e100;
         resetDeadline:=time+eventSettleDelay;
         timeoutLatch:=true;
         timeoutId:=activeRequest;
-      elseif pre(phase) == NISSA_12UCubeSat.Foundation.Types.DownlinkPhase.EstablishLink and transmitReady then
-        phase:=NISSA_12UCubeSat.Foundation.Types.DownlinkPhase.Transmit;
+      elseif pre(phase) == OneSatSim.Foundation.Types.DownlinkPhase.EstablishLink and transmitReady then
+        phase:=OneSatSim.Foundation.Types.DownlinkPhase.Transmit;
         phaseDeadline:=1e100;
-      elseif pre(phase) == NISSA_12UCubeSat.Foundation.Types.DownlinkPhase.EstablishLink then
-        phase:=NISSA_12UCubeSat.Foundation.Types.DownlinkPhase.Shutdown;
+      elseif pre(phase) == OneSatSim.Foundation.Types.DownlinkPhase.EstablishLink then
+        phase:=OneSatSim.Foundation.Types.DownlinkPhase.Shutdown;
         phaseDeadline:=time+shutdownTime;
-      elseif pre(phase) == NISSA_12UCubeSat.Foundation.Types.DownlinkPhase.Shutdown then
-        phase:=NISSA_12UCubeSat.Foundation.Types.DownlinkPhase.Complete;
+      elseif pre(phase) == OneSatSim.Foundation.Types.DownlinkPhase.Shutdown then
+        phase:=OneSatSim.Foundation.Types.DownlinkPhase.Complete;
         phaseDeadline:=1e100;
         resetDeadline:=time+eventSettleDelay;
         completedId:=activeRequest;

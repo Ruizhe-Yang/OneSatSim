@@ -1,4 +1,4 @@
-within NISSA_12UCubeSat.Components;
+within OneSatSim.Components;
 model SolarArrayWing3Unit "太阳翼3组件"
   parameter Modelica.Units.SI.Area activeArea=0.130
     "SYSTEM-LEVEL EQUIVALENT: smaller third deployed panel engineering area";

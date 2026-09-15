@@ -1,6 +1,6 @@
-within NISSA_12UCubeSat.Components;
+within OneSatSim.Components;
 model StarTrackerZUnit "Z向星敏感器组件"
-  parameter NISSA_12UCubeSat.Scenarios.DesignConfigRecords.StarZComponentConfig config
+  parameter OneSatSim.Scenarios.DesignConfigRecords.StarZComponentConfig config
     "由所属N-System传入的硬件设计配置";
   parameter Modelica.Units.SI.Resistance loadResistance=config.LoadResistance
     "starZ等效负载电阻；Excel单位Ω，当前设计基线";

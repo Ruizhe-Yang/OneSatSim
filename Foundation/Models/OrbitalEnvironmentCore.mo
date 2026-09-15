@@ -1,9 +1,9 @@
-within NISSA_12UCubeSat.Foundation.Models;
+within OneSatSim.Foundation.Models;
 model OrbitalEnvironmentCore "真实历元轨道、多地面站与多目标环境核心"
   import SI=Modelica.Units.SI;
-  parameter NISSA_12UCubeSat.Scenarios.OrbitConfig orbit "真实历元轨道输入及生成环境资源";
-  parameter NISSA_12UCubeSat.Scenarios.GroundStationConfig groundStations[8] "最多8个地面站";
-  parameter NISSA_12UCubeSat.Scenarios.ImagingTargetConfig imagingTargets[32] "最多32个拍摄目标";
+  parameter OneSatSim.Scenarios.OrbitConfig orbit "真实历元轨道输入及生成环境资源";
+  parameter OneSatSim.Scenarios.GroundStationConfig groundStations[8] "最多8个地面站";
+  parameter OneSatSim.Scenarios.ImagingTargetConfig imagingTargets[32] "最多32个拍摄目标";
   parameter SI.Length earthRadius=6378137;
   final parameter SI.Length referenceAltitude=orbit.referenceSemiMajorAxis-earthRadius
     "标称轨道高度，不代表椭圆轨道瞬时高度";
@@ -26,9 +26,9 @@ model OrbitalEnvironmentCore "真实历元轨道、多地面站与多目标环�
     "任务级参数：目标照明的最小太阳高度角";
   Modelica.Blocks.Interfaces.RealInput euler[3];
   Modelica.Blocks.Interfaces.RealInput bodyRate[3];
-  NISSA_12UCubeSat.Foundation.Interfaces.ActiveMissionSelectionInput activeMissionSelection
+  OneSatSim.Foundation.Interfaces.ActiveMissionSelectionInput activeMissionSelection
     "来自OBC的任务对象锁存索引";
-  NISSA_12UCubeSat.Foundation.Interfaces.EnvironmentPort environment annotation(Placement(transformation(extent={{90,-10},{110,10}})));
+  OneSatSim.Foundation.Interfaces.EnvironmentPort environment annotation(Placement(transformation(extent={{90,-10},{110,10}})));
 protected
   Foundation.Models.EphemerisEnvironmentReader environmentData(
     dataURI=orbit.environmentDataURI,
@@ -282,7 +282,7 @@ equation
   groundPrePointIndexPublisher=stationPrePointSelectedIndex[8];
   groundPrePointOpportunityPublisher=environment.groundPrePointIndex > 0;
   groundOpportunityTimeRemainingPublisher=noEvent(if environment.groundPrePointIndex > 0 then
-    NISSA_12UCubeSat.Foundation.Functions.estimateGroundContactDuration(
+    OneSatSim.Foundation.Functions.estimateGroundContactDuration(
       stationRelative[environment.groundPrePointIndex,:],
       stationRelativeVelocity[environment.groundPrePointIndex,:],
       stationPosition[environment.groundPrePointIndex,:],

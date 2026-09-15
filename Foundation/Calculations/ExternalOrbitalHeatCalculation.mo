@@ -1,4 +1,4 @@
-within NISSA_12UCubeSat.Foundation.Calculations;
+within OneSatSim.Foundation.Calculations;
 model ExternalOrbitalHeatCalculation "整星外表面轨道热流计算"
   parameter Modelica.Units.SI.Area grossLongFaceArea=0.226*0.340 "12U长侧面面积";
   parameter Modelica.Units.SI.Area grossEndFaceArea=0.226*0.226 "12U端面面积";

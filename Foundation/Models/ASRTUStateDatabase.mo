@@ -1,7 +1,7 @@
-within NISSA_12UCubeSat.Foundation.Models;
+within OneSatSim.Foundation.Models;
 model ASRTUStateDatabase "星上状态数据库"
-  NISSA_12UCubeSat.Foundation.Interfaces.InformationPort live;
-  NISSA_12UCubeSat.Foundation.Interfaces.ASRTUStatePort database;
+  OneSatSim.Foundation.Interfaces.InformationPort live;
+  OneSatSim.Foundation.Interfaces.ASRTUStatePort database;
 equation
   // 状态数据库是设备状态总线的确定性语义镜像。连续工程遥测镜像直接读取
   // 本接口；这里不对大型连接器记录进行事件采样或算法复制。

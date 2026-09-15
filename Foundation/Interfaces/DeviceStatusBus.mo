@@ -1,4 +1,4 @@
-within NISSA_12UCubeSat.Foundation.Interfaces;
+within OneSatSim.Foundation.Interfaces;
 expandable connector DeviceStatusBus "设备测量与状态总线"
   RealSignal busVoltage[3](each unit="V");
   RealSignal busCurrent[3](each unit="A");

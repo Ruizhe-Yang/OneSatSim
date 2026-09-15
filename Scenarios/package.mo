@@ -1,4 +1,4 @@
-within NISSA_12UCubeSat;
+within OneSatSim;
 package Scenarios "静态仿真场景参数层"
   extends Modelica.Icons.Package;
   constant DefaultSpacecraftDesignConfig defaultSpacecraftDesignConfig=

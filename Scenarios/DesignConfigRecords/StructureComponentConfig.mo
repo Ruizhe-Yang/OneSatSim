@@ -1,4 +1,4 @@
-within NISSA_12UCubeSat.Scenarios.DesignConfigRecords;
+within OneSatSim.Scenarios.DesignConfigRecords;
 record StructureComponentConfig "structure硬件设计配置"
   parameter Modelica.Units.SI.Mass PrimaryStructureMass
     "主结构总质量；Excel工程单位kg";

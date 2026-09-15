@@ -1,15 +1,15 @@
-within NISSA_12UCubeSat.Foundation.Models;
+within OneSatSim.Foundation.Models;
 model ImagingSequencer "请求驱动的成像动作时序器"
-  NISSA_12UCubeSat.Foundation.Interfaces.MissionFeedbackBus feedback annotation(Placement(transformation(extent={{-112,45},{-92,65}})));
-  NISSA_12UCubeSat.Foundation.Interfaces.ActiveGeometrySignals activeGeometry annotation(Placement(transformation(extent={{-112,10},{-92,30}})));
-  NISSA_12UCubeSat.Foundation.Interfaces.SafetySignals safety annotation(Placement(transformation(extent={{-112,-25},{-92,-5}})));
+  OneSatSim.Foundation.Interfaces.MissionFeedbackBus feedback annotation(Placement(transformation(extent={{-112,45},{-92,65}})));
+  OneSatSim.Foundation.Interfaces.ActiveGeometrySignals activeGeometry annotation(Placement(transformation(extent={{-112,10},{-92,30}})));
+  OneSatSim.Foundation.Interfaces.SafetySignals safety annotation(Placement(transformation(extent={{-112,-25},{-92,-5}})));
   Modelica.Blocks.Interfaces.IntegerInput actionRequestId annotation(Placement(transformation(extent={{-112,-60},{-92,-40}})));
   Modelica.Blocks.Interfaces.IntegerOutput startedEventId;
   Modelica.Blocks.Interfaces.IntegerOutput completedEventId;
   Modelica.Blocks.Interfaces.IntegerOutput failedEventId;
   Modelica.Blocks.Interfaces.IntegerOutput abortedEventId;
   Modelica.Blocks.Interfaces.IntegerOutput timeoutEventId;
-  NISSA_12UCubeSat.Foundation.Interfaces.ImagingActionSignals action annotation(Placement(transformation(extent={{92,-10},{112,10}})));
+  OneSatSim.Foundation.Interfaces.ImagingActionSignals action annotation(Placement(transformation(extent={{92,-10},{112,10}})));
   parameter Real powerOnTime(unit="s")=2;
   parameter Real initializationTime(unit="s")=5;
   parameter Real attitudeWaitTimeout(unit="s")=90;
@@ -21,7 +21,7 @@ model ImagingSequencer "请求驱动的成像动作时序器"
   parameter Real cameraWakeAngle(unit="rad")=15*Modelica.Constants.pi/180;
   parameter Real eventSettleDelay(unit="s")=1e-4;
 protected
-  discrete NISSA_12UCubeSat.Foundation.Types.ImagingPhase phase(start=NISSA_12UCubeSat.Foundation.Types.ImagingPhase.Idle,fixed=true);
+  discrete OneSatSim.Foundation.Types.ImagingPhase phase(start=OneSatSim.Foundation.Types.ImagingPhase.Idle,fixed=true);
   discrete Real phaseEntry(start=0,fixed=true);
   discrete Real phaseDeadline(start=1e100,fixed=true);
   discrete Real preparationDeadline(start=1e100,fixed=true);
@@ -37,14 +37,14 @@ protected
   discrete Boolean captureStartedLatch(start=false,fixed=true);
   discrete Boolean imageCompleteLatch(start=false,fixed=true);
   discrete Real validImageBytesLatch(unit="1",start=0,fixed=true);
-  discrete NISSA_12UCubeSat.Foundation.Types.RejectReason failureReasonLatch(
-    start=NISSA_12UCubeSat.Foundation.Types.RejectReason.None,fixed=true);
+  discrete OneSatSim.Foundation.Types.RejectReason failureReasonLatch(
+    start=OneSatSim.Foundation.Types.RejectReason.None,fixed=true);
   Modelica.Blocks.Interfaces.IntegerOutput startedEventIdPublisher annotation(Placement(visible=false, transformation(extent={{-4,-4},{4,4}})));
   Modelica.Blocks.Interfaces.IntegerOutput completedEventIdPublisher annotation(Placement(visible=false, transformation(extent={{-4,-4},{4,4}})));
   Modelica.Blocks.Interfaces.IntegerOutput failedEventIdPublisher annotation(Placement(visible=false, transformation(extent={{-4,-4},{4,4}})));
   Modelica.Blocks.Interfaces.IntegerOutput abortedEventIdPublisher annotation(Placement(visible=false, transformation(extent={{-4,-4},{4,4}})));
   Modelica.Blocks.Interfaces.IntegerOutput timeoutEventIdPublisher annotation(Placement(visible=false, transformation(extent={{-4,-4},{4,4}})));
-  NISSA_12UCubeSat.Foundation.Interfaces.IntegerSignalBridge actionIntegerBridge[5] annotation(Placement(visible=false, transformation(extent={{-4,-4},{4,4}})));
+  OneSatSim.Foundation.Interfaces.IntegerSignalBridge actionIntegerBridge[5] annotation(Placement(visible=false, transformation(extent={{-4,-4},{4,4}})));
   Boolean qualifiedAttitude;
   Boolean imagingValid;
   Boolean captureReady;
@@ -60,24 +60,24 @@ equation
     not pre(feedback.storageFull) and imagingValid;
   withinCameraWakeAngle=feedback.attitudeError <= cameraWakeAngle;
   action.phase=phase;
-  action.payloadPowerCommand=phase == NISSA_12UCubeSat.Foundation.Types.ImagingPhase.PowerOn or
-    phase == NISSA_12UCubeSat.Foundation.Types.ImagingPhase.Initialize or
-    phase == NISSA_12UCubeSat.Foundation.Types.ImagingPhase.WaitAttitude or
-    phase == NISSA_12UCubeSat.Foundation.Types.ImagingPhase.Capture or
-    phase == NISSA_12UCubeSat.Foundation.Types.ImagingPhase.StoreData or
-    phase == NISSA_12UCubeSat.Foundation.Types.ImagingPhase.PowerOff;
-  action.captureCommand=phase == NISSA_12UCubeSat.Foundation.Types.ImagingPhase.Capture;
+  action.payloadPowerCommand=phase == OneSatSim.Foundation.Types.ImagingPhase.PowerOn or
+    phase == OneSatSim.Foundation.Types.ImagingPhase.Initialize or
+    phase == OneSatSim.Foundation.Types.ImagingPhase.WaitAttitude or
+    phase == OneSatSim.Foundation.Types.ImagingPhase.Capture or
+    phase == OneSatSim.Foundation.Types.ImagingPhase.StoreData or
+    phase == OneSatSim.Foundation.Types.ImagingPhase.PowerOff;
+  action.captureCommand=phase == OneSatSim.Foundation.Types.ImagingPhase.Capture;
   action.busy=action.payloadPowerCommand;
-  action.active=phase == NISSA_12UCubeSat.Foundation.Types.ImagingPhase.Capture or
-    phase == NISSA_12UCubeSat.Foundation.Types.ImagingPhase.StoreData or
-    phase == NISSA_12UCubeSat.Foundation.Types.ImagingPhase.PowerOff;
-  action.completed=phase == NISSA_12UCubeSat.Foundation.Types.ImagingPhase.Complete;
-  action.failed=phase == NISSA_12UCubeSat.Foundation.Types.ImagingPhase.Failed;
+  action.active=phase == OneSatSim.Foundation.Types.ImagingPhase.Capture or
+    phase == OneSatSim.Foundation.Types.ImagingPhase.StoreData or
+    phase == OneSatSim.Foundation.Types.ImagingPhase.PowerOff;
+  action.completed=phase == OneSatSim.Foundation.Types.ImagingPhase.Complete;
+  action.failed=phase == OneSatSim.Foundation.Types.ImagingPhase.Failed;
   action.aborted=abortedLatch;
   action.timeout=timeoutLatch;
   action.captureStarted=captureStartedLatch;
   action.imageComplete=imageCompleteLatch;
-  action.validImageBytes=if phase == NISSA_12UCubeSat.Foundation.Types.ImagingPhase.Capture then
+  action.validImageBytes=if phase == OneSatSim.Foundation.Types.ImagingPhase.Capture then
     min(completeImageBytes,imageWriteRate*max(0,time-phaseEntry)) else validImageBytesLatch;
   action.failureReason=failureReasonLatch;
   startedEventIdPublisher=startedId;
@@ -97,7 +97,7 @@ algorithm
       change(activeGeometry.cameraFOVValid),change(activeGeometry.targetIlluminationValid),
       edge(safety.safeModeRequired),time >= phaseDeadline,time >= preparationDeadline,time >= resetDeadline} then
     if initial() then
-      phase:=NISSA_12UCubeSat.Foundation.Types.ImagingPhase.Idle;
+      phase:=OneSatSim.Foundation.Types.ImagingPhase.Idle;
       phaseEntry:=time;
       phaseDeadline:=1e100;
       preparationDeadline:=1e100;
@@ -113,10 +113,10 @@ algorithm
       captureStartedLatch:=false;
       imageCompleteLatch:=false;
       validImageBytesLatch:=0;
-      failureReasonLatch:=NISSA_12UCubeSat.Foundation.Types.RejectReason.None;
+      failureReasonLatch:=OneSatSim.Foundation.Types.RejectReason.None;
     elseif change(actionRequestId) and actionRequestId > 0 then
       activeRequest:=actionRequestId;
-      phase:=if withinCameraWakeAngle then NISSA_12UCubeSat.Foundation.Types.ImagingPhase.PowerOn else NISSA_12UCubeSat.Foundation.Types.ImagingPhase.Idle;
+      phase:=if withinCameraWakeAngle then OneSatSim.Foundation.Types.ImagingPhase.PowerOn else OneSatSim.Foundation.Types.ImagingPhase.Idle;
       phaseEntry:=time;
       phaseDeadline:=if withinCameraWakeAngle then time+powerOnTime else 1e100;
       preparationDeadline:=time+attitudeWaitTimeout;
@@ -126,9 +126,9 @@ algorithm
       captureStartedLatch:=false;
       imageCompleteLatch:=false;
       validImageBytesLatch:=0;
-      failureReasonLatch:=NISSA_12UCubeSat.Foundation.Types.RejectReason.None;
+      failureReasonLatch:=OneSatSim.Foundation.Types.RejectReason.None;
     elseif change(actionRequestId) and actionRequestId == 0 then
-      phase:=NISSA_12UCubeSat.Foundation.Types.ImagingPhase.Idle;
+      phase:=OneSatSim.Foundation.Types.ImagingPhase.Idle;
       phaseEntry:=time;
       phaseDeadline:=1e100;
       preparationDeadline:=1e100;
@@ -139,24 +139,24 @@ algorithm
       captureStartedLatch:=false;
       imageCompleteLatch:=false;
       validImageBytesLatch:=0;
-      failureReasonLatch:=NISSA_12UCubeSat.Foundation.Types.RejectReason.None;
+      failureReasonLatch:=OneSatSim.Foundation.Types.RejectReason.None;
     elseif safety.safeModeRequired and activeRequest > 0 and
-        not (pre(phase) == NISSA_12UCubeSat.Foundation.Types.ImagingPhase.Idle or
-             pre(phase) == NISSA_12UCubeSat.Foundation.Types.ImagingPhase.Complete or
-             pre(phase) == NISSA_12UCubeSat.Foundation.Types.ImagingPhase.Failed) then
-      phase:=NISSA_12UCubeSat.Foundation.Types.ImagingPhase.Failed;
+        not (pre(phase) == OneSatSim.Foundation.Types.ImagingPhase.Idle or
+             pre(phase) == OneSatSim.Foundation.Types.ImagingPhase.Complete or
+             pre(phase) == OneSatSim.Foundation.Types.ImagingPhase.Failed) then
+      phase:=OneSatSim.Foundation.Types.ImagingPhase.Failed;
       phaseEntry:=time;
       phaseDeadline:=1e100;
       preparationDeadline:=1e100;
       resetDeadline:=time+eventSettleDelay;
       abortedLatch:=true;
       timeoutLatch:=false;
-      validImageBytesLatch:=if pre(phase) == NISSA_12UCubeSat.Foundation.Types.ImagingPhase.Capture then
+      validImageBytesLatch:=if pre(phase) == OneSatSim.Foundation.Types.ImagingPhase.Capture then
         min(completeImageBytes,imageWriteRate*max(0,time-pre(phaseEntry))) else pre(validImageBytesLatch);
       abortedId:=activeRequest;
-      failureReasonLatch:=NISSA_12UCubeSat.Foundation.Types.RejectReason.SafetyPreempted;
+      failureReasonLatch:=OneSatSim.Foundation.Types.RejectReason.SafetyPreempted;
     elseif time >= pre(resetDeadline) then
-      phase:=NISSA_12UCubeSat.Foundation.Types.ImagingPhase.Idle;
+      phase:=OneSatSim.Foundation.Types.ImagingPhase.Idle;
       phaseEntry:=time;
       phaseDeadline:=1e100;
       preparationDeadline:=1e100;
@@ -164,87 +164,87 @@ algorithm
       activeRequest:=0;
       abortedLatch:=false;
       timeoutLatch:=false;
-    elseif activeRequest > 0 and pre(phase) == NISSA_12UCubeSat.Foundation.Types.ImagingPhase.Idle and withinCameraWakeAngle then
-      phase:=NISSA_12UCubeSat.Foundation.Types.ImagingPhase.PowerOn;
+    elseif activeRequest > 0 and pre(phase) == OneSatSim.Foundation.Types.ImagingPhase.Idle and withinCameraWakeAngle then
+      phase:=OneSatSim.Foundation.Types.ImagingPhase.PowerOn;
       phaseEntry:=time;
       phaseDeadline:=time+powerOnTime;
     elseif activeRequest > 0 and time >= pre(preparationDeadline) and
-        not (pre(phase) == NISSA_12UCubeSat.Foundation.Types.ImagingPhase.Complete or pre(phase) == NISSA_12UCubeSat.Foundation.Types.ImagingPhase.Failed) then
-      phase:=NISSA_12UCubeSat.Foundation.Types.ImagingPhase.Failed;
+        not (pre(phase) == OneSatSim.Foundation.Types.ImagingPhase.Complete or pre(phase) == OneSatSim.Foundation.Types.ImagingPhase.Failed) then
+      phase:=OneSatSim.Foundation.Types.ImagingPhase.Failed;
       phaseEntry:=time;
       phaseDeadline:=1e100;
       preparationDeadline:=1e100;
       resetDeadline:=time+eventSettleDelay;
       timeoutLatch:=true;
-      validImageBytesLatch:=if pre(phase) == NISSA_12UCubeSat.Foundation.Types.ImagingPhase.Capture then
+      validImageBytesLatch:=if pre(phase) == OneSatSim.Foundation.Types.ImagingPhase.Capture then
         min(completeImageBytes,imageWriteRate*max(0,time-pre(phaseEntry))) else pre(validImageBytesLatch);
       timeoutId:=activeRequest;
-      failureReasonLatch:=NISSA_12UCubeSat.Foundation.Types.RejectReason.Timeout;
-    elseif pre(phase) == NISSA_12UCubeSat.Foundation.Types.ImagingPhase.WaitAttitude and captureReady then
-      phase:=NISSA_12UCubeSat.Foundation.Types.ImagingPhase.Capture;
+      failureReasonLatch:=OneSatSim.Foundation.Types.RejectReason.Timeout;
+    elseif pre(phase) == OneSatSim.Foundation.Types.ImagingPhase.WaitAttitude and captureReady then
+      phase:=OneSatSim.Foundation.Types.ImagingPhase.Capture;
       phaseEntry:=time;
       phaseDeadline:=time+captureDuration;
       preparationDeadline:=1e100;
       startedId:=activeRequest;
       captureStartedLatch:=true;
       validImageBytesLatch:=0;
-    elseif pre(phase) == NISSA_12UCubeSat.Foundation.Types.ImagingPhase.Capture and (not imagingValid or not qualifiedAttitude) then
-      phase:=NISSA_12UCubeSat.Foundation.Types.ImagingPhase.Failed;
+    elseif pre(phase) == OneSatSim.Foundation.Types.ImagingPhase.Capture and (not imagingValid or not qualifiedAttitude) then
+      phase:=OneSatSim.Foundation.Types.ImagingPhase.Failed;
       phaseEntry:=time;
       phaseDeadline:=1e100;
       preparationDeadline:=1e100;
       resetDeadline:=time+eventSettleDelay;
       failedId:=activeRequest;
       validImageBytesLatch:=min(completeImageBytes,imageWriteRate*max(0,time-pre(phaseEntry)));
-      failureReasonLatch:=if not qualifiedAttitude then NISSA_12UCubeSat.Foundation.Types.RejectReason.AttitudeUnavailable else
-        if not activeGeometry.activeTargetVisible then NISSA_12UCubeSat.Foundation.Types.RejectReason.TargetVisibilityLost else
-        if not activeGeometry.offNadirValid then NISSA_12UCubeSat.Foundation.Types.RejectReason.OffNadirLimit else
-        if not activeGeometry.cameraFOVValid then NISSA_12UCubeSat.Foundation.Types.RejectReason.CameraFOVLimit else
-        NISSA_12UCubeSat.Foundation.Types.RejectReason.TargetNotIlluminated;
-    elseif pre(feedback.storageFull) and (pre(phase) == NISSA_12UCubeSat.Foundation.Types.ImagingPhase.Initialize or
-        pre(phase) == NISSA_12UCubeSat.Foundation.Types.ImagingPhase.WaitAttitude or
-        pre(phase) == NISSA_12UCubeSat.Foundation.Types.ImagingPhase.Capture) then
-      phase:=NISSA_12UCubeSat.Foundation.Types.ImagingPhase.Failed;
+      failureReasonLatch:=if not qualifiedAttitude then OneSatSim.Foundation.Types.RejectReason.AttitudeUnavailable else
+        if not activeGeometry.activeTargetVisible then OneSatSim.Foundation.Types.RejectReason.TargetVisibilityLost else
+        if not activeGeometry.offNadirValid then OneSatSim.Foundation.Types.RejectReason.OffNadirLimit else
+        if not activeGeometry.cameraFOVValid then OneSatSim.Foundation.Types.RejectReason.CameraFOVLimit else
+        OneSatSim.Foundation.Types.RejectReason.TargetNotIlluminated;
+    elseif pre(feedback.storageFull) and (pre(phase) == OneSatSim.Foundation.Types.ImagingPhase.Initialize or
+        pre(phase) == OneSatSim.Foundation.Types.ImagingPhase.WaitAttitude or
+        pre(phase) == OneSatSim.Foundation.Types.ImagingPhase.Capture) then
+      phase:=OneSatSim.Foundation.Types.ImagingPhase.Failed;
       phaseEntry:=time;
       phaseDeadline:=1e100;
       preparationDeadline:=1e100;
       resetDeadline:=time+eventSettleDelay;
       failedId:=activeRequest;
-      validImageBytesLatch:=if pre(phase) == NISSA_12UCubeSat.Foundation.Types.ImagingPhase.Capture then
+      validImageBytesLatch:=if pre(phase) == OneSatSim.Foundation.Types.ImagingPhase.Capture then
         min(completeImageBytes,imageWriteRate*max(0,time-pre(phaseEntry))) else pre(validImageBytesLatch);
-      failureReasonLatch:=NISSA_12UCubeSat.Foundation.Types.RejectReason.StorageFull;
+      failureReasonLatch:=OneSatSim.Foundation.Types.RejectReason.StorageFull;
     elseif time >= pre(phaseDeadline) then
       phaseEntry:=time;
-      if pre(phase) == NISSA_12UCubeSat.Foundation.Types.ImagingPhase.PowerOn then
-        phase:=NISSA_12UCubeSat.Foundation.Types.ImagingPhase.Initialize;
+      if pre(phase) == OneSatSim.Foundation.Types.ImagingPhase.PowerOn then
+        phase:=OneSatSim.Foundation.Types.ImagingPhase.Initialize;
         phaseDeadline:=time+initializationTime;
-      elseif pre(phase) == NISSA_12UCubeSat.Foundation.Types.ImagingPhase.Initialize and captureReady then
-        phase:=NISSA_12UCubeSat.Foundation.Types.ImagingPhase.Capture;
+      elseif pre(phase) == OneSatSim.Foundation.Types.ImagingPhase.Initialize and captureReady then
+        phase:=OneSatSim.Foundation.Types.ImagingPhase.Capture;
         phaseDeadline:=time+captureDuration;
         preparationDeadline:=1e100;
         startedId:=activeRequest;
         captureStartedLatch:=true;
         validImageBytesLatch:=0;
-      elseif pre(phase) == NISSA_12UCubeSat.Foundation.Types.ImagingPhase.Initialize then
-        phase:=NISSA_12UCubeSat.Foundation.Types.ImagingPhase.WaitAttitude;
+      elseif pre(phase) == OneSatSim.Foundation.Types.ImagingPhase.Initialize then
+        phase:=OneSatSim.Foundation.Types.ImagingPhase.WaitAttitude;
         phaseDeadline:=pre(preparationDeadline);
-      elseif pre(phase) == NISSA_12UCubeSat.Foundation.Types.ImagingPhase.WaitAttitude then
-        phase:=NISSA_12UCubeSat.Foundation.Types.ImagingPhase.Failed;
+      elseif pre(phase) == OneSatSim.Foundation.Types.ImagingPhase.WaitAttitude then
+        phase:=OneSatSim.Foundation.Types.ImagingPhase.Failed;
         phaseDeadline:=1e100;
         preparationDeadline:=1e100;
         resetDeadline:=time+eventSettleDelay;
         timeoutLatch:=true;
         timeoutId:=activeRequest;
-        failureReasonLatch:=NISSA_12UCubeSat.Foundation.Types.RejectReason.Timeout;
-      elseif pre(phase) == NISSA_12UCubeSat.Foundation.Types.ImagingPhase.Capture then
-        phase:=NISSA_12UCubeSat.Foundation.Types.ImagingPhase.StoreData;
+        failureReasonLatch:=OneSatSim.Foundation.Types.RejectReason.Timeout;
+      elseif pre(phase) == OneSatSim.Foundation.Types.ImagingPhase.Capture then
+        phase:=OneSatSim.Foundation.Types.ImagingPhase.StoreData;
         phaseDeadline:=time+storeDuration;
         validImageBytesLatch:=completeImageBytes;
-      elseif pre(phase) == NISSA_12UCubeSat.Foundation.Types.ImagingPhase.StoreData then
-        phase:=NISSA_12UCubeSat.Foundation.Types.ImagingPhase.PowerOff;
+      elseif pre(phase) == OneSatSim.Foundation.Types.ImagingPhase.StoreData then
+        phase:=OneSatSim.Foundation.Types.ImagingPhase.PowerOff;
         phaseDeadline:=time+powerOffTime;
-      elseif pre(phase) == NISSA_12UCubeSat.Foundation.Types.ImagingPhase.PowerOff then
-        phase:=NISSA_12UCubeSat.Foundation.Types.ImagingPhase.Complete;
+      elseif pre(phase) == OneSatSim.Foundation.Types.ImagingPhase.PowerOff then
+        phase:=OneSatSim.Foundation.Types.ImagingPhase.Complete;
         phaseDeadline:=1e100;
         preparationDeadline:=1e100;
         resetDeadline:=time+eventSettleDelay;

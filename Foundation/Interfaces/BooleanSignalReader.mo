@@ -1,4 +1,4 @@
-within NISSA_12UCubeSat.Foundation.Interfaces;
+within OneSatSim.Foundation.Interfaces;
 model BooleanSignalReader "可扩展总线布尔信号到因果计算端口的无状态恒等读取器"
   Modelica.Blocks.Interfaces.BooleanInput u
     annotation(Placement(transformation(extent={{-110,-10},{-90,10}})));

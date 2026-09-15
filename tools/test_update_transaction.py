@@ -42,7 +42,7 @@ def main() -> int:
         environment = dict(os.environ)
         environment["PYTHONDONTWRITEBYTECODE"] = "1"
         result = subprocess.run(
-            [sys.executable, str(ROOT / "tools" / "update_nissa_config.py"), "--excel", str(invalid), "--skip-mass-properties"],
+            [sys.executable, str(ROOT / "tools" / "update_onesatsim_config.py"), "--excel", str(invalid), "--skip-mass-properties"],
             cwd=ROOT,
             env=environment,
             text=True,

@@ -1,6 +1,6 @@
-within NISSA_12UCubeSat.Components;
+within OneSatSim.Components;
 model MagnetorquerUnit "三轴磁力矩器组件"
-  parameter NISSA_12UCubeSat.Scenarios.DesignConfigRecords.MagnetorquerComponentConfig config
+  parameter OneSatSim.Scenarios.DesignConfigRecords.MagnetorquerComponentConfig config
     "由所属N-System传入的硬件设计配置";
   parameter Modelica.Units.SI.HeatCapacity heatCapacity=config.HeatCapacity
     "磁力矩器线圈热容；Excel单位J/K，当前设计基线";

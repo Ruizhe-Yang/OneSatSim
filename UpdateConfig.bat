@@ -1,17 +1,17 @@
 @echo off
 setlocal EnableExtensions
 cd /d "%~dp0"
-title NISSA 12U Configuration Update
+title OneSatSim Configuration Update
 
 echo ============================================================
-echo NISSA 12U - Design Configuration Update
+echo OneSatSim - Design Configuration Update
 echo ============================================================
 echo Project root: %CD%
 echo.
 
 set "STATUS_FILE=%CD%\UpdateConfig_last_status.txt"
 set "EXCEL_FILE=%CD%\DesignConfig.xlsx"
-set "SCRIPT_FILE=%CD%\tools\update_nissa_config.py"
+set "SCRIPT_FILE=%CD%\tools\update_onesatsim_config.py"
 
 > "%STATUS_FILE%" echo RUNNING
 
@@ -45,7 +45,7 @@ if not exist "%EXCEL_FILE%" (
 )
 
 if not exist "%SCRIPT_FILE%" (
-    echo [FAILED] tools\update_nissa_config.py was not found.
+    echo [FAILED] tools\update_onesatsim_config.py was not found.
     > "%STATUS_FILE%" echo FAILED - updater script not found
     goto :FAIL
 )
@@ -64,7 +64,7 @@ if "%RESOURCE_MISSING%"=="1" (
 echo Fixed resource set found.
 echo.
 
-echo [4/5] Updating NISSA configuration and environment table...
+echo [4/5] Updating OneSatSim configuration and environment table...
 echo ------------------------------------------------------------
 python "%SCRIPT_FILE%" --excel "%EXCEL_FILE%"
 set "RC=%ERRORLEVEL%"
@@ -112,10 +112,10 @@ if "%MISSING%"=="1" (
 > "%STATUS_FILE%" echo SUCCESS
 echo.
 echo ============================================================
-echo [SUCCESS] NISSA configuration update completed successfully.
+echo [SUCCESS] OneSatSim configuration update completed successfully.
 echo ============================================================
 echo Simulation entry:
-echo   NISSA_12UCubeSat.Simulation.CompleteMission
+echo   OneSatSim.Simulation.CompleteMission
 echo.
 echo Press any key to close this window...
 pause >nul

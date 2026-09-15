@@ -1,6 +1,6 @@
-within NISSA_12UCubeSat.Components;
+within OneSatSim.Components;
 model BatteryUnit "四串两并锂离子电池组件"
-  parameter NISSA_12UCubeSat.Scenarios.DesignConfigRecords.BatteryComponentConfig config
+  parameter OneSatSim.Scenarios.DesignConfigRecords.BatteryComponentConfig config
     "由所属N-System传入的硬件设计配置";
   parameter Integer seriesCellCount=config.SeriesCellCount
     "串联电芯数；Excel单位1，当前设计基线";

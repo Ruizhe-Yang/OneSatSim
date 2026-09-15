@@ -1,6 +1,6 @@
-within NISSA_12UCubeSat.Scenarios;
+within OneSatSim.Scenarios;
 record GeneratedMassProperties "由机械组件离线汇总的整星质量特性"
-  extends NISSA_12UCubeSat.Foundation.Types.MassProperties(
+  extends OneSatSim.Foundation.Types.MassProperties(
     modeledRigidBodyMass=19.96739752,
     wheelHousingAllowance=0,
     centerOfMass={0.00197271577132,0.00497010188236,0.0857572461852},
