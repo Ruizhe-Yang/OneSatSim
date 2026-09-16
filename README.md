@@ -164,7 +164,7 @@ OneSatSim
 
 先执行 **Check Model**，再编译和仿真。修改较多参数或模型后，建议先进行短时仿真，再运行完整任务时长。
 
-> **使用 MWORKS.Sysplorer 时：** 请先将软件中的 **Modelica Standard Library 切换为 4.0.0**，再加载并运行 OneSatSim，以保持与本项目基础依赖一致。
+> **使用 MWORKS.Sysplorer 时：** 在**导入 `package.mo` 时**，请将 **Modelica Standard Library（MSL）切换为 4.0.0**，再完成模型加载与后续仿真，以保持与本项目基础依赖一致。
 
 ---
 
@@ -422,7 +422,7 @@ OneSatSim.Simulation.CompleteMission
 
 After major configuration or model changes, a short simulation is recommended before running the full mission duration.
 
-> **When using MWORKS.Sysplorer:** switch the **Modelica Standard Library to version 4.0.0** before loading and running OneSatSim so that the library version matches the project's core dependency.
+> **When using MWORKS.Sysplorer:** when **importing `package.mo`**, select **Modelica Standard Library (MSL) 4.0.0** before completing the model import and running the simulation, so that the library version matches the project's core dependency.
 
 ---
 
