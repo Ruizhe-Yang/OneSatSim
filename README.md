@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="./OneSatSim.png" alt="OneSatSim Logo" width="520">
+<img src="./Figures/OneSatSim.png" alt="OneSatSim Logo" width="520">
 
 # OneSatSim
 
@@ -12,9 +12,9 @@
 [![Modelica](https://img.shields.io/badge/Modelica-MSL%204.0.0-5C6BC0?style=flat-square)](https://modelica.org/)
 [![OpenModelica](https://img.shields.io/badge/OpenModelica-supported-1976D2?style=flat-square)](https://openmodelica.org/)
 [![MWORKS](https://img.shields.io/badge/MWORKS.Sysplorer-supported-00897B?style=flat-square)](https://www.tongyuan.cc/)
-[![Case](https://img.shields.io/badge/Case-12U%20CubeSat-455A64?style=flat-square)](./OneSatSim_12UCubeSat_CaseStudy.html)
+[![Case](https://img.shields.io/badge/Case-12U%20CubeSat-455A64?style=flat-square)](./doc/OneSatSim_12UCubeSat_CaseStudy.html)
 
-[中文介绍](#zh) · [English Overview](#en) · [案例手册 / Case Study](./OneSatSim_12UCubeSat_CaseStudy.html)
+[中文介绍](#zh) · [English Overview](#en) · [案例手册 / Case Study](./doc/OneSatSim_12UCubeSat_CaseStudy.html)
 
 </div>
 
@@ -29,7 +29,7 @@
 当前公开模型以 **12U 对地观测立方星**为基础案例，用于卫星总体设计、方案论证、任务—资源权衡、跨分系统耦合分析和二次开发。项目根包为 `OneSatSim`，当前版本为 `2.1.0`，基础模型依赖 **Modelica Standard Library 4.0.0**。
 
 <div align="center">
-<img src="./systems.png" alt="OneSatSim 系统模型与总体架构" width="92%">
+<img src="./Figures/systems.png" alt="OneSatSim 系统模型与总体架构" width="92%">
 <br>
 <sub>OneSatSim 系统模型与总体架构</sub>
 </div>
@@ -172,10 +172,15 @@ OneSatSim
 OneSatSim/
 ├─ package.mo
 ├─ package.order
-├─ OneSatSim.png
-├─ systems.png
 ├─ DesignConfig.xlsx
 ├─ UpdateConfig.bat
+│
+├─ Figures/
+│  ├─ OneSatSim.png
+│  └─ systems.png
+│
+├─ doc/
+│  └─ OneSatSim_12UCubeSat_CaseStudy.html
 │
 ├─ Foundation/
 │  ├─ Interfaces/        # 机、电、热、信息与任务接口
@@ -265,7 +270,7 @@ OneSatSim 面向卫星总体设计、任务—资源分析、多领域耦合研�
 
 更完整的模型结构、建模原理、参数说明、仿真结果与工程评价见：
 
-**[OneSatSim 12U CubeSat Case Study](./OneSatSim_12UCubeSat_CaseStudy.html)**
+**[OneSatSim 12U CubeSat Case Study](./doc/OneSatSim_12UCubeSat_CaseStudy.html)**
 
 ---
 
@@ -286,7 +291,7 @@ OneSatSim 面向卫星总体设计、任务—资源分析、多领域耦合研�
 The current public baseline is built around a **12U Earth-observation CubeSat** and serves as an extensible foundation for spacecraft system design, concept evaluation, mission-resource trade studies, cross-subsystem analysis, and secondary development. The root package is `OneSatSim`, the current version is `2.1.0`, and the core dependency is **Modelica Standard Library 4.0.0**.
 
 <div align="center">
-<img src="./systems.png" alt="OneSatSim system model and architecture" width="92%">
+<img src="./Figures/systems.png" alt="OneSatSim system model and architecture" width="92%">
 <br>
 <sub>OneSatSim system model and architecture</sub>
 </div>
@@ -423,10 +428,15 @@ After major configuration or model changes, a short simulation is recommended be
 OneSatSim/
 ├─ package.mo
 ├─ package.order
-├─ OneSatSim.png
-├─ systems.png
 ├─ DesignConfig.xlsx
 ├─ UpdateConfig.bat
+│
+├─ Figures/
+│  ├─ OneSatSim.png
+│  └─ systems.png
+│
+├─ doc/
+│  └─ OneSatSim_12UCubeSat_CaseStudy.html
 │
 ├─ Foundation/
 │  ├─ Interfaces/        # multi-domain and mission interfaces
@@ -512,7 +522,7 @@ We also acknowledge:
 
 For detailed model descriptions, implementation notes, simulation results, and engineering interpretation, see:
 
-**[OneSatSim 12U CubeSat Case Study](./OneSatSim_12UCubeSat_CaseStudy.html)**
+**[OneSatSim 12U CubeSat Case Study](./doc/OneSatSim_12UCubeSat_CaseStudy.html)**
 
 ---
 
