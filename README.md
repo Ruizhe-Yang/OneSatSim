@@ -1,547 +1,380 @@
 <div align="center">
 
-<img src="./Figures/OneSatSim.png" alt="OneSatSim Logo" width="520">
+<img src="./Figures/OneSatSim.png" alt="OneSatSim — One-Stop Satellite Simulation" width="520">
 
 # OneSatSim
 
-### One-Stop Satellite Simulation · 一站式卫星总体仿真框架
+### One-Stop Satellite Simulation · 一站式卫星总体仿真
 
-**Modelica-based · Multi-domain · Mission-driven · Configurable · Extensible**  
-**基于 Modelica · 多领域耦合 · 任务驱动 · 参数化配置 · 可二次开发**
+**Modelica-based · Multi-physics · Mission-driven · Configurable · MOSAIC-oriented**  
+**基于 Modelica · 多物理场耦合 · 任务驱动 · 参数化配置 · 遵循 MOSAIC 建模规范**
 
 [![Modelica](https://img.shields.io/badge/Modelica-MSL%204.0.0-5C6BC0?style=flat-square)](https://modelica.org/)
-[![OpenModelica](https://img.shields.io/badge/OpenModelica-supported-1976D2?style=flat-square)](https://openmodelica.org/)
-[![MWORKS](https://img.shields.io/badge/MWORKS.Sysplorer-supported-00897B?style=flat-square)](https://www.tongyuan.cc/)
-[![Case](https://img.shields.io/badge/Case-12U%20CubeSat-455A64?style=flat-square)](./doc/OneSatSim_12UCubeSat_CaseStudy.html)
+[![Model version](https://img.shields.io/badge/Model-v1.1.6-455A64?style=flat-square)](./package.mo)
+[![MOSAIC](https://img.shields.io/badge/MOSAIC-v0.8-1976D2?style=flat-square)](https://github.com/Ruizhe-Yang/MOSAIC)
+[![Case](https://img.shields.io/badge/Case-12U%20CubeSat-00897B?style=flat-square)](./doc/OneSatSim_12UCubeSat_CaseStudy.html)
 
-[中文介绍](#zh) · [English Overview](#en) · [案例手册 / Case Study](./doc/OneSatSim_12UCubeSat_CaseStudy.html)
+[中文介绍](#中文介绍) · [English Overview](#english-overview) · [MOSAIC 规范](https://github.com/Ruizhe-Yang/MOSAIC) · [12U 案例文档](./doc/OneSatSim_12UCubeSat_CaseStudy.html)
 
 </div>
 
 ---
 
-<a id="zh"></a>
+<a id="中文介绍"></a>
 
 ## 1. 项目简介
 
-**OneSatSim** 是一个基于 **Modelica** 的通用卫星系统级总体建模与仿真框架。项目名称来自 **One-Stop Satellite Simulation**：希望把卫星总体设计中原本分散在轨道、任务、电源、热控、姿态、载荷、数管、通信和资源预算中的分析工作，组织到**同一个可执行模型、同一条任务时间轴和同一套参数配置体系**中。
+**OneSatSim（One-Stop Satellite Simulation）** 是一个面向卫星总体设计的 **Modelica 系统级多物理场建模与任务仿真项目**。它将轨道环境、整星结构、姿态控制、电源、热控、载荷、数管、通信和任务规划组织在**同一套可执行模型和任务时间轴**中，用于分析复杂任务执行过程中各分系统的状态、交互与资源约束。
 
-当前公开模型以 **12U 对地观测立方星**为基础案例，用于卫星总体设计、方案论证、任务—资源权衡、跨分系统耦合分析和二次开发。项目根包为 `OneSatSim`，当前版本为 `2.1.0`，基础模型依赖 **Modelica Standard Library 4.0.0**。
+当前公开工程以**12U 对地观测立方星**为案例，模型根包为 `OneSatSim`，完整任务入口为 `OneSatSim.Simulation.CompleteMission`，依赖 **Modelica Standard Library（MSL）4.0.0**。根包声明的当前源码版本为 **v1.1.6**。
+
+本项目**基于 [MOSAIC（Modelica-Oriented System Architecture, Interfaces and Contracts）建模规范](https://github.com/Ruizhe-Yang/MOSAIC) 实现**，将其系统分层、白箱/行为职责、接口契约、配置管理和图形可视化原则应用于实际卫星总体模型。
 
 <div align="center">
-<img src="./Figures/systems.png" alt="OneSatSim 系统模型与总体架构" width="92%">
-<br>
-<sub>OneSatSim 系统模型与总体架构</sub>
+
+<img src="./Figures/systems.png" alt="OneSatSim 12U 立方星系统级架构与仿真模型" width="94%">
+
+<sub>OneSatSim 总体模型：四大物理／信息网络与八个卫星分系统</sub>
+
 </div>
 
-OneSatSim 采用清晰的 **“1 + 4 + 8”** 总体结构：
+### 1.1 1 + 4 + 8 系统级架构
 
-- **1 个完整任务仿真入口**：`Simulation.CompleteMission`
-- **4 个跨设备总体网络**：机械、供电、热、信息
-- **8 个卫星分系统**：电源、姿轨控、载荷、数管、通信、导航、热控、结构
+| 层次 | 组成 | 对应模型 |
+|---|---|---|
+| **1 个完整任务入口** | 轨道环境、整星总体、工程遥测 | `Simulation.CompleteMission` |
+| **4 个总体网络** | 机械、电气、热、信息 | `Systems.Four_systems` |
+| **8 个卫星分系统** | 电源、姿轨控、载荷、数管、通信、导航、热控、结构 | `Systems.N_systems` |
 
-OneSatSim 更关注卫星真正沿任务时间轴运行时的系统行为：轨道环境、姿态动作、设备开关机、供电、热状态、存储、通信窗口与任务调度能否在同一个系统模型中保持一致。
+四大总体网络将多个设备和分系统的机械、电气、热与信息交互关联起来；八个分系统进一步装配可独立理解、配置和替换的设备模型。实际的任务控制、状态更新和物理行为由内部对应组件承担。
 
----
+### 1.2 从任务到资源的联合分析
 
-## 2. OneSatSim 可以做什么？
+OneSatSim 的总体仿真围绕同一条时间轴开展，支持研究：
 
-OneSatSim 主要面向卫星总体设计与系统级工程分析，可用于：
+- **轨道与环境：** 真实 UTC 历元、轨道运动、日照与地影、地面站和成像目标的几何机会；
+- **姿态与执行：** 姿态估计、控制模式、飞轮和磁力矩器、机动与指向误差；
+- **能源与热：** 太阳阵、配电、电池 SOC、多路电压／功率、设备热耗散与温度；
+- **载荷与信息：** 成像请求、设备开关、图像存储、数管与数传资源；
+- **任务与安全：** 机会判断、请求与执行反馈、任务模式、保护逻辑及安全模式；
+- **工程观测：** 从只读遥测出口查看电源、姿态、温度、导航、任务、存储和通信等关键状态。
 
-- **总体与多领域联合仿真**：统一分析机械、电气、热和信息域之间的耦合关系；
-- **轨道与任务全过程分析**：结合真实日期环境、目标与地面站机会，执行成像、姿态机动、下传等任务；
-- **任务—资源联合评估**：分析电池 SOC、功率、温度、飞轮、存储和数据吞吐等资源随任务变化的过程；
-- **参数化方案研究**：通过配置快速修改轨道、任务、设备和资源参数，开展 What-if 与敏感性分析；
-- **二次开发与安全研究**：作为控制算法、星务逻辑、故障注入、安全模式和更高保真模型的系统级基础。
+这些功能服务于总体级方案论证、任务—资源权衡、模型扩展、系统工程研究及教学。具体精度与验证结论以实际模型、参数和运行证据为准。
 
-OneSatSim 强调先建立**可运行、可解释、可修改**的总体模型，再根据具体研究目标逐步提高局部模型保真度。
+## 2. 基于 MOSAIC 规范的工程实现
 
----
+<div align="center">
 
-## 3. 建模与参数化配置
+<img src="./MOSAIC-12UCubeSat.png" alt="MOSAIC-12UCubeSat 项目标识" width="330">
 
-OneSatSim 将卫星设备建模为可独立理解和替换的 Modelica 组件。典型设备可以同时具有机械、电源、热和信息接口，并通过 `Systems.SpacecraftSystem` 接入四大总体网络和八个分系统。这样，一次成像、姿态机动或下传任务能够同时反映设备状态、功率、热耗散、数据与资源变化。
+</div>
 
-推荐使用唯一完整仿真入口：
+**MOSAIC** 为系统级 Modelica 工程提供架构、接口、行为、配置和维护方面的统一建模约定。OneSatSim 是这一规范在**卫星总体与多物理场耦合仿真**中的具体应用案例。
+
+| MOSAIC 建模要求 | OneSatSim 的对应实现 |
+|---|---|
+| 明确总体仿真边界（TB） | `Simulation.CompleteMission` 作为统一仿真入口 |
+| 分系统与装配职责（SB/AB） | `Systems.SpacecraftSystem`、四大总体网络、八个分系统与内部组件装配 |
+| 行为与复用单元（BU/LU） | `Components/`、`Foundation/Models/` 内的设备行为及 MSL 组件 |
+| 多物理场接口与连接契约 | `Foundation/Interfaces/`、MSL 接口、真实 `connect` 关系 |
+| 配置来源与一致性 | `DesignConfig.xlsx` → 离线校验／生成 → `Scenarios/Generated*.mo` |
+| 结构与工作视图 | 原生 Modelica `Icon`、`Diagram`、`Placement` 与可导航实例 |
+| 验证与变更可追溯 | `Scripts/Contracts/`、静态检查、运行脚本、配置与运行清单 |
+
+其中 **TB / SB / AB 是白箱职责，BU / LU 承担具体行为或库模型复用**；角色是建模概念，不要求在 Modelica 类名前增加固定前缀。模型按照实际卫星对象命名。
+
+**了解 MOSAIC：** [MOSAIC 规范仓库](https://github.com/Ruizhe-Yang/MOSAIC) · [MOSAIC v0.8 中文完整规范](https://github.com/Ruizhe-Yang/MOSAIC/blob/main/MOSAIC_v0.8_Modelica_Modeling_Standard.html) · [MOSAIC-skill：AI 辅助执行规范](https://github.com/Ruizhe-Yang/modelica-system-level-simulation-skill)
+
+OneSatSim 不需要导入额外的“MOSAIC 运行库”；MOSAIC 是工程建模规范，**MOSAIC-skill** 是可选的 AI 辅助建模与检查工具。
+
+## 3. 当前模型如何组成与运行？
+
+### 3.1 完整任务入口
 
 ```modelica
 OneSatSim.Simulation.CompleteMission
 ```
 
-当前配置链为：
+当前 `CompleteMission.mo` 在顶层组织三个对象：
 
 ```text
-DesignConfig.xlsx
-        ↓
-UpdateConfig.bat
-        ↓
-参数与单位检查 / 质量属性计算
-        ↓
-场景与硬件配置生成
-        ↓
-真实日期轨道与星历环境生成
-        ↓
-Simulation.CompleteMission
+CompleteMission
+├── orbitalEnvironment  : OrbitalEnvironment  # 轨道环境和任务几何
+├── spacecraft          : SpacecraftSystem    # 12U 整星与多领域耦合
+└── onboardTelemetry    : OnboardTelemetry    # 只读工程遥测
 ```
 
-用户通常只需优先修改根目录中的 `DesignConfig.xlsx`，再运行 `UpdateConfig.bat`。生成流程会更新任务场景、硬件设计参数、质量属性和环境数据，使仿真结果能够追溯到明确的配置输入。
+`orbitalEnvironment` 向整星传递环境与几何条件；`spacecraft` 执行系统级物理和任务行为；`onboardTelemetry` 汇集只读工程数据。顶层通过真实端口连接形成统一的仿真入口。
 
-默认完整任务仿真设置为：
+### 3.2 关键结果变量
+
+可从 `onboardTelemetry` 实例中查找以下代表性变量（实际保存范围以仿真设置及结果合同为准）：
+
+| 领域 | 示例变量 | 含义 |
+|---|---|---|
+| 电源 | `batterySOC`, `busVoltage[3]`, `solarNetPower` | 荷电状态、三路电压、太阳阵交付功率 |
+| 热 | `batteryCellTemperature`, `obcCpuTemperature` | 电池和星载计算机温度 |
+| 姿态 | `attitudeQuaternion[4]`, `wheelSpeed[4]`, `attitudeError` | 姿态、飞轮状态与指向误差 |
+| 导航 | `gnssPosition[3]`, `gnssVelocity[3]` | 导航位置与速度 |
+| 任务 | `missionMode`, `completedImagingCount`, `completedDownlinkCount` | 任务模式、成像与下传完成计数 |
+| 数据 | `storedBytes`, `actualReadRate` | 存储占用与真实读取／下传速率 |
+
+原始结果还包含必要的组件内部状态及事件信号。任务是否完成，应结合调度记录、数据守恒、任务验收条件等证据判断，不能只凭个别数值曲线。
+
+## 4. 参数配置：先生成，再仿真
+
+项目根目录的 **`DesignConfig.xlsx`** 是主要工程配置入口，可管理轨道、任务、设备及系统参数；固定星历资源随源码放在 `Scripts/Inputs/Ephemeris/`。
 
 ```text
-StartTime       = 0 s
-StopTime        = 86400 s
-OutputInterval  = 1 s
-Tolerance       = 1e-5
-Solver          = IDA
+DesignConfig.xlsx + Scripts/Inputs/Ephemeris/
+                      │
+                      ▼
+                UpdateConfig.bat
+                      │
+                      ▼
+        Scripts/update_transaction.py
+           ├── 参数、单位和契约校验
+           ├── 质量属性与星历环境计算
+           └── 分阶段生成、校验和失败回退
+                      │
+                      ▼
+    Scenarios/GeneratedScenario.mo
+    Scenarios/GeneratedSpacecraftDesignConfig.mo
+    Scenarios/GeneratedMassProperties.mo
+    Scenarios/GeneratedEnvironmentData.mo
+    Scripts/ConfigSupport/（配置快照与运行参数）
+                      │
+                      ▼
+    OneSatSim.Simulation.CompleteMission
+                  （Modelica 仿真）
 ```
 
----
+**配置生成与 Modelica 数值仿真相分离。** 星历、场景、质量属性和硬件参数在准备阶段转换或固化到 `.mo` 文件。读取已经生成的工程进行 Modelica 仿真时，**不需要在求解过程中调用 Excel、Python 或外部星历数据文件**。
 
-## 4. 软件环境
-
-### 4.1 OpenModelica
-
-[OpenModelica](https://openmodelica.org/) 是**开源的 Modelica 建模与仿真环境**，可直接从官网下载安装。
-
-- 官网：<https://openmodelica.org/>
-- 官方下载：<https://openmodelica.org/download/>
-- Windows 下载：<https://openmodelica.org/download/download-windows/>
-- 官方用户手册：<https://openmodelica.org/doc/OpenModelicaUsersGuide/latest/>
-
-OneSatSim 推荐使用 OpenModelica / OMEdit 进行模型检查、编译和仿真。
-
-### 4.2 MWORKS.Sysplorer
-
-[MWORKS.Sysplorer](https://www.tongyuan.cc/) 是商业闭源 Modelica 建模与仿真平台。
-
-- 官方网站：<https://www.tongyuan.cc/>
-- 产品下载：<https://www.tongyuan.cc/product/download>
-- 许可配置说明：<https://www.tongyuan.cc/docs/sysplorer/2026a/Help/SetupHelp/Doc/SetupHelp/License.html>
-
-中国高校在校生可使用符合要求的高校教育邮箱申请 **MWORKS 教育版许可**。具体申请资格、免费政策和许可期限请以官网当前规则为准。
-
----
+当前代码随附固定的 JPL DE440s、IERS 地球定向参数和闰秒资源，其来源见 [`Scripts/Inputs/Ephemeris/SOURCE_MANIFEST.md`](./Scripts/Inputs/Ephemeris/SOURCE_MANIFEST.md)。更换任务历元或相关资源后，需重新生成并检查有效性。
 
 ## 5. 快速开始
 
-### 5.1 克隆项目
+### 5.1 获取工程
 
 ```bash
 git clone https://github.com/Ruizhe-Yang/OneSatSim.git
 cd OneSatSim
 ```
 
-### 5.2 安装配置工具依赖
+工程顶层目录应直接包含 `package.mo`、`DesignConfig.xlsx` 和 `Scripts/`，根 Modelica 包名是 `OneSatSim`。
+
+### 5.2 环境依赖
+
+- **Modelica：** MSL **4.0.0**；推荐使用 [OpenModelica](https://openmodelica.org/) / OMEdit 打开和检查。也可在 [MWORKS.Sysplorer](https://www.tongyuan.cc/) 中导入，但需核对当前版本的实际兼容性。
+- **Python：** 配置与运行脚本使用 Python；由于仓库当前锁定了较早的 NumPy / SciPy / Astropy 版本，建议优先使用 **Python 3.10 独立环境**安装对应依赖。
+- **运行工具：** 自动化执行入口使用 OpenModelica CLI（`omc`）；需要可执行的编译工具链。使用 MWORKS 手动导入时请先确认使用 **MSL 4.0.0**。
+
+安装配置／星历生成和仿真运行脚本所需依赖：
 
 ```bash
-python -m pip install -r tools/requirements-ephemeris.txt
+python -m pip install -r Scripts/requirements-ephemeris.txt -r Scripts/requirements-runner.txt
 ```
 
-### 5.3 更新配置
+### 5.3 直接加载现有模型
 
-打开并修改：
+仓库已经包含生成好的场景、整星配置和环境数据。**只想浏览模型或基于当前参数尝试仿真，不必先重新生成 Excel 配置。**
+
+在 OMEdit 中打开根目录的 `package.mo`，选择：
 
 ```text
-DesignConfig.xlsx
+OneSatSim → Simulation → CompleteMission
 ```
 
-保存后在 Windows 下运行：
+然后执行 **Check Model**，确认加载与方程检查情况，再进行实际编译和仿真。
 
-```text
-UpdateConfig.bat
+也可以使用项目提供的 OpenModelica CLI 加载检查：
+
+```bash
+python Scripts/load_package.py
 ```
 
-### 5.4 运行模型
+若无法找到 `omc`，可先将其加入 `PATH`，或使用 `--omc` 指定 OpenModelica 可执行文件位置。
 
-在 OpenModelica / OMEdit 中打开根目录 `package.mo`，进入：
+### 5.4 修改配置（Windows）
 
-```text
-OneSatSim
-└─ Simulation
-   └─ CompleteMission
+1. 编辑并保存根目录的 `DesignConfig.xlsx`。
+2. 运行 `UpdateConfig.bat`，由 `Scripts/update_transaction.py` 执行离线配置生成与发布。
+3. 检查生成清单、错误信息和变更内容；重新加载更新后的 `package.mo`。
+4. 对修改后的工程重新进行模型检查、编译及仿真。
+
+配置工作流会更新多个**已跟踪的生成文件**。如在 Git 工作区中操作，建议先保留基线并查看生成前后的差异。
+
+### 5.5 运行任务与结果验收（Windows / OpenModelica CLI）
+
+`RunSimulation.bat` 调用项目的检查及运行脚本。可选择短时诊断或完整名义任务：
+
+```bat
+REM 带明确原因的短时检查（示例：600 秒）
+RunSimulation.bat --run-kind SMOKE --stop 600 --reason first-check
+
+REM 完整名义任务（无时间缩短或网格覆盖）
+RunSimulation.bat --run-kind NOMINAL_FULL
 ```
 
-先执行 **Check Model**，再编译和仿真。修改较多参数或模型后，建议先进行短时仿真，再运行完整任务时长。
+运行脚本需要可访问的 `omc`；如有必要，可设置环境变量 `OMC_EXE` 为其完整路径。脚本可能在项目**父目录**下创建 `work/MOSAIC-12UCubeSat/`、`results/MOSAIC-12UCubeSat/` 等工作与结果目录。**短时诊断结果不能作为 24 小时完整任务的验收结论。**
 
-> **使用 MWORKS.Sysplorer 时：** 在**导入 `package.mo` 时**，请将 **Modelica Standard Library（MSL）切换为 4.0.0**，再完成模型加载与后续仿真，以保持与本项目基础依赖一致。
+当前生成配置的名义任务设置：
 
----
+| 参数 | 配置值 |
+|---|---|
+| 任务历元 | 2026-10-01 00:00 UTC 至 2026-10-02 00:00 UTC |
+| 仿真时间 | 0–86,400 s（24 h） |
+| 输出间隔 | 1 s |
+| 容差 | `1e-7` |
+| 求解器 | IDA（生成配置中为 `ida`） |
+| IDA 线性求解器 | `spgmr` |
 
-## 6. 项目结构
+这些值对应**仓库随附的当前生成配置**；修改设计表并重新生成后，以实际生效参数和运行证据为准。
+
+## 6. 项目目录
 
 ```text
 OneSatSim/
-├─ package.mo
-├─ package.order
-├─ DesignConfig.xlsx
-├─ UpdateConfig.bat
+├── package.mo                  # Modelica 根包（v1.1.6，依赖 MSL 4.0.0）
+├── package.order
+├── DesignConfig.xlsx           # 主要设计与任务配置入口
+├── UpdateConfig.bat            # 离线配置更新
+├── RunSimulation.bat           # OpenModelica CLI 运行／验收
+├── MOSAIC-12UCubeSat.png       # 项目标识
 │
-├─ Figures/
-│  ├─ OneSatSim.png
-│  └─ systems.png
+├── Simulation/
+│   ├── CompleteMission.mo      # 唯一完整任务入口
+│   ├── OrbitalEnvironment.mo   # 环境与轨道几何
+│   └── OnboardTelemetry.mo     # 只读工程遥测
 │
-├─ doc/
-│  └─ OneSatSim_12UCubeSat_CaseStudy.html
+├── Systems/
+│   ├── SpacecraftSystem.mo     # 整星集成
+│   ├── Four_systems/           # 机械、电气、热、信息总体网络
+│   └── N_systems/              # 八个卫星分系统
 │
-├─ Foundation/
-│  ├─ Interfaces/        # 机、电、热、信息与任务接口
-│  ├─ Models/            # 公共行为与任务核心模型
-│  ├─ Calculations/      # 可复用计算模型
-│  ├─ Functions/         # 编解码与辅助函数
-│  └─ Types/             # 枚举、质量属性、遥测类型等
+├── Components/                 # 电源、姿控、载荷、通信等设备单元
+├── Foundation/
+│   ├── Interfaces/             # 多物理场与任务信息接口
+│   ├── Models/                 # 行为、控制、机会、状态与安全模型
+│   ├── Calculations/           # 计算单元
+│   ├── Functions/              # 辅助函数
+│   ├── SignalRouting/          # 信号路由
+│   └── Types/                  # 状态、类型及工程记录
 │
-├─ Scenarios/            # 场景与设计配置
-├─ Components/           # 设备级 Modelica 组件
+├── Scenarios/
+│   ├── DesignConfigRecords/    # 设备／分系统设计参数记录
+│   ├── GeneratedScenario.mo    # 已生成的任务场景
+│   ├── GeneratedSpacecraftDesignConfig.mo
+│   ├── GeneratedMassProperties.mo
+│   └── GeneratedEnvironmentData.mo
 │
-├─ Systems/
-│  ├─ Four_systems/      # 机械、电气、热、信息四大总体
-│  ├─ N_systems/         # 八个分系统
-│  └─ SpacecraftSystem.mo
+├── Scripts/
+│   ├── Inputs/Ephemeris/       # 固定星历、EOP 和闰秒输入资源
+│   ├── ConfigSupport/          # 已生成配置快照与清单
+│   ├── Contracts/              # 参数、图形与结果合同
+│   ├── DocumentationSupport/   # 文档／连线颜色辅助检查记录
+│   ├── update_transaction.py
+│   ├── update_config.py
+│   ├── load_package.py
+│   ├── run_acceptance.py
+│   └── run_openmodelica.py
 │
-├─ Simulation/
-│  └─ CompleteMission.mo # 完整任务仿真入口
-│
-├─ Resources/            # 星历与环境资源
-├─ tools/                # 配置、环境、检查与验证工具
-└─ outputs/              # 配置审计与验证输出
+├── Figures/                    # 总体架构与项目图片
+└── doc/
+    └── OneSatSim_12UCubeSat_CaseStudy.html
 ```
 
----
+注意：当前仓库已经**不再使用旧 README 中的 `tools/`、`Resources/`、`outputs/` 根目录结构**；脚本、星历输入和辅助检查记录统一存放于 `Scripts/`，运行后产生的工作目录和结果通常位于仓库父目录。
 
-## 7. 如何进行二次开发
+## 7. 当前版本与验证状态
 
-OneSatSim 可以在现有总体架构上直接修改和替换局部模型，常见方式包括：
+| 项目 | 现状 |
+|---|---|
+| Modelica 源码发布版本 | **v1.1.6**（`package.mo`） |
+| 对应方法规范 | **MOSAIC v0.8** |
+| 仿真入口 | `OneSatSim.Simulation.CompleteMission` |
+| 配置与数据链 | 已提供离线配置生成、快照和随仓库发布的 `.mo` 数据 |
+| 最近辅助修订 | v1.1.6 基于 v1.1.5，主要涉及 Documentation 与实际连线颜色 |
+| v1.1.6 本轮编译／仿真／GUI 核验 | **NOT_RUN / NOT_RUN / NOT_CHECKED**（见仓库发布记录） |
+| 历史任务验收 | 保留此前记录，仍有 **PARTIAL** 的任务目标待闭合 |
 
-- **更换任务与整星参数**：在 `DesignConfig.xlsx` 中修改轨道、目标、地面站、设备功率、质量、安装位置、电池、太阳电池、存储和通信参数；
-- **新增或替换设备模型**：保持接口语义一致时，可替换单个设备或分系统，而不必重建整星模型；
-- **提高局部模型保真度**：可将等效功耗、集总热容、低阶姿态模型等逐步替换为更详细的物理模型；
-- **接入外部模型或算法**：可根据所用 Modelica 工具的能力，将局部算法或部件替换为 **C 语言模块**、**FMU 模块**，也可继续接入新的控制算法、星务逻辑或联合仿真模型；
-- **扩展故障与安全分析**：增加传感器失效、执行器退化、电源异常、热控异常、安全模式、故障注入和恢复逻辑等。
+v1.1.6 的源级辅助维护记录位于 [`Scripts/DocumentationSupport/DOC_PATCH_REPORT.md`](./Scripts/DocumentationSupport/DOC_PATCH_REPORT.md)，发布范围见 [`release_metadata.json`](./Scripts/DocumentationSupport/release_metadata.json)。现有部分自动运行和结果合同中仍保留 **v1.1.4** 的历史版本标识，**不能将这些标识或历史结果直接解释为 v1.1.6 已完成的新一轮仿真验收**。每次新运行都应单独检查实际加载、求解、输出、任务目标与验证记录。
 
----
+## 8. 二次开发与研究应用
 
-## 8. 两个重要的思路来源
+OneSatSim 可以作为新的卫星总体方案、任务算法与安全研究的基础：
 
-### 8.1 《宇航学报》：机—电—热—信耦合的航天器系统级仿真方法
+- 在 `DesignConfig.xlsx` 中更改轨道、卫星设计、任务和设备参数，开展配置对比；
+- 在 `Components/` 中替换或细化设备模型，通过既有接口接入分系统；
+- 在 `Foundation/Models/` 扩展任务规划、控制策略、故障处理与安全模式；
+- 对电源、热控、姿态、载荷或通信的局部物理建模提高保真度；
+- 在得到实际运行证据后，开展任务可行性、资源裕度、控制效果和故障场景分析。
 
-OneSatSim 的系统组织思想受到以下论文的重要启发：
+建议沿用 **MOSAIC 的明确职责、接口语义、配置来源和变更边界**。需要对既有模型进行安全分析或其他多方法分析时，可在已认可的模型基线上开展独立扩展，不必复制另一套无关的整星模型。
 
-> **彭坤，王岩，李智，翁昉倞，贾雨棽. 考虑机电热信耦合的航天器系统级分布式仿真方法研究[J]. 宇航学报, 2025, 46(9): 1896-1905.**  
-> DOI: [10.3873/j.issn.1000-1328.2025.09.016](https://doi.org/10.3873/j.issn.1000-1328.2025.09.016)  
-> 论文页面：<https://www.spacejournal.cn/yhxb/article/doi/10.3873/j.issn.1000-1328.2025.09.016>
+## 9. 方法参考、案例文档与致谢
 
-该工作提出了面向航天器的 **“1 + 4 + N”** 系统级仿真结构，强调以单机为重要建模颗粒度，统一考虑机械、电气、热和信息耦合，并将总体模型、分系统模型和设备模型组织为完整的系统级仿真体系。
+**工程与方法参考：**
 
-OneSatSim 吸收了其中的**分层组织、设备多域表达和跨系统耦合**思想，并在当前工程中形成四大总体网络、八个分系统和统一任务仿真入口。
+- 彭坤、王岩、李智、翁昉倞、贾雨棽，《考虑机电热信耦合的航天器系统级分布式仿真方法研究》，《宇航学报》，2025，46(9)：1896–1905。论文的“1 + 4 + N”结构、设备级多领域表达与总体耦合思想为本项目提供参考。[DOI](https://doi.org/10.3873/j.issn.1000-1328.2025.09.016)。
+- 哈尔滨工业大学紫丁香学生微纳卫星团队的 [ASRTU-1 开源星务软件](https://gitee.com/openlilacsat/ASRTU-1_OBC_Software)，为任务逻辑、设备状态和星务信息组织提供工程参考。
+- [MOSAIC 总体建模规范](https://github.com/Ruizhe-Yang/MOSAIC)，为当前工程的模型角色、接口与契约、配置和图形组织提供规范依据。
+- Modelica Association、JPL、IERS 以及相关科学数据与开源工具的维护者。
 
-### 8.2 “阿斯图友谊号” ASRTU-1 开源星务软件
+特别感谢**大连理工大学智连星宇学社**及参与相关建模、交流和测试的老师、同学与开源社区成员。
 
-OneSatSim 的任务逻辑、设备状态、星务信息组织和工程遥测设计还受到了 **ASRTU-1（阿斯图友谊号）开源星务软件**的启发。
+**详细案例文档：** [OneSatSim 12U CubeSat Case Study](./doc/OneSatSim_12UCubeSat_CaseStudy.html)。案例文档反映其编写时的模型与分析内容；使用当前源码时，以相应模型、配置和最新实际验收记录为准。
 
-该项目由**哈尔滨工业大学紫丁香学生微纳卫星团队**开发，并以 GPL-2.0 许可证公开：
+**适用边界：** 本项目主要服务于系统级研究和工程原理验证；不能直接替代飞行软件、器件鉴定、结构有限元、CFD、射频电路级设计、整星环境试验或型号认证。
 
-- OpenLilacSat 开源平台：<https://gitee.com/openlilacsat>
-- ASRTU-1 星务软件：<https://gitee.com/openlilacsat/ASRTU-1_OBC_Software>
-
-公开星务程序包含任务调度、姿轨控接口、电源管理、故障处理和地面遥控等模块，为理解学生卫星的软件组织、任务流程、设备状态与工程信息提供了重要参考。
-
----
-
-## 9. 适用边界
-
-OneSatSim 面向卫星总体设计、任务—资源分析、多领域耦合研究、算法验证、教学科研与安全分析等系统级工作，其模型颗粒度服务于总体工程问题，而不是直接替代真实飞行软件、器件鉴定模型、结构有限元、CFD、电磁与射频电路级分析、热真空和整星环境试验，也不构成飞行认证或型号定型依据；使用时应明确区分公开参考值、工程假设、配置参数与仿真结果。
-
----
-
-## 10. 致谢
-
-特别感谢 **大连理工大学智连星宇学社** 对本项目相关工作的支持。
-
-感谢在卫星系统工程、模型梳理、建模讨论、测试交流与开源实践中提供帮助的老师、同学和开源社区贡献者。
-
-同时感谢：
-
-- Modelica Association；
-- 哈尔滨工业大学紫丁香学生微纳卫星团队 / OpenLilacSat；
-- JPL、IERS 及相关科学数据与开源软件维护者。
+欢迎通过 [GitHub Issues](https://github.com/Ruizhe-Yang/OneSatSim/issues) 和 Pull Requests 反馈模型问题、交流工程案例并参与扩展。
 
 ---
 
-## 11. 技术说明
+<a id="english-overview"></a>
 
-更完整的模型结构、建模原理、参数说明、仿真结果与工程评价见：
+## English Overview
 
-**[OneSatSim 12U CubeSat Case Study](./doc/OneSatSim_12UCubeSat_CaseStudy.html)**
+**OneSatSim (One-Stop Satellite Simulation)** is a **Modelica-based system-level spacecraft modeling and multi-physics simulation project**. Its public case is a **12U Earth-observation CubeSat**, bringing orbit and environment, spacecraft architecture, control and mission logic, electrical power, thermal behavior, payload, onboard data handling, communications, and resource constraints into one executable mission model.
 
----
+**The project is implemented following the [MOSAIC modeling specification](https://github.com/Ruizhe-Yang/MOSAIC)** — *Modelica-Oriented System Architecture, Interfaces and Contracts*. MOSAIC provides the engineering conventions for system structure, model responsibilities, interfaces, configuration, diagrams, and evidence management. The optional [MOSAIC-skill](https://github.com/Ruizhe-Yang/modelica-system-level-simulation-skill) assists AI coding agents in applying these conventions.
 
-## 12. 参与开发
+### Architecture and main entry
 
-欢迎基于 OneSatSim 开展新卫星模型、新设备与分系统模型、高保真模型替换、任务规划与控制算法、故障与安全模型、不同 Modelica 平台适配、结果可视化和教学案例等开发工作。
-
-如果发现模型问题、接口问题或有新的功能建议，欢迎通过 GitHub Issues / Pull Requests 参与项目建设。
-
----
-
-<a id="en"></a>
-
-## 1. Overview
-
-**OneSatSim** stands for **One-Stop Satellite Simulation**. It is a **Modelica-based system-level satellite modeling and simulation framework** designed to organize orbital environment, mission logic, power, thermal behavior, attitude control, payload, data handling, communication, and resource constraints within **one executable model, one mission timeline, and one configuration workflow**.
-
-The current public baseline is built around a **12U Earth-observation CubeSat** and serves as an extensible foundation for spacecraft system design, concept evaluation, mission-resource trade studies, cross-subsystem analysis, and secondary development. The root package is `OneSatSim`, the current version is `2.1.0`, and the core dependency is **Modelica Standard Library 4.0.0**.
-
-<div align="center">
-<img src="./Figures/systems.png" alt="OneSatSim system model and architecture" width="92%">
-<br>
-<sub>OneSatSim system model and architecture</sub>
-</div>
-
-The framework follows a **1 + 4 + 8** organization:
-
-- **1** complete mission simulation entry: `Simulation.CompleteMission`
-- **4** cross-device overall networks: mechanics, electrical, thermal, and information
-- **8** spacecraft subsystems: EPS, GNC, payload, data handling, communication, navigation, thermal control, and structure
-
-OneSatSim focuses on whether mission activities, physical states, and resource constraints remain mutually consistent while the spacecraft actually executes its mission over time.
-
----
-
-## 2. What can OneSatSim do?
-
-OneSatSim supports:
-
-- **system-level and multi-domain simulation** across mechanical, electrical, thermal, and information domains;
-- **orbital and mission-process analysis** with real-epoch environments, imaging targets, ground stations, maneuvers, and downlink activities;
-- **mission-resource evaluation** for SOC, power, temperature, reaction wheels, onboard storage, and data throughput;
-- **parameterized design studies** through configurable spacecraft, orbit, mission, and resource parameters;
-- **secondary development and safety studies**, including algorithms, onboard logic, fault injection, protection, and higher-fidelity subsystem models.
-
-The project favors an **executable, explainable, and modifiable** system model first, with fidelity increased progressively where needed.
-
----
-
-## 3. Modeling and configuration
-
-OneSatSim represents spacecraft units as replaceable Modelica components with mechanical, power, thermal, and information interfaces. Components are organized through `Systems.SpacecraftSystem`, the four overall networks, and eight spacecraft subsystems so that a single mission action can affect device state, power, heat, data, and resources on the same timeline.
-
-The recommended complete simulation entry is:
+OneSatSim uses a **1 + 4 + 8** organization: one complete mission entry, four integrated mechanical/electrical/thermal/information networks, and eight spacecraft subsystems. The actual top-level model is:
 
 ```modelica
 OneSatSim.Simulation.CompleteMission
 ```
 
-The configuration workflow is:
+It contains three connected objects: **OrbitalEnvironment**, **SpacecraftSystem**, and **OnboardTelemetry**. The telemetry view provides readable outputs such as battery SOC, bus voltages, component temperatures, attitude and wheel states, GNSS data, mission modes, imaging and downlink counters, and data-storage information.
 
-```text
-DesignConfig.xlsx
-        ↓
-UpdateConfig.bat
-        ↓
-parameter / unit validation and mass-property calculation
-        ↓
-generated mission and spacecraft configuration
-        ↓
-real-epoch orbital and ephemeris environment generation
-        ↓
-Simulation.CompleteMission
-```
+### Getting started
 
-Users normally edit `DesignConfig.xlsx` and run `UpdateConfig.bat`. The workflow updates mission settings, spacecraft parameters, mass properties, and environment data while keeping simulation inputs traceable.
+1. Clone the repository and open its root `package.mo` in a Modelica tool with **MSL 4.0.0**.
+2. For the packaged default configuration, load `OneSatSim.Simulation.CompleteMission` and check the model before simulation.
+3. To change a design or mission parameter, edit `DesignConfig.xlsx` and run `UpdateConfig.bat` on Windows. This stages and generates `Scenarios/Generated*.mo` files, including an embedded environment table.
+4. To use the supplied OpenModelica CLI workflow, install the Python requirements from `Scripts/requirements-ephemeris.txt` and `Scripts/requirements-runner.txt`, then run `RunSimulation.bat`. The script supports a reason-labelled short diagnostic or a formal full-mission run.
 
-Default complete-mission settings are:
+The nominal packaged setup covers **2026-10-01 00:00 UTC to 2026-10-02 00:00 UTC**, with a 1-second output interval and `1e-7` tolerance. Configuration preparation uses fixed ephemeris/EOP/leap-second resources; the resulting Modelica simulation does **not** read the original Excel workbook or ephemeris files at integration time.
 
-```text
-StartTime       = 0 s
-StopTime        = 86400 s
-OutputInterval  = 1 s
-Tolerance       = 1e-5
-Solver          = IDA
-```
+### Version and verification notice
 
----
+The current root Modelica package declares **v1.1.6**, based on **MOSAIC v0.8**. The v1.1.6 maintenance release primarily updates documentation and connection-line presentation, with source-level protected-difference checks. Its published record marks **compilation NOT_RUN, simulation NOT_RUN, and GUI NOT_CHECKED for that specific maintenance revision**. Some runner and result-contract metadata still refer to historical v1.1.4 evidence; these are not equivalent to a new v1.1.6 acceptance run.
 
-## 4. Software
+OneSatSim is intended for spacecraft systems engineering, mission/resource trade studies, education, research, and model extension. It is not a flight-qualified implementation or a replacement for detailed discipline-specific verification.
 
-### 4.1 OpenModelica
-
-[OpenModelica](https://openmodelica.org/) is a **free and open-source Modelica modeling and simulation environment** and can be downloaded directly from its official website.
-
-- Website: <https://openmodelica.org/>
-- Download: <https://openmodelica.org/download/>
-- Windows: <https://openmodelica.org/download/download-windows/>
-- User Guide: <https://openmodelica.org/doc/OpenModelicaUsersGuide/latest/>
-
-OpenModelica / OMEdit is the recommended reference environment for model checking, compilation, and simulation.
-
-### 4.2 MWORKS.Sysplorer
-
-[MWORKS.Sysplorer](https://www.tongyuan.cc/) is a commercial closed-source Modelica modeling and simulation platform.
-
-- Website: <https://www.tongyuan.cc/>
-- Download: <https://www.tongyuan.cc/product/download>
-- License guide: <https://www.tongyuan.cc/docs/sysplorer/2026a/Help/SetupHelp/Doc/SetupHelp/License.html>
-
-Students at Chinese universities can apply for an **educational license** using an eligible university email account. Eligibility, free-license policy, and validity period should be checked against the current official policy.
-
----
-
-## 5. Quick start
-
-Clone the repository:
-
-```bash
-git clone https://github.com/Ruizhe-Yang/OneSatSim.git
-cd OneSatSim
-```
-
-Install the Python dependencies used by the configuration and ephemeris toolchain:
-
-```bash
-python -m pip install -r tools/requirements-ephemeris.txt
-```
-
-Edit:
-
-```text
-DesignConfig.xlsx
-```
-
-Then run on Windows:
-
-```text
-UpdateConfig.bat
-```
-
-Open `package.mo` in OpenModelica / OMEdit and run:
-
-```text
-OneSatSim.Simulation.CompleteMission
-```
-
-After major configuration or model changes, a short simulation is recommended before running the full mission duration.
-
-> **When using MWORKS.Sysplorer:** when **importing `package.mo`**, select **Modelica Standard Library (MSL) 4.0.0** before completing the model import and running the simulation, so that the library version matches the project's core dependency.
-
----
-
-## 6. Project structure
-
-```text
-OneSatSim/
-├─ package.mo
-├─ package.order
-├─ DesignConfig.xlsx
-├─ UpdateConfig.bat
-│
-├─ Figures/
-│  ├─ OneSatSim.png
-│  └─ systems.png
-│
-├─ doc/
-│  └─ OneSatSim_12UCubeSat_CaseStudy.html
-│
-├─ Foundation/
-│  ├─ Interfaces/        # multi-domain and mission interfaces
-│  ├─ Models/            # shared behavior and mission-core models
-│  ├─ Calculations/      # reusable calculation models
-│  ├─ Functions/         # encoding, decoding, and utilities
-│  └─ Types/             # enumerations, mass properties, telemetry types
-│
-├─ Scenarios/            # mission and spacecraft configuration
-├─ Components/           # device-level Modelica components
-│
-├─ Systems/
-│  ├─ Four_systems/      # mechanics, electrical, thermal, information
-│  ├─ N_systems/         # eight spacecraft subsystems
-│  └─ SpacecraftSystem.mo
-│
-├─ Simulation/
-│  └─ CompleteMission.mo # complete mission simulation entry
-│
-├─ Resources/            # ephemeris and environment resources
-├─ tools/                # generation, validation, and test utilities
-└─ outputs/              # configuration audit and validation outputs
-```
-
----
-
-## 7. Secondary development
-
-OneSatSim can be extended by modifying or replacing local parts of the existing system architecture:
-
-- **change mission and spacecraft parameters** in `DesignConfig.xlsx`;
-- **add or replace components and subsystems** while keeping interface semantics consistent;
-- **increase local fidelity** by replacing simplified power, thermal, attitude, communication, or other models;
-- **connect external models or algorithms**, including replacing local functions or components with **C-language modules** or **FMU modules** where supported by the selected Modelica toolchain;
-- **extend fault and safety analysis** with degraded modes, protection logic, safe-mode transitions, fault injection, and recovery behavior.
-
----
-
-## 8. Two important sources of inspiration
-
-### 8.1 Spacecraft system-level simulation with mechanical-electrical-thermal-information coupling
-
-A major methodological inspiration is:
-
-> **Peng Kun, Wang Yan, Li Zhi, Weng Fangjing, Jia Yuchen. Research on System-level Distributed Simulation Method for Spacecraft Considering the Coupling of Mechanical, Electrical, Thermal, and Information Systems. Journal of Astronautics, 2025, 46(9): 1896-1905.**  
-> DOI: [10.3873/j.issn.1000-1328.2025.09.016](https://doi.org/10.3873/j.issn.1000-1328.2025.09.016)  
-> Article: <https://www.spacejournal.cn/yhxb/article/doi/10.3873/j.issn.1000-1328.2025.09.016>
-
-The paper proposes a **1 + 4 + N** spacecraft system-level simulation architecture, emphasizing device-level modeling, mechanical-electrical-thermal-information coupling, and the organization of overall, subsystem, and equipment models.
-
-OneSatSim adopts the ideas of **hierarchical organization, device-level multi-domain representation, and cross-system coupling**, implemented through four overall networks, eight spacecraft subsystems, and a unified mission simulation entry.
-
-### 8.2 ASRTU-1 open-source onboard computer software
-
-Another important engineering reference is the open-source onboard computer software of **ASRTU-1 (ASRTU Friendship MicroSat)** developed by the **LilacSat Student Satellite Team at Harbin Institute of Technology**.
-
-- OpenLilacSat: <https://gitee.com/openlilacsat>
-- ASRTU-1 OBC Software: <https://gitee.com/openlilacsat/ASRTU-1_OBC_Software>
-
-The public software includes mission scheduling, attitude-control interfaces, power management, fault handling, and ground-command functions, providing a useful engineering reference for spacecraft mission logic, device states, and onboard information organization.
-
----
-
-## 9. Scope and limitations
-
-OneSatSim is intended for system-level spacecraft design, mission-resource analysis, multi-domain coupling studies, algorithm evaluation, education, research, and safety-analysis model development. Its modeling fidelity is chosen for system engineering studies and does not replace flight software, component qualification models, structural FEM, CFD, electromagnetic or RF circuit-level analysis, thermal-vacuum or spacecraft environmental testing, or flight certification; reference data, engineering assumptions, configuration parameters, and simulation results should therefore be distinguished clearly.
-
----
-
-## 10. Acknowledgements
-
-Special thanks to the **Zhilian Xingyu Student Society of Dalian University of Technology (大连理工大学智连星宇学社)** for supporting the related work.
-
-We also acknowledge:
-
-- the Modelica Association;
-- the HIT LilacSat / OpenLilacSat team;
-- JPL, IERS, and the maintainers of the scientific data and open-source dependencies used by the project.
-
----
-
-## 11. Technical report
-
-For detailed model descriptions, implementation notes, simulation results, and engineering interpretation, see:
-
-**[OneSatSim 12U CubeSat Case Study](./doc/OneSatSim_12UCubeSat_CaseStudy.html)**
-
----
-
-## 12. Contributing
-
-Contributions are welcome in areas including new spacecraft models, component and subsystem development, higher-fidelity model replacement, mission-planning and control algorithms, fault and safety models, Modelica-tool compatibility, visualization, post-processing, and educational examples.
-
-If you find model or interface issues, or have ideas for new features, please use GitHub Issues or Pull Requests to contribute.
+**Links:** [MOSAIC specification](https://github.com/Ruizhe-Yang/MOSAIC) · [MOSAIC-skill](https://github.com/Ruizhe-Yang/modelica-system-level-simulation-skill) · [12U CubeSat case study](./doc/OneSatSim_12UCubeSat_CaseStudy.html)
 
 ---
 
 <div align="center">
 
-**OneSatSim — Put the satellite mission, physics, software logic, and resources on one timeline.**
+**OneSatSim — Put the satellite mission, physics, onboard logic, and resources on one timeline.**
 
-**OneSatSim —— 把卫星任务、物理状态、软件逻辑与资源约束放到同一条时间轴上。**
+**OneSatSim —— 把卫星任务、物理状态、星务逻辑和资源约束放在同一条时间轴上。**
+
+*Model the Whole as MOSAIC.*
 
 </div>
