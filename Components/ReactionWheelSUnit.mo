@@ -2,11 +2,13 @@ within OneSatSim.Components;
 model ReactionWheelSUnit "斜置反作用飞轮组件"
   parameter OneSatSim.Scenarios.DesignConfigRecords.WheelSComponentConfig config
     "由所属N-System传入的硬件设计配置";
+  parameter OneSatSim.Foundation.Types.WheelGroupCapabilities wheelCapabilities "飞轮Capabilities" ;
+  parameter Real wheelSpeedServoGain(unit="N.m.s/rad") "飞轮速度Servo增益 [N.m.s/rad]" ;
   parameter Modelica.Units.SI.Resistance standbyResistance=config.StandbyResistance
     "飞轮驱动电子学待机电阻；Excel单位Ω，当前设计基线";
-  parameter Modelica.Units.SI.Torque maxTorque=config.MaxTorque
+  parameter Modelica.Units.SI.Torque maxTorque=wheelCapabilities.maxTorque[4]
     "飞轮最大轴力矩；Excel单位N·m，当前设计基线";
-  parameter Modelica.Units.SI.Inertia rotorInertia=config.RotorInertia
+  parameter Modelica.Units.SI.Inertia rotorInertia=wheelCapabilities.J[4]
     "飞轮转子惯量；Excel单位kg·m²，当前设计基线";
   parameter Real bearingDamping(unit="N.m.s/rad")=config.BearingDamping
     "轴承等效黏性阻尼；Excel单位N·m·s/rad，当前设计基线";
@@ -14,11 +16,11 @@ model ReactionWheelSUnit "斜置反作用飞轮组件"
     "飞轮等效热容；Excel单位J/K，当前设计基线";
   parameter Modelica.Units.SI.ThermalConductance mountConductance=config.MountConductance
     "飞轮安装导热；Excel单位W/K，当前设计基线";
-  parameter Real axis_X=config.Axis_X
+  parameter Real axis_X=wheelCapabilities.axes[1,4]
     "飞轮转轴方向X；Excel单位1，当前设计基线";
-  parameter Real axis_Y=config.Axis_Y
+  parameter Real axis_Y=wheelCapabilities.axes[2,4]
     "飞轮转轴方向Y；Excel单位1，当前设计基线";
-  parameter Real axis_Z=config.Axis_Z
+  parameter Real axis_Z=wheelCapabilities.axes[3,4]
     "飞轮转轴方向Z；Excel单位1，当前设计基线";
   parameter Modelica.Units.SI.Mass mass=config.Mass
     "质量；Excel单位kg，当前设计基线";
@@ -35,95 +37,137 @@ model ReactionWheelSUnit "斜置反作用飞轮组件"
   parameter Modelica.Units.SI.Inertia inertia_ZZ=config.Inertia_ZZ
     "局部惯量 Izz；Excel单位kg·m²，当前设计基线";
   parameter Modelica.Units.SI.AngularVelocity initialSpeed=0 "场景初始轮速";
-  parameter Modelica.Units.SI.AngularVelocity wheelSpeedLimit=config.SpeedLimit "任务级参数: 6000 rpm";
+  parameter Modelica.Units.SI.AngularVelocity wheelSpeedLimit=wheelCapabilities.maxSpeed[4] "实际转子速度上限";
   parameter Real motorEfficiency(min=0.1,max=1)=config.MotorEfficiency "平均值电机效率，待器件数据标定";
-  Foundation.Interfaces.PowerPort power annotation(Placement(transformation(extent={{-10,90},{10,110}}),iconTransformation(extent={{-10,90},{10,110}})));
-  Modelica.Electrical.Analog.Basic.Conductor unused5Rail(G=0) annotation(Placement(transformation(extent={{42,76},{54,88}})));
-  Modelica.Electrical.Analog.Basic.Conductor unused33Rail(G=0) annotation(Placement(transformation(extent={{66,76},{78,88}})));
-  Foundation.Interfaces.ThermalPort thermal annotation(Placement(transformation(extent={{-10,-110},{10,-90}}),iconTransformation(extent={{-10,-110},{10,-90}})));
-  Foundation.Interfaces.MechanicalPort mechanical annotation(Placement(transformation(extent={{-110,-10},{-90,10}}),iconTransformation(extent={{-110,-10},{-90,10}})));
-  Foundation.Interfaces.InformationPort information annotation(Placement(transformation(extent={{90,-10},{110,10}}),iconTransformation(extent={{90,-10},{110,10}})));
-  Foundation.Interfaces.RealSignalReader commandedSpeed annotation(Placement(transformation(extent={{-96,2},{-76,18}})));
-  Modelica.Electrical.Analog.Sensors.CurrentSensor supplyCurrent annotation(Placement(transformation(extent={{-75,40},{-55,60}})));
-  Modelica.Electrical.Analog.Basic.Resistor controllerLoss(R=standbyResistance,useHeatPort=true) "任务级参数 standby redundant wheel supply work point" annotation(Placement(transformation(extent={{-42,40},{-22,60}})));
+  Foundation.Interfaces.PowerPort power  "功率" annotation(Placement(visible=true, transformation(origin={-480,335}, extent={{-12,-12},{12,12}}, rotation=0), iconVisible=true, iconTransformation(origin={0,95}, extent={{-11.52,-11.52},{11.52,11.52}}, rotation=0)));
+  Modelica.Electrical.Analog.Basic.Conductor unused5Rail(G=0)  "计算/接口量 unused5Rail" annotation(Placement(visible=true, transformation(origin={-365,415}, extent={{-20,-20},{20,20}}, rotation=0)));
+  Modelica.Electrical.Analog.Basic.Conductor unused33Rail(G=0)  "计算/接口量 unused33Rail" annotation(Placement(visible=true, transformation(origin={-270,415}, extent={{-20,-20},{20,20}}, rotation=0)));
+  Foundation.Interfaces.ThermalPort thermal  "热学" annotation(Placement(visible=true, transformation(origin={500,-320}, extent={{-12,-12},{12,12}}, rotation=0), iconVisible=true, iconTransformation(origin={0,-97}, extent={{-11.52,-11.52},{11.52,11.52}}, rotation=0)));
+  Foundation.Interfaces.MechanicalPort mechanical  "机械" annotation(Placement(visible=true, transformation(origin={-485,-310}, extent={{-12,-12},{12,12}}, rotation=0), iconVisible=true, iconTransformation(origin={-89,0}, extent={{-11.52,-11.52},{11.52,11.52}}, rotation=0)));
+  Foundation.Interfaces.InformationPort information  "计算/接口量 information" annotation(Placement(visible=true, transformation(origin={710,15}, extent={{-12,-12},{12,12}}, rotation=0), iconVisible=true, iconTransformation(origin={89,0}, extent={{-11.52,-11.52},{11.52,11.52}}, rotation=0)));
+  Foundation.Interfaces.RealSignalReader commandedSpeed  "可扩展总线实数信号到因果计算端口的无状态恒等读取器实例" annotation(Placement(visible=true, transformation(origin={-400,95}, extent={{-16,-16},{16,16}}, rotation=0)));
+  Modelica.Electrical.Analog.Sensors.CurrentSensor supplyCurrent  "供给电流" annotation(Placement(visible=true, transformation(origin={-365,335}, extent={{-24,-24},{24,24}}, rotation=0)));
+  Modelica.Electrical.Analog.Basic.Resistor controllerLoss(R=standbyResistance,useHeatPort=true) "任务级参数 standby redundant wheel supply work point" annotation(Placement(visible=true, transformation(origin={-240,335}, extent={{-24,-24},{24,24}}, rotation=0)));
   Modelica.Electrical.Analog.Sources.SignalCurrent dynamicMotorLoad
-    "由实际轴功率驱动的12 V平均值电机负载" annotation(Placement(transformation(extent={{-42,64},{-22,84}})));
-  Modelica.Electrical.Analog.Sensors.VoltageSensor motorBusVoltage
-    annotation(Placement(transformation(origin={-10,72},extent={{-8,-8},{8,8}},rotation=270)));
-  Modelica.Blocks.Math.Feedback speedError annotation(Placement(transformation(extent={{-72,4},{-52,24}})));
-  Modelica.Blocks.Math.Gain compensator(k=1.5e-4) "系统级 task-rate wheel servo" annotation(Placement(transformation(extent={{-42,4},{-22,24}})));
-  Modelica.Blocks.Nonlinear.Limiter torqueLimit(uMax=maxTorque,uMin=-0.0038,strict=true) annotation(Placement(transformation(extent={{-12,4},{8,24}})));
-  Modelica.Mechanics.Rotational.Sources.Torque motor(useSupport=true) annotation(Placement(transformation(extent={{18,4},{38,24}})));
-  Modelica.Mechanics.Rotational.Components.Inertia rotor(J=rotorInertia,w(start=initialSpeed,fixed=true)) annotation(Placement(transformation(extent={{48,4},{68,24}})));
-  Modelica.Mechanics.Rotational.Sensors.SpeedSensor speed annotation(Placement(transformation(extent={{74,-22},{94,-2}})));
+    "由实际轴功率驱动的12 V平均值电机负载" annotation(Placement(visible=true, transformation(origin={0,335}, extent={{-24,-24},{24,24}}, rotation=0)));
+  Modelica.Electrical.Analog.Sensors.VoltageSensor motorBusVoltage 
+     "电机总线电压" annotation(Placement(visible=true, transformation(origin={-125,325}, extent={{-24,-24},{24,24}}, rotation=0)));
+  Modelica.Blocks.Math.Feedback speedError  "速度误差" annotation(Placement(visible=true, transformation(origin={-285,95}, extent={{-28,-28},{28,28}}, rotation=0)));
+  Foundation.Calculations.WheelSpeedServoCalculation compensator(k=wheelSpeedServoGain) "系统级 task-rate wheel servo" annotation(Placement(visible=true, transformation(origin={-145,95}, extent={{-22,-22},{22,22}}, rotation=0)));
+  Modelica.Blocks.Nonlinear.Limiter torqueLimit(uMax=maxTorque,uMin=-maxTorque,strict=true)  "torque限制" annotation(Placement(visible=true, transformation(origin={-5,95}, extent={{-28,-28},{28,28}}, rotation=0)));
+  Modelica.Mechanics.Rotational.Sources.Torque motor(useSupport=true)  "电机 [N.m]" annotation(Placement(visible=true, transformation(origin={110,95}, extent={{-32,-32},{32,32}}, rotation=0)));
+  Modelica.Mechanics.Rotational.Components.Inertia rotor(J=rotorInertia,w(start=initialSpeed,fixed=true))  "计算/接口量 rotor" annotation(Placement(visible=true, transformation(origin={240,95}, extent={{-56,-56},{56,56}}, rotation=0)));
+  Modelica.Mechanics.Rotational.Sensors.SpeedSensor speed  "速度" annotation(Placement(visible=true, transformation(origin={360,95}, extent={{-30,-30},{30,30}}, rotation=0)));
   Foundation.Calculations.ReactionWheelTelemetryCalculation telemetryCalculation(
-    rotorInertia=1.02e-4,wheelSpeedLimit=wheelSpeedLimit) annotation(Placement(transformation(extent={{48,-84},{70,-56}})));
-  Foundation.Calculations.ReactionWheelPowerCalculation powerCalculation(etaMotor=motorEfficiency)
-    annotation(Placement(transformation(extent={{12,-92},{40,-64}})));
-  Modelica.Thermal.HeatTransfer.Sources.PrescribedHeatFlow dynamicMotorHeat
-    annotation(Placement(transformation(extent={{-54,-63},{-34,-43}})));
-  Modelica.Mechanics.Rotational.Components.Damper bearing(d=bearingDamping,useHeatPort=true) annotation(Placement(transformation(origin={58,-25},extent={{-8,-8},{8,8}},rotation=270)));
-  Modelica.Mechanics.MultiBody.Parts.Mounting1D mount(n={axis_X,axis_Y,axis_Z}) annotation(Placement(transformation(origin={-70,-22},extent={{-10,-10},{10,10}},rotation=90)));
+    rotorInertia=rotorInertia,wheelSpeedLimit=wheelSpeedLimit)  "反作用飞轮角动量与饱和状态计算实例" annotation(Placement(visible=true, transformation(origin={500,120}, extent={{-22,-22},{22,22}}, rotation=0)));
+  Foundation.Calculations.ReactionWheelPowerCalculation powerCalculation(etaMotor=motorEfficiency) 
+     "反作用飞轮平均值机电热功率计算实例" annotation(Placement(visible=true, transformation(origin={160,310}, extent={{-62,-62},{62,62}}, rotation=0)));
+  Modelica.Thermal.HeatTransfer.Sources.PrescribedHeatFlow dynamicMotorHeat 
+     "dynamic电机热流" annotation(Placement(visible=true, transformation(origin={310,290}, extent={{-24,-24},{24,24}}, rotation=0)));
+  Modelica.Mechanics.Rotational.Components.Damper bearing(d=bearingDamping,useHeatPort=true)  "计算/接口量 bearing" annotation(Placement(visible=true, transformation(origin={240,-100}, extent={{-28,-28},{28,28}}, rotation=0)));
+  Modelica.Mechanics.MultiBody.Parts.Mounting1D mount(n={axis_X,axis_Y,axis_Z})  "计算/接口量 mount" annotation(Placement(visible=true, transformation(origin={90,-235}, extent={{-34,-34},{34,34}}, rotation=0)));
   Modelica.Mechanics.MultiBody.Parts.Body wheelHousing(
     m=mass,r_CM={rcm_X,rcm_Y,rcm_Z},I_11=inertia_XX,I_22=inertia_YY,I_33=inertia_ZZ)
-    "斜置轮壳体与安装件，位于结构基准+X/+Y上舱角" annotation(Placement(transformation(extent={{-52,-26},{-32,-6}})));
-  Modelica.Thermal.HeatTransfer.Components.HeatCapacitor thermalMass(C=heatCapacity,T(start=275.19,fixed=true)) "热敏电阻11对应的初始工作点" annotation(Placement(transformation(extent={{-34,-61},{-14,-41}})));
-  Modelica.Thermal.HeatTransfer.Components.ThermalConductor isolatorPath(G=mountConductance) "系统级 standby wheel isolation path" annotation(Placement(transformation(extent={{0,-59},{20,-43}})));
-  Modelica.Thermal.HeatTransfer.Sensors.TemperatureSensor thermistor11 annotation(Placement(transformation(extent={{-34,-87},{-14,-67}})));
-  Modelica.Blocks.Sources.IntegerConstant status(k=1) annotation(Placement(transformation(extent={{23,-32},{43,-12}})));
-  Foundation.Interfaces.RealSignalBridge informationRealBridge[5] annotation(Placement(transformation(extent={{78,32},{86,40}})));
-  Foundation.Interfaces.IntegerSignalBridge informationIntegerBridge[1] annotation(Placement(transformation(extent={{78,-46},{86,-38}})));
-  Foundation.Interfaces.BooleanSignalBridge informationBooleanBridge[1] annotation(Placement(transformation(extent={{80,-64},{88,-56}})));
+    "斜置轮壳体与安装件，位于结构基准+X/+Y上舱角" annotation(Placement(visible=true, transformation(origin={-360,-310}, extent={{-32,-32},{32,32}}, rotation=0)));
+  Modelica.Thermal.HeatTransfer.Components.HeatCapacitor thermalMass(C=heatCapacity,T(start=275.19,fixed=true)) "热敏电阻11对应的初始工作点" annotation(Placement(visible=true, transformation(origin={235,-290}, extent={{-30,-30},{30,30}}, rotation=0)));
+  Modelica.Thermal.HeatTransfer.Components.ThermalConductor isolatorPath(G=mountConductance) "系统级 standby wheel isolation path" annotation(Placement(visible=true, transformation(origin={380,-320}, extent={{-24,-24},{24,24}}, rotation=0)));
+  Modelica.Thermal.HeatTransfer.Sensors.TemperatureSensor thermistor11  "计算/接口量 thermistor11" annotation(Placement(visible=true, transformation(origin={325,-410}, extent={{-22,-22},{22,22}}, rotation=0)));
+  Modelica.Blocks.Sources.IntegerConstant status(k=1)  "计算/接口量 status" annotation(Placement(visible=true, transformation(origin={420,-180}, extent={{-22,-22},{22,22}}, rotation=0)));
+  Foundation.Interfaces.RealSignalBridge informationRealBridge[5]  "实数因果输出到可扩展信息总线的无状态恒等桥实例" annotation(Placement(visible=true, transformation(origin={595,-35}, extent={{-16,-16},{16,16}}, rotation=0)));
+  Foundation.Interfaces.IntegerSignalBridge informationIntegerBridge[1]  "整数因果输出到可扩展信息总线的无状态恒等桥实例" annotation(Placement(visible=true, transformation(origin={595,-180}, extent={{-16,-16},{16,16}}, rotation=0)));
+  Foundation.Interfaces.BooleanSignalBridge informationBooleanBridge[1]  "布尔因果输出到可扩展信息总线的无状态恒等桥实例" annotation(Placement(visible=true, transformation(origin={595,280}, extent={{-16,-16},{16,16}}, rotation=0)));
 equation
-  connect(speed.w,telemetryCalculation.angularVelocity) annotation(Line(points={{94,-12},{44,-12},{44,-70},{48,-70}},color={0,0,127}));
-  connect(information.command.wheelCommand[4],commandedSpeed.u) annotation(Line(points={{100,0},{-90,0},{-90,10},{-96,10}},color={0,0,127}));
-  connect(power.p5,unused5Rail.p) annotation(Line(points={{0,100},{0,94},{42,94},{42,82}},color={0,0,255}));
-  connect(unused5Rail.n,power.n5) annotation(Line(points={{54,82},{54,94},{0,94},{0,100}},color={0,0,255}));
-  connect(power.p33,unused33Rail.p) annotation(Line(points={{0,100},{0,94},{66,94},{66,82}},color={0,0,255}));
-  connect(unused33Rail.n,power.n33) annotation(Line(points={{78,82},{78,94},{0,94},{0,100}},color={0,0,255}));
-  connect(power.p12,supplyCurrent.p) annotation(Line(points={{0,100},{0,94},{-75,94},{-75,50}},color={0,0,255}));
-  connect(supplyCurrent.n,controllerLoss.p) annotation(Line(points={{-55,50},{-48,50},{-42,50}},color={0,0,255}));
-  connect(supplyCurrent.n,dynamicMotorLoad.p) annotation(Line(points={{-55,50},{-48,50},{-48,74},{-42,74}},color={0,0,255}));
-  connect(controllerLoss.n,power.n12) annotation(Line(points={{-22,50},{-22,94},{0,94},{0,100}},color={0,0,255}));
-  connect(dynamicMotorLoad.n,power.n12) annotation(Line(points={{-22,74},{-22,94},{0,94},{0,100}},color={0,0,255}));
-  connect(motorBusVoltage.p,supplyCurrent.n) annotation(Line(points={{-10,80},{-10,88},{-48,88},{-48,50},{-55,50}},color={0,0,255}));
-  connect(motorBusVoltage.n,power.n12) annotation(Line(points={{-10,64},{-10,94},{0,94},{0,100}},color={0,0,255}));
-  connect(commandedSpeed.y,speedError.u1) annotation(Line(points={{-76,10},{-72,10},{-72,14},{-70,14}},color={0,0,127}));
-  connect(speed.w,speedError.u2) annotation(Line(points={{94,-12},{44.5,-12},{44.5,2.5},{-62,2.5},{-62,6}},color={0,0,127}));
-  connect(speedError.y,compensator.u) annotation(Line(points={{-53,14},{-44,14}},color={0,0,127}));
-  connect(compensator.y,torqueLimit.u) annotation(Line(points={{-21,14},{-14,14}},color={0,0,127}));
-  connect(torqueLimit.y,motor.tau) annotation(Line(points={{9,14},{16,14}},color={0,0,127}));
-  connect(torqueLimit.y,powerCalculation.motorTorque) annotation(Line(points={{9,14},{-1.5,14},{-1.5,-70.3},{12,-70.3}},color={0,0,127}));
-  connect(speed.w,powerCalculation.angularVelocity) annotation(Line(points={{94,-12},{44,-12},{44,-70},{12,-70},{12,-78}},color={0,0,127}));
-  connect(motorBusVoltage.v,powerCalculation.busVoltage) annotation(Line(points={{-2,72},{16.5,72},{16.5,-41.5},{21.5,-41.5},{21.5,-85.7},{12,-85.7}},color={0,0,127}));
-  connect(powerCalculation.dynamicCurrentCommand,dynamicMotorLoad.i) annotation(Line(points={{40,-79.4},{40,-33.5},{-20.5,-33.5},{-20.5,86},{-32,86}},color={0,0,127}));
-  connect(powerCalculation.dynamicLossHeat,dynamicMotorHeat.Q_flow) annotation(Line(points={{40,-85},{40,-62.5},{-54,-62.5},{-54,-53}},color={0,0,127}));
-  connect(motor.flange,rotor.flange_a) annotation(Line(points={{38,14},{48,14}},color={0,0,0}));
-  connect(rotor.flange_b,speed.flange) annotation(Line(points={{68,14},{68,-12},{94,-12}},color={0,0,0}));
-  connect(rotor.flange_b,bearing.flange_a) annotation(Line(points={{68,14},{58,14},{58,-17}},color={0,0,0}));
-  connect(bearing.flange_b,mount.flange_b) annotation(Line(points={{58,-33},{58,-33.5},{-60,-33.5},{-60,-22}},color={0,0,0}));
-  connect(motor.support,mount.flange_b) annotation(Line(points={{28,4},{28,-4.5},{-60,-4.5},{-60,-22}},color={0,0,0}));
-  connect(mount.frame_a,mechanical) annotation(Line(points={{-80,-22},{-94,-22},{-94,0},{-100,0}},color={95,95,95},thickness=0.5));
-  connect(wheelHousing.frame_a,mechanical) annotation(Line(points={{-52,-16},{-52,0},{-100,0}},color={95,95,95},thickness=0.5));
-  connect(controllerLoss.heatPort,thermalMass.port) annotation(Line(points={{-32,40},{-20.5,40},{-20.5,-41},{-24,-41}},color={191,0,0}));
-  connect(dynamicMotorHeat.port,thermalMass.port) annotation(Line(points={{-34,-53},{-24,-53},{-24,-41}},color={191,0,0}));
-  connect(bearing.heatPort,thermalMass.port) annotation(Line(points={{50,-25},{50,-41},{-24,-41}},color={191,0,0}));
-  connect(thermalMass.port,isolatorPath.port_a) annotation(Line(points={{-24,-61},{-24,-51},{0,-51}},color={191,0,0}));
-  connect(isolatorPath.port_b,thermal) annotation(Line(points={{20,-51},{0,-51},{0,-100}},color={191,0,0}));
-  connect(thermalMass.port,thermistor11.port) annotation(Line(points={{-24,-61},{-24,-77},{-34,-77}},color={191,0,0}));
-  connect(speed.w,informationRealBridge[1].u) annotation(Line(points={{94,-12},{78,-12},{78,36}},color={0,0,127}));
-  connect(informationRealBridge[1].y,information.device.wheelSpeed[4]) annotation(Line(points={{86,36},{94,36},{94,0},{100,0}},color={0,0,127}));
-  connect(supplyCurrent.i,informationRealBridge[2].u) annotation(Line(points={{-65,40},{78,40},{78,36}},color={0,0,127}));
-  connect(informationRealBridge[2].y,information.device.wheelCurrent[4]) annotation(Line(points={{86,36},{94,36},{94,0},{100,0}},color={0,0,127}));
-  connect(supplyCurrent.i,informationRealBridge[3].u) annotation(Line(points={{-65,40},{78,40},{78,36}},color={0,0,127}));
-  connect(informationRealBridge[3].y,information.device.pdCurrent[16]) annotation(Line(points={{86,36},{94,36},{94,0},{100,0}},color={0,0,127}));
-  connect(thermistor11.T,informationRealBridge[4].u) annotation(Line(points={{-14,-77},{-14,-62.5},{46.5,-62.5},{46.5,36},{78,36}},color={0,0,127}));
-  connect(informationRealBridge[4].y,information.device.thermistorTemperature[11]) annotation(Line(points={{86,36},{94,36},{94,0},{100,0}},color={0,0,127}));
-  connect(status.y,informationIntegerBridge[1].u) annotation(Line(points={{44,-22},{44,-42},{78,-42}},color={255,127,0}));
-  connect(informationIntegerBridge[1].y,information.device.wheelStatus[4]) annotation(Line(points={{86,-42},{94,-42},{94,0},{100,0}},color={255,127,0}));
-  connect(telemetryCalculation.momentum,informationRealBridge[5].u) annotation(Line(points={{68.9,-65.1},{72.5,-65.1},{72.5,36},{78,36}},color={0,0,127}));
-  connect(informationRealBridge[5].y,information.device.wheelMomentum[4]) annotation(Line(points={{86,36},{94,36},{94,0},{100,0}},color={0,0,127}));
-  connect(telemetryCalculation.saturated,informationBooleanBridge[1].u) annotation(Line(points={{68.9,-74.9},{80,-74.9},{80,-60}},color={255,0,255}));
-  connect(informationBooleanBridge[1].y,information.device.wheelSaturated[4]) annotation(Line(points={{88,-60},{94,-60},{94,0},{100,0}},color={255,0,255}));
-  annotation(Icon(coordinateSystem(extent={{-100,-100},{100,100}},preserveAspectRatio=true),graphics={Rectangle(extent={{-100,100},{100,-100}},lineColor={70,85,115},fillColor={236,241,249},fillPattern=FillPattern.Solid),Ellipse(extent={{-50,50},{50,-50}},fillColor={155,175,205},fillPattern=FillPattern.Solid),Ellipse(extent={{-18,18},{18,-18}},fillColor={65,75,95},fillPattern=FillPattern.Solid),Line(points={{-50,50},{50,-50}},color={145,65,180},thickness=2),Text(extent={{-92,-75},{92,-53}},textString="RW-S / PD16 / T11")}),Diagram(coordinateSystem(extent={{-110,-110},{110,110}},preserveAspectRatio=true),graphics={Rectangle(extent={{-100,100},{100,-100}},lineColor={205,205,205},pattern=LinePattern.Dot),Rectangle(extent={{-82,30},{100,-36}},lineColor={80,80,80},pattern=LinePattern.Dash),Text(extent={{-80,38},{75,28}},textString="冗余斜装-柔性联接-独立热路")}),Documentation(info="<html><h4>用途与系统角色</h4><p><b>用途：</b>作为第四台独立飞轮执行斜置轴速度指令并产生角动量、电流和热状态</p><h4>实现与接口</h4><p><b>系统级等效：</b>速度误差经任务级比例增益和转矩限幅直接驱动Torque与Inertia；原0.06 s补偿状态和柔性轴状态已删除。保留J·der(w)、斜置轴机械反作用、转速、动量、饱和、电流损耗和11号热敏。</p><p><b>对外接口：</b>thermal（ThermalPort）、mechanical（MechanicalPort）、information（InformationPort）</p><p><b>数据路径：</b>斜置轮对应wheelSpeed[4]、wheelCurrent[4]和wheelStatus[4]，转速以rpm进入SAT-S2。</p><h4>物理对象与接口</h4><p>S轮是沿{1,1,1}归一化斜轴安装的第四台独立飞轮，读取wheelCommand[4]。它不是X/Y/Z轮的复制件，安装方向、转子惯量、转矩限值、损耗与温度测点均独立。</p><h4>内部控制与特性</h4><p>命令经RealSignalReader、速度误差和死区环节后驱动伺服与转子。死区降低小误差下的无意义抖动，斜轴力矩通过三轴分解参与冗余分配和零空间均衡；电流、11号热敏、角动量和饱和状态回写统一信息接口。</p><h4>结果查看与边界</h4><p>优先查看deadZone.y、rotor.w、driveCurrent.i、thermistor11.T和遥测索引4。判断整星轮组余度时必须连同X/Y/Z轮及EquivalentAOCSCore分配结果分析。</p></html>"));
+  connect(speed.w,telemetryCalculation.angularVelocity) annotation(Line(points={{393,95},{434.82,95},{434.82,120},{444.82,120}}, color={0,0,127}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(information.command.wheelCommand[4],commandedSpeed.u) annotation(Line(points={{710,15},{710,14.9},{-447.38,14.9},{-447.38,95},{-414.24,95}}, color={0,0,127}, thickness=0.35, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(power.p5,unused5Rail.p) annotation(Line(points={{-480,335},{-480,415},{-385,415}}, color={0,0,255}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(unused5Rail.n,power.n5) annotation(Line(points={{-345,415},{-335,415},{-335,369},{-480,369},{-480,335}}, color={0,0,255}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(power.p33,unused33Rail.p) annotation(Line(points={{-480,335},{-480,369},{-300,369},{-300,415},{-290,415}}, color={0,0,255}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(unused33Rail.n,power.n33) annotation(Line(points={{-250,415},{-240,415},{-240,369},{-480,369},{-480,335}}, color={0,0,255}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(power.p12,supplyCurrent.p) annotation(Line(points={{-480,335},{-389,335}}, color={0,0,255}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(supplyCurrent.n,controllerLoss.p) annotation(Line(points={{-341,335},{-264,335}}, color={0,0,255}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(supplyCurrent.n,dynamicMotorLoad.p) annotation(Line(points={{-341,335},{-331,335},{-331,369},{-34,369},{-34,335},{-24,335}}, color={0,0,255}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(controllerLoss.n,power.n12) annotation(Line(points={{-216,335},{-206,335},{-206,301},{-480,301},{-480,335}}, color={0,0,255}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(dynamicMotorLoad.n,power.n12) annotation(Line(points={{24,335},{34,335},{34,369},{-480,369},{-480,335}}, color={0,0,255}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(motorBusVoltage.p,supplyCurrent.n) annotation(Line(points={{-149,325},{-159,325},{-159,301},{-331,301},{-331,335},{-341,335}}, color={0,0,255}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(motorBusVoltage.n,power.n12) annotation(Line(points={{-101,325},{-91,325},{-91,291},{-480,291},{-480,335}}, color={0,0,255}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(commandedSpeed.y,speedError.u1) annotation(Line(points={{-385.76,95},{-307.4,95}}, color={0,0,127}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(speed.w,speedError.u2) annotation(Line(points={{393,95},{403,95},{403,20.98},{-285,20.98},{-285,72.6}}, color={0,0,127}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(speedError.y,compensator.u) annotation(Line(points={{-259.8,95},{-203.74,95}}, color={0,0,127}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(compensator.y,torqueLimit.u) annotation(Line(points={{-86.26,95},{-38.6,95}}, color={0,0,127}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(torqueLimit.y,motor.tau) annotation(Line(points={{25.8,95},{71.6,95}}, color={0,0,127}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(torqueLimit.y,powerCalculation.motorTorque) annotation(Line(points={{25.8,95},{35.8,95},{35.8,359.6},{104.82,359.6}}, color={0,0,127}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(speed.w,powerCalculation.angularVelocity) annotation(Line(points={{393,95},{403,95},{403,161},{94.82,161},{94.82,310},{104.82,310}}, color={0,0,127}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(motorBusVoltage.v,powerCalculation.busVoltage) annotation(Line(points={{-125,298.6},{-125,260.4},{104.82,260.4}}, color={0,0,127}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(powerCalculation.dynamicCurrentCommand,dynamicMotorLoad.i) annotation(Line(points={{215.18,293.46666},{225.18,293.46666},{225.18,373.8},{0,373.8},{0,363.8}}, color={0,0,127}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(powerCalculation.dynamicLossHeat,dynamicMotorHeat.Q_flow) annotation(Line(points={{215.18,260.4},{276,260.4},{276,290},{286,290}}, color={0,0,127}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(motor.flange,rotor.flange_a) annotation(Line(points={{142,95},{184,95}}, color={0,0,0}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(rotor.flange_b,speed.flange) annotation(Line(points={{296,95},{330,95}}, color={0,0,0}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(rotor.flange_b,bearing.flange_a) annotation(Line(points={{296,95},{306,95},{306,-62},{202,-62},{202,-100},{212,-100}}, color={0,0,0}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(bearing.flange_b,mount.flange_b) annotation(Line(points={{268,-100},{278,-100},{278,-235},{124,-235}}, color={0,0,0}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(motor.support,mount.flange_b) annotation(Line(points={{110,63},{110,53},{134,53},{134,-235},{124,-235}}, color={0,0,0}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(mount.frame_a,mechanical) annotation(Line(points={{90,-269},{90,-352},{-485,-352},{-485,-310}}, color={95,95,95}, thickness=0.5, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(wheelHousing.frame_a,mechanical) annotation(Line(points={{-392,-310},{-485,-310}}, color={95,95,95}, thickness=0.5, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(controllerLoss.heatPort,thermalMass.port) annotation(Line(points={{-240,311},{-240,14.9},{202,14.9},{202,-330},{235,-330},{235,-320}}, color={191,0,0}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(dynamicMotorHeat.port,thermalMass.port) annotation(Line(points={{334,290},{344,290},{344,133},{306,133},{306,-330},{235,-330},{235,-320}}, color={191,0,0}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(bearing.heatPort,thermalMass.port) annotation(Line(points={{212,-128},{202,-128},{202,-330},{235,-330},{235,-320}}, color={191,0,0}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(thermalMass.port,isolatorPath.port_a) annotation(Line(points={{235,-320},{235,-330},{346,-330},{346,-320},{356,-320}}, color={191,0,0}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(isolatorPath.port_b,thermal) annotation(Line(points={{404,-320},{500,-320}}, color={191,0,0}, thickness=0.5, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(thermalMass.port,thermistor11.port) annotation(Line(points={{235,-320},{235,-410},{303,-410}}, color={191,0,0}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(speed.w,informationRealBridge[1].u) annotation(Line(points={{393,95},{403,95},{403,-35},{580.76,-35}}, color={0,0,127}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(informationRealBridge[1].y,information.device.wheelSpeed[4]) annotation(Line(points={{609.24,-35},{710,-35},{710,15}}, color={0,0,127}, thickness=0.35, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(supplyCurrent.i,informationRealBridge[2].u) annotation(Line(points={{-365,308.6},{-365,298.6},{-475,298.6},{-475,-35},{580.76,-35}}, color={0,0,127}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(informationRealBridge[2].y,information.device.wheelCurrent[4]) annotation(Line(points={{609.24,-35},{710,-35},{710,15}}, color={0,0,127}, thickness=0.35, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(supplyCurrent.i,informationRealBridge[3].u) annotation(Line(points={{-365,308.6},{-365,298.6},{-475,298.6},{-475,-35},{580.76,-35}}, color={0,0,127}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(informationRealBridge[3].y,information.device.pdCurrent[16]) annotation(Line(points={{609.24,-35},{710,-35},{710,15}}, color={0,0,127}, thickness=0.35, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(thermistor11.T,informationRealBridge[4].u) annotation(Line(points={{349.2,-410},{547.62,-410},{547.62,-35},{580.76,-35}}, color={0,0,127}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(informationRealBridge[4].y,information.device.thermistorTemperature[11]) annotation(Line(points={{609.24,-35},{710,-35},{710,15}}, color={0,0,127}, thickness=0.35, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(status.y,informationIntegerBridge[1].u) annotation(Line(points={{420,-180},{580.76,-180}}, color={255,127,0}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(informationIntegerBridge[1].y,information.device.wheelStatus[4]) annotation(Line(points={{609.24,-180},{710,-180},{710,15}}, color={255,127,0}, thickness=0.35, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(telemetryCalculation.momentum,informationRealBridge[5].u) annotation(Line(points={{555.18,169.6},{565.18,169.6},{565.18,14.9},{547.62,14.9},{547.62,-35},{580.76,-35}}, color={0,0,127}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(informationRealBridge[5].y,information.device.wheelMomentum[4]) annotation(Line(points={{609.24,-35},{710,-35},{710,15}}, color={0,0,127}, thickness=0.35, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(telemetryCalculation.saturated,informationBooleanBridge[1].u) annotation(Line(points={{519.58,102.4},{565.18,102.4},{565.18,188.9},{547.62,188.9},{547.62,280},{580.76,280}}, color={255,0,255}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(informationBooleanBridge[1].y,information.device.wheelSaturated[4]) annotation(Line(points={{609.24,280},{710,280},{710,15}}, color={255,0,255}, thickness=0.35, pattern=LinePattern.Solid, smooth=Smooth.None));
+  annotation(Documentation(info="<html><h2>斜置反作用飞轮组件</h2><p><b>类路径：</b><code>OneSatSim.Components.ReactionWheelSUnit</code>　<b>类型：</b>model</p><h3>用途与定位</h3><p>斜置反作用飞轮组件</p><h3>在工程中使用</h3><p>当前直接使用位置：<a href=\"modelica://OneSatSim.Systems.N_systems.GNCSystem\">OneSatSim.Systems.N_systems.GNCSystem</a> 的 <code>wheelS</code>。</p><h3>接口、输入与输出</h3><table border=\"1\" cellspacing=\"0\" cellpadding=\"5\"><tr><th>名称/维数</th><th>类型</th><th>声明角色</th><th>单位</th><th>含义</th></tr><tr><td><code>power</code></td><td>Foundation.Interfaces.PowerPort</td><td>public</td><td>按声明/类型合同</td><td>功率</td></tr><tr><td><code>thermal</code></td><td>Foundation.Interfaces.ThermalPort</td><td>public</td><td>按声明/类型合同</td><td>热学</td></tr><tr><td><code>mechanical</code></td><td>Foundation.Interfaces.MechanicalPort</td><td>public</td><td>按声明/类型合同</td><td>机械</td></tr><tr><td><code>information</code></td><td>Foundation.Interfaces.InformationPort</td><td>public</td><td>按声明/类型合同</td><td>计算/接口量 information</td></tr><tr><td><code>commandedSpeed</code></td><td>Foundation.Interfaces.RealSignalReader</td><td>public</td><td>按声明/类型合同</td><td>可扩展总线实数信号到因果计算端口的无状态恒等读取器实例</td></tr><tr><td><code>informationRealBridge[5]</code></td><td>Foundation.Interfaces.RealSignalBridge</td><td>public</td><td>按声明/类型合同</td><td>实数因果输出到可扩展信息总线的无状态恒等桥实例</td></tr><tr><td><code>informationIntegerBridge[1]</code></td><td>Foundation.Interfaces.IntegerSignalBridge</td><td>public</td><td>按声明/类型合同</td><td>整数因果输出到可扩展信息总线的无状态恒等桥实例</td></tr><tr><td><code>informationBooleanBridge[1]</code></td><td>Foundation.Interfaces.BooleanSignalBridge</td><td>public</td><td>按声明/类型合同</td><td>布尔因果输出到可扩展信息总线的无状态恒等桥实例</td></tr></table><h3>配置与参数</h3><p>下面列出当前源码表达式，仅用于阅读；当前参数对话框、生效配置记录与原有配置工具仍是使用依据。本页不新增默认值或换算。</p><table border=\"1\" cellspacing=\"0\" cellpadding=\"5\"><tr><th>参数</th><th>类型</th><th>用途</th><th>源码表达式</th></tr><tr><td><code>config</code></td><td>OneSatSim.Scenarios.DesignConfigRecords.WheelSComponentConfig</td><td>由所属N-System传入的硬件设计配置</td><td><code>由调用方、继承或默认声明提供</code></td></tr><tr><td><code>wheelCapabilities</code></td><td>OneSatSim.Foundation.Types.WheelGroupCapabilities</td><td>飞轮Capabilities</td><td><code>由调用方、继承或默认声明提供</code></td></tr><tr><td><code>wheelSpeedServoGain</code></td><td>Real</td><td>飞轮速度Servo增益 [N.m.s/rad]</td><td><code>由调用方、继承或默认声明提供</code></td></tr><tr><td><code>standbyResistance</code></td><td>Modelica.Units.SI.Resistance</td><td>飞轮驱动电子学待机电阻；Excel单位Ω，当前设计基线</td><td><code>=config.StandbyResistance</code></td></tr><tr><td><code>maxTorque</code></td><td>Modelica.Units.SI.Torque</td><td>飞轮最大轴力矩；Excel单位N·m，当前设计基线</td><td><code>=wheelCapabilities.maxTorque[4]</code></td></tr><tr><td><code>rotorInertia</code></td><td>Modelica.Units.SI.Inertia</td><td>飞轮转子惯量；Excel单位kg·m²，当前设计基线</td><td><code>=wheelCapabilities.J[4]</code></td></tr><tr><td><code>bearingDamping</code></td><td>Real</td><td>轴承等效黏性阻尼；Excel单位N·m·s/rad，当前设计基线</td><td><code>=config.BearingDamping</code></td></tr><tr><td><code>heatCapacity</code></td><td>Modelica.Units.SI.HeatCapacity</td><td>飞轮等效热容；Excel单位J/K，当前设计基线</td><td><code>=config.HeatCapacity</code></td></tr><tr><td><code>mountConductance</code></td><td>Modelica.Units.SI.ThermalConductance</td><td>飞轮安装导热；Excel单位W/K，当前设计基线</td><td><code>=config.MountConductance</code></td></tr><tr><td><code>axis_X</code></td><td>Real</td><td>飞轮转轴方向X；Excel单位1，当前设计基线</td><td><code>=wheelCapabilities.axes[1,4]</code></td></tr><tr><td><code>axis_Y</code></td><td>Real</td><td>飞轮转轴方向Y；Excel单位1，当前设计基线</td><td><code>=wheelCapabilities.axes[2,4]</code></td></tr><tr><td><code>axis_Z</code></td><td>Real</td><td>飞轮转轴方向Z；Excel单位1，当前设计基线</td><td><code>=wheelCapabilities.axes[3,4]</code></td></tr><tr><td><code>mass</code></td><td>Modelica.Units.SI.Mass</td><td>质量；Excel单位kg，当前设计基线</td><td><code>=config.Mass</code></td></tr><tr><td><code>rcm_X</code></td><td>Modelica.Units.SI.Length</td><td>质心偏置X；Excel单位m，当前设计基线</td><td><code>=config.RCM_X</code></td></tr><tr><td><code>rcm_Y</code></td><td>Modelica.Units.SI.Length</td><td>质心偏置Y；Excel单位m，当前设计基线</td><td><code>=config.RCM_Y</code></td></tr><tr><td><code>rcm_Z</code></td><td>Modelica.Units.SI.Length</td><td>质心偏置Z；Excel单位m，当前设计基线</td><td><code>=config.RCM_Z</code></td></tr><tr><td><code>inertia_XX</code></td><td>Modelica.Units.SI.Inertia</td><td>局部惯量 Ixx；Excel单位kg·m²，当前设计基线</td><td><code>=config.Inertia_XX</code></td></tr><tr><td><code>inertia_YY</code></td><td>Modelica.Units.SI.Inertia</td><td>局部惯量 Iyy；Excel单位kg·m²，当前设计基线</td><td><code>=config.Inertia_YY</code></td></tr><tr><td><code>inertia_ZZ</code></td><td>Modelica.Units.SI.Inertia</td><td>局部惯量 Izz；Excel单位kg·m²，当前设计基线</td><td><code>=config.Inertia_ZZ</code></td></tr><tr><td><code>initialSpeed</code></td><td>Modelica.Units.SI.AngularVelocity</td><td>场景初始轮速</td><td><code>=0</code></td></tr><tr><td><code>wheelSpeedLimit</code></td><td>Modelica.Units.SI.AngularVelocity</td><td>实际转子速度上限</td><td><code>=wheelCapabilities.maxSpeed[4]</code></td></tr><tr><td><code>motorEfficiency</code></td><td>Real</td><td>平均值电机效率，待器件数据标定</td><td><code>=config.MotorEfficiency</code></td></tr></table><h3>内部组成</h3><p>以下为本类直接声明的组成单元，继承类的内部结构另按其文档查看。</p><table border=\"1\" cellspacing=\"0\" cellpadding=\"5\"><tr><th>实例</th><th>类</th><th>作用</th></tr><tr><td><code>unused5Rail</code></td><td><a href=\"modelica://Modelica.Electrical.Analog.Basic.Conductor\">Modelica.Electrical.Analog.Basic.Conductor</a></td><td>计算/接口量 unused5Rail</td></tr><tr><td><code>unused33Rail</code></td><td><a href=\"modelica://Modelica.Electrical.Analog.Basic.Conductor\">Modelica.Electrical.Analog.Basic.Conductor</a></td><td>计算/接口量 unused33Rail</td></tr><tr><td><code>supplyCurrent</code></td><td><a href=\"modelica://Modelica.Electrical.Analog.Sensors.CurrentSensor\">Modelica.Electrical.Analog.Sensors.CurrentSensor</a></td><td>供给电流</td></tr><tr><td><code>controllerLoss</code></td><td><a href=\"modelica://Modelica.Electrical.Analog.Basic.Resistor\">Modelica.Electrical.Analog.Basic.Resistor</a></td><td>任务级参数 standby redundant wheel supply work point</td></tr><tr><td><code>dynamicMotorLoad</code></td><td><a href=\"modelica://Modelica.Electrical.Analog.Sources.SignalCurrent\">Modelica.Electrical.Analog.Sources.SignalCurrent</a></td><td>由实际轴功率驱动的12 V平均值电机负载</td></tr><tr><td><code>motorBusVoltage</code></td><td><a href=\"modelica://Modelica.Electrical.Analog.Sensors.VoltageSensor\">Modelica.Electrical.Analog.Sensors.VoltageSensor</a></td><td>电机总线电压</td></tr><tr><td><code>speedError</code></td><td><a href=\"modelica://Modelica.Blocks.Math.Feedback\">Modelica.Blocks.Math.Feedback</a></td><td>速度误差</td></tr><tr><td><code>compensator</code></td><td><a href=\"modelica://OneSatSim.Foundation.Calculations.WheelSpeedServoCalculation\">OneSatSim.Foundation.Calculations.WheelSpeedServoCalculation</a></td><td>系统级 task-rate wheel servo</td></tr><tr><td><code>torqueLimit</code></td><td><a href=\"modelica://Modelica.Blocks.Nonlinear.Limiter\">Modelica.Blocks.Nonlinear.Limiter</a></td><td>torque限制</td></tr><tr><td><code>motor</code></td><td><a href=\"modelica://Modelica.Mechanics.Rotational.Sources.Torque\">Modelica.Mechanics.Rotational.Sources.Torque</a></td><td>电机 [N.m]</td></tr><tr><td><code>rotor</code></td><td><a href=\"modelica://Modelica.Mechanics.Rotational.Components.Inertia\">Modelica.Mechanics.Rotational.Components.Inertia</a></td><td>计算/接口量 rotor</td></tr><tr><td><code>speed</code></td><td><a href=\"modelica://Modelica.Mechanics.Rotational.Sensors.SpeedSensor\">Modelica.Mechanics.Rotational.Sensors.SpeedSensor</a></td><td>速度</td></tr><tr><td><code>telemetryCalculation</code></td><td><a href=\"modelica://OneSatSim.Foundation.Calculations.ReactionWheelTelemetryCalculation\">OneSatSim.Foundation.Calculations.ReactionWheelTelemetryCalculation</a></td><td>反作用飞轮角动量与饱和状态计算实例</td></tr><tr><td><code>powerCalculation</code></td><td><a href=\"modelica://OneSatSim.Foundation.Calculations.ReactionWheelPowerCalculation\">OneSatSim.Foundation.Calculations.ReactionWheelPowerCalculation</a></td><td>反作用飞轮平均值机电热功率计算实例</td></tr><tr><td><code>dynamicMotorHeat</code></td><td><a href=\"modelica://Modelica.Thermal.HeatTransfer.Sources.PrescribedHeatFlow\">Modelica.Thermal.HeatTransfer.Sources.PrescribedHeatFlow</a></td><td>dynamic电机热流</td></tr><tr><td><code>bearing</code></td><td><a href=\"modelica://Modelica.Mechanics.Rotational.Components.Damper\">Modelica.Mechanics.Rotational.Components.Damper</a></td><td>计算/接口量 bearing</td></tr><tr><td><code>mount</code></td><td><a href=\"modelica://Modelica.Mechanics.MultiBody.Parts.Mounting1D\">Modelica.Mechanics.MultiBody.Parts.Mounting1D</a></td><td>计算/接口量 mount</td></tr><tr><td><code>wheelHousing</code></td><td><a href=\"modelica://Modelica.Mechanics.MultiBody.Parts.Body\">Modelica.Mechanics.MultiBody.Parts.Body</a></td><td>斜置轮壳体与安装件，位于结构基准+X/+Y上舱角</td></tr><tr><td><code>thermalMass</code></td><td><a href=\"modelica://Modelica.Thermal.HeatTransfer.Components.HeatCapacitor\">Modelica.Thermal.HeatTransfer.Components.HeatCapacitor</a></td><td>热敏电阻11对应的初始工作点</td></tr><tr><td><code>isolatorPath</code></td><td><a href=\"modelica://Modelica.Thermal.HeatTransfer.Components.ThermalConductor\">Modelica.Thermal.HeatTransfer.Components.ThermalConductor</a></td><td>系统级 standby wheel isolation path</td></tr><tr><td><code>thermistor11</code></td><td><a href=\"modelica://Modelica.Thermal.HeatTransfer.Sensors.TemperatureSensor\">Modelica.Thermal.HeatTransfer.Sensors.TemperatureSensor</a></td><td>计算/接口量 thermistor11</td></tr><tr><td><code>status</code></td><td><a href=\"modelica://Modelica.Blocks.Sources.IntegerConstant\">Modelica.Blocks.Sources.IntegerConstant</a></td><td>计算/接口量 status</td></tr></table></html>"),
+    Icon(coordinateSystem(extent={{-100,-100},{100,100}}, preserveAspectRatio=true, grid={2,2}), graphics={
+      Rectangle(extent={{-89,-97},{89,95}}, lineColor={0,0,0}, fillColor={255,255,255}, fillPattern=FillPattern.Solid, lineThickness=0.6, radius=3),
+      Line(points={{-76,64},{76,64}}, color={219,223,227}, thickness=0.4, pattern=LinePattern.Solid),
+      Rectangle(extent={{-84,69},{-64,89}}, lineColor={0,0,0}, fillColor={76,128,143}, fillPattern=FillPattern.Solid, lineThickness=0.85, radius=0),
+      Text(extent={{-61,71},{76,86}}, textString="Attitude actuator", fontSize=0, lineColor={0,0,0}, horizontalAlignment=TextAlignment.Center),
+      Rectangle(extent={{-55,-37},{44,-29}}, lineColor={0,0,0}, fillColor={242,245,247}, fillPattern=FillPattern.Solid, lineThickness=0.7, radius=0),
+      Rectangle(extent={{-37,-30},{-27,-19}}, lineColor={0,0,0}, fillColor={255,255,255}, fillPattern=FillPattern.Solid, lineThickness=0.65, radius=0),
+      Rectangle(extent={{26,-30},{36,-19}}, lineColor={0,0,0}, fillColor={255,255,255}, fillPattern=FillPattern.Solid, lineThickness=0.65, radius=0),
+      Ellipse(extent={{-48,-23},{44,35}}, lineColor={0,0,0}, fillColor={242,245,247}, fillPattern=FillPattern.Solid, lineThickness=0.75, startAngle=0, endAngle=360),
+      Ellipse(extent={{-40,-18},{36,29}}, lineColor={0,0,0}, fillColor={255,255,255}, fillPattern=FillPattern.Solid, lineThickness=0.65, startAngle=0, endAngle=360),
+      Ellipse(extent={{-27,-10},{23,23}}, lineColor={0,0,0}, fillColor={234,240,244}, fillPattern=FillPattern.Solid, lineThickness=0.55, startAngle=0, endAngle=360),
+      Ellipse(extent={{-12,-3},{8,15}}, lineColor={0,0,0}, fillColor={255,255,255}, fillPattern=FillPattern.Solid, lineThickness=0.65, startAngle=0, endAngle=360),
+      Ellipse(extent={{-6,1},{2,11}}, lineColor={0,0,0}, fillColor={76,128,143}, fillPattern=FillPattern.Solid, lineThickness=0.45, startAngle=0, endAngle=360),
+      Line(points={{9,6},{32,6}}, color={113,122,132}, thickness=0.45, pattern=LinePattern.Solid),
+      Line(points={{5.778175,10.949747},{22.041631,20.142136}}, color={113,122,132}, thickness=0.45, pattern=LinePattern.Solid),
+      Line(points={{-2,13},{-2,26}}, color={113,122,132}, thickness=0.45, pattern=LinePattern.Solid),
+      Line(points={{-9.778175,10.949747},{-26.041631,20.142136}}, color={113,122,132}, thickness=0.45, pattern=LinePattern.Solid),
+      Line(points={{-13,6},{-36,6}}, color={113,122,132}, thickness=0.45, pattern=LinePattern.Solid),
+      Line(points={{-9.778175,1.050253},{-26.041631,-8.142136}}, color={113,122,132}, thickness=0.45, pattern=LinePattern.Solid),
+      Line(points={{-2,-1},{-2,-14}}, color={113,122,132}, thickness=0.45, pattern=LinePattern.Solid),
+      Line(points={{5.778175,1.050253},{22.041631,-8.142136}}, color={113,122,132}, thickness=0.45, pattern=LinePattern.Solid),
+      Line(points={{-32,42},{-13,49},{12,47},{29,40}}, color={76,128,143}, thickness=0.85, pattern=LinePattern.Solid, arrow={Arrow.None,Arrow.Open}, smooth=Smooth.Bezier),
+      Ellipse(extent={{-50,-35},{-46,-31}}, lineColor={0,0,0}, fillColor={255,255,255}, fillPattern=FillPattern.Solid, lineThickness=0.45, startAngle=0, endAngle=360),
+      Line(points={{-49,-33},{-47,-33}}, color={113,122,132}, thickness=0.4, pattern=LinePattern.Solid),
+      Ellipse(extent={{35,-35},{39,-31}}, lineColor={0,0,0}, fillColor={255,255,255}, fillPattern=FillPattern.Solid, lineThickness=0.45, startAngle=0, endAngle=360),
+      Line(points={{36,-33},{38,-33}}, color={113,122,132}, thickness=0.4, pattern=LinePattern.Solid),
+      Line(points={{54,-21},{73,-21}}, color={113,122,132}, thickness=0.5, pattern=LinePattern.Solid, arrow={Arrow.None,Arrow.Open}),
+      Line(points={{54,-21},{44.12,-8.84}}, color={113,122,132}, thickness=0.5, pattern=LinePattern.Solid, arrow={Arrow.None,Arrow.Open}),
+      Line(points={{54,-21},{54,-2}}, color={113,122,132}, thickness=0.5, pattern=LinePattern.Solid, arrow={Arrow.None,Arrow.Open}),
+      Line(points={{43,-34},{66,0}}, color={76,128,143}, thickness=1, pattern=LinePattern.Solid, arrow={Arrow.None,Arrow.Open}),
+      Text(extent={{47,20},{72,41}}, textString="S", fontSize=0, lineColor={0,0,0}, horizontalAlignment=TextAlignment.Center, textStyle={TextStyle.Bold}),
+      Line(points={{-76,-58},{76,-58}}, color={219,223,227}, thickness=0.4, pattern=LinePattern.Solid),
+      Text(extent={{-80,-79},{80,-64}}, textString="Skew Reaction Wheel", fontSize=0, lineColor={0,0,0}, horizontalAlignment=TextAlignment.Center, textStyle={TextStyle.Bold}),
+      Text(extent={{-80,-93},{80,-82}}, textString="%name", fontSize=0, lineColor={80,80,80}, horizontalAlignment=TextAlignment.Center)
+    }),
+    Diagram(coordinateSystem(extent={{-529,-470},{754,557}}, preserveAspectRatio=true, grid={2,2}), graphics={
+      Text(extent={{-465,209},{-271.8,227}}, textString="Speed control and rotor", fontSize=0, lineColor={79,89,100}, horizontalAlignment=TextAlignment.Left, textStyle={TextStyle.Bold}),
+      Text(extent={{-435,469},{-300.6,487}}, textString="Electrical drive", fontSize=0, lineColor={79,89,100}, horizontalAlignment=TextAlignment.Left, textStyle={TextStyle.Bold}),
+      Text(extent={{-420,-31},{-193.2,-13}}, textString="Mechanical support and heat", fontSize=0, lineColor={79,89,100}, horizontalAlignment=TextAlignment.Left, textStyle={TextStyle.Bold}),
+      Text(extent={{-517,512},{742,541}}, textString="Reaction wheel S: speed loop and drive power", fontSize=0, lineColor={0,0,0}, horizontalAlignment=TextAlignment.Left, textStyle={TextStyle.Bold}),
+      Line(points={{-517,504},{742,504}}, color={215,220,226}, thickness=0.25)
+    }));
 end ReactionWheelSUnit;

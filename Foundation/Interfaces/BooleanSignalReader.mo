@@ -1,12 +1,18 @@
 within OneSatSim.Foundation.Interfaces;
 model BooleanSignalReader "可扩展总线布尔信号到因果计算端口的无状态恒等读取器"
-  Modelica.Blocks.Interfaces.BooleanInput u
-    annotation(Placement(transformation(extent={{-110,-10},{-90,10}})));
-  Modelica.Blocks.Interfaces.BooleanOutput y
-    annotation(Placement(transformation(extent={{90,-10},{110,10}})));
+  Modelica.Blocks.Interfaces.BooleanInput u 
+     "输入信号" annotation(Placement(visible=true, transformation(origin={-89,0}, extent={{-15.12,-15.12},{15.12,15.12}}, rotation=0), iconVisible=true, iconTransformation(origin={-89,0}, extent={{-15.12,-15.12},{15.12,15.12}}, rotation=0)));
+  Modelica.Blocks.Interfaces.BooleanOutput y 
+     "输出信号" annotation(Placement(visible=true, transformation(origin={89,0}, extent={{-15.12,-15.12},{15.12,15.12}}, rotation=0), iconVisible=true, iconTransformation(origin={89,0}, extent={{-15.12,-15.12},{15.12,15.12}}, rotation=0)));
 equation
   y=u;
-  annotation(
-    Icon(graphics={Rectangle(extent={{-100,55},{100,-55}},lineColor={135,45,145},fillColor={247,235,249},fillPattern=FillPattern.Solid),Line(points={{-72,0},{72,0}},color={135,45,145},arrow={Arrow.None,Arrow.Filled}),Text(extent={{-45,35},{45,-35}},textString="READ")}),
-    Documentation(info="<html><h4>功能定位</h4><p>把可扩展信息总线中的布尔信号交付给具有明确输入方向的逻辑端口。</p><h4>接口与边界</h4><p>u为因果BooleanInput，y为因果BooleanOutput。模型仅实现y=u，不包含参数、状态、采样、延迟或事件逻辑，也不代表新的设备或指令处理过程。</p><h4>使用方法</h4><p>在图形白箱中将可扩展总线字段连接到u，再将y连接到Calculation或Modelica标准库模块的BooleanInput。</p></html>"));
+  annotation(Documentation(info="<html><h2>可扩展总线布尔信号到因果计算端口的无状态恒等读取器</h2><p><b>类路径：</b><code>OneSatSim.Foundation.Interfaces.BooleanSignalReader</code>　<b>类型：</b>model</p><h3>用途与定位</h3><p>可扩展总线布尔信号到因果计算端口的无状态恒等读取器</p><h3>在工程中使用</h3><p>当前直接使用位置：<a href=\"modelica://OneSatSim.Components.EarthObservationCameraUnit\">OneSatSim.Components.EarthObservationCameraUnit</a> 的 <code>imagingCommand</code>；<a href=\"modelica://OneSatSim.Components.EarthObservationCameraUnit\">OneSatSim.Components.EarthObservationCameraUnit</a> 的 <code>captureCommand</code>；<a href=\"modelica://OneSatSim.Components.FotonAmurPayloadUnit\">OneSatSim.Components.FotonAmurPayloadUnit</a> 的 <code>missionOn</code>；<a href=\"modelica://OneSatSim.Components.GPSReceiverUnit\">OneSatSim.Components.GPSReceiverUnit</a> 的 <code>eclipseCondition</code>；<a href=\"modelica://OneSatSim.Components.LowRateTelemetryTransmitterUnit\">OneSatSim.Components.LowRateTelemetryTransmitterUnit</a> 的 <code>downlinkEnable</code>；<a href=\"modelica://OneSatSim.Components.MagnetorquerUnit\">OneSatSim.Components.MagnetorquerUnit</a> 的 <code>safeModeFromInformation</code>；<a href=\"modelica://OneSatSim.Components.PowerConditioningUnit\">OneSatSim.Components.PowerConditioningUnit</a> 的 <code>batteryChargeAllowedFromInformation</code>；<a href=\"modelica://OneSatSim.Components.SelfieCameraUnit\">OneSatSim.Components.SelfieCameraUnit</a> 的 <code>imagingCommand</code>；另有4处，见源码引用。</p><h3>接口、输入与输出</h3><table border=\"1\" cellspacing=\"0\" cellpadding=\"5\"><tr><th>名称/维数</th><th>类型</th><th>声明角色</th><th>单位</th><th>含义</th></tr><tr><td><code>u</code></td><td>Modelica.Blocks.Interfaces.BooleanInput</td><td>public</td><td>按声明/类型合同</td><td>输入信号</td></tr><tr><td><code>y</code></td><td>Modelica.Blocks.Interfaces.BooleanOutput</td><td>public</td><td>按声明/类型合同</td><td>输出信号</td></tr></table><h3>实现摘要</h3><p>以下表达式直接摘自本类，保留原始符号和单位体系；完整的条件分支、循环与初始化以源码为准。</p><pre>[equation] y=u;</pre></html>"),
+    Icon(coordinateSystem(extent={{-100,-100},{100,100}},preserveAspectRatio=true),graphics={
+      Rectangle(extent={{-100,-100},{100,100}},fillPattern=FillPattern.Solid,fillColor={213,0,249},lineColor={213,0,249},lineThickness=0,radius=0),
+      Line(points={{-55,-30},{-28,-30},{-28,30},{12,30},{12,-30},{52,-30}},color={255,255,255},thickness=1.4,pattern=LinePattern.Solid,smooth=Smooth.None)
+    }),
+    Diagram(coordinateSystem(extent={{-100,-100},{100,100}},preserveAspectRatio=true),graphics={
+      Rectangle(extent={{-100,-100},{100,100}},fillPattern=FillPattern.Solid,fillColor={213,0,249},lineColor={213,0,249},lineThickness=0,radius=0),
+      Line(points={{-55,-30},{-28,-30},{-28,30},{12,30},{12,-30},{52,-30}},color={255,255,255},thickness=1.4,pattern=LinePattern.Solid,smooth=Smooth.None)
+    }));
 end BooleanSignalReader;

@@ -1,0 +1,2587 @@
+[
+  {
+    "class": "OneSatSim.Components.AntennaUnit",
+    "file": "Components/AntennaUnit.mo",
+    "counts": {
+      "connection_section": 1,
+      "result_howto_section": 1,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Components.BatteryUnit",
+    "file": "Components/BatteryUnit.mo",
+    "counts": {
+      "connection_section": 1,
+      "result_howto_section": 1,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Components.BodyMountedSolarArrayMinusXUnit",
+    "file": "Components/BodyMountedSolarArrayMinusXUnit.mo",
+    "counts": {
+      "connection_section": 1,
+      "result_howto_section": 1,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Components.BodyMountedSolarArrayPlusXUnit",
+    "file": "Components/BodyMountedSolarArrayPlusXUnit.mo",
+    "counts": {
+      "connection_section": 1,
+      "result_howto_section": 1,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Components.BodyMountedSolarArrayPlusYUnit",
+    "file": "Components/BodyMountedSolarArrayPlusYUnit.mo",
+    "counts": {
+      "connection_section": 1,
+      "result_howto_section": 1,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Components.DataRecorderUnit",
+    "file": "Components/DataRecorderUnit.mo",
+    "counts": {
+      "connection_section": 1,
+      "result_howto_section": 1,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Components.EarthObservationCameraUnit",
+    "file": "Components/EarthObservationCameraUnit.mo",
+    "counts": {
+      "connection_section": 1,
+      "result_howto_section": 1,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Components.FotonAmurPayloadUnit",
+    "file": "Components/FotonAmurPayloadUnit.mo",
+    "counts": {
+      "connection_section": 1,
+      "result_howto_section": 1,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Components.GNCComputerUnit",
+    "file": "Components/GNCComputerUnit.mo",
+    "counts": {
+      "connection_section": 1,
+      "result_howto_section": 1,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Components.GPSReceiverUnit",
+    "file": "Components/GPSReceiverUnit.mo",
+    "counts": {
+      "connection_section": 1,
+      "result_howto_section": 1,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Components.HeaterRadiatorUnit",
+    "file": "Components/HeaterRadiatorUnit.mo",
+    "counts": {
+      "connection_section": 1,
+      "result_howto_section": 1,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Components.LowRateTelemetryTransmitterUnit",
+    "file": "Components/LowRateTelemetryTransmitterUnit.mo",
+    "counts": {
+      "connection_section": 1,
+      "result_howto_section": 1,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Components.MEMSIMUUnit",
+    "file": "Components/MEMSIMUUnit.mo",
+    "counts": {
+      "connection_section": 1,
+      "result_howto_section": 1,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Components.MagnetometerUnit",
+    "file": "Components/MagnetometerUnit.mo",
+    "counts": {
+      "connection_section": 1,
+      "result_howto_section": 1,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Components.MagnetorquerUnit",
+    "file": "Components/MagnetorquerUnit.mo",
+    "counts": {
+      "connection_section": 1,
+      "result_howto_section": 1,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Components.MissionControlUnit",
+    "file": "Components/MissionControlUnit.mo",
+    "counts": {
+      "connection_section": 1,
+      "result_howto_section": 1,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Components.NaviEnhancePayloadUnit",
+    "file": "Components/NaviEnhancePayloadUnit.mo",
+    "counts": {
+      "connection_section": 1,
+      "result_howto_section": 1,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Components.OnboardComputerUnit",
+    "file": "Components/OnboardComputerUnit.mo",
+    "counts": {
+      "connection_section": 1,
+      "result_howto_section": 1,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Components.PowerConditioningUnit",
+    "file": "Components/PowerConditioningUnit.mo",
+    "counts": {
+      "connection_section": 1,
+      "result_howto_section": 1,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Components.RadioReceiverUnit",
+    "file": "Components/RadioReceiverUnit.mo",
+    "counts": {
+      "connection_section": 1,
+      "result_howto_section": 1,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Components.RateGyroUnit",
+    "file": "Components/RateGyroUnit.mo",
+    "counts": {
+      "connection_section": 1,
+      "result_howto_section": 1,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Components.ReactionWheelSUnit",
+    "file": "Components/ReactionWheelSUnit.mo",
+    "counts": {
+      "connection_section": 1,
+      "result_howto_section": 1,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Components.ReactionWheelXUnit",
+    "file": "Components/ReactionWheelXUnit.mo",
+    "counts": {
+      "connection_section": 1,
+      "result_howto_section": 1,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Components.ReactionWheelYUnit",
+    "file": "Components/ReactionWheelYUnit.mo",
+    "counts": {
+      "connection_section": 1,
+      "result_howto_section": 1,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Components.ReactionWheelZUnit",
+    "file": "Components/ReactionWheelZUnit.mo",
+    "counts": {
+      "connection_section": 1,
+      "result_howto_section": 1,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Components.SelfieCameraUnit",
+    "file": "Components/SelfieCameraUnit.mo",
+    "counts": {
+      "connection_section": 1,
+      "result_howto_section": 1,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Components.SpaceTimePayloadUnit",
+    "file": "Components/SpaceTimePayloadUnit.mo",
+    "counts": {
+      "connection_section": 1,
+      "result_howto_section": 1,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Components.StarTrackerYUnit",
+    "file": "Components/StarTrackerYUnit.mo",
+    "counts": {
+      "connection_section": 1,
+      "result_howto_section": 1,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Components.StarTrackerZUnit",
+    "file": "Components/StarTrackerZUnit.mo",
+    "counts": {
+      "connection_section": 1,
+      "result_howto_section": 1,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Components.StructureAssembly12U",
+    "file": "Components/StructureAssembly12U.mo",
+    "counts": {
+      "connection_section": 1,
+      "result_howto_section": 1,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Components.SunSensorUnit",
+    "file": "Components/SunSensorUnit.mo",
+    "counts": {
+      "connection_section": 1,
+      "result_howto_section": 1,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Components.ThermalControllerUnit",
+    "file": "Components/ThermalControllerUnit.mo",
+    "counts": {
+      "connection_section": 1,
+      "result_howto_section": 1,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Components.XBandTransmitterUnit",
+    "file": "Components/XBandTransmitterUnit.mo",
+    "counts": {
+      "connection_section": 1,
+      "result_howto_section": 1,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Components",
+    "file": "Components/package.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 0,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Foundation.Calculations.CommandStatusCalculation",
+    "file": "Foundation/Calculations/CommandStatusCalculation.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 1,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Foundation.Calculations.DataRecorderCalculation",
+    "file": "Foundation/Calculations/DataRecorderCalculation.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 1,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Foundation.Calculations.EarthObservationCameraCalculation",
+    "file": "Foundation/Calculations/EarthObservationCameraCalculation.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 1,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Foundation.Calculations.ExternalOrbitalHeatCalculation",
+    "file": "Foundation/Calculations/ExternalOrbitalHeatCalculation.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 1,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Foundation.Calculations.FotonAmurCalculation",
+    "file": "Foundation/Calculations/FotonAmurCalculation.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 1,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Foundation.Calculations.GNSSFixCalculation",
+    "file": "Foundation/Calculations/GNSSFixCalculation.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 1,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Foundation.Calculations.HeaterChannelCalculation",
+    "file": "Foundation/Calculations/HeaterChannelCalculation.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 1,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Foundation.Calculations.InertialVectorToBody",
+    "file": "Foundation/Calculations/InertialVectorToBody.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 1,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Foundation.Calculations.MagnetometerCalculation",
+    "file": "Foundation/Calculations/MagnetometerCalculation.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 1,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Foundation.Calculations.MomentumUnloadingCalculation",
+    "file": "Foundation/Calculations/MomentumUnloadingCalculation.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 1,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Foundation.Calculations.OrbitalAccelerationCalculation",
+    "file": "Foundation/Calculations/OrbitalAccelerationCalculation.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 1,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Foundation.Calculations.PayloadCaptureCalculation",
+    "file": "Foundation/Calculations/PayloadCaptureCalculation.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 1,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Foundation.Calculations.PointingModeEquipmentCalculation",
+    "file": "Foundation/Calculations/PointingModeEquipmentCalculation.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 1,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Foundation.Calculations.PowerConditioningCalculation",
+    "file": "Foundation/Calculations/PowerConditioningCalculation.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 1,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Foundation.Calculations.PowerDistributionStatusCalculation",
+    "file": "Foundation/Calculations/PowerDistributionStatusCalculation.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 1,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Foundation.Calculations.RateGyroModeCalculation",
+    "file": "Foundation/Calculations/RateGyroModeCalculation.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 1,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Foundation.Calculations.ReactionWheelPowerCalculation",
+    "file": "Foundation/Calculations/ReactionWheelPowerCalculation.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 1,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Foundation.Calculations.ReactionWheelTelemetryCalculation",
+    "file": "Foundation/Calculations/ReactionWheelTelemetryCalculation.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 1,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Foundation.Calculations.SolarArrayPerformanceCalculation",
+    "file": "Foundation/Calculations/SolarArrayPerformanceCalculation.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 1,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Foundation.Calculations.StarQuaternionCalculation",
+    "file": "Foundation/Calculations/StarQuaternionCalculation.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 1,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Foundation.Calculations.StarTrackerCalculation",
+    "file": "Foundation/Calculations/StarTrackerCalculation.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 1,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Foundation.Calculations.SunSensorCalculation",
+    "file": "Foundation/Calculations/SunSensorCalculation.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 1,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Foundation.Calculations.WheelSpeedServoCalculation",
+    "file": "Foundation/Calculations/WheelSpeedServoCalculation.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 1,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Foundation.Calculations.XBandTransmissionCalculation",
+    "file": "Foundation/Calculations/XBandTransmissionCalculation.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 1,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Foundation.Calculations",
+    "file": "Foundation/Calculations/package.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 0,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Foundation.Functions.estimateGroundContactDuration",
+    "file": "Foundation/Functions/estimateGroundContactDuration.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 0,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Foundation.Functions",
+    "file": "Foundation/Functions/package.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 0,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Foundation.Interfaces.ActiveGeometrySignals",
+    "file": "Foundation/Interfaces/ActiveGeometrySignals.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 0,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Foundation.Interfaces.ActiveMissionSelectionInput",
+    "file": "Foundation/Interfaces/ActiveMissionSelectionInput.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 0,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Foundation.Interfaces.ActiveMissionSelectionOutput",
+    "file": "Foundation/Interfaces/ActiveMissionSelectionOutput.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 0,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Foundation.Interfaces.ArbiterDecisionSignals",
+    "file": "Foundation/Interfaces/ArbiterDecisionSignals.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 0,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Foundation.Interfaces.AttitudeControlStateInput",
+    "file": "Foundation/Interfaces/AttitudeControlStateInput.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 0,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Foundation.Interfaces.AttitudeControlStateOutput",
+    "file": "Foundation/Interfaces/AttitudeControlStateOutput.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 0,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Foundation.Interfaces.AttitudeControlStateSignal",
+    "file": "Foundation/Interfaces/AttitudeControlStateSignal.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 0,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Foundation.Interfaces.AttitudeControlStateSignalBridge",
+    "file": "Foundation/Interfaces/AttitudeControlStateSignalBridge.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 1,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Foundation.Interfaces.BooleanSignal",
+    "file": "Foundation/Interfaces/BooleanSignal.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 0,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Foundation.Interfaces.BooleanSignalBridge",
+    "file": "Foundation/Interfaces/BooleanSignalBridge.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 1,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Foundation.Interfaces.BooleanSignalReader",
+    "file": "Foundation/Interfaces/BooleanSignalReader.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 1,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Foundation.Interfaces.CommandBus",
+    "file": "Foundation/Interfaces/CommandBus.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 0,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Foundation.Interfaces.CommandExecutionStatusSignal",
+    "file": "Foundation/Interfaces/CommandExecutionStatusSignal.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 0,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Foundation.Interfaces.CommandStatusBus",
+    "file": "Foundation/Interfaces/CommandStatusBus.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 0,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Foundation.Interfaces.CommandTypeInput",
+    "file": "Foundation/Interfaces/CommandTypeInput.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 0,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Foundation.Interfaces.CommandTypeOutput",
+    "file": "Foundation/Interfaces/CommandTypeOutput.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 0,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Foundation.Interfaces.CommandTypeSignal",
+    "file": "Foundation/Interfaces/CommandTypeSignal.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 0,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Foundation.Interfaces.ControlModeInput",
+    "file": "Foundation/Interfaces/ControlModeInput.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 0,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Foundation.Interfaces.ControlModeOutput",
+    "file": "Foundation/Interfaces/ControlModeOutput.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 0,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Foundation.Interfaces.ControlModeSignal",
+    "file": "Foundation/Interfaces/ControlModeSignal.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 0,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Foundation.Interfaces.ControlModeSignalBridge",
+    "file": "Foundation/Interfaces/ControlModeSignalBridge.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 1,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Foundation.Interfaces.DeviceStatusBus",
+    "file": "Foundation/Interfaces/DeviceStatusBus.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 0,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Foundation.Interfaces.DownlinkActionSignals",
+    "file": "Foundation/Interfaces/DownlinkActionSignals.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 0,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Foundation.Interfaces.DownlinkPhaseSignal",
+    "file": "Foundation/Interfaces/DownlinkPhaseSignal.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 0,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Foundation.Interfaces.EnvironmentPort",
+    "file": "Foundation/Interfaces/EnvironmentPort.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 0,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Foundation.Interfaces.EphemerisPort",
+    "file": "Foundation/Interfaces/EphemerisPort.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 0,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Foundation.Interfaces.ImagingActionSignals",
+    "file": "Foundation/Interfaces/ImagingActionSignals.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 0,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Foundation.Interfaces.ImagingPhaseInput",
+    "file": "Foundation/Interfaces/ImagingPhaseInput.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 0,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Foundation.Interfaces.ImagingPhaseOutput",
+    "file": "Foundation/Interfaces/ImagingPhaseOutput.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 0,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Foundation.Interfaces.ImagingPhaseSignal",
+    "file": "Foundation/Interfaces/ImagingPhaseSignal.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 0,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Foundation.Interfaces.InformationPort",
+    "file": "Foundation/Interfaces/InformationPort.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 0,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Foundation.Interfaces.IntegerSignal",
+    "file": "Foundation/Interfaces/IntegerSignal.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 0,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Foundation.Interfaces.IntegerSignalBridge",
+    "file": "Foundation/Interfaces/IntegerSignalBridge.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 1,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Foundation.Interfaces.IntegerSignalReader",
+    "file": "Foundation/Interfaces/IntegerSignalReader.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 1,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Foundation.Interfaces.MechanicalPort",
+    "file": "Foundation/Interfaces/MechanicalPort.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 0,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Foundation.Interfaces.MissionFeedbackBus",
+    "file": "Foundation/Interfaces/MissionFeedbackBus.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 0,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Foundation.Interfaces.MissionModeSignal",
+    "file": "Foundation/Interfaces/MissionModeSignal.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 0,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Foundation.Interfaces.MissionSelectionPublisher",
+    "file": "Foundation/Interfaces/MissionSelectionPublisher.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 1,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Foundation.Interfaces.MissionSelectionReader",
+    "file": "Foundation/Interfaces/MissionSelectionReader.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 1,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Foundation.Interfaces.MissionStateSignals",
+    "file": "Foundation/Interfaces/MissionStateSignals.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 0,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Foundation.Interfaces.OnboardTelemetryPort",
+    "file": "Foundation/Interfaces/OnboardTelemetryPort.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 0,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Foundation.Interfaces.OpportunityBooleanReader",
+    "file": "Foundation/Interfaces/OpportunityBooleanReader.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 1,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Foundation.Interfaces.OpportunityIntegerReader",
+    "file": "Foundation/Interfaces/OpportunityIntegerReader.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 1,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Foundation.Interfaces.OpportunitySignals",
+    "file": "Foundation/Interfaces/OpportunitySignals.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 0,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Foundation.Interfaces.PayloadDataPort",
+    "file": "Foundation/Interfaces/PayloadDataPort.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 0,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Foundation.Interfaces.PlannerRequestSignals",
+    "file": "Foundation/Interfaces/PlannerRequestSignals.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 0,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Foundation.Interfaces.PowerPort",
+    "file": "Foundation/Interfaces/PowerPort.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 0,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Foundation.Interfaces.RealSignal",
+    "file": "Foundation/Interfaces/RealSignal.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 0,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Foundation.Interfaces.RealSignalBridge",
+    "file": "Foundation/Interfaces/RealSignalBridge.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 1,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Foundation.Interfaces.RealSignalReader",
+    "file": "Foundation/Interfaces/RealSignalReader.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 1,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Foundation.Interfaces.RejectReasonInput",
+    "file": "Foundation/Interfaces/RejectReasonInput.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 0,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Foundation.Interfaces.RejectReasonOutput",
+    "file": "Foundation/Interfaces/RejectReasonOutput.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 0,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Foundation.Interfaces.RejectReasonSignal",
+    "file": "Foundation/Interfaces/RejectReasonSignal.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 0,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Foundation.Interfaces.SafeModeActionSignals",
+    "file": "Foundation/Interfaces/SafeModeActionSignals.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 0,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Foundation.Interfaces.SafetySignals",
+    "file": "Foundation/Interfaces/SafetySignals.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 0,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Foundation.Interfaces.SourcePowerPort",
+    "file": "Foundation/Interfaces/SourcePowerPort.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 0,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Foundation.Interfaces.ThermalPort",
+    "file": "Foundation/Interfaces/ThermalPort.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 0,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Foundation.Interfaces",
+    "file": "Foundation/Interfaces/package.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 0,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Foundation.Models.AOCSControlComputation",
+    "file": "Foundation/Models/AOCSControlComputation.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 1,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Foundation.Models.AverageDCDCConverterCore",
+    "file": "Foundation/Models/AverageDCDCConverterCore.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 1,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Foundation.Models.BatteryCellLimits",
+    "file": "Foundation/Models/BatteryCellLimits.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 1,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Foundation.Models.BatteryCellStackCore",
+    "file": "Foundation/Models/BatteryCellStackCore.mo",
+    "counts": {
+      "connection_section": 1,
+      "result_howto_section": 1,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Foundation.Models.CommandAdapter",
+    "file": "Foundation/Models/CommandAdapter.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 1,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Foundation.Models.CommandArbiter",
+    "file": "Foundation/Models/CommandArbiter.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 1,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Foundation.Models.DownlinkSequencer",
+    "file": "Foundation/Models/DownlinkSequencer.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 1,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Foundation.Models.EngineeringTelemetryObserver",
+    "file": "Foundation/Models/EngineeringTelemetryObserver.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 1,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Foundation.Models.EphemerisDataAdapter",
+    "file": "Foundation/Models/EphemerisDataAdapter.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 1,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Foundation.Models.EphemerisEnvironmentReader",
+    "file": "Foundation/Models/EphemerisEnvironmentReader.mo",
+    "counts": {
+      "connection_section": 1,
+      "result_howto_section": 1,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Foundation.Models.EquivalentAOCSCore",
+    "file": "Foundation/Models/EquivalentAOCSCore.mo",
+    "counts": {
+      "connection_section": 1,
+      "result_howto_section": 1,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Foundation.Models.ImagingSequencer",
+    "file": "Foundation/Models/ImagingSequencer.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 1,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Foundation.Models.MissionActionRequestMailbox",
+    "file": "Foundation/Models/MissionActionRequestMailbox.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 1,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Foundation.Models.MissionActionResultMailbox",
+    "file": "Foundation/Models/MissionActionResultMailbox.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 1,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Foundation.Models.MissionFeedbackAdapter",
+    "file": "Foundation/Models/MissionFeedbackAdapter.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 1,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Foundation.Models.MissionGeometryEventMailbox",
+    "file": "Foundation/Models/MissionGeometryEventMailbox.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 1,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Foundation.Models.MissionOpportunityGenerator",
+    "file": "Foundation/Models/MissionOpportunityGenerator.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 1,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Foundation.Models.MissionPlanner",
+    "file": "Foundation/Models/MissionPlanner.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 1,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Foundation.Models.MissionStateMachine",
+    "file": "Foundation/Models/MissionStateMachine.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 1,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Foundation.Models.OrbitalGeometry",
+    "file": "Foundation/Models/OrbitalGeometry.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 1,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Foundation.Models.SafeModeSequencer",
+    "file": "Foundation/Models/SafeModeSequencer.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 1,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Foundation.Models.SafetyMonitor",
+    "file": "Foundation/Models/SafetyMonitor.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 1,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Foundation.Models",
+    "file": "Foundation/Models/package.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 0,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Foundation.SignalRouting.RealSignalForward",
+    "file": "Foundation/SignalRouting/RealSignalForward.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 1,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Foundation.SignalRouting",
+    "file": "Foundation/SignalRouting/package.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 0,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Foundation.Types.AttitudeControlState",
+    "file": "Foundation/Types/AttitudeControlState.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 0,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Foundation.Types.CommandExecutionStatus",
+    "file": "Foundation/Types/CommandExecutionStatus.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 0,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Foundation.Types.CommandType",
+    "file": "Foundation/Types/CommandType.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 0,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Foundation.Types.ControlMode",
+    "file": "Foundation/Types/ControlMode.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 0,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Foundation.Types.DownlinkPhase",
+    "file": "Foundation/Types/DownlinkPhase.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 0,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Foundation.Types.ImagingCapabilities",
+    "file": "Foundation/Types/ImagingCapabilities.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 0,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Foundation.Types.ImagingPhase",
+    "file": "Foundation/Types/ImagingPhase.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 0,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Foundation.Types.MassProperties",
+    "file": "Foundation/Types/MassProperties.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 0,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Foundation.Types.MissionMode",
+    "file": "Foundation/Types/MissionMode.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 0,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Foundation.Types.RejectReason",
+    "file": "Foundation/Types/RejectReason.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 0,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Foundation.Types.SurfaceGeometry",
+    "file": "Foundation/Types/SurfaceGeometry.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 0,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Foundation.Types.TelemetryCatalog",
+    "file": "Foundation/Types/TelemetryCatalog.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 0,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Foundation.Types.WheelGroupCapabilities",
+    "file": "Foundation/Types/WheelGroupCapabilities.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 0,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Foundation.Types",
+    "file": "Foundation/Types/package.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 0,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Foundation",
+    "file": "Foundation/package.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 0,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Scenarios.DefaultScenario",
+    "file": "Scenarios/DefaultScenario.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 0,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Scenarios.DefaultSpacecraftDesignConfig",
+    "file": "Scenarios/DefaultSpacecraftDesignConfig.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 0,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Scenarios.DesignConfigRecords.AntennaComponentConfig",
+    "file": "Scenarios/DesignConfigRecords/AntennaComponentConfig.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 0,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Scenarios.DesignConfigRecords.BasebandComponentConfig",
+    "file": "Scenarios/DesignConfigRecords/BasebandComponentConfig.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 0,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Scenarios.DesignConfigRecords.BatteryComponentConfig",
+    "file": "Scenarios/DesignConfigRecords/BatteryComponentConfig.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 0,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Scenarios.DesignConfigRecords.CommunicationDesignConfig",
+    "file": "Scenarios/DesignConfigRecords/CommunicationDesignConfig.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 0,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Scenarios.DesignConfigRecords.ComputerComponentConfig",
+    "file": "Scenarios/DesignConfigRecords/ComputerComponentConfig.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 0,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Scenarios.DesignConfigRecords.ControllerComponentConfig",
+    "file": "Scenarios/DesignConfigRecords/ControllerComponentConfig.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 0,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Scenarios.DesignConfigRecords.DataHandlingDesignConfig",
+    "file": "Scenarios/DesignConfigRecords/DataHandlingDesignConfig.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 0,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Scenarios.DesignConfigRecords.EarthCameraComponentConfig",
+    "file": "Scenarios/DesignConfigRecords/EarthCameraComponentConfig.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 0,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Scenarios.DesignConfigRecords.EpsDesignConfig",
+    "file": "Scenarios/DesignConfigRecords/EpsDesignConfig.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 0,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Scenarios.DesignConfigRecords.FotonAmurComponentConfig",
+    "file": "Scenarios/DesignConfigRecords/FotonAmurComponentConfig.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 0,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Scenarios.DesignConfigRecords.GncDesignConfig",
+    "file": "Scenarios/DesignConfigRecords/GncDesignConfig.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 0,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Scenarios.DesignConfigRecords.GnssComponentConfig",
+    "file": "Scenarios/DesignConfigRecords/GnssComponentConfig.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 0,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Scenarios.DesignConfigRecords.HeatersComponentConfig",
+    "file": "Scenarios/DesignConfigRecords/HeatersComponentConfig.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 0,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Scenarios.DesignConfigRecords.MagnetometerComponentConfig",
+    "file": "Scenarios/DesignConfigRecords/MagnetometerComponentConfig.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 0,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Scenarios.DesignConfigRecords.MagnetorquerComponentConfig",
+    "file": "Scenarios/DesignConfigRecords/MagnetorquerComponentConfig.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 0,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Scenarios.DesignConfigRecords.MemsIMUComponentConfig",
+    "file": "Scenarios/DesignConfigRecords/MemsIMUComponentConfig.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 0,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Scenarios.DesignConfigRecords.NaviEnhanceComponentConfig",
+    "file": "Scenarios/DesignConfigRecords/NaviEnhanceComponentConfig.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 0,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Scenarios.DesignConfigRecords.NavigationDesignConfig",
+    "file": "Scenarios/DesignConfigRecords/NavigationDesignConfig.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 0,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Scenarios.DesignConfigRecords.ObcComponentConfig",
+    "file": "Scenarios/DesignConfigRecords/ObcComponentConfig.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 0,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Scenarios.DesignConfigRecords.OverallComponentConfig",
+    "file": "Scenarios/DesignConfigRecords/OverallComponentConfig.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 0,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Scenarios.DesignConfigRecords.PayloadDesignConfig",
+    "file": "Scenarios/DesignConfigRecords/PayloadDesignConfig.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 0,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Scenarios.DesignConfigRecords.PcduComponentConfig",
+    "file": "Scenarios/DesignConfigRecords/PcduComponentConfig.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 0,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Scenarios.DesignConfigRecords.RateGyroComponentConfig",
+    "file": "Scenarios/DesignConfigRecords/RateGyroComponentConfig.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 0,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Scenarios.DesignConfigRecords.RecorderComponentConfig",
+    "file": "Scenarios/DesignConfigRecords/RecorderComponentConfig.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 0,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Scenarios.DesignConfigRecords.SelfieCameraComponentConfig",
+    "file": "Scenarios/DesignConfigRecords/SelfieCameraComponentConfig.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 0,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Scenarios.DesignConfigRecords.SolarArrayMinusXComponentConfig",
+    "file": "Scenarios/DesignConfigRecords/SolarArrayMinusXComponentConfig.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 0,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Scenarios.DesignConfigRecords.SolarArrayPlusXComponentConfig",
+    "file": "Scenarios/DesignConfigRecords/SolarArrayPlusXComponentConfig.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 0,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Scenarios.DesignConfigRecords.SolarArrayPlusYComponentConfig",
+    "file": "Scenarios/DesignConfigRecords/SolarArrayPlusYComponentConfig.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 0,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Scenarios.DesignConfigRecords.SpaceTimeComponentConfig",
+    "file": "Scenarios/DesignConfigRecords/SpaceTimeComponentConfig.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 0,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Scenarios.DesignConfigRecords.StarYComponentConfig",
+    "file": "Scenarios/DesignConfigRecords/StarYComponentConfig.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 0,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Scenarios.DesignConfigRecords.StarZComponentConfig",
+    "file": "Scenarios/DesignConfigRecords/StarZComponentConfig.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 0,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Scenarios.DesignConfigRecords.StructureComponentConfig",
+    "file": "Scenarios/DesignConfigRecords/StructureComponentConfig.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 0,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Scenarios.DesignConfigRecords.StructureDesignConfig",
+    "file": "Scenarios/DesignConfigRecords/StructureDesignConfig.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 0,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Scenarios.DesignConfigRecords.SunSensorComponentConfig",
+    "file": "Scenarios/DesignConfigRecords/SunSensorComponentConfig.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 0,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Scenarios.DesignConfigRecords.ThermalControlDesignConfig",
+    "file": "Scenarios/DesignConfigRecords/ThermalControlDesignConfig.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 0,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Scenarios.DesignConfigRecords.TtcReceiverComponentConfig",
+    "file": "Scenarios/DesignConfigRecords/TtcReceiverComponentConfig.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 0,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Scenarios.DesignConfigRecords.WheelSComponentConfig",
+    "file": "Scenarios/DesignConfigRecords/WheelSComponentConfig.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 0,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Scenarios.DesignConfigRecords.WheelXComponentConfig",
+    "file": "Scenarios/DesignConfigRecords/WheelXComponentConfig.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 0,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Scenarios.DesignConfigRecords.WheelYComponentConfig",
+    "file": "Scenarios/DesignConfigRecords/WheelYComponentConfig.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 0,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Scenarios.DesignConfigRecords.WheelZComponentConfig",
+    "file": "Scenarios/DesignConfigRecords/WheelZComponentConfig.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 0,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Scenarios.DesignConfigRecords.XbandComponentConfig",
+    "file": "Scenarios/DesignConfigRecords/XbandComponentConfig.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 0,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Scenarios.DesignConfigRecords",
+    "file": "Scenarios/DesignConfigRecords/package.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 0,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Scenarios.GeneratedEnvironmentData",
+    "file": "Scenarios/GeneratedEnvironmentData.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 0,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Scenarios.GeneratedMassProperties",
+    "file": "Scenarios/GeneratedMassProperties.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 0,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Scenarios.GeneratedScenario",
+    "file": "Scenarios/GeneratedScenario.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 0,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Scenarios.GeneratedSpacecraftDesignConfig",
+    "file": "Scenarios/GeneratedSpacecraftDesignConfig.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 0,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Scenarios.GroundStationConfig",
+    "file": "Scenarios/GroundStationConfig.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 0,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Scenarios.ImagingTargetConfig",
+    "file": "Scenarios/ImagingTargetConfig.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 0,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Scenarios.InitialConditionConfig",
+    "file": "Scenarios/InitialConditionConfig.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 0,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Scenarios.OrbitConfig",
+    "file": "Scenarios/OrbitConfig.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 0,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Scenarios.ScenarioConfig",
+    "file": "Scenarios/ScenarioConfig.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 0,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Scenarios.SpacecraftDesignConfig",
+    "file": "Scenarios/SpacecraftDesignConfig.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 0,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Scenarios",
+    "file": "Scenarios/package.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 0,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Simulation.CompleteMission",
+    "file": "Simulation/CompleteMission.mo",
+    "counts": {
+      "connection_section": 1,
+      "result_howto_section": 1,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Simulation.OnboardTelemetry",
+    "file": "Simulation/OnboardTelemetry.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 1,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Simulation.OrbitalEnvironment",
+    "file": "Simulation/OrbitalEnvironment.mo",
+    "counts": {
+      "connection_section": 1,
+      "result_howto_section": 1,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Simulation",
+    "file": "Simulation/package.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 0,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Systems.Four_systems.ElectricalOverall",
+    "file": "Systems/Four_systems/ElectricalOverall.mo",
+    "counts": {
+      "connection_section": 1,
+      "result_howto_section": 1,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Systems.Four_systems.InformationOverall",
+    "file": "Systems/Four_systems/InformationOverall.mo",
+    "counts": {
+      "connection_section": 1,
+      "result_howto_section": 1,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Systems.Four_systems.MechanicsOverall",
+    "file": "Systems/Four_systems/MechanicsOverall.mo",
+    "counts": {
+      "connection_section": 1,
+      "result_howto_section": 1,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Systems.Four_systems.ThermalOverall",
+    "file": "Systems/Four_systems/ThermalOverall.mo",
+    "counts": {
+      "connection_section": 1,
+      "result_howto_section": 1,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Systems.Four_systems",
+    "file": "Systems/Four_systems/package.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 0,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Systems.N_systems.CommunicationSystem",
+    "file": "Systems/N_systems/CommunicationSystem.mo",
+    "counts": {
+      "connection_section": 1,
+      "result_howto_section": 1,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Systems.N_systems.DataHandlingSystem",
+    "file": "Systems/N_systems/DataHandlingSystem.mo",
+    "counts": {
+      "connection_section": 1,
+      "result_howto_section": 1,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Systems.N_systems.ElectricalPowerSystem",
+    "file": "Systems/N_systems/ElectricalPowerSystem.mo",
+    "counts": {
+      "connection_section": 1,
+      "result_howto_section": 1,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Systems.N_systems.GNCSystem",
+    "file": "Systems/N_systems/GNCSystem.mo",
+    "counts": {
+      "connection_section": 1,
+      "result_howto_section": 1,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Systems.N_systems.NavigationSystem",
+    "file": "Systems/N_systems/NavigationSystem.mo",
+    "counts": {
+      "connection_section": 1,
+      "result_howto_section": 1,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Systems.N_systems.PayloadSystem",
+    "file": "Systems/N_systems/PayloadSystem.mo",
+    "counts": {
+      "connection_section": 1,
+      "result_howto_section": 1,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Systems.N_systems.StructureSystem",
+    "file": "Systems/N_systems/StructureSystem.mo",
+    "counts": {
+      "connection_section": 1,
+      "result_howto_section": 1,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Systems.N_systems.ThermalControlSystem",
+    "file": "Systems/N_systems/ThermalControlSystem.mo",
+    "counts": {
+      "connection_section": 1,
+      "result_howto_section": 1,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Systems.N_systems",
+    "file": "Systems/N_systems/package.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 0,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Systems.SpacecraftSystem",
+    "file": "Systems/SpacecraftSystem.mo",
+    "counts": {
+      "connection_section": 1,
+      "result_howto_section": 1,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim.Systems",
+    "file": "Systems/package.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 0,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  },
+  {
+    "class": "OneSatSim",
+    "file": "package.mo",
+    "counts": {
+      "connection_section": 0,
+      "result_howto_section": 0,
+      "auxiliary_boilerplate": 1
+    },
+    "documentation_retained": true,
+    "real_limit_preserved": true
+  }
+]

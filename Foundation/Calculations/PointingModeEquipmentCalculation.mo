@@ -1,15 +1,116 @@
 within OneSatSim.Foundation.Calculations;
 model PointingModeEquipmentCalculation "精确指向阶段设备状态与负载计算"
-  parameter Modelica.Units.SI.Resistance activeResistance=51.9;
-  parameter Modelica.Units.SI.Resistance standbyResistance=1e9;
-  OneSatSim.Foundation.Interfaces.ControlModeInput desiredControlMode annotation(Placement(transformation(extent={{-110,-10},{-90,10}})));
-  Modelica.Blocks.Interfaces.BooleanOutput active annotation(Placement(transformation(extent={{80,45},{100,65}})));
-  Modelica.Blocks.Interfaces.RealOutput loadConductance(unit="S") annotation(Placement(transformation(extent={{80,-10},{100,10}})));
-  Modelica.Blocks.Interfaces.IntegerOutput status annotation(Placement(transformation(extent={{80,-65},{100,-45}})));
+  parameter Modelica.Units.SI.Resistance activeResistance=51.9 "激活Resistance [Ohm]" ;
+  parameter Modelica.Units.SI.Resistance standbyResistance=1e9 "配置项 standbyResistance [Ohm]" ;
+  OneSatSim.Foundation.Interfaces.ControlModeInput desiredControlMode  "desired控制模式" annotation(Placement(visible=true, transformation(origin={-185,0}, extent={{-14,-14},{14,14}}, rotation=0), iconVisible=true, iconTransformation(origin={-89,0}, extent={{-11.52,-11.52},{11.52,11.52}}, rotation=0)));
+  Modelica.Blocks.Interfaces.BooleanOutput active  "激活" annotation(Placement(visible=true, transformation(origin={185,32}, extent={{-7,-7},{7,7}}, rotation=0), iconVisible=true, iconTransformation(origin={89,80}, extent={{-6,-6},{6,6}}, rotation=0)));
+  Modelica.Blocks.Interfaces.RealOutput loadConductance(unit="S")  "负载Conductance [S]" annotation(Placement(visible=true, transformation(origin={185,0}, extent={{-7,-7},{7,7}}, rotation=0), iconVisible=true, iconTransformation(origin={89,0}, extent={{-6,-6},{6,6}}, rotation=0)));
+  Modelica.Blocks.Interfaces.IntegerOutput status  "计算/接口量 status" annotation(Placement(visible=true, transformation(origin={185,-32}, extent={{-7,-7},{7,7}}, rotation=0), iconVisible=true, iconTransformation(origin={89,-80}, extent={{-6,-6},{6,6}}, rotation=0)));
 equation
-  active=desiredControlMode == OneSatSim.Foundation.Types.ControlMode.TargetPointing or
+  active=desiredControlMode == OneSatSim.Foundation.Types.ControlMode.TargetPointing or 
     desiredControlMode == OneSatSim.Foundation.Types.ControlMode.GroundPointing;
   loadConductance=if active then 1/activeResistance else 1/standbyResistance;
   status=if active then 1 else 0;
-  annotation(Icon(graphics={Rectangle(extent={{-100,72},{100,-72}},lineColor={95,65,130},fillColor={240,234,247},fillPattern=FillPattern.Solid),Line(points={{-70,0},{65,0}},color={95,65,130},arrow={Arrow.None,Arrow.Filled}),Text(extent={{-90,50},{90,15}},textString="POINTING MODE"),Text(extent={{-90,-18},{90,-52}},textString="ACTIVE / G / STATUS")}),Documentation(info="<html><h4>功能定位</h4><p>根据姿态控制模式决定仅在精确指向阶段工作的设备状态和等效负载。</p><h4>输入与物理含义</h4><p>desiredControlMode为共享控制模式；activeResistance和standbyResistance定义工作/待机电阻。</p><h4>输出与物理含义</h4><p>active为工作使能，loadConductance供电气VariableConductor使用，status为0/1设备状态。</p><h4>主要计算关系</h4><p>目标指向或地面站指向时active为true；电导按对应电阻倒数切换。</p><h4>状态、事件与假设</h4><p>纯代数、无模式记忆；不负责姿态资格、设备启动延迟和故障状态。模式枚举保持无因果共享语义。</p><h4>调用与结果使用</h4><p>由NaviEnhancePayloadUnit与SpaceTimePayloadUnit调用。查看active、支路电流和status；姿态误差应在GNC链中查看。</p></html>"));
+  annotation(Documentation(info="<html><h2>精确指向阶段设备状态与负载计算</h2><p><b>类路径：</b><code>OneSatSim.Foundation.Calculations.PointingModeEquipmentCalculation</code>　<b>类型：</b>model</p><h3>用途与定位</h3><p>精确指向阶段设备状态与负载计算</p><h3>在工程中使用</h3><p>当前直接使用位置：<a href=\"modelica://OneSatSim.Components.NaviEnhancePayloadUnit\">OneSatSim.Components.NaviEnhancePayloadUnit</a> 的 <code>modeCalculation</code>；<a href=\"modelica://OneSatSim.Components.SpaceTimePayloadUnit\">OneSatSim.Components.SpaceTimePayloadUnit</a> 的 <code>modeCalculation</code>。</p><h3>接口、输入与输出</h3><table border=\"1\" cellspacing=\"0\" cellpadding=\"5\"><tr><th>名称/维数</th><th>类型</th><th>声明角色</th><th>单位</th><th>含义</th></tr><tr><td><code>desiredControlMode</code></td><td>OneSatSim.Foundation.Interfaces.ControlModeInput</td><td>public</td><td>按声明/类型合同</td><td>desired控制模式</td></tr><tr><td><code>active</code></td><td>Modelica.Blocks.Interfaces.BooleanOutput</td><td>public</td><td>按声明/类型合同</td><td>激活</td></tr><tr><td><code>loadConductance</code></td><td>Modelica.Blocks.Interfaces.RealOutput</td><td>public</td><td>S</td><td>负载Conductance [S]</td></tr><tr><td><code>status</code></td><td>Modelica.Blocks.Interfaces.IntegerOutput</td><td>public</td><td>按声明/类型合同</td><td>计算/接口量 status</td></tr></table><h3>配置与参数</h3><p>下面列出当前源码表达式，仅用于阅读；当前参数对话框、生效配置记录与原有配置工具仍是使用依据。本页不新增默认值或换算。</p><table border=\"1\" cellspacing=\"0\" cellpadding=\"5\"><tr><th>参数</th><th>类型</th><th>用途</th><th>源码表达式</th></tr><tr><td><code>activeResistance</code></td><td>Modelica.Units.SI.Resistance</td><td>激活Resistance [Ohm]</td><td><code>=51.9</code></td></tr><tr><td><code>standbyResistance</code></td><td>Modelica.Units.SI.Resistance</td><td>配置项 standbyResistance [Ohm]</td><td><code>=1e9</code></td></tr></table><h3>实现摘要</h3><p>以下表达式直接摘自本类，保留原始符号和单位体系；完整的条件分支、循环与初始化以源码为准。</p><pre>[equation] active=desiredControlMode == OneSatSim.Foundation.Types.ControlMode.TargetPointing or desiredControlMode == OneSatSim.Foundation.Types.ControlMode.GroundPointing;\n[equation] loadConductance=if active then 1/activeResistance else 1/standbyResistance;\n[equation] status=if active then 1 else 0;</pre></html>"),
+    Icon(coordinateSystem(extent={{-100,-100},{100,100}}, preserveAspectRatio=true, grid={2,2}), graphics={
+      Rectangle(extent={{-89,-97},{89,95}}, lineColor={0,0,0}, fillColor={255,255,255}, fillPattern=FillPattern.Solid, lineThickness=0.6, radius=3),
+      Line(points={{-76,64},{76,64}}, color={219,223,227}, thickness=0.4, pattern=LinePattern.Solid),
+      Rectangle(extent={{-84,69},{-64,89}}, lineColor={0,0,0}, fillColor={76,128,143}, fillPattern=FillPattern.Solid, lineThickness=0.85, radius=0),
+      Text(extent={{-61,71},{76,86}}, textString="Equipment logic", fontSize=0, lineColor={0,0,0}, horizontalAlignment=TextAlignment.Center),
+      Rectangle(extent={{-55.16,-21.36},{21.16,34.8}}, lineColor={0,0,0}, fillColor={242,245,247}, fillPattern=FillPattern.Solid, lineThickness=0.75, radius=2),
+      Rectangle(extent={{-36.44,-8.4},{-4.04,24}}, lineColor={0,0,0}, fillColor={255,255,255}, fillPattern=FillPattern.Solid, lineThickness=0.65, radius=0),
+      Rectangle(extent={{-31.4,-3.36},{-9.08,18.96}}, lineColor={0,0,0}, fillColor={234,240,245}, fillPattern=FillPattern.Solid, lineThickness=0.45, radius=0),
+      Line(points={{-42.92,-4.08},{-36.44,-4.08}}, color={0,0,0}, thickness=0.6, pattern=LinePattern.Solid),
+      Line(points={{-4.04,-4.08},{2.44,-4.08}}, color={0,0,0}, thickness=0.6, pattern=LinePattern.Solid),
+      Line(points={{-30.68,-8.4},{-30.68,-14.88}}, color={0,0,0}, thickness=0.6, pattern=LinePattern.Solid),
+      Line(points={{-30.68,24},{-30.68,30.48}}, color={0,0,0}, thickness=0.6, pattern=LinePattern.Solid),
+      Line(points={{-42.92,3.84},{-36.44,3.84}}, color={0,0,0}, thickness=0.6, pattern=LinePattern.Solid),
+      Line(points={{-4.04,3.84},{2.44,3.84}}, color={0,0,0}, thickness=0.6, pattern=LinePattern.Solid),
+      Line(points={{-22.76,-8.4},{-22.76,-14.88}}, color={0,0,0}, thickness=0.6, pattern=LinePattern.Solid),
+      Line(points={{-22.76,24},{-22.76,30.48}}, color={0,0,0}, thickness=0.6, pattern=LinePattern.Solid),
+      Line(points={{-42.92,11.76},{-36.44,11.76}}, color={0,0,0}, thickness=0.6, pattern=LinePattern.Solid),
+      Line(points={{-4.04,11.76},{2.44,11.76}}, color={0,0,0}, thickness=0.6, pattern=LinePattern.Solid),
+      Line(points={{-14.84,-8.4},{-14.84,-14.88}}, color={0,0,0}, thickness=0.6, pattern=LinePattern.Solid),
+      Line(points={{-14.84,24},{-14.84,30.48}}, color={0,0,0}, thickness=0.6, pattern=LinePattern.Solid),
+      Line(points={{-42.92,19.68},{-36.44,19.68}}, color={0,0,0}, thickness=0.6, pattern=LinePattern.Solid),
+      Line(points={{-4.04,19.68},{2.44,19.68}}, color={0,0,0}, thickness=0.6, pattern=LinePattern.Solid),
+      Line(points={{-6.92,-8.4},{-6.92,-14.88}}, color={0,0,0}, thickness=0.6, pattern=LinePattern.Solid),
+      Line(points={{-6.92,24},{-6.92,30.48}}, color={0,0,0}, thickness=0.6, pattern=LinePattern.Solid),
+      Ellipse(extent={{-51.416,-17.616},{-48.824,-15.024}}, lineColor={0,0,0}, fillColor={255,255,255}, fillPattern=FillPattern.Solid, lineThickness=0.45, startAngle=0, endAngle=360),
+      Line(points={{-50.768,-16.32},{-49.472,-16.32}}, color={113,122,132}, thickness=0.4, pattern=LinePattern.Solid),
+      Ellipse(extent={{14.824,-17.616},{17.416,-15.024}}, lineColor={0,0,0}, fillColor={255,255,255}, fillPattern=FillPattern.Solid, lineThickness=0.45, startAngle=0, endAngle=360),
+      Line(points={{15.472,-16.32},{16.768,-16.32}}, color={113,122,132}, thickness=0.4, pattern=LinePattern.Solid),
+      Ellipse(extent={{-51.416,28.464},{-48.824,31.056}}, lineColor={0,0,0}, fillColor={255,255,255}, fillPattern=FillPattern.Solid, lineThickness=0.45, startAngle=0, endAngle=360),
+      Line(points={{-50.768,29.76},{-49.472,29.76}}, color={113,122,132}, thickness=0.4, pattern=LinePattern.Solid),
+      Ellipse(extent={{14.824,28.464},{17.416,31.056}}, lineColor={0,0,0}, fillColor={255,255,255}, fillPattern=FillPattern.Solid, lineThickness=0.45, startAngle=0, endAngle=360),
+      Line(points={{15.472,29.76},{16.768,29.76}}, color={113,122,132}, thickness=0.4, pattern=LinePattern.Solid),
+      Rectangle(extent={{6.76,16.8},{14.68,26.88}}, lineColor={0,0,0}, fillColor={255,255,255}, fillPattern=FillPattern.Solid, lineThickness=0.45, radius=0),
+      Rectangle(extent={{6.76,2.4},{14.68,11.04}}, lineColor={0,0,0}, fillColor={255,255,255}, fillPattern=FillPattern.Solid, lineThickness=0.45, radius=0),
+      Rectangle(extent={{6.76,-12},{14.68,-3.36}}, lineColor={0,0,0}, fillColor={255,255,255}, fillPattern=FillPattern.Solid, lineThickness=0.45, radius=0),
+      Ellipse(extent={{-28.52,-1.2},{-11.96,15.36}}, lineColor={76,128,143}, fillColor={255,255,255}, fillPattern=FillPattern.Solid, lineThickness=0.5, startAngle=0, endAngle=360),
+      Line(points={{-20.6,-4.8},{-20.6,18.96}}, color={76,128,143}, thickness=0.6, pattern=LinePattern.Solid),
+      Line(points={{-32.84,6.72},{-7.64,6.72}}, color={76,128,143}, thickness=0.6, pattern=LinePattern.Solid),
+      Line(points={{-65.96,16.8},{-58.04,20.4}}, color={76,128,143}, thickness=0.65, pattern=LinePattern.Solid),
+      Line(points={{-65.96,6},{-58.04,6}}, color={76,128,143}, thickness=0.65, pattern=LinePattern.Solid),
+      Line(points={{-65.96,-4.8},{-58.04,-8.4}}, color={76,128,143}, thickness=0.65, pattern=LinePattern.Solid),
+      Rectangle(extent={{43,-31},{72,28}}, lineColor={0,0,0}, fillColor={255,255,255}, fillPattern=FillPattern.Solid, lineThickness=0.6, radius=0),
+      Line(points={{47,15},{68,15}}, color={113,122,132}, thickness=0.5, pattern=LinePattern.Solid),
+      Line(points={{47,0},{68,0}}, color={113,122,132}, thickness=0.5, pattern=LinePattern.Solid),
+      Line(points={{47,-15},{68,-15}}, color={113,122,132}, thickness=0.5, pattern=LinePattern.Solid),
+      Text(extent={{-57,-51},{37,-34}}, textString="active / idle", fontSize=0, lineColor={0,0,0}, horizontalAlignment=TextAlignment.Center),
+      Line(points={{-76,-58},{76,-58}}, color={219,223,227}, thickness=0.4, pattern=LinePattern.Solid),
+      Text(extent={{-80,-79},{80,-64}}, textString="Pointing Equipment", fontSize=0, lineColor={0,0,0}, horizontalAlignment=TextAlignment.Center, textStyle={TextStyle.Bold}),
+      Text(extent={{-80,-93},{80,-82}}, textString="%name", fontSize=0, lineColor={80,80,80}, horizontalAlignment=TextAlignment.Center)
+    }),
+    Diagram(coordinateSystem(extent={{-230,-89.8},{230,133.8}}, preserveAspectRatio=true, grid={2,2}), graphics={
+      Rectangle(extent={{-51.62,-56.26},{51.62,55.1}}, lineColor={0,0,0}, fillColor={255,255,255}, fillPattern=FillPattern.Solid, lineThickness=0.6, radius=3),
+      Line(points={{-44.08,37.12},{44.08,37.12}}, color={219,223,227}, thickness=0.4, pattern=LinePattern.Solid),
+      Rectangle(extent={{-48.72,40.02},{-37.12,51.62}}, lineColor={0,0,0}, fillColor={76,128,143}, fillPattern=FillPattern.Solid, lineThickness=0.85, radius=0),
+      Text(extent={{-35.38,41.18},{44.08,49.88}}, textString="Equipment logic", fontSize=0, lineColor={0,0,0}, horizontalAlignment=TextAlignment.Center),
+      Rectangle(extent={{-31.9928,-12.3888},{12.2728,20.184}}, lineColor={0,0,0}, fillColor={242,245,247}, fillPattern=FillPattern.Solid, lineThickness=0.75, radius=2),
+      Rectangle(extent={{-21.1352,-4.872},{-2.3432,13.92}}, lineColor={0,0,0}, fillColor={255,255,255}, fillPattern=FillPattern.Solid, lineThickness=0.65, radius=0),
+      Rectangle(extent={{-18.212,-1.9488},{-5.2664,10.9968}}, lineColor={0,0,0}, fillColor={234,240,245}, fillPattern=FillPattern.Solid, lineThickness=0.45, radius=0),
+      Line(points={{-24.8936,-2.3664},{-21.1352,-2.3664}}, color={0,0,0}, thickness=0.6, pattern=LinePattern.Solid),
+      Line(points={{-2.3432,-2.3664},{1.4152,-2.3664}}, color={0,0,0}, thickness=0.6, pattern=LinePattern.Solid),
+      Line(points={{-17.7944,-4.872},{-17.7944,-8.6304}}, color={0,0,0}, thickness=0.6, pattern=LinePattern.Solid),
+      Line(points={{-17.7944,13.92},{-17.7944,17.6784}}, color={0,0,0}, thickness=0.6, pattern=LinePattern.Solid),
+      Line(points={{-24.8936,2.2272},{-21.1352,2.2272}}, color={0,0,0}, thickness=0.6, pattern=LinePattern.Solid),
+      Line(points={{-2.3432,2.2272},{1.4152,2.2272}}, color={0,0,0}, thickness=0.6, pattern=LinePattern.Solid),
+      Line(points={{-13.2008,-4.872},{-13.2008,-8.6304}}, color={0,0,0}, thickness=0.6, pattern=LinePattern.Solid),
+      Line(points={{-13.2008,13.92},{-13.2008,17.6784}}, color={0,0,0}, thickness=0.6, pattern=LinePattern.Solid),
+      Line(points={{-24.8936,6.8208},{-21.1352,6.8208}}, color={0,0,0}, thickness=0.6, pattern=LinePattern.Solid),
+      Line(points={{-2.3432,6.8208},{1.4152,6.8208}}, color={0,0,0}, thickness=0.6, pattern=LinePattern.Solid),
+      Line(points={{-8.6072,-4.872},{-8.6072,-8.6304}}, color={0,0,0}, thickness=0.6, pattern=LinePattern.Solid),
+      Line(points={{-8.6072,13.92},{-8.6072,17.6784}}, color={0,0,0}, thickness=0.6, pattern=LinePattern.Solid),
+      Line(points={{-24.8936,11.4144},{-21.1352,11.4144}}, color={0,0,0}, thickness=0.6, pattern=LinePattern.Solid),
+      Line(points={{-2.3432,11.4144},{1.4152,11.4144}}, color={0,0,0}, thickness=0.6, pattern=LinePattern.Solid),
+      Line(points={{-4.0136,-4.872},{-4.0136,-8.6304}}, color={0,0,0}, thickness=0.6, pattern=LinePattern.Solid),
+      Line(points={{-4.0136,13.92},{-4.0136,17.6784}}, color={0,0,0}, thickness=0.6, pattern=LinePattern.Solid),
+      Ellipse(extent={{-29.8213,-10.2173},{-28.3179,-8.7139}}, lineColor={0,0,0}, fillColor={255,255,255}, fillPattern=FillPattern.Solid, lineThickness=0.45, startAngle=0, endAngle=360),
+      Line(points={{-29.4454,-9.4656},{-28.6938,-9.4656}}, color={113,122,132}, thickness=0.4, pattern=LinePattern.Solid),
+      Ellipse(extent={{8.5979,-10.2173},{10.1013,-8.7139}}, lineColor={0,0,0}, fillColor={255,255,255}, fillPattern=FillPattern.Solid, lineThickness=0.45, startAngle=0, endAngle=360),
+      Line(points={{8.9738,-9.4656},{9.7254,-9.4656}}, color={113,122,132}, thickness=0.4, pattern=LinePattern.Solid),
+      Ellipse(extent={{-29.8213,16.5091},{-28.3179,18.0125}}, lineColor={0,0,0}, fillColor={255,255,255}, fillPattern=FillPattern.Solid, lineThickness=0.45, startAngle=0, endAngle=360),
+      Line(points={{-29.4454,17.2608},{-28.6938,17.2608}}, color={113,122,132}, thickness=0.4, pattern=LinePattern.Solid),
+      Ellipse(extent={{8.5979,16.5091},{10.1013,18.0125}}, lineColor={0,0,0}, fillColor={255,255,255}, fillPattern=FillPattern.Solid, lineThickness=0.45, startAngle=0, endAngle=360),
+      Line(points={{8.9738,17.2608},{9.7254,17.2608}}, color={113,122,132}, thickness=0.4, pattern=LinePattern.Solid),
+      Rectangle(extent={{3.9208,9.744},{8.5144,15.5904}}, lineColor={0,0,0}, fillColor={255,255,255}, fillPattern=FillPattern.Solid, lineThickness=0.45, radius=0),
+      Rectangle(extent={{3.9208,1.392},{8.5144,6.4032}}, lineColor={0,0,0}, fillColor={255,255,255}, fillPattern=FillPattern.Solid, lineThickness=0.45, radius=0),
+      Rectangle(extent={{3.9208,-6.96},{8.5144,-1.9488}}, lineColor={0,0,0}, fillColor={255,255,255}, fillPattern=FillPattern.Solid, lineThickness=0.45, radius=0),
+      Ellipse(extent={{-16.5416,-0.696},{-6.9368,8.9088}}, lineColor={76,128,143}, fillColor={255,255,255}, fillPattern=FillPattern.Solid, lineThickness=0.5, startAngle=0, endAngle=360),
+      Line(points={{-11.948,-2.784},{-11.948,10.9968}}, color={76,128,143}, thickness=0.6, pattern=LinePattern.Solid),
+      Line(points={{-19.0472,3.8976},{-4.4312,3.8976}}, color={76,128,143}, thickness=0.6, pattern=LinePattern.Solid),
+      Line(points={{-38.2568,9.744},{-33.6632,11.832}}, color={76,128,143}, thickness=0.65, pattern=LinePattern.Solid),
+      Line(points={{-38.2568,3.48},{-33.6632,3.48}}, color={76,128,143}, thickness=0.65, pattern=LinePattern.Solid),
+      Line(points={{-38.2568,-2.784},{-33.6632,-4.872}}, color={76,128,143}, thickness=0.65, pattern=LinePattern.Solid),
+      Rectangle(extent={{24.94,-17.98},{41.76,16.24}}, lineColor={0,0,0}, fillColor={255,255,255}, fillPattern=FillPattern.Solid, lineThickness=0.6, radius=0),
+      Line(points={{27.26,8.7},{39.44,8.7}}, color={113,122,132}, thickness=0.5, pattern=LinePattern.Solid),
+      Line(points={{27.26,0},{39.44,0}}, color={113,122,132}, thickness=0.5, pattern=LinePattern.Solid),
+      Line(points={{27.26,-8.7},{39.44,-8.7}}, color={113,122,132}, thickness=0.5, pattern=LinePattern.Solid),
+      Text(extent={{-33.06,-29.58},{21.46,-19.72}}, textString="active / idle", fontSize=0, lineColor={0,0,0}, horizontalAlignment=TextAlignment.Center),
+      Line(points={{-44.08,-33.64},{44.08,-33.64}}, color={219,223,227}, thickness=0.4, pattern=LinePattern.Solid),
+      Text(extent={{-46.4,-45.82},{46.4,-37.12}}, textString="Pointing Equipment", fontSize=0, lineColor={0,0,0}, horizontalAlignment=TextAlignment.Center, textStyle={TextStyle.Bold}),
+      Text(extent={{-218,88.8},{218,117.8}}, textString="Pointing Mode Equipment", fontSize=0, lineColor={0,0,0}, horizontalAlignment=TextAlignment.Left, textStyle={TextStyle.Bold}),
+      Line(points={{-218,80.8},{218,80.8}}, color={215,220,226}, thickness=0.25)
+    }));
 end PointingModeEquipmentCalculation;

@@ -1,5 +1,51 @@
 within OneSatSim.Foundation;
 package Functions "总体仿真通用函数包"
-  extends Modelica.Icons.FunctionsPackage;
-  annotation(Documentation(info="<html><h4>包职责</h4><p><b>定位：</b>只保留当前总体物理模型实际调用的无状态数学函数。</p><p><b>内容：</b>clamp用于连续工程量限幅。</p><p><b>清理说明：</b>未被主工程调用的字节协议编解码函数已移除；协议帧构造不属于本轮连续物理仿真的运行边界。</p></html>"));
+  extends Modelica.Icons.FunctionsPackage annotation(IconMap(primitivesVisible=false),DiagramMap(primitivesVisible=false));
+  annotation(Documentation(info="<html><h2>纯计算函数</h2><p><b>类路径：</b><code>OneSatSim.Foundation.Functions</code>　<b>类型：</b>package</p><h3>用途与定位</h3><p>总体仿真通用函数包</p><h3>阅读与调用</h3><p>本包用于组织类。按下表进入相应模型；包本身不单独启动仿真。</p><table border=\"1\" cellspacing=\"0\" cellpadding=\"5\"><tr><th>类</th><th>用途</th></tr><tr><td><a href=\"modelica://OneSatSim.Foundation.Functions.estimateGroundContactDuration\">OneSatSim.Foundation.Functions.estimateGroundContactDuration</a></td><td>按当前相对运动估算预测时域内超过最低仰角的累计时长</td></tr></table><h3>继承与复用</h3><p>本类的继承/别名声明如下。继承得到的端口、参数、状态和算法仍由被引用类定义，不重复增加一套行为。</p><pre>Modelica.Icons.FunctionsPackage annotation(IconMap(primitivesVisible=false),DiagramMap(primitivesVisible=false))</pre></html>"),
+    Icon(coordinateSystem(extent={{-100,-100},{100,100}}, preserveAspectRatio=true, grid={2,2}), graphics={
+      Rectangle(extent={{-89,-97},{89,95}}, lineColor={0,0,0}, fillColor={255,255,255}, fillPattern=FillPattern.Solid, lineThickness=0.6, radius=3),
+      Line(points={{-76,64},{76,64}}, color={219,223,227}, thickness=0.4, pattern=LinePattern.Solid),
+      Rectangle(extent={{-84,69},{-64,89}}, lineColor={0,0,0}, fillColor={73,112,158}, fillPattern=FillPattern.Solid, lineThickness=0.85, radius=0),
+      Text(extent={{-61,71},{76,86}}, textString="Package", fontSize=0, lineColor={0,0,0}, horizontalAlignment=TextAlignment.Center),
+      Polygon(points={{-68,-45},{-68,39},{-25,39},{-15,49},{66,49},{66,-45},{-68,-45}}, lineColor={0,0,0}, fillColor={242,245,247}, fillPattern=FillPattern.Solid, lineThickness=0.7),
+      Polygon(points={{-65,34},{68,34},{60,-45},{-68,-45},{-65,34}}, lineColor={0,0,0}, fillColor={255,255,255}, fillPattern=FillPattern.Solid, lineThickness=0.65),
+      Ellipse(extent={{-21,-20.6},{11.4,11.8}}, lineColor={0,0,0}, fillColor={239,246,250}, fillPattern=FillPattern.Solid, lineThickness=0.65, startAngle=0, endAngle=360),
+      Ellipse(extent={{-11.28,-20.6},{1.68,11.8}}, lineColor={113,122,132}, fillColor={255,255,255}, fillPattern=FillPattern.None, lineThickness=0.4, startAngle=0, endAngle=360),
+      Ellipse(extent={{-21,-10.07},{11.4,1.27}}, lineColor={113,122,132}, fillColor={255,255,255}, fillPattern=FillPattern.None, lineThickness=0.4, startAngle=0, endAngle=360),
+      Line(points={{-21,-4.4},{11.4,-4.4}}, color={113,122,132}, thickness=0.4, pattern=LinePattern.Solid),
+      Line(points={{-4.8,-20.6},{-4.8,11.8}}, color={113,122,132}, thickness=0.4, pattern=LinePattern.Solid),
+      Ellipse(extent={{-40.2,-23.6},{37.8,24.4}}, lineColor={73,112,158}, fillColor={255,255,255}, fillPattern=FillPattern.None, lineThickness=0.7, startAngle=0, endAngle=360),
+      Rectangle(extent={{24.6,10.6},{30.6,16.6}}, lineColor={0,0,0}, fillColor={255,255,255}, fillPattern=FillPattern.Solid, lineThickness=0.6, radius=0),
+      Rectangle(extent={{19.8,11.2},{24,16}}, lineColor={0,0,0}, fillColor={221,235,246}, fillPattern=FillPattern.Solid, lineThickness=0.45, radius=0),
+      Rectangle(extent={{31.2,11.2},{35.4,16}}, lineColor={0,0,0}, fillColor={221,235,246}, fillPattern=FillPattern.Solid, lineThickness=0.45, radius=0),
+      Line(points={{27.6,10.6},{1.8,4.6}}, color={73,112,158}, thickness=0.6, pattern=LinePattern.Dash),
+      Line(points={{27.6,10.6},{9,-10.4}}, color={73,112,158}, thickness=0.6, pattern=LinePattern.Dash),
+      Ellipse(extent={{0,2.8},{3.6,6.4}}, lineColor={73,112,158}, fillColor={255,255,255}, fillPattern=FillPattern.Solid, lineThickness=0.7, startAngle=0, endAngle=360),
+      Ellipse(extent={{7.2,-12.2},{10.8,-8.6}}, lineColor={73,112,158}, fillColor={255,255,255}, fillPattern=FillPattern.Solid, lineThickness=0.7, startAngle=0, endAngle=360),
+      Line(points={{-76,-58},{76,-58}}, color={219,223,227}, thickness=0.4, pattern=LinePattern.Solid),
+      Text(extent={{-80,-91},{80,-65}}, textString="Utility Functions", fontSize=0, lineColor={0,0,0}, horizontalAlignment=TextAlignment.Center, textStyle={TextStyle.Bold})
+    }),
+    Diagram(coordinateSystem(extent={{-150,-145},{150,155}}, preserveAspectRatio=true, grid={2,2}), graphics={
+      Rectangle(extent={{-89,-97},{89,95}}, lineColor={0,0,0}, fillColor={255,255,255}, fillPattern=FillPattern.Solid, lineThickness=0.6, radius=3),
+      Line(points={{-76,64},{76,64}}, color={219,223,227}, thickness=0.4, pattern=LinePattern.Solid),
+      Rectangle(extent={{-84,69},{-64,89}}, lineColor={0,0,0}, fillColor={73,112,158}, fillPattern=FillPattern.Solid, lineThickness=0.85, radius=0),
+      Text(extent={{-61,71},{76,86}}, textString="Package", fontSize=0, lineColor={0,0,0}, horizontalAlignment=TextAlignment.Center),
+      Polygon(points={{-68,-45},{-68,39},{-25,39},{-15,49},{66,49},{66,-45},{-68,-45}}, lineColor={0,0,0}, fillColor={242,245,247}, fillPattern=FillPattern.Solid, lineThickness=0.7),
+      Polygon(points={{-65,34},{68,34},{60,-45},{-68,-45},{-65,34}}, lineColor={0,0,0}, fillColor={255,255,255}, fillPattern=FillPattern.Solid, lineThickness=0.65),
+      Ellipse(extent={{-21,-20.6},{11.4,11.8}}, lineColor={0,0,0}, fillColor={239,246,250}, fillPattern=FillPattern.Solid, lineThickness=0.65, startAngle=0, endAngle=360),
+      Ellipse(extent={{-11.28,-20.6},{1.68,11.8}}, lineColor={113,122,132}, fillColor={255,255,255}, fillPattern=FillPattern.None, lineThickness=0.4, startAngle=0, endAngle=360),
+      Ellipse(extent={{-21,-10.07},{11.4,1.27}}, lineColor={113,122,132}, fillColor={255,255,255}, fillPattern=FillPattern.None, lineThickness=0.4, startAngle=0, endAngle=360),
+      Line(points={{-21,-4.4},{11.4,-4.4}}, color={113,122,132}, thickness=0.4, pattern=LinePattern.Solid),
+      Line(points={{-4.8,-20.6},{-4.8,11.8}}, color={113,122,132}, thickness=0.4, pattern=LinePattern.Solid),
+      Ellipse(extent={{-40.2,-23.6},{37.8,24.4}}, lineColor={73,112,158}, fillColor={255,255,255}, fillPattern=FillPattern.None, lineThickness=0.7, startAngle=0, endAngle=360),
+      Rectangle(extent={{24.6,10.6},{30.6,16.6}}, lineColor={0,0,0}, fillColor={255,255,255}, fillPattern=FillPattern.Solid, lineThickness=0.6, radius=0),
+      Rectangle(extent={{19.8,11.2},{24,16}}, lineColor={0,0,0}, fillColor={221,235,246}, fillPattern=FillPattern.Solid, lineThickness=0.45, radius=0),
+      Rectangle(extent={{31.2,11.2},{35.4,16}}, lineColor={0,0,0}, fillColor={221,235,246}, fillPattern=FillPattern.Solid, lineThickness=0.45, radius=0),
+      Line(points={{27.6,10.6},{1.8,4.6}}, color={73,112,158}, thickness=0.6, pattern=LinePattern.Dash),
+      Line(points={{27.6,10.6},{9,-10.4}}, color={73,112,158}, thickness=0.6, pattern=LinePattern.Dash),
+      Ellipse(extent={{0,2.8},{3.6,6.4}}, lineColor={73,112,158}, fillColor={255,255,255}, fillPattern=FillPattern.Solid, lineThickness=0.7, startAngle=0, endAngle=360),
+      Ellipse(extent={{7.2,-12.2},{10.8,-8.6}}, lineColor={73,112,158}, fillColor={255,255,255}, fillPattern=FillPattern.Solid, lineThickness=0.7, startAngle=0, endAngle=360),
+      Line(points={{-76,-58},{76,-58}}, color={219,223,227}, thickness=0.4, pattern=LinePattern.Solid),
+      Text(extent={{-80,-91},{80,-65}}, textString="Utility Functions", fontSize=0, lineColor={0,0,0}, horizontalAlignment=TextAlignment.Center, textStyle={TextStyle.Bold})
+    }));
 end Functions;

@@ -43,9 +43,9 @@ model BatteryUnit "四串两并锂离子电池组件"
   parameter Modelica.Units.SI.Inertia inertia_ZZ=config.Inertia_ZZ
     "局部惯量 Izz；Excel单位kg·m²，当前设计基线";
   parameter Real batteryEOLCapacityFactor(min=0,max=1)=config.EOLCapacityFactor
-    "Capacity multiplier used only when EOL validation is selected";
+    "电池EOLCapacityFactor；Capacity multiplier used only when EOL validation is selected";
   parameter Boolean useEOLCapacity=config.UseEOLCapacity
-    "false keeps the current approximately 252 Wh BOL battery";
+    "配置项 useEOLCapacity；false keeps the current approximately 252 Wh BOL battery";
   parameter Modelica.Electrical.Batteries.ParameterRecords.CellData cellData(
     Qnom=cellCapacity,OCVmax=cellOCVMax,OCVmin=cellOCVMin,Ri=cellInternalResistance,SOCmin=cellSOCMin,SOCmax=cellSOCMax,Idis=0)
     "任务级参数: 8.5 Ah per parallel cell";
@@ -53,216 +53,168 @@ model BatteryUnit "四串两并锂离子电池组件"
   parameter Modelica.Units.SI.Temperature initialCellTemperature=287.15 "场景电芯初温";
   parameter Modelica.Units.SI.Temperature initialEnclosureTemperature=289.15 "场景壳体初温";
   parameter Modelica.Units.SI.Resistance batteryHeaterResistance=config.HeaterResistance
-    "Two direct 14..17 V heater branches, about 2 W each at nominal source voltage";
-  Foundation.Interfaces.SourcePowerPort sourcePower annotation(Placement(transformation(extent={{-10,90},{10,110}}),iconTransformation(extent={{-10,90},{10,110}})));
-  Foundation.Interfaces.ThermalPort thermal annotation(Placement(transformation(extent={{-10,-110},{10,-90}}),iconTransformation(extent={{-10,-110},{10,-90}})));
-  Foundation.Interfaces.MechanicalPort mechanical annotation(Placement(transformation(extent={{-110,-10},{-90,10}}),iconTransformation(extent={{-110,-10},{-90,10}})));
-  Foundation.Interfaces.InformationPort information annotation(Placement(transformation(extent={{90,-10},{110,10}}),iconTransformation(extent={{90,-10},{110,10}})));
-  Foundation.Models.BatteryCellStackCore cells(Ns=seriesCellCount,Np=parallelCellCount,cellData=cellData,initialSOC=initialSOC) annotation(Placement(transformation(extent={{-75,20},{-35,60}})));
-  Modelica.Electrical.Analog.Sensors.CurrentSensor currentSensor annotation(Placement(transformation(extent={{-25,35},{-5,55}})));
+    "电池HeaterResistance [Ohm]；Two direct 14..17 V heater branches, about 2 W each at nominal source voltage";
+  Foundation.Interfaces.SourcePowerPort sourcePower  "源功率" annotation(Placement(visible=true, transformation(origin={430,260}, extent={{-12,-12},{12,12}}, rotation=0), iconVisible=true, iconTransformation(origin={0,95}, extent={{-11.52,-11.52},{11.52,11.52}}, rotation=0)));
+  Foundation.Interfaces.ThermalPort thermal  "热学" annotation(Placement(visible=true, transformation(origin={410,-345}, extent={{-12,-12},{12,12}}, rotation=0), iconVisible=true, iconTransformation(origin={0,-97}, extent={{-11.52,-11.52},{11.52,11.52}}, rotation=0)));
+  Foundation.Interfaces.MechanicalPort mechanical  "机械" annotation(Placement(visible=true, transformation(origin={-480,-210}, extent={{-12,-12},{12,12}}, rotation=0), iconVisible=true, iconTransformation(origin={-89,0}, extent={{-11.52,-11.52},{11.52,11.52}}, rotation=0)));
+  Foundation.Interfaces.InformationPort information  "计算/接口量 information" annotation(Placement(visible=true, transformation(origin={565,-20}, extent={{-12,-12},{12,12}}, rotation=0), iconVisible=true, iconTransformation(origin={89,0}, extent={{-11.52,-11.52},{11.52,11.52}}, rotation=0)));
+  Foundation.Models.BatteryCellStackCore cells(Ns=seriesCellCount,Np=parallelCellCount,cellData=cellData,initialSOC=initialSOC)  "带公开荷电状态接口的电池组实例" annotation(Placement(visible=true, transformation(origin={-320,240}, extent={{-72,-72},{72,72}}, rotation=0)));
+  Modelica.Electrical.Analog.Sensors.CurrentSensor currentSensor  "电流传感器" annotation(Placement(visible=true, transformation(origin={-150,275}, extent={{-24,-24},{24,24}}, rotation=0)));
   Modelica.Electrical.Analog.Basic.VariableConductor chargeEnable(useHeatPort=false)
-    "BMS-controlled average-value bidirectional battery path" annotation(Placement(transformation(extent={{-1,59},{19,79}})));
-  Modelica.Electrical.Analog.Basic.Resistor contact(R=contactResistance,useHeatPort=true) annotation(Placement(transformation(extent={{5,35},{25,55}})));
-  Modelica.Electrical.Analog.Sensors.VoltageSensor voltageSensor annotation(Placement(transformation(origin={45,20},extent={{-10,-10},{10,10}},rotation=270)));
-  Foundation.SignalRouting.RealSignalForward batterySOCSignal annotation(Placement(transformation(extent={{52,58},{76,70}})));
+    "计算/接口量 chargeEnable；BMS-controlled average-value bidirectional battery path" annotation(Placement(visible=true, transformation(origin={-25,275}, extent={{-24,-24},{24,24}}, rotation=0)));
+  Modelica.Electrical.Analog.Basic.Resistor contact(R=contactResistance,useHeatPort=true)  "计算/接口量 contact" annotation(Placement(visible=true, transformation(origin={110,275}, extent={{-24,-24},{24,24}}, rotation=0)));
+  Modelica.Electrical.Analog.Sensors.VoltageSensor voltageSensor  "电压传感器" annotation(Placement(visible=true, transformation(origin={300,155}, extent={{-24,-24},{24,24}}, rotation=0)));
+  Modelica.Blocks.Continuous.LimIntegrator bmsCoulombCounter(
+    final k=-1/(parallelCellCount*cellData.Qnom),
+    outMax=1-1e-9,outMin=1e-9,
+    final initType=Modelica.Blocks.Types.Init.NoInit,
+    y(start=initialSOC,fixed=true))
+    "计算/接口量 bmsCoulombCounter；BMS estimate from the measured discharge-positive external battery current; never reads physical cells.SOC at runtime" 
+    annotation(Placement(visible=true, transformation(origin={-140,155}, extent={{-42,-42},{42,42}}, rotation=0)));
   Modelica.Blocks.Sources.Constant chargeTemperatureReference(k=275.65)
-    "Midpoint of 273.15/278.15 K BMS hysteresis" annotation(Placement(transformation(extent={{-92,-18},{-72,-4}})));
+    "charge温度Reference；Midpoint of 273.15/278.15 K BMS hysteresis" annotation(Placement(visible=true, transformation(origin={-300,-50}, extent={{-20,-20},{20,20}}, rotation=0)));
   Modelica.Blocks.Logical.OnOffController coldChargeInhibit(
     bandwidth=5,pre_y_start=initialCellTemperature < 273.15)
-    "true below 273.15 K; false above 278.15 K" annotation(Placement(transformation(extent={{-64,-18},{-44,2}})));
-  Modelica.Blocks.Logical.Not chargePermission annotation(Placement(transformation(extent={{-34,-14},{-14,6}})));
+    "计算/接口量 coldChargeInhibit；true below 273.15 K; false above 278.15 K" annotation(Placement(visible=true, transformation(origin={-160,-90}, extent={{-28,-28},{28,28}}, rotation=0)));
+  Modelica.Blocks.Logical.Not chargePermission  "计算/接口量 chargePermission" annotation(Placement(visible=true, transformation(origin={-35,-90}, extent={{-24,-24},{24,24}}, rotation=0)));
   Modelica.Blocks.Sources.Constant chargeSOCReference(k=0.94)
-    "Midpoint of 0.92/0.96 SOC charge hysteresis" annotation(Placement(transformation(extent={{-92,0},{-72,14}})));
+    "计算/接口量 chargeSOCReference；Midpoint of 0.92/0.96 SOC charge hysteresis" annotation(Placement(visible=true, transformation(origin={-250,80}, extent={{-20,-20},{20,20}}, rotation=0)));
   Modelica.Blocks.Logical.OnOffController socChargePermission(
     bandwidth=0.04,pre_y_start=initialSOC < 0.96)
-    "true below SOC 0.92; false above SOC 0.96" annotation(Placement(transformation(extent={{-64,4},{-44,24}})));
+    "计算/接口量 socChargePermission；true below SOC 0.92; false above SOC 0.96" annotation(Placement(visible=true, transformation(origin={-110,50}, extent={{-28,-28},{28,28}}, rotation=0)));
   Modelica.Blocks.Logical.And overallChargePermission
-    "Charging requires both temperature and SOC permission" annotation(Placement(transformation(extent={{-8,-20},{12,0}})));
+    "计算/接口量 overallChargePermission；Charging requires both temperature and SOC permission" annotation(Placement(visible=true, transformation(origin={100,-10}, extent={{-30,-30},{30,30}}, rotation=0)));
   Modelica.Blocks.Sources.Constant batteryPathConductance(k=1e4)
-    "Continuous average battery path; charge protection acts by MPPT surplus curtailment without topology switching"
-    annotation(Placement(transformation(extent={{-4,2},{26,16}})));
+    "电池PathConductance；Continuous average battery path; charge protection acts by MPPT surplus curtailment without topology switching" 
+    annotation(Placement(visible=true, transformation(origin={-25,360}, extent={{-22,-22},{22,22}}, rotation=0)));
   Foundation.Interfaces.IntegerSignalReader batteryHeaterState[2]
-    "TCB channels 17/18 directly heat cell core and enclosure" annotation(Placement(transformation(extent={{18,-6},{34,8}})));
+    "可扩展总线整数信号到因果计算端口的无状态恒等读取器实例；TCB channels 17/18 directly heat cell core and enclosure" annotation(Placement(visible=true, transformation(origin={175,-150}, extent={{-16,-16},{16,16}}, rotation=0)));
   Foundation.Calculations.HeaterChannelCalculation batteryHeaterCalculation[2](
-    each heaterResistance=batteryHeaterResistance) annotation(Placement(transformation(extent={{40,-20},{62,2}})));
-  Modelica.Electrical.Analog.Sensors.CurrentSensor batteryHeaterCurrent[2]
-    annotation(Placement(transformation(extent={{46,32},{62,48}})));
-  Modelica.Electrical.Analog.Basic.VariableConductor batteryHeater[2](each useHeatPort=true)
-    annotation(Placement(transformation(extent={{68,32},{84,48}})));
-  Modelica.Thermal.HeatTransfer.Components.HeatCapacitor cellThermalMass(C=cellHeatCapacity,T(start=initialCellTemperature,fixed=true)) "任务级参数 battery thermistor 31 initial work point" annotation(Placement(transformation(extent={{-60,-45},{-40,-25}})));
-  Modelica.Thermal.HeatTransfer.Components.HeatCapacitor enclosureThermalMass(C=enclosureHeatCapacity,T(start=initialEnclosureTemperature,fixed=true)) "任务级参数 battery thermistor 32 initial work point" annotation(Placement(transformation(extent={{-10,-45},{10,-25}})));
-  Modelica.Thermal.HeatTransfer.Components.ThermalConductor internalPath(G=internalThermalConductance) annotation(Placement(transformation(extent={{-35,-42},{-15,-28}})));
+    each heaterResistance=batteryHeaterResistance)  "单路加热器指令与平均电导计算实例" annotation(Placement(visible=true, transformation(origin={310,-150}, extent={{-22,-22},{22,22}}, rotation=0)));
+  Modelica.Electrical.Analog.Sensors.CurrentSensor batteryHeaterCurrent[2] 
+     "电池Heater电流" annotation(Placement(visible=true, transformation(origin={270,260}, extent={{-24,-24},{24,24}}, rotation=0)));
+  Modelica.Electrical.Analog.Basic.VariableConductor batteryHeater[2](each useHeatPort=true) 
+     "电池Heater" annotation(Placement(visible=true, transformation(origin={310,15}, extent={{-26,-26},{26,26}}, rotation=0)));
+  Modelica.Thermal.HeatTransfer.Components.HeatCapacitor cellThermalMass(C=cellHeatCapacity,T(start=initialCellTemperature,fixed=true)) "任务级参数 battery thermistor 31 initial work point" annotation(Placement(visible=true, transformation(origin={-110,-305}, extent={{-30,-30},{30,30}}, rotation=0)));
+  Modelica.Thermal.HeatTransfer.Components.HeatCapacitor enclosureThermalMass(C=enclosureHeatCapacity,T(start=initialEnclosureTemperature,fixed=true)) "任务级参数 battery thermistor 32 initial work point" annotation(Placement(visible=true, transformation(origin={150,-305}, extent={{-30,-30},{30,30}}, rotation=0)));
+  Modelica.Thermal.HeatTransfer.Components.ThermalConductor internalPath(G=internalThermalConductance)  "计算/接口量 internalPath" annotation(Placement(visible=true, transformation(origin={20,-335}, extent={{-24,-24},{24,24}}, rotation=0)));
   Modelica.Thermal.HeatTransfer.Components.ThermalConductor mountPath(G=mountThermalConductance)
-    "任务级参数: insulated battery tray while retaining finite conductive rejection" annotation(Placement(transformation(extent={{20,-42},{40,-28}})));
-  Modelica.Thermal.HeatTransfer.Sensors.TemperatureSensor thermistor31 annotation(Placement(transformation(extent={{-36,-72},{-16,-52}})));
-  Modelica.Thermal.HeatTransfer.Sensors.TemperatureSensor thermistor32 annotation(Placement(transformation(extent={{16,-72},{36,-52}})));
-  Modelica.Mechanics.MultiBody.Parts.Body housing(m=mass,r_CM={rcm_X,rcm_Y,rcm_Z},I_11=inertia_XX,I_22=inertia_YY,I_33=inertia_ZZ) annotation(Placement(transformation(extent={{-64,-10},{-44,10}})));
-  Foundation.Interfaces.RealSignalBridge informationRealBridge[7] annotation(Placement(transformation(extent={{78,16},{86,24}})));
-  Foundation.Interfaces.BooleanSignalBridge informationBooleanBridge[1] annotation(Placement(transformation(extent={{78,-20},{86,-12}})));
+    "任务级参数: insulated battery tray while retaining finite conductive rejection" annotation(Placement(visible=true, transformation(origin={290,-345}, extent={{-24,-24},{24,24}}, rotation=0)));
+  Modelica.Thermal.HeatTransfer.Sensors.TemperatureSensor thermistor31  "计算/接口量 thermistor31" annotation(Placement(visible=true, transformation(origin={-20,-235}, extent={{-22,-22},{22,22}}, rotation=0)));
+  Modelica.Thermal.HeatTransfer.Sensors.TemperatureSensor thermistor32  "计算/接口量 thermistor32" annotation(Placement(visible=true, transformation(origin={140,-235}, extent={{-22,-22},{22,22}}, rotation=0)));
+  Modelica.Mechanics.MultiBody.Parts.Body housing(m=mass,r_CM={rcm_X,rcm_Y,rcm_Z},I_11=inertia_XX,I_22=inertia_YY,I_33=inertia_ZZ)  "计算/接口量 housing" annotation(Placement(visible=true, transformation(origin={-390,-210}, extent={{-30,-30},{30,30}}, rotation=0)));
+  Foundation.Interfaces.RealSignalBridge informationRealBridge[7]  "实数因果输出到可扩展信息总线的无状态恒等桥实例" annotation(Placement(visible=true, transformation(origin={445,30}, extent={{-16,-16},{16,16}}, rotation=0)));
+  Foundation.Interfaces.BooleanSignalBridge informationBooleanBridge[1]  "布尔因果输出到可扩展信息总线的无状态恒等桥实例" annotation(Placement(visible=true, transformation(origin={430,-100}, extent={{-16,-16},{16,16}}, rotation=0)));
 equation
-  connect(cells.SOC,batterySOCSignal.u) annotation(Line(points={{-55,61},{-55,57.5},{52,57.5},{52,64}},color={0,0,127}));
-  connect(information.device.tcState[17],batteryHeaterState[1].u) annotation(Line(points={{100,0},{100,3.5},{18,3.5},{18,1}},color={255,127,0}));
-  connect(information.device.tcState[18],batteryHeaterState[2].u) annotation(Line(points={{100,0},{100,3.5},{18,3.5},{18,1}},color={255,127,0}));
-  connect(batteryHeaterState.y,batteryHeaterCalculation.controlState) annotation(Line(points={{34,1},{38,1},{38,7},{40,7},{40,-9}},color={255,127,0}));
-  connect(cells.p,currentSensor.p) annotation(Line(points={{-75,40},{-84,40},{-84,72},{-25,72},{-25,45}},color={0,0,255}));
-  connect(currentSensor.n,chargeEnable.p) annotation(Line(points={{-5,45},{-1,45},{-1,69}},color={0,0,255}));
-  connect(chargeEnable.n,contact.p) annotation(Line(points={{19,69},{5,69},{5,45}},color={0,0,255}));
-  connect(contact.n,sourcePower.p) annotation(Line(points={{25,45},{25,94},{0,94},{0,100}},color={0,0,255}));
-  connect(cells.n,sourcePower.n) annotation(Line(points={{-35,40},{-35,94},{0,94},{0,100}},color={0,0,255}));
-  connect(voltageSensor.p,sourcePower.p) annotation(Line(points={{45,30},{45,94},{0,94},{0,100}},color={0,0,255}));
-  connect(voltageSensor.n,sourcePower.n) annotation(Line(points={{45,10},{45,94},{0,94},{0,100}},color={0,0,255}));
-  connect(cells.heatPort,cellThermalMass.port) annotation(Line(points={{-55,20},{-68,20},{-68,-50},{-50,-50},{-50,-45}},color={191,0,0}));
-  connect(contact.heatPort,cellThermalMass.port) annotation(Line(points={{15,35},{15,-23.5},{-50,-23.5},{-50,-45}},color={191,0,0}));
-  connect(cellThermalMass.port,internalPath.port_a) annotation(Line(points={{-50,-45},{-50,-50},{-38,-50},{-38,-35},{-35,-35}},color={191,0,0}));
-  connect(internalPath.port_b,enclosureThermalMass.port) annotation(Line(points={{-15,-35},{-12,-35},{-12,-50},{0,-50},{0,-45}},color={191,0,0}));
-  connect(enclosureThermalMass.port,mountPath.port_a) annotation(Line(points={{0,-45},{0,-50},{16,-50},{16,-35},{20,-35}},color={191,0,0}));
-  connect(mountPath.port_b,thermal) annotation(Line(points={{40,-35},{40,-94},{0,-94},{0,-100}},color={191,0,0}));
-  connect(cellThermalMass.port,thermistor31.port) annotation(Line(points={{-50,-45},{-50,-62},{-36,-62}},color={191,0,0}));
-  connect(enclosureThermalMass.port,thermistor32.port) annotation(Line(points={{0,-45},{0,-62},{16,-62}},color={191,0,0}));
-  connect(thermistor31.T,informationRealBridge[1].u) annotation(Line(points={{-16,-62},{-16,-46.5},{76.5,-46.5},{76.5,20},{78,20}},color={0,0,127}));
-  connect(informationRealBridge[1].y,information.device.thermistorTemperature[31]) annotation(Line(points={{86,20},{94,20},{94,0},{100,0}},color={0,0,127}));
-  connect(thermistor32.T,informationRealBridge[2].u) annotation(Line(points={{36,-62},{78,-62},{78,20}},color={0,0,127}));
-  connect(informationRealBridge[2].y,information.device.thermistorTemperature[32]) annotation(Line(points={{86,20},{94,20},{94,0},{100,0}},color={0,0,127}));
-  connect(currentSensor.i,informationRealBridge[3].u) annotation(Line(points={{-15,35},{-15,56.5},{66.5,56.5},{66.5,20},{78,20}},color={0,0,127}));
-  connect(informationRealBridge[3].y,information.device.pdCurrent[22]) annotation(Line(points={{86,20},{94,20},{94,0},{100,0}},color={0,0,127}));
-  connect(voltageSensor.v,informationRealBridge[4].u) annotation(Line(points={{55,20},{78,20}},color={0,0,127}));
-  connect(informationRealBridge[4].y,information.device.batteryVoltage) annotation(Line(points={{86,20},{94,20},{94,0},{100,0}},color={0,0,127}));
-  connect(batterySOCSignal.y,informationRealBridge[5].u) annotation(Line(points={{77.2,64},{85.5,64},{85.5,20},{78,20}},color={0,0,127}));
-  connect(informationRealBridge[5].y,information.device.batterySOC) annotation(Line(points={{86,20},{94,20},{94,0},{100,0}},color={0,0,127}));
-  connect(thermistor31.T,coldChargeInhibit.u) annotation(Line(points={{-16,-62},{-66,-62},{-66,-14},{-64,-14}},color={0,0,127}));
-  connect(chargeTemperatureReference.y,coldChargeInhibit.reference) annotation(Line(points={{-71,-11},{-68,-11},{-68,-6},{-64,-6}},color={0,0,127}));
-  connect(coldChargeInhibit.y,chargePermission.u) annotation(Line(points={{-43,-8},{-36,-8},{-36,-4},{-34,-4}},color={255,0,255}));
-  connect(batterySOCSignal.y,socChargePermission.u) annotation(Line(points={{77.2,64},{25,64},{25,10},{-64,10},{-64,8}},color={0,0,127}));
-  connect(chargeSOCReference.y,socChargePermission.reference) annotation(Line(points={{-71,7},{-68,7},{-68,16},{-64,16}},color={0,0,127}));
-  connect(chargePermission.y,overallChargePermission.u1) annotation(Line(points={{-13,-4},{-12,-4},{-12,-18},{-8,-18},{-8,-10}},color={255,0,255}));
-  connect(socChargePermission.y,overallChargePermission.u2) annotation(Line(points={{-43,14},{-8,14},{-8,-18}},color={255,0,255}));
-  connect(batteryPathConductance.y,chargeEnable.G) annotation(Line(points={{27.5,9},{27.5,57},{9,57}},color={0,0,127}));
-  connect(overallChargePermission.y,informationBooleanBridge[1].u) annotation(Line(points={{13,-10},{13,-21.5},{78,-21.5},{78,-16}},color={255,0,255}));
-  connect(informationBooleanBridge[1].y,information.device.batteryChargeAllowed) annotation(Line(points={{86,-16},{94,-16},{94,0},{100,0}},color={255,0,255}));
-  connect(batteryHeaterCalculation.conductance,batteryHeater.G) annotation(Line(points={{61,-12.85},{76,-12.85},{76,30}},color={0,0,127}));
-  connect(sourcePower.p,batteryHeaterCurrent[1].p) annotation(Line(points={{0,100},{0,94},{46,94},{46,40}},color={0,0,255}));
-  connect(sourcePower.p,batteryHeaterCurrent[2].p) annotation(Line(points={{0,100},{0,94},{46,94},{46,40}},color={0,0,255}));
-  connect(batteryHeaterCurrent.n,batteryHeater.p) annotation(Line(points={{62,40},{68,40}},color={0,0,255}));
-  connect(batteryHeater[1].n,sourcePower.n) annotation(Line(points={{84,40},{84,94},{0,94},{0,100}},color={0,0,255}));
-  connect(batteryHeater[2].n,sourcePower.n) annotation(Line(points={{84,40},{84,94},{0,94},{0,100}},color={0,0,255}));
-  connect(batteryHeater[1].heatPort,cellThermalMass.port) annotation(Line(points={{76,32},{76,-50},{-50,-50},{-50,-45}},color={191,0,0}));
-  connect(batteryHeater[2].heatPort,enclosureThermalMass.port) annotation(Line(points={{76,32},{76,-50},{0,-50},{0,-45}},color={191,0,0}));
-  connect(batteryHeaterCurrent[1].i,informationRealBridge[6].u) annotation(Line(points={{54,32},{78,32},{78,20}},color={0,0,127}));
-  connect(informationRealBridge[6].y,information.device.tcCurrent[17]) annotation(Line(points={{86,20},{94,20},{94,0},{100,0}},color={0,0,127}));
-  connect(batteryHeaterCurrent[2].i,informationRealBridge[7].u) annotation(Line(points={{54,32},{78,32},{78,20}},color={0,0,127}));
-  connect(informationRealBridge[7].y,information.device.tcCurrent[18]) annotation(Line(points={{86,20},{94,20},{94,0},{100,0}},color={0,0,127}));
-  connect(housing.frame_a,mechanical) annotation(Line(points={{-64,0},{-100,0}},color={95,95,95},thickness=0.5));
-  annotation(
-    Icon(coordinateSystem(extent={{-100,-100},{100,100}},
-preserveAspectRatio=true,
-grid={2,2}),graphics = {Rectangle(origin={0,0},
-lineColor={45,105,55},
-fillColor={239,248,237},
-fillPattern=FillPattern.Solid,
-extent={{-100,100},{100,-100}}), Rectangle(origin={0,7},
-lineColor={35,90,45},
-fillColor={211,235,205},
-fillPattern=FillPattern.Solid,
-extent={{-72,47},{72,-47}}), Rectangle(origin={0,59.5},
-lineColor={35,90,45},
-fillColor={35,90,45},
-fillPattern=FillPattern.Solid,
-extent={{-16,5.5},{16,-5.5}}), Rectangle(origin={-40,25},
-lineColor={70,125,70},
-fillColor={245,251,241},
-fillPattern=FillPattern.Solid,
-extent={{-18,15},{18,-15}}), Rectangle(origin={-40,-15},
-lineColor={70,125,70},
-fillColor={245,251,241},
-fillPattern=FillPattern.Solid,
-extent={{-18,15},{18,-15}}), Rectangle(origin={2,25},
-lineColor={70,125,70},
-fillColor={245,251,241},
-fillPattern=FillPattern.Solid,
-extent={{-18,15},{18,-15}}), Rectangle(origin={2,-15},
-lineColor={70,125,70},
-fillColor={245,251,241},
-fillPattern=FillPattern.Solid,
-extent={{-18,15},{18,-15}}), Rectangle(origin={44,25},
-lineColor={70,125,70},
-fillColor={245,251,241},
-fillPattern=FillPattern.Solid,
-extent={{-18,15},{18,-15}}), Rectangle(origin={44,-15},
-lineColor={70,125,70},
-fillColor={245,251,241},
-fillPattern=FillPattern.Solid,
-extent={{-18,15},{18,-15}}), Line(origin={0,0},
-points={{-48,26},{-32,26}},
-color={45,105,55},
-thickness=0.8), Line(origin={0,0},
-points={{-6,26},{10,26}},
-color={45,105,55},
-thickness=0.8), Line(origin={0,0},
-points={{36,26},{52,26}},
-color={45,105,55},
-thickness=0.8), Line(origin={0,0},
-points={{-48,-14},{-32,-14}},
-color={45,105,55},
-thickness=0.8), Line(origin={0,0},
-points={{-6,-14},{10,-14}},
-color={45,105,55},
-thickness=0.8), Line(origin={0,0},
-points={{36,-14},{52,-14}},
-color={45,105,55},
-thickness=0.8), Text(origin={-40,26},
-lineColor={45,105,55},
-extent={{-14,12},{14,-12}},
-textString="1",
-textColor={45,105,55}), Text(origin={2,26},
-lineColor={45,105,55},
-extent={{-14,12},{14,-12}},
-textString="2",
-textColor={45,105,55}), Text(origin={44,26},
-lineColor={45,105,55},
-extent={{-14,12},{14,-12}},
-textString="3",
-textColor={45,105,55}), Rectangle(origin={62,-52},
-lineColor={45,105,55},
-fillColor={230,243,225},
-fillPattern=FillPattern.Solid,
-extent={{-10,6},{10,-6}}), Text(origin={0,-68},
-lineColor={35,90,45},
-extent={{-90,-10},{90,10}},
-textString="4S2P Li-ion BATTERY",
-textColor={35,90,45})}),
-    Diagram(
-      coordinateSystem(extent={{-110,-110},{110,110}},preserveAspectRatio=true),
-      graphics={Rectangle(extent={{-100,100},{100,-100}},lineColor={205,205,205},pattern=LinePattern.Dot),
-        Rectangle(extent={{-90,76},{68,0}},lineColor={128,171,128},
-          fillColor={249,253,248},fillPattern=FillPattern.Solid),
-        Text(extent={{-88,75},{66,67}},
-          textString="4S2P ELECTROCHEMICAL STACK / BMS & TERMINAL MEASUREMENT",
-          lineColor={45,105,55}),
-
-        Rectangle(extent={{-70,-18},{56,-80}},lineColor={210,150,145},
-          fillColor={255,249,248},fillPattern=FillPattern.Solid),
-        Text(extent={{-68,-17},{54,-25}},
-          textString="DUAL THERMAL NODES / DUAL THERMISTORS",
-          lineColor={165,55,45}),
-        Text(extent={{-67,-74},{54,-80}},
-          textString="Cell core → enclosure → spacecraft thermal mount",
-          lineColor={105,105,105}),
-
-        Rectangle(extent={{-92,-80},{-50,-106}},lineColor={155,155,155},
-          fillColor={250,250,250},fillPattern=FillPattern.Solid),
-        Text(extent={{-91,-81},{-51,-88}},
-          textString="UNUSED 5 V / 3.3 V RAILS",
-          lineColor={95,95,95}),
-        Text(extent={{-90,-96},{-52,-103}},
-          textString="Numerical closure only",
-          lineColor={120,120,120}),
-
-        Text(extent={{-22,98},{22,90}},textString="STRUCTURAL HOUSING",
-          lineColor={95,95,95}),
-        Text(extent={{58,12},{105,4}},textString="BATTERY STATUS / TEMPERATURE",
-          lineColor={0,90,180}),
-        Text(extent={{44,-91},{104,-84}},textString="SPACECRAFT THERMAL NETWORK",
-          lineColor={170,45,35})
-      }),
-    Documentation(info="<html><h4>用途与系统角色</h4><p><b>用途：</b>承担原始电源侧储能、充放电保护、电池端测量和敏感热节点建模</p><p><b>白箱实现：</b>采用Modelica 4.0.0 CellStack、连续双向电源路径、温度/SOC回差、双热容双热敏，以及由TCB 17/18直接驱动的两路电阻加热支路。</p><h4>配置与BMS</h4><p><b>任务级参数：</b>4S2P、8.5 Ah/cell，约14.8 V×17 Ah=252 Wh，初始SOC保持0.78。低于273.15 K锁存禁止充电，高于278.15 K恢复；SOC高于0.96停止充电，低于0.92恢复。禁充只限制太阳阵源侧剩余功率，不切断放电主路，也不在原始母线上设置虚假耗能源。</p><p><b>热路径：</b>17路加热器直接向电芯热容注热，18路直接向壳体热容注热；安装导热保留有限热隔离，不再先加热公共舱板。</p><h4>对外接口与能量路径</h4><p>sourcePower连接太阳阵与PCDU所在的原始电源域，正电流方向由电气连接方程统一确定；thermal把电芯、壳体和两路加热器的热量送入整星热网；mechanical提供电池箱质量与惯量；information同时承载BMS许可、TCB加热指令以及电压、电流、SOC和温度测量。电能路径为电芯堆—电流传感器—连续双向通路—接触电阻—原始母线，充电与放电共用同一物理支路。</p><h4>关键参数与工作行为</h4><p>cellData定义单体8.5 Ah容量、开路电压范围、内阻和SOC边界，Ns=4、Np=2形成约252 Wh的4S2P电池。initialSOC和两个初温只决定起始工况；useEOLCapacity用于寿命末期容量评估，不改变拓扑。温度与SOC回差分别控制是否允许太阳剩余功率充电，两路TCB状态则独立控制电芯和壳体加热器。</p><h4>结果查看与判读</h4><p>任务级分析优先查看cells.SOC、voltageSensor.v、currentSensor.i、thermistor31.T和thermistor32.T，并结合information.device.batteryChargeAllowed判断充电受限原因。比较正负电流前应以原始母线功率方向核对符号，不应把加热支路电流误认为电池净充电电流。</p><h4>建模边界</h4><p>模型保留SOC、内阻损耗、BMS回差和两节点热惯性，不展开单体不一致、均衡电路、倍率/温度相关老化、SEI增长或故障传播。它适合24 h总体能量闭合和热安全分析，不代替电芯级寿命与安全认证模型。</p></html>"));
+  connect(currentSensor.i,bmsCoulombCounter.u) annotation(Line(points={{-150,248.6},{-150,238.6},{-200.4,238.6},{-200.4,155},{-190.4,155}}, color={0,0,127}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(information.device.tcState[17],batteryHeaterState[1].u) annotation(Line(points={{565,-20},{565,-56},{127.62,-56},{127.62,-150},{160.76,-150}}, color={255,127,0}, thickness=0.35, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(information.device.tcState[18],batteryHeaterState[2].u) annotation(Line(points={{565,-20},{565,-56},{127.62,-56},{127.62,-150},{160.76,-150}}, color={255,127,0}, thickness=0.35, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(batteryHeaterState.y,batteryHeaterCalculation.controlState) annotation(Line(points={{189.24,-150},{290.42,-150}}, color={255,127,0}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(cells.p,currentSensor.p) annotation(Line(points={{-377.6,308.4},{-377.6,318.4},{-184,318.4},{-184,275},{-174,275}}, color={0,0,255}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(currentSensor.n,chargeEnable.p) annotation(Line(points={{-126,275},{-49,275}}, color={0,0,255}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(chargeEnable.n,contact.p) annotation(Line(points={{-1,275},{86,275}}, color={0,0,255}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(contact.n,sourcePower.p) annotation(Line(points={{134,275},{144,275},{144,294},{430,294},{430,260}}, color={0,0,255}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(cells.n,sourcePower.n) annotation(Line(points={{-262.4,308.4},{-262.4,318.4},{430,318.4},{430,260}}, color={0,0,255}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(voltageSensor.p,sourcePower.p) annotation(Line(points={{276,155},{266,155},{266,189},{430,189},{430,260}}, color={0,0,255}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(voltageSensor.n,sourcePower.n) annotation(Line(points={{324,155},{430,155},{430,260}}, color={0,0,255}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(cells.heatPort,cellThermalMass.port) annotation(Line(points={{-320,170.16},{-320,160.16},{-220,160.16},{-220,-345},{-110,-345},{-110,-335}}, color={191,0,0}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(contact.heatPort,cellThermalMass.port) annotation(Line(points={{110,251},{110,241},{-215,241},{-215,-345},{-110,-345},{-110,-335}}, color={191,0,0}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(cellThermalMass.port,internalPath.port_a) annotation(Line(points={{-110,-335},{-110,-345},{-14,-345},{-14,-335},{-4,-335}}, color={191,0,0}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(internalPath.port_b,enclosureThermalMass.port) annotation(Line(points={{44,-335},{54,-335},{54,-345},{150,-345},{150,-335}}, color={191,0,0}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(enclosureThermalMass.port,mountPath.port_a) annotation(Line(points={{150,-335},{150,-345},{266,-345}}, color={191,0,0}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(mountPath.port_b,thermal) annotation(Line(points={{314,-345},{410,-345}}, color={191,0,0}, thickness=0.5, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(cellThermalMass.port,thermistor31.port) annotation(Line(points={{-110,-335},{-110,-345},{-52,-345},{-52,-235},{-42,-235}}, color={191,0,0}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(enclosureThermalMass.port,thermistor32.port) annotation(Line(points={{150,-335},{150,-345},{108,-345},{108,-235},{118,-235}}, color={191,0,0}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(thermistor31.T,informationRealBridge[1].u) annotation(Line(points={{4.2,-235},{110,-235},{110,-50},{397.62,-50},{397.62,30},{430.76,30}}, color={0,0,127}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(informationRealBridge[1].y,information.device.thermistorTemperature[31]) annotation(Line(points={{459.24,30},{565,30},{565,-20}}, color={0,0,127}, thickness=0.35, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(thermistor32.T,informationRealBridge[2].u) annotation(Line(points={{164.2,-235},{382.62,-235},{382.62,30},{430.76,30}}, color={0,0,127}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(informationRealBridge[2].y,information.device.thermistorTemperature[32]) annotation(Line(points={{459.24,30},{565,30},{565,-20}}, color={0,0,127}, thickness=0.35, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(currentSensor.i,informationRealBridge[3].u) annotation(Line(points={{-150,248.6},{-150,207},{397.62,207},{397.62,30},{430.76,30}}, color={0,0,127}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(informationRealBridge[3].y,information.device.pdCurrent[22]) annotation(Line(points={{459.24,30},{565,30},{565,-20}}, color={0,0,127}, thickness=0.35, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(voltageSensor.v,informationRealBridge[4].u) annotation(Line(points={{300,128.6},{300,118.6},{346,118.6},{346,30},{430.76,30}}, color={0,0,127}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(informationRealBridge[4].y,information.device.batteryVoltage) annotation(Line(points={{459.24,30},{565,30},{565,-20}}, color={0,0,127}, thickness=0.35, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(bmsCoulombCounter.y,informationRealBridge[5].u) annotation(Line(points={{-93.8,155},{-83.8,155},{-83.8,88},{397.62,88},{397.62,30},{430.76,30}}, color={0,0,127}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(informationRealBridge[5].y,information.device.batterySOC) annotation(Line(points={{459.24,30},{565,30},{565,-20}}, color={0,0,127}, thickness=0.35, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(thermistor31.T,coldChargeInhibit.u) annotation(Line(points={{4.2,-235},{14.2,-235},{14.2,-191},{-215,-191},{-215,-106.8},{-193.6,-106.8}}, color={0,0,127}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(chargeTemperatureReference.y,coldChargeInhibit.reference) annotation(Line(points={{-278,-50},{-220,-50},{-220,-73.2},{-193.6,-73.2}}, color={0,0,127}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(coldChargeInhibit.y,chargePermission.u) annotation(Line(points={{-129.2,-90},{-63.8,-90}}, color={255,0,255}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(bmsCoulombCounter.y,socChargePermission.u) annotation(Line(points={{-93.8,155},{-83.8,155},{-83.8,88},{-153.6,88},{-153.6,33.2},{-143.6,33.2}}, color={0,0,127}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(chargeSOCReference.y,socChargePermission.reference) annotation(Line(points={{-228,80},{-215,80},{-215,66.8},{-143.6,66.8}}, color={0,0,127}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(chargePermission.y,overallChargePermission.u1) annotation(Line(points={{-8.6,-90},{54,-90},{54,-10},{64,-10}}, color={255,0,255}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(socChargePermission.y,overallChargePermission.u2) annotation(Line(points={{-79.2,50},{54,50},{54,-34},{64,-34}}, color={255,0,255}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(batteryPathConductance.y,chargeEnable.G) annotation(Line(points={{-0.8,360},{9.2,360},{9.2,318.4},{-25,318.4},{-25,303.8}}, color={0,0,127}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(overallChargePermission.y,informationBooleanBridge[1].u) annotation(Line(points={{133,-10},{143,-10},{143,-21},{382.62,-21},{382.62,-100},{415.76,-100}}, color={255,0,255}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(informationBooleanBridge[1].y,information.device.batteryChargeAllowed) annotation(Line(points={{444.24,-100},{565,-100},{565,-20}}, color={255,0,255}, thickness=0.35, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(batteryHeaterCalculation.conductance,batteryHeater.G) annotation(Line(points={{363.4,-198},{373.4,-198},{373.4,56.2},{310,56.2},{310,46.2}}, color={0,0,127}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(sourcePower.p,batteryHeaterCurrent[1].p) annotation(Line(points={{430,260},{430,226},{236,226},{236,260},{246,260}}, color={0,0,255}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(sourcePower.p,batteryHeaterCurrent[2].p) annotation(Line(points={{430,260},{430,226},{236,226},{236,260},{246,260}}, color={0,0,255}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(batteryHeaterCurrent.n,batteryHeater.p) annotation(Line(points={{294,260},{304,260},{304,189},{266,189},{266,15},{284,15}}, color={0,0,255}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(batteryHeater[1].n,sourcePower.n) annotation(Line(points={{336,15},{346,15},{346,79.9},{430,79.9},{430,260}}, color={0,0,255}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(batteryHeater[2].n,sourcePower.n) annotation(Line(points={{336,15},{346,15},{346,79.9},{430,79.9},{430,260}}, color={0,0,255}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(batteryHeater[1].heatPort,cellThermalMass.port) annotation(Line(points={{310,-11},{310,-21},{222.38,-21},{222.38,-267},{-72,-267},{-72,-345},{-110,-345},{-110,-335}}, color={191,0,0}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(batteryHeater[2].heatPort,enclosureThermalMass.port) annotation(Line(points={{310,-11},{310,-21},{222.38,-21},{222.38,-345},{150,-345},{150,-335}}, color={191,0,0}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(batteryHeaterCurrent[1].i,informationRealBridge[6].u) annotation(Line(points={{270,233.6},{270,189},{397.62,189},{397.62,30},{430.76,30}}, color={0,0,127}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(informationRealBridge[6].y,information.device.tcCurrent[17]) annotation(Line(points={{459.24,30},{565,30},{565,-20}}, color={0,0,127}, thickness=0.35, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(batteryHeaterCurrent[2].i,informationRealBridge[7].u) annotation(Line(points={{270,233.6},{270,189},{397.62,189},{397.62,30},{430.76,30}}, color={0,0,127}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(informationRealBridge[7].y,information.device.tcCurrent[18]) annotation(Line(points={{459.24,30},{565,30},{565,-20}}, color={0,0,127}, thickness=0.35, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(housing.frame_a,mechanical) annotation(Line(points={{-420,-210},{-480,-210}}, color={95,95,95}, thickness=0.5, pattern=LinePattern.Solid, smooth=Smooth.None));
+  annotation(Documentation(info="<html><h2>四串两并锂离子电池组件</h2><p><b>类路径：</b><code>OneSatSim.Components.BatteryUnit</code>　<b>类型：</b>model</p><h3>用途与定位</h3><p>四串两并锂离子电池组件</p><h3>在工程中使用</h3><p>当前直接使用位置：<a href=\"modelica://OneSatSim.Systems.N_systems.ElectricalPowerSystem\">OneSatSim.Systems.N_systems.ElectricalPowerSystem</a> 的 <code>battery</code>。</p><h3>接口、输入与输出</h3><table border=\"1\" cellspacing=\"0\" cellpadding=\"5\"><tr><th>名称/维数</th><th>类型</th><th>声明角色</th><th>单位</th><th>含义</th></tr><tr><td><code>sourcePower</code></td><td>Foundation.Interfaces.SourcePowerPort</td><td>public</td><td>按声明/类型合同</td><td>源功率</td></tr><tr><td><code>thermal</code></td><td>Foundation.Interfaces.ThermalPort</td><td>public</td><td>按声明/类型合同</td><td>热学</td></tr><tr><td><code>mechanical</code></td><td>Foundation.Interfaces.MechanicalPort</td><td>public</td><td>按声明/类型合同</td><td>机械</td></tr><tr><td><code>information</code></td><td>Foundation.Interfaces.InformationPort</td><td>public</td><td>按声明/类型合同</td><td>计算/接口量 information</td></tr><tr><td><code>batteryHeaterState[2]</code></td><td>Foundation.Interfaces.IntegerSignalReader</td><td>public</td><td>按声明/类型合同</td><td>可扩展总线整数信号到因果计算端口的无状态恒等读取器实例；TCB channels 17/18 directly heat cell core and enclosure</td></tr><tr><td><code>informationRealBridge[7]</code></td><td>Foundation.Interfaces.RealSignalBridge</td><td>public</td><td>按声明/类型合同</td><td>实数因果输出到可扩展信息总线的无状态恒等桥实例</td></tr><tr><td><code>informationBooleanBridge[1]</code></td><td>Foundation.Interfaces.BooleanSignalBridge</td><td>public</td><td>按声明/类型合同</td><td>布尔因果输出到可扩展信息总线的无状态恒等桥实例</td></tr></table><h3>配置与参数</h3><p>下面列出当前源码表达式，仅用于阅读；当前参数对话框、生效配置记录与原有配置工具仍是使用依据。本页不新增默认值或换算。</p><table border=\"1\" cellspacing=\"0\" cellpadding=\"5\"><tr><th>参数</th><th>类型</th><th>用途</th><th>源码表达式</th></tr><tr><td><code>config</code></td><td>OneSatSim.Scenarios.DesignConfigRecords.BatteryComponentConfig</td><td>由所属N-System传入的硬件设计配置</td><td><code>由调用方、继承或默认声明提供</code></td></tr><tr><td><code>seriesCellCount</code></td><td>Integer</td><td>串联电芯数；Excel单位1，当前设计基线</td><td><code>=config.SeriesCellCount</code></td></tr><tr><td><code>parallelCellCount</code></td><td>Integer</td><td>并联支路数；Excel单位1，当前设计基线</td><td><code>=config.ParallelCellCount</code></td></tr><tr><td><code>cellCapacity</code></td><td>Modelica.Units.SI.ElectricCharge</td><td>单并支路电芯容量；Excel单位Ah，当前设计基线</td><td><code>=config.CellCapacity_Ah*(if useEOLCapacity then batteryEOLCapacityFactor else 1)</code></td></tr><tr><td><code>cellOCVMax</code></td><td>Modelica.Units.SI.Voltage</td><td>单体最高开路电压；Excel单位V，当前设计基线</td><td><code>=config.CellOCVMax</code></td></tr><tr><td><code>cellOCVMin</code></td><td>Modelica.Units.SI.Voltage</td><td>单体最低开路电压；Excel单位V，当前设计基线</td><td><code>=config.CellOCVMin</code></td></tr><tr><td><code>cellInternalResistance</code></td><td>Modelica.Units.SI.Resistance</td><td>单体内阻；Excel单位Ω，当前设计基线</td><td><code>=config.CellInternalResistance</code></td></tr><tr><td><code>cellSOCMin</code></td><td>Real</td><td>电芯模型SOC下界；Excel单位1，当前设计基线</td><td><code>=config.CellSOCMin</code></td></tr><tr><td><code>cellSOCMax</code></td><td>Real</td><td>电芯模型SOC上界；Excel单位1，当前设计基线</td><td><code>=config.CellSOCMax</code></td></tr><tr><td><code>contactResistance</code></td><td>Modelica.Units.SI.Resistance</td><td>电池主路径接触电阻；Excel单位Ω，当前设计基线</td><td><code>=config.ContactResistance</code></td></tr><tr><td><code>cellHeatCapacity</code></td><td>Modelica.Units.SI.HeatCapacity</td><td>电芯等效热容；Excel单位J/K，当前设计基线</td><td><code>=config.CellHeatCapacity</code></td></tr><tr><td><code>enclosureHeatCapacity</code></td><td>Modelica.Units.SI.HeatCapacity</td><td>电池壳体等效热容；Excel单位J/K，当前设计基线</td><td><code>=config.EnclosureHeatCapacity</code></td></tr><tr><td><code>internalThermalConductance</code></td><td>Modelica.Units.SI.ThermalConductance</td><td>电芯-壳体导热；Excel单位W/K，当前设计基线</td><td><code>=config.InternalThermalConductance</code></td></tr><tr><td><code>mountThermalConductance</code></td><td>Modelica.Units.SI.ThermalConductance</td><td>电池安装导热；Excel单位W/K，当前设计基线</td><td><code>=config.MountThermalConductance</code></td></tr><tr><td><code>mass</code></td><td>Modelica.Units.SI.Mass</td><td>质量；Excel单位kg，当前设计基线</td><td><code>=config.Mass</code></td></tr><tr><td><code>rcm_X</code></td><td>Modelica.Units.SI.Length</td><td>质心偏置X；Excel单位m，当前设计基线</td><td><code>=config.RCM_X</code></td></tr><tr><td><code>rcm_Y</code></td><td>Modelica.Units.SI.Length</td><td>质心偏置Y；Excel单位m，当前设计基线</td><td><code>=config.RCM_Y</code></td></tr><tr><td><code>rcm_Z</code></td><td>Modelica.Units.SI.Length</td><td>质心偏置Z；Excel单位m，当前设计基线</td><td><code>=config.RCM_Z</code></td></tr><tr><td><code>inertia_XX</code></td><td>Modelica.Units.SI.Inertia</td><td>局部惯量 Ixx；Excel单位kg·m²，当前设计基线</td><td><code>=config.Inertia_XX</code></td></tr><tr><td><code>inertia_YY</code></td><td>Modelica.Units.SI.Inertia</td><td>局部惯量 Iyy；Excel单位kg·m²，当前设计基线</td><td><code>=config.Inertia_YY</code></td></tr><tr><td><code>inertia_ZZ</code></td><td>Modelica.Units.SI.Inertia</td><td>局部惯量 Izz；Excel单位kg·m²，当前设计基线</td><td><code>=config.Inertia_ZZ</code></td></tr><tr><td><code>batteryEOLCapacityFactor</code></td><td>Real</td><td>电池EOLCapacityFactor；Capacity multiplier used only when EOL validation is selected</td><td><code>=config.EOLCapacityFactor</code></td></tr><tr><td><code>useEOLCapacity</code></td><td>Boolean</td><td>配置项 useEOLCapacity；false keeps the current approximately 252 Wh BOL battery</td><td><code>=config.UseEOLCapacity</code></td></tr><tr><td><code>cellData</code></td><td>Modelica.Electrical.Batteries.ParameterRecords.CellData</td><td>任务级参数: 8.5 Ah per parallel cell</td><td><code>由调用方、继承或默认声明提供</code></td></tr><tr><td><code>initialSOC</code></td><td>Real</td><td>场景初始SOC</td><td><code>=0.78</code></td></tr><tr><td><code>initialCellTemperature</code></td><td>Modelica.Units.SI.Temperature</td><td>场景电芯初温</td><td><code>=287.15</code></td></tr><tr><td><code>initialEnclosureTemperature</code></td><td>Modelica.Units.SI.Temperature</td><td>场景壳体初温</td><td><code>=289.15</code></td></tr><tr><td><code>batteryHeaterResistance</code></td><td>Modelica.Units.SI.Resistance</td><td>电池HeaterResistance [Ohm]；Two direct 14..17 V heater branches, about 2 W each at nominal source voltage</td><td><code>=config.HeaterResistance</code></td></tr></table><h3>内部组成</h3><p>以下为本类直接声明的组成单元，继承类的内部结构另按其文档查看。</p><table border=\"1\" cellspacing=\"0\" cellpadding=\"5\"><tr><th>实例</th><th>类</th><th>作用</th></tr><tr><td><code>cells</code></td><td><a href=\"modelica://OneSatSim.Foundation.Models.BatteryCellStackCore\">OneSatSim.Foundation.Models.BatteryCellStackCore</a></td><td>带公开荷电状态接口的电池组实例</td></tr><tr><td><code>currentSensor</code></td><td><a href=\"modelica://Modelica.Electrical.Analog.Sensors.CurrentSensor\">Modelica.Electrical.Analog.Sensors.CurrentSensor</a></td><td>电流传感器</td></tr><tr><td><code>chargeEnable</code></td><td><a href=\"modelica://Modelica.Electrical.Analog.Basic.VariableConductor\">Modelica.Electrical.Analog.Basic.VariableConductor</a></td><td>计算/接口量 chargeEnable；BMS-controlled average-value bidirectional battery path</td></tr><tr><td><code>contact</code></td><td><a href=\"modelica://Modelica.Electrical.Analog.Basic.Resistor\">Modelica.Electrical.Analog.Basic.Resistor</a></td><td>计算/接口量 contact</td></tr><tr><td><code>voltageSensor</code></td><td><a href=\"modelica://Modelica.Electrical.Analog.Sensors.VoltageSensor\">Modelica.Electrical.Analog.Sensors.VoltageSensor</a></td><td>电压传感器</td></tr><tr><td><code>bmsCoulombCounter</code></td><td><a href=\"modelica://Modelica.Blocks.Continuous.LimIntegrator\">Modelica.Blocks.Continuous.LimIntegrator</a></td><td>计算/接口量 bmsCoulombCounter；BMS estimate from the measured discharge-positive external battery current; never reads physical cells.SOC at runtime</td></tr><tr><td><code>chargeTemperatureReference</code></td><td><a href=\"modelica://Modelica.Blocks.Sources.Constant\">Modelica.Blocks.Sources.Constant</a></td><td>charge温度Reference；Midpoint of 273.15/278.15 K BMS hysteresis</td></tr><tr><td><code>coldChargeInhibit</code></td><td><a href=\"modelica://Modelica.Blocks.Logical.OnOffController\">Modelica.Blocks.Logical.OnOffController</a></td><td>计算/接口量 coldChargeInhibit；true below 273.15 K; false above 278.15 K</td></tr><tr><td><code>chargePermission</code></td><td><a href=\"modelica://Modelica.Blocks.Logical.Not\">Modelica.Blocks.Logical.Not</a></td><td>计算/接口量 chargePermission</td></tr><tr><td><code>chargeSOCReference</code></td><td><a href=\"modelica://Modelica.Blocks.Sources.Constant\">Modelica.Blocks.Sources.Constant</a></td><td>计算/接口量 chargeSOCReference；Midpoint of 0.92/0.96 SOC charge hysteresis</td></tr><tr><td><code>socChargePermission</code></td><td><a href=\"modelica://Modelica.Blocks.Logical.OnOffController\">Modelica.Blocks.Logical.OnOffController</a></td><td>计算/接口量 socChargePermission；true below SOC 0.92; false above SOC 0.96</td></tr><tr><td><code>overallChargePermission</code></td><td><a href=\"modelica://Modelica.Blocks.Logical.And\">Modelica.Blocks.Logical.And</a></td><td>计算/接口量 overallChargePermission；Charging requires both temperature and SOC permission</td></tr><tr><td><code>batteryPathConductance</code></td><td><a href=\"modelica://Modelica.Blocks.Sources.Constant\">Modelica.Blocks.Sources.Constant</a></td><td>电池PathConductance；Continuous average battery path; charge protection acts by MPPT surplus curtailment without topology switching</td></tr><tr><td><code>batteryHeaterCalculation[2]</code></td><td><a href=\"modelica://OneSatSim.Foundation.Calculations.HeaterChannelCalculation\">OneSatSim.Foundation.Calculations.HeaterChannelCalculation</a></td><td>单路加热器指令与平均电导计算实例</td></tr><tr><td><code>batteryHeaterCurrent[2]</code></td><td><a href=\"modelica://Modelica.Electrical.Analog.Sensors.CurrentSensor\">Modelica.Electrical.Analog.Sensors.CurrentSensor</a></td><td>电池Heater电流</td></tr><tr><td><code>batteryHeater[2]</code></td><td><a href=\"modelica://Modelica.Electrical.Analog.Basic.VariableConductor\">Modelica.Electrical.Analog.Basic.VariableConductor</a></td><td>电池Heater</td></tr><tr><td><code>cellThermalMass</code></td><td><a href=\"modelica://Modelica.Thermal.HeatTransfer.Components.HeatCapacitor\">Modelica.Thermal.HeatTransfer.Components.HeatCapacitor</a></td><td>任务级参数 battery thermistor 31 initial work point</td></tr><tr><td><code>enclosureThermalMass</code></td><td><a href=\"modelica://Modelica.Thermal.HeatTransfer.Components.HeatCapacitor\">Modelica.Thermal.HeatTransfer.Components.HeatCapacitor</a></td><td>任务级参数 battery thermistor 32 initial work point</td></tr><tr><td><code>internalPath</code></td><td><a href=\"modelica://Modelica.Thermal.HeatTransfer.Components.ThermalConductor\">Modelica.Thermal.HeatTransfer.Components.ThermalConductor</a></td><td>计算/接口量 internalPath</td></tr><tr><td><code>mountPath</code></td><td><a href=\"modelica://Modelica.Thermal.HeatTransfer.Components.ThermalConductor\">Modelica.Thermal.HeatTransfer.Components.ThermalConductor</a></td><td>任务级参数: insulated battery tray while retaining finite conductive rejection</td></tr><tr><td><code>thermistor31</code></td><td><a href=\"modelica://Modelica.Thermal.HeatTransfer.Sensors.TemperatureSensor\">Modelica.Thermal.HeatTransfer.Sensors.TemperatureSensor</a></td><td>计算/接口量 thermistor31</td></tr><tr><td><code>thermistor32</code></td><td><a href=\"modelica://Modelica.Thermal.HeatTransfer.Sensors.TemperatureSensor\">Modelica.Thermal.HeatTransfer.Sensors.TemperatureSensor</a></td><td>计算/接口量 thermistor32</td></tr><tr><td><code>housing</code></td><td><a href=\"modelica://Modelica.Mechanics.MultiBody.Parts.Body\">Modelica.Mechanics.MultiBody.Parts.Body</a></td><td>计算/接口量 housing</td></tr></table></html>"
+),
+    Icon(coordinateSystem(extent={{-100,-100},{100,100}}, preserveAspectRatio=true, grid={2,2}), graphics={
+      Rectangle(extent={{-89,-97},{89,95}}, lineColor={0,0,0}, fillColor={255,255,255}, fillPattern=FillPattern.Solid, lineThickness=0.6, radius=3),
+      Line(points={{-76,64},{76,64}}, color={219,223,227}, thickness=0.4, pattern=LinePattern.Solid),
+      Rectangle(extent={{-84,69},{-64,89}}, lineColor={0,0,0}, fillColor={77,126,172}, fillPattern=FillPattern.Solid, lineThickness=0.85, radius=0),
+      Text(extent={{-61,71},{76,86}}, textString="Power unit", fontSize=0, lineColor={0,0,0}, horizontalAlignment=TextAlignment.Center),
+      Rectangle(extent={{-57,-32},{53,35}}, lineColor={0,0,0}, fillColor={242,245,247}, fillPattern=FillPattern.Solid, lineThickness=0.75, radius=2),
+      Rectangle(extent={{-48,-20},{-30,3}}, lineColor={0,0,0}, fillColor={255,255,255}, fillPattern=FillPattern.Solid, lineThickness=0.6, radius=1),
+      Rectangle(extent={{-42,3},{-36,6}}, lineColor={0,0,0}, fillColor={242,245,247}, fillPattern=FillPattern.Solid, lineThickness=0.45, radius=0),
+      Line(points={{-43,-4},{-35,-4}}, color={77,126,172}, thickness=0.55, pattern=LinePattern.Solid),
+      Line(points={{-39,-8},{-39,0}}, color={77,126,172}, thickness=0.55, pattern=LinePattern.Solid),
+      Rectangle(extent={{-23,-20},{-5,3}}, lineColor={0,0,0}, fillColor={255,255,255}, fillPattern=FillPattern.Solid, lineThickness=0.6, radius=1),
+      Rectangle(extent={{-17,3},{-11,6}}, lineColor={0,0,0}, fillColor={242,245,247}, fillPattern=FillPattern.Solid, lineThickness=0.45, radius=0),
+      Line(points={{-18,-4},{-10,-4}}, color={77,126,172}, thickness=0.55, pattern=LinePattern.Solid),
+      Line(points={{-14,-8},{-14,0}}, color={77,126,172}, thickness=0.55, pattern=LinePattern.Solid),
+      Rectangle(extent={{2,-20},{20,3}}, lineColor={0,0,0}, fillColor={255,255,255}, fillPattern=FillPattern.Solid, lineThickness=0.6, radius=1),
+      Rectangle(extent={{8,3},{14,6}}, lineColor={0,0,0}, fillColor={242,245,247}, fillPattern=FillPattern.Solid, lineThickness=0.45, radius=0),
+      Line(points={{7,-4},{15,-4}}, color={77,126,172}, thickness=0.55, pattern=LinePattern.Solid),
+      Line(points={{11,-8},{11,0}}, color={77,126,172}, thickness=0.55, pattern=LinePattern.Solid),
+      Rectangle(extent={{27,-20},{45,3}}, lineColor={0,0,0}, fillColor={255,255,255}, fillPattern=FillPattern.Solid, lineThickness=0.6, radius=1),
+      Rectangle(extent={{33,3},{39,6}}, lineColor={0,0,0}, fillColor={242,245,247}, fillPattern=FillPattern.Solid, lineThickness=0.45, radius=0),
+      Line(points={{32,-4},{40,-4}}, color={77,126,172}, thickness=0.55, pattern=LinePattern.Solid),
+      Line(points={{36,-8},{36,0}}, color={77,126,172}, thickness=0.55, pattern=LinePattern.Solid),
+      Line(points={{-48,-23},{45,-23}}, color={77,126,172}, thickness=0.65, pattern=LinePattern.Solid),
+      Rectangle(extent={{-48,9},{-30,32}}, lineColor={0,0,0}, fillColor={255,255,255}, fillPattern=FillPattern.Solid, lineThickness=0.6, radius=1),
+      Rectangle(extent={{-42,32},{-36,35}}, lineColor={0,0,0}, fillColor={242,245,247}, fillPattern=FillPattern.Solid, lineThickness=0.45, radius=0),
+      Line(points={{-43,25},{-35,25}}, color={77,126,172}, thickness=0.55, pattern=LinePattern.Solid),
+      Line(points={{-39,21},{-39,29}}, color={77,126,172}, thickness=0.55, pattern=LinePattern.Solid),
+      Rectangle(extent={{-23,9},{-5,32}}, lineColor={0,0,0}, fillColor={255,255,255}, fillPattern=FillPattern.Solid, lineThickness=0.6, radius=1),
+      Rectangle(extent={{-17,32},{-11,35}}, lineColor={0,0,0}, fillColor={242,245,247}, fillPattern=FillPattern.Solid, lineThickness=0.45, radius=0),
+      Line(points={{-18,25},{-10,25}}, color={77,126,172}, thickness=0.55, pattern=LinePattern.Solid),
+      Line(points={{-14,21},{-14,29}}, color={77,126,172}, thickness=0.55, pattern=LinePattern.Solid),
+      Rectangle(extent={{2,9},{20,32}}, lineColor={0,0,0}, fillColor={255,255,255}, fillPattern=FillPattern.Solid, lineThickness=0.6, radius=1),
+      Rectangle(extent={{8,32},{14,35}}, lineColor={0,0,0}, fillColor={242,245,247}, fillPattern=FillPattern.Solid, lineThickness=0.45, radius=0),
+      Line(points={{7,25},{15,25}}, color={77,126,172}, thickness=0.55, pattern=LinePattern.Solid),
+      Line(points={{11,21},{11,29}}, color={77,126,172}, thickness=0.55, pattern=LinePattern.Solid),
+      Rectangle(extent={{27,9},{45,32}}, lineColor={0,0,0}, fillColor={255,255,255}, fillPattern=FillPattern.Solid, lineThickness=0.6, radius=1),
+      Rectangle(extent={{33,32},{39,35}}, lineColor={0,0,0}, fillColor={242,245,247}, fillPattern=FillPattern.Solid, lineThickness=0.45, radius=0),
+      Line(points={{32,25},{40,25}}, color={77,126,172}, thickness=0.55, pattern=LinePattern.Solid),
+      Line(points={{36,21},{36,29}}, color={77,126,172}, thickness=0.55, pattern=LinePattern.Solid),
+      Line(points={{-48,6},{45,6}}, color={77,126,172}, thickness=0.65, pattern=LinePattern.Solid),
+      Line(points={{-62,19},{-72,19},{-72,-19},{-62,-19}}, color={77,126,172}, thickness=0.75, pattern=LinePattern.Solid),
+      Line(points={{56,19},{68,19}}, color={77,126,172}, thickness=0.85, pattern=LinePattern.Solid),
+      Line(points={{56,-18},{68,-18}}, color={77,126,172}, thickness=0.85, pattern=LinePattern.Solid),
+      Line(points={{61,26},{68,26}}, color={0,0,0}, thickness=0.6, pattern=LinePattern.Solid),
+      Line(points={{64,23},{64,29}}, color={0,0,0}, thickness=0.6, pattern=LinePattern.Solid),
+      Line(points={{-46,-42},{-36,-42},{-32,-36},{-24,-47},{-16,-36},{-8,-47},{0,-36},{8,-42},{21,-42}}, color={196,94,56}, thickness=0.65, pattern=LinePattern.Solid),
+      Line(points={{-76,-58},{76,-58}}, color={219,223,227}, thickness=0.4, pattern=LinePattern.Solid),
+      Text(extent={{-80,-79},{80,-64}}, textString="Battery Pack 4S2P", fontSize=0, lineColor={0,0,0}, horizontalAlignment=TextAlignment.Center, textStyle={TextStyle.Bold}),
+      Text(extent={{-80,-93},{80,-82}}, textString="%name", fontSize=0, lineColor={80,80,80}, horizontalAlignment=TextAlignment.Center)
+    }),
+    Diagram(coordinateSystem(extent={{-524,-407},{609,497}}, preserveAspectRatio=true, grid={2,2}), graphics={
+      Text(extent={{-420,409},{-252,427}}, textString="Battery current path", fontSize=0, lineColor={79,89,100}, horizontalAlignment=TextAlignment.Left, textStyle={TextStyle.Bold}),
+      Text(extent={{-415,116},{-297.4,134}}, textString="BMS permission", fontSize=0, lineColor={79,89,100}, horizontalAlignment=TextAlignment.Left, textStyle={TextStyle.Bold}),
+      Text(extent={{-205,-181},{97.4,-163}}, textString="Heaters and two-node thermal network", fontSize=0, lineColor={79,89,100}, horizontalAlignment=TextAlignment.Left, textStyle={TextStyle.Bold}),
+      Text(extent={{-512,452},{597,481}}, textString="Battery: storage, BMS and thermal control", fontSize=0, lineColor={0,0,0}, horizontalAlignment=TextAlignment.Left, textStyle={TextStyle.Bold}),
+      Line(points={{-512,444},{597,444}}, color={215,220,226}, thickness=0.25)
+    }));
 end BatteryUnit;

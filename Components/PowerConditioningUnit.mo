@@ -2,6 +2,8 @@ within OneSatSim.Components;
 model PowerConditioningUnit "电源调节与配电组件"
   parameter OneSatSim.Scenarios.DesignConfigRecords.PcduComponentConfig config
     "由所属N-System传入的硬件设计配置";
+  parameter Real solarNetDeliveryEfficiency[3](each min=0,each max=1)
+    "solarNetDelivery效率；Three array rated net delivery efficiencies from the same EPS design records";
   parameter Modelica.Units.SI.Voltage nominalVoltage5V=config.NominalVoltage5V
     "5V名义输出电压；Excel单位V，当前设计基线";
   parameter Modelica.Units.SI.Power powerLimit5V=config.PowerLimit5V
@@ -44,46 +46,50 @@ model PowerConditioningUnit "电源调节与配电组件"
     "局部惯量 Izz；Excel单位kg·m²，当前设计基线";
   parameter Modelica.Units.SI.Temperature initialBoardTemperature=310.65 "场景PCDU/MPPT板初温";
   parameter Real regulatorEfficiency(min=0.8,max=1)=config.RegulatorEfficiency12 "12 V平均值变换效率";
-  parameter Modelica.Units.SI.Voltage minimumInputVoltage=config.MinimumInputVoltage12;
-  parameter Modelica.Units.SI.Current maximumInputCurrent=config.MaximumInputCurrent12;
-  parameter Modelica.Units.SI.Current maximumOutputCurrent=config.MaximumOutputCurrent12;
-  parameter Modelica.Units.SI.Power maximumOutputPower=config.MaximumOutputPower12;
+  parameter Modelica.Units.SI.Voltage minimumInputVoltage=config.MinimumInputVoltage12 "minimum输入电压 [V]" ;
+  parameter Modelica.Units.SI.Current maximumInputCurrent=config.MaximumInputCurrent12 "maximum输入电流 [A]" ;
+  parameter Modelica.Units.SI.Current maximumOutputCurrent=config.MaximumOutputCurrent12 "maximum输出电流 [A]" ;
+  parameter Modelica.Units.SI.Power maximumOutputPower=config.MaximumOutputPower12 "maximum输出功率 [W]" ;
   parameter Modelica.Units.SI.Resistance outputResistance12=config.OutputResistance12
     "系统级 12 V load regulation/droop";
   parameter Modelica.Units.SI.Resistance overloadDroop12=config.OverloadDroop12
-    "Additional continuous voltage droop above available current";
+    "配置项 overloadDroop12 [Ohm]；Additional continuous voltage droop above available current";
   parameter Real eta5(min=0.5,max=1)=config.Efficiency5V "任务级参数";
   parameter Real eta3V3(min=0.5,max=1)=config.Efficiency3V3 "任务级参数";
-  parameter Modelica.Units.SI.Current currentLimit5=config.CurrentLimit5V;
-  parameter Modelica.Units.SI.Current currentLimit3V3=config.CurrentLimit3V3;
-  Foundation.Interfaces.SourcePowerPort rawSource "太阳阵/电池原始双线汇流输入" annotation(Placement(transformation(extent={{-42,90},{-22,110}}),iconTransformation(extent={{-42,90},{-22,110}})));
-  Foundation.Interfaces.PowerPort regulatedPower "12/5/3.3 V受控负载母线输出" annotation(Placement(transformation(extent={{22,90},{42,110}}),iconTransformation(extent={{22,90},{42,110}})));
-  Foundation.Interfaces.ThermalPort thermal annotation(Placement(transformation(extent={{-10,-110},{10,-90}}),iconTransformation(extent={{-10,-110},{10,-90}})));
-  Foundation.Interfaces.MechanicalPort mechanical annotation(Placement(transformation(extent={{-110,-10},{-90,10}}),iconTransformation(extent={{-110,-10},{-90,10}})));
-  Foundation.Interfaces.InformationPort information annotation(Placement(transformation(extent={{90,28},{110,48}}),iconTransformation(extent={{90,28},{110,48}})));
+  parameter Modelica.Units.SI.Current currentLimit5=config.CurrentLimit5V "电流限制5 [A]" ;
+  parameter Modelica.Units.SI.Current currentLimit3V3=config.CurrentLimit3V3 "电流限制3V3 [A]" ;
+  Foundation.Interfaces.SourcePowerPort rawSource "太阳阵/电池原始双线汇流输入" annotation(Placement(visible=true, transformation(origin={-590,370}, extent={{-12,-12},{12,12}}, rotation=0), iconVisible=true, iconTransformation(origin={-80,95}, extent={{-12,-12},{12,12}}, rotation=0)));
+  Foundation.Interfaces.PowerPort regulatedPower "12/5/3.3 V受控负载母线输出" annotation(Placement(visible=true, transformation(origin={615,355}, extent={{-12,-12},{12,12}}, rotation=0), iconVisible=true, iconTransformation(origin={80,95}, extent={{-12,-12},{12,12}}, rotation=0)));
+  Foundation.Interfaces.ThermalPort thermal  "热学" annotation(Placement(visible=true, transformation(origin={410,-495}, extent={{-12,-12},{12,12}}, rotation=0), iconVisible=true, iconTransformation(origin={0,-97}, extent={{-11.52,-11.52},{11.52,11.52}}, rotation=0)));
+  Foundation.Interfaces.MechanicalPort mechanical  "机械" annotation(Placement(visible=true, transformation(origin={-590,-430}, extent={{-12,-12},{12,12}}, rotation=0), iconVisible=true, iconTransformation(origin={-89,0}, extent={{-11.52,-11.52},{11.52,11.52}}, rotation=0)));
+  Foundation.Interfaces.InformationPort information  "计算/接口量 information" annotation(Placement(visible=true, transformation(origin={780,-90}, extent={{-12,-12},{12,12}}, rotation=0), iconVisible=true, iconTransformation(origin={89,80}, extent={{-12,-12},{12,12}}, rotation=0)));
   Foundation.Models.AverageDCDCConverterCore converter5(
     nominalOutputVoltage=nominalVoltage5V,efficiency=eta5,outputCurrentLimit=currentLimit5,
-    outputPowerLimit=powerLimit5V,minimumInputVoltage=minimumInputVoltage5V,outputResistance=outputResistance5V,overloadDroop=overloadDroop5V)
-    annotation(Placement(transformation(extent={{-58,18},{-28,48}})));
+    outputPowerLimit=powerLimit5V,minimumInputVoltage=minimumInputVoltage5V,outputResistance=outputResistance5V,overloadDroop=overloadDroop5V) 
+     "连续低阶非理想直流变换核心实例" annotation(Placement(visible=true, transformation(origin={265,170}, extent={{-64,-64},{64,64}}, rotation=0)));
   Foundation.Models.AverageDCDCConverterCore converter3V3(
     nominalOutputVoltage=nominalVoltage3V3,efficiency=eta3V3,outputCurrentLimit=currentLimit3V3,
-    outputPowerLimit=powerLimit3V3,minimumInputVoltage=minimumInputVoltage3V3,outputResistance=outputResistance3V3,overloadDroop=overloadDroop3V3)
-    annotation(Placement(transformation(extent={{12,18},{42,48}})));
-  Modelica.Electrical.Analog.Sensors.VoltageSensor voltage12 annotation(Placement(transformation(origin={-68,-28},extent={{-8,-8},{8,8}},rotation=270)));
-  Modelica.Electrical.Analog.Sensors.VoltageSensor voltage5 annotation(Placement(transformation(origin={-28,-28},extent={{-8,-8},{8,8}},rotation=270)));
-  Modelica.Electrical.Analog.Sensors.VoltageSensor voltage3V3 annotation(Placement(transformation(origin={20,-28},extent={{-8,-8},{8,8}},rotation=270)));
-  Modelica.Electrical.Analog.Sensors.CurrentSensor current5 annotation(Placement(transformation(extent={{-20,26},{0,46}})));
-  Modelica.Electrical.Analog.Sensors.CurrentSensor current3V3 annotation(Placement(transformation(extent={{50,26},{70,46}})));
-  Modelica.Electrical.Analog.Sensors.CurrentSensor pcduHousekeepingCurrent
-    "PCDU board self-consumption branch only; not the spacecraft 12 V bus current" annotation(Placement(transformation(extent={{-90,-58},{-70,-38}})));
-  Modelica.Electrical.Analog.Basic.Resistor pcdHousekeeping12(R=housekeepingResistance12,useHeatPort=true) "系统级 PDB 12 V monitored branch, about 0.130 A" annotation(Placement(transformation(extent={{-62,-58},{-42,-38}})));
-  Foundation.Interfaces.RealSignalReader batterySOCFromInformation annotation(Placement(transformation(extent={{58,82},{70,92}})));
-  Foundation.Interfaces.BooleanSignalReader batteryChargeAllowedFromInformation annotation(Placement(transformation(extent={{58,70},{70,80}})));
-  Foundation.Interfaces.RealSignalReader batteryBranchCurrentFromInformation annotation(Placement(transformation(extent={{58,58},{70,68}})));
-  Foundation.Interfaces.IntegerSignalReader batteryHeaterStateFromInformation[2] annotation(Placement(transformation(extent={{58,46},{70,56}})));
-  Foundation.Interfaces.RealSignalReader availableSolarPowerFromInformation[3] annotation(Placement(transformation(extent={{74,34},{86,44}})));
-  Foundation.Interfaces.RealSignalReader pdCurrentFromInformation[24] annotation(Placement(transformation(extent={{42,-2},{54,8}})));
-  Foundation.Interfaces.IntegerSignalReader equipmentStatusFromInformation[6] annotation(Placement(transformation(extent={{58,10},{70,20}})));
+    outputPowerLimit=powerLimit3V3,minimumInputVoltage=minimumInputVoltage3V3,outputResistance=outputResistance3V3,overloadDroop=overloadDroop3V3) 
+     "连续低阶非理想直流变换核心实例" annotation(Placement(visible=true, transformation(origin={265,-35}, extent={{-64,-64},{64,64}}, rotation=0)));
+  Modelica.Electrical.Analog.Sensors.VoltageSensor voltage12  "电压12" annotation(Placement(visible=true, transformation(origin={365,355}, extent={{-24,-24},{24,24}}, rotation=0)));
+  Modelica.Electrical.Analog.Sensors.VoltageSensor voltage5  "电压5" annotation(Placement(visible=true, transformation(origin={515,170}, extent={{-24,-24},{24,24}}, rotation=0)));
+  Modelica.Electrical.Analog.Sensors.VoltageSensor voltage3V3  "电压3V3" annotation(Placement(visible=true, transformation(origin={515,-35}, extent={{-24,-24},{24,24}}, rotation=0)));
+  Modelica.Electrical.Analog.Sensors.CurrentSensor current5  "电流5" annotation(Placement(visible=true, transformation(origin={410,200}, extent={{-24,-24},{24,24}}, rotation=0)));
+  Modelica.Electrical.Analog.Sensors.CurrentSensor current3V3  "电流3V3" annotation(Placement(visible=true, transformation(origin={410,-5}, extent={{-24,-24},{24,24}}, rotation=0)));
+  Modelica.Electrical.Analog.Sensors.CurrentSensor converter5InputCurrent
+    "converter5输入电流；Measured 12 V input current of the 5 V converter" 
+    annotation(Placement(transformation(origin={120,200}, extent={{-24,-24},{24,24}}, rotation=0)));
+  Modelica.Electrical.Analog.Sensors.CurrentSensor converter3V3InputCurrent
+    "converter3V3输入电流；Measured 12 V input current of the 3.3 V converter" 
+    annotation(Placement(transformation(origin={120,-5}, extent={{-24,-24},{24,24}}, rotation=0)));
+  Modelica.Electrical.Analog.Basic.Resistor pcdHousekeeping12(R=housekeepingResistance12,useHeatPort=true) "系统级 PDB 12 V monitored branch, about 0.130 A" annotation(Placement(visible=true, transformation(origin={495,-155}, extent={{-24,-24},{24,24}}, rotation=0)));
+  Foundation.Interfaces.RealSignalReader batterySOCFromInformation  "可扩展总线实数信号到因果计算端口的无状态恒等读取器实例" annotation(Placement(visible=true, transformation(origin={-475,75}, extent={{-16,-16},{16,16}}, rotation=0)));
+  Foundation.Interfaces.BooleanSignalReader batteryChargeAllowedFromInformation  "可扩展总线布尔信号到因果计算端口的无状态恒等读取器实例" annotation(Placement(visible=true, transformation(origin={-475,-55}, extent={{-16,-16},{16,16}}, rotation=0)));
+  Foundation.Interfaces.RealSignalReader batteryHeaterCurrentFromInformation[2] 
+     "可扩展总线实数信号到因果计算端口的无状态恒等读取器实例" annotation(Placement(visible=true, transformation(origin={-475,-185}, extent={{-16,-16},{16,16}}, rotation=0)));
+  Foundation.Interfaces.RealSignalReader availableSolarPowerFromInformation[3]  "可扩展总线实数信号到因果计算端口的无状态恒等读取器实例" annotation(Placement(visible=true, transformation(origin={-305,-165}, extent={{-16,-16},{16,16}}, rotation=0)));
+  Foundation.Interfaces.RealSignalReader pdCurrentFromInformation[24]  "可扩展总线实数信号到因果计算端口的无状态恒等读取器实例" annotation(Placement(visible=true, transformation(origin={100,-285}, extent={{-16,-16},{16,16}}, rotation=0)));
+  Foundation.Interfaces.IntegerSignalReader equipmentStatusFromInformation[6]  "可扩展总线整数信号到因果计算端口的无状态恒等读取器实例" annotation(Placement(visible=true, transformation(origin={100,-420}, extent={{-16,-16},{16,16}}, rotation=0)));
   Foundation.Calculations.PowerConditioningCalculation powerCalculation(
     regulatorEfficiency=regulatorEfficiency,
     minimumInputVoltage=minimumInputVoltage,
@@ -91,283 +97,231 @@ model PowerConditioningUnit "电源调节与配电组件"
     maximumOutputCurrent=maximumOutputCurrent,
     maximumOutputPower=maximumOutputPower,
     outputResistance12=outputResistance12,
-    overloadDroop12=overloadDroop12) annotation(Placement(transformation(extent={{14,56},{44,92}})));
-  Foundation.Calculations.PowerDistributionStatusCalculation distributionStatusCalculation annotation(Placement(transformation(extent={{12,-86},{38,-68}})));
-  Modelica.Blocks.Sources.Constant zeroCurrent[8](each k=0) annotation(Placement(transformation(extent={{-62,-88},{-42,-72}})));
-  Modelica.Thermal.HeatTransfer.Components.HeatCapacitor boardHeat(C=boardHeatCapacity,T(start=initialBoardTemperature,fixed=true)) "系统级 initial PCDU/MPPT board work point" annotation(Placement(transformation(extent={{45,-78},{65,-58}})));
-  Modelica.Thermal.HeatTransfer.Components.ThermalConductor mounting(G=mountConductance) "系统级等效 PCDU mounting path" annotation(Placement(transformation(extent={{75,-76},{95,-60}})));
-  Modelica.Mechanics.MultiBody.Parts.Body boardBody(m=mass,r_CM={rcm_X,rcm_Y,rcm_Z},I_11=inertia_XX,I_22=inertia_YY,I_33=inertia_ZZ) annotation(Placement(transformation(extent={{-88,2},{-68,22}})));
-  Modelica.Electrical.Analog.Sensors.VoltageSensor sourceVoltage "原始电源路径电压" annotation(Placement(transformation(origin={-82,64},extent={{-8,-8},{8,8}},rotation=270)));
+    overloadDroop12=overloadDroop12,
+    solarNetDeliveryEfficiency=solarNetDeliveryEfficiency)  "12 V平均值调节与太阳限功率计算实例" annotation(Placement(visible=true, transformation(origin={-100,65}, extent={{-80,-80},{80,80}}, rotation=0)));
+  Foundation.Calculations.PowerDistributionStatusCalculation distributionStatusCalculation  "PDB通道状态派生实例" annotation(Placement(visible=true, transformation(origin={310,-325}, extent={{-22,-22},{22,22}}, rotation=0)));
+  Modelica.Blocks.Sources.Constant zeroCurrent[8](each k=0)  "零值电流" annotation(Placement(visible=true, transformation(origin={530,-365}, extent={{-22,-22},{22,22}}, rotation=0)));
+  Modelica.Thermal.HeatTransfer.Components.HeatCapacitor boardHeat(C=boardHeatCapacity,T(start=initialBoardTemperature,fixed=true)) "系统级 initial PCDU/MPPT board work point" annotation(Placement(visible=true, transformation(origin={-55,-465}, extent={{-30,-30},{30,30}}, rotation=0)));
+  Modelica.Thermal.HeatTransfer.Components.ThermalConductor mounting(G=mountConductance) "系统级等效 PCDU mounting path" annotation(Placement(visible=true, transformation(origin={195,-495}, extent={{-24,-24},{24,24}}, rotation=0)));
+  Modelica.Mechanics.MultiBody.Parts.Body boardBody(m=mass,r_CM={rcm_X,rcm_Y,rcm_Z},I_11=inertia_XX,I_22=inertia_YY,I_33=inertia_ZZ)  "board本体" annotation(Placement(visible=true, transformation(origin={-485,-430}, extent={{-32,-32},{32,32}}, rotation=0)));
+  Modelica.Electrical.Analog.Sensors.VoltageSensor sourceVoltage "原始电源路径电压" annotation(Placement(visible=true, transformation(origin={-455,340}, extent={{-24,-24},{24,24}}, rotation=0)));
   Modelica.Electrical.Analog.Basic.Ground rawSourceReference
-    "原始太阳阵/电池双线域的电位参考；不传输或消耗功率" annotation(Placement(transformation(extent={{-96,30},{-76,50}})));
-  Modelica.Electrical.Analog.Sources.SignalCurrent sourceCurrentSink "按平均功率从太阳阵/电池汇流端取电" annotation(Placement(transformation(extent={{-72,54},{-52,74}})));
+    "原始太阳阵/电池双线域的电位参考；不传输或消耗功率" annotation(Placement(visible=true, transformation(origin={-455,230}, extent={{-22,-22},{22,22}}, rotation=0)));
+  Modelica.Electrical.Analog.Sources.SignalCurrent sourceCurrentSink "按平均功率从太阳阵/电池汇流端取电" annotation(Placement(visible=true, transformation(origin={-325,340}, extent={{-26,-26},{26,26}}, rotation=0)));
   Modelica.Electrical.Analog.Sources.SignalVoltage regulatedVoltageSource
-    "系统级 average 12 V source with finite droop; no fast PI or switching state" annotation(Placement(transformation(extent={{-42,54},{-22,74}})));
+    "系统级 average 12 V source with finite droop; no fast PI or switching state" annotation(Placement(visible=true, transformation(origin={85,355}, extent={{-28,-28},{28,28}}, rotation=0)));
   Modelica.Electrical.Analog.Sensors.CurrentSensor loadBus12Current
-    "Total current delivered into the regulated 12 V load bus, including derived 5/3.3 V loads" annotation(Placement(transformation(extent={{-18,54},{2,74}})));
-  Modelica.Blocks.Interfaces.RealOutput regulatedOutputPower(unit="W") annotation(Placement(transformation(extent={{95,-5},{105,5}}),iconTransformation(extent={{95,-5},{105,5}})));
-  Modelica.Blocks.Interfaces.RealOutput weightedAvailableSolarPower(unit="W") annotation(Placement(transformation(extent={{95,-43},{105,-33}}),iconTransformation(extent={{95,-43},{105,-33}})));
+    "负载总线12电流；Total current delivered into the regulated 12 V load bus, including derived 5/3.3 V loads" annotation(Placement(visible=true, transformation(origin={225,355}, extent={{-24,-24},{24,24}}, rotation=0)));
+  Modelica.Blocks.Interfaces.RealOutput regulatedOutputPower(unit="W")  "regulated输出功率 [W]" annotation(Placement(visible=true, transformation(origin={-150,-290}, extent={{-6,-6},{6,6}}, rotation=0), iconVisible=true, iconTransformation(origin={89,0}, extent={{-6,-6},{6,6}}, rotation=0)));
+  Modelica.Blocks.Interfaces.RealOutput weightedAvailableSolarPower(unit="W")  "weightedAvailableSolar功率 [W]" annotation(Placement(visible=true, transformation(origin={-280,-290}, extent={{-6,-6},{6,6}}, rotation=0), iconVisible=true, iconTransformation(origin={89,-80}, extent={{-6,-6},{6,6}}, rotation=0)));
   Modelica.Blocks.Continuous.FirstOrder sourceVoltageAverage(
     T=30,
     initType=Modelica.Blocks.Types.Init.InitialOutput,
-    y_start=15.92) "实际原始电源端电压的30 s慢变平均" annotation(Placement(transformation(extent={{80,78},{96,94}})));
+    y_start=15.92) "实际原始电源端电压的30 s慢变平均" annotation(Placement(visible=true, transformation(origin={-300,215}, extent={{-28,-28},{28,28}}, rotation=0)));
   Modelica.Blocks.Continuous.FirstOrder loadCurrentAverage(
     T=30,
     initType=Modelica.Blocks.Types.Init.InitialOutput,
-    y_start=2.2) "Slow average excludes device-capacitor inrush from the voltage command" annotation(Placement(transformation(extent={{80,54},{96,70}})));
-  Modelica.Thermal.HeatTransfer.Sources.PrescribedHeatFlow regulatorLoss annotation(Placement(transformation(extent={{75,-96},{95,-76}})));
-  Foundation.Interfaces.RealSignalBridge informationRealBridge[20] annotation(Placement(transformation(extent={{78,20},{86,28}})));
-  Foundation.Interfaces.IntegerSignalBridge informationIntegerBridge[24] annotation(Placement(transformation(extent={{78,0},{86,8}})));
+    y_start=2.2) "负载电流Average；Slow average excludes device-capacitor inrush from the voltage command" annotation(Placement(visible=true, transformation(origin={-80,215}, extent={{-28,-28},{28,28}}, rotation=0)));
+  Modelica.Thermal.HeatTransfer.Sources.PrescribedHeatFlow regulatorLoss  "计算/接口量 regulatorLoss" annotation(Placement(visible=true, transformation(origin={-195,-430}, extent={{-24,-24},{24,24}}, rotation=0)));
+  Foundation.Interfaces.RealSignalBridge informationRealBridge[17]  "实数因果输出到可扩展信息总线的无状态恒等桥实例" annotation(Placement(visible=true, transformation(origin={630,-210}, extent={{-16,-16},{16,16}}, rotation=0)));
+  Foundation.Interfaces.IntegerSignalBridge informationIntegerBridge[24]  "整数因果输出到可扩展信息总线的无状态恒等桥实例" annotation(Placement(visible=true, transformation(origin={630,-345}, extent={{-16,-16},{16,16}}, rotation=0)));
 equation
-  connect(rawSource.p,sourceVoltage.p) annotation(Line(points={{-32,100},{-32,94},{-82,94},{-82,72}},color={0,0,255}));
-  connect(sourceVoltage.n,rawSource.n) annotation(Line(points={{-82,56},{-82,94},{-32,94},{-32,100}},color={0,0,255}));
-  connect(rawSourceReference.p,rawSource.n) annotation(Line(points={{-86,50},{-32,50},{-32,100}},color={0,0,255}));
-  connect(rawSource.p,sourceCurrentSink.p) annotation(Line(points={{-32,100},{-32,94},{-72,94},{-72,64}},color={0,0,255}));
-  connect(sourceCurrentSink.n,rawSource.n) annotation(Line(points={{-52,64},{-52,94},{-32,94},{-32,100}},color={0,0,255}));
-  connect(information.device.batterySOC,batterySOCFromInformation.u) annotation(Line(points={{100,38},{100,45.5},{71.5,45.5},{71.5,87},{58,87}},color={0,0,127}));
-  connect(batterySOCFromInformation.y,powerCalculation.batterySOC) annotation(Line(points={{70,87},{14,87}},color={0,0,127}));
-  connect(information.device.batteryChargeAllowed,batteryChargeAllowedFromInformation.u) annotation(Line(points={{100,38},{100,75},{58,75}},color={255,0,255}));
-  connect(batteryChargeAllowedFromInformation.y,powerCalculation.batteryChargeAllowed) annotation(Line(points={{70,75},{14,75},{14,81.8}},color={255,0,255}));
-  connect(information.device.pdCurrent[22],batteryBranchCurrentFromInformation.u) annotation(Line(points={{100,38},{100,45.5},{71.5,45.5},{71.5,63},{58,63}},color={0,0,127}));
-  connect(batteryBranchCurrentFromInformation.y,powerCalculation.batteryBranchCurrent) annotation(Line(points={{70,63},{14,63},{14,77.3}},color={0,0,127}));
-  connect(information.device.tcState[17],batteryHeaterStateFromInformation[1].u) annotation(Line(points={{100,38},{94,38},{94,51},{58,51}},color={255,127,0}));
-  connect(information.device.tcState[18],batteryHeaterStateFromInformation[2].u) annotation(Line(points={{100,38},{94,38},{94,51},{58,51}},color={255,127,0}));
-  connect(batteryHeaterStateFromInformation.y,powerCalculation.batteryHeaterState) annotation(Line(points={{70,51},{8,51},{8,73},{14,73}},color={255,127,0}));
-  connect(information.device.availableSolarPower,availableSolarPowerFromInformation.u) annotation(Line(points={{100,38},{94,38},{94,39},{74,39}},color={0,0,127}));
-  connect(availableSolarPowerFromInformation.y,powerCalculation.availableSolarPower) annotation(Line(points={{86,39},{71.5,39},{71.5,24.5},{43.5,24.5},{43.5,68.3},{14,68.3}},color={0,0,127}));
-  connect(information.device.pdCurrent,pdCurrentFromInformation.u) annotation(Line(points={{100,38},{100,32.5},{71.5,32.5},{71.5,3},{42,3}},color={0,0,127}));
-  connect(pdCurrentFromInformation.y,distributionStatusCalculation.pdCurrent) annotation(Line(points={{54,3},{29.5,3},{29.5,-74.05},{12,-74.05}},color={0,0,127}));
-  connect(information.device.basebandStatus,equipmentStatusFromInformation[1].u) annotation(Line(points={{100,38},{94,38},{94,15},{58,15}},color={255,127,0}));
-  connect(information.device.transmitterStatus,equipmentStatusFromInformation[2].u) annotation(Line(points={{100,38},{94,38},{94,15},{58,15}},color={255,127,0}));
-  connect(information.device.naviEnhanceStatus,equipmentStatusFromInformation[3].u) annotation(Line(points={{100,38},{94,38},{94,15},{58,15}},color={255,127,0}));
-  connect(information.device.spaceTimeStatus,equipmentStatusFromInformation[4].u) annotation(Line(points={{100,38},{94,38},{94,15},{58,15}},color={255,127,0}));
-  connect(information.device.cameraStatus,equipmentStatusFromInformation[5].u) annotation(Line(points={{100,38},{94,38},{94,15},{58,15}},color={255,127,0}));
-  connect(information.device.cmosStatus,equipmentStatusFromInformation[6].u) annotation(Line(points={{100,38},{94,38},{94,15},{58,15}},color={255,127,0}));
-  connect(equipmentStatusFromInformation.y,distributionStatusCalculation.equipmentStatus) annotation(Line(points={{70,15},{72,15},{72,-81.95},{12,-81.95}},color={255,127,0}));
-  connect(sourceVoltage.v,powerCalculation.sourceVoltage) annotation(Line(points={{-74,64},{-74,52.5},{21.5,52.5},{21.5,56}},color={0,0,127}));
-  connect(voltage12.v,powerCalculation.busVoltage12) annotation(Line(points={{-60,-28},{-60,52.5},{27.5,52.5},{27.5,56}},color={0,0,127}));
-  connect(loadBus12Current.i,powerCalculation.loadBusCurrent) annotation(Line(points={{-8,54},{33.5,54},{33.5,56}},color={0,0,127}));
-  connect(sourceVoltageAverage.y,powerCalculation.sourceVoltageAverage) annotation(Line(points={{96.8,86},{96.8,93.5},{43.5,93.5},{43.5,65.6},{14,65.6}},color={0,0,127}));
-  connect(loadCurrentAverage.y,powerCalculation.loadCurrentAverage) annotation(Line(points={{96.8,62},{71.5,62},{71.5,93.5},{43.5,93.5},{43.5,61.1},{14,61.1}},color={0,0,127}));
-  connect(powerCalculation.sourceCurrentCommand,sourceCurrentSink.i) annotation(Line(points={{44,78},{50,78},{50,52},{-62,52}},color={0,0,127}));
-  connect(regulatedVoltageSource.n,regulatedPower.n12) annotation(Line(points={{-42,64},{-19.5,64},{-19.5,100},{32,100}},color={0,0,255}));
-  connect(regulatedVoltageSource.p,loadBus12Current.p) annotation(Line(points={{-22,64},{-18,64}},color={0,0,255}));
-  connect(loadBus12Current.n,regulatedPower.p12) annotation(Line(points={{2,64},{2,94},{32,94},{32,100}},color={0,0,255}));
-  connect(powerCalculation.regulatedVoltageCommand,regulatedVoltageSource.v) annotation(Line(points={{44,82},{44,52},{-32,52}},color={0,0,127}));
-  connect(powerCalculation.loadCurrentMeasurement,loadCurrentAverage.u) annotation(Line(points={{44,88},{44,93.5},{78.4,93.5},{78.4,62}},color={0,0,127}));
-  connect(sourceVoltage.v,sourceVoltageAverage.u) annotation(Line(points={{-74,64},{-74,52.5},{56.5,52.5},{56.5,93.5},{78.4,93.5},{78.4,86}},color={0,0,127}));
-  connect(sourceVoltageAverage.y,informationRealBridge[1].u) annotation(Line(points={{96.8,86},{72.5,86},{72.5,24},{78,24}},color={0,0,127}));
-  connect(informationRealBridge[1].y,information.device.rawSourceBusVoltageAverage) annotation(Line(points={{86,24},{94,24},{94,38},{100,38}},color={0,0,127}));
-  connect(powerCalculation.solarCurtailmentCommand,informationRealBridge[2].u) annotation(Line(points={{44,74.5},{44,24},{78,24}},color={0,0,127}));
-  connect(informationRealBridge[2].y,information.device.solarCurtailmentFactor) annotation(Line(points={{86,24},{94,24},{94,38},{100,38}},color={0,0,127}));
-  connect(regulatedPower.p12,converter5.p1) annotation(Line(points={{32,100},{12.5,100},{12.5,49.5},{-58,49.5},{-58,40.5}},color={0,0,255}));
-  connect(regulatedPower.n12,converter5.n1) annotation(Line(points={{32,100},{12.5,100},{12.5,49.5},{-58,49.5},{-58,25.5}},color={0,0,255}));
-  connect(regulatedPower.p12,converter3V3.p1) annotation(Line(points={{32,100},{32,94},{12,94},{12,40.5}},color={0,0,255}));
-  connect(regulatedPower.n12,converter3V3.n1) annotation(Line(points={{32,100},{32,94},{12,94},{12,25.5}},color={0,0,255}));
-  connect(converter5.p2,current5.p) annotation(Line(points={{-28,40.5},{-28,36},{-20,36}},color={0,0,255}));
-  connect(current5.n,regulatedPower.p5) annotation(Line(points={{0,36},{10.5,36},{10.5,100},{32,100}},color={0,0,255}));
-  connect(converter5.n2,regulatedPower.n5) annotation(Line(points={{-28,25.5},{-28,88.5},{12.5,88.5},{12.5,100},{32,100}},color={0,0,255}));
-  connect(converter3V3.p2,current3V3.p) annotation(Line(points={{42,40.5},{42,36},{50,36}},color={0,0,255}));
-  connect(current3V3.n,regulatedPower.p33) annotation(Line(points={{70,36},{70,94},{32,94},{32,100}},color={0,0,255}));
-  connect(converter3V3.n2,regulatedPower.n33) annotation(Line(points={{42,25.5},{45.5,25.5},{45.5,100},{32,100}},color={0,0,255}));
-  connect(voltage12.p,regulatedPower.p12) annotation(Line(points={{-68,-20},{-68,0.5},{10.5,0.5},{10.5,100},{32,100}},color={0,0,255}));
-  connect(voltage12.n,regulatedPower.n12) annotation(Line(points={{-68,-36},{-68,0.5},{10.5,0.5},{10.5,100},{32,100}},color={0,0,255}));
-  connect(voltage5.p,regulatedPower.p5) annotation(Line(points={{-28,-20},{10.5,-20},{10.5,100},{32,100}},color={0,0,255}));
-  connect(voltage5.n,regulatedPower.n5) annotation(Line(points={{-28,-36},{10.5,-36},{10.5,100},{32,100}},color={0,0,255}));
-  connect(voltage3V3.p,regulatedPower.p33) annotation(Line(points={{20,-20},{10.5,-20},{10.5,100},{32,100}},color={0,0,255}));
-  connect(voltage3V3.n,regulatedPower.n33) annotation(Line(points={{20,-36},{10.5,-36},{10.5,100},{32,100}},color={0,0,255}));
-  connect(voltage12.v,informationRealBridge[3].u) annotation(Line(points={{-60,-28},{-60,-3.5},{76.5,-3.5},{76.5,24},{78,24}},color={0,0,127}));
-  connect(informationRealBridge[3].y,information.device.busVoltage[1]) annotation(Line(points={{86,24},{94,24},{94,38},{100,38}},color={0,0,127}));
-  connect(voltage5.v,informationRealBridge[4].u) annotation(Line(points={{-20,-28},{-20,-3.5},{76.5,-3.5},{76.5,24},{78,24}},color={0,0,127}));
-  connect(informationRealBridge[4].y,information.device.busVoltage[2]) annotation(Line(points={{86,24},{94,24},{94,38},{100,38}},color={0,0,127}));
-  connect(voltage3V3.v,informationRealBridge[5].u) annotation(Line(points={{28,-28},{78,-28},{78,24}},color={0,0,127}));
-  connect(informationRealBridge[5].y,information.device.busVoltage[3]) annotation(Line(points={{86,24},{94,24},{94,38},{100,38}},color={0,0,127}));
-  connect(distributionStatusCalculation.pdState[1],informationIntegerBridge[1].u) annotation(Line(points={{-71,-78},{-71,-59.5},{43.5,-59.5},{43.5,-3.5},{78,-3.5},{78,4}},color={255,127,0}));
-  connect(informationIntegerBridge[1].y,information.device.pdState[1]) annotation(Line(points={{86,4},{94,4},{94,38},{100,38}},color={255,127,0}));
-  connect(distributionStatusCalculation.pdState[2],informationIntegerBridge[2].u) annotation(Line(points={{-71,-78},{-71,-59.5},{43.5,-59.5},{43.5,-3.5},{78,-3.5},{78,4}},color={255,127,0}));
-  connect(informationIntegerBridge[2].y,information.device.pdState[2]) annotation(Line(points={{86,4},{94,4},{94,38},{100,38}},color={255,127,0}));
-  connect(distributionStatusCalculation.pdState[3],informationIntegerBridge[3].u) annotation(Line(points={{-71,-78},{-71,-59.5},{43.5,-59.5},{43.5,-3.5},{78,-3.5},{78,4}},color={255,127,0}));
-  connect(informationIntegerBridge[3].y,information.device.pdState[3]) annotation(Line(points={{86,4},{94,4},{94,38},{100,38}},color={255,127,0}));
-  connect(distributionStatusCalculation.pdState[4],informationIntegerBridge[4].u) annotation(Line(points={{-71,-78},{-71,-59.5},{43.5,-59.5},{43.5,-3.5},{78,-3.5},{78,4}},color={255,127,0}));
-  connect(informationIntegerBridge[4].y,information.device.pdState[4]) annotation(Line(points={{86,4},{94,4},{94,38},{100,38}},color={255,127,0}));
-  connect(distributionStatusCalculation.pdState[5],informationIntegerBridge[5].u) annotation(Line(points={{-71,-78},{-71,-59.5},{43.5,-59.5},{43.5,-3.5},{78,-3.5},{78,4}},color={255,127,0}));
-  connect(informationIntegerBridge[5].y,information.device.pdState[5]) annotation(Line(points={{86,4},{94,4},{94,38},{100,38}},color={255,127,0}));
-  connect(distributionStatusCalculation.pdState[6],informationIntegerBridge[6].u) annotation(Line(points={{-71,-78},{-71,-59.5},{43.5,-59.5},{43.5,-3.5},{78,-3.5},{78,4}},color={255,127,0}));
-  connect(informationIntegerBridge[6].y,information.device.pdState[6]) annotation(Line(points={{86,4},{94,4},{94,38},{100,38}},color={255,127,0}));
-  connect(distributionStatusCalculation.pdState[7],informationIntegerBridge[7].u) annotation(Line(points={{-71,-78},{-71,-59.5},{43.5,-59.5},{43.5,-3.5},{78,-3.5},{78,4}},color={255,127,0}));
-  connect(informationIntegerBridge[7].y,information.device.pdState[7]) annotation(Line(points={{86,4},{94,4},{94,38},{100,38}},color={255,127,0}));
-  connect(distributionStatusCalculation.pdState[8],informationIntegerBridge[8].u) annotation(Line(points={{-71,-78},{-71,-59.5},{43.5,-59.5},{43.5,-3.5},{78,-3.5},{78,4}},color={255,127,0}));
-  connect(informationIntegerBridge[8].y,information.device.pdState[8]) annotation(Line(points={{86,4},{94,4},{94,38},{100,38}},color={255,127,0}));
-  connect(distributionStatusCalculation.pdState[9],informationIntegerBridge[9].u) annotation(Line(points={{-71,-78},{-71,-59.5},{43.5,-59.5},{43.5,-3.5},{78,-3.5},{78,4}},color={255,127,0}));
-  connect(informationIntegerBridge[9].y,information.device.pdState[9]) annotation(Line(points={{86,4},{94,4},{94,38},{100,38}},color={255,127,0}));
-  connect(distributionStatusCalculation.pdState[10],informationIntegerBridge[10].u) annotation(Line(points={{-71,-78},{-71,-59.5},{43.5,-59.5},{43.5,-3.5},{78,-3.5},{78,4}},color={255,127,0}));
-  connect(informationIntegerBridge[10].y,information.device.pdState[10]) annotation(Line(points={{86,4},{94,4},{94,38},{100,38}},color={255,127,0}));
-  connect(distributionStatusCalculation.pdState[11],informationIntegerBridge[11].u) annotation(Line(points={{-71,-78},{-71,-59.5},{43.5,-59.5},{43.5,-3.5},{78,-3.5},{78,4}},color={255,127,0}));
-  connect(informationIntegerBridge[11].y,information.device.pdState[11]) annotation(Line(points={{86,4},{94,4},{94,38},{100,38}},color={255,127,0}));
-  connect(distributionStatusCalculation.pdState[12],informationIntegerBridge[12].u) annotation(Line(points={{-71,-78},{-71,-59.5},{43.5,-59.5},{43.5,-3.5},{78,-3.5},{78,4}},color={255,127,0}));
-  connect(informationIntegerBridge[12].y,information.device.pdState[12]) annotation(Line(points={{86,4},{94,4},{94,38},{100,38}},color={255,127,0}));
-  connect(distributionStatusCalculation.pdState[13],informationIntegerBridge[13].u) annotation(Line(points={{-71,-78},{-71,-59.5},{43.5,-59.5},{43.5,-3.5},{78,-3.5},{78,4}},color={255,127,0}));
-  connect(informationIntegerBridge[13].y,information.device.pdState[13]) annotation(Line(points={{86,4},{94,4},{94,38},{100,38}},color={255,127,0}));
-  connect(distributionStatusCalculation.pdState[14],informationIntegerBridge[14].u) annotation(Line(points={{-71,-78},{-71,-59.5},{43.5,-59.5},{43.5,-3.5},{78,-3.5},{78,4}},color={255,127,0}));
-  connect(informationIntegerBridge[14].y,information.device.pdState[14]) annotation(Line(points={{86,4},{94,4},{94,38},{100,38}},color={255,127,0}));
-  connect(distributionStatusCalculation.pdState[15],informationIntegerBridge[15].u) annotation(Line(points={{-71,-78},{-71,-59.5},{43.5,-59.5},{43.5,-3.5},{78,-3.5},{78,4}},color={255,127,0}));
-  connect(informationIntegerBridge[15].y,information.device.pdState[15]) annotation(Line(points={{86,4},{94,4},{94,38},{100,38}},color={255,127,0}));
-  connect(distributionStatusCalculation.pdState[16],informationIntegerBridge[16].u) annotation(Line(points={{-71,-78},{-71,-59.5},{43.5,-59.5},{43.5,-3.5},{78,-3.5},{78,4}},color={255,127,0}));
-  connect(informationIntegerBridge[16].y,information.device.pdState[16]) annotation(Line(points={{86,4},{94,4},{94,38},{100,38}},color={255,127,0}));
-  connect(distributionStatusCalculation.pdState[17],informationIntegerBridge[17].u) annotation(Line(points={{-71,-78},{-71,-59.5},{43.5,-59.5},{43.5,-3.5},{78,-3.5},{78,4}},color={255,127,0}));
-  connect(informationIntegerBridge[17].y,information.device.pdState[17]) annotation(Line(points={{86,4},{94,4},{94,38},{100,38}},color={255,127,0}));
-  connect(distributionStatusCalculation.pdState[18],informationIntegerBridge[18].u) annotation(Line(points={{-71,-78},{-71,-59.5},{43.5,-59.5},{43.5,-3.5},{78,-3.5},{78,4}},color={255,127,0}));
-  connect(informationIntegerBridge[18].y,information.device.pdState[18]) annotation(Line(points={{86,4},{94,4},{94,38},{100,38}},color={255,127,0}));
-  connect(distributionStatusCalculation.pdState[19],informationIntegerBridge[19].u) annotation(Line(points={{-71,-78},{-71,-59.5},{43.5,-59.5},{43.5,-3.5},{78,-3.5},{78,4}},color={255,127,0}));
-  connect(informationIntegerBridge[19].y,information.device.pdState[19]) annotation(Line(points={{86,4},{94,4},{94,38},{100,38}},color={255,127,0}));
-  connect(distributionStatusCalculation.pdState[20],informationIntegerBridge[20].u) annotation(Line(points={{-71,-78},{-71,-59.5},{43.5,-59.5},{43.5,-3.5},{78,-3.5},{78,4}},color={255,127,0}));
-  connect(informationIntegerBridge[20].y,information.device.pdState[20]) annotation(Line(points={{86,4},{94,4},{94,38},{100,38}},color={255,127,0}));
-  connect(distributionStatusCalculation.pdState[21],informationIntegerBridge[21].u) annotation(Line(points={{-71,-78},{-71,-59.5},{43.5,-59.5},{43.5,-3.5},{78,-3.5},{78,4}},color={255,127,0}));
-  connect(informationIntegerBridge[21].y,information.device.pdState[21]) annotation(Line(points={{86,4},{94,4},{94,38},{100,38}},color={255,127,0}));
-  connect(distributionStatusCalculation.pdState[22],informationIntegerBridge[22].u) annotation(Line(points={{-71,-78},{-71,-59.5},{43.5,-59.5},{43.5,-3.5},{78,-3.5},{78,4}},color={255,127,0}));
-  connect(informationIntegerBridge[22].y,information.device.pdState[22]) annotation(Line(points={{86,4},{94,4},{94,38},{100,38}},color={255,127,0}));
-  connect(distributionStatusCalculation.pdState[23],informationIntegerBridge[23].u) annotation(Line(points={{-71,-78},{-71,-59.5},{43.5,-59.5},{43.5,-3.5},{78,-3.5},{78,4}},color={255,127,0}));
-  connect(informationIntegerBridge[23].y,information.device.pdState[23]) annotation(Line(points={{86,4},{94,4},{94,38},{100,38}},color={255,127,0}));
-  connect(distributionStatusCalculation.pdState[24],informationIntegerBridge[24].u) annotation(Line(points={{-71,-78},{-71,-59.5},{43.5,-59.5},{43.5,-3.5},{78,-3.5},{78,4}},color={255,127,0}));
-  connect(informationIntegerBridge[24].y,information.device.pdState[24]) annotation(Line(points={{86,4},{94,4},{94,38},{100,38}},color={255,127,0}));
-  connect(current5.i,informationRealBridge[6].u) annotation(Line(points={{-10,26},{-10,16.5},{56.5,16.5},{56.5,24},{78,24}},color={0,0,127}));
-  connect(informationRealBridge[6].y,information.device.busCurrent[2]) annotation(Line(points={{86,24},{94,24},{94,38},{100,38}},color={0,0,127}));
-  connect(current3V3.i,informationRealBridge[7].u) annotation(Line(points={{60,26},{78,26},{78,24}},color={0,0,127}));
-  connect(informationRealBridge[7].y,information.device.busCurrent[3]) annotation(Line(points={{86,24},{94,24},{94,38},{100,38}},color={0,0,127}));
-  connect(regulatedPower.p12,pcduHousekeepingCurrent.p) annotation(Line(points={{32,100},{10.5,100},{10.5,-18.5},{-90,-18.5},{-90,-48}},color={0,0,255}));
-  connect(pcduHousekeepingCurrent.n,pcdHousekeeping12.p) annotation(Line(points={{-70,-48},{-62,-48}},color={0,0,255}));
-  connect(pcdHousekeeping12.n,regulatedPower.n12) annotation(Line(points={{-42,-48},{10.5,-48},{10.5,100},{32,100}},color={0,0,255}));
-  connect(loadBus12Current.i,informationRealBridge[8].u) annotation(Line(points={{-8,54},{48.5,54},{48.5,24},{78,24}},color={0,0,127}));
-  connect(informationRealBridge[8].y,information.device.busCurrent[1]) annotation(Line(points={{86,24},{94,24},{94,38},{100,38}},color={0,0,127}));
-  connect(pcdHousekeeping12.heatPort,boardHeat.port) annotation(Line(points={{-52,-58},{55,-58},{55,-78}},color={191,0,0}));
-  connect(converter5.heatPort,boardHeat.port) annotation(Line(points={{-43,18},{-43,-18.5},{55,-18.5},{55,-78}},color={191,0,0}));
-  connect(converter3V3.heatPort,boardHeat.port) annotation(Line(points={{27,18},{40.5,18},{40.5,-78},{55,-78}},color={191,0,0}));
-  connect(powerCalculation.regulatorLossPower,regulatorLoss.Q_flow) annotation(Line(points={{44,78},{44,21.5},{73.5,21.5},{73.5,-86},{75,-86}},color={0,0,127}));
-  connect(powerCalculation.regulatedOutputPower,regulatedOutputPower) annotation(Line(points={{44,65.5},{44,21.5},{76.5,21.5},{76.5,9.5},{100,9.5},{100,0}},color={0,0,127}));
-  connect(powerCalculation.weightedAvailableSolarPower,weightedAvailableSolarPower) annotation(Line(points={{44,58.3},{44,21.5},{76.5,21.5},{76.5,-38},{100,-38}},color={0,0,127}));
-  connect(regulatorLoss.port,boardHeat.port) annotation(Line(points={{95,-86},{95,-78},{55,-78}},color={191,0,0}));
-  connect(powerCalculation.chargerVoltage[1],informationRealBridge[9].u) annotation(Line(points={{44,70.9},{44,24},{78,24}},color={0,0,127}));
-  connect(informationRealBridge[9].y,information.device.chargerVoltage[1]) annotation(Line(points={{86,24},{94,24},{94,38},{100,38}},color={0,0,127}));
-  connect(powerCalculation.chargerVoltage[2],informationRealBridge[10].u) annotation(Line(points={{44,70.9},{44,24},{78,24}},color={0,0,127}));
-  connect(informationRealBridge[10].y,information.device.chargerVoltage[2]) annotation(Line(points={{86,24},{94,24},{94,38},{100,38}},color={0,0,127}));
-  connect(powerCalculation.chargerCurrent[1],informationRealBridge[11].u) annotation(Line(points={{44,67.3},{44,24},{78,24}},color={0,0,127}));
-  connect(informationRealBridge[11].y,information.device.chargerCurrent[1]) annotation(Line(points={{86,24},{94,24},{94,38},{100,38}},color={0,0,127}));
-  connect(powerCalculation.chargerCurrent[2],informationRealBridge[12].u) annotation(Line(points={{44,67.3},{44,24},{78,24}},color={0,0,127}));
-  connect(informationRealBridge[12].y,information.device.chargerCurrent[2]) annotation(Line(points={{86,24},{94,24},{94,38},{100,38}},color={0,0,127}));
-  connect(zeroCurrent[1].y,informationRealBridge[13].u) annotation(Line(points={{-41,-80},{10.5,-80},{10.5,-3.5},{76.5,-3.5},{76.5,24},{78,24}},color={0,0,127}));
-  connect(informationRealBridge[13].y,information.device.pdCurrent[6]) annotation(Line(points={{86,24},{94,24},{94,38},{100,38}},color={0,0,127}));
-  connect(zeroCurrent[2].y,informationRealBridge[14].u) annotation(Line(points={{-41,-80},{10.5,-80},{10.5,-3.5},{76.5,-3.5},{76.5,24},{78,24}},color={0,0,127}));
-  connect(informationRealBridge[14].y,information.device.pdCurrent[7]) annotation(Line(points={{86,24},{94,24},{94,38},{100,38}},color={0,0,127}));
-  connect(zeroCurrent[3].y,informationRealBridge[15].u) annotation(Line(points={{-41,-80},{10.5,-80},{10.5,-3.5},{76.5,-3.5},{76.5,24},{78,24}},color={0,0,127}));
-  connect(informationRealBridge[15].y,information.device.pdCurrent[9]) annotation(Line(points={{86,24},{94,24},{94,38},{100,38}},color={0,0,127}));
-  connect(zeroCurrent[4].y,informationRealBridge[16].u) annotation(Line(points={{-41,-80},{10.5,-80},{10.5,-3.5},{76.5,-3.5},{76.5,24},{78,24}},color={0,0,127}));
-  connect(informationRealBridge[16].y,information.device.pdCurrent[10]) annotation(Line(points={{86,24},{94,24},{94,38},{100,38}},color={0,0,127}));
-  connect(zeroCurrent[5].y,informationRealBridge[17].u) annotation(Line(points={{-41,-80},{10.5,-80},{10.5,-3.5},{76.5,-3.5},{76.5,24},{78,24}},color={0,0,127}));
-  connect(informationRealBridge[17].y,information.device.pdCurrent[11]) annotation(Line(points={{86,24},{94,24},{94,38},{100,38}},color={0,0,127}));
-  connect(zeroCurrent[6].y,informationRealBridge[18].u) annotation(Line(points={{-41,-80},{10.5,-80},{10.5,-3.5},{76.5,-3.5},{76.5,24},{78,24}},color={0,0,127}));
-  connect(informationRealBridge[18].y,information.device.pdCurrent[18]) annotation(Line(points={{86,24},{94,24},{94,38},{100,38}},color={0,0,127}));
-  connect(zeroCurrent[7].y,informationRealBridge[19].u) annotation(Line(points={{-41,-80},{10.5,-80},{10.5,-3.5},{76.5,-3.5},{76.5,24},{78,24}},color={0,0,127}));
-  connect(informationRealBridge[19].y,information.device.pdCurrent[23]) annotation(Line(points={{86,24},{94,24},{94,38},{100,38}},color={0,0,127}));
-  connect(zeroCurrent[8].y,informationRealBridge[20].u) annotation(Line(points={{-41,-80},{10.5,-80},{10.5,-3.5},{76.5,-3.5},{76.5,24},{78,24}},color={0,0,127}));
-  connect(informationRealBridge[20].y,information.device.pdCurrent[24]) annotation(Line(points={{86,24},{94,24},{94,38},{100,38}},color={0,0,127}));
-  connect(boardHeat.port,mounting.port_a) annotation(Line(points={{55,-78},{55,-68},{75,-68}},color={191,0,0}));
-  connect(mounting.port_b,thermal) annotation(Line(points={{95,-68},{66.5,-68},{66.5,-100},{0,-100}},color={191,0,0}));
-  connect(boardBody.frame_a,mechanical) annotation(Line(points={{-88,12},{-94,12},{-94,0},{-100,0}},color={95,95,95},thickness=0.5));
-  annotation(
-    Icon(
-      coordinateSystem(extent={{-100,-100},{100,100}},preserveAspectRatio=true),
-      graphics={
-        Rectangle(extent={{-100,100},{100,-100}},lineColor={35,85,150},
-          fillColor={240,246,253},fillPattern=FillPattern.Solid),
-
-        Rectangle(extent={{-80,48},{-48,-8}},lineColor={50,95,155},
-          fillColor={209,224,244},fillPattern=FillPattern.Solid),
-        Text(extent={{-77,37},{-51,5}},textString="12",
-          lineColor={35,85,150}),
-
-        Polygon(points={{-42,20},{-28,32},{-28,25},{-8,25},{-8,15},
-          {-28,15},{-28,8},{-42,20}},lineColor={35,85,150},
-          fillColor={70,125,190},fillPattern=FillPattern.Solid),
-
-        Rectangle(extent={{-2,48},{30,4}},lineColor={35,85,150},
-          fillColor={224,235,249},fillPattern=FillPattern.Solid),
-        Text(extent={{1,37},{27,10}},textString="5 V",
-          lineColor={35,85,150}),
-
-        Rectangle(extent={{42,48},{78,4}},lineColor={35,85,150},
-          fillColor={224,235,249},fillPattern=FillPattern.Solid),
-        Text(extent={{44,37},{76,10}},textString="3.3 V",
-          lineColor={35,85,150}),
-
-        Line(points={{-65,-16},{-65,-42},{65,-42},{65,-16}},
-          color={35,85,150},thickness=0.8),
-        Ellipse(extent={{-72,-25},{-58,-39}},lineColor={35,85,150},
-          fillColor={244,249,255},fillPattern=FillPattern.Solid),
-        Ellipse(extent={{-8,-25},{6,-39}},lineColor={35,85,150},
-          fillColor={244,249,255},fillPattern=FillPattern.Solid),
-        Ellipse(extent={{58,-25},{72,-39}},lineColor={35,85,150},
-          fillColor={244,249,255},fillPattern=FillPattern.Solid),
-
-        Line(points={{-16,62},{16,62}},color={190,110,45},thickness=1),
-        Polygon(points={{16,62},{7,68},{7,56},{16,62}},
-          lineColor={190,110,45},fillColor={220,145,60},
-          fillPattern=FillPattern.Solid),
-        Ellipse(extent={{-3,48},{27,78}},startAngle=200,endAngle=340,
-          closure=EllipseClosure.None,lineColor={190,110,45},lineThickness=0.8),
-
-        Text(extent={{-90,-78},{90,-58}},textString="PCDU / MPPT",
-          lineColor={35,85,150})
-      }),
-    Diagram(coordinateSystem(extent={{-110,-110},{110,110}},
-preserveAspectRatio=true,
-grid={2,2}),graphics = {Rectangle(extent={{-100,100},{100,-100}},lineColor={205,205,205},pattern=LinePattern.Dot),Rectangle(origin={-7,30},
-lineColor={155,185,220},
-fillColor={250,252,255},
-fillPattern=FillPattern.Solid,
-extent={{-85,20},{85,-20}}), Rectangle(origin={0,75},
-lineColor={155,185,220},
-fillColor={248,251,255},
-fillPattern=FillPattern.Solid,
-extent={{-96,23},{96,-23}}), Text(origin={0,93.5},
-lineColor={35,85,150},
-extent={{-94,3.5},{94,-3.5}},
-textString="RAW 12 V INPUT & CONTINUOUS AVERAGE REGULATION",
-textColor={35,85,150}), Text(origin={1,55},
-lineColor={105,105,105},
-extent={{-93,3},{93,-3}},
-textString="Voltage/load feedback → 30 s averages → algebraic regulation → source/load commands",
-textColor={105,105,105}), Text(origin={-7,45.5},
-lineColor={35,85,150},
-extent={{-83,3.5},{83,-3.5}},
-textString="AVERAGE CONVERSION / REGULATION & CURRENT SENSING",
-textColor={35,85,150}), Rectangle(origin={-27,-55},
-lineColor={155,195,175},
-fillColor={249,253,250},
-fillPattern=FillPattern.Solid,
-extent={{-69,37},{69,-37}}), Text(origin={-27,-22.5},
-lineColor={45,115,80},
-extent={{-67,3.5},{67,-3.5}},
-textString="BUS MONITORING / PDB & CHARGER TELEMETRY",
-textColor={45,115,80}), Rectangle(origin={70,-79},
-lineColor={225,175,145},
-fillColor={255,250,247},
-fillPattern=FillPattern.Solid,
-extent={{-30,25},{30,-25}}), Text(origin={70,-58.5},
-lineColor={170,75,45},
-extent={{-28,3.5},{28,-3.5}},
-textString="LOSS & THERMAL REJECTION",
-textColor={170,75,45}), Text(origin={0,102.5},
-lineColor={95,95,95},
-extent={{-22,3.5},{22,-3.5}},
-textString="STRUCTURAL BOARD",
-textColor={95,95,95}), Text(origin={87,2.5},
-lineColor={0,90,180},
-extent={{-19,3.5},{19,-3.5}},
-textString="STATUS / TELEMETRY",
-textColor={0,90,180}), Text(origin={76,-102},
-lineColor={170,45,35},
-extent={{-29,-3},{29,3}},
-textString="SPACECRAFT THERMAL NETWORK",
-textColor={170,45,35})}),
-    Documentation(info="<html><h4>用途与系统角色</h4><p>构造连续平均值12 V电源路径以及12/5/3.3 V母线、电压变换、动态配电状态和电源工程量。</p><h4>白箱信号路径</h4><p>电池SOC、充电许可、支路电流、太阳阵功率、加热器与设备状态先经过显式Real/Boolean/Integer SignalReader，再分别进入PowerConditioningCalculation和PowerDistributionStatusCalculation。Calculation集中完成稳压、功率守恒、损耗和配电状态代数计算；父组件只保留标准电气、热、机械元件及connect连线。</p><h4>稳压与功率路径</h4><p><b>rawSource</b>是太阳阵与电池共享的未稳压双线输入；<b>regulatedPower</b>是唯一对外受控12/5/3.3 V负载母线。12 V侧采用线路调整率、负载droop、欠压降额与平滑限流的连续平均值电源，源侧按Pin=Pout/eta换算且损耗进入热节点。</p><h4>电流语义</h4><p>loadBus12Current位于regulatedVoltageSource与regulatedPower.p12之间，busCurrent[1]是受控12 V负载母线总输出。</p><h4>接口与电源路径</h4><p>rawSource接收三个体装太阳电池阵与电池形成的未稳压双线电源，regulatedPower向八个分系统提供受控12/5/3.3 V母线，information读取SOC、充电许可、支路电流和设备状态并发布母线、MPPT、Charger与PDB工程量，thermal和mechanical描述PCDU板的热耗散与安装属性。</p><h4>内部组成与稳压逻辑</h4><p>Real/Boolean/Integer SignalReader只完成共享总线到因果计算端口的恒等交付。PowerConditioningCalculation按负载需求、效率、输入电压、限流、限功率和有限输出阻抗生成12 V平均值电压指令及源侧电流；SignalVoltage与SignalCurrent把该命令落到电气网络。5 V和3.3 V由低阶平均值支路派生，调节损耗进入boardHeat。</p><h4>MPPT、Charger与符号</h4><p>availableSolarPower[1:3]分别对应+X、+Y、-X面。chargerCurrent来自电池公共支路电流并按统一充电正方向形成两路等效通道，不由无关负载电流拼接。solarCurtailmentCommand只在充电受限或源功率过剩时降低太阳阵供给；日影或太阳不足时电池自然补充原始母线。</p><h4>结果查看与参数使用</h4><p>优先查看sourceVoltage.v、loadBus12Current.i、regulatedVoltageCommand、sourceCurrentCommand、regulatorLossPower、chargerCurrent和information.device.busVoltage/busCurrent。outputResistance12控制正常压降，overloadDroop12仅处理超限区；maximumInputCurrent、maximumOutputCurrent和maximumOutputPower用于物理约束，不能用理想恒压或超大电容替代。</p><h4>建模边界</h4><p>这是连续低阶平均值稳压与功率路径模型，不包含PWM、MOSFET、电感开关纹波、芯片环路补偿和EMI动态。适用于24 h任务能量、母线小幅波动、充放电切换和热损耗解释。</p></html>"));
+  connect(rawSource.p,sourceVoltage.p) annotation(Line(points={{-590,370},{-590,340},{-479,340}}, color={0,0,255}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(sourceVoltage.n,rawSource.n) annotation(Line(points={{-431,340},{-421,340},{-421,370},{-590,370}}, color={0,0,255}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(rawSourceReference.p,rawSource.n) annotation(Line(points={{-455,252},{-455,262},{-590,262},{-590,370}}, color={0,0,255}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(rawSource.p,sourceCurrentSink.p) annotation(Line(points={{-590,370},{-361,370},{-361,340},{-351,340}}, color={0,0,255}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(sourceCurrentSink.n,rawSource.n) annotation(Line(points={{-299,340},{-289,340},{-289,370},{-590,370}}, color={0,0,255}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(information.device.batterySOC,batterySOCFromInformation.u) annotation(Line(points={{780,-90},{780,-107.08},{-522.38,-107.08},{-522.38,75},{-489.24,75}}, color={0,0,127}, thickness=0.35, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(batterySOCFromInformation.y,powerCalculation.batterySOC) annotation(Line(points={{-460.76,75},{-181.2,75},{-181.2,129},{-171.2,129}}, color={0,0,127}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(information.device.batteryChargeAllowed,batteryChargeAllowedFromInformation.u) annotation(Line(points={{780,-90},{780,-107.08},{-522.38,-107.08},{-522.38,-55},{-489.24,-55}}, color={255,0,255}, thickness=0.35, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(batteryChargeAllowedFromInformation.y,powerCalculation.batteryChargeAllowed) annotation(Line(points={{-460.76,-55},{-181.2,-55},{-181.2,114.77778},{-171.2,114.77778}}, color={255,0,255}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(information.device.tcCurrent[17:18],batteryHeaterCurrentFromInformation.u) annotation(Line(points={{780,-90},{780,-121},{-522.38,-121},{-522.38,-185},{-489.24,-185}}, color={0,0,127}, thickness=0.35, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(batteryHeaterCurrentFromInformation.y,powerCalculation.batteryHeaterCurrent) annotation(Line(points={{-460.76,-185},{-427.62,-185},{-427.62,-121},{-181.2,-121},{-181.2,86.33334},{-171.2,86.33334}}, color={0,0,127}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(information.device.availableSolarPower,availableSolarPowerFromInformation.u) annotation(Line(points={{780,-90},{780,-121},{-352.38,-121},{-352.38,-165},{-319.24,-165}}, color={0,0,127}, thickness=0.35, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(availableSolarPowerFromInformation.y,powerCalculation.availableSolarPower) annotation(Line(points={{-290.76,-165},{-181.2,-165},{-181.2,72.11111},{-171.2,72.11111}}, color={0,0,127}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(information.device.pdCurrent,pdCurrentFromInformation.u) annotation(Line(points={{780,-90},{780,-464},{52.62,-464},{52.62,-285},{85.76,-285}}, color={0,0,127}, thickness=0.35, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(pdCurrentFromInformation.y,distributionStatusCalculation.pdCurrent) annotation(Line(points={{114.24,-285},{239.48,-285},{239.48,-270.6},{249.48,-270.6}}, color={0,0,127}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(information.device.basebandStatus,equipmentStatusFromInformation[1].u) annotation(Line(points={{780,-90},{780,-464},{52.62,-464},{52.62,-420},{85.76,-420}}, color={255,127,0}, thickness=0.35, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(information.device.transmitterStatus,equipmentStatusFromInformation[2].u) annotation(Line(points={{780,-90},{780,-464},{52.62,-464},{52.62,-420},{85.76,-420}}, color={255,127,0}, thickness=0.35, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(information.device.naviEnhanceStatus,equipmentStatusFromInformation[3].u) annotation(Line(points={{780,-90},{780,-464},{52.62,-464},{52.62,-420},{85.76,-420}}, color={255,127,0}, thickness=0.35, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(information.device.spaceTimeStatus,equipmentStatusFromInformation[4].u) annotation(Line(points={{780,-90},{780,-464},{52.62,-464},{52.62,-420},{85.76,-420}}, color={255,127,0}, thickness=0.35, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(information.device.cameraStatus,equipmentStatusFromInformation[5].u) annotation(Line(points={{780,-90},{780,-464},{52.62,-464},{52.62,-420},{85.76,-420}}, color={255,127,0}, thickness=0.35, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(information.device.cmosStatus,equipmentStatusFromInformation[6].u) annotation(Line(points={{780,-90},{780,-464},{52.62,-464},{52.62,-420},{85.76,-420}}, color={255,127,0}, thickness=0.35, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(equipmentStatusFromInformation.y,distributionStatusCalculation.equipmentStatus) annotation(Line(points={{114.24,-420},{239.48,-420},{239.48,-342.6},{290.42,-342.6}}, color={255,127,0}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(sourceVoltage.v,powerCalculation.sourceVoltage) annotation(Line(points={{-455,313.6},{-455,303.6},{-181.2,303.6},{-181.2,29.44445},{-171.2,29.44445}}, color={0,0,127}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(voltage12.v,powerCalculation.busVoltage12) annotation(Line(points={{365,328.6},{365,318.6},{-181.2,318.6},{-181.2,15.22222},{-171.2,15.22222}}, color={0,0,127}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(loadBus12Current.i,powerCalculation.loadBusCurrent) annotation(Line(points={{225,328.6},{225,318.6},{-181.2,318.6},{-181.2,1},{-171.2,1}}, color={0,0,127}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(voltage12.v,powerCalculation.threeRailVoltage[1]) annotation(Line(points={{365,328.6},{365,318.6},{-18.8,318.6},{-18.8,-25},{-156,-25},{-156,-15}}, color={0,0,127}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(voltage5.v,powerCalculation.threeRailVoltage[2]) annotation(Line(points={{515,143.6},{515,29},{-18.8,29},{-18.8,-25},{-156,-25},{-156,-15}}, color={0,0,127}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(voltage3V3.v,powerCalculation.threeRailVoltage[3]) annotation(Line(points={{515,-61.4},{515,-107.08},{-156,-107.08},{-156,-15}}, color={0,0,127}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(loadBus12Current.i,powerCalculation.threeRailCurrent[1]) annotation(Line(points={{225,328.6},{225,318.6},{-18.8,318.6},{-18.8,-25},{-100,-25},{-100,-15}}, color={0,0,127}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(current5.i,powerCalculation.threeRailCurrent[2]) annotation(Line(points={{410,173.6},{410,97.92},{-18.8,97.92},{-18.8,-25},{-100,-25},{-100,-15}}, color={0,0,127}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(current3V3.i,powerCalculation.threeRailCurrent[3]) annotation(Line(points={{410,-31.4},{410,-107.08},{-100,-107.08},{-100,-15}}, color={0,0,127}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(converter5InputCurrent.i,powerCalculation.converterInputCurrent[1]) annotation(Line(points={{120,173.6},{120,163.6},{-18.8,163.6},{-18.8,-25},{-44,-25},{-44,-15}}, color={0,0,127}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(converter3V3InputCurrent.i,powerCalculation.converterInputCurrent[2]) annotation(Line(points={{120,-31.4},{120,-41.4},{-44,-41.4},{-44,-15}}, color={0,0,127}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(sourceVoltageAverage.y,powerCalculation.sourceVoltageAverage) annotation(Line(points={{-269.2,215},{-181.2,215},{-181.2,57.88889},{-171.2,57.88889}}, color={0,0,127}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(loadCurrentAverage.y,powerCalculation.loadCurrentAverage) annotation(Line(points={{-49.2,215},{-39.2,215},{-39.2,151},{-181.2,151},{-181.2,43.66666},{-171.2,43.66666}}, color={0,0,127}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(powerCalculation.sourceCurrentCommand,sourceCurrentSink.i) annotation(Line(points={{-28.8,86.33334},{-18.8,86.33334},{-18.8,381.2},{-325,381.2},{-325,371.2}}, color={0,0,127}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(regulatedVoltageSource.n,regulatedPower.n12) annotation(Line(points={{113,355},{123,355},{123,389},{615,389},{615,355}}, color={0,0,255}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(regulatedVoltageSource.p,loadBus12Current.p) annotation(Line(points={{57,355},{47,355},{47,321},{191,321},{191,355},{201,355}}, color={0,0,255}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(loadBus12Current.n,regulatedPower.p12) annotation(Line(points={{249,355},{259,355},{259,389},{615,389},{615,355}}, color={0,0,255}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(powerCalculation.regulatedVoltageCommand,regulatedVoltageSource.v) annotation(Line(points={{-28.8,100.55555},{-18.8,100.55555},{-18.8,398.6},{85,398.6},{85,388.6}}, color={0,0,127}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(powerCalculation.loadCurrentMeasurement,loadCurrentAverage.u) annotation(Line(points={{-28.8,114.77778},{-18.8,114.77778},{-18.8,151},{-123.6,151},{-123.6,215},{-113.6,215}}, color={0,0,127}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(sourceVoltage.v,sourceVoltageAverage.u) annotation(Line(points={{-455,313.6},{-455,303.6},{-343.6,303.6},{-343.6,215},{-333.6,215}}, color={0,0,127}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(sourceVoltageAverage.y,informationRealBridge[1].u) annotation(Line(points={{-269.2,215},{-259.2,215},{-259.2,-189},{579.06,-189},{579.06,-210},{615.76,-210}}, color={0,0,127}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(informationRealBridge[1].y,information.device.rawSourceBusVoltageAverage) annotation(Line(points={{644.24,-210},{780,-210},{780,-90}}, color={0,0,127}, thickness=0.35, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(powerCalculation.solarCurtailmentCommand,informationRealBridge[2].u) annotation(Line(points={{-28.8,57.88889},{-18.8,57.88889},{-18.8,-189},{579.06,-189},{579.06,-210},{615.76,-210}}, color={0,0,127}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(informationRealBridge[2].y,information.device.solarCurtailmentFactor) annotation(Line(points={{644.24,-210},{780,-210},{780,-90}}, color={0,0,127}, thickness=0.35, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(regulatedPower.p12,converter5InputCurrent.p) annotation(Line(points={{615,355},{615,240.8},{86,240.8},{86,200},{96,200}}, color={0,0,255}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(converter5InputCurrent.n,converter5.p1) annotation(Line(points={{144,200},{154,200},{154,240.8},{213.8,240.8},{213.8,230.8}}, color={0,0,255}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(regulatedPower.n12,converter5.n1) annotation(Line(points={{615,355},{615,240.8},{247.93333,240.8},{247.93333,230.8}}, color={0,0,255}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(regulatedPower.p12,converter3V3InputCurrent.p) annotation(Line(points={{615,355},{615,35.8},{86,35.8},{86,-5},{96,-5}}, color={0,0,255}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(converter3V3InputCurrent.n,converter3V3.p1) annotation(Line(points={{144,-5},{154,-5},{154,35.8},{213.8,35.8},{213.8,25.8}}, color={0,0,255}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(regulatedPower.n12,converter3V3.n1) annotation(Line(points={{615,355},{615,35.8},{247.93333,35.8},{247.93333,25.8}}, color={0,0,255}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(converter5.p2,current5.p) annotation(Line(points={{282.06667,230.8},{282.06667,240.8},{376,240.8},{376,200},{386,200}}, color={0,0,255}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(current5.n,regulatedPower.p5) annotation(Line(points={{434,200},{615,200},{615,355}}, color={0,0,255}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(converter5.n2,regulatedPower.n5) annotation(Line(points={{316.2,230.8},{316.2,240.8},{615,240.8},{615,355}}, color={0,0,255}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(converter3V3.p2,current3V3.p) annotation(Line(points={{282.06667,25.8},{282.06667,35.8},{376,35.8},{376,-5},{386,-5}}, color={0,0,255}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(current3V3.n,regulatedPower.p33) annotation(Line(points={{434,-5},{615,-5},{615,355}}, color={0,0,255}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(converter3V3.n2,regulatedPower.n33) annotation(Line(points={{316.2,25.8},{316.2,35.8},{615,35.8},{615,355}}, color={0,0,255}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(voltage12.p,regulatedPower.p12) annotation(Line(points={{341,355},{331,355},{331,321},{615,321},{615,355}}, color={0,0,255}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(voltage12.n,regulatedPower.n12) annotation(Line(points={{389,355},{615,355}}, color={0,0,255}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(voltage5.p,regulatedPower.p5) annotation(Line(points={{491,170},{481,170},{481,355},{615,355}}, color={0,0,255}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(voltage5.n,regulatedPower.n5) annotation(Line(points={{539,170},{615,170},{615,355}}, color={0,0,255}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(voltage3V3.p,regulatedPower.p33) annotation(Line(points={{491,-35},{481,-35},{481,-5.1},{615,-5.1},{615,355}}, color={0,0,255}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(voltage3V3.n,regulatedPower.n33) annotation(Line(points={{539,-35},{615,-35},{615,355}}, color={0,0,255}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(voltage12.v,informationRealBridge[3].u) annotation(Line(points={{365,328.6},{365,35.8},{579.06,35.8},{579.06,-210},{615.76,-210}}, color={0,0,127}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(informationRealBridge[3].y,information.device.busVoltage[1]) annotation(Line(points={{644.24,-210},{780,-210},{780,-90}}, color={0,0,127}, thickness=0.35, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(voltage5.v,informationRealBridge[4].u) annotation(Line(points={{515,143.6},{515,35.8},{579.06,35.8},{579.06,-210},{615.76,-210}}, color={0,0,127}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(informationRealBridge[4].y,information.device.busVoltage[2]) annotation(Line(points={{644.24,-210},{780,-210},{780,-90}}, color={0,0,127}, thickness=0.35, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(voltage3V3.v,informationRealBridge[5].u) annotation(Line(points={{515,-61.4},{515,-121},{579.06,-121},{579.06,-210},{615.76,-210}}, color={0,0,127}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(informationRealBridge[5].y,information.device.busVoltage[3]) annotation(Line(points={{644.24,-210},{780,-210},{780,-90}}, color={0,0,127}, thickness=0.35, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(distributionStatusCalculation.pdState[1],informationIntegerBridge[1].u) annotation(Line(points={{329.58,-325},{579.06,-325},{579.06,-345},{615.76,-345}}, color={255,127,0}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(informationIntegerBridge[1].y,information.device.pdState[1]) annotation(Line(points={{644.24,-345},{780,-345},{780,-90}}, color={255,127,0}, thickness=0.35, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(distributionStatusCalculation.pdState[2],informationIntegerBridge[2].u) annotation(Line(points={{329.58,-325},{579.06,-325},{579.06,-345},{615.76,-345}}, color={255,127,0}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(informationIntegerBridge[2].y,information.device.pdState[2]) annotation(Line(points={{644.24,-345},{780,-345},{780,-90}}, color={255,127,0}, thickness=0.35, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(distributionStatusCalculation.pdState[3],informationIntegerBridge[3].u) annotation(Line(points={{329.58,-325},{579.06,-325},{579.06,-345},{615.76,-345}}, color={255,127,0}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(informationIntegerBridge[3].y,information.device.pdState[3]) annotation(Line(points={{644.24,-345},{780,-345},{780,-90}}, color={255,127,0}, thickness=0.35, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(distributionStatusCalculation.pdState[4],informationIntegerBridge[4].u) annotation(Line(points={{329.58,-325},{579.06,-325},{579.06,-345},{615.76,-345}}, color={255,127,0}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(informationIntegerBridge[4].y,information.device.pdState[4]) annotation(Line(points={{644.24,-345},{780,-345},{780,-90}}, color={255,127,0}, thickness=0.35, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(distributionStatusCalculation.pdState[5],informationIntegerBridge[5].u) annotation(Line(points={{329.58,-325},{579.06,-325},{579.06,-345},{615.76,-345}}, color={255,127,0}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(informationIntegerBridge[5].y,information.device.pdState[5]) annotation(Line(points={{644.24,-345},{780,-345},{780,-90}}, color={255,127,0}, thickness=0.35, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(distributionStatusCalculation.pdState[6],informationIntegerBridge[6].u) annotation(Line(points={{329.58,-325},{579.06,-325},{579.06,-345},{615.76,-345}}, color={255,127,0}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(informationIntegerBridge[6].y,information.device.pdState[6]) annotation(Line(points={{644.24,-345},{780,-345},{780,-90}}, color={255,127,0}, thickness=0.35, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(distributionStatusCalculation.pdState[7],informationIntegerBridge[7].u) annotation(Line(points={{329.58,-325},{579.06,-325},{579.06,-345},{615.76,-345}}, color={255,127,0}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(informationIntegerBridge[7].y,information.device.pdState[7]) annotation(Line(points={{644.24,-345},{780,-345},{780,-90}}, color={255,127,0}, thickness=0.35, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(distributionStatusCalculation.pdState[8],informationIntegerBridge[8].u) annotation(Line(points={{329.58,-325},{579.06,-325},{579.06,-345},{615.76,-345}}, color={255,127,0}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(informationIntegerBridge[8].y,information.device.pdState[8]) annotation(Line(points={{644.24,-345},{780,-345},{780,-90}}, color={255,127,0}, thickness=0.35, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(distributionStatusCalculation.pdState[9],informationIntegerBridge[9].u) annotation(Line(points={{329.58,-325},{579.06,-325},{579.06,-345},{615.76,-345}}, color={255,127,0}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(informationIntegerBridge[9].y,information.device.pdState[9]) annotation(Line(points={{644.24,-345},{780,-345},{780,-90}}, color={255,127,0}, thickness=0.35, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(distributionStatusCalculation.pdState[10],informationIntegerBridge[10].u) annotation(Line(points={{329.58,-325},{579.06,-325},{579.06,-345},{615.76,-345}}, color={255,127,0}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(informationIntegerBridge[10].y,information.device.pdState[10]) annotation(Line(points={{644.24,-345},{780,-345},{780,-90}}, color={255,127,0}, thickness=0.35, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(distributionStatusCalculation.pdState[11],informationIntegerBridge[11].u) annotation(Line(points={{329.58,-325},{579.06,-325},{579.06,-345},{615.76,-345}}, color={255,127,0}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(informationIntegerBridge[11].y,information.device.pdState[11]) annotation(Line(points={{644.24,-345},{780,-345},{780,-90}}, color={255,127,0}, thickness=0.35, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(distributionStatusCalculation.pdState[12],informationIntegerBridge[12].u) annotation(Line(points={{329.58,-325},{579.06,-325},{579.06,-345},{615.76,-345}}, color={255,127,0}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(informationIntegerBridge[12].y,information.device.pdState[12]) annotation(Line(points={{644.24,-345},{780,-345},{780,-90}}, color={255,127,0}, thickness=0.35, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(distributionStatusCalculation.pdState[13],informationIntegerBridge[13].u) annotation(Line(points={{329.58,-325},{579.06,-325},{579.06,-345},{615.76,-345}}, color={255,127,0}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(informationIntegerBridge[13].y,information.device.pdState[13]) annotation(Line(points={{644.24,-345},{780,-345},{780,-90}}, color={255,127,0}, thickness=0.35, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(distributionStatusCalculation.pdState[14],informationIntegerBridge[14].u) annotation(Line(points={{329.58,-325},{579.06,-325},{579.06,-345},{615.76,-345}}, color={255,127,0}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(informationIntegerBridge[14].y,information.device.pdState[14]) annotation(Line(points={{644.24,-345},{780,-345},{780,-90}}, color={255,127,0}, thickness=0.35, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(distributionStatusCalculation.pdState[15],informationIntegerBridge[15].u) annotation(Line(points={{329.58,-325},{579.06,-325},{579.06,-345},{615.76,-345}}, color={255,127,0}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(informationIntegerBridge[15].y,information.device.pdState[15]) annotation(Line(points={{644.24,-345},{780,-345},{780,-90}}, color={255,127,0}, thickness=0.35, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(distributionStatusCalculation.pdState[16],informationIntegerBridge[16].u) annotation(Line(points={{329.58,-325},{579.06,-325},{579.06,-345},{615.76,-345}}, color={255,127,0}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(informationIntegerBridge[16].y,information.device.pdState[16]) annotation(Line(points={{644.24,-345},{780,-345},{780,-90}}, color={255,127,0}, thickness=0.35, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(distributionStatusCalculation.pdState[17],informationIntegerBridge[17].u) annotation(Line(points={{329.58,-325},{579.06,-325},{579.06,-345},{615.76,-345}}, color={255,127,0}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(informationIntegerBridge[17].y,information.device.pdState[17]) annotation(Line(points={{644.24,-345},{780,-345},{780,-90}}, color={255,127,0}, thickness=0.35, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(distributionStatusCalculation.pdState[18],informationIntegerBridge[18].u) annotation(Line(points={{329.58,-325},{579.06,-325},{579.06,-345},{615.76,-345}}, color={255,127,0}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(informationIntegerBridge[18].y,information.device.pdState[18]) annotation(Line(points={{644.24,-345},{780,-345},{780,-90}}, color={255,127,0}, thickness=0.35, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(distributionStatusCalculation.pdState[19],informationIntegerBridge[19].u) annotation(Line(points={{329.58,-325},{579.06,-325},{579.06,-345},{615.76,-345}}, color={255,127,0}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(informationIntegerBridge[19].y,information.device.pdState[19]) annotation(Line(points={{644.24,-345},{780,-345},{780,-90}}, color={255,127,0}, thickness=0.35, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(distributionStatusCalculation.pdState[20],informationIntegerBridge[20].u) annotation(Line(points={{329.58,-325},{579.06,-325},{579.06,-345},{615.76,-345}}, color={255,127,0}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(informationIntegerBridge[20].y,information.device.pdState[20]) annotation(Line(points={{644.24,-345},{780,-345},{780,-90}}, color={255,127,0}, thickness=0.35, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(distributionStatusCalculation.pdState[21],informationIntegerBridge[21].u) annotation(Line(points={{329.58,-325},{579.06,-325},{579.06,-345},{615.76,-345}}, color={255,127,0}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(informationIntegerBridge[21].y,information.device.pdState[21]) annotation(Line(points={{644.24,-345},{780,-345},{780,-90}}, color={255,127,0}, thickness=0.35, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(distributionStatusCalculation.pdState[22],informationIntegerBridge[22].u) annotation(Line(points={{329.58,-325},{579.06,-325},{579.06,-345},{615.76,-345}}, color={255,127,0}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(informationIntegerBridge[22].y,information.device.pdState[22]) annotation(Line(points={{644.24,-345},{780,-345},{780,-90}}, color={255,127,0}, thickness=0.35, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(distributionStatusCalculation.pdState[23],informationIntegerBridge[23].u) annotation(Line(points={{329.58,-325},{579.06,-325},{579.06,-345},{615.76,-345}}, color={255,127,0}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(informationIntegerBridge[23].y,information.device.pdState[23]) annotation(Line(points={{644.24,-345},{780,-345},{780,-90}}, color={255,127,0}, thickness=0.35, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(distributionStatusCalculation.pdState[24],informationIntegerBridge[24].u) annotation(Line(points={{329.58,-325},{579.06,-325},{579.06,-345},{615.76,-345}}, color={255,127,0}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(informationIntegerBridge[24].y,information.device.pdState[24]) annotation(Line(points={{644.24,-345},{780,-345},{780,-90}}, color={255,127,0}, thickness=0.35, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(current5.i,informationRealBridge[6].u) annotation(Line(points={{410,173.6},{410,35.8},{579.06,35.8},{579.06,-210},{615.76,-210}}, color={0,0,127}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(informationRealBridge[6].y,information.device.busCurrent[2]) annotation(Line(points={{644.24,-210},{780,-210},{780,-90}}, color={0,0,127}, thickness=0.35, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(current3V3.i,informationRealBridge[7].u) annotation(Line(points={{410,-31.4},{410,-121},{579.06,-121},{579.06,-210},{615.76,-210}}, color={0,0,127}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(informationRealBridge[7].y,information.device.busCurrent[3]) annotation(Line(points={{644.24,-210},{780,-210},{780,-90}}, color={0,0,127}, thickness=0.35, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(regulatedPower.p12,pcdHousekeeping12.p) annotation(Line(points={{-360,230},{-100,230}},color={0,0,255},thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(pcdHousekeeping12.n,regulatedPower.n12) annotation(Line(points={{519,-155},{615,-155},{615,355}}, color={0,0,255}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(loadBus12Current.i,informationRealBridge[8].u) annotation(Line(points={{225,328.6},{225,240.8},{579.06,240.8},{579.06,-210},{615.76,-210}}, color={0,0,127}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(informationRealBridge[8].y,information.device.busCurrent[1]) annotation(Line(points={{644.24,-210},{780,-210},{780,-90}}, color={0,0,127}, thickness=0.35, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(pcdHousekeeping12.heatPort,boardHeat.port) annotation(Line(points={{495,-179},{495,-189},{-18.8,-189},{-18.8,-505},{-55,-505},{-55,-495}}, color={191,0,0}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(converter5.heatPort,boardHeat.port) annotation(Line(points={{265,107.92},{265,97.92},{-18.8,97.92},{-18.8,-505},{-55,-505},{-55,-495}}, color={191,0,0}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(converter3V3.heatPort,boardHeat.port) annotation(Line(points={{265,-97.08},{265,-107.08},{-18.8,-107.08},{-18.8,-505},{-55,-505},{-55,-495}}, color={191,0,0}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(powerCalculation.regulatorLossPower,regulatorLoss.Q_flow) annotation(Line(points={{-28.8,72.11111},{-18.8,72.11111},{-18.8,-400.96},{-229,-400.96},{-229,-430},{-219,-430}}, color={0,0,127}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(powerCalculation.regulatedOutputPower,regulatedOutputPower) annotation(Line(points={{-28.8,15.22222},{-18.8,15.22222},{-18.8,-290},{-150,-290}}, color={0,0,127}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(powerCalculation.weightedAvailableSolarPower,weightedAvailableSolarPower) annotation(Line(points={{-28.8,1},{-18.8,1},{-18.8,-290},{-280,-290}}, color={0,0,127}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(regulatorLoss.port,boardHeat.port) annotation(Line(points={{-171,-430},{-161,-430},{-161,-505},{-55,-505},{-55,-495}}, color={191,0,0}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(zeroCurrent[1].y,informationRealBridge[9].u) annotation(Line(points={{554.2,-365},{579.06,-365},{579.06,-210},{615.76,-210}}, color={0,0,127}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(informationRealBridge[9].y,information.device.pdCurrent[6]) annotation(Line(points={{644.24,-210},{780,-210},{780,-90}}, color={0,0,127}, thickness=0.35, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(zeroCurrent[2].y,informationRealBridge[10].u) annotation(Line(points={{554.2,-365},{579.06,-365},{579.06,-210},{615.76,-210}}, color={0,0,127}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(informationRealBridge[10].y,information.device.pdCurrent[7]) annotation(Line(points={{644.24,-210},{780,-210},{780,-90}}, color={0,0,127}, thickness=0.35, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(zeroCurrent[3].y,informationRealBridge[11].u) annotation(Line(points={{554.2,-365},{579.06,-365},{579.06,-210},{615.76,-210}}, color={0,0,127}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(informationRealBridge[11].y,information.device.pdCurrent[9]) annotation(Line(points={{644.24,-210},{780,-210},{780,-90}}, color={0,0,127}, thickness=0.35, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(zeroCurrent[4].y,informationRealBridge[12].u) annotation(Line(points={{554.2,-365},{579.06,-365},{579.06,-210},{615.76,-210}}, color={0,0,127}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(informationRealBridge[12].y,information.device.pdCurrent[10]) annotation(Line(points={{644.24,-210},{780,-210},{780,-90}}, color={0,0,127}, thickness=0.35, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(zeroCurrent[5].y,informationRealBridge[13].u) annotation(Line(points={{554.2,-365},{579.06,-365},{579.06,-210},{615.76,-210}}, color={0,0,127}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(informationRealBridge[13].y,information.device.pdCurrent[11]) annotation(Line(points={{644.24,-210},{780,-210},{780,-90}}, color={0,0,127}, thickness=0.35, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(zeroCurrent[6].y,informationRealBridge[14].u) annotation(Line(points={{554.2,-365},{579.06,-365},{579.06,-210},{615.76,-210}}, color={0,0,127}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(informationRealBridge[14].y,information.device.pdCurrent[18]) annotation(Line(points={{644.24,-210},{780,-210},{780,-90}}, color={0,0,127}, thickness=0.35, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(zeroCurrent[7].y,informationRealBridge[15].u) annotation(Line(points={{554.2,-365},{579.06,-365},{579.06,-210},{615.76,-210}}, color={0,0,127}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(informationRealBridge[15].y,information.device.pdCurrent[23]) annotation(Line(points={{644.24,-210},{780,-210},{780,-90}}, color={0,0,127}, thickness=0.35, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(zeroCurrent[8].y,informationRealBridge[16].u) annotation(Line(points={{554.2,-365},{579.06,-365},{579.06,-210},{615.76,-210}}, color={0,0,127}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(informationRealBridge[16].y,information.device.pdCurrent[24]) annotation(Line(points={{644.24,-210},{780,-210},{780,-90}}, color={0,0,127}, thickness=0.35, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(powerCalculation.threeRailOutputPower,informationRealBridge[17].u) annotation(Line(points={{-20,-11},{-10,-11},{-10,-189},{579.06,-189},{579.06,-210},{615.76,-210}}, color={0,0,127}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(informationRealBridge[17].y,information.device.threeRailOutputPower) annotation(Line(points={{644.24,-210},{780,-210},{780,-90}}, color={0,0,127}, thickness=0.35, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(boardHeat.port,mounting.port_a) annotation(Line(points={{-55,-495},{-55,-505},{161,-505},{161,-495},{171,-495}}, color={191,0,0}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(mounting.port_b,thermal) annotation(Line(points={{219,-495},{410,-495}}, color={191,0,0}, thickness=0.5, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(boardBody.frame_a,mechanical) annotation(Line(points={{-517,-430},{-590,-430}}, color={95,95,95}, thickness=0.5, pattern=LinePattern.Solid, smooth=Smooth.None));
+  annotation(Documentation(info="<html><h2>电源调节与配电组件</h2><p><b>类路径：</b><code>OneSatSim.Components.PowerConditioningUnit</code>　<b>类型：</b>model</p><h3>用途与定位</h3><p>电源调节与配电组件</p><h3>在工程中使用</h3><p>当前直接使用位置：<a href=\"modelica://OneSatSim.Systems.N_systems.ElectricalPowerSystem\">OneSatSim.Systems.N_systems.ElectricalPowerSystem</a> 的 <code>pcdu</code>。</p><h3>接口、输入与输出</h3><table border=\"1\" cellspacing=\"0\" cellpadding=\"5\"><tr><th>名称/维数</th><th>类型</th><th>声明角色</th><th>单位</th><th>含义</th></tr><tr><td><code>rawSource</code></td><td>Foundation.Interfaces.SourcePowerPort</td><td>public</td><td>按声明/类型合同</td><td>太阳阵/电池原始双线汇流输入</td></tr><tr><td><code>regulatedPower</code></td><td>Foundation.Interfaces.PowerPort</td><td>public</td><td>按声明/类型合同</td><td>12/5/3.3 V受控负载母线输出</td></tr><tr><td><code>thermal</code></td><td>Foundation.Interfaces.ThermalPort</td><td>public</td><td>按声明/类型合同</td><td>热学</td></tr><tr><td><code>mechanical</code></td><td>Foundation.Interfaces.MechanicalPort</td><td>public</td><td>按声明/类型合同</td><td>机械</td></tr><tr><td><code>information</code></td><td>Foundation.Interfaces.InformationPort</td><td>public</td><td>按声明/类型合同</td><td>计算/接口量 information</td></tr><tr><td><code>batterySOCFromInformation</code></td><td>Foundation.Interfaces.RealSignalReader</td><td>public</td><td>按声明/类型合同</td><td>可扩展总线实数信号到因果计算端口的无状态恒等读取器实例</td></tr><tr><td><code>batteryChargeAllowedFromInformation</code></td><td>Foundation.Interfaces.BooleanSignalReader</td><td>public</td><td>按声明/类型合同</td><td>可扩展总线布尔信号到因果计算端口的无状态恒等读取器实例</td></tr><tr><td><code>batteryHeaterCurrentFromInformation[2]</code></td><td>Foundation.Interfaces.RealSignalReader</td><td>public</td><td>按声明/类型合同</td><td>可扩展总线实数信号到因果计算端口的无状态恒等读取器实例</td></tr><tr><td><code>availableSolarPowerFromInformation[3]</code></td><td>Foundation.Interfaces.RealSignalReader</td><td>public</td><td>按声明/类型合同</td><td>可扩展总线实数信号到因果计算端口的无状态恒等读取器实例</td></tr><tr><td><code>pdCurrentFromInformation[24]</code></td><td>Foundation.Interfaces.RealSignalReader</td><td>public</td><td>按声明/类型合同</td><td>可扩展总线实数信号到因果计算端口的无状态恒等读取器实例</td></tr><tr><td><code>equipmentStatusFromInformation[6]</code></td><td>Foundation.Interfaces.IntegerSignalReader</td><td>public</td><td>按声明/类型合同</td><td>可扩展总线整数信号到因果计算端口的无状态恒等读取器实例</td></tr><tr><td><code>regulatedOutputPower</code></td><td>Modelica.Blocks.Interfaces.RealOutput</td><td>public</td><td>W</td><td>regulated输出功率 [W]</td></tr><tr><td><code>weightedAvailableSolarPower</code></td><td>Modelica.Blocks.Interfaces.RealOutput</td><td>public</td><td>W</td><td>weightedAvailableSolar功率 [W]</td></tr><tr><td><code>informationRealBridge[17]</code></td><td>Foundation.Interfaces.RealSignalBridge</td><td>public</td><td>按声明/类型合同</td><td>实数因果输出到可扩展信息总线的无状态恒等桥实例</td></tr><tr><td><code>informationIntegerBridge[24]</code></td><td>Foundation.Interfaces.IntegerSignalBridge</td><td>public</td><td>按声明/类型合同</td><td>整数因果输出到可扩展信息总线的无状态恒等桥实例</td></tr></table><h3>配置与参数</h3><p>下面列出当前源码表达式，仅用于阅读；当前参数对话框、生效配置记录与原有配置工具仍是使用依据。本页不新增默认值或换算。</p><table border=\"1\" cellspacing=\"0\" cellpadding=\"5\"><tr><th>参数</th><th>类型</th><th>用途</th><th>源码表达式</th></tr><tr><td><code>config</code></td><td>OneSatSim.Scenarios.DesignConfigRecords.PcduComponentConfig</td><td>由所属N-System传入的硬件设计配置</td><td><code>由调用方、继承或默认声明提供</code></td></tr><tr><td><code>solarNetDeliveryEfficiency[3]</code></td><td>Real</td><td>solarNetDelivery效率；Three array rated net delivery efficiencies from the same EPS design records</td><td><code>由调用方、继承或默认声明提供</code></td></tr><tr><td><code>nominalVoltage5V</code></td><td>Modelica.Units.SI.Voltage</td><td>5V名义输出电压；Excel单位V，当前设计基线</td><td><code>=config.NominalVoltage5V</code></td></tr><tr><td><code>powerLimit5V</code></td><td>Modelica.Units.SI.Power</td><td>5V输出功率上限；Excel单位W，当前设计基线</td><td><code>=config.PowerLimit5V</code></td></tr><tr><td><code>minimumInputVoltage5V</code></td><td>Modelica.Units.SI.Voltage</td><td>5V变换最低输入电压；Excel单位V，当前设计基线</td><td><code>=config.MinimumInputVoltage5V</code></td></tr><tr><td><code>outputResistance5V</code></td><td>Modelica.Units.SI.Resistance</td><td>5V输出等效内阻；Excel单位Ω，当前设计基线</td><td><code>=config.OutputResistance5V</code></td></tr><tr><td><code>overloadDroop5V</code></td><td>Modelica.Units.SI.Resistance</td><td>5V过载压降系数；Excel单位Ω，当前设计基线</td><td><code>=config.OverloadDroop5V</code></td></tr><tr><td><code>nominalVoltage3V3</code></td><td>Modelica.Units.SI.Voltage</td><td>3.3V名义输出电压；Excel单位V，当前设计基线</td><td><code>=config.NominalVoltage3V3</code></td></tr><tr><td><code>powerLimit3V3</code></td><td>Modelica.Units.SI.Power</td><td>3.3V输出功率上限；Excel单位W，当前设计基线</td><td><code>=config.PowerLimit3V3</code></td></tr><tr><td><code>minimumInputVoltage3V3</code></td><td>Modelica.Units.SI.Voltage</td><td>3.3V变换最低输入电压；Excel单位V，当前设计基线</td><td><code>=config.MinimumInputVoltage3V3</code></td></tr><tr><td><code>outputResistance3V3</code></td><td>Modelica.Units.SI.Resistance</td><td>3.3V输出等效内阻；Excel单位Ω，当前设计基线</td><td><code>=config.OutputResistance3V3</code></td></tr><tr><td><code>overloadDroop3V3</code></td><td>Modelica.Units.SI.Resistance</td><td>3.3V过载压降系数；Excel单位Ω，当前设计基线</td><td><code>=config.OverloadDroop3V3</code></td></tr><tr><td><code>housekeepingResistance12</code></td><td>Modelica.Units.SI.Resistance</td><td>PCDU自耗等效电阻；Excel单位Ω，当前设计基线</td><td><code>=config.HousekeepingResistance12</code></td></tr><tr><td><code>boardHeatCapacity</code></td><td>Modelica.Units.SI.HeatCapacity</td><td>PCDU板等效热容；Excel单位J/K，当前设计基线</td><td><code>=config.BoardHeatCapacity</code></td></tr><tr><td><code>mountConductance</code></td><td>Modelica.Units.SI.ThermalConductance</td><td>PCDU安装导热；Excel单位W/K，当前设计基线</td><td><code>=config.MountConductance</code></td></tr><tr><td><code>mass</code></td><td>Modelica.Units.SI.Mass</td><td>质量；Excel单位kg，当前设计基线</td><td><code>=config.Mass</code></td></tr><tr><td><code>rcm_X</code></td><td>Modelica.Units.SI.Length</td><td>质心偏置X；Excel单位m，当前设计基线</td><td><code>=config.RCM_X</code></td></tr><tr><td><code>rcm_Y</code></td><td>Modelica.Units.SI.Length</td><td>质心偏置Y；Excel单位m，当前设计基线</td><td><code>=config.RCM_Y</code></td></tr><tr><td><code>rcm_Z</code></td><td>Modelica.Units.SI.Length</td><td>质心偏置Z；Excel单位m，当前设计基线</td><td><code>=config.RCM_Z</code></td></tr><tr><td><code>inertia_XX</code></td><td>Modelica.Units.SI.Inertia</td><td>局部惯量 Ixx；Excel单位kg·m²，当前设计基线</td><td><code>=config.Inertia_XX</code></td></tr><tr><td><code>inertia_YY</code></td><td>Modelica.Units.SI.Inertia</td><td>局部惯量 Iyy；Excel单位kg·m²，当前设计基线</td><td><code>=config.Inertia_YY</code></td></tr><tr><td><code>inertia_ZZ</code></td><td>Modelica.Units.SI.Inertia</td><td>局部惯量 Izz；Excel单位kg·m²，当前设计基线</td><td><code>=config.Inertia_ZZ</code></td></tr><tr><td><code>initialBoardTemperature</code></td><td>Modelica.Units.SI.Temperature</td><td>场景PCDU/MPPT板初温</td><td><code>=310.65</code></td></tr><tr><td><code>regulatorEfficiency</code></td><td>Real</td><td>12 V平均值变换效率</td><td><code>=config.RegulatorEfficiency12</code></td></tr><tr><td><code>minimumInputVoltage</code></td><td>Modelica.Units.SI.Voltage</td><td>minimum输入电压 [V]</td><td><code>=config.MinimumInputVoltage12</code></td></tr><tr><td><code>maximumInputCurrent</code></td><td>Modelica.Units.SI.Current</td><td>maximum输入电流 [A]</td><td><code>=config.MaximumInputCurrent12</code></td></tr><tr><td><code>maximumOutputCurrent</code></td><td>Modelica.Units.SI.Current</td><td>maximum输出电流 [A]</td><td><code>=config.MaximumOutputCurrent12</code></td></tr><tr><td><code>maximumOutputPower</code></td><td>Modelica.Units.SI.Power</td><td>maximum输出功率 [W]</td><td><code>=config.MaximumOutputPower12</code></td></tr><tr><td><code>outputResistance12</code></td><td>Modelica.Units.SI.Resistance</td><td>系统级 12 V load regulation/droop</td><td><code>=config.OutputResistance12</code></td></tr><tr><td><code>overloadDroop12</code></td><td>Modelica.Units.SI.Resistance</td><td>配置项 overloadDroop12 [Ohm]；Additional continuous voltage droop above available current</td><td><code>=config.OverloadDroop12</code></td></tr><tr><td><code>eta5</code></td><td>Real</td><td>任务级参数</td><td><code>=config.Efficiency5V</code></td></tr><tr><td><code>eta3V3</code></td><td>Real</td><td>任务级参数</td><td><code>=config.Efficiency3V3</code></td></tr><tr><td><code>currentLimit5</code></td><td>Modelica.Units.SI.Current</td><td>电流限制5 [A]</td><td><code>=config.CurrentLimit5V</code></td></tr><tr><td><code>currentLimit3V3</code></td><td>Modelica.Units.SI.Current</td><td>电流限制3V3 [A]</td><td><code>=config.CurrentLimit3V3</code></td></tr></table><h3>内部组成</h3><p>以下为本类直接声明的组成单元，继承类的内部结构另按其文档查看。</p><table border=\"1\" cellspacing=\"0\" cellpadding=\"5\"><tr><th>实例</th><th>类</th><th>作用</th></tr><tr><td><code>converter5</code></td><td><a href=\"modelica://OneSatSim.Foundation.Models.AverageDCDCConverterCore\">OneSatSim.Foundation.Models.AverageDCDCConverterCore</a></td><td>连续低阶非理想直流变换核心实例</td></tr><tr><td><code>converter3V3</code></td><td><a href=\"modelica://OneSatSim.Foundation.Models.AverageDCDCConverterCore\">OneSatSim.Foundation.Models.AverageDCDCConverterCore</a></td><td>连续低阶非理想直流变换核心实例</td></tr><tr><td><code>voltage12</code></td><td><a href=\"modelica://Modelica.Electrical.Analog.Sensors.VoltageSensor\">Modelica.Electrical.Analog.Sensors.VoltageSensor</a></td><td>电压12</td></tr><tr><td><code>voltage5</code></td><td><a href=\"modelica://Modelica.Electrical.Analog.Sensors.VoltageSensor\">Modelica.Electrical.Analog.Sensors.VoltageSensor</a></td><td>电压5</td></tr><tr><td><code>voltage3V3</code></td><td><a href=\"modelica://Modelica.Electrical.Analog.Sensors.VoltageSensor\">Modelica.Electrical.Analog.Sensors.VoltageSensor</a></td><td>电压3V3</td></tr><tr><td><code>current5</code></td><td><a href=\"modelica://Modelica.Electrical.Analog.Sensors.CurrentSensor\">Modelica.Electrical.Analog.Sensors.CurrentSensor</a></td><td>电流5</td></tr><tr><td><code>current3V3</code></td><td><a href=\"modelica://Modelica.Electrical.Analog.Sensors.CurrentSensor\">Modelica.Electrical.Analog.Sensors.CurrentSensor</a></td><td>电流3V3</td></tr><tr><td><code>converter5InputCurrent</code></td><td><a href=\"modelica://Modelica.Electrical.Analog.Sensors.CurrentSensor\">Modelica.Electrical.Analog.Sensors.CurrentSensor</a></td><td>converter5输入电流；Measured 12 V input current of the 5 V converter</td></tr><tr><td><code>converter3V3InputCurrent</code></td><td><a href=\"modelica://Modelica.Electrical.Analog.Sensors.CurrentSensor\">Modelica.Electrical.Analog.Sensors.CurrentSensor</a></td><td>converter3V3输入电流；Measured 12 V input current of the 3.3 V converter</td></tr><tr><td><code>pcdHousekeeping12</code></td><td><a href=\"modelica://Modelica.Electrical.Analog.Basic.Resistor\">Modelica.Electrical.Analog.Basic.Resistor</a></td><td>系统级 PDB 12 V monitored branch, about 0.130 A</td></tr><tr><td><code>powerCalculation</code></td><td><a href=\"modelica://OneSatSim.Foundation.Calculations.PowerConditioningCalculation\">OneSatSim.Foundation.Calculations.PowerConditioningCalculation</a></td><td>12 V平均值调节与太阳限功率计算实例</td></tr><tr><td><code>distributionStatusCalculation</code></td><td><a href=\"modelica://OneSatSim.Foundation.Calculations.PowerDistributionStatusCalculation\">OneSatSim.Foundation.Calculations.PowerDistributionStatusCalculation</a></td><td>PDB通道状态派生实例</td></tr><tr><td><code>zeroCurrent[8]</code></td><td><a href=\"modelica://Modelica.Blocks.Sources.Constant\">Modelica.Blocks.Sources.Constant</a></td><td>零值电流</td></tr><tr><td><code>boardHeat</code></td><td><a href=\"modelica://Modelica.Thermal.HeatTransfer.Components.HeatCapacitor\">Modelica.Thermal.HeatTransfer.Components.HeatCapacitor</a></td><td>系统级 initial PCDU/MPPT board work point</td></tr><tr><td><code>mounting</code></td><td><a href=\"modelica://Modelica.Thermal.HeatTransfer.Components.ThermalConductor\">Modelica.Thermal.HeatTransfer.Components.ThermalConductor</a></td><td>系统级等效 PCDU mounting path</td></tr><tr><td><code>boardBody</code></td><td><a href=\"modelica://Modelica.Mechanics.MultiBody.Parts.Body\">Modelica.Mechanics.MultiBody.Parts.Body</a></td><td>board本体</td></tr><tr><td><code>sourceVoltage</code></td><td><a href=\"modelica://Modelica.Electrical.Analog.Sensors.VoltageSensor\">Modelica.Electrical.Analog.Sensors.VoltageSensor</a></td><td>原始电源路径电压</td></tr><tr><td><code>rawSourceReference</code></td><td><a href=\"modelica://Modelica.Electrical.Analog.Basic.Ground\">Modelica.Electrical.Analog.Basic.Ground</a></td><td>原始太阳阵/电池双线域的电位参考；不传输或消耗功率</td></tr><tr><td><code>sourceCurrentSink</code></td><td><a href=\"modelica://Modelica.Electrical.Analog.Sources.SignalCurrent\">Modelica.Electrical.Analog.Sources.SignalCurrent</a></td><td>按平均功率从太阳阵/电池汇流端取电</td></tr><tr><td><code>regulatedVoltageSource</code></td><td><a href=\"modelica://Modelica.Electrical.Analog.Sources.SignalVoltage\">Modelica.Electrical.Analog.Sources.SignalVoltage</a></td><td>系统级 average 12 V source with finite droop; no fast PI or switching state</td></tr><tr><td><code>loadBus12Current</code></td><td><a href=\"modelica://Modelica.Electrical.Analog.Sensors.CurrentSensor\">Modelica.Electrical.Analog.Sensors.CurrentSensor</a></td><td>负载总线12电流；Total current delivered into the regulated 12 V load bus, including derived 5/3.3 V loads</td></tr><tr><td><code>sourceVoltageAverage</code></td><td><a href=\"modelica://Modelica.Blocks.Continuous.FirstOrder\">Modelica.Blocks.Continuous.FirstOrder</a></td><td>实际原始电源端电压的30 s慢变平均</td></tr><tr><td><code>loadCurrentAverage</code></td><td><a href=\"modelica://Modelica.Blocks.Continuous.FirstOrder\">Modelica.Blocks.Continuous.FirstOrder</a></td><td>负载电流Average；Slow average excludes device-capacitor inrush from the voltage command</td></tr><tr><td><code>regulatorLoss</code></td><td><a href=\"modelica://Modelica.Thermal.HeatTransfer.Sources.PrescribedHeatFlow\">Modelica.Thermal.HeatTransfer.Sources.PrescribedHeatFlow</a></td><td>计算/接口量 regulatorLoss</td></tr></table></html>"
+),
+    Icon(coordinateSystem(extent={{-100,-100},{100,100}}, preserveAspectRatio=true, grid={2,2}), graphics={
+      Rectangle(extent={{-89,-97},{89,95}}, lineColor={0,0,0}, fillColor={255,255,255}, fillPattern=FillPattern.Solid, lineThickness=0.6, radius=3),
+      Line(points={{-76,64},{76,64}}, color={219,223,227}, thickness=0.4, pattern=LinePattern.Solid),
+      Rectangle(extent={{-84,69},{-64,89}}, lineColor={0,0,0}, fillColor={77,126,172}, fillPattern=FillPattern.Solid, lineThickness=0.85, radius=0),
+      Text(extent={{-61,71},{76,86}}, textString="Power unit", fontSize=0, lineColor={0,0,0}, horizontalAlignment=TextAlignment.Center),
+      Rectangle(extent={{-60.85,-12.5},{-13.55,22.7}}, lineColor={0,0,0}, fillColor={242,245,247}, fillPattern=FillPattern.Solid, lineThickness=0.75, radius=2),
+      Line(points={{-58.1,-9.2},{-16.85,18.85}}, color={0,0,0}, thickness=0.65, pattern=LinePattern.Solid),
+      Line(points={{-54.8,15},{-42.15,15}}, color={77,126,172}, thickness=0.75, pattern=LinePattern.Solid),
+      Line(points={{-54.8,11.15},{-42.15,11.15}}, color={77,126,172}, thickness=0.5, pattern=LinePattern.Dash),
+      Line(points={{-32.8,-0.95},{-19.6,-0.95}}, color={77,126,172}, thickness=0.75, pattern=LinePattern.Solid),
+      Line(points={{-32.8,-4.8},{-19.6,-4.8}}, color={77,126,172}, thickness=0.5, pattern=LinePattern.Dash),
+      Line(points={{-74.6,15},{-60.85,15}}, color={0,0,0}, thickness=0.8, pattern=LinePattern.Solid),
+      Line(points={{-74.6,-7},{-60.85,-7}}, color={0,0,0}, thickness=0.8, pattern=LinePattern.Solid),
+      Line(points={{-13.55,15},{4.05,15}}, color={0,0,0}, thickness=0.8, pattern=LinePattern.Solid),
+      Line(points={{-13.55,-7},{4.05,-7}}, color={0,0,0}, thickness=0.8, pattern=LinePattern.Solid),
+      Line(points={{-42.15,-14.7},{-42.15,-20.2},{-35,-17.45},{-27.85,-22.4},{-20.7,-18}}, color={196,94,56}, thickness=0.7, pattern=LinePattern.Solid, arrow={Arrow.None,Arrow.Open}),
+      Line(points={{5,4},{22,4},{22,34},{63,34}}, color={77,126,172}, thickness=0.9, pattern=LinePattern.Solid),
+      Line(points={{22,4},{63,4}}, color={77,126,172}, thickness=0.9, pattern=LinePattern.Solid),
+      Line(points={{22,4},{22,-26},{63,-26}}, color={77,126,172}, thickness=0.9, pattern=LinePattern.Solid),
+      Rectangle(extent={{31,29},{44,39}}, lineColor={0,0,0}, fillColor={255,255,255}, fillPattern=FillPattern.Solid, lineThickness=0.6, radius=0),
+      Ellipse(extent={{52,31},{58,37}}, lineColor={0,0,0}, fillColor={255,255,255}, fillPattern=FillPattern.Solid, lineThickness=0.5, startAngle=0, endAngle=360),
+      Line(points={{58,34},{70,34}}, color={0,0,0}, thickness=0.7, pattern=LinePattern.Solid),
+      Rectangle(extent={{31,-1},{44,9}}, lineColor={0,0,0}, fillColor={255,255,255}, fillPattern=FillPattern.Solid, lineThickness=0.6, radius=0),
+      Ellipse(extent={{52,1},{58,7}}, lineColor={0,0,0}, fillColor={255,255,255}, fillPattern=FillPattern.Solid, lineThickness=0.5, startAngle=0, endAngle=360),
+      Line(points={{58,4},{70,4}}, color={0,0,0}, thickness=0.7, pattern=LinePattern.Solid),
+      Rectangle(extent={{31,-31},{44,-21}}, lineColor={0,0,0}, fillColor={255,255,255}, fillPattern=FillPattern.Solid, lineThickness=0.6, radius=0),
+      Ellipse(extent={{52,-29},{58,-23}}, lineColor={0,0,0}, fillColor={255,255,255}, fillPattern=FillPattern.Solid, lineThickness=0.5, startAngle=0, endAngle=360),
+      Line(points={{58,-26},{70,-26}}, color={0,0,0}, thickness=0.7, pattern=LinePattern.Solid),
+      Text(extent={{32,39},{73,55}}, textString="12 V", fontSize=0, lineColor={0,0,0}, horizontalAlignment=TextAlignment.Center),
+      Text(extent={{32,9},{73,25}}, textString="5 V", fontSize=0, lineColor={0,0,0}, horizontalAlignment=TextAlignment.Center),
+      Text(extent={{32,-49},{73,-32}}, textString="3.3 V", fontSize=0, lineColor={0,0,0}, horizontalAlignment=TextAlignment.Center),
+      Line(points={{-76,-58},{76,-58}}, color={219,223,227}, thickness=0.4, pattern=LinePattern.Solid),
+      Text(extent={{-80,-79},{80,-64}}, textString="Power Conditioning", fontSize=0, lineColor={0,0,0}, horizontalAlignment=TextAlignment.Center, textStyle={TextStyle.Bold}),
+      Text(extent={{-80,-93},{80,-82}}, textString="%name", fontSize=0, lineColor={80,80,80}, horizontalAlignment=TextAlignment.Center)
+    }),
+    Diagram(coordinateSystem(extent={{-634,-557},{824,512}}, preserveAspectRatio=true, grid={2,2}), graphics={
+      Text(extent={{-535,414},{-325,432}}, textString="Raw source and regulation", fontSize=0, lineColor={79,89,100}, horizontalAlignment=TextAlignment.Left, textStyle={TextStyle.Bold}),
+      Text(extent={{55,424},{323.8,442}}, textString="12 V, 5 V and 3.3 V distribution", fontSize=0, lineColor={79,89,100}, horizontalAlignment=TextAlignment.Left, textStyle={TextStyle.Bold}),
+      Text(extent={{45,-217},{322.2,-199}}, textString="Distribution status and telemetry", fontSize=0, lineColor={79,89,100}, horizontalAlignment=TextAlignment.Left, textStyle={TextStyle.Bold}),
+      Text(extent={{-622,467},{812,496}}, textString="PCDU: source regulation and three-rail distribution", fontSize=0, lineColor={0,0,0}, horizontalAlignment=TextAlignment.Left, textStyle={TextStyle.Bold}),
+      Line(points={{-622,459},{812,459}}, color={215,220,226}, thickness=0.25)
+    }));
 end PowerConditioningUnit;

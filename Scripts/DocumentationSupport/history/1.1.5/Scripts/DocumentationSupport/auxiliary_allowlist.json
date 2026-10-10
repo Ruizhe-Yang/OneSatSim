@@ -1,0 +1,18 @@
+[
+  "README.md",
+  "Scripts/ConfigSupport/generation_manifest.json",
+  "Scripts/DocumentationSupport/DOC_PATCH_REPORT.md",
+  "Scripts/DocumentationSupport/__init__.py",
+  "Scripts/DocumentationSupport/auxiliary_allowlist.json",
+  "Scripts/DocumentationSupport/auxiliary_change_ledger.json",
+  "Scripts/DocumentationSupport/baseline_generation_manifest.json",
+  "Scripts/DocumentationSupport/catalog.json",
+  "Scripts/DocumentationSupport/documentation_support.py",
+  "Scripts/DocumentationSupport/final_static_check.json",
+  "Scripts/DocumentationSupport/modelica_support.py",
+  "Scripts/DocumentationSupport/release_metadata.json",
+  "Scripts/DocumentationSupport/variable_descriptions.csv",
+  "Scripts/generate_dashboard.py",
+  "Scripts/generate_mass_properties.py",
+  "Scripts/update_config.py"
+]

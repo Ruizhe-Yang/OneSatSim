@@ -1,9 +1,17 @@
 within OneSatSim.Foundation.Calculations;
 model RateGyroModeCalculation "高精度角速率陀螺工作模式计算"
-  OneSatSim.Foundation.Interfaces.ControlModeInput desiredControlMode annotation(Placement(transformation(extent={{-110,-10},{-90,10}})));
-  Modelica.Blocks.Interfaces.BooleanOutput precisionEnabled annotation(Placement(transformation(extent={{80,-10},{100,10}})));
+  OneSatSim.Foundation.Interfaces.ControlModeInput desiredControlMode  "desired控制模式" annotation(Placement(visible=true, transformation(origin={-89,0}, extent={{-32.465455,-32.465455},{32.465455,32.465455}}, rotation=0), iconVisible=true, iconTransformation(origin={-89,0}, extent={{-32.465455,-32.465455},{32.465455,32.465455}}, rotation=0)));
+  Modelica.Blocks.Interfaces.BooleanOutput precisionEnabled  "precision启用" annotation(Placement(visible=true, transformation(origin={89,0}, extent={{-16.232727,-16.232727},{16.232727,16.232727}}, rotation=0), iconVisible=true, iconTransformation(origin={89,0}, extent={{-16.232727,-16.232727},{16.232727,16.232727}}, rotation=0)));
 equation
-  precisionEnabled=desiredControlMode == OneSatSim.Foundation.Types.ControlMode.TargetPointing or
+  precisionEnabled=desiredControlMode == OneSatSim.Foundation.Types.ControlMode.TargetPointing or 
     desiredControlMode == OneSatSim.Foundation.Types.ControlMode.GroundPointing;
-  annotation(Icon(graphics={Rectangle(extent={{-100,65},{100,-65}},lineColor={60,85,120},fillColor={235,241,248},fillPattern=FillPattern.Solid),Line(points={{-70,0},{65,0}},color={60,85,120},arrow={Arrow.None,Arrow.Filled}),Text(extent={{-90,42},{90,-42}},textString="YH50 MODE")}),Documentation(info="<html><h4>功能定位</h4><p>识别需要YH50高精度角速度测量的任务模式。</p><h4>输入与物理含义</h4><p>desiredControlMode为星上共享姿态控制模式枚举。</p><h4>输出与物理含义</h4><p>precisionEnabled在目标指向或地面站指向阶段为true。</p><h4>主要计算关系</h4><p>使用枚举比较组合两种精确指向模式。</p><h4>状态、事件与假设</h4><p>纯代数、无状态；不负责陀螺预热、量程切换、零偏和采样。</p><h4>调用与结果使用</h4><p>由RateGyroUnit调用。该量主要解释陀螺负载与状态，姿态稳定性应查看实际body rate。</p></html>"));
+  annotation(Documentation(info="<html><h2>高精度角速率陀螺工作模式计算</h2><p><b>类路径：</b><code>OneSatSim.Foundation.Calculations.RateGyroModeCalculation</code>　<b>类型：</b>model</p><h3>用途与定位</h3><p>高精度角速率陀螺工作模式计算</p><h3>在工程中使用</h3><p>当前直接使用位置：<a href=\"modelica://OneSatSim.Components.RateGyroUnit\">OneSatSim.Components.RateGyroUnit</a> 的 <code>modeCalculation</code>。</p><h3>接口、输入与输出</h3><table border=\"1\" cellspacing=\"0\" cellpadding=\"5\"><tr><th>名称/维数</th><th>类型</th><th>声明角色</th><th>单位</th><th>含义</th></tr><tr><td><code>desiredControlMode</code></td><td>OneSatSim.Foundation.Interfaces.ControlModeInput</td><td>public</td><td>按声明/类型合同</td><td>desired控制模式</td></tr><tr><td><code>precisionEnabled</code></td><td>Modelica.Blocks.Interfaces.BooleanOutput</td><td>public</td><td>按声明/类型合同</td><td>precision启用</td></tr></table><h3>实现摘要</h3><p>以下表达式直接摘自本类，保留原始符号和单位体系；完整的条件分支、循环与初始化以源码为准。</p><pre>[equation] precisionEnabled=desiredControlMode == OneSatSim.Foundation.Types.ControlMode.TargetPointing or desiredControlMode == OneSatSim.Foundation.Types.ControlMode.GroundPointing;</pre></html>"),
+    Icon(coordinateSystem(extent={{-100,-100},{100,100}},preserveAspectRatio=true),graphics={
+      Rectangle(extent={{-100,-100},{100,100}},fillPattern=FillPattern.Solid,fillColor={124,58,237},lineColor={124,58,237},lineThickness=0,radius=0),
+      Line(points={{-54,-40},{-18,-40},{-18,0},{18,0},{18,40},{54,40}},color={255,255,255},thickness=1.4,pattern=LinePattern.Solid,smooth=Smooth.None)
+    }),
+    Diagram(coordinateSystem(extent={{-100,-100},{100,100}},preserveAspectRatio=true),graphics={
+      Rectangle(extent={{-100,-100},{100,100}},fillPattern=FillPattern.Solid,fillColor={124,58,237},lineColor={124,58,237},lineThickness=0,radius=0),
+      Line(points={{-54,-40},{-18,-40},{-18,0},{18,0},{18,40},{54,40}},color={255,255,255},thickness=1.4,pattern=LinePattern.Solid,smooth=Smooth.None)
+    }));
 end RateGyroModeCalculation;

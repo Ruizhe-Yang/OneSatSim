@@ -1,118 +1,73 @@
 within OneSatSim.Systems.N_systems;
 model StructureSystem "结构分系统"
   parameter OneSatSim.Scenarios.DesignConfigRecords.StructureDesignConfig designConfig "分系统硬件设计配置";
-  Foundation.Interfaces.PowerPort power annotation(Placement(transformation(extent={{-10,90},{10,110}})));
-  Foundation.Interfaces.ThermalPort thermal annotation(Placement(transformation(extent={{-10,-110},{10,-90}})));
-  Foundation.Interfaces.MechanicalPort mechanical annotation(Placement(transformation(extent={{-112,-10},{-92,10}})));
-  Foundation.Interfaces.InformationPort information annotation(Placement(transformation(extent={{92,-10},{112,10}})));
-  Modelica.Electrical.Analog.Basic.Conductor unused12Rail(G=0) annotation(Placement(transformation(extent={{-80,62},{-60,78}})));
-  Modelica.Electrical.Analog.Basic.Conductor unused5Rail(G=0) annotation(Placement(transformation(extent={{-10,62},{10,78}})));
-  Modelica.Electrical.Analog.Basic.Conductor unused33Rail(G=1e-9) annotation(Placement(transformation(extent={{60,62},{80,78}})));
-  Components.StructureAssembly12U structure(config=designConfig.structure) annotation(Placement(transformation(extent={{-42,-47},{42,37}})));
+  Foundation.Interfaces.PowerPort power  "功率" annotation(Placement(transformation(origin={0,255},
+extent={{-12,-12},{12,12}}),
+iconTransformation(origin={0,101.52},
+extent={{-11.52,-11.52},{11.52,11.52}}),
+iconVisible=true));
+  Foundation.Interfaces.ThermalPort thermal  "热学" annotation(Placement(transformation(origin={0,-155},
+extent={{-12,-12},{12,12}}),
+iconTransformation(origin={2.22045e-16,-99.52},
+extent={{-11.52,-11.52},{11.52,11.52}}),
+iconVisible=true));
+  Foundation.Interfaces.MechanicalPort mechanical  "机械" annotation(Placement(transformation(origin={-165,-20},
+extent={{-12,-12},{12,12}}),
+iconTransformation(origin={-100,-1},
+extent={{-11.52,-11.52},{11.52,11.52}}),
+iconVisible=true));
+  Modelica.Electrical.Analog.Basic.Conductor unused12Rail(G=0)  "计算/接口量 unused12Rail" annotation(Placement(visible=true, transformation(origin={-110,165}, extent={{-24,-24},{24,24}}, rotation=0)));
+  Modelica.Electrical.Analog.Basic.Conductor unused5Rail(G=0)  "计算/接口量 unused5Rail" annotation(Placement(visible=true, transformation(origin={0,165}, extent={{-24,-24},{24,24}}, rotation=0)));
+  Modelica.Electrical.Analog.Basic.Conductor unused33Rail(G=1e-9)  "计算/接口量 unused33Rail" annotation(Placement(visible=true, transformation(origin={110,165}, extent={{-24,-24},{24,24}}, rotation=0)));
+  Components.StructureAssembly12U structure(config=designConfig.structure)  "12U主承力结构组件实例" annotation(Placement(visible=true, transformation(origin={0,-20}, extent={{-90,-90},{90,90}}, rotation=0)));
 equation
-  connect(power.p12,unused12Rail.p) annotation(Line(points={{0,100},{-92,100},{-92,70},{-80,70}},color={0,0,255}));
-  connect(unused12Rail.n,power.n12) annotation(Line(points={{-60,70},{-54,70},{-54,88},{-6,88},{-6,100},{0,100}},color={0,0,255}));
-  connect(power.p5,unused5Rail.p) annotation(Line(points={{0,100},{-20,100},{-20,70},{-10,70}},color={0,0,255}));
-  connect(unused5Rail.n,power.n5) annotation(Line(points={{10,70},{20,70},{20,92},{4,92},{4,100},{0,100}},color={0,0,255}));
-  connect(power.p33,unused33Rail.p) annotation(Line(points={{0,100},{52,100},{52,70},{60,70}},color={0,0,255}));
-  connect(unused33Rail.n,power.n33) annotation(Line(points={{80,70},{92,70},{92,86},{8,86},{8,96},{0,96},{0,100}},color={0,0,255}));
-  connect(thermal,structure.thermal) annotation(Line(points={{0,-100},{0,-47}},color={191,0,0}));
-  connect(mechanical,structure.mechanical) annotation(Line(points={{-102,0},{-88,0},{-88,46},{0,46},{0,37}},color={95,95,95},thickness=0.5));
-  connect(information,structure.information) annotation(Line(points={{102,0},{86,0},{86,-5},{42,-5}},color={0,90,180}));
-  annotation(
-    Icon(coordinateSystem(extent={{-100,-100},{100,100}},
-preserveAspectRatio=true,
-grid={2,2}),graphics = {Polygon(origin={0,0},
-lineColor={80,85,92},
-fillColor={226,231,236},
-fillPattern=FillPattern.Solid,
-points={{-62,56},{30,56},{68,76},{-24,76},{-62,56}}), Polygon(origin={0,0},
-lineColor={80,85,92},
-fillColor={205,213,221},
-fillPattern=FillPattern.Solid,
-points={{30,56},{68,76},{68,-42},{30,-62},{30,56}}), Rectangle(origin={-16,-3},
-lineColor={70,75,82},
-fillColor={244,246,248},
-fillPattern=FillPattern.Solid,
-extent={{-46,59},{46,-59}}), Line(origin={0,0},
-points={{-52,56},{-52,-62}},
-color={95,100,108},
-thickness=1), Line(origin={0,0},
-points={{20,56},{20,-62}},
-color={95,100,108},
-thickness=1), Line(origin={0,-4},
-points={{-62,18},{30,18}},
-color={120,125,132},
-thickness=0.75), Line(origin={0,-6},
-points={{-62,-20},{30,-20}},
-color={120,125,132},
-thickness=0.75), Line(origin={0,-4},
-points={{30,18},{68,38}},
-color={120,125,132},
-thickness=0.75), Line(origin={0,-6},
-points={{30,-20},{68,0}},
-color={120,125,132},
-thickness=0.75), Ellipse(origin={-56,48},
-lineColor={80,85,92},
-fillColor={170,176,184},
-fillPattern=FillPattern.Solid,
-extent={{-3,3},{3,-3}}), Ellipse(origin={24,48},
-lineColor={80,85,92},
-fillColor={170,176,184},
-fillPattern=FillPattern.Solid,
-extent={{-3,3},{3,-3}}), Ellipse(origin={-56,-54},
-lineColor={80,85,92},
-fillColor={170,176,184},
-fillPattern=FillPattern.Solid,
-extent={{-3,3},{3,-3}}), Ellipse(origin={24,-54},
-lineColor={80,85,92},
-fillColor={170,176,184},
-fillPattern=FillPattern.Solid,
-extent={{-3,3},{3,-3}}), Text(origin={0,-83},
-lineColor={70,75,82},
-extent={{-92,-11},{92,11}},
-textString="12U STRUCTURE",
-textColor={70,75,82}), Line(origin={36,-1.77636e-15},
-points={{-52,56},{-52,-62}},
-color={95,100,108},
-thickness=1), Line(origin={50,10},
-points={{0,56},{0,-62}},
-color={95,100,108},
-thickness=1), Line(origin={4,66},
-points={{-46,0},{46,0}},
-color={95,100,108},
-thickness=1), Line(origin={3,66},
-points={{-19,-10},{19,10}},
-color={95,100,108},
-thickness=1), Line(origin={-33,66},
-points={{-19,-10},{19,10}},
-color={95,100,108},
-thickness=1), Line(origin={39,66},
-points={{-19,-10},{19,10}},
-color={95,100,108},
-thickness=1)}),
-    Diagram(
-      coordinateSystem(extent={{-110,-110},{110,110}},preserveAspectRatio=true),
-      graphics={
-        Rectangle(extent={{-96,86},{96,52}},lineColor={170,182,194},
-          fillColor={247,249,251},fillPattern=FillPattern.Solid),
-        Text(extent={{-92,85},{92,76}},textString="UNUSED POWER RAIL TERMINATION",
-          lineColor={75,90,105}),
-        Text(extent={{-92,58},{92,51}},textString="Numerical closure only - no structural function",
-          lineColor={110,115,120}),
-
-        Rectangle(extent={{-58,46},{58,-58}},lineColor={145,150,158},
-          fillColor={250,250,250},fillPattern=FillPattern.Solid),
-        Text(extent={{-55,45},{55,38}},textString="PRIMARY 12U LOAD-BEARING STRUCTURE",
-          lineColor={75,80,88}),
-        Text(extent={{-54,-50},{54,-57}},textString="Mechanical reference & structural heat path",
-          lineColor={105,105,110}),
-
-        Text(extent={{-104,12},{-66,5}},textString="MECHANICAL",
-          lineColor={95,95,95}),
-        Text(extent={{64,11},{104,4}},textString="STRUCTURAL STATE",
-          lineColor={0,90,180}),
-        Text(extent={{28,-94},{86,-87}},textString="STRUCTURAL THERMAL NODE",
-          lineColor={170,45,35})}),
-    Documentation(info="<html><h4>分系统职责</h4><p><b>系统角色：</b>把12U主结构接入整星机械、热和信息总体</p><p><b>1+4+8位置：</b>八个N-System之一；上接四个Overall，下接专业Components</p><h4>白箱组成与连接</h4><p><b>实现：</b>StructureAssembly12U通过单组机械/热/信息端口连接，未使用额外框架或网关</p><p><b>内部设备：</b>unused12Rail（Conductor）、unused5Rail（Conductor）、unused33Rail（Conductor）、structure（StructureAssembly12U）</p><p><b>对外端口：</b>thermal（ThermalPort）、mechanical（MechanicalPort）、information（InformationPort）</p><p><b>运行行为：</b>提供全星公共机械安装基准与结构导热节点，零导纳/极小导纳支路只用于未用电源端的数值闭合</p><h4>状态与遥测</h4><p><b>关键对象：</b>结构质量惯量、安装偏置、导轨/面板热节点</p><p><b>关键状态：</b>本体机械状态和结构温度</p><p><b>遥测关系：</b>结构无专用主工程字段，温度和运动用于物理层诊断</p><p><b>建模约束：</b>本模型仅含connect语句；所有设备只保留一组信息、热和机械接口，适用时再增加电源或环境接口。</p></html>"));
+  connect(power.p12,unused12Rail.p) annotation(Line(points={{0,255},{-144,255},{-144,165},{-134,165}}, color={0,0,255}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(unused12Rail.n,power.n12) annotation(Line(points={{-86,165},{-76,165},{-76,255},{0,255}}, color={0,0,255}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(power.p5,unused5Rail.p) annotation(Line(points={{0,255},{-34,255},{-34,165},{-24,165}}, color={0,0,255}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(unused5Rail.n,power.n5) annotation(Line(points={{24,165},{34,165},{34,255},{0,255}}, color={0,0,255}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(power.p33,unused33Rail.p) annotation(Line(points={{0,255},{76,255},{76,165},{86,165}}, color={0,0,255}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(unused33Rail.n,power.n33) annotation(Line(points={{134,165},{144,165},{144,255},{0,255}}, color={0,0,255}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(thermal,structure.thermal) annotation(Line(points={{0,-155},{0,-107.3}}, color={191,0,0}, thickness=0.5, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(mechanical,structure.mechanical) annotation(Line(points={{-165,-20},{-80.1,-20}}, color={95,95,95}, thickness=0.5, pattern=LinePattern.Solid, smooth=Smooth.None));
+  annotation(Documentation(info="<html><h2>结构分系统</h2><p><b>类路径：</b><code>OneSatSim.Systems.N_systems.StructureSystem</code>　<b>类型：</b>model</p><h3>用途与定位</h3><p>结构分系统</p><h3>在工程中使用</h3><p>当前直接使用位置：<a href=\"modelica://OneSatSim.Systems.SpacecraftSystem\">OneSatSim.Systems.SpacecraftSystem</a> 的 <code>structureSystem</code>。</p><h3>接口、输入与输出</h3><table border=\"1\" cellspacing=\"0\" cellpadding=\"5\"><tr><th>名称/维数</th><th>类型</th><th>声明角色</th><th>单位</th><th>含义</th></tr><tr><td><code>power</code></td><td>Foundation.Interfaces.PowerPort</td><td>public</td><td>按声明/类型合同</td><td>功率</td></tr><tr><td><code>thermal</code></td><td>Foundation.Interfaces.ThermalPort</td><td>public</td><td>按声明/类型合同</td><td>热学</td></tr><tr><td><code>mechanical</code></td><td>Foundation.Interfaces.MechanicalPort</td><td>public</td><td>按声明/类型合同</td><td>机械</td></tr></table><h3>配置与参数</h3><p>下面列出当前源码表达式，仅用于阅读；当前参数对话框、生效配置记录与原有配置工具仍是使用依据。本页不新增默认值或换算。</p><table border=\"1\" cellspacing=\"0\" cellpadding=\"5\"><tr><th>参数</th><th>类型</th><th>用途</th><th>源码表达式</th></tr><tr><td><code>designConfig</code></td><td>OneSatSim.Scenarios.DesignConfigRecords.StructureDesignConfig</td><td>分系统硬件设计配置</td><td><code>由调用方、继承或默认声明提供</code></td></tr></table><h3>内部组成</h3><p>以下为本类直接声明的组成单元，继承类的内部结构另按其文档查看。</p><table border=\"1\" cellspacing=\"0\" cellpadding=\"5\"><tr><th>实例</th><th>类</th><th>作用</th></tr><tr><td><code>unused12Rail</code></td><td><a href=\"modelica://Modelica.Electrical.Analog.Basic.Conductor\">Modelica.Electrical.Analog.Basic.Conductor</a></td><td>计算/接口量 unused12Rail</td></tr><tr><td><code>unused5Rail</code></td><td><a href=\"modelica://Modelica.Electrical.Analog.Basic.Conductor\">Modelica.Electrical.Analog.Basic.Conductor</a></td><td>计算/接口量 unused5Rail</td></tr><tr><td><code>unused33Rail</code></td><td><a href=\"modelica://Modelica.Electrical.Analog.Basic.Conductor\">Modelica.Electrical.Analog.Basic.Conductor</a></td><td>计算/接口量 unused33Rail</td></tr><tr><td><code>structure</code></td><td><a href=\"modelica://OneSatSim.Components.StructureAssembly12U\">OneSatSim.Components.StructureAssembly12U</a></td><td>12U主承力结构组件实例</td></tr></table><h3>使用边界</h3><p>本工程的轨道环境采用离线固化数据；任务、姿态、电热及信息边界按当前配置和接口使用。已有未完成任务目标与平台状态见根README，不由本次注释更新改写。</p></html>"),
+    Icon(coordinateSystem(extent={{-100,-100},{100,100}}, preserveAspectRatio=true, grid={2,2}), graphics={
+      Rectangle(extent={{-89,-97},{89,95}}, lineColor={0,0,0}, fillColor={255,255,255}, fillPattern=FillPattern.Solid, lineThickness=0.6, radius=3),
+      Line(points={{-76,64},{76,64}}, color={219,223,227}, thickness=0.4, pattern=LinePattern.Solid),
+      Rectangle(extent={{-84,69},{-64,89}}, lineColor={0,0,0}, fillColor={113,122,132}, fillPattern=FillPattern.Solid, lineThickness=0.85, radius=0),
+      Text(extent={{-61,71},{76,86}}, textString="Subsystem", fontSize=0, lineColor={0,0,0}, horizontalAlignment=TextAlignment.Center),
+      Polygon(points={{-30,33},{24,45},{47,26},{-7,14},{-30,33}}, lineColor={0,0,0}, fillColor={242,245,247}, fillPattern=FillPattern.Solid, lineThickness=0.7),
+      Polygon(points={{-30,33},{-7,14},{-7,-46},{-30,-27},{-30,33}}, lineColor={0,0,0}, fillColor={255,255,255}, fillPattern=FillPattern.Solid, lineThickness=0.7),
+      Polygon(points={{-7,14},{47,26},{47,-34},{-7,-46},{-7,14}}, lineColor={0,0,0}, fillColor={246,247,248}, fillPattern=FillPattern.Solid, lineThickness=0.7),
+      Line(points={{-30,13},{-7,-6},{47,6}}, color={113,122,132}, thickness=0.45, pattern=LinePattern.Solid),
+      Line(points={{-30,-7},{-7,-26},{47,-14}}, color={113,122,132}, thickness=0.45, pattern=LinePattern.Solid),
+      Line(points={{-2.68,14.96},{-2.68,-45.04}}, color={0,0,0}, thickness=0.65, pattern=LinePattern.Solid),
+      Line(points={{42.68,25.04},{42.68,-34.96}}, color={0,0,0}, thickness=0.65, pattern=LinePattern.Solid),
+      Line(points={{-30,33},{-7,-46}}, color={113,122,132}, thickness=0.45, pattern=LinePattern.Solid),
+      Line(points={{-7,14},{-30,-27}}, color={113,122,132}, thickness=0.45, pattern=LinePattern.Solid),
+      Line(points={{-7,14},{47,-34}}, color={113,122,132}, thickness=0.45, pattern=LinePattern.Solid),
+      Line(points={{47,26},{-7,-46}}, color={113,122,132}, thickness=0.45, pattern=LinePattern.Solid),
+      Ellipse(extent={{-1,26},{15,39}}, lineColor={0,0,0}, fillColor={255,255,255}, fillPattern=FillPattern.Solid, lineThickness=0.6, startAngle=0, endAngle=360),
+      Ellipse(extent={{3,29},{11,36}}, lineColor={0,0,0}, fillColor={223,233,238}, fillPattern=FillPattern.Solid, lineThickness=0.5, startAngle=0, endAngle=360),
+      Ellipse(extent={{-31.7,31.3},{-28.3,34.7}}, lineColor={0,0,0}, fillColor={255,255,255}, fillPattern=FillPattern.Solid, lineThickness=0.45, startAngle=0, endAngle=360),
+      Line(points={{-30.85,33},{-29.15,33}}, color={113,122,132}, thickness=0.4, pattern=LinePattern.Solid),
+      Ellipse(extent={{-8.7,12.3},{-5.3,15.7}}, lineColor={0,0,0}, fillColor={255,255,255}, fillPattern=FillPattern.Solid, lineThickness=0.45, startAngle=0, endAngle=360),
+      Line(points={{-7.85,14},{-6.15,14}}, color={113,122,132}, thickness=0.4, pattern=LinePattern.Solid),
+      Ellipse(extent={{45.3,24.3},{48.7,27.7}}, lineColor={0,0,0}, fillColor={255,255,255}, fillPattern=FillPattern.Solid, lineThickness=0.45, startAngle=0, endAngle=360),
+      Line(points={{46.15,26},{47.85,26}}, color={113,122,132}, thickness=0.4, pattern=LinePattern.Solid),
+      Ellipse(extent={{-31.7,-28.7},{-28.3,-25.3}}, lineColor={0,0,0}, fillColor={255,255,255}, fillPattern=FillPattern.Solid, lineThickness=0.45, startAngle=0, endAngle=360),
+      Line(points={{-30.85,-27},{-29.15,-27}}, color={113,122,132}, thickness=0.4, pattern=LinePattern.Solid),
+      Ellipse(extent={{-8.7,-47.7},{-5.3,-44.3}}, lineColor={0,0,0}, fillColor={255,255,255}, fillPattern=FillPattern.Solid, lineThickness=0.45, startAngle=0, endAngle=360),
+      Line(points={{-7.85,-46},{-6.15,-46}}, color={113,122,132}, thickness=0.4, pattern=LinePattern.Solid),
+      Ellipse(extent={{45.3,-35.7},{48.7,-32.3}}, lineColor={0,0,0}, fillColor={255,255,255}, fillPattern=FillPattern.Solid, lineThickness=0.45, startAngle=0, endAngle=360),
+      Line(points={{46.15,-34},{47.85,-34}}, color={113,122,132}, thickness=0.4, pattern=LinePattern.Solid),
+      Line(points={{-76,-58},{76,-58}}, color={219,223,227}, thickness=0.4, pattern=LinePattern.Solid),
+      Text(extent={{-80,-79},{80,-64}}, textString="Structure System", fontSize=0, lineColor={0,0,0}, horizontalAlignment=TextAlignment.Center, textStyle={TextStyle.Bold}),
+      Text(extent={{-80,-93},{80,-82}}, textString="%name", fontSize=0, lineColor={80,80,80}, horizontalAlignment=TextAlignment.Center)
+    }),
+    Diagram(coordinateSystem(extent={{-209,-199},{209,384}}, preserveAspectRatio=true, grid={2,2}), graphics={
+      Text(extent={{-150,296},{85.2,314}}, textString="Electrical rail terminations", fontSize=0, lineColor={79,89,100}, horizontalAlignment=TextAlignment.Left, textStyle={TextStyle.Bold}),
+      Text(extent={{-115,99},{103.4,117}}, textString="Structure and installation", fontSize=0, lineColor={79,89,100}, horizontalAlignment=TextAlignment.Left, textStyle={TextStyle.Bold}),
+      Text(extent={{-197,339},{197,368}}, textString="Structure System", fontSize=0, lineColor={0,0,0}, horizontalAlignment=TextAlignment.Left, textStyle={TextStyle.Bold}),
+      Line(points={{-197,331},{197,331}}, color={215,220,226}, thickness=0.25)
+    }));
 end StructureSystem;

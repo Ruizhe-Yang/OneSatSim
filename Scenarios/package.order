@@ -5,9 +5,9 @@ InitialConditionConfig
 DesignConfigRecords
 SpacecraftDesignConfig
 DefaultSpacecraftDesignConfig
-defaultSpacecraftDesignConfig
 GeneratedSpacecraftDesignConfig
 GeneratedMassProperties
 ScenarioConfig
 DefaultScenario
 GeneratedScenario
+GeneratedEnvironmentData

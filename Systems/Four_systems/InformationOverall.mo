@@ -1,13 +1,47 @@
 within OneSatSim.Systems.Four_systems;
 model InformationOverall "信息总体"
-  Foundation.Interfaces.InformationPort subsystem[8] annotation(Placement(transformation(extent={{-112,-10},{-92,10}})));
+  Foundation.Interfaces.InformationPort subsystem[7]  "计算/接口量 subsystem" annotation(Placement(transformation(origin={115,120},
+extent={{-12,-12},{12,12}}),
+iconTransformation(origin={-98,-1},
+extent={{-12,-12},{12,12}}),
+iconVisible=true));
+  Foundation.Interfaces.OnboardTelemetryPort telemetry  "只读遥测信息接口" annotation(Placement(transformation(origin={165,35},
+extent={{-12,-12},{12,12}}),
+iconTransformation(origin={98,-1},
+extent={{-12,-12},{12,12}}),
+iconVisible=true));
+  Foundation.Models.EngineeringTelemetryObserver engineeringTelemetryObserver 
+     "整星信息总线的只读工程遥测观察器实例" annotation(Placement(visible=true, transformation(origin={0,0}, extent={{-75,-75},{75,75}}, rotation=0)));
 equation
-  connect(subsystem[1],subsystem[2]) annotation(Line(points={{-102,0},{-75,0}},color={0,90,180},thickness=0.5));
-  connect(subsystem[1],subsystem[3]) annotation(Line(points={{-102,0},{-65,0}},color={0,90,180},thickness=0.5));
-  connect(subsystem[1],subsystem[4]) annotation(Line(points={{-102,0},{-55,0}},color={0,90,180},thickness=0.5));
-  connect(subsystem[1],subsystem[5]) annotation(Line(points={{-102,0},{-45,0}},color={0,90,180},thickness=0.5));
-  connect(subsystem[1],subsystem[6]) annotation(Line(points={{-102,0},{-35,0}},color={0,90,180},thickness=0.5));
-  connect(subsystem[1],subsystem[7]) annotation(Line(points={{-102,0},{-25,0}},color={0,90,180},thickness=0.5));
-  connect(subsystem[1],subsystem[8]) annotation(Line(points={{-102,0},{-15,0}},color={0,90,180},thickness=0.5));
-  annotation(Icon(graphics={Rectangle(extent={{-100,85},{100,-85}},lineColor={20,90,155},fillColor={225,240,250},fillPattern=FillPattern.Solid),Line(points={{-75,0},{75,0}},color={20,90,155},thickness=4),Ellipse(extent={{-8,8},{8,-8}},fillColor={20,90,155},fillPattern=FillPattern.Solid),Text(extent={{-92,-82},{92,-58}},textString="ONE INFORMATION BUS")}),Diagram(coordinateSystem(extent={{-110,-110},{110,110}}),graphics={Text(extent={{-94,80},{94,66}},textString="8个N分系统共享设备数据/指令/星上工程遥测")}),Documentation(info="<html><h4>总体职责</h4><p><b>系统角色：</b>1+4+8中的信息总体，将八个分系统的唯一InformationPort汇接为一条星上信息总线</p><p><b>建模层级：</b>四个领域Overall之一，直接服务严格1+4+8总体集成</p><h4>实现与交互</h4><p><b>白箱实现：</b>八个InformationPort直接connect到同一无因果复合总线，不再放置重复路由组件</p><p><b>内部对象：</b>由声明参数和方程构成</p><p><b>端口：</b>无对外连接器；通过参数、方程或算法提供内部计算能力</p><p><b>运行行为：</b>CommandBus、DeviceStatusBus、PayloadDataPort和OnboardTelemetryPort在一条总线上共享；各设备只有一个信息接口</p><h4>参数、状态与使用</h4><p><b>关键参数：</b>八个分系统端口和四个信息语义域</p><p><b>关键状态：</b>总线中当前命令、设备状态、业务数据和保持的工程遥测</p><p><b>遥测关系：</b>统一设备状态进入OBC，OBC形成的工程遥测再沿同一总线到通信分系统和总体输出</p><p><b>使用说明：</b>从SpacecraftSystem总图进入本模型，可检查八个N-System如何共享该领域网络；不要把总体网络理解为高保真有限元、电路板级或软件路由器模型。</p></html>"));
+  connect(subsystem[1],engineeringTelemetryObserver.live) annotation(Line(points={{115,120},{115,60},{66.75,60}}, color={0,102,255}, thickness=0.5, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(engineeringTelemetryObserver.telemetry,telemetry) annotation(Line(points={{66.75,55.55555},{165,55.55555},{165,35}}, color={213,0,143}, thickness=0.5, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(subsystem[1],subsystem[2]) annotation(Line(points={{115,120}}, color={0,102,255}, thickness=0.5, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(subsystem[1],subsystem[3]) annotation(Line(points={{115,120}}, color={0,102,255}, thickness=0.5, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(subsystem[1],subsystem[4]) annotation(Line(points={{115,120}}, color={0,102,255}, thickness=0.5, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(subsystem[1],subsystem[5]) annotation(Line(points={{115,120}}, color={0,102,255}, thickness=0.5, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(subsystem[1],subsystem[6]) annotation(Line(points={{115,120}}, color={0,102,255}, thickness=0.5, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(subsystem[1],subsystem[7]) annotation(Line(points={{115,120}}, color={0,102,255}, thickness=0.5, pattern=LinePattern.Solid, smooth=Smooth.None));
+  annotation(Documentation(info="<html><h2>信息总体</h2><p><b>类路径：</b><code>OneSatSim.Systems.Four_systems.InformationOverall</code>　<b>类型：</b>model</p><h3>用途与定位</h3><p>信息总体</p><h3>在工程中使用</h3><p>当前直接使用位置：<a href=\"modelica://OneSatSim.Systems.SpacecraftSystem\">OneSatSim.Systems.SpacecraftSystem</a> 的 <code>informationOverall</code>。</p><h3>接口、输入与输出</h3><table border=\"1\" cellspacing=\"0\" cellpadding=\"5\"><tr><th>名称/维数</th><th>类型</th><th>声明角色</th><th>单位</th><th>含义</th></tr><tr><td><code>subsystem[7]</code></td><td>Foundation.Interfaces.InformationPort</td><td>public</td><td>按声明/类型合同</td><td>计算/接口量 subsystem</td></tr><tr><td><code>telemetry</code></td><td>Foundation.Interfaces.OnboardTelemetryPort</td><td>public</td><td>按声明/类型合同</td><td>只读遥测信息接口</td></tr></table><h3>内部组成</h3><p>以下为本类直接声明的组成单元，继承类的内部结构另按其文档查看。</p><table border=\"1\" cellspacing=\"0\" cellpadding=\"5\"><tr><th>实例</th><th>类</th><th>作用</th></tr><tr><td><code>engineeringTelemetryObserver</code></td><td><a href=\"modelica://OneSatSim.Foundation.Models.EngineeringTelemetryObserver\">OneSatSim.Foundation.Models.EngineeringTelemetryObserver</a></td><td>整星信息总线的只读工程遥测观察器实例</td></tr></table></html>"),
+    Icon(coordinateSystem(extent={{-100,-100},{100,100}}, preserveAspectRatio=true, grid={2,2}), graphics={
+      Rectangle(extent={{-89,-97},{89,95}}, lineColor={0,0,0}, fillColor={255,255,255}, fillPattern=FillPattern.Solid, lineThickness=0.6, radius=3),
+      Line(points={{-76,64},{76,64}}, color={219,223,227}, thickness=0.4, pattern=LinePattern.Solid),
+      Rectangle(extent={{-84,69},{-64,89}}, lineColor={0,0,0}, fillColor={83,131,109}, fillPattern=FillPattern.Solid, lineThickness=0.85, radius=0),
+      Text(extent={{-61,71},{76,86}}, textString="Domain assembly", fontSize=0, lineColor={0,0,0}, horizontalAlignment=TextAlignment.Center),
+      Line(points={{-68,20},{-38,20},{-38,-21},{-68,-21}}, color={83,131,109}, thickness=0.85, pattern=LinePattern.Solid),
+      Line(points={{-53,-21},{-53,20}}, color={83,131,109}, thickness=0.65, pattern=LinePattern.Solid),
+      Rectangle(extent={{-16,-33},{61,38}}, lineColor={0,0,0}, fillColor={255,255,255}, fillPattern=FillPattern.Solid, lineThickness=0.75, radius=2),
+      Rectangle(extent={{-9,-24},{54,29}}, lineColor={0,0,0}, fillColor={246,249,247}, fillPattern=FillPattern.Solid, lineThickness=0.45, radius=0),
+      Line(points={{-34,0},{-16,0}}, color={83,131,109}, thickness=0.75, pattern=LinePattern.Solid, arrow={Arrow.None,Arrow.Open}),
+      Line(points={{-5,-15},{7,-15},{13,9},{20,-12},{29,16},{39,-2},{48,5}}, color={83,131,109}, thickness=0.7, pattern=LinePattern.Solid),
+      Line(points={{-2,21},{27,21}}, color={113,122,132}, thickness=0.4, pattern=LinePattern.Solid),
+      Rectangle(extent={{37,17},{48,24}}, lineColor={0,0,0}, fillColor={255,255,255}, fillPattern=FillPattern.Solid, lineThickness=0.4, radius=0),
+      Line(points={{3,-41},{42,-41}}, color={0,0,0}, thickness=0.65, pattern=LinePattern.Solid),
+      Line(points={{-76,-58},{76,-58}}, color={219,223,227}, thickness=0.4, pattern=LinePattern.Solid),
+      Text(extent={{-80,-79},{80,-64}}, textString="Information Network", fontSize=0, lineColor={0,0,0}, horizontalAlignment=TextAlignment.Center, textStyle={TextStyle.Bold}),
+      Text(extent={{-80,-93},{80,-82}}, textString="%name", fontSize=0, lineColor={80,80,80}, horizontalAlignment=TextAlignment.Center)
+    }),
+    Diagram(coordinateSystem(extent={{-113,-113},{209,208}}, preserveAspectRatio=true, grid={2,2}), graphics={
+      Text(extent={{-101,163},{197,192}}, textString="Information Network", fontSize=0, lineColor={0,0,0}, horizontalAlignment=TextAlignment.Left, textStyle={TextStyle.Bold}),
+      Line(points={{-101,155},{197,155}}, color={215,220,226}, thickness=0.25)
+    }));
 end InformationOverall;

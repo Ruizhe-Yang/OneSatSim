@@ -1,0 +1,815 @@
+{
+  "schema": "MOSAIC.diagram_topology.v2",
+  "connectorStyles": {
+    "MechanicalPort": {
+      "rgb": [
+        124,
+        58,
+        237
+      ],
+      "glyph": "G01"
+    },
+    "PowerPort": {
+      "rgb": [
+        245,
+        158,
+        11
+      ],
+      "glyph": "G02"
+    },
+    "SourcePowerPort": {
+      "rgb": [
+        232,
+        93,
+        4
+      ],
+      "glyph": "G03"
+    },
+    "ThermalPort": {
+      "rgb": [
+        229,
+        57,
+        53
+      ],
+      "glyph": "G04"
+    },
+    "InformationPort": {
+      "rgb": [
+        0,
+        102,
+        255
+      ],
+      "glyph": "G05"
+    },
+    "EnvironmentPort": {
+      "rgb": [
+        0,
+        166,
+        81
+      ],
+      "glyph": "G06"
+    },
+    "EphemerisPort": {
+      "rgb": [
+        0,
+        172,
+        193
+      ],
+      "glyph": "G07"
+    },
+    "OnboardTelemetryPort": {
+      "rgb": [
+        213,
+        0,
+        143
+      ],
+      "glyph": "G08"
+    },
+    "DeviceStatusBus": {
+      "rgb": [
+        0,
+        137,
+        123
+      ],
+      "glyph": "G11"
+    },
+    "PayloadDataPort": {
+      "rgb": [
+        0,
+        82,
+        204
+      ],
+      "glyph": "G09"
+    },
+    "CommandBus": {
+      "rgb": [
+        117,
+        0,
+        255
+      ],
+      "glyph": "G10"
+    },
+    "CommandStatusBus": {
+      "rgb": [
+        0,
+        145,
+        234
+      ],
+      "glyph": "G11"
+    },
+    "MissionFeedbackBus": {
+      "rgb": [
+        0,
+        121,
+        107
+      ],
+      "glyph": "G25"
+    },
+    "MissionStateSignals": {
+      "rgb": [
+        103,
+        58,
+        183
+      ],
+      "glyph": "G12"
+    },
+    "OpportunitySignals": {
+      "rgb": [
+        118,
+        184,
+        0
+      ],
+      "glyph": "G13"
+    },
+    "ActiveGeometrySignals": {
+      "rgb": [
+        0,
+        150,
+        136
+      ],
+      "glyph": "G14"
+    },
+    "PlannerRequestSignals": {
+      "rgb": [
+        255,
+        109,
+        0
+      ],
+      "glyph": "G15"
+    },
+    "ArbiterDecisionSignals": {
+      "rgb": [
+        170,
+        0,
+        255
+      ],
+      "glyph": "G16"
+    },
+    "ImagingActionSignals": {
+      "rgb": [
+        236,
+        64,
+        122
+      ],
+      "glyph": "G17"
+    },
+    "DownlinkActionSignals": {
+      "rgb": [
+        0,
+        188,
+        212
+      ],
+      "glyph": "G18"
+    },
+    "SafeModeActionSignals": {
+      "rgb": [
+        198,
+        40,
+        40
+      ],
+      "glyph": "G19"
+    },
+    "SafetySignals": {
+      "rgb": [
+        198,
+        40,
+        40
+      ],
+      "glyph": "G19"
+    },
+    "ActiveMissionSelectionInput": {
+      "rgb": [
+        255,
+        109,
+        0
+      ],
+      "glyph": "G24"
+    },
+    "ActiveMissionSelectionOutput": {
+      "rgb": [
+        255,
+        109,
+        0
+      ],
+      "glyph": "G24"
+    },
+    "RealSignal": {
+      "rgb": [
+        0,
+        76,
+        255
+      ],
+      "glyph": "G21"
+    },
+    "BooleanSignal": {
+      "rgb": [
+        213,
+        0,
+        249
+      ],
+      "glyph": "G22"
+    },
+    "IntegerSignal": {
+      "rgb": [
+        255,
+        109,
+        0
+      ],
+      "glyph": "G23"
+    },
+    "AttitudeControlStateInput": {
+      "rgb": [
+        124,
+        58,
+        237
+      ],
+      "glyph": "G14"
+    },
+    "AttitudeControlStateOutput": {
+      "rgb": [
+        124,
+        58,
+        237
+      ],
+      "glyph": "G14"
+    },
+    "AttitudeControlStateSignal": {
+      "rgb": [
+        124,
+        58,
+        237
+      ],
+      "glyph": "G14"
+    },
+    "CommandTypeInput": {
+      "rgb": [
+        117,
+        0,
+        255
+      ],
+      "glyph": "G10"
+    },
+    "CommandTypeOutput": {
+      "rgb": [
+        117,
+        0,
+        255
+      ],
+      "glyph": "G10"
+    },
+    "CommandTypeSignal": {
+      "rgb": [
+        117,
+        0,
+        255
+      ],
+      "glyph": "G10"
+    },
+    "ControlModeInput": {
+      "rgb": [
+        0,
+        102,
+        255
+      ],
+      "glyph": "G12"
+    },
+    "ControlModeOutput": {
+      "rgb": [
+        0,
+        102,
+        255
+      ],
+      "glyph": "G12"
+    },
+    "ControlModeSignal": {
+      "rgb": [
+        0,
+        102,
+        255
+      ],
+      "glyph": "G12"
+    },
+    "RejectReasonInput": {
+      "rgb": [
+        229,
+        57,
+        53
+      ],
+      "glyph": "G20"
+    },
+    "RejectReasonOutput": {
+      "rgb": [
+        229,
+        57,
+        53
+      ],
+      "glyph": "G20"
+    },
+    "RejectReasonSignal": {
+      "rgb": [
+        229,
+        57,
+        53
+      ],
+      "glyph": "G20"
+    },
+    "ImagingPhaseInput": {
+      "rgb": [
+        236,
+        64,
+        122
+      ],
+      "glyph": "G17"
+    },
+    "ImagingPhaseOutput": {
+      "rgb": [
+        236,
+        64,
+        122
+      ],
+      "glyph": "G17"
+    },
+    "ImagingPhaseSignal": {
+      "rgb": [
+        236,
+        64,
+        122
+      ],
+      "glyph": "G17"
+    },
+    "MissionModeSignal": {
+      "rgb": [
+        103,
+        58,
+        183
+      ],
+      "glyph": "G12"
+    },
+    "DownlinkPhaseSignal": {
+      "rgb": [
+        0,
+        188,
+        212
+      ],
+      "glyph": "G18"
+    },
+    "CommandExecutionStatusSignal": {
+      "rgb": [
+        0,
+        145,
+        234
+      ],
+      "glyph": "G11"
+    }
+  },
+  "buStyles": {
+    "RealSignalBridge": {
+      "rgb": [
+        0,
+        76,
+        255
+      ],
+      "glyph": "G21",
+      "targetWidth": 32
+    },
+    "RealSignalReader": {
+      "rgb": [
+        0,
+        76,
+        255
+      ],
+      "glyph": "G21",
+      "targetWidth": 32
+    },
+    "RealSignalForward": {
+      "rgb": [
+        0,
+        76,
+        255
+      ],
+      "glyph": "G21",
+      "targetWidth": 32
+    },
+    "BooleanSignalBridge": {
+      "rgb": [
+        213,
+        0,
+        249
+      ],
+      "glyph": "G22",
+      "targetWidth": 32
+    },
+    "BooleanSignalReader": {
+      "rgb": [
+        213,
+        0,
+        249
+      ],
+      "glyph": "G22",
+      "targetWidth": 32
+    },
+    "OpportunityBooleanReader": {
+      "rgb": [
+        213,
+        0,
+        249
+      ],
+      "glyph": "G22",
+      "targetWidth": 32
+    },
+    "IntegerSignalBridge": {
+      "rgb": [
+        255,
+        109,
+        0
+      ],
+      "glyph": "G23",
+      "targetWidth": 32
+    },
+    "IntegerSignalReader": {
+      "rgb": [
+        255,
+        109,
+        0
+      ],
+      "glyph": "G23",
+      "targetWidth": 32
+    },
+    "OpportunityIntegerReader": {
+      "rgb": [
+        255,
+        109,
+        0
+      ],
+      "glyph": "G23",
+      "targetWidth": 32
+    },
+    "AttitudeControlStateSignalBridge": {
+      "rgb": [
+        124,
+        58,
+        237
+      ],
+      "glyph": "G14",
+      "targetWidth": 32
+    },
+    "ControlModeSignalBridge": {
+      "rgb": [
+        0,
+        102,
+        255
+      ],
+      "glyph": "G12",
+      "targetWidth": 32
+    },
+    "CommandStatusCalculation": {
+      "rgb": [
+        0,
+        145,
+        234
+      ],
+      "glyph": "G11",
+      "targetWidth": 44
+    },
+    "FotonAmurCalculation": {
+      "rgb": [
+        236,
+        64,
+        122
+      ],
+      "glyph": "G17",
+      "targetWidth": 44
+    },
+    "GNSSFixCalculation": {
+      "rgb": [
+        0,
+        166,
+        81
+      ],
+      "glyph": "G14",
+      "targetWidth": 44
+    },
+    "HeaterChannelCalculation": {
+      "rgb": [
+        229,
+        57,
+        53
+      ],
+      "glyph": "G04",
+      "targetWidth": 44
+    },
+    "OrbitalAccelerationCalculation": {
+      "rgb": [
+        0,
+        166,
+        81
+      ],
+      "glyph": "G07",
+      "targetWidth": 44
+    },
+    "PayloadCaptureCalculation": {
+      "rgb": [
+        236,
+        64,
+        122
+      ],
+      "glyph": "G17",
+      "targetWidth": 44
+    },
+    "PowerDistributionStatusCalculation": {
+      "rgb": [
+        245,
+        158,
+        11
+      ],
+      "glyph": "G11",
+      "targetWidth": 44
+    },
+    "RateGyroModeCalculation": {
+      "rgb": [
+        124,
+        58,
+        237
+      ],
+      "glyph": "G12",
+      "targetWidth": 44
+    },
+    "ReactionWheelTelemetryCalculation": {
+      "rgb": [
+        124,
+        58,
+        237
+      ],
+      "glyph": "G08",
+      "targetWidth": 44
+    },
+    "SunSensorCalculation": {
+      "rgb": [
+        245,
+        158,
+        11
+      ],
+      "glyph": "G14",
+      "targetWidth": 44
+    },
+    "WheelSpeedServoCalculation": {
+      "rgb": [
+        124,
+        58,
+        237
+      ],
+      "glyph": "G16",
+      "targetWidth": 44
+    },
+    "MissionSelectionPublisher": {
+      "rgb": [
+        255,
+        109,
+        0
+      ],
+      "glyph": "G24",
+      "targetWidth": 32
+    },
+    "MissionSelectionReader": {
+      "rgb": [
+        255,
+        109,
+        0
+      ],
+      "glyph": "G24",
+      "targetWidth": 32
+    },
+    "StarQuaternionCalculation": {
+      "rgb": [
+        124,
+        58,
+        237
+      ],
+      "glyph": "G14",
+      "targetWidth": 44
+    },
+    "InertialVectorToBody": {
+      "rgb": [
+        124,
+        58,
+        237
+      ],
+      "glyph": "G07",
+      "targetWidth": 44
+    }
+  },
+  "expectedConnectCount": 2314,
+  "expectedCustomConnectCount": 1157,
+  "expectedMoClassCount": 235,
+  "topLevelInstances": {
+    "world": {
+      "origin": [
+        -425.0,
+        300.0
+      ],
+      "extent": [
+        [
+          -22.0,
+          -22.0
+        ],
+        [
+          22.0,
+          22.0
+        ]
+      ]
+    },
+    "mechanicsOverall": {
+      "origin": [
+        -360.0,
+        0.0
+      ],
+      "extent": [
+        [
+          -35.0,
+          -35.0
+        ],
+        [
+          35.0,
+          35.0
+        ]
+      ]
+    },
+    "electricalOverall": {
+      "origin": [
+        0.0,
+        300.0
+      ],
+      "extent": [
+        [
+          -35.0,
+          -35.0
+        ],
+        [
+          35.0,
+          35.0
+        ]
+      ]
+    },
+    "thermalOverall": {
+      "origin": [
+        0.0,
+        -300.0
+      ],
+      "extent": [
+        [
+          -35.0,
+          -35.0
+        ],
+        [
+          35.0,
+          35.0
+        ]
+      ]
+    },
+    "informationOverall": {
+      "origin": [
+        360.0,
+        0.0
+      ],
+      "extent": [
+        [
+          -35.0,
+          -35.0
+        ],
+        [
+          35.0,
+          35.0
+        ]
+      ]
+    },
+    "electricalPowerSystem": {
+      "origin": [
+        -202.5,
+        120.0
+      ],
+      "extent": [
+        [
+          -60.0,
+          -60.0
+        ],
+        [
+          60.0,
+          60.0
+        ]
+      ]
+    },
+    "gncSystem": {
+      "origin": [
+        -67.5,
+        120.0
+      ],
+      "extent": [
+        [
+          -60.0,
+          -60.0
+        ],
+        [
+          60.0,
+          60.0
+        ]
+      ]
+    },
+    "payloadSystem": {
+      "origin": [
+        67.5,
+        120.0
+      ],
+      "extent": [
+        [
+          -60.0,
+          -60.0
+        ],
+        [
+          60.0,
+          60.0
+        ]
+      ]
+    },
+    "dataHandlingSystem": {
+      "origin": [
+        202.5,
+        120.0
+      ],
+      "extent": [
+        [
+          -60.0,
+          -60.0
+        ],
+        [
+          60.0,
+          60.0
+        ]
+      ]
+    },
+    "communicationSystem": {
+      "origin": [
+        202.5,
+        -120.0
+      ],
+      "extent": [
+        [
+          -60.0,
+          -60.0
+        ],
+        [
+          60.0,
+          60.0
+        ]
+      ]
+    },
+    "navigationSystem": {
+      "origin": [
+        67.5,
+        -120.0
+      ],
+      "extent": [
+        [
+          -60.0,
+          -60.0
+        ],
+        [
+          60.0,
+          60.0
+        ]
+      ]
+    },
+    "thermalControlSystem": {
+      "origin": [
+        -67.5,
+        -120.0
+      ],
+      "extent": [
+        [
+          -60.0,
+          -60.0
+        ],
+        [
+          60.0,
+          60.0
+        ]
+      ]
+    },
+    "structureSystem": {
+      "origin": [
+        -202.5,
+        -120.0
+      ],
+      "extent": [
+        [
+          -60.0,
+          -60.0
+        ],
+        [
+          60.0,
+          60.0
+        ]
+      ]
+    }
+  },
+  "nativeLinePolicy": "Retain MSL 4.0.0 native connector colors and all unmodified endpoints."
+}

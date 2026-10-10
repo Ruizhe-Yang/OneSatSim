@@ -1,6 +1,18 @@
 within OneSatSim.Foundation.Interfaces;
 connector MechanicalPort "三维刚性安装接口"
-  extends Modelica.Mechanics.MultiBody.Interfaces.Frame_a;
-  annotation(Icon(graphics={Rectangle(extent={{-100,100},{100,-100}},lineColor={95,95,95},fillColor={215,215,215},fillPattern=FillPattern.Solid),Ellipse(extent={{-45,45},{45,-45}},lineColor={80,80,80}),Line(points={{-70,0},{70,0}},color={80,80,80}),Line(points={{0,-70},{0,70}},color={80,80,80})}));
-  annotation(Documentation(info="<html><h4>接口语义</h4><p><b>用途：</b>统一组件安装位置、姿态、力与力矩的多体机械连接</p><p><b>字段与单位：</b>继承Frame_a：位置m、姿态、力N、力矩N·m</p><p><b>信号方向语义：</b>无因果；流变量遵循MultiBody框架平衡</p><p><b>典型连接：</b>组件刚体、N-System、StructureSystem与MechanicsOverall</p><p><b>建模注意：</b>该连接器用于Modelica无因果连接网络；字段名称表达工程语义，不能仅凭曲线数组序号判断来源。</p></html>"));
+  extends Modelica.Mechanics.MultiBody.Interfaces.Frame_a annotation(IconMap(primitivesVisible=false),DiagramMap(primitivesVisible=false));
+
+  annotation(Documentation(info="<html><h2>三维刚性安装接口</h2><p><b>类路径：</b><code>OneSatSim.Foundation.Interfaces.MechanicalPort</code>　<b>类型：</b>connector</p><h3>用途与定位</h3><p>三维刚性安装接口</p><h3>连接方法</h3><p>在拥有该边界的模型中实例化，使用真实端口连接。类型、数组维数和成员应与对端一致；字段名相同不自动保证单位、参考系和生产者兼容。input/output、flow/stream及普通字段分别保留原声明语义。</p><h3>继承与复用</h3><p>本类的继承/别名声明如下。继承得到的端口、参数、状态和算法仍由被引用类定义，不重复增加一套行为。</p><pre>Modelica.Mechanics.MultiBody.Interfaces.Frame_a annotation(IconMap(primitivesVisible=false),DiagramMap(primitivesVisible=false))</pre></html>"),
+    Icon(coordinateSystem(extent={{-100,-100},{100,100}},preserveAspectRatio=true),graphics={
+      Rectangle(extent={{-100,-100},{100,100}},fillPattern=FillPattern.Solid,fillColor={124,58,237},lineColor={124,58,237},lineThickness=0,radius=0),
+      Rectangle(extent={{-52,-9},{52,9}},lineColor={255,255,255},fillColor={255,255,255},fillPattern=FillPattern.Solid,lineThickness=1.4,radius=0),
+      Rectangle(extent={{-9,-52},{9,52}},lineColor={255,255,255},fillColor={255,255,255},fillPattern=FillPattern.Solid,lineThickness=1.4,radius=0),
+      Ellipse(extent={{-19,-19},{19,19}},lineColor={255,255,255},fillColor={255,255,255},fillPattern=FillPattern.Solid,lineThickness=1.4,startAngle=0,endAngle=360)
+    }),
+    Diagram(coordinateSystem(extent={{-100,-100},{100,100}},preserveAspectRatio=true),graphics={
+      Rectangle(extent={{-100,-100},{100,100}},fillPattern=FillPattern.Solid,fillColor={124,58,237},lineColor={124,58,237},lineThickness=0,radius=0),
+      Rectangle(extent={{-52,-9},{52,9}},lineColor={255,255,255},fillColor={255,255,255},fillPattern=FillPattern.Solid,lineThickness=1.4,radius=0),
+      Rectangle(extent={{-9,-52},{9,52}},lineColor={255,255,255},fillColor={255,255,255},fillPattern=FillPattern.Solid,lineThickness=1.4,radius=0),
+      Ellipse(extent={{-19,-19},{19,19}},lineColor={255,255,255},fillColor={255,255,255},fillPattern=FillPattern.Solid,lineThickness=1.4,startAngle=0,endAngle=360)
+    }));
 end MechanicalPort;

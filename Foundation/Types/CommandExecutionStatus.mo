@@ -1,3 +1,45 @@
 within OneSatSim.Foundation.Types;
-type CommandExecutionStatus = enumeration(Idle, Requested, Accepted, Rejected, Executing, Completed, Failed, Aborted) "任务指令生命周期状态"
-  annotation(Documentation(info="<html><p>统一描述任务指令从空闲、提出、接受和执行，到完成、失败或中止的生命周期状态。</p></html>"));
+type CommandExecutionStatus = enumeration(Idle, Requested, Accepted, Rejected, Executing, Completed, Failed, Aborted) "任务指令生命周期状态" 
+  annotation(Documentation(info="<html><h2>任务指令生命周期状态</h2><p><b>类路径：</b><code>OneSatSim.Foundation.Types.CommandExecutionStatus</code>　<b>类型：</b>type</p><h3>用途与定位</h3><p>任务指令生命周期状态</p><h3>配置与调用</h3><p>由使用者声明或传入本类型；记录与常量保存静态配置，不单独代表一套物理状态。修改设计输入后应通过项目既有离线配置入口生成生效快照。</p><h3>继承与复用</h3><p>本类的继承/别名声明如下。继承得到的端口、参数、状态和算法仍由被引用类定义，不重复增加一套行为。</p><pre>enumeration(Idle, Requested, Accepted, Rejected, Executing, Completed, Failed, Aborted)</pre></html>"),
+    Icon(coordinateSystem(extent={{-100,-100},{100,100}}, preserveAspectRatio=true, grid={2,2}), graphics={
+      Rectangle(extent={{-89,-97},{89,95}}, lineColor={0,0,0}, fillColor={255,255,255}, fillPattern=FillPattern.Solid, lineThickness=0.6, radius=3),
+      Line(points={{-76,64},{76,64}}, color={219,223,227}, thickness=0.4, pattern=LinePattern.Solid),
+      Rectangle(extent={{-84,69},{-64,89}}, lineColor={0,0,0}, fillColor={128,97,151}, fillPattern=FillPattern.Solid, lineThickness=0.85, radius=0),
+      Text(extent={{-61,71},{76,86}}, textString="Type definition", fontSize=0, lineColor={0,0,0}, horizontalAlignment=TextAlignment.Center),
+      Line(points={{-36,26},{-11,26}}, color={0,0,0}, thickness=0.6, pattern=LinePattern.Solid, arrow={Arrow.None,Arrow.Open}),
+      Line(points={{13,26},{37,26}}, color={0,0,0}, thickness=0.6, pattern=LinePattern.Solid, arrow={Arrow.None,Arrow.Open}),
+      Line(points={{49,14},{49,-11}}, color={0,0,0}, thickness=0.6, pattern=LinePattern.Solid, arrow={Arrow.None,Arrow.Open}),
+      Line(points={{37,-23},{12,-23}}, color={0,0,0}, thickness=0.6, pattern=LinePattern.Solid, arrow={Arrow.None,Arrow.Open}),
+      Line(points={{-12,-23},{-36,-23}}, color={0,0,0}, thickness=0.6, pattern=LinePattern.Solid, arrow={Arrow.None,Arrow.Open}),
+      Rectangle(extent={{-60,15},{-36,37}}, lineColor={0,0,0}, fillColor={255,255,255}, fillPattern=FillPattern.Solid, lineThickness=0.65, radius=3),
+      Rectangle(extent={{-11,15},{13,37}}, lineColor={0,0,0}, fillColor={255,255,255}, fillPattern=FillPattern.Solid, lineThickness=0.65, radius=3),
+      Rectangle(extent={{37,15},{61,37}}, lineColor={0,0,0}, fillColor={255,255,255}, fillPattern=FillPattern.Solid, lineThickness=0.65, radius=3),
+      Rectangle(extent={{37,-34},{61,-12}}, lineColor={0,0,0}, fillColor={255,255,255}, fillPattern=FillPattern.Solid, lineThickness=0.65, radius=3),
+      Rectangle(extent={{-12,-34},{12,-12}}, lineColor={0,0,0}, fillColor={255,255,255}, fillPattern=FillPattern.Solid, lineThickness=0.65, radius=3),
+      Rectangle(extent={{-60,-34},{-36,-12}}, lineColor={0,0,0}, fillColor={236,229,243}, fillPattern=FillPattern.Solid, lineThickness=0.65, radius=3),
+      Ellipse(extent={{-52,-27},{-44,-19}}, lineColor={0,0,0}, fillColor={128,97,151}, fillPattern=FillPattern.Solid, lineThickness=0.4, startAngle=0, endAngle=360),
+      Line(points={{-48,-36},{-48,-46},{0,-46},{0,-36}}, color={113,122,132}, thickness=0.55, pattern=LinePattern.Solid, arrow={Arrow.None,Arrow.Open}),
+      Line(points={{-76,-58},{76,-58}}, color={219,223,227}, thickness=0.4, pattern=LinePattern.Solid),
+      Text(extent={{-80,-91},{80,-65}}, textString="Command Lifecycle", fontSize=0, lineColor={0,0,0}, horizontalAlignment=TextAlignment.Center, textStyle={TextStyle.Bold})
+    }),
+    Diagram(coordinateSystem(extent={{-150,-145},{150,155}}, preserveAspectRatio=true, grid={2,2}), graphics={
+      Rectangle(extent={{-89,-97},{89,95}}, lineColor={0,0,0}, fillColor={255,255,255}, fillPattern=FillPattern.Solid, lineThickness=0.6, radius=3),
+      Line(points={{-76,64},{76,64}}, color={219,223,227}, thickness=0.4, pattern=LinePattern.Solid),
+      Rectangle(extent={{-84,69},{-64,89}}, lineColor={0,0,0}, fillColor={128,97,151}, fillPattern=FillPattern.Solid, lineThickness=0.85, radius=0),
+      Text(extent={{-61,71},{76,86}}, textString="Type definition", fontSize=0, lineColor={0,0,0}, horizontalAlignment=TextAlignment.Center),
+      Line(points={{-36,26},{-11,26}}, color={0,0,0}, thickness=0.6, pattern=LinePattern.Solid, arrow={Arrow.None,Arrow.Open}),
+      Line(points={{13,26},{37,26}}, color={0,0,0}, thickness=0.6, pattern=LinePattern.Solid, arrow={Arrow.None,Arrow.Open}),
+      Line(points={{49,14},{49,-11}}, color={0,0,0}, thickness=0.6, pattern=LinePattern.Solid, arrow={Arrow.None,Arrow.Open}),
+      Line(points={{37,-23},{12,-23}}, color={0,0,0}, thickness=0.6, pattern=LinePattern.Solid, arrow={Arrow.None,Arrow.Open}),
+      Line(points={{-12,-23},{-36,-23}}, color={0,0,0}, thickness=0.6, pattern=LinePattern.Solid, arrow={Arrow.None,Arrow.Open}),
+      Rectangle(extent={{-60,15},{-36,37}}, lineColor={0,0,0}, fillColor={255,255,255}, fillPattern=FillPattern.Solid, lineThickness=0.65, radius=3),
+      Rectangle(extent={{-11,15},{13,37}}, lineColor={0,0,0}, fillColor={255,255,255}, fillPattern=FillPattern.Solid, lineThickness=0.65, radius=3),
+      Rectangle(extent={{37,15},{61,37}}, lineColor={0,0,0}, fillColor={255,255,255}, fillPattern=FillPattern.Solid, lineThickness=0.65, radius=3),
+      Rectangle(extent={{37,-34},{61,-12}}, lineColor={0,0,0}, fillColor={255,255,255}, fillPattern=FillPattern.Solid, lineThickness=0.65, radius=3),
+      Rectangle(extent={{-12,-34},{12,-12}}, lineColor={0,0,0}, fillColor={255,255,255}, fillPattern=FillPattern.Solid, lineThickness=0.65, radius=3),
+      Rectangle(extent={{-60,-34},{-36,-12}}, lineColor={0,0,0}, fillColor={236,229,243}, fillPattern=FillPattern.Solid, lineThickness=0.65, radius=3),
+      Ellipse(extent={{-52,-27},{-44,-19}}, lineColor={0,0,0}, fillColor={128,97,151}, fillPattern=FillPattern.Solid, lineThickness=0.4, startAngle=0, endAngle=360),
+      Line(points={{-48,-36},{-48,-46},{0,-46},{0,-36}}, color={113,122,132}, thickness=0.55, pattern=LinePattern.Solid, arrow={Arrow.None,Arrow.Open}),
+      Line(points={{-76,-58},{76,-58}}, color={219,223,227}, thickness=0.4, pattern=LinePattern.Solid),
+      Text(extent={{-80,-91},{80,-65}}, textString="Command Lifecycle", fontSize=0, lineColor={0,0,0}, horizontalAlignment=TextAlignment.Center, textStyle={TextStyle.Bold})
+    }));

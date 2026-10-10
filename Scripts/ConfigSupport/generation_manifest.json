@@ -1,0 +1,39 @@
+{
+  "generationUTC": "2026-10-09T09:46:45.594648+00:00",
+  "entryModel": "OneSatSim.Simulation.CompleteMission",
+  "workbookSHA256": "4f5d5f09aa91ef940ba130f5710d08512a316aefad6150f6eed83407a7e6ef34",
+  "defaultRecordSHA256": "14c083c48b02a47d741292eee915f1574e26261b02ae28fb1a3952fc7664b543",
+  "generatorSHA256": "161a71bd0fac7eff2b1562f83f02b436cccaebfcb78636058f8a3c07fbcd3823",
+  "schemaSHA256": "e759a1a7561fd1a89ee6b7747d4bc57aa61f268e7fb1a5290347f24585a0d1ad",
+  "unitRulesSHA256": "bbbb5a5f1835db67a460ae9ccc9696f117571233fed5ec03826e3e55d2cdd406",
+  "ephemerisGeneratorSHA256": "f53dd4e514a004eef90b6fe1a8435841819140e234b66c878667f5269f3c6b0a",
+  "embeddedGeneratorSHA256": "0a7f139314e0fdc13c622fe0b07940de09135f12a02b46a9d03359d895e17bb2",
+  "massGeneratorSHA256": "554c46e4845c9daf20b2ce22df6e3d9aa5c7866dc36ae866ee565ceaa19010f7",
+  "transactionSHA256": "1a441ecb510914acbeb3a4660d2be8e4c22d50acb983253a511ff76e1c4ded2b",
+  "generated": {
+    "DesignConfig.xlsx": "4f5d5f09aa91ef940ba130f5710d08512a316aefad6150f6eed83407a7e6ef34",
+    "Scenarios/GeneratedSpacecraftDesignConfig.mo": "86b7387e5fa9c94a43e5867e55ec64b9c7ee90744525d14d7f3a1debc4ea0e12",
+    "Scenarios/GeneratedScenario.mo": "8788dac6f36b150bd3cc42f9d80f99b494c464b7f3d55fba5e840e6fe3d6e42e",
+    "Scenarios/GeneratedEnvironmentData.mo": "1879f6684244f38d601e5c0187fabe247b18db09e8cdd9d7e570ac0989b4b39d",
+    "Scenarios/GeneratedMassProperties.mo": "6c4f459b3c38d01b245edff0c61c7f745c8e2ef875d03ffd45d86dae62c55fb8",
+    "Simulation/CompleteMission.mo": "680b0720805cca5bb8fd38acd73de8dead39c34b0193b4a9394d3411d54c0adc",
+    "Scripts/ConfigSupport/generated_simulation_flags.txt": "f455f63f9be57c42b8b390fe67a8b0db7aca04e00b54cc53977e22d55b6ae720"
+  },
+  "parameterCount": 559,
+  "environmentTableSHA256": "52c098772698e2ca0ce8ce99ae68e33d725dcec5fa9d0c52b64e02cf9502533b",
+  "documentationPatch": {
+    "scope": "DOCUMENTATION_NAMES_AND_CONNECTION_LINE_COLORS_ONLY",
+    "base_archive_version": "1.1.5",
+    "release_version": "1.1.6",
+    "standard": "MOSAIC 0.8",
+    "protected_modelica_tokens": "UNCHANGED_EXCEPT_DOCUMENTATION_CLASS_COMMENTS_ROOT_VERSION_AND_CONNECT_LINE_COLOR",
+    "compile": "NOT_RUN",
+    "simulation": "NOT_RUN",
+    "gui": "NOT_CHECKED",
+    "historicalEvidence": "Original RunId, configuration identities and past numerical results remain historical. No current Modelica compilation or simulation was performed.",
+    "ledger": "Scripts/DocumentationSupport/auxiliary_change_ledger.json"
+  },
+  "auxiliaryHashRefreshScope": "Only present file-byte fingerprints are refreshed after Documentation/class-description/connect-Line.color editing. Numerical configuration, schema, validation values and original timestamps remain from the baseline.",
+  "currentDocumentationPatchCompilation": "NOT_RUN",
+  "currentDocumentationPatchSimulation": "NOT_RUN"
+}

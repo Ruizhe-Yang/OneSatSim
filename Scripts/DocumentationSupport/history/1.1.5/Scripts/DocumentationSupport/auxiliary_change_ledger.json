@@ -1,0 +1,3773 @@
+{
+  "scope": "Documentation, declaration string-comments and root release version only; static lexical proof, not compiler proof",
+  "base_archive_version": "1.1.4",
+  "release_version": "1.1.5",
+  "mosaic_version": "0.7",
+  "compiler": "NOT_RUN",
+  "simulation": "NOT_RUN",
+  "gui": "NOT_CHECKED",
+  "files": [
+    {
+      "file": "Components/AntennaUnit.mo",
+      "before_sha256": "fa6e487d9c1a86adffe14c83d6e2d6e635ddf515d1f4681c591d31b6b7b672b7",
+      "after_sha256": "135a52e395737649d010b05302b3c16488ce5624bee2371164248c783fc00670",
+      "protected_token_sha256": "3e348e659b3cefef806ecf878b2236e9e58e19460edb159f0a365cfe1e04b096",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 17
+    },
+    {
+      "file": "Components/BatteryUnit.mo",
+      "before_sha256": "c1d53cb256b1ab78d4d1bfdd9096d66496fcb7205ee5a493ae3271d0fe3420e3",
+      "after_sha256": "1bbbfea26e03704c545325f861f7926495cb43f3907a66d42207186dc5f4e52d",
+      "protected_token_sha256": "5d37ec7f25937dd3effb7aacbd83ad8d5eb6f51a84cb4d28ba29627fdf28d9c5",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 58
+    },
+    {
+      "file": "Components/BodyMountedSolarArrayMinusXUnit.mo",
+      "before_sha256": "07f48bbf90c05897329c66e497ed8bbb7c2588f0e5dc339502f111c4a7456a42",
+      "after_sha256": "d82ed16953d549d59ef4c88fdd62518dcf6931280349c32eb81fc43648e3eec6",
+      "protected_token_sha256": "f3ece2df257c3466b587c7083513b7319eb054c9673cb2725596edd042294f4a",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 47
+    },
+    {
+      "file": "Components/BodyMountedSolarArrayPlusXUnit.mo",
+      "before_sha256": "dab8a1655780f679e9da75d5f99eb0c1c3528719bd203251aa1a481f5a616e4e",
+      "after_sha256": "3c5bed6541d1db99f8d541dd74c1e722b7da8ee3c884217a49fff87f277d2d57",
+      "protected_token_sha256": "1456845191482483d293ca700af57deb9e414c91ec0ab1ffaf20dc90d8fe3574",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 45
+    },
+    {
+      "file": "Components/BodyMountedSolarArrayPlusYUnit.mo",
+      "before_sha256": "bd13d8bcd3818b612f04e495547c30292af4f72dfbe80787e9ace98a6aeff29b",
+      "after_sha256": "b91e926c9bde1279a968d8d90138eeb0ab3bd9ea23f9c81cbbc43d17ac3de025",
+      "protected_token_sha256": "49ebf33ab1ef313fbc3d040be919b5db92c83bb66863a17bfc7afeea4eedc15c",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 48
+    },
+    {
+      "file": "Components/DataRecorderUnit.mo",
+      "before_sha256": "e7683cbd2d44c57e25f3aa76ca6fe3e8e0b2a807be588aa840d0cd6cb2b63665",
+      "after_sha256": "74a55582b537b96a32ba01c04ce4a34b710909a7d2564ec48519c3f27cb382cc",
+      "protected_token_sha256": "c53aee308c7ffe62cbd28d3dfe3457f1357aca512f70de41d5a249f744a520d4",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 32
+    },
+    {
+      "file": "Components/EarthObservationCameraUnit.mo",
+      "before_sha256": "15dc204699fb11c9d47f7d67f489076ff724048354aa07fc033a67f8c41feef0",
+      "after_sha256": "ac5ea446dd7217e0161bbf46ee6d0ca78673b5298aa85fed4a431cc01d8144fe",
+      "protected_token_sha256": "f0149c919715b70549968506d2c7374c60e97d96f702a30b249bc244646a8dac",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 59
+    },
+    {
+      "file": "Components/FotonAmurPayloadUnit.mo",
+      "before_sha256": "6e36eecb631c8594932815d5fbec65afe9f4e3559d2aff7bcc7a1c0b09222b6e",
+      "after_sha256": "526349001f846f02258a01f66afdf79e37f72f7b3ca3c3b547d9e11114bb6e1f",
+      "protected_token_sha256": "7b7e0671c576504f2076b522607515c655fd79458de37d8fbd0efaca83e707c3",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 28
+    },
+    {
+      "file": "Components/GNCComputerUnit.mo",
+      "before_sha256": "539bed0a27b262d6f1b866b91724a54929454908856ad4be57a87a310db20ab7",
+      "after_sha256": "5d8322716dace44b99f6f8494b3c3476ed5fddbf9eb35a0a85e481dea6748bf2",
+      "protected_token_sha256": "79bc02d22e8637088d34b32cf3fc3ca8e8547fda79f53b8688b41fbc91947405",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 30
+    },
+    {
+      "file": "Components/GPSReceiverUnit.mo",
+      "before_sha256": "ce4759da858ab0f3080c30210ca5c2c17cc0183fac62e7ae6b0e8ded47f55eab",
+      "after_sha256": "92a01f93af8bf13d2d85a3e02faafa1ff7165939246962f10929f086c203396f",
+      "protected_token_sha256": "36a27910f544b6b78b9cc068c3d9c7c410a5d92785c3487a85ec1f0f805d231a",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 30
+    },
+    {
+      "file": "Components/HeaterRadiatorUnit.mo",
+      "before_sha256": "5a070ec97af8c5531cf5e9f38245ed9e5e18faafb0e14317ecfaefccae7ffba5",
+      "after_sha256": "fa11125ace6fb2a57fb8a7afda61197099dcfa5492bb5cb56c31f3dba05014c3",
+      "protected_token_sha256": "941bcfb22a273f6510c3db742f27bac5891e53945b54c64852d7daea7ce8e022",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 26
+    },
+    {
+      "file": "Components/LowRateTelemetryTransmitterUnit.mo",
+      "before_sha256": "7b755e0227b2fc8a613b4e1c9fcebf5fd7bbee7b434601f0ae87c3c614b5cf55",
+      "after_sha256": "c5cd87478ef5164b568aea3fa565902c068464854b27d86750b2d21a020befff",
+      "protected_token_sha256": "437913a74991227c0c26a1c3a074fca802e30268751e8a475ba13a3837d0191e",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 28
+    },
+    {
+      "file": "Components/MEMSIMUUnit.mo",
+      "before_sha256": "e6abd9d2d8b5511b7acb91d8620c9fa6448aece032824b4478eec92571798d9a",
+      "after_sha256": "0b9efdcec3a5db65011559d20b6b84a4890d3c80e93d88ab9b396d82ba2b0e7d",
+      "protected_token_sha256": "fbe6e9dd7cde7c09857d78669e6d4b5a9cb1a935ed357e3e7b0f9546af8a41f1",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 30
+    },
+    {
+      "file": "Components/MagnetometerUnit.mo",
+      "before_sha256": "00aed2b4bc88a7fc7c75b7d0182f86226319d7aa180add4091dc0f6bd576b0fb",
+      "after_sha256": "7a858ee9988c337fafc72d62b893cf48282449e1261a4416f7b9cb28b550cd34",
+      "protected_token_sha256": "34b0a60ebf77aa6f287e3403348e98b585fe9874853d9c610fb65b5bad82f73c",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 32
+    },
+    {
+      "file": "Components/MagnetorquerUnit.mo",
+      "before_sha256": "1d87a372f6ba8616bb011a114f5cde081c2825d13eac4b3b055f2ac9c7560cda",
+      "after_sha256": "8cb6aeb9c2e2b530a0a68a5e388e82fa17523704446b5dcd5d61ba6b11fb17cb",
+      "protected_token_sha256": "2e4816a3f2c07230c4532bfdb6bbb54983fe4bc88a39418d959df1a69fb1a220",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 48
+    },
+    {
+      "file": "Components/MissionControlUnit.mo",
+      "before_sha256": "c6fa1f8b5c99fe413672c24e8a5b1839ee16a77173881b433e847b5d3c931cc0",
+      "after_sha256": "e12ce9a8462fd7425ee1defed40ce7bd65f11e219e96b8a395fe8bfba390fed5",
+      "protected_token_sha256": "3a9e3caae207ebd5f55bda0011690fe78efec0993e6caf8f45fec71da53285ac",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 34
+    },
+    {
+      "file": "Components/NaviEnhancePayloadUnit.mo",
+      "before_sha256": "4228ef13319c268dfc60602d3d68c8f2f1332ffd10657bf94043ea88958b5eb2",
+      "after_sha256": "c947838c9ad2b716fb71b1694b845c56f66bb24ddf675c951c259dabaef84007",
+      "protected_token_sha256": "f8fe78afc039d56f17a48348e571b26a3fc3bb4b99a6836ac1dc1ef20ac8d27c",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 27
+    },
+    {
+      "file": "Components/OnboardComputerUnit.mo",
+      "before_sha256": "c673cbc0282ffbd23c3e5d2f796e4bd9abaddeba702d930846212a51dd55aef8",
+      "after_sha256": "03711f316fa6398df21512c522a3a6319f44322a7854fed81815b14cd69aecc6",
+      "protected_token_sha256": "14967bf828ca83ab39d5a974f0ccc54b1c77f989848968a5d2a24f8e9c04a0b7",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 39
+    },
+    {
+      "file": "Components/PowerConditioningUnit.mo",
+      "before_sha256": "0e86fc390085b17fc11533be339038faf5f83c9d1988a4eafd277084768f4c12",
+      "after_sha256": "a153a65379586b043ea1747058ee670c7fcd55833e63761cf9b91246a00b664e",
+      "protected_token_sha256": "52363214ece1e4ea6ec7adf959df974d0e6b78b2ccbdb751d1e63dc8773b4b3f",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 73
+    },
+    {
+      "file": "Components/RadioReceiverUnit.mo",
+      "before_sha256": "526c789b5e1fa527b08ea2411cfa851aad25989b857b642904460e2969a6fa72",
+      "after_sha256": "f08020e06fd88e97d41ab8bd583532725c739dae8654fe64f7df22eeb5c94adb",
+      "protected_token_sha256": "6b3aad7218a030ead25e78468413ba204e50468ba01b621bb6ee3c7b7f3620fa",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 26
+    },
+    {
+      "file": "Components/RateGyroUnit.mo",
+      "before_sha256": "abeb11a54e623454386d69419635af2a6f682e5b770c7c6c0056a4c1799eb374",
+      "after_sha256": "8c5ea71a88881c52acccc01f2e405b83c4b914f070b9e343c88c1e4fa7509b94",
+      "protected_token_sha256": "516c3125280b229c281f814be045c924d6a5178d65aa3675447806f4a9c1f87e",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 29
+    },
+    {
+      "file": "Components/ReactionWheelSUnit.mo",
+      "before_sha256": "27fb12dcb67d844da5a9a43a65904e12c5ad0e2a3468f8cbbda65dc8c62f2eb1",
+      "after_sha256": "c469435e102faa4782d38f804cb7130076a1d228a463526d41ba81bb3fb4166f",
+      "protected_token_sha256": "7290617cd68dd02ac8fef78dffb3ddb1bd295670ee267de803c38088c27e18d1",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 52
+    },
+    {
+      "file": "Components/ReactionWheelXUnit.mo",
+      "before_sha256": "8d111e4d941177eed2754a6b02f3c890e9747074fa151c5d85b1c8235a522392",
+      "after_sha256": "4f16e6e40f3cec9fe909a32d3d04d02fb132d465a515d4b15069838b4d5a8a0c",
+      "protected_token_sha256": "408fd6818fe52d93440d3491dda7fbc3976de2383a7e5f939cf542e16ec91f22",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 52
+    },
+    {
+      "file": "Components/ReactionWheelYUnit.mo",
+      "before_sha256": "191105197459e788259c185f85bda5f853259d118b0fd683e817c3a53c83e0fb",
+      "after_sha256": "22ac27a3690db96029028867833bca58ce822a0a855d1452c932d2e91aecdc2a",
+      "protected_token_sha256": "da621f52117b31fc01b91c5d3ada970e6a949a3038697aab7ad02b29dfe71ef8",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 52
+    },
+    {
+      "file": "Components/ReactionWheelZUnit.mo",
+      "before_sha256": "47b087194e72757998f83f3a6e9feb585f43437158a172f342e9b0cbacbb1b43",
+      "after_sha256": "3fb674b0ab7aac8d617689259fa065e28e54c686176c6c2ce5365ed3a6aca907",
+      "protected_token_sha256": "389f194716c2755d4748a3b4afb950115c3b6de73293353034ccd6a6d93b0091",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 52
+    },
+    {
+      "file": "Components/SelfieCameraUnit.mo",
+      "before_sha256": "faa8d0f990f9b2836b11122b56651faf8a852cda1d80f3060566515c282368da",
+      "after_sha256": "f7e97093319ffd80986bfa9377ea231be1842104cd24eb555bcf949d150387a0",
+      "protected_token_sha256": "6f356d5582d6213b1d965e95e9e3fef0bf259c0515841504e5662a5761586c60",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 28
+    },
+    {
+      "file": "Components/SpaceTimePayloadUnit.mo",
+      "before_sha256": "226322cfe10a31062e493111d67254e1dbb77546989e106178c41223dd784e6f",
+      "after_sha256": "31ae7e0f0de9f449cd6c1de72afbc26cdc6ccb2eaaaccc6622b900773a180292",
+      "protected_token_sha256": "9e06ef66b50bfeac142ebb71fe643d394745dc008defba82ea0501f3ae31f1df",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 28
+    },
+    {
+      "file": "Components/StarTrackerYUnit.mo",
+      "before_sha256": "239c8a04e24d1b57667b334fce568680034ad2d9b28c7a06f5d4e1b5fd15934c",
+      "after_sha256": "92d24216172f69058f6e30b854cad304d783c773709cbfbd7356fb9c6c08c4dd",
+      "protected_token_sha256": "eadb9716a6085be80d992e258f30ca58bde96a62e4d159af90b49602592b8d6a",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 31
+    },
+    {
+      "file": "Components/StarTrackerZUnit.mo",
+      "before_sha256": "36bba593364888c1032dbe49e09eefb0df06616bc7dde9b36ae549ed6134c1fb",
+      "after_sha256": "38803149eac1ff3a867b3e5d7269f378564871ddf08ece65071c4211ac81bd3b",
+      "protected_token_sha256": "773e8fa2113a7f0cb54ca6da6835964464d23b5ec1eb52ebb29c9ef34539593b",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 31
+    },
+    {
+      "file": "Components/StructureAssembly12U.mo",
+      "before_sha256": "61254d39ce37ad7b81f49e243c1606f747e50f4d58f6c86aeb3d2039671cd261",
+      "after_sha256": "4ecbb44e249caff4f14b28e3aca7d884f9fc88e2d7a6a2f9bee1f40415b7282a",
+      "protected_token_sha256": "08e98c7358d0e5c01c36dfd852401226b41b9b3f0fa4e0248a6689daec0640b7",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 27
+    },
+    {
+      "file": "Components/SunSensorUnit.mo",
+      "before_sha256": "d6030465b4e8a6d98cbc50203e0634b57617a19bcacb045f8dd7d9e2f9829d7a",
+      "after_sha256": "4db1f31e172177f9437eb445d475b2937f932c30d0693acd8ed3bf845620d457",
+      "protected_token_sha256": "95c631bfa67af2b1c7e7bf746f899a944e8efa793d97b5e523cb150ae0986d17",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 27
+    },
+    {
+      "file": "Components/ThermalControllerUnit.mo",
+      "before_sha256": "90cb88141e6921be9e636eaa17de400433db0330f394cdafa5c333e14e64403e",
+      "after_sha256": "200894e105295e26c0b79e6d86cca8af511d2d83b8c4cedbbda89d22a87cf54a",
+      "protected_token_sha256": "dfc3ebba69e2fbbdb6a493e79ead667ecd529e24895c5af69bfea3ac9d0f38e7",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 36
+    },
+    {
+      "file": "Components/XBandTransmitterUnit.mo",
+      "before_sha256": "23a9a366b8016043a856bf7a1cd9216cb485a21c56c123c5c0e6452e6c40429a",
+      "after_sha256": "e79a07d952735ab8f1730353afd491417d55c33ad1d4307dbb70ea91acf48442",
+      "protected_token_sha256": "072dd7f80740df202b2aaef5a6a672fc55334ddbdd7d7f20f4a117e1ec26eea5",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 41
+    },
+    {
+      "file": "Components/package.mo",
+      "before_sha256": "0b677f4abd29c019a99b0ab70a92770616130e42538be746477317a9dbbc13bd",
+      "after_sha256": "8eae258cbbd77cc82037851c191615db5ee5197c1fd0b3f64408e83886a8f0e2",
+      "protected_token_sha256": "dcb1fdd2df65251108be9d0a3ce032bc5a6c0130fab155cfb50982f2790805cd",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 0
+    },
+    {
+      "file": "Foundation/Calculations/CommandStatusCalculation.mo",
+      "before_sha256": "174c143f835071c18f323d160ad758cdd5231b4f8ad66a971055640d8b8da520",
+      "after_sha256": "4de2c2488f6d65ffde72862eef3302d6be5a1ab5a2f80bc32ae45a9173b17f32",
+      "protected_token_sha256": "582385fc61826afca2cff5e52bb25f3396f29f971001ffb0e32f17790e91689d",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 2
+    },
+    {
+      "file": "Foundation/Calculations/DataRecorderCalculation.mo",
+      "before_sha256": "5fdbe3b298296ab3662a74e17597496ce7bcabeee40dbea68a95c5358e34bbf2",
+      "after_sha256": "e7e7958d1b7fdad0211bf80fd7aaec9e171f93b89b6a5ab23534776b5a63dc7d",
+      "protected_token_sha256": "829fd8d47350d45c8cb6107f6451ace8e2ad68c4f78b3ce5a2777ee45bfce71c",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 23
+    },
+    {
+      "file": "Foundation/Calculations/EarthObservationCameraCalculation.mo",
+      "before_sha256": "65f585fc15fac6fd9f947f68258d488754b6a5f4dee27c112517658f9b61b323",
+      "after_sha256": "2f5bcb31f12c8e35f6d7a540a76dde8ad90b362d820cc3646a808f135e4b5486",
+      "protected_token_sha256": "7bd0d84635a836b62bc32e3f14b17923cec1e79ef55897e06b03dfbc59f75d4d",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 12
+    },
+    {
+      "file": "Foundation/Calculations/ExternalOrbitalHeatCalculation.mo",
+      "before_sha256": "a5790b9a8790f16c6eb5a49bcaf2d9cdb97c037004d7495430cf3fee409805f3",
+      "after_sha256": "3b248eb9afc7011fc30b67c6272b47b176c14c038160e7f6d40341df990596c4",
+      "protected_token_sha256": "52d80a0cfe646016ad7c9834842f2559f71d0856d90de1a5b8b54a7c4cda489a",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 14
+    },
+    {
+      "file": "Foundation/Calculations/FotonAmurCalculation.mo",
+      "before_sha256": "32f0d7a4200502c3dbe6ca01fd2dbb52c8665e25ba936ad0f1700ef3efac6304",
+      "after_sha256": "f2730ea3f2e340ea963172446187cda7cbd223ba513a09f5f81cf73b4f27ffe7",
+      "protected_token_sha256": "b725f92953bb1513ec622edeec095f5caaa1a5392b5957600db1378eca2ec854",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 4
+    },
+    {
+      "file": "Foundation/Calculations/GNSSFixCalculation.mo",
+      "before_sha256": "5f35b872d15db3bc0fc1db36d9f84edefc32f2c61a91b75c0ff6b06610419f9f",
+      "after_sha256": "ccd7fe61cc767d018e5b070159cae3adef6f4d50c6bc42645445e0cccad96cf6",
+      "protected_token_sha256": "909e9cae7a53da79bf85c56b1ed60384fde110087deb5542bee0b2e9fba906ac",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 2
+    },
+    {
+      "file": "Foundation/Calculations/HeaterChannelCalculation.mo",
+      "before_sha256": "34c9c8850df8e58471ee7d4d049cdc6a3ae4062d28d680992a5fd7f4272d57a0",
+      "after_sha256": "40c028457220e1ae5666dea9d36451ca96331fb357ac1b474dcac6412d96c8c4",
+      "protected_token_sha256": "4dee2230b64432b493ca8cffc517b753203dfe35e041bd57f8713228d8d0d696",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 5
+    },
+    {
+      "file": "Foundation/Calculations/InertialVectorToBody.mo",
+      "before_sha256": "4124754a72ad158a05ecbd973bb706f5fd946fdbb17c160c0e2e840e1c95c603",
+      "after_sha256": "6e2b737402d14b3d8a83a0531d134321f20ea8f1b23f97ec665639dac0069721",
+      "protected_token_sha256": "1fa140fbfc34a8922da6f5364a80b95bed9393b939dd97ef774da175a458fa34",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 4
+    },
+    {
+      "file": "Foundation/Calculations/MagnetometerCalculation.mo",
+      "before_sha256": "9ada8dc296b9b08b60ec22ef5fcee232894e58fc01712e17332e44390470a674",
+      "after_sha256": "7f661eb4feca251f74d4877784a38a666e28c19a885228006154cbd05688d25c",
+      "protected_token_sha256": "784c93ab41b4a5d6a6c5eeac2358c5ee5eefcdbe681a48ca2c544660e1e097c6",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 7
+    },
+    {
+      "file": "Foundation/Calculations/MomentumUnloadingCalculation.mo",
+      "before_sha256": "44cfe13c42e423e74df9b1b76d8c1331e852762339c1441579c3dca211407ba4",
+      "after_sha256": "ec4d760c4b81e3fbe9a284c699c847c09a0fb02c329b3872cf3f99ea3ba3ce8f",
+      "protected_token_sha256": "6ce18a30a7653a4410eaf6aea5a09455ac0a4d118ab48a6c83cc89fd4f943957",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 39
+    },
+    {
+      "file": "Foundation/Calculations/OrbitalAccelerationCalculation.mo",
+      "before_sha256": "995cc70f3c4814e7375fcfbe0ea806850aa5338759fca4784a1fc2da2af96c10",
+      "after_sha256": "5ddd8ec028d99a05f3e2c625c980ca35f590d57e33902f120e15abd02a213c61",
+      "protected_token_sha256": "b19784d9371f6090e4ea332c604aad5e051a9e1dbb54ef20e8e51aa5308c9789",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 4
+    },
+    {
+      "file": "Foundation/Calculations/PayloadCaptureCalculation.mo",
+      "before_sha256": "28e43a15681f9bfc8e40c970b3c62b31dcb122d378635517b1a0052199c1e821",
+      "after_sha256": "f0bbff36a021af11fcc931f5eaa3b7fadb0e390ee31a04f756e11a7ff83df50a",
+      "protected_token_sha256": "ba1cfa4347c7d0132292974d8e797d45c7d04cab6147ecc8c60cfcd4381d7b0a",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 4
+    },
+    {
+      "file": "Foundation/Calculations/PointingModeEquipmentCalculation.mo",
+      "before_sha256": "5a9cee413970449a9521e7ec70db9141ad3e9c8711b2cb7be3fbc870e4cf0ddd",
+      "after_sha256": "f9f8162013e8ce39f746b70df7a47a4f39edc1e3da7a5516763638de1f78da78",
+      "protected_token_sha256": "2831fc711cb8f6f2069209f1913a7a679264ac0eae2914838629ae889ecfac6e",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 6
+    },
+    {
+      "file": "Foundation/Calculations/PowerConditioningCalculation.mo",
+      "before_sha256": "ca00b26fd1c7b0ee34634b09f7d223f64708fc6c426cf04e2137201ee05f58ad",
+      "after_sha256": "573ae574f8f0dabcb2bf9d640f46c4d65fb24eebf0c18945990f77703f66eceb",
+      "protected_token_sha256": "ece7c11d5eb9f77d788875f09b597776a3812ca0e9727b85effdeafa37e11d58",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 42
+    },
+    {
+      "file": "Foundation/Calculations/PowerDistributionStatusCalculation.mo",
+      "before_sha256": "6d40d58b1fc89bf69d44399b7c3c178365cdc937a6dc719e2c8b47e57cc8c87a",
+      "after_sha256": "b39d66b54a4e678224f07c6541ef919b87cbee745952d6db84065dd0771505fb",
+      "protected_token_sha256": "3bce9de1db6d2c48a9489bf482a01161717243267fbfb0e8ea637b271e9f7e91",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 3
+    },
+    {
+      "file": "Foundation/Calculations/RateGyroModeCalculation.mo",
+      "before_sha256": "da80ad50986436b8b912ac731697fe88639b9acc4d4b7eb41e7487859d8baf04",
+      "after_sha256": "9ff727eaf6ce6b72ec59115fb0db4c45f3e108e49360ac1cabf220736f8b2942",
+      "protected_token_sha256": "4474095b2944f8041d09919f44591c86b70c2850b00538f1a34675bfd93df497",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 2
+    },
+    {
+      "file": "Foundation/Calculations/ReactionWheelPowerCalculation.mo",
+      "before_sha256": "49b031c5b75cae60e99a99b6adfb1da99d4d9360963e5bb55caab3a7ad55994e",
+      "after_sha256": "f36ea4b25979f0108b1840e1ec4384ddcd3281e5a39e7b454924b6720903e081",
+      "protected_token_sha256": "e52602fe529c89ffde8e1642813266c1c7efcbef626a193ca78b5897f3b0e7e6",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 9
+    },
+    {
+      "file": "Foundation/Calculations/ReactionWheelTelemetryCalculation.mo",
+      "before_sha256": "1e0dd9870b65f76594f36e601f1017ed83db622f3e15dbff0e8064f9f0eacf77",
+      "after_sha256": "0a4c6b6ec07146834794444cc04daa97ec8ae543681de7bcf870fcd15af7d827",
+      "protected_token_sha256": "5f4f38a236c41e49d81dc470eaeb12d7a2a11d4a3cd0e1ff634857af6cb7a65b",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 5
+    },
+    {
+      "file": "Foundation/Calculations/SolarArrayPerformanceCalculation.mo",
+      "before_sha256": "8e144a2fa907d45a742fde39385376476ef4b0941c495a37a8b161507c0939ed",
+      "after_sha256": "aeceabf96a3a2f107b99773df2c8cff7aba3fd548b173e7219c83caf67ae89f1",
+      "protected_token_sha256": "40ab9c4080e05da727a82b89dfdf0fe30b9bb82cbd83deb5f8ddcbd2bc6f4c76",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 39
+    },
+    {
+      "file": "Foundation/Calculations/StarQuaternionCalculation.mo",
+      "before_sha256": "115ca6fb45e3e1dd5235cda44d2412814d97d1535aac3165c7f0634d44a18154",
+      "after_sha256": "493703a0b5de10c905260e3f9c7ad21026b68aac74cf4b652ee55b3bbfce39d7",
+      "protected_token_sha256": "00e501e7e7af84dae8d0e662725256313afdf553b98dacb9d36acd5280d19036",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 2
+    },
+    {
+      "file": "Foundation/Calculations/StarTrackerCalculation.mo",
+      "before_sha256": "6eaee9a07927f26fa561e394804fd40ca04ebedd28ef64fd9e7861f2b34cc445",
+      "after_sha256": "fda40faa94bafaa8875554eb0b658953fc11fb8375fbf9c54508acab834ed97f",
+      "protected_token_sha256": "e1fb27342fcae029816092db784e59b2b094cdea89b4de6664c422df323e3f40",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 9
+    },
+    {
+      "file": "Foundation/Calculations/SunSensorCalculation.mo",
+      "before_sha256": "5badf7311f3956adbf3be7f6d082f6c24664092f39de24f3cc8262585465fb2f",
+      "after_sha256": "c16c1cf604a29fe151fb4d0940a7654345614ba2788c5b97e986fb42108793f5",
+      "protected_token_sha256": "2835100aa497796ec1b5da71dd963f482394bad7ee54cef2ae3da79e0aaf1fa0",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 3
+    },
+    {
+      "file": "Foundation/Calculations/WheelSpeedServoCalculation.mo",
+      "before_sha256": "b46e8edd73046b6af8ba558421660ec50e951b75b7639b5740d069f115c82fa6",
+      "after_sha256": "8d9f6a8b9dbb1cfb5c7cd59707cb923365ff2e2a2ca158086def008e2a72096a",
+      "protected_token_sha256": "ea5ab24022887064ba1738d3f964b16f6b8e896d226e3018bcab46c1a8cec10f",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 3
+    },
+    {
+      "file": "Foundation/Calculations/XBandTransmissionCalculation.mo",
+      "before_sha256": "519192b1321d5fd069f09092623a42428c6825022f25afd722dc7f1412ede177",
+      "after_sha256": "f36f1a47754b4a35997aa670b3fe9ace3ede5901c8158a90d1ac330757006ddd",
+      "protected_token_sha256": "0c0b948946fc815703ddb55c122d48990fa1af82d679d110a8f223563d99ea4d",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 14
+    },
+    {
+      "file": "Foundation/Calculations/package.mo",
+      "before_sha256": "50a114944371614734ea9898d2cc4127854f7a835f67e2ddb32f7c512efaa607",
+      "after_sha256": "9a7aa7735cd3e636c24db23739c73c1720889dd0878203a32618c40a5a8e8e31",
+      "protected_token_sha256": "de9a4c1217c2d1db377876086a37e58fc7ce6ed4ec4ab067e2c383dbec236dc4",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 0
+    },
+    {
+      "file": "Foundation/Functions/estimateGroundContactDuration.mo",
+      "before_sha256": "1101f13056e85f4d3e2b128caeb5281a724eaa25f1a5e8a09a6df4a8ba7937a2",
+      "after_sha256": "ea71ddae09b6c268d69292b38e3417e894386c87d6762496f9379d0b0b2be108",
+      "protected_token_sha256": "a95d57fa2e936c805d9743b28751c3b7759a6396a34dbb03c354fbdfeac280c1",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 21
+    },
+    {
+      "file": "Foundation/Functions/package.mo",
+      "before_sha256": "9fb77bb687549231aa3bcb42ac9142a292d1ebeceb720d166c69b97f6b0cb2e7",
+      "after_sha256": "c9cc684ce7021a10e81acc1776a46ab356c25cce0a98a06cee47a2baa0eb1585",
+      "protected_token_sha256": "d3b1f5fc1d9484b4a8b2af6b80a519d1b90bb1cd91712e6c0b1b3424800021e0",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 0
+    },
+    {
+      "file": "Foundation/Interfaces/ActiveGeometrySignals.mo",
+      "before_sha256": "e8a85e418a6deff3af72b2100df55cf70351a5384b34ce499e17a3facbea7395",
+      "after_sha256": "292307b45feb8918c07b766a4ff1d04bbbba886a9ab2c1f05e212e295008985d",
+      "protected_token_sha256": "e28dc01de3f9099ac06e0aa52c4a9edf11488fcf9f83ff604cf21f168e4143b9",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 15
+    },
+    {
+      "file": "Foundation/Interfaces/ActiveMissionSelectionInput.mo",
+      "before_sha256": "c278cc292d72b0244fe9c6133687c488200958e83725b6f1275fe3462d533540",
+      "after_sha256": "8d6eca244ba14cbbd87736a2dde6aaebf668042d8ee64bca0e48414a7051850d",
+      "protected_token_sha256": "bee8758612557c7d72cd226119740d971f003ac4418b92506c5502d9a9caf814",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 2
+    },
+    {
+      "file": "Foundation/Interfaces/ActiveMissionSelectionOutput.mo",
+      "before_sha256": "3428d458d78d35da033bcefb38b3c324fe860d90008eab70c0a5f08d8b4fb18a",
+      "after_sha256": "00cfc4ff43f3dc8ed2513fe4d8e18fef2c41785f7fee89626ff9e8da7d33aeae",
+      "protected_token_sha256": "5bf4ca41dd629f725066d6c27a4b58d4e0ae51d5dcc02a569051ef53d87680d1",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 2
+    },
+    {
+      "file": "Foundation/Interfaces/ArbiterDecisionSignals.mo",
+      "before_sha256": "534581fc7eb2508932855ec2ffbaefb252587d2cef734e5bdee0a56321a09e18",
+      "after_sha256": "fc3f2d17f210d290d5553a5ac6d756f60d5f5161f9cb59aea1547c3cc432bf3d",
+      "protected_token_sha256": "ca9ece4476a793fb4033736e01b4df4c790637c3d26b78341c0cb481ededc4ac",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 10
+    },
+    {
+      "file": "Foundation/Interfaces/AttitudeControlStateInput.mo",
+      "before_sha256": "118fa917da95dad5622560ea51a676f63fe3f7aa2258e41b151856ff2cd583b6",
+      "after_sha256": "a958d0481006d3d1128846d2e97124e53caba0535d336baec239d00f2e76c82f",
+      "protected_token_sha256": "25b057ff901ee6f8d11cec169d5db2e3a1fea4828e47fa5035f5df93c6a6dbec",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 0
+    },
+    {
+      "file": "Foundation/Interfaces/AttitudeControlStateOutput.mo",
+      "before_sha256": "1222950b18622a9ddc50564a37d245fe79bc4eb7878c4e578f5826645e59d749",
+      "after_sha256": "33a8ae9f52442e0d95cca316cede56bde50c43ed961c79a1b4714705acc05209",
+      "protected_token_sha256": "045d7fe20fe12bf11ebd336182a85adbc0522b51cb34f2d82dbd1db020ec5af8",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 0
+    },
+    {
+      "file": "Foundation/Interfaces/AttitudeControlStateSignal.mo",
+      "before_sha256": "2d61217840828de0ab0a54e0a676d03335d696d347fb102883f127b20ed88f6e",
+      "after_sha256": "309832b1bce5dc0ee5c9eb59de9441707fec89db64452f6105fee571cbf80f60",
+      "protected_token_sha256": "6c84e0cc305e160e55acd5286b5dbeb90cbc40e0ec20953575306988f7a080d4",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 0
+    },
+    {
+      "file": "Foundation/Interfaces/AttitudeControlStateSignalBridge.mo",
+      "before_sha256": "a4483914b796c7a45e4cc18b662d00c4caebd0fd00be6862f9a6c8b28947c381",
+      "after_sha256": "77d60b441df2bc8ceda8d346efd93765758d6bb66e21d4d8624c2356708dcb94",
+      "protected_token_sha256": "08dd13eb49d4ff1d7c25931d78185d981298cb5188012f0ff21158112c4f0361",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 2
+    },
+    {
+      "file": "Foundation/Interfaces/BooleanSignal.mo",
+      "before_sha256": "618b54fd684a5debf1a7ed5815cf6f5cf81c5e56a9f2262b025e6ca0decca673",
+      "after_sha256": "80ab30d748b62ca8656e1aeb17d1875a422b76078c4392e67546528563b969a4",
+      "protected_token_sha256": "e78508cff3818adc8e23166879215a206bea84d1ee5242fedff79e55b72bf9da",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 0
+    },
+    {
+      "file": "Foundation/Interfaces/BooleanSignalBridge.mo",
+      "before_sha256": "11917a47f53a90cbb08f52dc2b95bdefc4348907ad62c709aca3a1e6bd42ee7d",
+      "after_sha256": "0e25b2a19299e77ba0eefc568ac4db7963473db6e1b89f5b19c400982ec1a48c",
+      "protected_token_sha256": "ed6e94cdded2655d31efce7a4e1aa1d92b549eda9e548109b12cb903120bbd0e",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 2
+    },
+    {
+      "file": "Foundation/Interfaces/BooleanSignalReader.mo",
+      "before_sha256": "bb42de7cbd40e15710646c92b8004bec112d5afb7400cd9c2394467c46e87061",
+      "after_sha256": "5fe11e0f2304379b009cb4803c9642bad56134d164b4b4afbd872cba228d4798",
+      "protected_token_sha256": "5880eda68dfcf0822bcdf322e9b22cc402393f607377c64d603189bb075c3bb7",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 2
+    },
+    {
+      "file": "Foundation/Interfaces/CommandBus.mo",
+      "before_sha256": "f214b5dd96a20cf32386476f11f6c693e3a01218e64bd2223e9eb53016f8302c",
+      "after_sha256": "5e95c9f6eb27f87f3cc5390d52ea2bf60c6ac5dda4a70f800000e0f4e95f023c",
+      "protected_token_sha256": "7ca508ed6bbed5823ce50934143b33944ab1bfb38a6106045d4ecf82ce4e4811",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 17
+    },
+    {
+      "file": "Foundation/Interfaces/CommandExecutionStatusSignal.mo",
+      "before_sha256": "31a41f0518e73f5ce2b718afb0b06ec4d258c9839db5d6f5c48aff8af858ef23",
+      "after_sha256": "58dbbbce6586e54c34e16373b5fec0aff443fc143f4f920365c25a8ff549911e",
+      "protected_token_sha256": "fc4acb78efc27e789e44991616a1f8dd7c81e7a68fbb354ffe1b72507c0036ac",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 0
+    },
+    {
+      "file": "Foundation/Interfaces/CommandStatusBus.mo",
+      "before_sha256": "4744493ae8dc63d30d6582f79f045f5c9c74d506c9093b100cbdc26ed3a37b96",
+      "after_sha256": "4ace6dc7717eaf1fd4c4e36aaf9a1a2f048b413c2fa14a0180f7cc5e6f19101e",
+      "protected_token_sha256": "c930f0208a8e40fafce8d298938e6a1b08c69ed726f79cb0cbeb2f9042e18bda",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 36
+    },
+    {
+      "file": "Foundation/Interfaces/CommandTypeInput.mo",
+      "before_sha256": "65976c29f340ca2f33775d53aa373e9a9f1a68382389c71ef483ef6990d8341e",
+      "after_sha256": "8df3fb7360d486be880b276838a67413fad89d7a73b3dbf3bef44f10bcae6577",
+      "protected_token_sha256": "086ed9e5ac4a9b187092836ed5e32e83bff8df29cc1a79261ccc0f5464f11aaf",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 0
+    },
+    {
+      "file": "Foundation/Interfaces/CommandTypeOutput.mo",
+      "before_sha256": "797b8ca5bf799883adcd8fdf905546ffeb52785230bb9b511ce750f677ef69b0",
+      "after_sha256": "a28a7ac39568ece3ddef6b8d153dc45d639e2f32b5b85342017416c760b861f2",
+      "protected_token_sha256": "d6601be53da7ee6d67629c00c24d4aa951b487f008bfca60c2443dcf5b48547c",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 0
+    },
+    {
+      "file": "Foundation/Interfaces/CommandTypeSignal.mo",
+      "before_sha256": "e8c0551d7a204fb4e4ac6d91e9997d8fc595d5b7e961a03b8782f40e93396550",
+      "after_sha256": "199a134fcfc64115f49015771ae02f88138d6f7857726cac38c00d0efc0591e5",
+      "protected_token_sha256": "68d2f5c5335b0d062c57d0ab4614e464e24ccffae6bd9e5da62be2e75406d306",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 0
+    },
+    {
+      "file": "Foundation/Interfaces/ControlModeInput.mo",
+      "before_sha256": "e45259a742b7fcb4698ee79fd2d3060023537332b4bd3294300605607ed068bb",
+      "after_sha256": "e02b1e739ba8aa41e4db7e16cc35e6c375d65a90ab06d52a76fa37ec46884160",
+      "protected_token_sha256": "f6982b643b192e26b7cd08c0009ce20c5c96bdeacca0a2c828997deac2e1a556",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 0
+    },
+    {
+      "file": "Foundation/Interfaces/ControlModeOutput.mo",
+      "before_sha256": "306abe4ea026f5647bdcf14a95cfc625f840a76173283e191362b5a3c2b45fdc",
+      "after_sha256": "0927754a4101e57f496bbc1f6358d28ac535e360a359bf68ca92d68fea792224",
+      "protected_token_sha256": "e1462d559e69a832389ba22e41ccbe631eb848a60240a089db032b69e92bb11a",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 0
+    },
+    {
+      "file": "Foundation/Interfaces/ControlModeSignal.mo",
+      "before_sha256": "c0ebf34af3c4c86e6077468e71f0a24ae29c8458d9b36a2b053c557846808db9",
+      "after_sha256": "c14bd285bdc72c1bd300496754f02cc67280c5d8a26f790f22fe3d5ee4907dd0",
+      "protected_token_sha256": "a13e97058e9305f8c7d8589e91fd9fe290964739febf574436d60a0ae2b28f2f",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 0
+    },
+    {
+      "file": "Foundation/Interfaces/ControlModeSignalBridge.mo",
+      "before_sha256": "4d9db8dce39fd6bee95a270cd4e30f3d0a6da5199f3635b221c9c4fde7d9a874",
+      "after_sha256": "e7af884b0ce345cce536e65c16fa279b88771518f6b6e8c928efc20e6f1bb68b",
+      "protected_token_sha256": "05277444142c8daeb404f4b6f8d347fbd086fd8f004dec2c70610a578d34fb24",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 2
+    },
+    {
+      "file": "Foundation/Interfaces/DeviceStatusBus.mo",
+      "before_sha256": "c917648d522a5f5e2dfe7e586949f912bef286d0895892e04c5df822f0cc6e52",
+      "after_sha256": "7627a46c18bbb95300a80acb09b032472f89408773a692585185e9cf85630338",
+      "protected_token_sha256": "f7a680c9222e4d853a2ceea8135f815f5affdbf0ed23f70a5033ea77b8d43dcb",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 68
+    },
+    {
+      "file": "Foundation/Interfaces/DownlinkActionSignals.mo",
+      "before_sha256": "2870642f4a8bf45443880082574ca3a9ba7fe4590d743254decdd5f3e69e963d",
+      "after_sha256": "c8d98f5e49eb0b3d892e760e09132239323eefd9ba43d813dc30fb46b2c070bd",
+      "protected_token_sha256": "56edb2ff0959148aa8d93d26572dbabfabd483e63c2c323706e7895538344eae",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 14
+    },
+    {
+      "file": "Foundation/Interfaces/DownlinkPhaseSignal.mo",
+      "before_sha256": "792db4afa20767a38edb717bf702608e352afad28a0b2a22e167691268d23d9c",
+      "after_sha256": "cb92f9e512e7ddcd561975cf4a3f8bbea4a9abee9b6e00f19af3c916d5db220f",
+      "protected_token_sha256": "28b283a3d6502f0d0a07a5b7d8b517b5f905f1a211579a00320c125a43d2717b",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 0
+    },
+    {
+      "file": "Foundation/Interfaces/EnvironmentPort.mo",
+      "before_sha256": "3c4b39c435993aaf99de5df7fb89d4be53458a9a23c4c8b45736d8301a137ffc",
+      "after_sha256": "b419aaa81971f5ea01c8382fc4f8784c8181c15680d0a2f5bdaac19dd1c4b02d",
+      "protected_token_sha256": "931f602b4ffee2a3a65002e25a4ef679a97be8517bb2c0442206dd80763d3c85",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 54
+    },
+    {
+      "file": "Foundation/Interfaces/EphemerisPort.mo",
+      "before_sha256": "2fbb04b27808d22fd3c2b2ec50c7d44ef83e04a96a68bcc837cf9b0e387003ac",
+      "after_sha256": "70fbf7e158899083108a81aa0b47446c765563b4e4ac9061033186a236739135",
+      "protected_token_sha256": "92d059995d6d39e1ff2278df37f5d84e1cc8284c34b361c8883e996908a37a7d",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 5
+    },
+    {
+      "file": "Foundation/Interfaces/ImagingActionSignals.mo",
+      "before_sha256": "b0877a955ec4e7184858912975e1dbdf294fb5c813fff20898afc085a0b74be5",
+      "after_sha256": "9dad55184109ffd2ca3332a5f1ee3e1d690b39ad7e7429377e9a0d56e1543467",
+      "protected_token_sha256": "3f4097686046ef48fc9f319f7a13d69963703e3b037c7b6edd8c704cd2829d8a",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 21
+    },
+    {
+      "file": "Foundation/Interfaces/ImagingPhaseInput.mo",
+      "before_sha256": "457ca4e15e171b6617a17a068e6b29436e9485836e23ec039965c2a413a7514a",
+      "after_sha256": "bb2c658f3c83f968f3e891de6ef87c7a6639889be909f2b6fa73294e80a33dc4",
+      "protected_token_sha256": "0069936aedb1ec61c25856d6c08efc05812afa90b6a47494194a783fb2e73e44",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 0
+    },
+    {
+      "file": "Foundation/Interfaces/ImagingPhaseOutput.mo",
+      "before_sha256": "892a1e4b6ebe647d7973c41e4d0e6a78c01e107833e42a70ad607004a9925d82",
+      "after_sha256": "41b9397ed6188eff2854e9c2f8cd8f1013ce5ed644495ae8d5132d466c70b447",
+      "protected_token_sha256": "91aabf7f2c7f366b2b6cafb376a54ebefa198854947776e262f4ad124a5141af",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 0
+    },
+    {
+      "file": "Foundation/Interfaces/ImagingPhaseSignal.mo",
+      "before_sha256": "664e8f6ba5afc9aec2a5d87f7fae200f176d6567fd5cc72cd46d2941ae2140f2",
+      "after_sha256": "66d76cc92ef003d550d1b3a29f7b7f27564ebd7ef86012f2184398bfeac89828",
+      "protected_token_sha256": "721994d4e7d4d17e05b3fe8532a8bcecb00c172c770b7f64505b75632052077e",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 0
+    },
+    {
+      "file": "Foundation/Interfaces/InformationPort.mo",
+      "before_sha256": "db0f7ff0e15cbcdd841e17b6b96ad3c646ca9a411ea5139c97e448db63f620b5",
+      "after_sha256": "baa85f3e1429ebb9b1d7dd7cb154ff857c01807c1102870a4f527ac4c8d6437d",
+      "protected_token_sha256": "d6bbdd526e9077906a12db44369184d1c3d84e5835d1062153a6a0a501c0ed27",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 4
+    },
+    {
+      "file": "Foundation/Interfaces/IntegerSignal.mo",
+      "before_sha256": "f5c65d026bf1559d0a935bd1a06b2edf09b8e567d00ecf232338636e90831470",
+      "after_sha256": "22461717194ab4f636538797023ca988e9a77d8dfca873119aee0ea60cf9e00d",
+      "protected_token_sha256": "4b485b853bd21d1826646af86707302ae0a13e51f53e124a1f059ec94d3424f9",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 0
+    },
+    {
+      "file": "Foundation/Interfaces/IntegerSignalBridge.mo",
+      "before_sha256": "ccd978948bde12fe40c2d925f7b149af84445536ed719b42002a2b80df892b8d",
+      "after_sha256": "672382a2edd2ac197f5bf3e849df35e45b89efd29ad1a276dd566ff4430be68a",
+      "protected_token_sha256": "05ff1c4ad91bb7d31ba5357c0396d3a717eb44848ed19839516a7286e93d3cee",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 2
+    },
+    {
+      "file": "Foundation/Interfaces/IntegerSignalReader.mo",
+      "before_sha256": "01589ce03d78ffe8bc4c462ef18d1cae9e1ee96c362bb99c878899e9a4a1f846",
+      "after_sha256": "69c7b17983dbddeb81af1cba3d55c480caad0bd6207f3086046a5966a2cfa67d",
+      "protected_token_sha256": "59911c1edb12ffdc4affeb74bcbf47e24e19ca4ac10ccee1d1bce3f7ba0d75fa",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 2
+    },
+    {
+      "file": "Foundation/Interfaces/MechanicalPort.mo",
+      "before_sha256": "d127ccd78685ff48363ffc2f3d56c024bfd2c183db20d4fcb7bfa3bbb938fc66",
+      "after_sha256": "a17df43fc857d425ada0121b5140da023c2b8fd25b4e975ef0fd5bdd7f5c386d",
+      "protected_token_sha256": "1292a8206b86664977bbf088cad104806beb98b3241638e00729159d7a2e13f3",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 0
+    },
+    {
+      "file": "Foundation/Interfaces/MissionFeedbackBus.mo",
+      "before_sha256": "5afccdaf63b5d7f43a983b343e3a80e3c58a754a8aac0cac6060a6fa9d7aa5a8",
+      "after_sha256": "c2052365cd09f84fba15dd4de03203e80a81ae46dffc4a8d6e3a44d479170ec4",
+      "protected_token_sha256": "1b079886e59b549ce3237def077e3d357bf670c2fb80fe32c3d32c4267d15b91",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 24
+    },
+    {
+      "file": "Foundation/Interfaces/MissionModeSignal.mo",
+      "before_sha256": "d3b5feaf3acbcbb1348ff9294bf0eefdab22187337fc809eebd89931df999b84",
+      "after_sha256": "90c7410b1ddd680a35fc0121264fe06842af856f8e72ebeac86d35735234845c",
+      "protected_token_sha256": "fecf2ad881f7a857f3e5bf49f90a800a7a2a6e7f2c4ac59fb29c667fe3ebf173",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 0
+    },
+    {
+      "file": "Foundation/Interfaces/MissionSelectionPublisher.mo",
+      "before_sha256": "b301a3b8dd1dbd407d20832fad1d8bfc4d4c4f550683e1c2b2e63ee6a6fba1d8",
+      "after_sha256": "2d0f15b39a957eec6666c0fd1760d05bb6fc353d90235c61de588e0bb3b6c622",
+      "protected_token_sha256": "0930aeb31151ade6e955cd9bd04fd29f70288271c95bdd8690a9029370856c8d",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 3
+    },
+    {
+      "file": "Foundation/Interfaces/MissionSelectionReader.mo",
+      "before_sha256": "58a452d050a7ba8cb58e386a696cc64496c8c8e6ccf5c009ce4b2d3e9fdc1aec",
+      "after_sha256": "9d20e05bd4f78d76c9fb958b4ebe589ee7bd613fc2e1e63c3e4476d9eaac5922",
+      "protected_token_sha256": "4da9e6f7b76a1466df016db63dabda7f84e02801a5d5205af2a040616f9b9f7f",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 3
+    },
+    {
+      "file": "Foundation/Interfaces/MissionStateSignals.mo",
+      "before_sha256": "210d444792287bf4b12c9f592354f8e7068e2ef106394b01a5d49230fed18c8a",
+      "after_sha256": "25953d022d01e75a9f14bebb575c12512b8293ea1aa80d088aaa63d238d476c4",
+      "protected_token_sha256": "093747a42be7f712cf186ab0851941eb4fd4ebd11de5e0fff8df881946a37969",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 31
+    },
+    {
+      "file": "Foundation/Interfaces/OnboardTelemetryPort.mo",
+      "before_sha256": "53bf567430ccb819a0d23ff7c472087a266e3690c459f66808fc17bd7b71d2fd",
+      "after_sha256": "756317ac50faf3bd73f78460c18f17185720a636dabedfeaa20d89008d15a24d",
+      "protected_token_sha256": "9fe8be6c598bf7978c8e7c634e53e684c94582bcd9165f682aa925602850349b",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 86
+    },
+    {
+      "file": "Foundation/Interfaces/OpportunityBooleanReader.mo",
+      "before_sha256": "955f02ad585088d2e055be86d63bc99ce054bb7135b500582cd88e49548692bd",
+      "after_sha256": "78f49439151ccc0ae8d80522f18602e4a5df09a1183c0ef22749fcd3098823ca",
+      "protected_token_sha256": "1b8b4c6d36edf2ca6eadf257da7c5ed600845f6eb05b02d48f13715f646aaa67",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 2
+    },
+    {
+      "file": "Foundation/Interfaces/OpportunityIntegerReader.mo",
+      "before_sha256": "926e257a783e61079f0816cfe6a54a50d66a5c52710adf801437aa3c0c7159b3",
+      "after_sha256": "94d3a041dda313f8bb986eb6b0dea2061657b89012b65f11efc429c68aefe0bb",
+      "protected_token_sha256": "33af0976f7de88507548dc39b2744a95ba754ad55069023d54791f7c01c9bc99",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 2
+    },
+    {
+      "file": "Foundation/Interfaces/OpportunitySignals.mo",
+      "before_sha256": "7e62f24d4c89fa7565d16a513b6530d0db67a6cd48057ceb7913802d8223acf5",
+      "after_sha256": "935490aa1d625c6ea66697802c34111137aca54cd8db64567fc65a4445f52ae1",
+      "protected_token_sha256": "82680ef561f3b1e154d8f53c1113752b6c8587cd8ed61d7593ab8c7da9bb36bd",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 20
+    },
+    {
+      "file": "Foundation/Interfaces/PayloadDataPort.mo",
+      "before_sha256": "ccb7ee102e11d5d41ebaeeba5f9753f36950c4e4464502cf6816c2048895b4e7",
+      "after_sha256": "90c208e5ef41d046582b48a22934bfeb2937ef7be67df986ac178d43962daaf8",
+      "protected_token_sha256": "0ee14b2fc35a96962ee0a00c00defd46dbb65e47badc9db079b720a1ab11587c",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 17
+    },
+    {
+      "file": "Foundation/Interfaces/PlannerRequestSignals.mo",
+      "before_sha256": "02b9f21822b865a220a3055eea3107228e641624164b8576f3027fc948e30b0e",
+      "after_sha256": "86d0d6f85395845a241e26e421fdc2acbbb49f3550d27aaf5373f71f9d350a85",
+      "protected_token_sha256": "fc59f27edf1782c71caed93787533ae83661534845d6aa34ffb5bf34f1d956a7",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 8
+    },
+    {
+      "file": "Foundation/Interfaces/PowerPort.mo",
+      "before_sha256": "72b75f55f2c8007c8f5c9281d391b2a64b80d6e5cf1b12b2147bf6dc07790ab1",
+      "after_sha256": "c5a2da4d4922fe1ce56ec544e508891f77335c50a765c6dfa7136a0a23c7136f",
+      "protected_token_sha256": "ad3a3ddd2c1347c2e57dac448cb24321b21bfe8d98812304a606b200c6d57dbc",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 6
+    },
+    {
+      "file": "Foundation/Interfaces/RealSignal.mo",
+      "before_sha256": "365e6a2ec1ba3fbd02f52d3e9187376b73a7961f5f722a9e047a74514bbbca6b",
+      "after_sha256": "012b3c632855d7a86e6898b33e4d0147a069096035b98075753ce87af02b36aa",
+      "protected_token_sha256": "90533549ad31e9bf678652e286639efed3f658a6a18b6a275f3c3aae49a336d3",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 0
+    },
+    {
+      "file": "Foundation/Interfaces/RealSignalBridge.mo",
+      "before_sha256": "0e2c53faa8e8fcb46aa687f9edd75744265246bf038c56ddf13f96702ed39f24",
+      "after_sha256": "7afbcf1d8b55c5989367046a4fc917eb21fec624332f1acee4971b9be3eebb26",
+      "protected_token_sha256": "2a439dd60c4c7fc0bd8dd3c70dd8c17ff5d89dd2c0bb5595eddecdaf27b7077f",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 2
+    },
+    {
+      "file": "Foundation/Interfaces/RealSignalReader.mo",
+      "before_sha256": "6323a3f2aca2e7ab62c01fe45f82f08bae5f8cb1187eb3c8a107c1b8464e0908",
+      "after_sha256": "7e87d1b33590c53a1af93067507c9be3c76b1cf66f2a49bd8758edbc2111a48b",
+      "protected_token_sha256": "581cb954d74b2e7d54b6a80c6620c4631ac739ad398eb8fcd3de33a2a02c4239",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 2
+    },
+    {
+      "file": "Foundation/Interfaces/RejectReasonInput.mo",
+      "before_sha256": "a5480dc94fe7b277296bbc09e595b51cd9ac87b3dee07452269e283cf93e7094",
+      "after_sha256": "2f19ea9d898a32c8bacc064b37c7634c7ca84d36b6bac57384974faac077d13e",
+      "protected_token_sha256": "a1cd62f6bb87a22089cb6523215c349fd38e1adabd558480b23bbee141bdfb7a",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 0
+    },
+    {
+      "file": "Foundation/Interfaces/RejectReasonOutput.mo",
+      "before_sha256": "7d2b496476ce03e1c2a135df6ef26a5787968a0738ad8794c297eef965ed112d",
+      "after_sha256": "bd47e5056b5b846162219f95c096efe72f6aaf6e2a750848942794115eb0f435",
+      "protected_token_sha256": "2fe99a8914df706f0e44b6c8f839fa793b61c1ef9a5ee18d12c8351d9ed589f5",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 0
+    },
+    {
+      "file": "Foundation/Interfaces/RejectReasonSignal.mo",
+      "before_sha256": "c39118063ef4ac63d549a02afdf8f718b1cfbca59c05ac0bb3d9744f99eb02a2",
+      "after_sha256": "54223c68c9b1d70867a13ed7f68b34922f939b77b98cb0afd92011c3bba9aa1f",
+      "protected_token_sha256": "187f03b66f05bafada1c3be3e9450d159629a8ec773ffa6505ced1ace6b7ffec",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 0
+    },
+    {
+      "file": "Foundation/Interfaces/SafeModeActionSignals.mo",
+      "before_sha256": "4998c36e8d96bd9fcd3e30cd8c927225652df544582df10c1173f5bac2a27bbc",
+      "after_sha256": "b1a46d80d16444125c4879e6f03807c37998cba637874d5d830aa6d23939fba9",
+      "protected_token_sha256": "124db796f24ce21f7686f64ac515270cda5b104291b33c750ebdc3cb2db51280",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 5
+    },
+    {
+      "file": "Foundation/Interfaces/SafetySignals.mo",
+      "before_sha256": "036e806bd6492bade2a85bcb1272b8e869f25a17857646242db73958b7160527",
+      "after_sha256": "ae58a8d599c98f8c32a06fb3b7a78fb9a21603b011c2554bfe2fdf9b213c2d11",
+      "protected_token_sha256": "87848cced3c1dbac525980a37977edaaf4fa74761207dc1e0b557f610407e77e",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 10
+    },
+    {
+      "file": "Foundation/Interfaces/SourcePowerPort.mo",
+      "before_sha256": "108dbc6a7c0a371c158b154c30b37711dbd8bc269a6e834db1f4f695d8bbc32d",
+      "after_sha256": "004067eaf29bdc4e25839692ecc7213a687d06481261e99cfb73f0c3de673394",
+      "protected_token_sha256": "f424084b283a052d6767b70314b8af5254a5655e9dc3e793f6de9e3080a7c3e8",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 2
+    },
+    {
+      "file": "Foundation/Interfaces/ThermalPort.mo",
+      "before_sha256": "dd8b8e6fea31e5eb1146e48fb7aab6488ef616b3efb19ddc01acb2a1fe462902",
+      "after_sha256": "55499fabde0cf4467e5d7d9ccd8a21334b87a9a99fc70af0b2dae9525390c85c",
+      "protected_token_sha256": "0ca935e3aed94c884ff1b9ca033d41398d498e6ed8152ad82dea899e7bdce836",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 0
+    },
+    {
+      "file": "Foundation/Interfaces/package.mo",
+      "before_sha256": "927ed96ad014456ae4050e21aa7a15049529c517744ba29b40281a71006342c7",
+      "after_sha256": "4490feacb5204023700aa76f9edb4f1a374ac405726cb8d02fe669cf584397ca",
+      "protected_token_sha256": "68bc250bfe20d676baf934b6e37a90ee6a521a8099e654b4e513c7f2a5dfc603",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 0
+    },
+    {
+      "file": "Foundation/Models/AOCSControlComputation.mo",
+      "before_sha256": "56714fc96fdf9e7ff06df53e55d720c9b48a9513a27ac963f69d793bfb6bbcb3",
+      "after_sha256": "4080a5d271ee84ff227f74e157b277249825270d3202a1e2f807c446a9ee0c47",
+      "protected_token_sha256": "0f70fe607f574dcee9e08f34b0adb638272c2f79e2e0c0930aef7c53b1ebd36c",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 108
+    },
+    {
+      "file": "Foundation/Models/AverageDCDCConverterCore.mo",
+      "before_sha256": "d28c273665e5c9f6b59b4c8c1203e56293f262f4a898c89ee3f60a265d5a055e",
+      "after_sha256": "6c64a4bcb46044cb7557e56f6c0d77d3856c3f398e61f0432688215581f90a39",
+      "protected_token_sha256": "03fa87bc26050a343d00426de082c83ced986252e40b937b70e75dba6a0aaf75",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 23
+    },
+    {
+      "file": "Foundation/Models/BatteryCellLimits.mo",
+      "before_sha256": "82e5885222efe268444aaf1e280105b15671c441f9afd82dfee68ff9f1c5830b",
+      "after_sha256": "8fe5c8f44922a1a997c7d75f1051e50b7b2f489237233d00ef8f3e9323309459",
+      "protected_token_sha256": "fcacd2c752a87785d59aca9b757f23c18a4853ff9254b79afa58a2638d127ca2",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 3
+    },
+    {
+      "file": "Foundation/Models/BatteryCellStackCore.mo",
+      "before_sha256": "7dd5e61582b0d18da6a924605a3a883fbe3f911b2356481e601cbb663875b909",
+      "after_sha256": "2d8d23629da92c114b7ab5bc5cfc0a23ac6d9f76f31eb2cb3d6505d83e573d3c",
+      "protected_token_sha256": "35c6e596b256a2ccaf92c96403c44166660d7dbe4418a09f1e900ac4cab70e3a",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 17
+    },
+    {
+      "file": "Foundation/Models/CommandAdapter.mo",
+      "before_sha256": "9d4aeb7ce60fd1736c4b90d372880d93bf583a57ca8c0fffcea20bb4d0e8537b",
+      "after_sha256": "c47c318d277cd9edb358401a2d6a2230a543e2a879348454a4f7687d351efa8c",
+      "protected_token_sha256": "3c7ff2a28e7afbe088a048ab6c25337fd2648d69813ee4bb7221edc110e72819",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 11
+    },
+    {
+      "file": "Foundation/Models/CommandArbiter.mo",
+      "before_sha256": "bd62e9584287bc7277cd36af3af2dfe295da7a5696e7869c345b23b7ac11731b",
+      "after_sha256": "ec028809d443f938b896bd13ba01b0096a0dfaedf0312bafc35a707d0798f92c",
+      "protected_token_sha256": "efca8e7a05dbb3c104a3e2d3fcd7713cd069094819398c4436bc91c56e242273",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 13
+    },
+    {
+      "file": "Foundation/Models/DownlinkSequencer.mo",
+      "before_sha256": "61731502f44fcfd367093b2e601629b3fcb41b7d978f5c18f86fc4b32588b1cb",
+      "after_sha256": "f2f5e3383e6b0b92196649a4f9d9e5cdfe0221a63d0783f1507f9a38d08cf11b",
+      "protected_token_sha256": "fd274ea3bb072d745a5d85610bb2b5a7ee7e7e3c8fcc028cc75edb67df990297",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 29
+    },
+    {
+      "file": "Foundation/Models/EngineeringTelemetryObserver.mo",
+      "before_sha256": "b97d01a8eb2e6a2de6febfd613b3d186e5640f31d21ce12883e1ad6c325eb5af",
+      "after_sha256": "59f2072efddd25d651eb082bb1db9051c125aaa332a371d90cd5b1b346aed3cc",
+      "protected_token_sha256": "bb9f5f00d80c36f98bd539359eaa9b36b8e386a28d8976482a4cc6e966f25cb8",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 91
+    },
+    {
+      "file": "Foundation/Models/EphemerisDataAdapter.mo",
+      "before_sha256": "c502c8faf951e8ee45de6ab9e6d11a0d1623fe5d2e70f7108daeee172bd1a30a",
+      "after_sha256": "d495c8ff4f9f6ba01216de5d80f138c89bc369b70a6d4f187ce046896c5adaab",
+      "protected_token_sha256": "2f17f4dd47ba4b9be95cf82bbf21bef121ca03bebe7cf00a61dd0bd59c467814",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 7
+    },
+    {
+      "file": "Foundation/Models/EphemerisEnvironmentReader.mo",
+      "before_sha256": "7993cd53ca6ec84514a7c0f3c3351dc4f3694256bced2c7e8eed8fbcf07b5309",
+      "after_sha256": "2725bcf4550031d48a67d8a6c54b9e47ef76ae8c5397a43cbc50bde6706d46ae",
+      "protected_token_sha256": "533c234d7fbb63adc8e0b48c13e30f0cc84e87fdb96dd14274db6a359aaa4ac3",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 5
+    },
+    {
+      "file": "Foundation/Models/EquivalentAOCSCore.mo",
+      "before_sha256": "d83245e5660aab4899194462026ef635099cc65973fde6b8de177758acd21f1c",
+      "after_sha256": "880c967e99b5b9fae6257315b5a3a863a6a675f0577259645e8c14cf19b7806f",
+      "protected_token_sha256": "a8f31aa6c57c37b530f2d74a022f0cc24387447fe3dddd07e5edc8238c9a27eb",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 33
+    },
+    {
+      "file": "Foundation/Models/ImagingSequencer.mo",
+      "before_sha256": "09e3363bf01ad03e37a8f4382d7179093767f5296fbccb4319c89c64c66838d0",
+      "after_sha256": "3dfd203c8269cb8520be04b410db16bbf2b0c92635a9c803470bde69fb40b329",
+      "protected_token_sha256": "2755d3411311b4a7fc9728736735b814bb94946b854f06661093fdc2a6d3d7f0",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 46
+    },
+    {
+      "file": "Foundation/Models/MissionActionRequestMailbox.mo",
+      "before_sha256": "d3c22b6b7c3b11f93a8369a92bc3a74944f86d239c615bac91d0018961c908bc",
+      "after_sha256": "a423d7b1985ac0ab4932643774740cd7e704244609ea1ae4aaf61277b70b5b3a",
+      "protected_token_sha256": "ea186b6c3c1b9f1326c9fa7cfc1d4a5afaae34572ca4d8e909f881d459fa3a45",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 23
+    },
+    {
+      "file": "Foundation/Models/MissionActionResultMailbox.mo",
+      "before_sha256": "713438eae5bc4b9b9f63d60ebeeef98f48f2f15ab6aa726283aceadc250d83c4",
+      "after_sha256": "ebc5211fedeb0cdfc4da0f8ad31a7c7e8dd8ba2e7506e414da04fa5b4a46c5ba",
+      "protected_token_sha256": "2e9bfc30021505d60eb08817b13907febad7ee82dc916bf2ce91bf328aa8812b",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 48
+    },
+    {
+      "file": "Foundation/Models/MissionFeedbackAdapter.mo",
+      "before_sha256": "aefefed1c993da2a2a844b41bce34f92751c7d495be183e132bfc3b0451a1d8c",
+      "after_sha256": "32493c32ff6cf75ef53b8634beb38efd40c4c4afe34afb35dae3231121f7f9a2",
+      "protected_token_sha256": "168e2186505955d931ebc3835c6a70eba4281df1fc1157462f4e0227ef9ca434",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 5
+    },
+    {
+      "file": "Foundation/Models/MissionGeometryEventMailbox.mo",
+      "before_sha256": "80f75f3bdead99236ab9df5708349e8bd634452b8762be0dda92874952358406",
+      "after_sha256": "c5355cdbabd03ab50bf4a2be9850fc9e96b14ec4a2b569b21bcdb00840de4df3",
+      "protected_token_sha256": "7359631e8953fdf1dd3512f57cfa45e2e13c60e2f7a7d8eb4cd46893c2fd5efc",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 17
+    },
+    {
+      "file": "Foundation/Models/MissionOpportunityGenerator.mo",
+      "before_sha256": "05452a6dc957fa91ba38cb5e82e14aabdf5e4d88b0451fed9ff21a7d7a966a6a",
+      "after_sha256": "618a8a8c869e283e73e9a5940c013e845cf003795bd3310121b7169c5f0c2f6c",
+      "protected_token_sha256": "9648447746e4389ba36ee4f2ce054b7ac95d2ba570223a3917a92050f74599ec",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 8
+    },
+    {
+      "file": "Foundation/Models/MissionPlanner.mo",
+      "before_sha256": "c835d56fb7cfd8efe6ec7633ea6e24df2650284f110fd0e7950c83add70e7bb8",
+      "after_sha256": "7056a3c25985ee1362f530740b43969ce2965adbd3987ab1245cc5bd7758859a",
+      "protected_token_sha256": "d752a19bc765ea8d69d7f055cf2ab89da3c3a042afd74ebe85172dea70ced7bf",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 8
+    },
+    {
+      "file": "Foundation/Models/MissionStateMachine.mo",
+      "before_sha256": "cc20f160673c8981fca62aaae89de7fba7d7399cbca5998d43071f8bf1da5e11",
+      "after_sha256": "c86142251253343a7cdb38f260791c9f09ef0c2b5c6128650603e032c86ca99e",
+      "protected_token_sha256": "d88aaae1e42b41bb82ac81c636a1ca456ceeccd2d1d4ed93b5a643205e4345ca",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 89
+    },
+    {
+      "file": "Foundation/Models/OrbitalGeometry.mo",
+      "before_sha256": "f66f4518309d18bec755e143bc6cf654f2db01a3c09b36a8cbde8eae0cde699a",
+      "after_sha256": "16f4775559b5f1439a7405a751cdeb8004bf75eb59b72404df100968b78e6e71",
+      "protected_token_sha256": "fd631f10f933a83443955aa58ffe9f846b995f2262814716f27b716b1e40507b",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 176
+    },
+    {
+      "file": "Foundation/Models/SafeModeSequencer.mo",
+      "before_sha256": "a254e5753ed741d9372103f334f7a155c3f98466b468637167c849b7851a0658",
+      "after_sha256": "defa4cec1584fcfad9525103524c3676660b54eee0c2fe3feea50f40d1db555f",
+      "protected_token_sha256": "916af1ae427c9a65c80cfefdc39c9e6bc5ac3b6b9bfaa7d85aab627bac929b2a",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 18
+    },
+    {
+      "file": "Foundation/Models/SafetyMonitor.mo",
+      "before_sha256": "6fe2221750f489befa4fc25d12b9424d58209b694562753701e6c8de88cc7888",
+      "after_sha256": "27733cc058499fa2664f0fc1bc3d3af964c368d2c04d66343b2d1fb8f4ac5ffd",
+      "protected_token_sha256": "86d89ed5171e121f89fa25ceadc9a1d09108bb5a345454c59a200179f0fc2172",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 18
+    },
+    {
+      "file": "Foundation/Models/package.mo",
+      "before_sha256": "0499a07344192f657bfa5d033d1f25af6a59f34b65dbfeb63d32e54aa62250a3",
+      "after_sha256": "fd155736c3bd5a4de45ca57a992e5bb790c60c5e9f07beea09b929cc47fd685f",
+      "protected_token_sha256": "302f3e9ac2aebffd2a969e802c41451168a83dd2b3387a25d03d04f556faa7e6",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 0
+    },
+    {
+      "file": "Foundation/SignalRouting/RealSignalForward.mo",
+      "before_sha256": "9f5557fa762a13a01f5cb4959c7d7f40aa31d1290f27fbdc9f21037eaaef6af5",
+      "after_sha256": "f185a1327392a1713af8cb001bea470621c7720511cc623ee95d6df9dbc1e868",
+      "protected_token_sha256": "009781f409870c6f069e0e62c026eac9cea21cdf819ba25ee27ea02511685fba",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 2
+    },
+    {
+      "file": "Foundation/SignalRouting/package.mo",
+      "before_sha256": "229f020e8c408412223217cf538c3df22197e45730bbe66104d5b54624ef931e",
+      "after_sha256": "11a8e02958dbc50d9927f6859d1acfefce18aaf8a1dbc24db29774ad5f5c1638",
+      "protected_token_sha256": "330a968bb5f488b8b2d6142fe38c1a32da4dcef70e9a39a6e7dd503cb02af56a",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 0
+    },
+    {
+      "file": "Foundation/Types/AttitudeControlState.mo",
+      "before_sha256": "94f203185f6fe1549188e69ebea748a08ee89619403564c5e601328d195bce6a",
+      "after_sha256": "5a3ad89a9515dca5673295d3f9a9adb939f4fa7418d896bea93bf769aa7984f2",
+      "protected_token_sha256": "ab2069d76a576cc99614ffb3cb26febd634b5a0c5e06d2363b8e5f4d5068861c",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 0
+    },
+    {
+      "file": "Foundation/Types/CommandExecutionStatus.mo",
+      "before_sha256": "056e551c7f4642f077cb7bf2b487ece1aa7120e557f9d8b3dd23d73934f3fa2c",
+      "after_sha256": "54730742c74193f2a2b977c1869879161711e5239eaffd5d5a62f51a7288d512",
+      "protected_token_sha256": "3893ad9856020994de9210377d217510eac9d1898524d4d1a3670607f03421c1",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 0
+    },
+    {
+      "file": "Foundation/Types/CommandType.mo",
+      "before_sha256": "51a5e01509e6a27d4547f702cbfec291ca1b7576c8a84a2f60890245c04add08",
+      "after_sha256": "570e65411c87cc9a94f34b516bba29ae8425cf182995ce93f6cc36e64c1f567f",
+      "protected_token_sha256": "0395c35d573dae204343587c5b974240c4882d59dbe9fa617f4c47fc85510c60",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 0
+    },
+    {
+      "file": "Foundation/Types/ControlMode.mo",
+      "before_sha256": "895801c92219f0d0004fe486ad9cbb76cb8bb984bd05bed3c4a44bf22581c1d9",
+      "after_sha256": "ca0902997589a0c93584ea54d2858d81f34a5f735a78862d25901b4dc3f60ae9",
+      "protected_token_sha256": "e56dd17f5669b199cd30a14e4d8909d61aafbf9bdefa87c6ead26f54c0b90763",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 0
+    },
+    {
+      "file": "Foundation/Types/DownlinkPhase.mo",
+      "before_sha256": "e1123b0d8a8c6ed084fb9a2ece53280322ed3638561c8c66d8cdf82c0eb5937b",
+      "after_sha256": "5da27b7e4c3ddf7b86d878a4009b99b4c3454d65ff0aa969bf16d2de8719baf2",
+      "protected_token_sha256": "a013394fb62c042327446a944ae2c7c19028d5491da58eea5965e09291862147",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 0
+    },
+    {
+      "file": "Foundation/Types/ImagingCapabilities.mo",
+      "before_sha256": "7fc4fcdcba06eb02845a8c185657f4feb7a2959940ff3875e185e76dd6f637b3",
+      "after_sha256": "1195fc3eaa89cd95f52fe87e0337f4eba23f08e7eff27d6aba21853230e6f943",
+      "protected_token_sha256": "ccc2c3405366ca776255dfc90f3e550eb6643c7d70d9e05e9f2e03bc6254d4a5",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 11
+    },
+    {
+      "file": "Foundation/Types/ImagingPhase.mo",
+      "before_sha256": "7810c64d1e234da6149328b395c245d58319635866ee5e617760d96699d45217",
+      "after_sha256": "07837748a75e3e70fcf2f4ee333e89c20add1a43d6ac4158c26259cb3410c092",
+      "protected_token_sha256": "f956cf5fdd4924550859cd28e37ab3687e3cd8af45119c5e7a2f321c1247b488",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 0
+    },
+    {
+      "file": "Foundation/Types/MassProperties.mo",
+      "before_sha256": "39536ce45960f1b36d3fbb7a92ac70d0f61c583745da13772d5e06c8910363a5",
+      "after_sha256": "4af30010e09313eaa84e7ca90875a099f7d343066cd4f2af415e51d82694f0a1",
+      "protected_token_sha256": "623a9a4829ef063263509d7f664942f0d2c6c360116e178f0ba2e3879d3635ff",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 7
+    },
+    {
+      "file": "Foundation/Types/MissionMode.mo",
+      "before_sha256": "e3958d800e511af0be74f86cd229ac4d82e20a287219ad5fed0bc16b19593f66",
+      "after_sha256": "3e9b411150f666b646c028bd4f4730159d61698c1be0f5d771df72f0f74b313c",
+      "protected_token_sha256": "0330b5fb24f7571ddd41d2677e7a8eb31f1f31fcd1cbb08fad4197d6a77363c0",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 0
+    },
+    {
+      "file": "Foundation/Types/RejectReason.mo",
+      "before_sha256": "b591a38109c9634cfc1f7f6205432ad143839d7b60e60ae70758dcda94ecf972",
+      "after_sha256": "3629e1af136f8bf9ac9405f23062e38f71bfd254bf2d12397f625d7359df63ac",
+      "protected_token_sha256": "38e65787810fa6c90b061434086a67be8cb19f436ae822cdbc776ea0958209c7",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 0
+    },
+    {
+      "file": "Foundation/Types/SurfaceGeometry.mo",
+      "before_sha256": "8420980899daa96d108bb3a175576fe8260bf8aee7107aa6e3c6cbbe32a68c9b",
+      "after_sha256": "4a0bd2a1005837b4e4b3388ef2e7aafba8a88739480df991369000cefe252a3f",
+      "protected_token_sha256": "d5605682708c301f7d28dbde29c00519193fa1900c712f06d0c0dc342c1f97fd",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 15
+    },
+    {
+      "file": "Foundation/Types/TelemetryCatalog.mo",
+      "before_sha256": "43b1a83c8ee3ebaaf59457b0feb201d2864f9fa66e61bd8d1cc35569543d16b7",
+      "after_sha256": "25f8be1663500477cdeb56ef37970ac96c0d7832e899f948e5fc339a1701e699",
+      "protected_token_sha256": "ae02514ad305f6e14dcccf346c551c694471cd56fa7610a8e8da960bd6b6824a",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 8
+    },
+    {
+      "file": "Foundation/Types/WheelGroupCapabilities.mo",
+      "before_sha256": "b13311a65c18897927f067c59575b3365b029b8b2641f9646255ab1428cea9a7",
+      "after_sha256": "7152ad66ec562bdac4e12f0abbd6dd6784cce87b035b9fa802bdba24645cc869",
+      "protected_token_sha256": "9a9956a7011e2399ab31c47f1e10a98707fbd768fd7714ae438e92066e496e1a",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 4
+    },
+    {
+      "file": "Foundation/Types/package.mo",
+      "before_sha256": "69c934af20ca3b22f9c1ac4e27612185feae8b36037727387ffe894e421ea3a8",
+      "after_sha256": "4624ce7918002be708aca686dd0ae8caedac279ea1366309114380679d2c8c6b",
+      "protected_token_sha256": "8dc27466d6cbac2fcce9b19387ad41320fe8aaf545a3a49b43ff79a08d8b5590",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 0
+    },
+    {
+      "file": "Foundation/package.mo",
+      "before_sha256": "56a40b81d5d94401387ddf6ff4394f66d140d56d4bd7a21717ea0ce511b74742",
+      "after_sha256": "3edf05dd4b8f15cf8c9aea80748277fe0700993ac5d18aedfd04abb4eedc5eef",
+      "protected_token_sha256": "b6ed7b1337e78386f337571f29ee90a29b387c7e30547d958ac745060bc6c72d",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 0
+    },
+    {
+      "file": "Scenarios/DefaultScenario.mo",
+      "before_sha256": "9787a7e4b1b4e45d4b23a0e92362115fd9ddceb11f6467fd2119e2cf477551f0",
+      "after_sha256": "616d70f1556de1f8521bc3f10a59b7a2e5dfdbd18e6fd8968adfb08dcfd0e7b9",
+      "protected_token_sha256": "bab6e87ffcdaae43f7d16f3dcabcd80b3ef8944d027480de01b36ce9aac0ffc1",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 0
+    },
+    {
+      "file": "Scenarios/DefaultSpacecraftDesignConfig.mo",
+      "before_sha256": "d8a3b12f43b692e192f0ce9777af68b24a94c4988e869d0ac26b04dc0eea420a",
+      "after_sha256": "74b485d17cc88a52711b3dae196d9fa07c1eef97d1310954063dee77adea5f0c",
+      "protected_token_sha256": "6df81b621bec76fa1baa42b4fb287855cd490491c637aca7be765cef006feffb",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 0
+    },
+    {
+      "file": "Scenarios/DesignConfigRecords/AntennaComponentConfig.mo",
+      "before_sha256": "d23f8f50dbcead49089da086f652791fad62251e897fc588849d5547057628a3",
+      "after_sha256": "e3f0abe1f0dd56eb7325bf5e20f3bfe1603ae46c4c8d2e5bffcce2ed8d37d55c",
+      "protected_token_sha256": "28dfd440fbd515db249876329871235893b17b1b677f7b58fa44bab9151e6b94",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 10
+    },
+    {
+      "file": "Scenarios/DesignConfigRecords/BasebandComponentConfig.mo",
+      "before_sha256": "d93e0d8283031a88703e9314a38955b557cffedef6a4d5009cbf0e2cdccf06a4",
+      "after_sha256": "618f5e1858145e946a9288301687fb02947a45a969fa7f707ddcf5d580e1efe4",
+      "protected_token_sha256": "49db355c119fda5903cd4f9ef99e2ca94784d7e9e1592e681069b6bbabe5f84f",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 10
+    },
+    {
+      "file": "Scenarios/DesignConfigRecords/BatteryComponentConfig.mo",
+      "before_sha256": "d219b60f3f82b274ca419faadda78c7256b2daa04364d4202d7ea7e17f4306f8",
+      "after_sha256": "ff6865ccd4306dbd9fe94f797cac63b715da025aa465b01c815647524729c669",
+      "protected_token_sha256": "ed6a890a1739a6819d76cd53790148c8dce04cb474aabc24fc5880496125f98e",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 23
+    },
+    {
+      "file": "Scenarios/DesignConfigRecords/CommunicationDesignConfig.mo",
+      "before_sha256": "8ebe7c3d5c301ca6b841d0da8394b7fda352fb3480f5a5a204e13b944c741e82",
+      "after_sha256": "c861eeb1412eaf0bb4713fce9f9a8ee373ad2ffc74a6d0423df9b8b2312509d9",
+      "protected_token_sha256": "71d82a618a26d9e0f73a8719d93dd092c62f50f8dd89ed0406f7edf1f5940461",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 4
+    },
+    {
+      "file": "Scenarios/DesignConfigRecords/ComputerComponentConfig.mo",
+      "before_sha256": "93f4c2647d9a2662d67d47fa034bf1796a5c48bab7e23644d1f8144b5008b888",
+      "after_sha256": "e40c5f0818cd1498204a88024fa8062439de5152701858b5770760972a684460",
+      "protected_token_sha256": "7146f434cb23dbab54d972563b68a0757247b79a0e35799a1c9be91eaa053a3b",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 10
+    },
+    {
+      "file": "Scenarios/DesignConfigRecords/ControllerComponentConfig.mo",
+      "before_sha256": "eae13cea1056d39a04102a5b4bfb5012393e2c225bcf0b0355227bcf901b985e",
+      "after_sha256": "794b2722d049e0488006aba49aa7e31260f53447307e940459a04a6ea61438ac",
+      "protected_token_sha256": "89c6e7b280122c34c113cba01e57cba5080828df2ee27721271f274bc54858bf",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 10
+    },
+    {
+      "file": "Scenarios/DesignConfigRecords/DataHandlingDesignConfig.mo",
+      "before_sha256": "23ae068d1009d8d0399a808265c5a0fcdc7eeeaf5dfcd3589eb31857b82604f3",
+      "after_sha256": "16c079377a28b9e5b5c9323fc8effc8eba0ab4d44eea49103e03715d08096ceb",
+      "protected_token_sha256": "76ec0bd9a167af94e96555dcfa5bc33d494dc5acfa195d22b78935ea139ddf2c",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 2
+    },
+    {
+      "file": "Scenarios/DesignConfigRecords/EarthCameraComponentConfig.mo",
+      "before_sha256": "672c1cda065615bfa210e72b32ceb80a95de8f27b08d287bbf565e6f418448b1",
+      "after_sha256": "2ca62852fee3b9a4bc4543a910d5085a6cbb818113c8cc9201b6e9980e49b53e",
+      "protected_token_sha256": "dbab4284cdc3718cd2c962fb829be52b9387961d7c531463cfeaa13c10888c38",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 17
+    },
+    {
+      "file": "Scenarios/DesignConfigRecords/EpsDesignConfig.mo",
+      "before_sha256": "0f5870a6b2e6cce305e0673114bd71e85364e80f2c4fb0c53058a3914fb045cc",
+      "after_sha256": "6324eabccf92a282a59a700055d53f6303e3333e02073b9da73162d48d8ebfa7",
+      "protected_token_sha256": "0b839222c9b4a3214c2b621e61443d4aa790f3a380cf66877b6e0df570143133",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 5
+    },
+    {
+      "file": "Scenarios/DesignConfigRecords/FotonAmurComponentConfig.mo",
+      "before_sha256": "c98756b3388f7f8350c81bea416913493d06e24eda3dca803894f169165fe95d",
+      "after_sha256": "4f0020072f7a59387e7c2e9a28baa449357708f1ebbdfefcc0a6395d899905ee",
+      "protected_token_sha256": "f7c3582e70af308d0276404688d17276d1560a5d0b4fbe5a29fc1cebd40fcbc0",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 12
+    },
+    {
+      "file": "Scenarios/DesignConfigRecords/GncDesignConfig.mo",
+      "before_sha256": "8fe90cc180326afd4f7c844f58c5aeee23e339762cec300a092c5ab9e71c7e14",
+      "after_sha256": "897aad769d3ad7d8e9bf7463e306f8321df969cdd2b63476cd0a4376b49ad3c8",
+      "protected_token_sha256": "83ee1663c7572e75a0185a73ba8fc78467deef85779bfd09e08c703dfaf5aad3",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 12
+    },
+    {
+      "file": "Scenarios/DesignConfigRecords/GnssComponentConfig.mo",
+      "before_sha256": "8414b95414db83421f7679c2523bb916d6d351467ba87487b8f6a46116be142f",
+      "after_sha256": "85d8674c6f63e8373d429b92b6ae18a51721111657d6fa6f4c8dc91fdba1319c",
+      "protected_token_sha256": "79129d962f8728043b740cff5c87acd7a41a54b6662ff74956b98a32f869ffd4",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 10
+    },
+    {
+      "file": "Scenarios/DesignConfigRecords/HeatersComponentConfig.mo",
+      "before_sha256": "b0fc581c9e82022fe9d45e473001579f9e38e8bcc8101ab0385f60958e8d68b0",
+      "after_sha256": "9a7e2e03b99f0118d4446ada41ce6127ed9caa9da553de681ee21e021c824a16",
+      "protected_token_sha256": "b6894fced7176a76d0dc107a452371994b0c38a9af1f51b6c7e4472822c0a6a8",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 10
+    },
+    {
+      "file": "Scenarios/DesignConfigRecords/MagnetometerComponentConfig.mo",
+      "before_sha256": "726ff8474b6ffbf25dbf02a1e8d2df7c20bdcf9eed2ec02c9c6c57d2af956a42",
+      "after_sha256": "250099564e7990304d65b963aca618c789c066a93f4b4a65c42fd61f068cb8df",
+      "protected_token_sha256": "a2609722063f23eb02d856f958140d2c8a417668d9567f730a84f6e9f092ae60",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 10
+    },
+    {
+      "file": "Scenarios/DesignConfigRecords/MagnetorquerComponentConfig.mo",
+      "before_sha256": "4f78650e9ffcd9026f8cc78863666850571b56c7e437f48a4e959359ab7239c4",
+      "after_sha256": "b6c5d2f74c1907a0a07e5b1496bffd1a55da0f3d0c6cac1f34afa9ffaf963f3c",
+      "protected_token_sha256": "83ebc098275314cf329fa8ec3110f4256f4af4b3ea02c93af1a045b64bd1420c",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 13
+    },
+    {
+      "file": "Scenarios/DesignConfigRecords/MemsIMUComponentConfig.mo",
+      "before_sha256": "5d8f30d333e1e126cf7bda5ea1edf22de5d40adc718158e8bdd4a8883eab5793",
+      "after_sha256": "98b1ea5dfe10cef5ddf26245633eac4c78f335bed65193c774e0dca6774de158",
+      "protected_token_sha256": "1999ee7476eddddc2e8e28063ed97f5eb323ed9ac83499504b6f69115cb38a8f",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 10
+    },
+    {
+      "file": "Scenarios/DesignConfigRecords/NaviEnhanceComponentConfig.mo",
+      "before_sha256": "cdce5e4a2bffa72e74eff19eb3498840273ef4791916f93ee06f5868bdd785b0",
+      "after_sha256": "e5f5473bd73fd4931881fdcf9343faf9d38cfcff677cca9701db744a8298b9e5",
+      "protected_token_sha256": "9d80c94e36fa5b98324c0745a6c2404266beaa50f6d160a6e5051210cd99f6cd",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 11
+    },
+    {
+      "file": "Scenarios/DesignConfigRecords/NavigationDesignConfig.mo",
+      "before_sha256": "7ed2cb9b87fbcdfdb4e8b158e72e294e0ffc5326140f27570194934ca63ebf84",
+      "after_sha256": "8b983b8ab21db9dd2c41f24690ce80e4a3a8caf2999c79ac0cd048b61fbd92c6",
+      "protected_token_sha256": "67d558f294b3fe71c32d1049e45398e01e8adc8cd320c5991d05ecb0c9e8ab01",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 1
+    },
+    {
+      "file": "Scenarios/DesignConfigRecords/ObcComponentConfig.mo",
+      "before_sha256": "20266234de81a613ce38681b95b07222feb230b360d99011a7f807d02627e9aa",
+      "after_sha256": "15a6bfe000f8c22376855cd3a6cbc45e9369e316aa2e56166efb864221f933c7",
+      "protected_token_sha256": "79e291a60990d688fbc445effb96e1f3b285142016743da18102ac00bcfaa0ce",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 12
+    },
+    {
+      "file": "Scenarios/DesignConfigRecords/OverallComponentConfig.mo",
+      "before_sha256": "70529e178071016b8b7de564cdaa999f5f9ee9ea602bcb5cdf1ebd6c48f54600",
+      "after_sha256": "618224b47a51de347b22f7544f336bc339f860c648251ced2d3dccfaf5eb1c3b",
+      "protected_token_sha256": "4df0dfc7bd691f63211cea337e860fdcfca3ac9dfb68bb3abfefdf94369a7e45",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 6
+    },
+    {
+      "file": "Scenarios/DesignConfigRecords/PayloadDesignConfig.mo",
+      "before_sha256": "204297a3f5921006294d35efc1dfc20fa1a5547147140ecd335a59e4ced57827",
+      "after_sha256": "c1f14790b448b2f2c3438dc37f8521e323e6a9e408afa736afe42ffdf3382a50",
+      "protected_token_sha256": "2c3f8bcd6375e42013afebec59f6a63d8cdb729b0f7f97dd881deccc4496d224",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 5
+    },
+    {
+      "file": "Scenarios/DesignConfigRecords/PcduComponentConfig.mo",
+      "before_sha256": "8d72879641074ba52d1508c325920ae6a89c273c1f37271bb43518f0a372c42e",
+      "after_sha256": "51852b6c2cabab326355c7c9307cb7f0f53bed98684c2c6ae943f7dd367879c6",
+      "protected_token_sha256": "19bba957e94273452344a2cb3263479e3f7f35b6819d82a4e8300442bfe1d899",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 31
+    },
+    {
+      "file": "Scenarios/DesignConfigRecords/RateGyroComponentConfig.mo",
+      "before_sha256": "0ccb6f7099658d3e0a285a68590e18cd9afe68d82b6df5a3c19b870cafc7704a",
+      "after_sha256": "271aeb4cd483080a5b0f1684848083016af7b80eefeb9cc2e925a72a95f3d7a0",
+      "protected_token_sha256": "cc5cee922985848b0d5adcc9fe91747da080b017cf53e76fab13ab508bdd430c",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 10
+    },
+    {
+      "file": "Scenarios/DesignConfigRecords/RecorderComponentConfig.mo",
+      "before_sha256": "9b61747c759adade84d895b95ea2830eb02c592a725af991895c58c29115bbf8",
+      "after_sha256": "822bbcb957dc3f004b13af6bf2eb9e3a05849f236b1fbbec77819f3050b55c30",
+      "protected_token_sha256": "1096c0560dfe1f407642aa602078f64295c9fa7ed3e9c17abe8aa9f6eb324989",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 11
+    },
+    {
+      "file": "Scenarios/DesignConfigRecords/SelfieCameraComponentConfig.mo",
+      "before_sha256": "adecd48a18294abf139ab285e2c4b12423e05e6413ff29bc90e555ee98d32dbf",
+      "after_sha256": "119fc16c4089c00b0caeadd79b06e765b5f86a25f45468a88bf1dcc75199963c",
+      "protected_token_sha256": "24b75efeae2d6f58d0f13210dcec95579b15a0df307167c6e32e7c4f91b6bdfd",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 11
+    },
+    {
+      "file": "Scenarios/DesignConfigRecords/SolarArrayMinusXComponentConfig.mo",
+      "before_sha256": "078792202e34e3e0c6660a66d69bf4878d82adc59d43b26d866dc7b6c891ab02",
+      "after_sha256": "5c66459335f4fa027468035ff718e9ff94f3f7a70a47e950f6c231c743585a17",
+      "protected_token_sha256": "50a9077df3a35a2677f25418a36eb50625f0199c6b4f8fdf876eee7b92d9e5d8",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 21
+    },
+    {
+      "file": "Scenarios/DesignConfigRecords/SolarArrayPlusXComponentConfig.mo",
+      "before_sha256": "c4b6ffa07f58f7765a0663215258d26be3dbef9ce54d7d1b318dcda34a26c430",
+      "after_sha256": "c68df822feb07b699bdf274bf76ef73ce2bb642200aa8cce45e57ac9382758a0",
+      "protected_token_sha256": "c9328fd39d60c8cbcbcd68eef91bf53fa77a9bf0ae567cb907b01502fb80a6ad",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 21
+    },
+    {
+      "file": "Scenarios/DesignConfigRecords/SolarArrayPlusYComponentConfig.mo",
+      "before_sha256": "34eeaffd3782291991e2d47984b2e553378d97130ed9cba758c362cff78ede36",
+      "after_sha256": "21b4fb0801df42f41cb309de793054db9ec56713a876e719d010415bf72122c2",
+      "protected_token_sha256": "5e16020eea4b045077d9eccf91f985da559a8a69370a56d5d098a2b19e88fdc8",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 21
+    },
+    {
+      "file": "Scenarios/DesignConfigRecords/SpaceTimeComponentConfig.mo",
+      "before_sha256": "1fbdd09acfebf910b72c4bd29e61b73f907e9ee51583709c07a289a1d6a72dfd",
+      "after_sha256": "b4a0cb3deff600d11ebaff3c15018a36358840d46c4bb50f17ae4890abbd4574",
+      "protected_token_sha256": "f9af40b806a10ece5f2a0ecfc373785cc37df80d6519077b22f271e13d468834",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 12
+    },
+    {
+      "file": "Scenarios/DesignConfigRecords/StarYComponentConfig.mo",
+      "before_sha256": "805add5fb25e6563ba4203c6acf5213093ddee177df63eaa6e01144f52668d31",
+      "after_sha256": "b2057092fd88f2874a5c1813de134658141c2b9ca047e58a0a2015470ba8840d",
+      "protected_token_sha256": "0c97e687ab2fb5f06440ae5b10aa66fff11b8f29c432b1dd217d80720ad7c6bd",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 10
+    },
+    {
+      "file": "Scenarios/DesignConfigRecords/StarZComponentConfig.mo",
+      "before_sha256": "36033b2326310ccffe5e1d1e560d2991814c2f84f8589216727cb3a50af8535c",
+      "after_sha256": "3327de4d0303f773c03051e0eac3e6fa201b64960ef90b40f0a800060b250164",
+      "protected_token_sha256": "ce49c7129858cb428913142f7ac729d66daeb3a56f0ab493cc23feeaebdc9146",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 11
+    },
+    {
+      "file": "Scenarios/DesignConfigRecords/StructureComponentConfig.mo",
+      "before_sha256": "7954f13762e1976301d2c99ee4f8ce88b3ee6ba14b5e156f9ecddd58d7e41633",
+      "after_sha256": "500dfab83c45e2303780235e168769356eec32efa040dbab7a503cffcb2c3485",
+      "protected_token_sha256": "11e58036ff7d04239feb6af2179751147f026acdfcb96b655814114753b51539",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 14
+    },
+    {
+      "file": "Scenarios/DesignConfigRecords/StructureDesignConfig.mo",
+      "before_sha256": "993f7be78729d4072c64bae082b5b2664baec1131e767b3a537293b7ea6a7d4d",
+      "after_sha256": "506b4c113edec4e7aa25b8b2e7377135688f231fb0b011fe1df0dd51011e335c",
+      "protected_token_sha256": "90c715b3d7a6e5c3db9c19bead77104983c675be7abfba1aae51953bbc292941",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 1
+    },
+    {
+      "file": "Scenarios/DesignConfigRecords/SunSensorComponentConfig.mo",
+      "before_sha256": "0128c19db13e9843e904be90f7b74215575f60084f11b1a389f4d9eaa28fd856",
+      "after_sha256": "bf52886eaad8b1868b210558189abb555e50fa02b6a121c04da813d6fe22591d",
+      "protected_token_sha256": "c55022d7dab08dd838e0ce3c87ae7afd92a0d6e56569aefe0c95c2eb54c6db02",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 10
+    },
+    {
+      "file": "Scenarios/DesignConfigRecords/ThermalControlDesignConfig.mo",
+      "before_sha256": "99a428aeee116cfea5dc01721dd01572184d98bdcf30f321fffae71c812971b0",
+      "after_sha256": "40bbfe72ee82932288d2e7727d1cd5d1e72e810454be0429dbdbc207c920c7d3",
+      "protected_token_sha256": "02594eb3c8d0c325149574ee6753ecc68db211ae46fa4a7d9cbc55abcbee7eaf",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 3
+    },
+    {
+      "file": "Scenarios/DesignConfigRecords/TtcReceiverComponentConfig.mo",
+      "before_sha256": "6758e5c7bb96a6255d564d3363161168264574c9e83a7a7a01d067fc5f28ba92",
+      "after_sha256": "e70eab073509d4af1be479a797a169bd32752db1f4fb39ee2bcd1d44655ce5a5",
+      "protected_token_sha256": "c1ed2585b08aab0217ef9b55c9890b90d23332902e6ed21e52bf3d343b51ca99",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 11
+    },
+    {
+      "file": "Scenarios/DesignConfigRecords/WheelSComponentConfig.mo",
+      "before_sha256": "12fe99f31df72063dd73e287825aa028a9775e7f79f14ab130ae4322caaf3e17",
+      "after_sha256": "4c46c217e377290c09fc5a747b5cad944651042a9fac32e06e733598e0ea57e4",
+      "protected_token_sha256": "64fdda2a960aa20456dfeb507aa861df1ac8f89ff5bb1dd00798d3c87ff9552f",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 18
+    },
+    {
+      "file": "Scenarios/DesignConfigRecords/WheelXComponentConfig.mo",
+      "before_sha256": "6b9c372b9901ba9bcc6683028165baedbfa19c3952ce6a7f3fe91200bed14d44",
+      "after_sha256": "418ec1e57817544b8dabb7d2d9bbf02755629f2b2f5ffdf320a71c3371381b9a",
+      "protected_token_sha256": "646ccb9a7532dbafc28bd2b8b80c807c7ecd5946eb89d97bd5735188e5a6f04e",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 18
+    },
+    {
+      "file": "Scenarios/DesignConfigRecords/WheelYComponentConfig.mo",
+      "before_sha256": "bf39a15abdd3c506ac869921d33d07db7d827112c33d152e8ab97cb05fef321d",
+      "after_sha256": "17143073f04671179efc92cd700d19a8ec742bbfd7642599bddf787b1d55eafd",
+      "protected_token_sha256": "464a8bec677059c35fd0f65fcde6b4064d3a07732e1603db9a8fc080012c6bc0",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 18
+    },
+    {
+      "file": "Scenarios/DesignConfigRecords/WheelZComponentConfig.mo",
+      "before_sha256": "b9438da090372989762933d86a1cc1fa49d8268f083229237e13a350287dffcc",
+      "after_sha256": "11cbacedf3920e1d94e9d746eb039b1640312958c99475857273c87d6d3581e8",
+      "protected_token_sha256": "94a4644575b428ce0366ebc4684dd050a4539390d65ced28c74be42c26561462",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 18
+    },
+    {
+      "file": "Scenarios/DesignConfigRecords/XbandComponentConfig.mo",
+      "before_sha256": "0da9fef7e885f82c2aa000775ce885c6fdc2832a99325024f7dada26f040c70e",
+      "after_sha256": "8e44fe024cf3ec9c26236b63571377dcc7c0a632dd95647fdeb5255caded5707",
+      "protected_token_sha256": "c41765705d087e5a17414e0a15356b647e92296b85bb1a0414ea0a72bfff5e9c",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 14
+    },
+    {
+      "file": "Scenarios/DesignConfigRecords/package.mo",
+      "before_sha256": "978fc107028ceb2c96e6839491945e4ba382b87b077e3769d1bbab0e487cf66c",
+      "after_sha256": "c4b46e382ac857a8545e64766afbe29dacd8804ae5a26fd388dd11af4a3dbebe",
+      "protected_token_sha256": "c9cc2f79412b424575786a6ee9804894549afc2abe766791edd550dbc4780a86",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 0
+    },
+    {
+      "file": "Scenarios/GeneratedEnvironmentData.mo",
+      "before_sha256": "2491677b0adec7fe132c13fe9088023493cdbec8e3d6504b868e5415c214735a",
+      "after_sha256": "d9c62496855d521ae9b59f80ea74468d74bb52b0180d0661575677893e69ea53",
+      "protected_token_sha256": "698a53f70644eb389bc3a9dc2112cc52cdfcd4b080af20289b02aed1d8efc1ce",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 6
+    },
+    {
+      "file": "Scenarios/GeneratedMassProperties.mo",
+      "before_sha256": "fc8d9fe7bfdb95a2f2582c2d264f8d2cb9a64a4abe7d35ffd28396bac67c0c7c",
+      "after_sha256": "99a31c137a91e5a8487e1f429c3a8cd037d8ceaa2cf58b737f83c9dee3959a8c",
+      "protected_token_sha256": "179ef077b5f9cc64cb99621efb277b2bf6089d96f6e25fef4edd41264aa64e5d",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 0
+    },
+    {
+      "file": "Scenarios/GeneratedScenario.mo",
+      "before_sha256": "2ed5e73382cfe38dee4f61219efd77d9969ef87a0a8875e955cbff36b872374c",
+      "after_sha256": "cdbd427783763296c8494bc0cd3f1cb3240eba31dfc37b54e58df042e1f19fe8",
+      "protected_token_sha256": "e169bd31b6c80a472379106f13bd8e25ff9ef9a695d0338e8b7268f001856e6e",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 0
+    },
+    {
+      "file": "Scenarios/GeneratedSpacecraftDesignConfig.mo",
+      "before_sha256": "2c92d82017b19a65cb9fc6104a842f0cf773e75a3fdd31a96e2f42bac29c0d6b",
+      "after_sha256": "6255a2239596395e8e20138a37ba6e08fe2e4b393d88011ebfb0ab3fc85e3ad4",
+      "protected_token_sha256": "a9eef6a74ece9d0a2104769d09dabb805b11460fa18e8c8d75a9a5dcc11ffb9c",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 0
+    },
+    {
+      "file": "Scenarios/GroundStationConfig.mo",
+      "before_sha256": "6791c292549b1238e0508e597279ac741d4c4107886fe1517f6033af0dff04e0",
+      "after_sha256": "a6e3983fe0be8fb0930fd190378c3c5198cb053b59a350fbcda9c5bc1b8db3d1",
+      "protected_token_sha256": "5f31543a608a55a6c028dd7b3a3ef1a7e9d6ac4b1299b5694d964869e171855c",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 8
+    },
+    {
+      "file": "Scenarios/ImagingTargetConfig.mo",
+      "before_sha256": "6fd301791d8fee2e7c54ad80388b99824443b2b067e979718980edbbb4653626",
+      "after_sha256": "5ef42b5dafaff41300008d47440a08026238b4902caa4e6eb98745697d7d0293",
+      "protected_token_sha256": "0143b417da70635d0294711e866aa2426e956af906e1dcbddc96828c70523090",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 8
+    },
+    {
+      "file": "Scenarios/InitialConditionConfig.mo",
+      "before_sha256": "e718f5c10ccdb245f9d18ceb9de31a763ad9437dd53ac7703eabf15aaac5d103",
+      "after_sha256": "7e5998c82ac6f6c7ffcca9e0b804a1c605570f7c67a17b7ea796d71c313d636e",
+      "protected_token_sha256": "367df05fa3d916cbcd68d71569d5e07ec96a93becacb5c650dfac68a2990fb93",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 18
+    },
+    {
+      "file": "Scenarios/OrbitConfig.mo",
+      "before_sha256": "ba40f529b6eeb92eb5d8fab4ba5ab11d7ecb2b23d0ca8f47cfe1998860f39cf3",
+      "after_sha256": "bb59af6bbac21e56c1ab05d150bc921fadb5f358e94a0d1c735798df10650b6e",
+      "protected_token_sha256": "98cd556d753ed3c3443407b831ea9f226d86e0683de20901bcce48d6cd07a920",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 19
+    },
+    {
+      "file": "Scenarios/ScenarioConfig.mo",
+      "before_sha256": "27f7c466ffed89d29f195585b3b395af67753be221f8eef37fd557187b41f493",
+      "after_sha256": "482988db99cb927cb1fb0e76a66fc9e8d9a1e3b95ed5f802a2fffdcaa37c6195",
+      "protected_token_sha256": "a3df33bfbe03e440e6ceb8b913e52932dcc1ebce018fc050f7bb1707d0c735d4",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 8
+    },
+    {
+      "file": "Scenarios/SpacecraftDesignConfig.mo",
+      "before_sha256": "780f4452b80bc7884c82f5077495f3babc4491060a716edd1c5f28f35ac70916",
+      "after_sha256": "41a1061139056dfdd52ab2bc147f1edac17daa2a680f64547fbd6bbec47532b5",
+      "protected_token_sha256": "9c6af6034e5db68451c50eb30b15c5597cb7cb9d55aff3e49ce12d361ab88660",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 8
+    },
+    {
+      "file": "Scenarios/package.mo",
+      "before_sha256": "9016ccd465f7d1ccde43f4613111b4a1d7a6c3909afffa828bb5651018af5b86",
+      "after_sha256": "c5da636f3025d59056964e7cce6e3d2f463c780916d76df88a1a028252575749",
+      "protected_token_sha256": "341afe458505d53a7b5259054721a97d6150dc52f22e11a1d924cff4c09518a1",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 1
+    },
+    {
+      "file": "Simulation/CompleteMission.mo",
+      "before_sha256": "5e3aadec4a576fa42c1a3857b67ce3d9a10c55e511effd3658f9dffdad1138b7",
+      "after_sha256": "9845cd6fefe6513930b565a69bf2bf9dc4cc82325df6a6618c3ca67fd01ba61a",
+      "protected_token_sha256": "17b8b2fc518e9de0c8ef8d81f5a77b334549dbf130209877112d2799ddeb79de",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 5
+    },
+    {
+      "file": "Simulation/OnboardTelemetry.mo",
+      "before_sha256": "c526be4c60df1b2fd0c2e6ef6075d104bf21329cea8cf797f16d88da280eaecd",
+      "after_sha256": "5ed89bc3cb87ca642fdf9e69419cb81d2cdb150a4a0fb59d62a589b41a26a828",
+      "protected_token_sha256": "5e4756497a067b6084c8d818a38e202b6a9ff20d3b422a686c16eb3bff2874f3",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 41
+    },
+    {
+      "file": "Simulation/OrbitalEnvironment.mo",
+      "before_sha256": "669a81fe368902fd5d61ea8cd4c7763233e74f5bde76c48c14b13aebde490900",
+      "after_sha256": "d0bb59ffbbd6e05cab59d8d7d800e17a977478ad0e6f0a59b83d1d3bdcdabaac",
+      "protected_token_sha256": "8151ee36bb580ba5aec7857d9ce2ffdce22c6025b8039856577ddf0cf7a2b491",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 12
+    },
+    {
+      "file": "Simulation/package.mo",
+      "before_sha256": "d74754c8a30b10867e6e661bab36e1d4dc1eba9620c2c05b62b346b5585b78d1",
+      "after_sha256": "df67988fe67a00ec6645b7859cab823aab47220121327baba447926027cad053",
+      "protected_token_sha256": "02997edf6e99978a5eaa6672ce579e93e1e1f637f91398032b9e8fb017f90d3c",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 0
+    },
+    {
+      "file": "Systems/Four_systems/ElectricalOverall.mo",
+      "before_sha256": "3073d8605d38b6ffabf808bc4bba5b3aef5c6248ec37b7e608834e542c5fa366",
+      "after_sha256": "e37cee2c47b63126dae1463a08cde2ebe74a53499c9fdf0537dd63b2b5718bf1",
+      "protected_token_sha256": "214af8337727f60221645aa6672ab2bc2708a67dcda159f363c93a397be21f60",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 4
+    },
+    {
+      "file": "Systems/Four_systems/InformationOverall.mo",
+      "before_sha256": "c6647afc89973efed184b5613f0b81b37de25eff899911dd75bcdb3e6be44dd4",
+      "after_sha256": "ccc3cfc8e9f3275ed0fff5f0019d4d93bf1b5095f0f8f5e7b76b5a1b05c262ed",
+      "protected_token_sha256": "46251319a5d6c87cbe56d02b68369e9e1b0ba06e8f07497d074954896f79ded6",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 3
+    },
+    {
+      "file": "Systems/Four_systems/MechanicsOverall.mo",
+      "before_sha256": "44b375b4b7d389799b974cace19a103a7a158b22df987289ac8390c1cbaf6a1b",
+      "after_sha256": "c19d91db5cec20f8c58701855981ef5e1f341198c11b1c053225faf441627d0e",
+      "protected_token_sha256": "49a72914187128d6daac953e8c727bf3a9aa8fb62955b90dff9ad31b132a4512",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 8
+    },
+    {
+      "file": "Systems/Four_systems/ThermalOverall.mo",
+      "before_sha256": "9b75d343c360d7835dab91b690f1d022da6be2595491184fc244c4807a85fc19",
+      "after_sha256": "89568f2c1033514692ed470735dff2fccd86146332ecb0865fb424d75d7545df",
+      "protected_token_sha256": "af5e0c8870bc5d74cf6f2748417172cfa4b3c0dfe4ab40c33fe4bb81b1e460cc",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 25
+    },
+    {
+      "file": "Systems/Four_systems/package.mo",
+      "before_sha256": "7036f5298a6cd75c7bd6e0610f12156bb12577c8b6f1db811422492ecdeeea74",
+      "after_sha256": "46aacef91473db042dc3f519557590749b741f53a82eb036e9deeafb28ec09e6",
+      "protected_token_sha256": "54851537f5835e6b173e807d50dad83bd9660308a14600f922fad0b3d300309a",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 0
+    },
+    {
+      "file": "Systems/N_systems/CommunicationSystem.mo",
+      "before_sha256": "17b2ac0e263de8d9ad45b79a3c8244246e2d482c01c0fca26f72e7d3ad324f13",
+      "after_sha256": "6b124d086bd7ce21205dea0ff72a69c37f757fa3e35373513e87a05c262dcc95",
+      "protected_token_sha256": "e1ad733417f7b398a2343a560deaa61964a77966dbecef03d7d36ecde9c8d2a1",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 9
+    },
+    {
+      "file": "Systems/N_systems/DataHandlingSystem.mo",
+      "before_sha256": "c07adf75b50e52d648a8874a8926440acbe760074467d6af887d77b87b87bb46",
+      "after_sha256": "50dc897a2d30f4c1e55a67dabde3081a3bc158afa5c078151804cd53cc24e545",
+      "protected_token_sha256": "a59d8699f27fe8801872d0607cd237355ab1d212437a16a39eb90b8994931cc2",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 12
+    },
+    {
+      "file": "Systems/N_systems/ElectricalPowerSystem.mo",
+      "before_sha256": "ee2565ac8505159ea2732ac2730b6d19d2c9b04f0976db090bfca6933d2534c0",
+      "after_sha256": "67cb50fc0302724867ce3b0c92443ebe70eae56d20b210b78bce9631147db6ad",
+      "protected_token_sha256": "77dfc186834e1c4b958820322aa95ece5685ce651029d161b43e7d2bdcb8f06d",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 12
+    },
+    {
+      "file": "Systems/N_systems/GNCSystem.mo",
+      "before_sha256": "d009f3dbb44facc0a6e16b6037bd72e2494c850c32156b3c12395566bb8928d0",
+      "after_sha256": "d0b145646d8d78fd2a7b8e210a15cfae1bb0f6d2f4feca65497b2e1bdb028273",
+      "protected_token_sha256": "fd08e556e7d2a41c83b25f92a45199ea3c3099056a6d19f8c93e260eb8e0e6e6",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 23
+    },
+    {
+      "file": "Systems/N_systems/NavigationSystem.mo",
+      "before_sha256": "52bedc8770e31c44e8f8d0b2b29390956b1b4a0f2b72689563b62bbdb5d229a5",
+      "after_sha256": "749a8ee34c64054ab52b329913298cd55d8bc4371901fbb013b9b32e9171a4ec",
+      "protected_token_sha256": "10dd0d7d61c858cd2a4dcb6f85c7405a77e36310916d8cf3872e1830ea11174e",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 7
+    },
+    {
+      "file": "Systems/N_systems/PayloadSystem.mo",
+      "before_sha256": "ef451b1c3da9cfbcdd5a8f98da9e7233db5d0af074b89c4788b07ef244db7db5",
+      "after_sha256": "a6c4cfcaa7f0bb9de884a3c53e521212dd6df8a06de6ca88c7c837e555052bfe",
+      "protected_token_sha256": "324e557fcde42b5e5b1d46318a57dd26591ffcfba58eac254ed3c23d5326a20a",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 12
+    },
+    {
+      "file": "Systems/N_systems/StructureSystem.mo",
+      "before_sha256": "7d24c28f8c1983638639c128e44c1e17c031327ce920b85aee12ed2f1c06fabd",
+      "after_sha256": "edc3eb5501e0f16080ee6a8440022776e5ef58b93f22a4c6a39cadb2625c03a3",
+      "protected_token_sha256": "fc37422de7059a8cd228a715c7e94677e1be6ac31647748405fe671a6aefe8c6",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 8
+    },
+    {
+      "file": "Systems/N_systems/ThermalControlSystem.mo",
+      "before_sha256": "97300a3eb5a04093f479fd3d7dac0e4ae9880b57b1080d0f6017b6b797646793",
+      "after_sha256": "fa7a00d9966d17d18ccf9391a70d4970260bf18ff897f5bbadf66f147d5a0f91",
+      "protected_token_sha256": "f20389e910657bc52dac20b46f8e9c3e491a8607974c20e16feb58a8b24504fd",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 7
+    },
+    {
+      "file": "Systems/N_systems/package.mo",
+      "before_sha256": "31d5a5a146a51a366a2e77923f0cc8442f0a545692810da282e56fc28af97bfe",
+      "after_sha256": "124be898d30d32bfed6ddfb8f487bdda5bc6f427060b00bcd5368755707df23b",
+      "protected_token_sha256": "655acec064cb497876ce46dc6f89d84f557a098a982cc04a53d1daeeadb94717",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 0
+    },
+    {
+      "file": "Systems/SpacecraftSystem.mo",
+      "before_sha256": "728f5c678f2b2458de284582484a6538ce513f9d41cc67b995e2b381ff8b3dba",
+      "after_sha256": "baa9e41fa8e3647e36eda60798c57235a5524c3bd53248f94c2d51882a08240a",
+      "protected_token_sha256": "d3320c1001adf81d844f4bf67a3dd0adc9cabb2f32d23cdd5a1caa26d4ecdf39",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 19
+    },
+    {
+      "file": "Systems/package.mo",
+      "before_sha256": "01ea8bb2e6b42b097fed0a5b7982c63f093c736e1a49248a5bba61b81d8b28bc",
+      "after_sha256": "dce9da1b5c9dc6ee9de3a540ce3487f59aa7ee12ff06ec39a9b57904c7250626",
+      "protected_token_sha256": "172dd1bcd60c5212e4a9a06c90e185e8679881bca4031f9562b81aade1c0b261",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 0
+    },
+    {
+      "file": "package.mo",
+      "before_sha256": "6d4473c06786219e4d1499852510dc7986927b9160aaa4396b2edb841916a6e6",
+      "after_sha256": "377f8b08c6cc417dd2c2d4b007b3e374fb9f57ff08dfbfa3157f11725324ba91",
+      "protected_token_sha256": "648ef1eb83b38cc462706f2013246bde8ef7ed67c872978cf07369d0687bf66a",
+      "protected_tokens_equal": true,
+      "classes": 1,
+      "declared_fields": 0
+    }
+  ],
+  "classes": [
+    {
+      "class": "OneSatSim.Components.AntennaUnit",
+      "kind": "model",
+      "file": "Components/AntennaUnit.mo",
+      "title": "X波段贴片与测控天线组件",
+      "declarations": 17
+    },
+    {
+      "class": "OneSatSim.Components.BatteryUnit",
+      "kind": "model",
+      "file": "Components/BatteryUnit.mo",
+      "title": "四串两并锂离子电池组件",
+      "declarations": 58
+    },
+    {
+      "class": "OneSatSim.Components.BodyMountedSolarArrayMinusXUnit",
+      "kind": "model",
+      "file": "Components/BodyMountedSolarArrayMinusXUnit.mo",
+      "title": "-X长侧面体装太阳电池组件",
+      "declarations": 47
+    },
+    {
+      "class": "OneSatSim.Components.BodyMountedSolarArrayPlusXUnit",
+      "kind": "model",
+      "file": "Components/BodyMountedSolarArrayPlusXUnit.mo",
+      "title": "+X长侧面体装太阳电池组件",
+      "declarations": 45
+    },
+    {
+      "class": "OneSatSim.Components.BodyMountedSolarArrayPlusYUnit",
+      "kind": "model",
+      "file": "Components/BodyMountedSolarArrayPlusYUnit.mo",
+      "title": "+Y长侧面体装双串太阳电池组件",
+      "declarations": 48
+    },
+    {
+      "class": "OneSatSim.Components.DataRecorderUnit",
+      "kind": "model",
+      "file": "Components/DataRecorderUnit.mo",
+      "title": "星上数据记录器组件",
+      "declarations": 32
+    },
+    {
+      "class": "OneSatSim.Components.EarthObservationCameraUnit",
+      "kind": "model",
+      "file": "Components/EarthObservationCameraUnit.mo",
+      "title": "对地观测相机组件",
+      "declarations": 59
+    },
+    {
+      "class": "OneSatSim.Components.FotonAmurPayloadUnit",
+      "kind": "model",
+      "file": "Components/FotonAmurPayloadUnit.mo",
+      "title": "科学载荷组件",
+      "declarations": 28
+    },
+    {
+      "class": "OneSatSim.Components.GNCComputerUnit",
+      "kind": "model",
+      "file": "Components/GNCComputerUnit.mo",
+      "title": "姿轨控计算机组件",
+      "declarations": 30
+    },
+    {
+      "class": "OneSatSim.Components.GPSReceiverUnit",
+      "kind": "model",
+      "file": "Components/GPSReceiverUnit.mo",
+      "title": "GNSS接收机组件",
+      "declarations": 30
+    },
+    {
+      "class": "OneSatSim.Components.HeaterRadiatorUnit",
+      "kind": "model",
+      "file": "Components/HeaterRadiatorUnit.mo",
+      "title": "加热器与散热执行组件",
+      "declarations": 26
+    },
+    {
+      "class": "OneSatSim.Components.LowRateTelemetryTransmitterUnit",
+      "kind": "model",
+      "file": "Components/LowRateTelemetryTransmitterUnit.mo",
+      "title": "低速遥测基带组件",
+      "declarations": 28
+    },
+    {
+      "class": "OneSatSim.Components.MEMSIMUUnit",
+      "kind": "model",
+      "file": "Components/MEMSIMUUnit.mo",
+      "title": "MEMS惯性测量组件",
+      "declarations": 30
+    },
+    {
+      "class": "OneSatSim.Components.MagnetometerUnit",
+      "kind": "model",
+      "file": "Components/MagnetometerUnit.mo",
+      "title": "三轴磁强计组件",
+      "declarations": 32
+    },
+    {
+      "class": "OneSatSim.Components.MagnetorquerUnit",
+      "kind": "model",
+      "file": "Components/MagnetorquerUnit.mo",
+      "title": "三轴磁力矩器组件",
+      "declarations": 48
+    },
+    {
+      "class": "OneSatSim.Components.MissionControlUnit",
+      "kind": "model",
+      "file": "Components/MissionControlUnit.mo",
+      "title": "星务任务与指令控制组件",
+      "declarations": 34
+    },
+    {
+      "class": "OneSatSim.Components.NaviEnhancePayloadUnit",
+      "kind": "model",
+      "file": "Components/NaviEnhancePayloadUnit.mo",
+      "title": "导航增强载荷组件",
+      "declarations": 27
+    },
+    {
+      "class": "OneSatSim.Components.OnboardComputerUnit",
+      "kind": "model",
+      "file": "Components/OnboardComputerUnit.mo",
+      "title": "星务计算机与遥测处理组件",
+      "declarations": 39
+    },
+    {
+      "class": "OneSatSim.Components.PowerConditioningUnit",
+      "kind": "model",
+      "file": "Components/PowerConditioningUnit.mo",
+      "title": "电源调节与配电组件",
+      "declarations": 73
+    },
+    {
+      "class": "OneSatSim.Components.RadioReceiverUnit",
+      "kind": "model",
+      "file": "Components/RadioReceiverUnit.mo",
+      "title": "测控接收机组件",
+      "declarations": 26
+    },
+    {
+      "class": "OneSatSim.Components.RateGyroUnit",
+      "kind": "model",
+      "file": "Components/RateGyroUnit.mo",
+      "title": "三轴角速率陀螺组件",
+      "declarations": 29
+    },
+    {
+      "class": "OneSatSim.Components.ReactionWheelSUnit",
+      "kind": "model",
+      "file": "Components/ReactionWheelSUnit.mo",
+      "title": "斜置反作用飞轮组件",
+      "declarations": 52
+    },
+    {
+      "class": "OneSatSim.Components.ReactionWheelXUnit",
+      "kind": "model",
+      "file": "Components/ReactionWheelXUnit.mo",
+      "title": "X轴反作用飞轮组件",
+      "declarations": 52
+    },
+    {
+      "class": "OneSatSim.Components.ReactionWheelYUnit",
+      "kind": "model",
+      "file": "Components/ReactionWheelYUnit.mo",
+      "title": "Y轴反作用飞轮组件",
+      "declarations": 52
+    },
+    {
+      "class": "OneSatSim.Components.ReactionWheelZUnit",
+      "kind": "model",
+      "file": "Components/ReactionWheelZUnit.mo",
+      "title": "Z轴反作用飞轮组件",
+      "declarations": 52
+    },
+    {
+      "class": "OneSatSim.Components.SelfieCameraUnit",
+      "kind": "model",
+      "file": "Components/SelfieCameraUnit.mo",
+      "title": "自拍相机组件",
+      "declarations": 28
+    },
+    {
+      "class": "OneSatSim.Components.SpaceTimePayloadUnit",
+      "kind": "model",
+      "file": "Components/SpaceTimePayloadUnit.mo",
+      "title": "时空基准载荷组件",
+      "declarations": 28
+    },
+    {
+      "class": "OneSatSim.Components.StarTrackerYUnit",
+      "kind": "model",
+      "file": "Components/StarTrackerYUnit.mo",
+      "title": "Y向星敏感器组件",
+      "declarations": 31
+    },
+    {
+      "class": "OneSatSim.Components.StarTrackerZUnit",
+      "kind": "model",
+      "file": "Components/StarTrackerZUnit.mo",
+      "title": "Z向星敏感器组件",
+      "declarations": 31
+    },
+    {
+      "class": "OneSatSim.Components.StructureAssembly12U",
+      "kind": "model",
+      "file": "Components/StructureAssembly12U.mo",
+      "title": "12U主承力结构组件",
+      "declarations": 27
+    },
+    {
+      "class": "OneSatSim.Components.SunSensorUnit",
+      "kind": "model",
+      "file": "Components/SunSensorUnit.mo",
+      "title": "二维太阳敏感器组件",
+      "declarations": 27
+    },
+    {
+      "class": "OneSatSim.Components.ThermalControllerUnit",
+      "kind": "model",
+      "file": "Components/ThermalControllerUnit.mo",
+      "title": "热控控制器组件",
+      "declarations": 36
+    },
+    {
+      "class": "OneSatSim.Components.XBandTransmitterUnit",
+      "kind": "model",
+      "file": "Components/XBandTransmitterUnit.mo",
+      "title": "X波段数传发射机组件",
+      "declarations": 41
+    },
+    {
+      "class": "OneSatSim.Components",
+      "kind": "package",
+      "file": "Components/package.mo",
+      "title": "单机组件包",
+      "declarations": 0
+    },
+    {
+      "class": "OneSatSim.Foundation.Calculations.CommandStatusCalculation",
+      "kind": "model",
+      "file": "Foundation/Calculations/CommandStatusCalculation.mo",
+      "title": "布尔指令状态码计算",
+      "declarations": 2
+    },
+    {
+      "class": "OneSatSim.Foundation.Calculations.DataRecorderCalculation",
+      "kind": "model",
+      "file": "Foundation/Calculations/DataRecorderCalculation.mo",
+      "title": "星上数据记录器业务量计算",
+      "declarations": 23
+    },
+    {
+      "class": "OneSatSim.Foundation.Calculations.EarthObservationCameraCalculation",
+      "kind": "model",
+      "file": "Foundation/Calculations/EarthObservationCameraCalculation.mo",
+      "title": "对地观测相机任务状态计算",
+      "declarations": 12
+    },
+    {
+      "class": "OneSatSim.Foundation.Calculations.ExternalOrbitalHeatCalculation",
+      "kind": "model",
+      "file": "Foundation/Calculations/ExternalOrbitalHeatCalculation.mo",
+      "title": "整星外表面轨道热流计算",
+      "declarations": 14
+    },
+    {
+      "class": "OneSatSim.Foundation.Calculations.FotonAmurCalculation",
+      "kind": "model",
+      "file": "Foundation/Calculations/FotonAmurCalculation.mo",
+      "title": "科学载荷任务门控计算",
+      "declarations": 4
+    },
+    {
+      "class": "OneSatSim.Foundation.Calculations.GNSSFixCalculation",
+      "kind": "model",
+      "file": "Foundation/Calculations/GNSSFixCalculation.mo",
+      "title": "GNSS定位状态计算",
+      "declarations": 2
+    },
+    {
+      "class": "OneSatSim.Foundation.Calculations.HeaterChannelCalculation",
+      "kind": "model",
+      "file": "Foundation/Calculations/HeaterChannelCalculation.mo",
+      "title": "单路加热器指令与平均电导计算",
+      "declarations": 5
+    },
+    {
+      "class": "OneSatSim.Foundation.Calculations.InertialVectorToBody",
+      "kind": "model",
+      "file": "Foundation/Calculations/InertialVectorToBody.mo",
+      "title": "惯性系至本体系无状态矢量变换",
+      "declarations": 4
+    },
+    {
+      "class": "OneSatSim.Foundation.Calculations.MagnetometerCalculation",
+      "kind": "model",
+      "file": "Foundation/Calculations/MagnetometerCalculation.mo",
+      "title": "三轴轨道磁场低阶计算",
+      "declarations": 7
+    },
+    {
+      "class": "OneSatSim.Foundation.Calculations.MomentumUnloadingCalculation",
+      "kind": "model",
+      "file": "Foundation/Calculations/MomentumUnloadingCalculation.mo",
+      "title": "磁力矩器动量卸载与消旋计算",
+      "declarations": 39
+    },
+    {
+      "class": "OneSatSim.Foundation.Calculations.OrbitalAccelerationCalculation",
+      "kind": "model",
+      "file": "Foundation/Calculations/OrbitalAccelerationCalculation.mo",
+      "title": "轨道中心引力加速度计算",
+      "declarations": 4
+    },
+    {
+      "class": "OneSatSim.Foundation.Calculations.PayloadCaptureCalculation",
+      "kind": "model",
+      "file": "Foundation/Calculations/PayloadCaptureCalculation.mo",
+      "title": "载荷拍摄状态与写入率计算",
+      "declarations": 4
+    },
+    {
+      "class": "OneSatSim.Foundation.Calculations.PointingModeEquipmentCalculation",
+      "kind": "model",
+      "file": "Foundation/Calculations/PointingModeEquipmentCalculation.mo",
+      "title": "精确指向阶段设备状态与负载计算",
+      "declarations": 6
+    },
+    {
+      "class": "OneSatSim.Foundation.Calculations.PowerConditioningCalculation",
+      "kind": "model",
+      "file": "Foundation/Calculations/PowerConditioningCalculation.mo",
+      "title": "12 V平均值调节与太阳限功率计算",
+      "declarations": 42
+    },
+    {
+      "class": "OneSatSim.Foundation.Calculations.PowerDistributionStatusCalculation",
+      "kind": "model",
+      "file": "Foundation/Calculations/PowerDistributionStatusCalculation.mo",
+      "title": "PDB通道状态派生",
+      "declarations": 3
+    },
+    {
+      "class": "OneSatSim.Foundation.Calculations.RateGyroModeCalculation",
+      "kind": "model",
+      "file": "Foundation/Calculations/RateGyroModeCalculation.mo",
+      "title": "高精度角速率陀螺工作模式计算",
+      "declarations": 2
+    },
+    {
+      "class": "OneSatSim.Foundation.Calculations.ReactionWheelPowerCalculation",
+      "kind": "model",
+      "file": "Foundation/Calculations/ReactionWheelPowerCalculation.mo",
+      "title": "反作用飞轮平均值机电热功率计算",
+      "declarations": 9
+    },
+    {
+      "class": "OneSatSim.Foundation.Calculations.ReactionWheelTelemetryCalculation",
+      "kind": "model",
+      "file": "Foundation/Calculations/ReactionWheelTelemetryCalculation.mo",
+      "title": "反作用飞轮角动量与饱和状态计算",
+      "declarations": 5
+    },
+    {
+      "class": "OneSatSim.Foundation.Calculations.SolarArrayPerformanceCalculation",
+      "kind": "model",
+      "file": "Foundation/Calculations/SolarArrayPerformanceCalculation.mo",
+      "title": "体装太阳阵电热性能计算",
+      "declarations": 39
+    },
+    {
+      "class": "OneSatSim.Foundation.Calculations.StarQuaternionCalculation",
+      "kind": "model",
+      "file": "Foundation/Calculations/StarQuaternionCalculation.mo",
+      "title": "沿用原旋转序列的星敏四元数计算",
+      "declarations": 2
+    },
+    {
+      "class": "OneSatSim.Foundation.Calculations.StarTrackerCalculation",
+      "kind": "model",
+      "file": "Foundation/Calculations/StarTrackerCalculation.mo",
+      "title": "星敏任务门控与测量计算",
+      "declarations": 9
+    },
+    {
+      "class": "OneSatSim.Foundation.Calculations.SunSensorCalculation",
+      "kind": "model",
+      "file": "Foundation/Calculations/SunSensorCalculation.mo",
+      "title": "太阳敏感器视线角计算",
+      "declarations": 3
+    },
+    {
+      "class": "OneSatSim.Foundation.Calculations.WheelSpeedServoCalculation",
+      "kind": "model",
+      "file": "Foundation/Calculations/WheelSpeedServoCalculation.mo",
+      "title": "飞轮转速伺服计算",
+      "declarations": 3
+    },
+    {
+      "class": "OneSatSim.Foundation.Calculations.XBandTransmissionCalculation",
+      "kind": "model",
+      "file": "Foundation/Calculations/XBandTransmissionCalculation.mo",
+      "title": "X波段发射任务门控计算",
+      "declarations": 14
+    },
+    {
+      "class": "OneSatSim.Foundation.Calculations",
+      "kind": "package",
+      "file": "Foundation/Calculations/package.mo",
+      "title": "无状态工程派生量计算",
+      "declarations": 0
+    },
+    {
+      "class": "OneSatSim.Foundation.Functions.estimateGroundContactDuration",
+      "kind": "function",
+      "file": "Foundation/Functions/estimateGroundContactDuration.mo",
+      "title": "按当前相对运动估算预测时域内超过最低仰角的累计时长",
+      "declarations": 21
+    },
+    {
+      "class": "OneSatSim.Foundation.Functions",
+      "kind": "package",
+      "file": "Foundation/Functions/package.mo",
+      "title": "纯计算函数",
+      "declarations": 0
+    },
+    {
+      "class": "OneSatSim.Foundation.Interfaces.ActiveGeometrySignals",
+      "kind": "connector",
+      "file": "Foundation/Interfaces/ActiveGeometrySignals.mo",
+      "title": "激活几何信号组",
+      "declarations": 15
+    },
+    {
+      "class": "OneSatSim.Foundation.Interfaces.ActiveMissionSelectionInput",
+      "kind": "connector",
+      "file": "Foundation/Interfaces/ActiveMissionSelectionInput.mo",
+      "title": "激活MissionSelection输入",
+      "declarations": 2
+    },
+    {
+      "class": "OneSatSim.Foundation.Interfaces.ActiveMissionSelectionOutput",
+      "kind": "connector",
+      "file": "Foundation/Interfaces/ActiveMissionSelectionOutput.mo",
+      "title": "激活MissionSelection输出",
+      "declarations": 2
+    },
+    {
+      "class": "OneSatSim.Foundation.Interfaces.ArbiterDecisionSignals",
+      "kind": "connector",
+      "file": "Foundation/Interfaces/ArbiterDecisionSignals.mo",
+      "title": "ArbiterDecision信号组",
+      "declarations": 10
+    },
+    {
+      "class": "OneSatSim.Foundation.Interfaces.AttitudeControlStateInput",
+      "kind": "connector",
+      "file": "Foundation/Interfaces/AttitudeControlStateInput.mo",
+      "title": "姿态控制状态因果输入",
+      "declarations": 0
+    },
+    {
+      "class": "OneSatSim.Foundation.Interfaces.AttitudeControlStateOutput",
+      "kind": "connector",
+      "file": "Foundation/Interfaces/AttitudeControlStateOutput.mo",
+      "title": "姿态控制状态因果输出",
+      "declarations": 0
+    },
+    {
+      "class": "OneSatSim.Foundation.Interfaces.AttitudeControlStateSignal",
+      "kind": "connector",
+      "file": "Foundation/Interfaces/AttitudeControlStateSignal.mo",
+      "title": "无因果姿态控制状态标量",
+      "declarations": 0
+    },
+    {
+      "class": "OneSatSim.Foundation.Interfaces.AttitudeControlStateSignalBridge",
+      "kind": "model",
+      "file": "Foundation/Interfaces/AttitudeControlStateSignalBridge.mo",
+      "title": "姿态控制状态因果输出到可扩展信息总线的无状态恒等桥",
+      "declarations": 2
+    },
+    {
+      "class": "OneSatSim.Foundation.Interfaces.BooleanSignal",
+      "kind": "connector",
+      "file": "Foundation/Interfaces/BooleanSignal.mo",
+      "title": "无因果布尔标量",
+      "declarations": 0
+    },
+    {
+      "class": "OneSatSim.Foundation.Interfaces.BooleanSignalBridge",
+      "kind": "model",
+      "file": "Foundation/Interfaces/BooleanSignalBridge.mo",
+      "title": "布尔因果输出到可扩展信息总线的无状态恒等桥",
+      "declarations": 2
+    },
+    {
+      "class": "OneSatSim.Foundation.Interfaces.BooleanSignalReader",
+      "kind": "model",
+      "file": "Foundation/Interfaces/BooleanSignalReader.mo",
+      "title": "可扩展总线布尔信号到因果计算端口的无状态恒等读取器",
+      "declarations": 2
+    },
+    {
+      "class": "OneSatSim.Foundation.Interfaces.CommandBus",
+      "kind": "connector",
+      "file": "Foundation/Interfaces/CommandBus.mo",
+      "title": "任务与执行指令总线",
+      "declarations": 17
+    },
+    {
+      "class": "OneSatSim.Foundation.Interfaces.CommandExecutionStatusSignal",
+      "kind": "connector",
+      "file": "Foundation/Interfaces/CommandExecutionStatusSignal.mo",
+      "title": "无因果任务执行状态标量",
+      "declarations": 0
+    },
+    {
+      "class": "OneSatSim.Foundation.Interfaces.CommandStatusBus",
+      "kind": "connector",
+      "file": "Foundation/Interfaces/CommandStatusBus.mo",
+      "title": "指令Status总线",
+      "declarations": 36
+    },
+    {
+      "class": "OneSatSim.Foundation.Interfaces.CommandTypeInput",
+      "kind": "connector",
+      "file": "Foundation/Interfaces/CommandTypeInput.mo",
+      "title": "指令Type输入",
+      "declarations": 0
+    },
+    {
+      "class": "OneSatSim.Foundation.Interfaces.CommandTypeOutput",
+      "kind": "connector",
+      "file": "Foundation/Interfaces/CommandTypeOutput.mo",
+      "title": "任务指令类型因果输出",
+      "declarations": 0
+    },
+    {
+      "class": "OneSatSim.Foundation.Interfaces.CommandTypeSignal",
+      "kind": "connector",
+      "file": "Foundation/Interfaces/CommandTypeSignal.mo",
+      "title": "无因果任务指令类型标量",
+      "declarations": 0
+    },
+    {
+      "class": "OneSatSim.Foundation.Interfaces.ControlModeInput",
+      "kind": "connector",
+      "file": "Foundation/Interfaces/ControlModeInput.mo",
+      "title": "控制模式因果输入",
+      "declarations": 0
+    },
+    {
+      "class": "OneSatSim.Foundation.Interfaces.ControlModeOutput",
+      "kind": "connector",
+      "file": "Foundation/Interfaces/ControlModeOutput.mo",
+      "title": "控制模式因果输出",
+      "declarations": 0
+    },
+    {
+      "class": "OneSatSim.Foundation.Interfaces.ControlModeSignal",
+      "kind": "connector",
+      "file": "Foundation/Interfaces/ControlModeSignal.mo",
+      "title": "无因果姿态控制模式标量",
+      "declarations": 0
+    },
+    {
+      "class": "OneSatSim.Foundation.Interfaces.ControlModeSignalBridge",
+      "kind": "model",
+      "file": "Foundation/Interfaces/ControlModeSignalBridge.mo",
+      "title": "控制模式因果输出到可扩展信息总线的无状态恒等桥",
+      "declarations": 2
+    },
+    {
+      "class": "OneSatSim.Foundation.Interfaces.DeviceStatusBus",
+      "kind": "connector",
+      "file": "Foundation/Interfaces/DeviceStatusBus.mo",
+      "title": "设备测量与状态总线",
+      "declarations": 68
+    },
+    {
+      "class": "OneSatSim.Foundation.Interfaces.DownlinkActionSignals",
+      "kind": "connector",
+      "file": "Foundation/Interfaces/DownlinkActionSignals.mo",
+      "title": "下传Action信号组",
+      "declarations": 14
+    },
+    {
+      "class": "OneSatSim.Foundation.Interfaces.DownlinkPhaseSignal",
+      "kind": "connector",
+      "file": "Foundation/Interfaces/DownlinkPhaseSignal.mo",
+      "title": "无因果数传阶段标量",
+      "declarations": 0
+    },
+    {
+      "class": "OneSatSim.Foundation.Interfaces.EnvironmentPort",
+      "kind": "connector",
+      "file": "Foundation/Interfaces/EnvironmentPort.mo",
+      "title": "轨道与空间环境接口",
+      "declarations": 54
+    },
+    {
+      "class": "OneSatSim.Foundation.Interfaces.EphemerisPort",
+      "kind": "connector",
+      "file": "Foundation/Interfaces/EphemerisPort.mo",
+      "title": "Ephemeris接口",
+      "declarations": 5
+    },
+    {
+      "class": "OneSatSim.Foundation.Interfaces.ImagingActionSignals",
+      "kind": "connector",
+      "file": "Foundation/Interfaces/ImagingActionSignals.mo",
+      "title": "成像Action信号组",
+      "declarations": 21
+    },
+    {
+      "class": "OneSatSim.Foundation.Interfaces.ImagingPhaseInput",
+      "kind": "connector",
+      "file": "Foundation/Interfaces/ImagingPhaseInput.mo",
+      "title": "成像任务阶段因果输入",
+      "declarations": 0
+    },
+    {
+      "class": "OneSatSim.Foundation.Interfaces.ImagingPhaseOutput",
+      "kind": "connector",
+      "file": "Foundation/Interfaces/ImagingPhaseOutput.mo",
+      "title": "成像任务阶段因果输出",
+      "declarations": 0
+    },
+    {
+      "class": "OneSatSim.Foundation.Interfaces.ImagingPhaseSignal",
+      "kind": "connector",
+      "file": "Foundation/Interfaces/ImagingPhaseSignal.mo",
+      "title": "无因果成像阶段标量",
+      "declarations": 0
+    },
+    {
+      "class": "OneSatSim.Foundation.Interfaces.InformationPort",
+      "kind": "connector",
+      "file": "Foundation/Interfaces/InformationPort.mo",
+      "title": "统一星上信息接口",
+      "declarations": 4
+    },
+    {
+      "class": "OneSatSim.Foundation.Interfaces.IntegerSignal",
+      "kind": "connector",
+      "file": "Foundation/Interfaces/IntegerSignal.mo",
+      "title": "无因果整数标量",
+      "declarations": 0
+    },
+    {
+      "class": "OneSatSim.Foundation.Interfaces.IntegerSignalBridge",
+      "kind": "model",
+      "file": "Foundation/Interfaces/IntegerSignalBridge.mo",
+      "title": "整数因果输出到可扩展信息总线的无状态恒等桥",
+      "declarations": 2
+    },
+    {
+      "class": "OneSatSim.Foundation.Interfaces.IntegerSignalReader",
+      "kind": "model",
+      "file": "Foundation/Interfaces/IntegerSignalReader.mo",
+      "title": "可扩展总线整数信号到因果计算端口的无状态恒等读取器",
+      "declarations": 2
+    },
+    {
+      "class": "OneSatSim.Foundation.Interfaces.MechanicalPort",
+      "kind": "connector",
+      "file": "Foundation/Interfaces/MechanicalPort.mo",
+      "title": "三维刚性安装接口",
+      "declarations": 0
+    },
+    {
+      "class": "OneSatSim.Foundation.Interfaces.MissionFeedbackBus",
+      "kind": "connector",
+      "file": "Foundation/Interfaces/MissionFeedbackBus.mo",
+      "title": "Mission反馈总线",
+      "declarations": 24
+    },
+    {
+      "class": "OneSatSim.Foundation.Interfaces.MissionModeSignal",
+      "kind": "connector",
+      "file": "Foundation/Interfaces/MissionModeSignal.mo",
+      "title": "无因果任务模式标量",
+      "declarations": 0
+    },
+    {
+      "class": "OneSatSim.Foundation.Interfaces.MissionSelectionPublisher",
+      "kind": "model",
+      "file": "Foundation/Interfaces/MissionSelectionPublisher.mo",
+      "title": "已锁存任务对象索引的无状态发布适配器",
+      "declarations": 3
+    },
+    {
+      "class": "OneSatSim.Foundation.Interfaces.MissionSelectionReader",
+      "kind": "model",
+      "file": "Foundation/Interfaces/MissionSelectionReader.mo",
+      "title": "环境总线到窄任务选择输入的无状态适配器",
+      "declarations": 3
+    },
+    {
+      "class": "OneSatSim.Foundation.Interfaces.MissionStateSignals",
+      "kind": "connector",
+      "file": "Foundation/Interfaces/MissionStateSignals.mo",
+      "title": "Mission状态信号组",
+      "declarations": 31
+    },
+    {
+      "class": "OneSatSim.Foundation.Interfaces.OnboardTelemetryPort",
+      "kind": "connector",
+      "file": "Foundation/Interfaces/OnboardTelemetryPort.mo",
+      "title": "星上工程遥测接口",
+      "declarations": 86
+    },
+    {
+      "class": "OneSatSim.Foundation.Interfaces.OpportunityBooleanReader",
+      "kind": "model",
+      "file": "Foundation/Interfaces/OpportunityBooleanReader.mo",
+      "title": "机会总线布尔信号到因果计算端口的无状态恒等读取器",
+      "declarations": 2
+    },
+    {
+      "class": "OneSatSim.Foundation.Interfaces.OpportunityIntegerReader",
+      "kind": "model",
+      "file": "Foundation/Interfaces/OpportunityIntegerReader.mo",
+      "title": "机会总线整数信号到因果计算端口的无状态恒等读取器",
+      "declarations": 2
+    },
+    {
+      "class": "OneSatSim.Foundation.Interfaces.OpportunitySignals",
+      "kind": "connector",
+      "file": "Foundation/Interfaces/OpportunitySignals.mo",
+      "title": "Opportunity信号组",
+      "declarations": 20
+    },
+    {
+      "class": "OneSatSim.Foundation.Interfaces.PayloadDataPort",
+      "kind": "connector",
+      "file": "Foundation/Interfaces/PayloadDataPort.mo",
+      "title": "载荷业务数据接口",
+      "declarations": 17
+    },
+    {
+      "class": "OneSatSim.Foundation.Interfaces.PlannerRequestSignals",
+      "kind": "connector",
+      "file": "Foundation/Interfaces/PlannerRequestSignals.mo",
+      "title": "Planner请求信号组",
+      "declarations": 8
+    },
+    {
+      "class": "OneSatSim.Foundation.Interfaces.PowerPort",
+      "kind": "connector",
+      "file": "Foundation/Interfaces/PowerPort.mo",
+      "title": "三电压轨电源接口",
+      "declarations": 6
+    },
+    {
+      "class": "OneSatSim.Foundation.Interfaces.RealSignal",
+      "kind": "connector",
+      "file": "Foundation/Interfaces/RealSignal.mo",
+      "title": "无因果实数标量",
+      "declarations": 0
+    },
+    {
+      "class": "OneSatSim.Foundation.Interfaces.RealSignalBridge",
+      "kind": "model",
+      "file": "Foundation/Interfaces/RealSignalBridge.mo",
+      "title": "实数因果输出到可扩展信息总线的无状态恒等桥",
+      "declarations": 2
+    },
+    {
+      "class": "OneSatSim.Foundation.Interfaces.RealSignalReader",
+      "kind": "model",
+      "file": "Foundation/Interfaces/RealSignalReader.mo",
+      "title": "可扩展总线实数信号到因果计算端口的无状态恒等读取器",
+      "declarations": 2
+    },
+    {
+      "class": "OneSatSim.Foundation.Interfaces.RejectReasonInput",
+      "kind": "connector",
+      "file": "Foundation/Interfaces/RejectReasonInput.mo",
+      "title": "任务拒绝原因因果输入",
+      "declarations": 0
+    },
+    {
+      "class": "OneSatSim.Foundation.Interfaces.RejectReasonOutput",
+      "kind": "connector",
+      "file": "Foundation/Interfaces/RejectReasonOutput.mo",
+      "title": "任务拒绝原因因果输出",
+      "declarations": 0
+    },
+    {
+      "class": "OneSatSim.Foundation.Interfaces.RejectReasonSignal",
+      "kind": "connector",
+      "file": "Foundation/Interfaces/RejectReasonSignal.mo",
+      "title": "无因果任务拒绝原因标量",
+      "declarations": 0
+    },
+    {
+      "class": "OneSatSim.Foundation.Interfaces.SafeModeActionSignals",
+      "kind": "connector",
+      "file": "Foundation/Interfaces/SafeModeActionSignals.mo",
+      "title": "安全模式模式Action信号组",
+      "declarations": 5
+    },
+    {
+      "class": "OneSatSim.Foundation.Interfaces.SafetySignals",
+      "kind": "connector",
+      "file": "Foundation/Interfaces/SafetySignals.mo",
+      "title": "Safety信号组",
+      "declarations": 10
+    },
+    {
+      "class": "OneSatSim.Foundation.Interfaces.SourcePowerPort",
+      "kind": "connector",
+      "file": "Foundation/Interfaces/SourcePowerPort.mo",
+      "title": "太阳阵/电池/PCDU之间的原始双线电源端口",
+      "declarations": 2
+    },
+    {
+      "class": "OneSatSim.Foundation.Interfaces.ThermalPort",
+      "kind": "connector",
+      "file": "Foundation/Interfaces/ThermalPort.mo",
+      "title": "设备壳体热端口",
+      "declarations": 0
+    },
+    {
+      "class": "OneSatSim.Foundation.Interfaces",
+      "kind": "package",
+      "file": "Foundation/Interfaces/package.mo",
+      "title": "接口类型",
+      "declarations": 0
+    },
+    {
+      "class": "OneSatSim.Foundation.Models.AOCSControlComputation",
+      "kind": "model",
+      "file": "Foundation/Models/AOCSControlComputation.mo",
+      "title": "低阶双矢量姿态控制核心",
+      "declarations": 108
+    },
+    {
+      "class": "OneSatSim.Foundation.Models.AverageDCDCConverterCore",
+      "kind": "model",
+      "file": "Foundation/Models/AverageDCDCConverterCore.mo",
+      "title": "连续低阶非理想直流变换核心",
+      "declarations": 23
+    },
+    {
+      "class": "OneSatSim.Foundation.Models.BatteryCellLimits",
+      "kind": "model",
+      "file": "Foundation/Models/BatteryCellLimits.mo",
+      "title": "电芯参数与荷电状态边界",
+      "declarations": 3
+    },
+    {
+      "class": "OneSatSim.Foundation.Models.BatteryCellStackCore",
+      "kind": "model",
+      "file": "Foundation/Models/BatteryCellStackCore.mo",
+      "title": "带公开荷电状态接口的电池组",
+      "declarations": 17
+    },
+    {
+      "class": "OneSatSim.Foundation.Models.CommandAdapter",
+      "kind": "model",
+      "file": "Foundation/Models/CommandAdapter.mo",
+      "title": "任务接口到设备指令与状态的纯映射",
+      "declarations": 11
+    },
+    {
+      "class": "OneSatSim.Foundation.Models.CommandArbiter",
+      "kind": "model",
+      "file": "Foundation/Models/CommandArbiter.mo",
+      "title": "任务请求的单入口事件锁存仲裁器",
+      "declarations": 13
+    },
+    {
+      "class": "OneSatSim.Foundation.Models.DownlinkSequencer",
+      "kind": "model",
+      "file": "Foundation/Models/DownlinkSequencer.mo",
+      "title": "请求驱动的下行动作时序器",
+      "declarations": 29
+    },
+    {
+      "class": "OneSatSim.Foundation.Models.EngineeringTelemetryObserver",
+      "kind": "model",
+      "file": "Foundation/Models/EngineeringTelemetryObserver.mo",
+      "title": "整星信息总线的只读工程遥测观察器",
+      "declarations": 91
+    },
+    {
+      "class": "OneSatSim.Foundation.Models.EphemerisDataAdapter",
+      "kind": "model",
+      "file": "Foundation/Models/EphemerisDataAdapter.mo",
+      "title": "星历表信号与导数一致适配",
+      "declarations": 7
+    },
+    {
+      "class": "OneSatSim.Foundation.Models.EphemerisEnvironmentReader",
+      "kind": "model",
+      "file": "Foundation/Models/EphemerisEnvironmentReader.mo",
+      "title": "固化星历表读取装配",
+      "declarations": 5
+    },
+    {
+      "class": "OneSatSim.Foundation.Models.EquivalentAOCSCore",
+      "kind": "model",
+      "file": "Foundation/Models/EquivalentAOCSCore.mo",
+      "title": "低阶双矢量姿态控制核心",
+      "declarations": 33
+    },
+    {
+      "class": "OneSatSim.Foundation.Models.ImagingSequencer",
+      "kind": "model",
+      "file": "Foundation/Models/ImagingSequencer.mo",
+      "title": "请求驱动的成像动作时序器",
+      "declarations": 46
+    },
+    {
+      "class": "OneSatSim.Foundation.Models.MissionActionRequestMailbox",
+      "kind": "model",
+      "file": "Foundation/Models/MissionActionRequestMailbox.mo",
+      "title": "任务动作请求事件邮箱",
+      "declarations": 23
+    },
+    {
+      "class": "OneSatSim.Foundation.Models.MissionActionResultMailbox",
+      "kind": "model",
+      "file": "Foundation/Models/MissionActionResultMailbox.mo",
+      "title": "任务动作结果事件邮箱",
+      "declarations": 48
+    },
+    {
+      "class": "OneSatSim.Foundation.Models.MissionFeedbackAdapter",
+      "kind": "model",
+      "file": "Foundation/Models/MissionFeedbackAdapter.mo",
+      "title": "物理状态到任务反馈的选择适配器",
+      "declarations": 5
+    },
+    {
+      "class": "OneSatSim.Foundation.Models.MissionGeometryEventMailbox",
+      "kind": "model",
+      "file": "Foundation/Models/MissionGeometryEventMailbox.mo",
+      "title": "活动目标几何事件邮箱",
+      "declarations": 17
+    },
+    {
+      "class": "OneSatSim.Foundation.Models.MissionOpportunityGenerator",
+      "kind": "model",
+      "file": "Foundation/Models/MissionOpportunityGenerator.mo",
+      "title": "原始机会与活动对象几何生成器",
+      "declarations": 8
+    },
+    {
+      "class": "OneSatSim.Foundation.Models.MissionPlanner",
+      "kind": "model",
+      "file": "Foundation/Models/MissionPlanner.mo",
+      "title": "对象感知的任务规划器",
+      "declarations": 8
+    },
+    {
+      "class": "OneSatSim.Foundation.Models.MissionStateMachine",
+      "kind": "model",
+      "file": "Foundation/Models/MissionStateMachine.mo",
+      "title": "单向动作握手的事件驱动任务状态机",
+      "declarations": 89
+    },
+    {
+      "class": "OneSatSim.Foundation.Models.OrbitalGeometry",
+      "kind": "model",
+      "file": "Foundation/Models/OrbitalGeometry.mo",
+      "title": "真实历元轨道、多地面站与多目标环境核心",
+      "declarations": 176
+    },
+    {
+      "class": "OneSatSim.Foundation.Models.SafeModeSequencer",
+      "kind": "model",
+      "file": "Foundation/Models/SafeModeSequencer.mo",
+      "title": "请求驱动的安全进入、保持与恢复时序器",
+      "declarations": 18
+    },
+    {
+      "class": "OneSatSim.Foundation.Models.SafetyMonitor",
+      "kind": "model",
+      "file": "Foundation/Models/SafetyMonitor.mo",
+      "title": "带回差的任务安全许可监视器",
+      "declarations": 18
+    },
+    {
+      "class": "OneSatSim.Foundation.Models",
+      "kind": "package",
+      "file": "Foundation/Models/package.mo",
+      "title": "必要方程核心包",
+      "declarations": 0
+    },
+    {
+      "class": "OneSatSim.Foundation.SignalRouting.RealSignalForward",
+      "kind": "model",
+      "file": "Foundation/SignalRouting/RealSignalForward.mo",
+      "title": "Real信号显式转发",
+      "declarations": 2
+    },
+    {
+      "class": "OneSatSim.Foundation.SignalRouting",
+      "kind": "package",
+      "file": "Foundation/SignalRouting/package.mo",
+      "title": "显式无状态信号路由",
+      "declarations": 0
+    },
+    {
+      "class": "OneSatSim.Foundation.Types.AttitudeControlState",
+      "kind": "type",
+      "file": "Foundation/Types/AttitudeControlState.mo",
+      "title": "低阶姿态控制器的可观察状态",
+      "declarations": 0
+    },
+    {
+      "class": "OneSatSim.Foundation.Types.CommandExecutionStatus",
+      "kind": "type",
+      "file": "Foundation/Types/CommandExecutionStatus.mo",
+      "title": "任务指令生命周期状态",
+      "declarations": 0
+    },
+    {
+      "class": "OneSatSim.Foundation.Types.CommandType",
+      "kind": "type",
+      "file": "Foundation/Types/CommandType.mo",
+      "title": "总体任务指令类型",
+      "declarations": 0
+    },
+    {
+      "class": "OneSatSim.Foundation.Types.ControlMode",
+      "kind": "type",
+      "file": "Foundation/Types/ControlMode.mo",
+      "title": "姿态控制请求或实际模式",
+      "declarations": 0
+    },
+    {
+      "class": "OneSatSim.Foundation.Types.DownlinkPhase",
+      "kind": "type",
+      "file": "Foundation/Types/DownlinkPhase.mo",
+      "title": "高速数据下传动作阶段",
+      "declarations": 0
+    },
+    {
+      "class": "OneSatSim.Foundation.Types.ImagingCapabilities",
+      "kind": "record",
+      "file": "Foundation/Types/ImagingCapabilities.mo",
+      "title": "成像Capabilities",
+      "declarations": 11
+    },
+    {
+      "class": "OneSatSim.Foundation.Types.ImagingPhase",
+      "kind": "type",
+      "file": "Foundation/Types/ImagingPhase.mo",
+      "title": "对地观测成像动作阶段",
+      "declarations": 0
+    },
+    {
+      "class": "OneSatSim.Foundation.Types.MassProperties",
+      "kind": "record",
+      "file": "Foundation/Types/MassProperties.mo",
+      "title": "整机质量汇总",
+      "declarations": 7
+    },
+    {
+      "class": "OneSatSim.Foundation.Types.MissionMode",
+      "kind": "type",
+      "file": "Foundation/Types/MissionMode.mo",
+      "title": "整星总体任务模式",
+      "declarations": 0
+    },
+    {
+      "class": "OneSatSim.Foundation.Types.RejectReason",
+      "kind": "type",
+      "file": "Foundation/Types/RejectReason.mo",
+      "title": "任务请求拒绝或中止原因",
+      "declarations": 0
+    },
+    {
+      "class": "OneSatSim.Foundation.Types.SurfaceGeometry",
+      "kind": "record",
+      "file": "Foundation/Types/SurfaceGeometry.mo",
+      "title": "Surface几何",
+      "declarations": 15
+    },
+    {
+      "class": "OneSatSim.Foundation.Types.TelemetryCatalog",
+      "kind": "package",
+      "file": "Foundation/Types/TelemetryCatalog.mo",
+      "title": "工程遥测包目录",
+      "declarations": 8
+    },
+    {
+      "class": "OneSatSim.Foundation.Types.WheelGroupCapabilities",
+      "kind": "record",
+      "file": "Foundation/Types/WheelGroupCapabilities.mo",
+      "title": "飞轮GroupCapabilities",
+      "declarations": 4
+    },
+    {
+      "class": "OneSatSim.Foundation.Types",
+      "kind": "package",
+      "file": "Foundation/Types/package.mo",
+      "title": "类型与遥测目录包",
+      "declarations": 0
+    },
+    {
+      "class": "OneSatSim.Foundation",
+      "kind": "package",
+      "file": "Foundation/package.mo",
+      "title": "基础建模包",
+      "declarations": 0
+    },
+    {
+      "class": "OneSatSim.Scenarios.DefaultScenario",
+      "kind": "record",
+      "file": "Scenarios/DefaultScenario.mo",
+      "title": "固定标准场景",
+      "declarations": 0
+    },
+    {
+      "class": "OneSatSim.Scenarios.DefaultSpacecraftDesignConfig",
+      "kind": "record",
+      "file": "Scenarios/DefaultSpacecraftDesignConfig.mo",
+      "title": "当前标准整星硬件设计基线",
+      "declarations": 0
+    },
+    {
+      "class": "OneSatSim.Scenarios.DesignConfigRecords.AntennaComponentConfig",
+      "kind": "record",
+      "file": "Scenarios/DesignConfigRecords/AntennaComponentConfig.mo",
+      "title": "antenna硬件设计配置",
+      "declarations": 10
+    },
+    {
+      "class": "OneSatSim.Scenarios.DesignConfigRecords.BasebandComponentConfig",
+      "kind": "record",
+      "file": "Scenarios/DesignConfigRecords/BasebandComponentConfig.mo",
+      "title": "baseband硬件设计配置",
+      "declarations": 10
+    },
+    {
+      "class": "OneSatSim.Scenarios.DesignConfigRecords.BatteryComponentConfig",
+      "kind": "record",
+      "file": "Scenarios/DesignConfigRecords/BatteryComponentConfig.mo",
+      "title": "battery硬件设计配置",
+      "declarations": 23
+    },
+    {
+      "class": "OneSatSim.Scenarios.DesignConfigRecords.CommunicationDesignConfig",
+      "kind": "record",
+      "file": "Scenarios/DesignConfigRecords/CommunicationDesignConfig.mo",
+      "title": "communication分系统设计配置",
+      "declarations": 4
+    },
+    {
+      "class": "OneSatSim.Scenarios.DesignConfigRecords.ComputerComponentConfig",
+      "kind": "record",
+      "file": "Scenarios/DesignConfigRecords/ComputerComponentConfig.mo",
+      "title": "computer硬件设计配置",
+      "declarations": 10
+    },
+    {
+      "class": "OneSatSim.Scenarios.DesignConfigRecords.ControllerComponentConfig",
+      "kind": "record",
+      "file": "Scenarios/DesignConfigRecords/ControllerComponentConfig.mo",
+      "title": "controller硬件设计配置",
+      "declarations": 10
+    },
+    {
+      "class": "OneSatSim.Scenarios.DesignConfigRecords.DataHandlingDesignConfig",
+      "kind": "record",
+      "file": "Scenarios/DesignConfigRecords/DataHandlingDesignConfig.mo",
+      "title": "dataHandling分系统设计配置",
+      "declarations": 2
+    },
+    {
+      "class": "OneSatSim.Scenarios.DesignConfigRecords.EarthCameraComponentConfig",
+      "kind": "record",
+      "file": "Scenarios/DesignConfigRecords/EarthCameraComponentConfig.mo",
+      "title": "earthCamera硬件设计配置",
+      "declarations": 17
+    },
+    {
+      "class": "OneSatSim.Scenarios.DesignConfigRecords.EpsDesignConfig",
+      "kind": "record",
+      "file": "Scenarios/DesignConfigRecords/EpsDesignConfig.mo",
+      "title": "eps分系统设计配置",
+      "declarations": 5
+    },
+    {
+      "class": "OneSatSim.Scenarios.DesignConfigRecords.FotonAmurComponentConfig",
+      "kind": "record",
+      "file": "Scenarios/DesignConfigRecords/FotonAmurComponentConfig.mo",
+      "title": "fotonAmur硬件设计配置",
+      "declarations": 12
+    },
+    {
+      "class": "OneSatSim.Scenarios.DesignConfigRecords.GncDesignConfig",
+      "kind": "record",
+      "file": "Scenarios/DesignConfigRecords/GncDesignConfig.mo",
+      "title": "gnc分系统设计配置",
+      "declarations": 12
+    },
+    {
+      "class": "OneSatSim.Scenarios.DesignConfigRecords.GnssComponentConfig",
+      "kind": "record",
+      "file": "Scenarios/DesignConfigRecords/GnssComponentConfig.mo",
+      "title": "gnss硬件设计配置",
+      "declarations": 10
+    },
+    {
+      "class": "OneSatSim.Scenarios.DesignConfigRecords.HeatersComponentConfig",
+      "kind": "record",
+      "file": "Scenarios/DesignConfigRecords/HeatersComponentConfig.mo",
+      "title": "heaters硬件设计配置",
+      "declarations": 10
+    },
+    {
+      "class": "OneSatSim.Scenarios.DesignConfigRecords.MagnetometerComponentConfig",
+      "kind": "record",
+      "file": "Scenarios/DesignConfigRecords/MagnetometerComponentConfig.mo",
+      "title": "magnetometer硬件设计配置",
+      "declarations": 10
+    },
+    {
+      "class": "OneSatSim.Scenarios.DesignConfigRecords.MagnetorquerComponentConfig",
+      "kind": "record",
+      "file": "Scenarios/DesignConfigRecords/MagnetorquerComponentConfig.mo",
+      "title": "magnetorquer硬件设计配置",
+      "declarations": 13
+    },
+    {
+      "class": "OneSatSim.Scenarios.DesignConfigRecords.MemsIMUComponentConfig",
+      "kind": "record",
+      "file": "Scenarios/DesignConfigRecords/MemsIMUComponentConfig.mo",
+      "title": "memsIMU硬件设计配置",
+      "declarations": 10
+    },
+    {
+      "class": "OneSatSim.Scenarios.DesignConfigRecords.NaviEnhanceComponentConfig",
+      "kind": "record",
+      "file": "Scenarios/DesignConfigRecords/NaviEnhanceComponentConfig.mo",
+      "title": "naviEnhance硬件设计配置",
+      "declarations": 11
+    },
+    {
+      "class": "OneSatSim.Scenarios.DesignConfigRecords.NavigationDesignConfig",
+      "kind": "record",
+      "file": "Scenarios/DesignConfigRecords/NavigationDesignConfig.mo",
+      "title": "navigation分系统设计配置",
+      "declarations": 1
+    },
+    {
+      "class": "OneSatSim.Scenarios.DesignConfigRecords.ObcComponentConfig",
+      "kind": "record",
+      "file": "Scenarios/DesignConfigRecords/ObcComponentConfig.mo",
+      "title": "obc硬件设计配置",
+      "declarations": 12
+    },
+    {
+      "class": "OneSatSim.Scenarios.DesignConfigRecords.OverallComponentConfig",
+      "kind": "record",
+      "file": "Scenarios/DesignConfigRecords/OverallComponentConfig.mo",
+      "title": "overall硬件设计配置",
+      "declarations": 6
+    },
+    {
+      "class": "OneSatSim.Scenarios.DesignConfigRecords.PayloadDesignConfig",
+      "kind": "record",
+      "file": "Scenarios/DesignConfigRecords/PayloadDesignConfig.mo",
+      "title": "payload分系统设计配置",
+      "declarations": 5
+    },
+    {
+      "class": "OneSatSim.Scenarios.DesignConfigRecords.PcduComponentConfig",
+      "kind": "record",
+      "file": "Scenarios/DesignConfigRecords/PcduComponentConfig.mo",
+      "title": "pcdu硬件设计配置",
+      "declarations": 31
+    },
+    {
+      "class": "OneSatSim.Scenarios.DesignConfigRecords.RateGyroComponentConfig",
+      "kind": "record",
+      "file": "Scenarios/DesignConfigRecords/RateGyroComponentConfig.mo",
+      "title": "rateGyro硬件设计配置",
+      "declarations": 10
+    },
+    {
+      "class": "OneSatSim.Scenarios.DesignConfigRecords.RecorderComponentConfig",
+      "kind": "record",
+      "file": "Scenarios/DesignConfigRecords/RecorderComponentConfig.mo",
+      "title": "recorder硬件设计配置",
+      "declarations": 11
+    },
+    {
+      "class": "OneSatSim.Scenarios.DesignConfigRecords.SelfieCameraComponentConfig",
+      "kind": "record",
+      "file": "Scenarios/DesignConfigRecords/SelfieCameraComponentConfig.mo",
+      "title": "selfieCamera硬件设计配置",
+      "declarations": 11
+    },
+    {
+      "class": "OneSatSim.Scenarios.DesignConfigRecords.SolarArrayMinusXComponentConfig",
+      "kind": "record",
+      "file": "Scenarios/DesignConfigRecords/SolarArrayMinusXComponentConfig.mo",
+      "title": "solarArrayMinusX硬件设计配置",
+      "declarations": 21
+    },
+    {
+      "class": "OneSatSim.Scenarios.DesignConfigRecords.SolarArrayPlusXComponentConfig",
+      "kind": "record",
+      "file": "Scenarios/DesignConfigRecords/SolarArrayPlusXComponentConfig.mo",
+      "title": "solarArrayPlusX硬件设计配置",
+      "declarations": 21
+    },
+    {
+      "class": "OneSatSim.Scenarios.DesignConfigRecords.SolarArrayPlusYComponentConfig",
+      "kind": "record",
+      "file": "Scenarios/DesignConfigRecords/SolarArrayPlusYComponentConfig.mo",
+      "title": "solarArrayPlusY硬件设计配置",
+      "declarations": 21
+    },
+    {
+      "class": "OneSatSim.Scenarios.DesignConfigRecords.SpaceTimeComponentConfig",
+      "kind": "record",
+      "file": "Scenarios/DesignConfigRecords/SpaceTimeComponentConfig.mo",
+      "title": "spaceTime硬件设计配置",
+      "declarations": 12
+    },
+    {
+      "class": "OneSatSim.Scenarios.DesignConfigRecords.StarYComponentConfig",
+      "kind": "record",
+      "file": "Scenarios/DesignConfigRecords/StarYComponentConfig.mo",
+      "title": "starY硬件设计配置",
+      "declarations": 10
+    },
+    {
+      "class": "OneSatSim.Scenarios.DesignConfigRecords.StarZComponentConfig",
+      "kind": "record",
+      "file": "Scenarios/DesignConfigRecords/StarZComponentConfig.mo",
+      "title": "starZ硬件设计配置",
+      "declarations": 11
+    },
+    {
+      "class": "OneSatSim.Scenarios.DesignConfigRecords.StructureComponentConfig",
+      "kind": "record",
+      "file": "Scenarios/DesignConfigRecords/StructureComponentConfig.mo",
+      "title": "structure硬件设计配置",
+      "declarations": 14
+    },
+    {
+      "class": "OneSatSim.Scenarios.DesignConfigRecords.StructureDesignConfig",
+      "kind": "record",
+      "file": "Scenarios/DesignConfigRecords/StructureDesignConfig.mo",
+      "title": "structure分系统设计配置",
+      "declarations": 1
+    },
+    {
+      "class": "OneSatSim.Scenarios.DesignConfigRecords.SunSensorComponentConfig",
+      "kind": "record",
+      "file": "Scenarios/DesignConfigRecords/SunSensorComponentConfig.mo",
+      "title": "sunSensor硬件设计配置",
+      "declarations": 10
+    },
+    {
+      "class": "OneSatSim.Scenarios.DesignConfigRecords.ThermalControlDesignConfig",
+      "kind": "record",
+      "file": "Scenarios/DesignConfigRecords/ThermalControlDesignConfig.mo",
+      "title": "thermalControl分系统设计配置",
+      "declarations": 3
+    },
+    {
+      "class": "OneSatSim.Scenarios.DesignConfigRecords.TtcReceiverComponentConfig",
+      "kind": "record",
+      "file": "Scenarios/DesignConfigRecords/TtcReceiverComponentConfig.mo",
+      "title": "ttcReceiver硬件设计配置",
+      "declarations": 11
+    },
+    {
+      "class": "OneSatSim.Scenarios.DesignConfigRecords.WheelSComponentConfig",
+      "kind": "record",
+      "file": "Scenarios/DesignConfigRecords/WheelSComponentConfig.mo",
+      "title": "wheelS硬件设计配置",
+      "declarations": 18
+    },
+    {
+      "class": "OneSatSim.Scenarios.DesignConfigRecords.WheelXComponentConfig",
+      "kind": "record",
+      "file": "Scenarios/DesignConfigRecords/WheelXComponentConfig.mo",
+      "title": "wheelX硬件设计配置",
+      "declarations": 18
+    },
+    {
+      "class": "OneSatSim.Scenarios.DesignConfigRecords.WheelYComponentConfig",
+      "kind": "record",
+      "file": "Scenarios/DesignConfigRecords/WheelYComponentConfig.mo",
+      "title": "wheelY硬件设计配置",
+      "declarations": 18
+    },
+    {
+      "class": "OneSatSim.Scenarios.DesignConfigRecords.WheelZComponentConfig",
+      "kind": "record",
+      "file": "Scenarios/DesignConfigRecords/WheelZComponentConfig.mo",
+      "title": "wheelZ硬件设计配置",
+      "declarations": 18
+    },
+    {
+      "class": "OneSatSim.Scenarios.DesignConfigRecords.XbandComponentConfig",
+      "kind": "record",
+      "file": "Scenarios/DesignConfigRecords/XbandComponentConfig.mo",
+      "title": "xband硬件设计配置",
+      "declarations": 14
+    },
+    {
+      "class": "OneSatSim.Scenarios.DesignConfigRecords",
+      "kind": "package",
+      "file": "Scenarios/DesignConfigRecords/package.mo",
+      "title": "按分系统与设备实例组织的设计配置记录",
+      "declarations": 0
+    },
+    {
+      "class": "OneSatSim.Scenarios.GeneratedEnvironmentData",
+      "kind": "record",
+      "file": "Scenarios/GeneratedEnvironmentData.mo",
+      "title": "生成环境数据",
+      "declarations": 6
+    },
+    {
+      "class": "OneSatSim.Scenarios.GeneratedMassProperties",
+      "kind": "record",
+      "file": "Scenarios/GeneratedMassProperties.mo",
+      "title": "由机械组件离线汇总的整星质量特性",
+      "declarations": 0
+    },
+    {
+      "class": "OneSatSim.Scenarios.GeneratedScenario",
+      "kind": "record",
+      "file": "Scenarios/GeneratedScenario.mo",
+      "title": "由根目录DesignConfig.xlsx生成的任务场景",
+      "declarations": 0
+    },
+    {
+      "class": "OneSatSim.Scenarios.GeneratedSpacecraftDesignConfig",
+      "kind": "record",
+      "file": "Scenarios/GeneratedSpacecraftDesignConfig.mo",
+      "title": "由根目录DesignConfig.xlsx生成的整星设计配置",
+      "declarations": 0
+    },
+    {
+      "class": "OneSatSim.Scenarios.GroundStationConfig",
+      "kind": "record",
+      "file": "Scenarios/GroundStationConfig.mo",
+      "title": "单个地面站配置",
+      "declarations": 8
+    },
+    {
+      "class": "OneSatSim.Scenarios.ImagingTargetConfig",
+      "kind": "record",
+      "file": "Scenarios/ImagingTargetConfig.mo",
+      "title": "单个拍摄目标配置",
+      "declarations": 8
+    },
+    {
+      "class": "OneSatSim.Scenarios.InitialConditionConfig",
+      "kind": "record",
+      "file": "Scenarios/InitialConditionConfig.mo",
+      "title": "任务场景初始条件",
+      "declarations": 18
+    },
+    {
+      "class": "OneSatSim.Scenarios.OrbitConfig",
+      "kind": "record",
+      "file": "Scenarios/OrbitConfig.mo",
+      "title": "真实历元轨道输入与生成环境配置",
+      "declarations": 19
+    },
+    {
+      "class": "OneSatSim.Scenarios.ScenarioConfig",
+      "kind": "record",
+      "file": "Scenarios/ScenarioConfig.mo",
+      "title": "完整静态场景配置",
+      "declarations": 8
+    },
+    {
+      "class": "OneSatSim.Scenarios.SpacecraftDesignConfig",
+      "kind": "record",
+      "file": "Scenarios/SpacecraftDesignConfig.mo",
+      "title": "整星分层硬件设计配置类型",
+      "declarations": 8
+    },
+    {
+      "class": "OneSatSim.Scenarios",
+      "kind": "package",
+      "file": "Scenarios/package.mo",
+      "title": "静态仿真场景参数层",
+      "declarations": 1
+    },
+    {
+      "class": "OneSatSim.Simulation.CompleteMission",
+      "kind": "model",
+      "file": "Simulation/CompleteMission.mo",
+      "title": "完整任务仿真",
+      "declarations": 5
+    },
+    {
+      "class": "OneSatSim.Simulation.OnboardTelemetry",
+      "kind": "model",
+      "file": "Simulation/OnboardTelemetry.mo",
+      "title": "只读星上工程遥测",
+      "declarations": 41
+    },
+    {
+      "class": "OneSatSim.Simulation.OrbitalEnvironment",
+      "kind": "model",
+      "file": "Simulation/OrbitalEnvironment.mo",
+      "title": "轨道环境与几何装配",
+      "declarations": 12
+    },
+    {
+      "class": "OneSatSim.Simulation",
+      "kind": "package",
+      "file": "Simulation/package.mo",
+      "title": "仿真实验",
+      "declarations": 0
+    },
+    {
+      "class": "OneSatSim.Systems.Four_systems.ElectricalOverall",
+      "kind": "model",
+      "file": "Systems/Four_systems/ElectricalOverall.mo",
+      "title": "电气总体",
+      "declarations": 4
+    },
+    {
+      "class": "OneSatSim.Systems.Four_systems.InformationOverall",
+      "kind": "model",
+      "file": "Systems/Four_systems/InformationOverall.mo",
+      "title": "信息总体",
+      "declarations": 3
+    },
+    {
+      "class": "OneSatSim.Systems.Four_systems.MechanicsOverall",
+      "kind": "model",
+      "file": "Systems/Four_systems/MechanicsOverall.mo",
+      "title": "机械动力学总体",
+      "declarations": 8
+    },
+    {
+      "class": "OneSatSim.Systems.Four_systems.ThermalOverall",
+      "kind": "model",
+      "file": "Systems/Four_systems/ThermalOverall.mo",
+      "title": "热学总体",
+      "declarations": 25
+    },
+    {
+      "class": "OneSatSim.Systems.Four_systems",
+      "kind": "package",
+      "file": "Systems/Four_systems/package.mo",
+      "title": "四个领域总体包",
+      "declarations": 0
+    },
+    {
+      "class": "OneSatSim.Systems.N_systems.CommunicationSystem",
+      "kind": "model",
+      "file": "Systems/N_systems/CommunicationSystem.mo",
+      "title": "测控数传分系统",
+      "declarations": 9
+    },
+    {
+      "class": "OneSatSim.Systems.N_systems.DataHandlingSystem",
+      "kind": "model",
+      "file": "Systems/N_systems/DataHandlingSystem.mo",
+      "title": "数管分系统",
+      "declarations": 12
+    },
+    {
+      "class": "OneSatSim.Systems.N_systems.ElectricalPowerSystem",
+      "kind": "model",
+      "file": "Systems/N_systems/ElectricalPowerSystem.mo",
+      "title": "电源分系统",
+      "declarations": 12
+    },
+    {
+      "class": "OneSatSim.Systems.N_systems.GNCSystem",
+      "kind": "model",
+      "file": "Systems/N_systems/GNCSystem.mo",
+      "title": "姿轨控分系统",
+      "declarations": 23
+    },
+    {
+      "class": "OneSatSim.Systems.N_systems.NavigationSystem",
+      "kind": "model",
+      "file": "Systems/N_systems/NavigationSystem.mo",
+      "title": "导航分系统",
+      "declarations": 7
+    },
+    {
+      "class": "OneSatSim.Systems.N_systems.PayloadSystem",
+      "kind": "model",
+      "file": "Systems/N_systems/PayloadSystem.mo",
+      "title": "载荷分系统",
+      "declarations": 12
+    },
+    {
+      "class": "OneSatSim.Systems.N_systems.StructureSystem",
+      "kind": "model",
+      "file": "Systems/N_systems/StructureSystem.mo",
+      "title": "结构分系统",
+      "declarations": 8
+    },
+    {
+      "class": "OneSatSim.Systems.N_systems.ThermalControlSystem",
+      "kind": "model",
+      "file": "Systems/N_systems/ThermalControlSystem.mo",
+      "title": "热控分系统",
+      "declarations": 7
+    },
+    {
+      "class": "OneSatSim.Systems.N_systems",
+      "kind": "package",
+      "file": "Systems/N_systems/package.mo",
+      "title": "八个专业分系统包",
+      "declarations": 0
+    },
+    {
+      "class": "OneSatSim.Systems.SpacecraftSystem",
+      "kind": "model",
+      "file": "Systems/SpacecraftSystem.mo",
+      "title": "12U立方星总体系统",
+      "declarations": 19
+    },
+    {
+      "class": "OneSatSim.Systems",
+      "kind": "package",
+      "file": "Systems/package.mo",
+      "title": "系统集成包",
+      "declarations": 0
+    },
+    {
+      "class": "OneSatSim",
+      "kind": "package",
+      "file": "package.mo",
+      "title": "12U立方星多领域系统级总体仿真模型库",
+      "declarations": 0
+    }
+  ]
+}

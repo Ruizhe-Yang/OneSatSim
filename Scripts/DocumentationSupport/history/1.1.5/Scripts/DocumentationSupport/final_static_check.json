@@ -1,0 +1,18 @@
+{
+  "moFiles": 235,
+  "classes": 235,
+  "modelsBlocks": 108,
+  "directDeclarationDescriptions": 3617,
+  "protectedModelicaTokens": "UNCHANGED",
+  "originalNonModelicaByteIdentical": 59,
+  "modifiedNonModelicaFiles": [
+    "README.md",
+    "Scripts/ConfigSupport/generation_manifest.json",
+    "Scripts/generate_dashboard.py",
+    "Scripts/generate_mass_properties.py",
+    "Scripts/update_config.py"
+  ],
+  "compiler": "NOT_RUN",
+  "gui": "NOT_CHECKED",
+  "simulation": "NOT_RUN"
+}

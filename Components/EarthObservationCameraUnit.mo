@@ -2,6 +2,8 @@ within OneSatSim.Components;
 model EarthObservationCameraUnit "对地观测相机组件"
   parameter OneSatSim.Scenarios.DesignConfigRecords.EarthCameraComponentConfig config
     "由所属N-System传入的硬件设计配置";
+  parameter OneSatSim.Foundation.Types.ImagingCapabilities imagingCapabilities
+    "成像Capabilities；Shared mission and camera capability from the same design record";
   parameter Modelica.Units.SI.Resistance focalElectronicsResistance=config.FocalElectronicsResistance
     "焦面电子学负载电阻；Excel单位Ω，当前设计基线";
   parameter Modelica.Units.SI.Resistance focalHeaterResistance=config.FocalHeaterResistance
@@ -32,129 +34,173 @@ model EarthObservationCameraUnit "对地观测相机组件"
     "局部惯量 Izz；Excel单位kg·m²，当前设计基线";
   parameter Modelica.Units.SI.Temperature initialOpticalBenchTemperature=304.35 "场景光机结构初温";
   parameter Modelica.Units.SI.Temperature initialFocalBoxTemperature=304.69 "场景焦面盒初温";
-  Foundation.Interfaces.PowerPort power annotation(Placement(transformation(extent={{-10,90},{10,110}}),iconTransformation(extent={{-10,90},{10,110}})));
-  Modelica.Electrical.Analog.Basic.Conductor unused5Rail(G=0) annotation(Placement(transformation(extent={{54,76},{66,88}})));
-  Modelica.Electrical.Analog.Basic.Conductor unused33Rail(G=0) annotation(Placement(transformation(extent={{78,76},{90,88}})));
-  Foundation.Interfaces.ThermalPort thermal annotation(Placement(transformation(extent={{-10,-110},{10,-90}}),iconTransformation(extent={{-10,-110},{10,-90}})));
-  Foundation.Interfaces.MechanicalPort mechanical annotation(Placement(transformation(extent={{-110,-10},{-90,10}}),iconTransformation(extent={{-110,-10},{-90,10}})));
-  Foundation.Interfaces.InformationPort information annotation(Placement(transformation(extent={{90,-10},{110,10}}),iconTransformation(extent={{90,-10},{110,10}})));
+  Foundation.Interfaces.PowerPort power  "功率" annotation(Placement(visible=true, transformation(origin={-495,360}, extent={{-12,-12},{12,12}}, rotation=0), iconVisible=true, iconTransformation(origin={0,95}, extent={{-11.52,-11.52},{11.52,11.52}}, rotation=0)));
+  Modelica.Electrical.Analog.Basic.Conductor unused5Rail(G=0)  "计算/接口量 unused5Rail" annotation(Placement(visible=true, transformation(origin={-365,440}, extent={{-20,-20},{20,20}}, rotation=0)));
+  Modelica.Electrical.Analog.Basic.Conductor unused33Rail(G=0)  "计算/接口量 unused33Rail" annotation(Placement(visible=true, transformation(origin={-260,440}, extent={{-20,-20},{20,20}}, rotation=0)));
+  Foundation.Interfaces.ThermalPort thermal  "热学" annotation(Placement(visible=true, transformation(origin={450,-250}, extent={{-12,-12},{12,12}}, rotation=0), iconVisible=true, iconTransformation(origin={0,-97}, extent={{-11.52,-11.52},{11.52,11.52}}, rotation=0)));
+  Foundation.Interfaces.MechanicalPort mechanical  "机械" annotation(Placement(visible=true, transformation(origin={-495,-310}, extent={{-12,-12},{12,12}}, rotation=0), iconVisible=true, iconTransformation(origin={-89,0}, extent={{-11.52,-11.52},{11.52,11.52}}, rotation=0)));
+  Foundation.Interfaces.InformationPort information  "计算/接口量 information" annotation(Placement(visible=true, transformation(origin={610,40}, extent={{-12,-12},{12,12}}, rotation=0), iconVisible=true, iconTransformation(origin={89,0}, extent={{-11.52,-11.52},{11.52,11.52}}, rotation=0)));
   parameter Real rawImageSize(unit="1")=config.RawImageSize
     "星上压缩前的原始景数据量；数值单位：byte";
-  parameter Real storedImageSize(unit="1")=config.StoredImageSize
+  final parameter Real storedImageSize(unit="1")=imagingCapabilities.storedImageBytes
     "最终存储的单景数据量；数值单位：byte，不重复保存原始副本";
-  parameter Real nominalCaptureDuration(unit="s")=config.CaptureDuration;
-  final parameter Real imagingDataRate(unit="1/s")=storedImageSize/nominalCaptureDuration
+  final parameter Real nominalCaptureDuration(unit="s")=imagingCapabilities.captureDuration_s "配置项 nominalCaptureDuration [s]" ;
+  final parameter Real imagingDataRate(unit="1/s")=imagingCapabilities.nominalWriteRate_Bps
     "任务级参数：10 s内存储100 MB；数值单位：byte/s";
-  Foundation.Interfaces.BooleanSignalReader imagingCommand annotation(Placement(transformation(extent={{-96,68},{-76,84}})));
-  Modelica.Electrical.Analog.Ideal.IdealClosingSwitch exposureSwitch annotation(Placement(transformation(extent={{-78,40},{-58,60}})));
-  Modelica.Electrical.Analog.Sensors.CurrentSensor cameraCurrent annotation(Placement(transformation(extent={{-48,40},{-28,60}})));
-  Modelica.Electrical.Analog.Basic.Resistor focalElectronics(R=focalElectronicsResistance,useHeatPort=true) annotation(Placement(transformation(extent={{-18,40},{2,60}})));
-  Modelica.Electrical.Analog.Basic.Conductor pulseBuffer(G=0) annotation(Placement(transformation(origin={20,20},extent={{-8,-8},{8,8}},rotation=270)));
-  Foundation.Interfaces.BooleanSignalReader captureCommand annotation(Placement(transformation(extent={{20,66},{38,80}})));
+  parameter Modelica.Units.SI.Voltage minimumOperationalVoltage=6
+    "平均值功放模型可用供电域下限，不代表硬件欠压规格 [V]；Average-model supported camera supply domain, not a hardware undervoltage specification";
+  Foundation.Interfaces.BooleanSignalReader imagingCommand  "可扩展总线布尔信号到因果计算端口的无状态恒等读取器实例" annotation(Placement(visible=true, transformation(origin={-335,205}, extent={{-16,-16},{16,16}}, rotation=0)));
+  Modelica.Electrical.Analog.Ideal.IdealClosingSwitch exposureSwitch  "计算/接口量 exposureSwitch" annotation(Placement(visible=true, transformation(origin={-335,360}, extent={{-26,-26},{26,26}}, rotation=0)));
+  Modelica.Electrical.Analog.Sensors.CurrentSensor cameraCurrent  "camera电流" annotation(Placement(visible=true, transformation(origin={-205,360}, extent={{-24,-24},{24,24}}, rotation=0)));
+  Modelica.Electrical.Analog.Sensors.VoltageSensor cameraSupplyVoltage 
+     "camera供给电压" annotation(Placement(visible=true, transformation(origin={70,360}, extent={{-24,-24},{24,24}}, rotation=0)));
+  Modelica.Electrical.Analog.Basic.Resistor focalElectronics(R=focalElectronicsResistance,useHeatPort=true)  "计算/接口量 focalElectronics" annotation(Placement(visible=true, transformation(origin={-75,360}, extent={{-24,-24},{24,24}}, rotation=0)));
+  Modelica.Electrical.Analog.Basic.Conductor pulseBuffer(G=0)  "计算/接口量 pulseBuffer" annotation(Placement(visible=true, transformation(origin={205,440}, extent={{-22,-22},{22,22}}, rotation=0)));
+  Foundation.Interfaces.BooleanSignalReader captureCommand  "可扩展总线布尔信号到因果计算端口的无状态恒等读取器实例" annotation(Placement(visible=true, transformation(origin={-335,75}, extent={{-16,-16},{16,16}}, rotation=0)));
   Foundation.Interfaces.IntegerSignalReader focalHeaterState
-    "Focal-box heater ON below 0 degC and OFF above 5 degC" annotation(Placement(transformation(extent={{19,42},{37,58}})));
+    "可扩展总线整数信号到因果计算端口的无状态恒等读取器实例；Focal-box heater ON below 0 degC and OFF above 5 degC" annotation(Placement(visible=true, transformation(origin={-335,-65}, extent={{-16,-16},{16,16}}, rotation=0)));
   Foundation.Calculations.EarthObservationCameraCalculation cameraCalculation(
-    imagingDataRate=imagingDataRate,focalHeaterResistance=focalHeaterResistance)
-    "About 4 W at the 12 V bus" annotation(Placement(transformation(extent={{44,18},{72,58}})));
-  Modelica.Electrical.Analog.Sensors.CurrentSensor focalHeaterCurrent annotation(Placement(transformation(extent={{-28,76},{-8,96}})));
-  Modelica.Electrical.Analog.Basic.VariableConductor focalHeater(useHeatPort=true) annotation(Placement(transformation(extent={{0,76},{20,96}})));
+    imagingDataRate=imagingDataRate,focalHeaterResistance=focalHeaterResistance,
+    minimumOperationalVoltage=minimumOperationalVoltage)
+    "对地观测相机任务状态计算实例；About 4 W at the 12 V bus" annotation(Placement(visible=true, transformation(origin={-125,90}, extent={{-78,-78},{78,78}}, rotation=0)));
+  Modelica.Electrical.Analog.Sensors.CurrentSensor focalHeaterCurrent  "focalHeater电流" annotation(Placement(visible=true, transformation(origin={205,360}, extent={{-24,-24},{24,24}}, rotation=0)));
+  Modelica.Electrical.Analog.Basic.VariableConductor focalHeater(useHeatPort=true)  "计算/接口量 focalHeater" annotation(Placement(visible=true, transformation(origin={205,180}, extent={{-28,-28},{28,28}}, rotation=0)));
   Modelica.Thermal.HeatTransfer.Components.HeatCapacitor opticalBench(
     C=opticalBenchHeatCapacity,T(start=initialOpticalBenchTemperature,fixed=false))
-    "系统级等效: telescope barrel, secondary mirror and load-bearing structure"
-    annotation(Placement(transformation(extent={{-35,-25},{-15,-5}})));
-  Modelica.Thermal.HeatTransfer.Components.HeatCapacitor focalBox(C=focalBoxHeatCapacity,T(start=initialFocalBoxTemperature,fixed=true)) "任务级参数 focal electronics initial work point" annotation(Placement(transformation(extent={{65,-25},{85,-5}})));
+    "系统级等效: telescope barrel, secondary mirror and load-bearing structure" 
+    annotation(Placement(visible=true, transformation(origin={-100,-65}, extent={{-32,-32},{32,32}}, rotation=0)));
+  Modelica.Thermal.HeatTransfer.Components.HeatCapacitor focalBox(C=focalBoxHeatCapacity,T(start=initialFocalBoxTemperature,fixed=true)) "任务级参数 focal electronics initial work point" annotation(Placement(visible=true, transformation(origin={220,-65}, extent={{-32,-32},{32,32}}, rotation=0)));
   Modelica.Thermal.HeatTransfer.Components.ThermalConductor opticalMount(G=opticalMountConductance)
-    "Equivalent series conductance from optical structure to spacecraft deck"
-    annotation(Placement(transformation(extent={{-35,-48},{-15,-32}})));
+    "计算/接口量 opticalMount；Equivalent series conductance from optical structure to spacecraft deck" 
+    annotation(Placement(visible=true, transformation(origin={-100,-230}, extent={{-24,-24},{24,24}}, rotation=0)));
   Modelica.Thermal.HeatTransfer.Components.ThermalConductor focalCoupling(G=focalCouplingConductance)
-    "Low-order focal-box to optical-bench coupling"
-    annotation(Placement(transformation(extent={{20,-48},{40,-32}})));
-  Modelica.Thermal.HeatTransfer.Components.ThermalConductor focalMount(G=focalMountConductance) "系统级 focal electronics isolation path" annotation(Placement(transformation(extent={{65,-62},{85,-48}})));
-  Modelica.Thermal.HeatTransfer.Sensors.TemperatureSensor t20 annotation(Placement(transformation(extent={{-85,-75},{-75,-65}})));
-  Modelica.Thermal.HeatTransfer.Sensors.TemperatureSensor t21 annotation(Placement(transformation(extent={{-70,-75},{-60,-65}})));
-  Modelica.Thermal.HeatTransfer.Sensors.TemperatureSensor t22 annotation(Placement(transformation(extent={{-55,-75},{-45,-65}})));
-  Modelica.Thermal.HeatTransfer.Sensors.TemperatureSensor t23 annotation(Placement(transformation(extent={{-40,-75},{-30,-65}})));
-  Modelica.Thermal.HeatTransfer.Sensors.TemperatureSensor t24 annotation(Placement(transformation(extent={{-25,-75},{-15,-65}})));
-  Modelica.Thermal.HeatTransfer.Sensors.TemperatureSensor t25 annotation(Placement(transformation(extent={{-10,-75},{0,-65}})));
-  Modelica.Thermal.HeatTransfer.Sensors.TemperatureSensor t26 annotation(Placement(transformation(extent={{5,-75},{15,-65}})));
-  Modelica.Thermal.HeatTransfer.Sensors.TemperatureSensor t27 annotation(Placement(transformation(extent={{20,-75},{30,-65}})));
-  Modelica.Thermal.HeatTransfer.Sensors.TemperatureSensor t28 annotation(Placement(transformation(extent={{35,-75},{45,-65}})));
-  Modelica.Thermal.HeatTransfer.Sensors.TemperatureSensor t29 annotation(Placement(transformation(extent={{50,-75},{60,-65}})));
-  Modelica.Thermal.HeatTransfer.Sensors.TemperatureSensor t30 annotation(Placement(transformation(extent={{65,-75},{75,-65}})));
-  Modelica.Mechanics.MultiBody.Parts.Body telescopeBody(m=mass,r_CM={rcm_X,rcm_Y,rcm_Z},I_11=inertia_XX,I_22=inertia_YY,I_33=inertia_ZZ) annotation(Placement(transformation(extent={{-82,2},{-62,22}})));
-  Foundation.Interfaces.RealSignalBridge informationRealBridge[14] annotation(Placement(transformation(extent={{78,20},{86,28}})));
-  Foundation.Interfaces.IntegerSignalBridge informationIntegerBridge[1] annotation(Placement(transformation(extent={{78,0},{86,8}})));
+    "计算/接口量 focalCoupling；Low-order focal-box to optical-bench coupling" 
+    annotation(Placement(visible=true, transformation(origin={60,-97}, extent={{-26,-26},{26,26}}, rotation=0)));
+  Modelica.Thermal.HeatTransfer.Components.ThermalConductor focalMount(G=focalMountConductance) "系统级 focal electronics isolation path" annotation(Placement(visible=true, transformation(origin={220,-235}, extent={{-24,-24},{24,24}}, rotation=0)));
+  Modelica.Thermal.HeatTransfer.Sensors.TemperatureSensor t20  "计算/接口量 t20" annotation(Placement(visible=true, transformation(origin={-130,-340}, extent={{-22,-22},{22,22}}, rotation=0)));
+  Modelica.Thermal.HeatTransfer.Sensors.TemperatureSensor t21  "计算/接口量 t21" annotation(Placement(visible=true, transformation(origin={-40,-340}, extent={{-22,-22},{22,22}}, rotation=0)));
+  Modelica.Thermal.HeatTransfer.Sensors.TemperatureSensor t22  "计算/接口量 t22" annotation(Placement(visible=true, transformation(origin={50,-340}, extent={{-22,-22},{22,22}}, rotation=0)));
+  Modelica.Thermal.HeatTransfer.Sensors.TemperatureSensor t23  "计算/接口量 t23" annotation(Placement(visible=true, transformation(origin={140,-340}, extent={{-22,-22},{22,22}}, rotation=0)));
+  Modelica.Thermal.HeatTransfer.Sensors.TemperatureSensor t24  "计算/接口量 t24" annotation(Placement(visible=true, transformation(origin={230,-340}, extent={{-22,-22},{22,22}}, rotation=0)));
+  Modelica.Thermal.HeatTransfer.Sensors.TemperatureSensor t25  "计算/接口量 t25" annotation(Placement(visible=true, transformation(origin={-130,-445}, extent={{-22,-22},{22,22}}, rotation=0)));
+  Modelica.Thermal.HeatTransfer.Sensors.TemperatureSensor t26  "计算/接口量 t26" annotation(Placement(visible=true, transformation(origin={-40,-445}, extent={{-22,-22},{22,22}}, rotation=0)));
+  Modelica.Thermal.HeatTransfer.Sensors.TemperatureSensor t27  "计算/接口量 t27" annotation(Placement(visible=true, transformation(origin={50,-445}, extent={{-22,-22},{22,22}}, rotation=0)));
+  Modelica.Thermal.HeatTransfer.Sensors.TemperatureSensor t28  "计算/接口量 t28" annotation(Placement(visible=true, transformation(origin={140,-445}, extent={{-22,-22},{22,22}}, rotation=0)));
+  Modelica.Thermal.HeatTransfer.Sensors.TemperatureSensor t29  "计算/接口量 t29" annotation(Placement(visible=true, transformation(origin={230,-445}, extent={{-22,-22},{22,22}}, rotation=0)));
+  Modelica.Thermal.HeatTransfer.Sensors.TemperatureSensor t30  "计算/接口量 t30" annotation(Placement(visible=true, transformation(origin={330,-115}, extent={{-22,-22},{22,22}}, rotation=0)));
+  Modelica.Mechanics.MultiBody.Parts.Body telescopeBody(m=mass,r_CM={rcm_X,rcm_Y,rcm_Z},I_11=inertia_XX,I_22=inertia_YY,I_33=inertia_ZZ)  "telescope本体" annotation(Placement(visible=true, transformation(origin={-395,-310}, extent={{-34,-34},{34,34}}, rotation=0)));
+  Foundation.Interfaces.RealSignalBridge informationRealBridge[14]  "实数因果输出到可扩展信息总线的无状态恒等桥实例" annotation(Placement(visible=true, transformation(origin={460,25}, extent={{-16,-16},{16,16}}, rotation=0)));
+  Foundation.Interfaces.IntegerSignalBridge informationIntegerBridge[1]  "整数因果输出到可扩展信息总线的无状态恒等桥实例" annotation(Placement(visible=true, transformation(origin={460,180}, extent={{-16,-16},{16,16}}, rotation=0)));
 equation
-  connect(information.command.payloadPowerCommand,imagingCommand.u) annotation(Line(points={{100,0},{100,61.5},{-96,61.5},{-96,76}},color={255,0,255}));
-  connect(information.command.earthObservationCaptureCommand,captureCommand.u) annotation(Line(points={{100,0},{94,0},{94,73},{20,73}},color={255,0,255}));
-  connect(information.device.tcState[12],focalHeaterState.u) annotation(Line(points={{100,0},{100,9.5},{29.5,9.5},{29.5,50},{19,50}},color={255,127,0}));
-  connect(imagingCommand.y,cameraCalculation.payloadPowered) annotation(Line(points={{-76,76},{-76,61.5},{44,61.5},{44,53}},color={255,0,255}));
-  connect(captureCommand.y,cameraCalculation.captureCommand) annotation(Line(points={{38,73},{42,73},{42,45},{44,45}},color={255,0,255}));
-  connect(focalHeaterState.y,cameraCalculation.focalHeaterState) annotation(Line(points={{37,50},{40,50},{40,29},{44,29}},color={255,127,0}));
-  connect(power.p5,unused5Rail.p) annotation(Line(points={{0,100},{54,100},{54,82}},color={0,0,255}));
-  connect(unused5Rail.n,power.n5) annotation(Line(points={{66,82},{66,100},{0,100}},color={0,0,255}));
-  connect(power.p33,unused33Rail.p) annotation(Line(points={{0,100},{78,100},{78,82}},color={0,0,255}));
-  connect(unused33Rail.n,power.n33) annotation(Line(points={{90,82},{90,100},{0,100}},color={0,0,255}));
-  connect(imagingCommand.y,exposureSwitch.control) annotation(Line(points={{-76,76},{-68,76},{-68,62}},color={255,0,255}));
-  connect(power.p12,exposureSwitch.p) annotation(Line(points={{0,100},{-49.5,100},{-49.5,50},{-78,50}},color={0,0,255}));
-  connect(exposureSwitch.n,cameraCurrent.p) annotation(Line(points={{-58,50},{-48,50}},color={0,0,255}));
-  connect(cameraCurrent.n,focalElectronics.p) annotation(Line(points={{-28,50},{-18,50}},color={0,0,255}));
-  connect(focalElectronics.n,power.n12) annotation(Line(points={{2,50},{-1.5,50},{-1.5,100},{0,100}},color={0,0,255}));
-  connect(pulseBuffer.p,power.p12) annotation(Line(points={{20,28},{3.5,28},{3.5,74.5},{-1.5,74.5},{-1.5,100},{0,100}},color={0,0,255}));
-  connect(pulseBuffer.n,power.n12) annotation(Line(points={{20,12},{3.5,12},{3.5,74.5},{-1.5,74.5},{-1.5,100},{0,100}},color={0,0,255}));
-  connect(cameraCurrent.i,informationRealBridge[1].u) annotation(Line(points={{-38,40},{-38,10.5},{78,10.5},{78,24}},color={0,0,127}));
-  connect(informationRealBridge[1].y,information.device.pdCurrent[17]) annotation(Line(points={{86,24},{94,24},{94,0},{100,0}},color={0,0,127}));
-  connect(cameraCalculation.status,informationIntegerBridge[1].u) annotation(Line(points={{70.6,49},{78,49},{78,4}},color={255,127,0}));
-  connect(informationIntegerBridge[1].y,information.device.cameraStatus) annotation(Line(points={{86,4},{94,4},{94,0},{100,0}},color={255,127,0}));
-  connect(cameraCalculation.payloadWriteRate,informationRealBridge[2].u) annotation(Line(points={{70.6,41},{78,41},{78,24}},color={0,90,180}));
-  connect(informationRealBridge[2].y,information.payload.earthCameraWriteRate) annotation(Line(points={{86,24},{94,24},{94,0},{100,0}},color={0,90,180}));
-  connect(power.p12,focalHeaterCurrent.p) annotation(Line(points={{0,100},{0,94},{-28,94},{-28,86}},color={0,0,255}));
-  connect(focalHeaterCurrent.n,focalHeater.p) annotation(Line(points={{-8,86},{0,86}},color={0,0,255}));
-  connect(focalHeater.n,power.n12) annotation(Line(points={{20,86},{20,94},{0,94},{0,100}},color={0,0,255}));
-  connect(cameraCalculation.focalHeaterConductance,focalHeater.G) annotation(Line(points={{70.6,29},{76,29},{76,110},{10,110},{10,98}},color={0,0,127}));
-  connect(focalHeaterCurrent.i,informationRealBridge[3].u) annotation(Line(points={{-18,76},{-18,61.5},{78,61.5},{78,24}},color={0,0,127}));
-  connect(informationRealBridge[3].y,information.device.tcCurrent[12]) annotation(Line(points={{86,24},{94,24},{94,0},{100,0}},color={0,0,127}));
-  connect(focalHeater.heatPort,focalBox.port) annotation(Line(points={{10,76},{10,-5},{75,-5}},color={191,0,0}));
-  connect(focalElectronics.heatPort,focalBox.port) annotation(Line(points={{-8,40},{-8,-5},{75,-5}},color={191,0,0}));
-  connect(opticalBench.port,opticalMount.port_a) annotation(Line(points={{-25,-25},{-25,-40},{-35,-40}},color={191,0,0}));
-  connect(opticalMount.port_b,thermal) annotation(Line(points={{-15,-40},{-15,-94},{0,-94},{0,-100}},color={191,0,0}));
-  connect(opticalBench.port,focalCoupling.port_a) annotation(Line(points={{-25,-25},{20,-25},{20,-40}},color={191,0,0}));
-  connect(focalCoupling.port_b,focalBox.port) annotation(Line(points={{40,-40},{75,-40},{75,-25}},color={191,0,0}));
-  connect(focalBox.port,focalMount.port_a) annotation(Line(points={{75,-25},{58,-25},{58,-55},{65,-55}},color={191,0,0}));
-  connect(focalMount.port_b,thermal) annotation(Line(points={{85,-55},{85,-94},{0,-94},{0,-100}},color={191,0,0}));
-  connect(opticalBench.port,t20.port) annotation(Line(points={{-25,-25},{-80,-25},{-80,-70},{-85,-70}},color={191,0,0}));
-  connect(opticalBench.port,t21.port) annotation(Line(points={{-25,-25},{-65,-25},{-65,-70},{-70,-70}},color={191,0,0}));
-  connect(opticalBench.port,t22.port) annotation(Line(points={{-25,-25},{-50,-25},{-50,-70},{-55,-70}},color={191,0,0}));
-  connect(opticalBench.port,t23.port) annotation(Line(points={{-25,-25},{-35,-25},{-35,-70},{-40,-70}},color={191,0,0}));
-  connect(opticalBench.port,t24.port) annotation(Line(points={{-25,-25},{-13.5,-25},{-13.5,-70},{-25,-70}},color={191,0,0}));
-  connect(opticalBench.port,t25.port) annotation(Line(points={{-25,-25},{-5,-25},{-5,-70},{-10,-70}},color={191,0,0}));
-  connect(opticalBench.port,t26.port) annotation(Line(points={{-25,-25},{10,-25},{10,-70},{5,-70}},color={191,0,0}));
-  connect(opticalBench.port,t27.port) annotation(Line(points={{-25,-25},{18.5,-25},{18.5,-70},{20,-70}},color={191,0,0}));
-  connect(opticalBench.port,t28.port) annotation(Line(points={{-25,-25},{40,-25},{40,-70},{35,-70}},color={191,0,0}));
-  connect(opticalBench.port,t29.port) annotation(Line(points={{-25,-25},{55,-25},{55,-70},{50,-70}},color={191,0,0}));
-  connect(focalBox.port,t30.port) annotation(Line(points={{75,-25},{63.5,-25},{63.5,-70},{65,-70}},color={191,0,0}));
-  connect(t20.T,informationRealBridge[4].u) annotation(Line(points={{-75,-70},{-75,0.5},{76.5,0.5},{76.5,24},{78,24}},color={0,0,127}));
-  connect(informationRealBridge[4].y,information.device.thermistorTemperature[20]) annotation(Line(points={{86,24},{94,24},{94,0},{100,0}},color={0,0,127}));
-  connect(t21.T,informationRealBridge[5].u) annotation(Line(points={{-60,-70},{-60,10.5},{78,10.5},{78,24}},color={0,0,127}));
-  connect(informationRealBridge[5].y,information.device.thermistorTemperature[21]) annotation(Line(points={{86,24},{94,24},{94,0},{100,0}},color={0,0,127}));
-  connect(t22.T,informationRealBridge[6].u) annotation(Line(points={{-45,-70},{-45,10.5},{78,10.5},{78,24}},color={0,0,127}));
-  connect(informationRealBridge[6].y,information.device.thermistorTemperature[22]) annotation(Line(points={{86,24},{94,24},{94,0},{100,0}},color={0,0,127}));
-  connect(t23.T,informationRealBridge[7].u) annotation(Line(points={{-30,-70},{-30,-49.5},{63.5,-49.5},{63.5,16.5},{78,16.5},{78,24}},color={0,0,127}));
-  connect(informationRealBridge[7].y,information.device.thermistorTemperature[23]) annotation(Line(points={{86,24},{94,24},{94,0},{100,0}},color={0,0,127}));
-  connect(t24.T,informationRealBridge[8].u) annotation(Line(points={{-15,-70},{-11.5,-70},{-11.5,10.5},{78,10.5},{78,24}},color={0,0,127}));
-  connect(informationRealBridge[8].y,information.device.thermistorTemperature[24]) annotation(Line(points={{86,24},{94,24},{94,0},{100,0}},color={0,0,127}));
-  connect(t25.T,informationRealBridge[9].u) annotation(Line(points={{0,-70},{0,10.5},{78,10.5},{78,24}},color={0,0,127}));
-  connect(informationRealBridge[9].y,information.device.thermistorTemperature[25]) annotation(Line(points={{86,24},{94,24},{94,0},{100,0}},color={0,0,127}));
-  connect(t26.T,informationRealBridge[10].u) annotation(Line(points={{15,-70},{15,10.5},{78,10.5},{78,24}},color={0,0,127}));
-  connect(informationRealBridge[10].y,information.device.thermistorTemperature[26]) annotation(Line(points={{86,24},{94,24},{94,0},{100,0}},color={0,0,127}));
-  connect(t27.T,informationRealBridge[11].u) annotation(Line(points={{30,-70},{30,-49.5},{63.5,-49.5},{63.5,16.5},{78,16.5},{78,24}},color={0,0,127}));
-  connect(informationRealBridge[11].y,information.device.thermistorTemperature[27]) annotation(Line(points={{86,24},{94,24},{94,0},{100,0}},color={0,0,127}));
-  connect(t28.T,informationRealBridge[12].u) annotation(Line(points={{45,-70},{45,16.5},{78,16.5},{78,24}},color={0,0,127}));
-  connect(informationRealBridge[12].y,information.device.thermistorTemperature[28]) annotation(Line(points={{86,24},{94,24},{94,0},{100,0}},color={0,0,127}));
-  connect(t29.T,informationRealBridge[13].u) annotation(Line(points={{60,-70},{60,16.5},{78,16.5},{78,24}},color={0,0,127}));
-  connect(informationRealBridge[13].y,information.device.thermistorTemperature[29]) annotation(Line(points={{86,24},{94,24},{94,0},{100,0}},color={0,0,127}));
-  connect(t30.T,informationRealBridge[14].u) annotation(Line(points={{75,-70},{87.5,-70},{87.5,24},{78,24}},color={0,0,127}));
-  connect(informationRealBridge[14].y,information.device.thermistorTemperature[30]) annotation(Line(points={{86,24},{94,24},{94,0},{100,0}},color={0,0,127}));
-  connect(telescopeBody.frame_a,mechanical) annotation(Line(points={{-82,12},{-94,12},{-94,0},{-100,0}},color={95,95,95},thickness=0.5));
-  annotation(Icon(coordinateSystem(extent={{-100,-100},{100,100}},preserveAspectRatio=true),graphics={Rectangle(extent={{-100,100},{100,-100}},lineColor={60,75,105},fillColor={238,241,247},fillPattern=FillPattern.Solid),Polygon(points={{-70,45},{45,45},{75,0},{45,-45},{-70,-45},{-70,45}},fillColor={155,170,195},fillPattern=FillPattern.Solid),Ellipse(extent={{-45,30},{15,-30}},fillColor={30,40,65},fillPattern=FillPattern.Solid),Text(extent={{-92,-74},{92,-52}},textString="CAM / PD17 / T20-30")}),Diagram(coordinateSystem(extent={{-110,-110},{110,110}},preserveAspectRatio=true),graphics={Rectangle(extent={{-100,100},{100,-100}},lineColor={205,205,205},pattern=LinePattern.Dot),Rectangle(extent={{-92,0},{92,-82}},lineColor={190,0,0},pattern=LinePattern.Dash),Text(extent={{-88,8},{88,-2}},textString="光机结构/焦面盒 两节点热等效")}),Documentation(info="<html><h4>用途与系统角色</h4><p><b>用途：</b>执行优先级任务中的成像动作，产生图像写入率并表示光机电热耦合</p><p><b>建模层级：</b>Components层设备级白箱；主要由Modelica 4.0.0标准库元件和图形连线组成</p><h4>实现与接口</h4><p><b>白箱实现：</b>用指令控制理想开关驱动焦面电子学负载；相机热模型降阶为光机结构与焦面盒两个物理节点，并保留原11路工程温度通道。</p><p><b>关键内部元件：</b>exposureSwitch、cameraCurrent、focalElectronics、opticalBench、focalBox、opticalMount、focalCoupling和11个TemperatureSensor。</p><p><b>对外接口：</b>thermal（ThermalPort）、mechanical（MechanicalPort）、information（InformationPort）</p><h4>工作行为与状态</h4><p><b>运行行为：</b>imaging指令有效时相机上电、状态置位并按imagingDataRate写入存储；焦面电子学损耗进入焦面盒，再与光机结构和公共舱板交换热量。</p><p><b>关键参数：</b>成像数据率、焦面负载、光机结构热容与导热、焦面盒热容与隔热。</p><p><b>关键状态：</b>开关状态、光机结构温度、焦面盒温度和设备状态。</p><p><b>物理域：</b>光机、电、热、机械、信息、业务数据</p><h4>信息与遥测关系</h4><p><b>数据路径：</b>相机状态进入Camera_status；T20至T29映射光机结构代表温度，T30映射焦面盒温度；图像速率进入PayloadDataPort而非直接作为工程遥测字段。</p><p><b>使用说明：</b>多个同温遥测通道表示安装在同一等效结构节点的物理传感器，不是额外热状态。设备测量与机器反馈均写入同一个InformationPort.device语义域。</p><p><b>系统级等效：</b>五节点相机热网络合并为两个守恒热容节点，保留总热容、焦面电子学热源、对公共舱板的热路径和原遥测通道，降低24 h任务仿真的热状态数。</p></html>"));
+  connect(information.command.payloadPowerCommand,imagingCommand.u) annotation(Line(points={{610,40},{610,254.9},{-382.38,254.9},{-382.38,205},{-349.24,205}}, color={255,0,255}, thickness=0.35, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(information.command.earthObservationCaptureCommand,captureCommand.u) annotation(Line(points={{610,40},{610,254.9},{-382.38,254.9},{-382.38,75},{-349.24,75}}, color={255,0,255}, thickness=0.35, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(information.device.tcState[12],focalHeaterState.u) annotation(Line(points={{610,40},{610,-147},{-382.38,-147},{-382.38,-65},{-349.24,-65}}, color={255,127,0}, thickness=0.35, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(imagingCommand.y,cameraCalculation.payloadPowered) annotation(Line(points={{-320.76,205},{-204.42,205},{-204.42,152.4},{-194.42,152.4}}, color={255,0,255}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(captureCommand.y,cameraCalculation.captureCommand) annotation(Line(points={{-320.76,75},{-204.42,75},{-204.42,110.8},{-194.42,110.8}}, color={255,0,255}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(power.p12,cameraSupplyVoltage.p) annotation(Line(points={{-495,360},{-495,326},{36,326},{36,360},{46,360}}, color={0,0,255}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(cameraSupplyVoltage.n,power.n12) annotation(Line(points={{94,360},{104,360},{104,326},{-495,326},{-495,360}}, color={0,0,255}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(cameraSupplyVoltage.v,cameraCalculation.supplyVoltage) annotation(Line(points={{70,333.6},{70,174.1},{-204.42,174.1},{-204.42,69.2},{-194.42,69.2}}, color={0,0,127}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(focalHeaterState.y,cameraCalculation.focalHeaterState) annotation(Line(points={{-320.76,-65},{-204.42,-65},{-204.42,27.6},{-194.42,27.6}}, color={255,127,0}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(power.p5,unused5Rail.p) annotation(Line(points={{-495,360},{-495,440},{-385,440}}, color={0,0,255}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(unused5Rail.n,power.n5) annotation(Line(points={{-345,440},{-335,440},{-335,394},{-495,394},{-495,360}}, color={0,0,255}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(power.p33,unused33Rail.p) annotation(Line(points={{-495,360},{-495,394},{-290,394},{-290,440},{-280,440}}, color={0,0,255}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(unused33Rail.n,power.n33) annotation(Line(points={{-240,440},{-230,440},{-230,394},{-495,394},{-495,360}}, color={0,0,255}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(imagingCommand.y,exposureSwitch.control) annotation(Line(points={{-320.76,205},{-134.6,205},{-134.6,401.2},{-335,401.2},{-335,391.2}}, color={255,0,255}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(power.p12,exposureSwitch.p) annotation(Line(points={{-495,360},{-361,360}}, color={0,0,255}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(exposureSwitch.n,cameraCurrent.p) annotation(Line(points={{-309,360},{-229,360}}, color={0,0,255}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(cameraCurrent.n,focalElectronics.p) annotation(Line(points={{-181,360},{-99,360}}, color={0,0,255}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(focalElectronics.n,power.n12) annotation(Line(points={{-51,360},{-41,360},{-41,326},{-495,326},{-495,360}}, color={0,0,255}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(pulseBuffer.p,power.p12) annotation(Line(points={{183,440},{173,440},{173,394},{-495,394},{-495,360}}, color={0,0,255}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(pulseBuffer.n,power.n12) annotation(Line(points={{227,440},{237,440},{237,394},{-495,394},{-495,360}}, color={0,0,255}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(cameraCurrent.i,informationRealBridge[1].u) annotation(Line(points={{-205,333.6},{-205,323.6},{-5,323.6},{-5,25},{445.76,25}}, color={0,0,127}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(informationRealBridge[1].y,information.device.pdCurrent[17]) annotation(Line(points={{474.24,25},{610,25},{610,40}}, color={0,0,127}, thickness=0.35, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(cameraCalculation.status,informationIntegerBridge[1].u) annotation(Line(points={{-55.58,152.4},{-45.58,152.4},{-45.58,142},{410.84,142},{410.84,180},{445.76,180}}, color={255,127,0}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(informationIntegerBridge[1].y,information.device.cameraStatus) annotation(Line(points={{474.24,180},{610,180},{610,40}}, color={255,127,0}, thickness=0.35, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(cameraCalculation.payloadWriteRate,informationRealBridge[2].u) annotation(Line(points={{-55.58,121.2},{-5,121.2},{-5,25},{445.76,25}}, color={0,0,127}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(informationRealBridge[2].y,information.payload.earthCameraWriteRate) annotation(Line(points={{474.24,25},{610,25},{610,40}}, color={0,0,127}, thickness=0.35, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(power.p12,focalHeaterCurrent.p) annotation(Line(points={{-495,360},{-495,326},{171,326},{171,360},{181,360}}, color={0,0,255}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(focalHeaterCurrent.n,focalHeater.p) annotation(Line(points={{229,360},{239,360},{239,218},{167,218},{167,180},{177,180}}, color={0,0,255}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(focalHeater.n,power.n12) annotation(Line(points={{233,180},{243,180},{243,326},{-495,326},{-495,360}}, color={0,0,255}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(cameraCalculation.focalHeaterConductance,focalHeater.G) annotation(Line(points={{-55.58,27.6},{-5,27.6},{-5,223.6},{205,223.6},{205,213.6}}, color={0,0,127}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(focalHeaterCurrent.i,informationRealBridge[3].u) annotation(Line(points={{205,333.6},{205,218},{409.06,218},{409.06,25},{445.76,25}}, color={0,0,127}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(informationRealBridge[3].y,information.device.tcCurrent[12]) annotation(Line(points={{474.24,25},{610,25},{610,40}}, color={0,0,127}, thickness=0.35, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(focalHeater.heatPort,focalBox.port) annotation(Line(points={{205,152},{205,142},{342.6,142},{342.6,-83},{262,-83},{262,-107},{220,-107},{220,-97}}, color={191,0,0}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(focalElectronics.heatPort,focalBox.port) annotation(Line(points={{-75,336},{-75,326},{-5,326},{-5,-61},{178,-61},{178,-107},{220,-107},{220,-97}}, color={191,0,0}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(opticalBench.port,opticalMount.port_a) annotation(Line(points={{-100,-97},{-100,-107},{-134,-107},{-134,-230},{-124,-230}}, color={191,0,0}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(opticalMount.port_b,thermal) annotation(Line(points={{-76,-230},{-66,-230},{-66,-264},{450,-264},{450,-250}}, color={191,0,0}, thickness=0.5, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(opticalBench.port,focalCoupling.port_a) annotation(Line(points={{-100,-97},{-100,-107},{24,-107},{24,-97},{34,-97}}, color={191,0,0}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(focalCoupling.port_b,focalBox.port) annotation(Line(points={{86,-97},{96,-97},{96,-107},{220,-107},{220,-97}}, color={191,0,0}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(focalBox.port,focalMount.port_a) annotation(Line(points={{220,-97},{220,-107},{186,-107},{186,-235},{196,-235}}, color={191,0,0}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(focalMount.port_b,thermal) annotation(Line(points={{244,-235},{450,-235},{450,-250}}, color={191,0,0}, thickness=0.5, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(opticalBench.port,t20.port) annotation(Line(points={{-100,-97},{-100,-107},{-162,-107},{-162,-340},{-152,-340}}, color={191,0,0}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(opticalBench.port,t21.port) annotation(Line(points={{-100,-97},{-100,-107},{-72,-107},{-72,-340},{-62,-340}}, color={191,0,0}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(opticalBench.port,t22.port) annotation(Line(points={{-100,-97},{-100,-107},{18,-107},{18,-340},{28,-340}}, color={191,0,0}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(opticalBench.port,t23.port) annotation(Line(points={{-100,-97},{-100,-201},{108,-201},{108,-340},{118,-340}}, color={191,0,0}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(opticalBench.port,t24.port) annotation(Line(points={{-100,-97},{-100,-201},{186,-201},{186,-340},{208,-340}}, color={191,0,0}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(opticalBench.port,t25.port) annotation(Line(points={{-100,-97},{-100,-107},{-162,-107},{-162,-445},{-152,-445}}, color={191,0,0}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(opticalBench.port,t26.port) annotation(Line(points={{-100,-97},{-100,-107},{-72,-107},{-72,-445},{-62,-445}}, color={191,0,0}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(opticalBench.port,t27.port) annotation(Line(points={{-100,-97},{-100,-107},{18,-107},{18,-445},{28,-445}}, color={191,0,0}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(opticalBench.port,t28.port) annotation(Line(points={{-100,-97},{-100,-201},{108,-201},{108,-445},{118,-445}}, color={191,0,0}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(opticalBench.port,t29.port) annotation(Line(points={{-100,-97},{-100,-201},{186,-201},{186,-445},{208,-445}}, color={191,0,0}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(focalBox.port,t30.port) annotation(Line(points={{220,-97},{220,-115},{308,-115}}, color={191,0,0}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(t20.T,informationRealBridge[4].u) annotation(Line(points={{-105.8,-340},{-95.8,-340},{-95.8,-264},{409.06,-264},{409.06,25},{445.76,25}}, color={0,0,127}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(informationRealBridge[4].y,information.device.thermistorTemperature[20]) annotation(Line(points={{474.24,25},{610,25},{610,40}}, color={0,0,127}, thickness=0.35, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(t21.T,informationRealBridge[5].u) annotation(Line(points={{-15.8,-340},{-5.8,-340},{-5.8,-201},{409.06,-201},{409.06,25},{445.76,25}}, color={0,0,127}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(informationRealBridge[5].y,information.device.thermistorTemperature[21]) annotation(Line(points={{474.24,25},{610,25},{610,40}}, color={0,0,127}, thickness=0.35, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(t22.T,informationRealBridge[6].u) annotation(Line(points={{74.2,-340},{84.2,-340},{84.2,-201},{409.06,-201},{409.06,25},{445.76,25}}, color={0,0,127}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(informationRealBridge[6].y,information.device.thermistorTemperature[22]) annotation(Line(points={{474.24,25},{610,25},{610,40}}, color={0,0,127}, thickness=0.35, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(t23.T,informationRealBridge[7].u) annotation(Line(points={{164.2,-340},{174.2,-340},{174.2,-201},{409.06,-201},{409.06,25},{445.76,25}}, color={0,0,127}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(informationRealBridge[7].y,information.device.thermistorTemperature[23]) annotation(Line(points={{474.24,25},{610,25},{610,40}}, color={0,0,127}, thickness=0.35, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(t24.T,informationRealBridge[8].u) annotation(Line(points={{254.2,-340},{409.06,-340},{409.06,25},{445.76,25}}, color={0,0,127}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(informationRealBridge[8].y,information.device.thermistorTemperature[24]) annotation(Line(points={{474.24,25},{610,25},{610,40}}, color={0,0,127}, thickness=0.35, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(t25.T,informationRealBridge[9].u) annotation(Line(points={{-105.8,-445},{-95.8,-445},{-95.8,-413},{409.06,-413},{409.06,25},{445.76,25}}, color={0,0,127}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(informationRealBridge[9].y,information.device.thermistorTemperature[25]) annotation(Line(points={{474.24,25},{610,25},{610,40}}, color={0,0,127}, thickness=0.35, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(t26.T,informationRealBridge[10].u) annotation(Line(points={{-15.8,-445},{-5.8,-445},{-5.8,-201},{409.06,-201},{409.06,25},{445.76,25}}, color={0,0,127}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(informationRealBridge[10].y,information.device.thermistorTemperature[26]) annotation(Line(points={{474.24,25},{610,25},{610,40}}, color={0,0,127}, thickness=0.35, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(t27.T,informationRealBridge[11].u) annotation(Line(points={{74.2,-445},{84.2,-445},{84.2,-201},{409.06,-201},{409.06,25},{445.76,25}}, color={0,0,127}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(informationRealBridge[11].y,information.device.thermistorTemperature[27]) annotation(Line(points={{474.24,25},{610,25},{610,40}}, color={0,0,127}, thickness=0.35, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(t28.T,informationRealBridge[12].u) annotation(Line(points={{164.2,-445},{174.2,-445},{174.2,-201},{409.06,-201},{409.06,25},{445.76,25}}, color={0,0,127}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(informationRealBridge[12].y,information.device.thermistorTemperature[28]) annotation(Line(points={{474.24,25},{610,25},{610,40}}, color={0,0,127}, thickness=0.35, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(t29.T,informationRealBridge[13].u) annotation(Line(points={{254.2,-445},{409.06,-445},{409.06,25},{445.76,25}}, color={0,0,127}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(informationRealBridge[13].y,information.device.thermistorTemperature[29]) annotation(Line(points={{474.24,25},{610,25},{610,40}}, color={0,0,127}, thickness=0.35, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(t30.T,informationRealBridge[14].u) annotation(Line(points={{354.2,-115},{409.06,-115},{409.06,25},{445.76,25}}, color={0,0,127}, thickness=0.25, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(informationRealBridge[14].y,information.device.thermistorTemperature[30]) annotation(Line(points={{474.24,25},{610,25},{610,40}}, color={0,0,127}, thickness=0.35, pattern=LinePattern.Solid, smooth=Smooth.None));
+  connect(telescopeBody.frame_a,mechanical) annotation(Line(points={{-429,-310},{-495,-310}}, color={95,95,95}, thickness=0.5, pattern=LinePattern.Solid, smooth=Smooth.None));
+  annotation(Documentation(info="<html><h2>对地观测相机组件</h2><p><b>类路径：</b><code>OneSatSim.Components.EarthObservationCameraUnit</code>　<b>类型：</b>model</p><h3>用途与定位</h3><p>对地观测相机组件</p><h3>在工程中使用</h3><p>当前直接使用位置：<a href=\"modelica://OneSatSim.Systems.N_systems.PayloadSystem\">OneSatSim.Systems.N_systems.PayloadSystem</a> 的 <code>earthCamera</code>。</p><h3>接口、输入与输出</h3><table border=\"1\" cellspacing=\"0\" cellpadding=\"5\"><tr><th>名称/维数</th><th>类型</th><th>声明角色</th><th>单位</th><th>含义</th></tr><tr><td><code>power</code></td><td>Foundation.Interfaces.PowerPort</td><td>public</td><td>按声明/类型合同</td><td>功率</td></tr><tr><td><code>thermal</code></td><td>Foundation.Interfaces.ThermalPort</td><td>public</td><td>按声明/类型合同</td><td>热学</td></tr><tr><td><code>mechanical</code></td><td>Foundation.Interfaces.MechanicalPort</td><td>public</td><td>按声明/类型合同</td><td>机械</td></tr><tr><td><code>information</code></td><td>Foundation.Interfaces.InformationPort</td><td>public</td><td>按声明/类型合同</td><td>计算/接口量 information</td></tr><tr><td><code>imagingCommand</code></td><td>Foundation.Interfaces.BooleanSignalReader</td><td>public</td><td>按声明/类型合同</td><td>可扩展总线布尔信号到因果计算端口的无状态恒等读取器实例</td></tr><tr><td><code>captureCommand</code></td><td>Foundation.Interfaces.BooleanSignalReader</td><td>public</td><td>按声明/类型合同</td><td>可扩展总线布尔信号到因果计算端口的无状态恒等读取器实例</td></tr><tr><td><code>focalHeaterState</code></td><td>Foundation.Interfaces.IntegerSignalReader</td><td>public</td><td>按声明/类型合同</td><td>可扩展总线整数信号到因果计算端口的无状态恒等读取器实例；Focal-box heater ON below 0 degC and OFF above 5 degC</td></tr><tr><td><code>informationRealBridge[14]</code></td><td>Foundation.Interfaces.RealSignalBridge</td><td>public</td><td>按声明/类型合同</td><td>实数因果输出到可扩展信息总线的无状态恒等桥实例</td></tr><tr><td><code>informationIntegerBridge[1]</code></td><td>Foundation.Interfaces.IntegerSignalBridge</td><td>public</td><td>按声明/类型合同</td><td>整数因果输出到可扩展信息总线的无状态恒等桥实例</td></tr></table><h3>配置与参数</h3><p>下面列出当前源码表达式，仅用于阅读；当前参数对话框、生效配置记录与原有配置工具仍是使用依据。本页不新增默认值或换算。</p><table border=\"1\" cellspacing=\"0\" cellpadding=\"5\"><tr><th>参数</th><th>类型</th><th>用途</th><th>源码表达式</th></tr><tr><td><code>config</code></td><td>OneSatSim.Scenarios.DesignConfigRecords.EarthCameraComponentConfig</td><td>由所属N-System传入的硬件设计配置</td><td><code>由调用方、继承或默认声明提供</code></td></tr><tr><td><code>imagingCapabilities</code></td><td>OneSatSim.Foundation.Types.ImagingCapabilities</td><td>成像Capabilities；Shared mission and camera capability from the same design record</td><td><code>由调用方、继承或默认声明提供</code></td></tr><tr><td><code>focalElectronicsResistance</code></td><td>Modelica.Units.SI.Resistance</td><td>焦面电子学负载电阻；Excel单位Ω，当前设计基线</td><td><code>=config.FocalElectronicsResistance</code></td></tr><tr><td><code>focalHeaterResistance</code></td><td>Modelica.Units.SI.Resistance</td><td>焦面加热器电阻；Excel单位Ω，当前设计基线</td><td><code>=config.FocalHeaterResistance</code></td></tr><tr><td><code>opticalBenchHeatCapacity</code></td><td>Modelica.Units.SI.HeatCapacity</td><td>光机结构热容；Excel单位J/K，当前设计基线</td><td><code>=config.OpticalBenchHeatCapacity</code></td></tr><tr><td><code>focalBoxHeatCapacity</code></td><td>Modelica.Units.SI.HeatCapacity</td><td>焦面盒热容；Excel单位J/K，当前设计基线</td><td><code>=config.FocalBoxHeatCapacity</code></td></tr><tr><td><code>opticalMountConductance</code></td><td>Modelica.Units.SI.ThermalConductance</td><td>光机结构安装导热；Excel单位W/K，当前设计基线</td><td><code>=config.OpticalMountConductance</code></td></tr><tr><td><code>focalCouplingConductance</code></td><td>Modelica.Units.SI.ThermalConductance</td><td>焦面-光机耦合导热；Excel单位W/K，当前设计基线</td><td><code>=config.FocalCouplingConductance</code></td></tr><tr><td><code>focalMountConductance</code></td><td>Modelica.Units.SI.ThermalConductance</td><td>焦面盒安装导热；Excel单位W/K，当前设计基线</td><td><code>=config.FocalMountConductance</code></td></tr><tr><td><code>mass</code></td><td>Modelica.Units.SI.Mass</td><td>质量；Excel单位kg，当前设计基线</td><td><code>=config.Mass</code></td></tr><tr><td><code>rcm_X</code></td><td>Modelica.Units.SI.Length</td><td>质心偏置X；Excel单位m，当前设计基线</td><td><code>=config.RCM_X</code></td></tr><tr><td><code>rcm_Y</code></td><td>Modelica.Units.SI.Length</td><td>质心偏置Y；Excel单位m，当前设计基线</td><td><code>=config.RCM_Y</code></td></tr><tr><td><code>rcm_Z</code></td><td>Modelica.Units.SI.Length</td><td>质心偏置Z；Excel单位m，当前设计基线</td><td><code>=config.RCM_Z</code></td></tr><tr><td><code>inertia_XX</code></td><td>Modelica.Units.SI.Inertia</td><td>局部惯量 Ixx；Excel单位kg·m²，当前设计基线</td><td><code>=config.Inertia_XX</code></td></tr><tr><td><code>inertia_YY</code></td><td>Modelica.Units.SI.Inertia</td><td>局部惯量 Iyy；Excel单位kg·m²，当前设计基线</td><td><code>=config.Inertia_YY</code></td></tr><tr><td><code>inertia_ZZ</code></td><td>Modelica.Units.SI.Inertia</td><td>局部惯量 Izz；Excel单位kg·m²，当前设计基线</td><td><code>=config.Inertia_ZZ</code></td></tr><tr><td><code>initialOpticalBenchTemperature</code></td><td>Modelica.Units.SI.Temperature</td><td>场景光机结构初温</td><td><code>=304.35</code></td></tr><tr><td><code>initialFocalBoxTemperature</code></td><td>Modelica.Units.SI.Temperature</td><td>场景焦面盒初温</td><td><code>=304.69</code></td></tr><tr><td><code>rawImageSize</code></td><td>Real</td><td>星上压缩前的原始景数据量；数值单位：byte</td><td><code>=config.RawImageSize</code></td></tr><tr><td><code>storedImageSize</code></td><td>Real</td><td>最终存储的单景数据量；数值单位：byte，不重复保存原始副本</td><td><code>=imagingCapabilities.storedImageBytes</code></td></tr><tr><td><code>nominalCaptureDuration</code></td><td>Real</td><td>配置项 nominalCaptureDuration [s]</td><td><code>=imagingCapabilities.captureDuration_s</code></td></tr><tr><td><code>imagingDataRate</code></td><td>Real</td><td>任务级参数：10 s内存储100 MB；数值单位：byte/s</td><td><code>=imagingCapabilities.nominalWriteRate_Bps</code></td></tr><tr><td><code>minimumOperationalVoltage</code></td><td>Modelica.Units.SI.Voltage</td><td>平均值功放模型可用供电域下限，不代表硬件欠压规格 [V]；Average-model supported camera supply domain, not a hardware undervoltage specification</td><td><code>=6</code></td></tr></table><h3>内部组成</h3><p>以下为本类直接声明的组成单元，继承类的内部结构另按其文档查看。</p><table border=\"1\" cellspacing=\"0\" cellpadding=\"5\"><tr><th>实例</th><th>类</th><th>作用</th></tr><tr><td><code>unused5Rail</code></td><td><a href=\"modelica://Modelica.Electrical.Analog.Basic.Conductor\">Modelica.Electrical.Analog.Basic.Conductor</a></td><td>计算/接口量 unused5Rail</td></tr><tr><td><code>unused33Rail</code></td><td><a href=\"modelica://Modelica.Electrical.Analog.Basic.Conductor\">Modelica.Electrical.Analog.Basic.Conductor</a></td><td>计算/接口量 unused33Rail</td></tr><tr><td><code>exposureSwitch</code></td><td><a href=\"modelica://Modelica.Electrical.Analog.Ideal.IdealClosingSwitch\">Modelica.Electrical.Analog.Ideal.IdealClosingSwitch</a></td><td>计算/接口量 exposureSwitch</td></tr><tr><td><code>cameraCurrent</code></td><td><a href=\"modelica://Modelica.Electrical.Analog.Sensors.CurrentSensor\">Modelica.Electrical.Analog.Sensors.CurrentSensor</a></td><td>camera电流</td></tr><tr><td><code>cameraSupplyVoltage</code></td><td><a href=\"modelica://Modelica.Electrical.Analog.Sensors.VoltageSensor\">Modelica.Electrical.Analog.Sensors.VoltageSensor</a></td><td>camera供给电压</td></tr><tr><td><code>focalElectronics</code></td><td><a href=\"modelica://Modelica.Electrical.Analog.Basic.Resistor\">Modelica.Electrical.Analog.Basic.Resistor</a></td><td>计算/接口量 focalElectronics</td></tr><tr><td><code>pulseBuffer</code></td><td><a href=\"modelica://Modelica.Electrical.Analog.Basic.Conductor\">Modelica.Electrical.Analog.Basic.Conductor</a></td><td>计算/接口量 pulseBuffer</td></tr><tr><td><code>cameraCalculation</code></td><td><a href=\"modelica://OneSatSim.Foundation.Calculations.EarthObservationCameraCalculation\">OneSatSim.Foundation.Calculations.EarthObservationCameraCalculation</a></td><td>对地观测相机任务状态计算实例；About 4 W at the 12 V bus</td></tr><tr><td><code>focalHeaterCurrent</code></td><td><a href=\"modelica://Modelica.Electrical.Analog.Sensors.CurrentSensor\">Modelica.Electrical.Analog.Sensors.CurrentSensor</a></td><td>focalHeater电流</td></tr><tr><td><code>focalHeater</code></td><td><a href=\"modelica://Modelica.Electrical.Analog.Basic.VariableConductor\">Modelica.Electrical.Analog.Basic.VariableConductor</a></td><td>计算/接口量 focalHeater</td></tr><tr><td><code>opticalBench</code></td><td><a href=\"modelica://Modelica.Thermal.HeatTransfer.Components.HeatCapacitor\">Modelica.Thermal.HeatTransfer.Components.HeatCapacitor</a></td><td>系统级等效: telescope barrel, secondary mirror and load-bearing structure</td></tr><tr><td><code>focalBox</code></td><td><a href=\"modelica://Modelica.Thermal.HeatTransfer.Components.HeatCapacitor\">Modelica.Thermal.HeatTransfer.Components.HeatCapacitor</a></td><td>任务级参数 focal electronics initial work point</td></tr><tr><td><code>opticalMount</code></td><td><a href=\"modelica://Modelica.Thermal.HeatTransfer.Components.ThermalConductor\">Modelica.Thermal.HeatTransfer.Components.ThermalConductor</a></td><td>计算/接口量 opticalMount；Equivalent series conductance from optical structure to spacecraft deck</td></tr><tr><td><code>focalCoupling</code></td><td><a href=\"modelica://Modelica.Thermal.HeatTransfer.Components.ThermalConductor\">Modelica.Thermal.HeatTransfer.Components.ThermalConductor</a></td><td>计算/接口量 focalCoupling；Low-order focal-box to optical-bench coupling</td></tr><tr><td><code>focalMount</code></td><td><a href=\"modelica://Modelica.Thermal.HeatTransfer.Components.ThermalConductor\">Modelica.Thermal.HeatTransfer.Components.ThermalConductor</a></td><td>系统级 focal electronics isolation path</td></tr><tr><td><code>t20</code></td><td><a href=\"modelica://Modelica.Thermal.HeatTransfer.Sensors.TemperatureSensor\">Modelica.Thermal.HeatTransfer.Sensors.TemperatureSensor</a></td><td>计算/接口量 t20</td></tr><tr><td><code>t21</code></td><td><a href=\"modelica://Modelica.Thermal.HeatTransfer.Sensors.TemperatureSensor\">Modelica.Thermal.HeatTransfer.Sensors.TemperatureSensor</a></td><td>计算/接口量 t21</td></tr><tr><td><code>t22</code></td><td><a href=\"modelica://Modelica.Thermal.HeatTransfer.Sensors.TemperatureSensor\">Modelica.Thermal.HeatTransfer.Sensors.TemperatureSensor</a></td><td>计算/接口量 t22</td></tr><tr><td><code>t23</code></td><td><a href=\"modelica://Modelica.Thermal.HeatTransfer.Sensors.TemperatureSensor\">Modelica.Thermal.HeatTransfer.Sensors.TemperatureSensor</a></td><td>计算/接口量 t23</td></tr><tr><td><code>t24</code></td><td><a href=\"modelica://Modelica.Thermal.HeatTransfer.Sensors.TemperatureSensor\">Modelica.Thermal.HeatTransfer.Sensors.TemperatureSensor</a></td><td>计算/接口量 t24</td></tr><tr><td><code>t25</code></td><td><a href=\"modelica://Modelica.Thermal.HeatTransfer.Sensors.TemperatureSensor\">Modelica.Thermal.HeatTransfer.Sensors.TemperatureSensor</a></td><td>计算/接口量 t25</td></tr><tr><td><code>t26</code></td><td><a href=\"modelica://Modelica.Thermal.HeatTransfer.Sensors.TemperatureSensor\">Modelica.Thermal.HeatTransfer.Sensors.TemperatureSensor</a></td><td>计算/接口量 t26</td></tr><tr><td><code>t27</code></td><td><a href=\"modelica://Modelica.Thermal.HeatTransfer.Sensors.TemperatureSensor\">Modelica.Thermal.HeatTransfer.Sensors.TemperatureSensor</a></td><td>计算/接口量 t27</td></tr><tr><td><code>t28</code></td><td><a href=\"modelica://Modelica.Thermal.HeatTransfer.Sensors.TemperatureSensor\">Modelica.Thermal.HeatTransfer.Sensors.TemperatureSensor</a></td><td>计算/接口量 t28</td></tr><tr><td><code>t29</code></td><td><a href=\"modelica://Modelica.Thermal.HeatTransfer.Sensors.TemperatureSensor\">Modelica.Thermal.HeatTransfer.Sensors.TemperatureSensor</a></td><td>计算/接口量 t29</td></tr><tr><td><code>t30</code></td><td><a href=\"modelica://Modelica.Thermal.HeatTransfer.Sensors.TemperatureSensor\">Modelica.Thermal.HeatTransfer.Sensors.TemperatureSensor</a></td><td>计算/接口量 t30</td></tr><tr><td><code>telescopeBody</code></td><td><a href=\"modelica://Modelica.Mechanics.MultiBody.Parts.Body\">Modelica.Mechanics.MultiBody.Parts.Body</a></td><td>telescope本体</td></tr></table></html>"
+),
+    Icon(coordinateSystem(extent={{-100,-100},{100,100}}, preserveAspectRatio=true, grid={2,2}), graphics={
+      Rectangle(extent={{-89,-97},{89,95}}, lineColor={0,0,0}, fillColor={255,255,255}, fillPattern=FillPattern.Solid, lineThickness=0.6, radius=3),
+      Line(points={{-76,64},{76,64}}, color={219,223,227}, thickness=0.4, pattern=LinePattern.Solid),
+      Rectangle(extent={{-84,69},{-64,89}}, lineColor={0,0,0}, fillColor={152,118,71}, fillPattern=FillPattern.Solid, lineThickness=0.85, radius=0),
+      Text(extent={{-61,71},{76,86}}, textString="Optical payload", fontSize=0, lineColor={0,0,0}, horizontalAlignment=TextAlignment.Center),
+      Rectangle(extent={{-50,-27},{0,28}}, lineColor={0,0,0}, fillColor={242,245,247}, fillPattern=FillPattern.Solid, lineThickness=0.75, radius=2),
+      Polygon(points={{0,25},{25,36},{25,-35},{0,-23},{0,25}}, lineColor={0,0,0}, fillColor={242,245,247}, fillPattern=FillPattern.Solid, lineThickness=0.7),
+      Ellipse(extent={{14,-35},{39,36}}, lineColor={0,0,0}, fillColor={255,255,255}, fillPattern=FillPattern.Solid, lineThickness=0.75, startAngle=0, endAngle=360),
+      Ellipse(extent={{19,-25},{34,25}}, lineColor={0,0,0}, fillColor={224,237,246}, fillPattern=FillPattern.Solid, lineThickness=0.6, startAngle=0, endAngle=360),
+      Ellipse(extent={{24,-14},{30,15}}, lineColor={0,0,0}, fillColor={255,255,255}, fillPattern=FillPattern.Solid, lineThickness=0.45, startAngle=0, endAngle=360),
+      Line(points={{-46,-33},{8,-33}}, color={0,0,0}, thickness=0.75, pattern=LinePattern.Solid),
+      Rectangle(extent={{-38,5},{-13,19}}, lineColor={0,0,0}, fillColor={255,255,255}, fillPattern=FillPattern.Solid, lineThickness=0.45, radius=0),
+      Ellipse(extent={{-44.8,-21.8},{-41.2,-18.2}}, lineColor={0,0,0}, fillColor={255,255,255}, fillPattern=FillPattern.Solid, lineThickness=0.45, startAngle=0, endAngle=360),
+      Line(points={{-43.9,-20},{-42.1,-20}}, color={113,122,132}, thickness=0.4, pattern=LinePattern.Solid),
+      Ellipse(extent={{-10.8,-21.8},{-7.2,-18.2}}, lineColor={0,0,0}, fillColor={255,255,255}, fillPattern=FillPattern.Solid, lineThickness=0.45, startAngle=0, endAngle=360),
+      Line(points={{-9.9,-20},{-8.1,-20}}, color={113,122,132}, thickness=0.4, pattern=LinePattern.Solid),
+      Ellipse(extent={{47.04,-35.96},{72.96,-10.04}}, lineColor={0,0,0}, fillColor={239,246,250}, fillPattern=FillPattern.Solid, lineThickness=0.65, startAngle=0, endAngle=360),
+      Ellipse(extent={{54.816,-35.96},{65.184,-10.04}}, lineColor={113,122,132}, fillColor={255,255,255}, fillPattern=FillPattern.None, lineThickness=0.4, startAngle=0, endAngle=360),
+      Ellipse(extent={{47.04,-27.536},{72.96,-18.464}}, lineColor={113,122,132}, fillColor={255,255,255}, fillPattern=FillPattern.None, lineThickness=0.4, startAngle=0, endAngle=360),
+      Line(points={{47.04,-23},{72.96,-23}}, color={113,122,132}, thickness=0.4, pattern=LinePattern.Solid),
+      Line(points={{60,-35.96},{60,-10.04}}, color={113,122,132}, thickness=0.4, pattern=LinePattern.Solid),
+      Line(points={{39,18},{68,-11}}, color={73,112,158}, thickness=0.55, pattern=LinePattern.Dash),
+      Line(points={{39,-20},{52,-37}}, color={73,112,158}, thickness=0.55, pattern=LinePattern.Dash),
+      Line(points={{-38,12},{-25,12}}, color={113,122,132}, thickness=0.5, pattern=LinePattern.Solid),
+      Line(points={{-76,-58},{76,-58}}, color={219,223,227}, thickness=0.4, pattern=LinePattern.Solid),
+      Text(extent={{-80,-79},{80,-64}}, textString="Earth Imaging Camera", fontSize=0, lineColor={0,0,0}, horizontalAlignment=TextAlignment.Center, textStyle={TextStyle.Bold}),
+      Text(extent={{-80,-93},{80,-82}}, textString="%name", fontSize=0, lineColor={80,80,80}, horizontalAlignment=TextAlignment.Center)
+    }),
+    Diagram(coordinateSystem(extent={{-539,-505},{654,582}}, preserveAspectRatio=true, grid={2,2}), graphics={
+      Text(extent={{-405,289},{-144.6,307}}, textString="Camera commands and acquisition", fontSize=0, lineColor={79,89,100}, horizontalAlignment=TextAlignment.Left, textStyle={TextStyle.Bold}),
+      Text(extent={{-410,494},{-225.2,512}}, textString="Power and focal heater", fontSize=0, lineColor={79,89,100}, horizontalAlignment=TextAlignment.Left, textStyle={TextStyle.Bold}),
+      Text(extent={{5,-6},{332.6,12}}, textString="Optical bench and focal thermal network", fontSize=0, lineColor={79,89,100}, horizontalAlignment=TextAlignment.Left, textStyle={TextStyle.Bold}),
+      Text(extent={{-527,537},{642,566}}, textString="Earth camera: acquisition, electronics and focal thermal control", fontSize=0, lineColor={0,0,0}, horizontalAlignment=TextAlignment.Left, textStyle={TextStyle.Bold}),
+      Line(points={{-527,529},{642,529}}, color={215,220,226}, thickness=0.25)
+    }));
 end EarthObservationCameraUnit;

@@ -1,12 +1,20 @@
 within OneSatSim.Foundation.Interfaces;
 model IntegerSignalReader "可扩展总线整数信号到因果计算端口的无状态恒等读取器"
-  Modelica.Blocks.Interfaces.IntegerInput u
-    annotation(Placement(transformation(extent={{-110,-10},{-90,10}})));
-  Modelica.Blocks.Interfaces.IntegerOutput y
-    annotation(Placement(transformation(extent={{90,-10},{110,10}})));
+  Modelica.Blocks.Interfaces.IntegerInput u 
+     "输入信号" annotation(Placement(visible=true, transformation(origin={-89,0}, extent={{-15.12,-15.12},{15.12,15.12}}, rotation=0), iconVisible=true, iconTransformation(origin={-89,0}, extent={{-15.12,-15.12},{15.12,15.12}}, rotation=0)));
+  Modelica.Blocks.Interfaces.IntegerOutput y 
+     "输出信号" annotation(Placement(visible=true, transformation(origin={89,0}, extent={{-15.12,-15.12},{15.12,15.12}}, rotation=0), iconVisible=true, iconTransformation(origin={89,0}, extent={{-15.12,-15.12},{15.12,15.12}}, rotation=0)));
 equation
   y=u;
-  annotation(
-    Icon(graphics={Rectangle(extent={{-100,55},{100,-55}},lineColor={180,100,20},fillColor={252,244,230},fillPattern=FillPattern.Solid),Line(points={{-72,0},{72,0}},color={180,100,20},arrow={Arrow.None,Arrow.Filled}),Text(extent={{-45,35},{45,-35}},textString="READ")}),
-    Documentation(info="<html><h4>功能定位</h4><p>把可扩展信息总线中的整数信号交付给具有明确输入方向的计算端口。</p><h4>接口与边界</h4><p>u为因果IntegerInput，y为因果IntegerOutput。模型仅实现y=u，不包含参数、状态、采样、延迟或事件逻辑，也不解释状态码的业务含义。</p><h4>使用方法</h4><p>在图形白箱中将可扩展总线字段连接到u，再将y连接到Calculation或Modelica标准库模块的IntegerInput。</p></html>"));
+  annotation(Documentation(info="<html><h2>可扩展总线整数信号到因果计算端口的无状态恒等读取器</h2><p><b>类路径：</b><code>OneSatSim.Foundation.Interfaces.IntegerSignalReader</code>　<b>类型：</b>model</p><h3>用途与定位</h3><p>可扩展总线整数信号到因果计算端口的无状态恒等读取器</p><h3>在工程中使用</h3><p>当前直接使用位置：<a href=\"modelica://OneSatSim.Components.BatteryUnit\">OneSatSim.Components.BatteryUnit</a> 的 <code>batteryHeaterState</code>；<a href=\"modelica://OneSatSim.Components.DataRecorderUnit\">OneSatSim.Components.DataRecorderUnit</a> 的 <code>imagingRequestIdInput</code>；<a href=\"modelica://OneSatSim.Components.EarthObservationCameraUnit\">OneSatSim.Components.EarthObservationCameraUnit</a> 的 <code>focalHeaterState</code>；<a href=\"modelica://OneSatSim.Components.HeaterRadiatorUnit\">OneSatSim.Components.HeaterRadiatorUnit</a> 的 <code>controlState</code>；<a href=\"modelica://OneSatSim.Components.PowerConditioningUnit\">OneSatSim.Components.PowerConditioningUnit</a> 的 <code>equipmentStatusFromInformation</code>；<a href=\"modelica://OneSatSim.Components.XBandTransmitterUnit\">OneSatSim.Components.XBandTransmitterUnit</a> 的 <code>activeGroundStationFromInformation</code>。</p><h3>接口、输入与输出</h3><table border=\"1\" cellspacing=\"0\" cellpadding=\"5\"><tr><th>名称/维数</th><th>类型</th><th>声明角色</th><th>单位</th><th>含义</th></tr><tr><td><code>u</code></td><td>Modelica.Blocks.Interfaces.IntegerInput</td><td>public</td><td>按声明/类型合同</td><td>输入信号</td></tr><tr><td><code>y</code></td><td>Modelica.Blocks.Interfaces.IntegerOutput</td><td>public</td><td>按声明/类型合同</td><td>输出信号</td></tr></table><h3>实现摘要</h3><p>以下表达式直接摘自本类，保留原始符号和单位体系；完整的条件分支、循环与初始化以源码为准。</p><pre>[equation] y=u;</pre></html>"),
+    Icon(coordinateSystem(extent={{-100,-100},{100,100}},preserveAspectRatio=true),graphics={
+      Rectangle(extent={{-100,-100},{100,100}},fillPattern=FillPattern.Solid,fillColor={255,109,0},lineColor={255,109,0},lineThickness=0,radius=0),
+      Line(points={{-55,-44},{-20,-44},{-20,-4},{16,-4},{16,36},{55,36}},color={255,255,255},thickness=1.4,pattern=LinePattern.Solid,smooth=Smooth.None),
+      Ellipse(extent={{-62,-51},{-48,-37}},lineColor={255,255,255},fillColor={255,255,255},fillPattern=FillPattern.Solid,lineThickness=1.4,startAngle=0,endAngle=360)
+    }),
+    Diagram(coordinateSystem(extent={{-100,-100},{100,100}},preserveAspectRatio=true),graphics={
+      Rectangle(extent={{-100,-100},{100,100}},fillPattern=FillPattern.Solid,fillColor={255,109,0},lineColor={255,109,0},lineThickness=0,radius=0),
+      Line(points={{-55,-44},{-20,-44},{-20,-4},{16,-4},{16,36},{55,36}},color={255,255,255},thickness=1.4,pattern=LinePattern.Solid,smooth=Smooth.None),
+      Ellipse(extent={{-62,-51},{-48,-37}},lineColor={255,255,255},fillColor={255,255,255},fillPattern=FillPattern.Solid,lineThickness=1.4,startAngle=0,endAngle=360)
+    }));
 end IntegerSignalReader;

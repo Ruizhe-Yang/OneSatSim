@@ -1,0 +1,24 @@
+{
+  "generationUTC": "2026-10-09T09:46:45.594648+00:00",
+  "entryModel": "OneSatSim.Simulation.CompleteMission",
+  "workbookSHA256": "4f5d5f09aa91ef940ba130f5710d08512a316aefad6150f6eed83407a7e6ef34",
+  "defaultRecordSHA256": "33c154d67dfe1341fd61ee620aef6c210149d95db2b03cfef318746aff2526d2",
+  "generatorSHA256": "99dc9868b65cfe66976dd531818c1fcc8fd7a420e606b7931db653e24f7aaac8",
+  "schemaSHA256": "e759a1a7561fd1a89ee6b7747d4bc57aa61f268e7fb1a5290347f24585a0d1ad",
+  "unitRulesSHA256": "bbbb5a5f1835db67a460ae9ccc9696f117571233fed5ec03826e3e55d2cdd406",
+  "ephemerisGeneratorSHA256": "f53dd4e514a004eef90b6fe1a8435841819140e234b66c878667f5269f3c6b0a",
+  "embeddedGeneratorSHA256": "0a7f139314e0fdc13c622fe0b07940de09135f12a02b46a9d03359d895e17bb2",
+  "massGeneratorSHA256": "2a4d937dc55e55e7488134b1f986dddfc8fd728c0e053b66b4556c22a93e6be5",
+  "transactionSHA256": "1a441ecb510914acbeb3a4660d2be8e4c22d50acb983253a511ff76e1c4ded2b",
+  "generated": {
+    "DesignConfig.xlsx": "4f5d5f09aa91ef940ba130f5710d08512a316aefad6150f6eed83407a7e6ef34",
+    "Scenarios/GeneratedSpacecraftDesignConfig.mo": "e41684d4a590b6d05082fe07383206c2e10108783aebcb200be91f1cf4a2adf2",
+    "Scenarios/GeneratedScenario.mo": "685f64385ccfd504766930dae2faa0c0d50a709b63a4f756e448006d0ed81497",
+    "Scenarios/GeneratedEnvironmentData.mo": "e8fbe1a5ffdb4caee13c90677ce22b6a273ea2f4809fa588bbc0e8c63ca02eb2",
+    "Scenarios/GeneratedMassProperties.mo": "d24eb01d58a67e40b38230d674a14dc328297f1930be7af8c4b3544d3df5f5be",
+    "Simulation/CompleteMission.mo": "3593d043c02d71ee94d2eef4762a9744eae8504d595fcd2174d3666c6c0e1f5e",
+    "Scripts/ConfigSupport/generated_simulation_flags.txt": "f455f63f9be57c42b8b390fe67a8b0db7aca04e00b54cc53977e22d55b6ae720"
+  },
+  "parameterCount": 559,
+  "environmentTableSHA256": "52c098772698e2ca0ce8ce99ae68e33d725dcec5fa9d0c52b64e02cf9502533b"
+}

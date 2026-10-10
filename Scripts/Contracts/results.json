@@ -1,0 +1,1666 @@
+{
+  "schemaVersion": "1.0",
+  "projectVersion": "1.1.4",
+  "mosaicVersion": "0.5.0",
+  "entryModel": "OneSatSim.Simulation.CompleteMission",
+  "outputPolicy": {
+    "format": "mat",
+    "precision": "float64",
+    "maximumBytes": 50000000,
+    "regularOutputIntervalSeconds": 1,
+    "retainEvents": true,
+    "strategy": "all native dashboard scalars plus eleven essential event, data-ledger and physical audit paths"
+  },
+  "signals": [
+    {
+      "semanticId": "TIME",
+      "path": "time",
+      "aliasCandidates": [],
+      "previousPath": null,
+      "unit": "s",
+      "dimensions": [],
+      "timeKind": "time",
+      "identity": "solver-time",
+      "producer": "OpenModelica",
+      "consumers": [
+        "run_acceptance",
+        "report"
+      ],
+      "required": true,
+      "save": true,
+      "purpose": "完整 1 s 网格和事件点",
+      "window": [
+        0,
+        86400
+      ],
+      "missingDecision": "FAIL"
+    },
+    {
+      "semanticId": "TASK.ACCEPTED_ID",
+      "path": "spacecraft.dataHandlingSystem.obc.missionControl.arbiter.decision.acceptedCommandId",
+      "aliasCandidates": [],
+      "previousPath": null,
+      "unit": "1",
+      "dimensions": [],
+      "timeKind": "discrete",
+      "identity": "decision",
+      "producer": "MissionControl",
+      "consumers": [
+        "run_acceptance",
+        "report"
+      ],
+      "required": true,
+      "save": true,
+      "purpose": "接受命令ID",
+      "window": [
+        0,
+        86400
+      ],
+      "missingDecision": "FAIL"
+    },
+    {
+      "semanticId": "TASK.ACCEPTED_TYPE",
+      "path": "spacecraft.dataHandlingSystem.obc.missionControl.arbiter.decision.acceptedCommand",
+      "aliasCandidates": [],
+      "previousPath": null,
+      "unit": "1",
+      "dimensions": [],
+      "timeKind": "discrete",
+      "identity": "decision",
+      "producer": "MissionControl",
+      "consumers": [
+        "run_acceptance",
+        "report"
+      ],
+      "required": true,
+      "save": true,
+      "purpose": "接受命令类别",
+      "window": [
+        0,
+        86400
+      ],
+      "missingDecision": "FAIL"
+    },
+    {
+      "semanticId": "TASK.ACTIVE_TARGET",
+      "path": "spacecraft.dataHandlingSystem.obc.missionControl.stateMachine.state.activeTargetIndex",
+      "aliasCandidates": [],
+      "previousPath": null,
+      "unit": "1",
+      "dimensions": [],
+      "timeKind": "discrete",
+      "identity": "software-state",
+      "producer": "MissionControl",
+      "consumers": [
+        "run_acceptance",
+        "report"
+      ],
+      "required": true,
+      "save": true,
+      "purpose": "锁存目标ID",
+      "window": [
+        0,
+        86400
+      ],
+      "missingDecision": "FAIL"
+    },
+    {
+      "semanticId": "TASK.ACTIVE_STATION",
+      "path": "spacecraft.dataHandlingSystem.obc.missionControl.stateMachine.state.activeGroundStationIndex",
+      "aliasCandidates": [],
+      "previousPath": null,
+      "unit": "1",
+      "dimensions": [],
+      "timeKind": "discrete",
+      "identity": "software-state",
+      "producer": "MissionControl",
+      "consumers": [
+        "run_acceptance",
+        "report"
+      ],
+      "required": true,
+      "save": true,
+      "purpose": "锁存地面站ID",
+      "window": [
+        0,
+        86400
+      ],
+      "missingDecision": "FAIL"
+    },
+    {
+      "semanticId": "TASK.ACTIVE_ID",
+      "path": "spacecraft.dataHandlingSystem.obc.missionControl.stateMachine.state.activeRequestId",
+      "aliasCandidates": [],
+      "previousPath": null,
+      "unit": "1",
+      "dimensions": [],
+      "timeKind": "discrete",
+      "identity": "software-state",
+      "producer": "MissionControl",
+      "consumers": [
+        "run_acceptance",
+        "report"
+      ],
+      "required": true,
+      "save": true,
+      "purpose": "当前锁存请求ID",
+      "window": [
+        0,
+        86400
+      ],
+      "missingDecision": "FAIL"
+    },
+    {
+      "semanticId": "TASK.CAPTURE_STARTED",
+      "path": "spacecraft.dataHandlingSystem.obc.missionControl.imagingSequencer.action.captureStarted",
+      "aliasCandidates": [],
+      "previousPath": null,
+      "unit": "1",
+      "dimensions": [],
+      "timeKind": "discrete",
+      "identity": "software-state",
+      "producer": "MissionControl",
+      "consumers": [
+        "run_acceptance",
+        "report"
+      ],
+      "required": true,
+      "save": true,
+      "purpose": "实际进入曝光阶段",
+      "window": [
+        0,
+        86400
+      ],
+      "missingDecision": "FAIL"
+    },
+    {
+      "semanticId": "TASK.IMAGING_COMPLETED_ID",
+      "path": "spacecraft.dataHandlingSystem.obc.missionControl.stateMachine.imagingCompletedEventId",
+      "aliasCandidates": [],
+      "previousPath": null,
+      "unit": "1",
+      "dimensions": [],
+      "timeKind": "event",
+      "identity": "completion",
+      "producer": "MissionControl",
+      "consumers": [
+        "run_acceptance",
+        "report"
+      ],
+      "required": true,
+      "save": true,
+      "purpose": "成像完成对象ID",
+      "window": [
+        0,
+        86400
+      ],
+      "missingDecision": "FAIL"
+    },
+    {
+      "semanticId": "TASK.DOWNLINK_COMPLETED_ID",
+      "path": "spacecraft.dataHandlingSystem.obc.missionControl.stateMachine.downlinkCompletedEventId",
+      "aliasCandidates": [],
+      "previousPath": null,
+      "unit": "1",
+      "dimensions": [],
+      "timeKind": "event",
+      "identity": "completion",
+      "producer": "MissionControl",
+      "consumers": [
+        "run_acceptance",
+        "report"
+      ],
+      "required": true,
+      "save": true,
+      "purpose": "数传完成对象ID",
+      "window": [
+        0,
+        86400
+      ],
+      "missingDecision": "FAIL"
+    },
+    {
+      "semanticId": "BAT.SOC",
+      "path": "spacecraft.electricalPowerSystem.battery.cells.SOC",
+      "aliasCandidates": [],
+      "previousPath": null,
+      "unit": "1",
+      "dimensions": [],
+      "timeKind": "continuous",
+      "identity": "true-state",
+      "producer": "BatteryCellStackCore",
+      "consumers": [
+        "run_acceptance",
+        "report"
+      ],
+      "required": true,
+      "save": true,
+      "purpose": "唯一SOC积分状态",
+      "window": [
+        0,
+        86400
+      ],
+      "missingDecision": "FAIL",
+      "limits": {
+        "minimum": 0,
+        "maximum": 1,
+        "absoluteTolerance": 1e-08
+      }
+    },
+    {
+      "semanticId": "BAT.I_CELL",
+      "path": "spacecraft.electricalPowerSystem.battery.cells.currentSensor.i",
+      "aliasCandidates": [],
+      "previousPath": null,
+      "unit": "A",
+      "dimensions": [],
+      "timeKind": "continuous",
+      "identity": "physical-measurement",
+      "producer": "BatteryCellStackCore",
+      "consumers": [
+        "run_acceptance",
+        "report"
+      ],
+      "required": true,
+      "save": true,
+      "purpose": "电荷账原始电芯电流",
+      "window": [
+        0,
+        86400
+      ],
+      "missingDecision": "FAIL"
+    },
+    {
+      "semanticId": "DATA.DISCARDED_BYTES_RATE",
+      "path": "spacecraft.dataHandlingSystem.recorder.recorderCalculation.discardedBytesRate",
+      "aliasCandidates": [],
+      "previousPath": null,
+      "unit": "byte/s",
+      "dimensions": [],
+      "timeKind": "continuous",
+      "identity": "data-ledger",
+      "producer": "DataRecorderCalculation",
+      "consumers": [
+        "run_acceptance",
+        "report"
+      ],
+      "required": true,
+      "save": true,
+      "purpose": "记录器显式丢弃已存字节速率；名义工况应为零",
+      "window": [
+        0,
+        86400
+      ],
+      "missingDecision": "FAIL"
+    },
+    {
+      "semanticId": "DASH.batterySOC",
+      "path": "onboardTelemetry.batterySOC",
+      "aliasCandidates": [],
+      "previousPath": null,
+      "unit": "1",
+      "dimensions": [],
+      "timeKind": "continuous",
+      "identity": "onboard-reported",
+      "producer": "Simulation.OnboardTelemetry via EngineeringTelemetryObserver",
+      "consumers": [
+        "native-dashboard",
+        "nominal-result",
+        "report"
+      ],
+      "required": true,
+      "save": true,
+      "purpose": "BMS荷电状态",
+      "window": [
+        0,
+        86400
+      ],
+      "missingDecision": "FAIL"
+    },
+    {
+      "semanticId": "DASH.batteryVoltage",
+      "path": "onboardTelemetry.batteryVoltage",
+      "aliasCandidates": [],
+      "previousPath": null,
+      "unit": "V",
+      "dimensions": [],
+      "timeKind": "continuous",
+      "identity": "onboard-reported",
+      "producer": "Simulation.OnboardTelemetry via EngineeringTelemetryObserver",
+      "consumers": [
+        "native-dashboard",
+        "nominal-result",
+        "report"
+      ],
+      "required": true,
+      "save": true,
+      "purpose": "电池端电压",
+      "window": [
+        0,
+        86400
+      ],
+      "missingDecision": "FAIL"
+    },
+    {
+      "semanticId": "DASH.batteryCurrent",
+      "path": "onboardTelemetry.batteryCurrent",
+      "aliasCandidates": [],
+      "previousPath": null,
+      "unit": "A",
+      "dimensions": [],
+      "timeKind": "continuous",
+      "identity": "onboard-reported",
+      "producer": "Simulation.OnboardTelemetry via EngineeringTelemetryObserver",
+      "consumers": [
+        "native-dashboard",
+        "nominal-result",
+        "report"
+      ],
+      "required": true,
+      "save": true,
+      "purpose": "电池端电流(+放电)",
+      "window": [
+        0,
+        86400
+      ],
+      "missingDecision": "FAIL"
+    },
+    {
+      "semanticId": "DASH.busVoltage[1]",
+      "path": "onboardTelemetry.busVoltage[1]",
+      "aliasCandidates": [],
+      "previousPath": null,
+      "unit": "V",
+      "dimensions": [],
+      "timeKind": "continuous",
+      "identity": "onboard-reported",
+      "producer": "Simulation.OnboardTelemetry via EngineeringTelemetryObserver",
+      "consumers": [
+        "native-dashboard",
+        "nominal-result",
+        "report"
+      ],
+      "required": true,
+      "save": true,
+      "purpose": "12/5/3.3V轨实测",
+      "window": [
+        0,
+        86400
+      ],
+      "missingDecision": "FAIL"
+    },
+    {
+      "semanticId": "DASH.busVoltage[2]",
+      "path": "onboardTelemetry.busVoltage[2]",
+      "aliasCandidates": [],
+      "previousPath": null,
+      "unit": "V",
+      "dimensions": [],
+      "timeKind": "continuous",
+      "identity": "onboard-reported",
+      "producer": "Simulation.OnboardTelemetry via EngineeringTelemetryObserver",
+      "consumers": [
+        "native-dashboard",
+        "nominal-result",
+        "report"
+      ],
+      "required": true,
+      "save": true,
+      "purpose": "12/5/3.3V轨实测",
+      "window": [
+        0,
+        86400
+      ],
+      "missingDecision": "FAIL"
+    },
+    {
+      "semanticId": "DASH.busVoltage[3]",
+      "path": "onboardTelemetry.busVoltage[3]",
+      "aliasCandidates": [],
+      "previousPath": null,
+      "unit": "V",
+      "dimensions": [],
+      "timeKind": "continuous",
+      "identity": "onboard-reported",
+      "producer": "Simulation.OnboardTelemetry via EngineeringTelemetryObserver",
+      "consumers": [
+        "native-dashboard",
+        "nominal-result",
+        "report"
+      ],
+      "required": true,
+      "save": true,
+      "purpose": "12/5/3.3V轨实测",
+      "window": [
+        0,
+        86400
+      ],
+      "missingDecision": "FAIL"
+    },
+    {
+      "semanticId": "DASH.solarNetPower",
+      "path": "onboardTelemetry.solarNetPower",
+      "aliasCandidates": [],
+      "previousPath": null,
+      "unit": "W",
+      "dimensions": [],
+      "timeKind": "continuous",
+      "identity": "onboard-reported",
+      "producer": "Simulation.OnboardTelemetry via EngineeringTelemetryObserver",
+      "consumers": [
+        "native-dashboard",
+        "nominal-result",
+        "report"
+      ],
+      "required": true,
+      "save": true,
+      "purpose": "太阳阵净交付功率",
+      "window": [
+        0,
+        86400
+      ],
+      "missingDecision": "FAIL"
+    },
+    {
+      "semanticId": "DASH.threeRailLoadPower",
+      "path": "onboardTelemetry.threeRailLoadPower",
+      "aliasCandidates": [],
+      "previousPath": null,
+      "unit": "W",
+      "dimensions": [],
+      "timeKind": "continuous",
+      "identity": "onboard-reported",
+      "producer": "Simulation.OnboardTelemetry via EngineeringTelemetryObserver",
+      "consumers": [
+        "native-dashboard",
+        "nominal-result",
+        "report"
+      ],
+      "required": true,
+      "save": true,
+      "purpose": "三轨输出负载功率",
+      "window": [
+        0,
+        86400
+      ],
+      "missingDecision": "FAIL"
+    },
+    {
+      "semanticId": "DASH.batteryChargeAllowed",
+      "path": "onboardTelemetry.batteryChargeAllowed",
+      "aliasCandidates": [],
+      "previousPath": null,
+      "unit": "",
+      "dimensions": [],
+      "timeKind": "discrete",
+      "identity": "onboard-reported",
+      "producer": "Simulation.OnboardTelemetry via EngineeringTelemetryObserver",
+      "consumers": [
+        "native-dashboard",
+        "nominal-result",
+        "report"
+      ],
+      "required": true,
+      "save": true,
+      "purpose": "BMS允许充电",
+      "window": [
+        0,
+        86400
+      ],
+      "missingDecision": "FAIL"
+    },
+    {
+      "semanticId": "DASH.batteryCellTemperature",
+      "path": "onboardTelemetry.batteryCellTemperature",
+      "aliasCandidates": [],
+      "previousPath": null,
+      "unit": "degC",
+      "dimensions": [],
+      "timeKind": "continuous",
+      "identity": "onboard-reported",
+      "producer": "Simulation.OnboardTelemetry via EngineeringTelemetryObserver",
+      "consumers": [
+        "native-dashboard",
+        "nominal-result",
+        "report"
+      ],
+      "required": true,
+      "save": true,
+      "purpose": "电芯温度",
+      "window": [
+        0,
+        86400
+      ],
+      "missingDecision": "FAIL"
+    },
+    {
+      "semanticId": "DASH.batteryCaseTemperature",
+      "path": "onboardTelemetry.batteryCaseTemperature",
+      "aliasCandidates": [],
+      "previousPath": null,
+      "unit": "degC",
+      "dimensions": [],
+      "timeKind": "continuous",
+      "identity": "onboard-reported",
+      "producer": "Simulation.OnboardTelemetry via EngineeringTelemetryObserver",
+      "consumers": [
+        "native-dashboard",
+        "nominal-result",
+        "report"
+      ],
+      "required": true,
+      "save": true,
+      "purpose": "电池壳温度",
+      "window": [
+        0,
+        86400
+      ],
+      "missingDecision": "FAIL"
+    },
+    {
+      "semanticId": "DASH.obcCpuTemperature",
+      "path": "onboardTelemetry.obcCpuTemperature",
+      "aliasCandidates": [],
+      "previousPath": null,
+      "unit": "degC",
+      "dimensions": [],
+      "timeKind": "continuous",
+      "identity": "onboard-reported",
+      "producer": "Simulation.OnboardTelemetry via EngineeringTelemetryObserver",
+      "consumers": [
+        "native-dashboard",
+        "nominal-result",
+        "report"
+      ],
+      "required": true,
+      "save": true,
+      "purpose": "OBC CPU温度",
+      "window": [
+        0,
+        86400
+      ],
+      "missingDecision": "FAIL"
+    },
+    {
+      "semanticId": "DASH.obcBoardTemperature",
+      "path": "onboardTelemetry.obcBoardTemperature",
+      "aliasCandidates": [],
+      "previousPath": null,
+      "unit": "degC",
+      "dimensions": [],
+      "timeKind": "continuous",
+      "identity": "onboard-reported",
+      "producer": "Simulation.OnboardTelemetry via EngineeringTelemetryObserver",
+      "consumers": [
+        "native-dashboard",
+        "nominal-result",
+        "report"
+      ],
+      "required": true,
+      "save": true,
+      "purpose": "OBC板温",
+      "window": [
+        0,
+        86400
+      ],
+      "missingDecision": "FAIL"
+    },
+    {
+      "semanticId": "DASH.cameraFocalTemperature",
+      "path": "onboardTelemetry.cameraFocalTemperature",
+      "aliasCandidates": [],
+      "previousPath": null,
+      "unit": "degC",
+      "dimensions": [],
+      "timeKind": "continuous",
+      "identity": "onboard-reported",
+      "producer": "Simulation.OnboardTelemetry via EngineeringTelemetryObserver",
+      "consumers": [
+        "native-dashboard",
+        "nominal-result",
+        "report"
+      ],
+      "required": true,
+      "save": true,
+      "purpose": "相机焦面温度",
+      "window": [
+        0,
+        86400
+      ],
+      "missingDecision": "FAIL"
+    },
+    {
+      "semanticId": "DASH.cameraOpticsTemperature",
+      "path": "onboardTelemetry.cameraOpticsTemperature",
+      "aliasCandidates": [],
+      "previousPath": null,
+      "unit": "degC",
+      "dimensions": [],
+      "timeKind": "continuous",
+      "identity": "onboard-reported",
+      "producer": "Simulation.OnboardTelemetry via EngineeringTelemetryObserver",
+      "consumers": [
+        "native-dashboard",
+        "nominal-result",
+        "report"
+      ],
+      "required": true,
+      "save": true,
+      "purpose": "相机光机温度",
+      "window": [
+        0,
+        86400
+      ],
+      "missingDecision": "FAIL"
+    },
+    {
+      "semanticId": "DASH.transmitterTemperature",
+      "path": "onboardTelemetry.transmitterTemperature",
+      "aliasCandidates": [],
+      "previousPath": null,
+      "unit": "degC",
+      "dimensions": [],
+      "timeKind": "continuous",
+      "identity": "onboard-reported",
+      "producer": "Simulation.OnboardTelemetry via EngineeringTelemetryObserver",
+      "consumers": [
+        "native-dashboard",
+        "nominal-result",
+        "report"
+      ],
+      "required": true,
+      "save": true,
+      "purpose": "X波段功放温度",
+      "window": [
+        0,
+        86400
+      ],
+      "missingDecision": "FAIL"
+    },
+    {
+      "semanticId": "DASH.attitudeQuaternion[1]",
+      "path": "onboardTelemetry.attitudeQuaternion[1]",
+      "aliasCandidates": [],
+      "previousPath": null,
+      "unit": "1",
+      "dimensions": [],
+      "timeKind": "continuous",
+      "identity": "onboard-reported",
+      "producer": "Simulation.OnboardTelemetry via EngineeringTelemetryObserver",
+      "consumers": [
+        "native-dashboard",
+        "nominal-result",
+        "report"
+      ],
+      "required": true,
+      "save": true,
+      "purpose": "Y星敏实测四元数",
+      "window": [
+        0,
+        86400
+      ],
+      "missingDecision": "FAIL"
+    },
+    {
+      "semanticId": "DASH.attitudeQuaternion[2]",
+      "path": "onboardTelemetry.attitudeQuaternion[2]",
+      "aliasCandidates": [],
+      "previousPath": null,
+      "unit": "1",
+      "dimensions": [],
+      "timeKind": "continuous",
+      "identity": "onboard-reported",
+      "producer": "Simulation.OnboardTelemetry via EngineeringTelemetryObserver",
+      "consumers": [
+        "native-dashboard",
+        "nominal-result",
+        "report"
+      ],
+      "required": true,
+      "save": true,
+      "purpose": "Y星敏实测四元数",
+      "window": [
+        0,
+        86400
+      ],
+      "missingDecision": "FAIL"
+    },
+    {
+      "semanticId": "DASH.attitudeQuaternion[3]",
+      "path": "onboardTelemetry.attitudeQuaternion[3]",
+      "aliasCandidates": [],
+      "previousPath": null,
+      "unit": "1",
+      "dimensions": [],
+      "timeKind": "continuous",
+      "identity": "onboard-reported",
+      "producer": "Simulation.OnboardTelemetry via EngineeringTelemetryObserver",
+      "consumers": [
+        "native-dashboard",
+        "nominal-result",
+        "report"
+      ],
+      "required": true,
+      "save": true,
+      "purpose": "Y星敏实测四元数",
+      "window": [
+        0,
+        86400
+      ],
+      "missingDecision": "FAIL"
+    },
+    {
+      "semanticId": "DASH.attitudeQuaternion[4]",
+      "path": "onboardTelemetry.attitudeQuaternion[4]",
+      "aliasCandidates": [],
+      "previousPath": null,
+      "unit": "1",
+      "dimensions": [],
+      "timeKind": "continuous",
+      "identity": "onboard-reported",
+      "producer": "Simulation.OnboardTelemetry via EngineeringTelemetryObserver",
+      "consumers": [
+        "native-dashboard",
+        "nominal-result",
+        "report"
+      ],
+      "required": true,
+      "save": true,
+      "purpose": "Y星敏实测四元数",
+      "window": [
+        0,
+        86400
+      ],
+      "missingDecision": "FAIL"
+    },
+    {
+      "semanticId": "DASH.bodyRate[1]",
+      "path": "onboardTelemetry.bodyRate[1]",
+      "aliasCandidates": [],
+      "previousPath": null,
+      "unit": "deg/s",
+      "dimensions": [],
+      "timeKind": "continuous",
+      "identity": "onboard-reported",
+      "producer": "Simulation.OnboardTelemetry via EngineeringTelemetryObserver",
+      "consumers": [
+        "native-dashboard",
+        "nominal-result",
+        "report"
+      ],
+      "required": true,
+      "save": true,
+      "purpose": "机体系陀螺角速率",
+      "window": [
+        0,
+        86400
+      ],
+      "missingDecision": "FAIL"
+    },
+    {
+      "semanticId": "DASH.bodyRate[2]",
+      "path": "onboardTelemetry.bodyRate[2]",
+      "aliasCandidates": [],
+      "previousPath": null,
+      "unit": "deg/s",
+      "dimensions": [],
+      "timeKind": "continuous",
+      "identity": "onboard-reported",
+      "producer": "Simulation.OnboardTelemetry via EngineeringTelemetryObserver",
+      "consumers": [
+        "native-dashboard",
+        "nominal-result",
+        "report"
+      ],
+      "required": true,
+      "save": true,
+      "purpose": "机体系陀螺角速率",
+      "window": [
+        0,
+        86400
+      ],
+      "missingDecision": "FAIL"
+    },
+    {
+      "semanticId": "DASH.bodyRate[3]",
+      "path": "onboardTelemetry.bodyRate[3]",
+      "aliasCandidates": [],
+      "previousPath": null,
+      "unit": "deg/s",
+      "dimensions": [],
+      "timeKind": "continuous",
+      "identity": "onboard-reported",
+      "producer": "Simulation.OnboardTelemetry via EngineeringTelemetryObserver",
+      "consumers": [
+        "native-dashboard",
+        "nominal-result",
+        "report"
+      ],
+      "required": true,
+      "save": true,
+      "purpose": "机体系陀螺角速率",
+      "window": [
+        0,
+        86400
+      ],
+      "missingDecision": "FAIL"
+    },
+    {
+      "semanticId": "DASH.wheelSpeed[1]",
+      "path": "onboardTelemetry.wheelSpeed[1]",
+      "aliasCandidates": [],
+      "previousPath": null,
+      "unit": "rpm",
+      "dimensions": [],
+      "timeKind": "continuous",
+      "identity": "onboard-reported",
+      "producer": "Simulation.OnboardTelemetry via EngineeringTelemetryObserver",
+      "consumers": [
+        "native-dashboard",
+        "nominal-result",
+        "report"
+      ],
+      "required": true,
+      "save": true,
+      "purpose": "四轮转速",
+      "window": [
+        0,
+        86400
+      ],
+      "missingDecision": "FAIL"
+    },
+    {
+      "semanticId": "DASH.wheelSpeed[2]",
+      "path": "onboardTelemetry.wheelSpeed[2]",
+      "aliasCandidates": [],
+      "previousPath": null,
+      "unit": "rpm",
+      "dimensions": [],
+      "timeKind": "continuous",
+      "identity": "onboard-reported",
+      "producer": "Simulation.OnboardTelemetry via EngineeringTelemetryObserver",
+      "consumers": [
+        "native-dashboard",
+        "nominal-result",
+        "report"
+      ],
+      "required": true,
+      "save": true,
+      "purpose": "四轮转速",
+      "window": [
+        0,
+        86400
+      ],
+      "missingDecision": "FAIL"
+    },
+    {
+      "semanticId": "DASH.wheelSpeed[3]",
+      "path": "onboardTelemetry.wheelSpeed[3]",
+      "aliasCandidates": [],
+      "previousPath": null,
+      "unit": "rpm",
+      "dimensions": [],
+      "timeKind": "continuous",
+      "identity": "onboard-reported",
+      "producer": "Simulation.OnboardTelemetry via EngineeringTelemetryObserver",
+      "consumers": [
+        "native-dashboard",
+        "nominal-result",
+        "report"
+      ],
+      "required": true,
+      "save": true,
+      "purpose": "四轮转速",
+      "window": [
+        0,
+        86400
+      ],
+      "missingDecision": "FAIL"
+    },
+    {
+      "semanticId": "DASH.wheelSpeed[4]",
+      "path": "onboardTelemetry.wheelSpeed[4]",
+      "aliasCandidates": [],
+      "previousPath": null,
+      "unit": "rpm",
+      "dimensions": [],
+      "timeKind": "continuous",
+      "identity": "onboard-reported",
+      "producer": "Simulation.OnboardTelemetry via EngineeringTelemetryObserver",
+      "consumers": [
+        "native-dashboard",
+        "nominal-result",
+        "report"
+      ],
+      "required": true,
+      "save": true,
+      "purpose": "四轮转速",
+      "window": [
+        0,
+        86400
+      ],
+      "missingDecision": "FAIL"
+    },
+    {
+      "semanticId": "DASH.attitudeError",
+      "path": "onboardTelemetry.attitudeError",
+      "aliasCandidates": [],
+      "previousPath": null,
+      "unit": "deg",
+      "dimensions": [],
+      "timeKind": "continuous",
+      "identity": "onboard-reported",
+      "producer": "Simulation.OnboardTelemetry via EngineeringTelemetryObserver",
+      "consumers": [
+        "native-dashboard",
+        "nominal-result",
+        "report"
+      ],
+      "required": true,
+      "save": true,
+      "purpose": "指向误差",
+      "window": [
+        0,
+        86400
+      ],
+      "missingDecision": "FAIL"
+    },
+    {
+      "semanticId": "DASH.attitudeReadingValid",
+      "path": "onboardTelemetry.attitudeReadingValid",
+      "aliasCandidates": [],
+      "previousPath": null,
+      "unit": "",
+      "dimensions": [],
+      "timeKind": "discrete",
+      "identity": "onboard-reported",
+      "producer": "Simulation.OnboardTelemetry via EngineeringTelemetryObserver",
+      "consumers": [
+        "native-dashboard",
+        "nominal-result",
+        "report"
+      ],
+      "required": true,
+      "save": true,
+      "purpose": "星敏读数有效",
+      "window": [
+        0,
+        86400
+      ],
+      "missingDecision": "FAIL"
+    },
+    {
+      "semanticId": "DASH.gnssPosition[1]",
+      "path": "onboardTelemetry.gnssPosition[1]",
+      "aliasCandidates": [],
+      "previousPath": null,
+      "unit": "m",
+      "dimensions": [],
+      "timeKind": "continuous",
+      "identity": "onboard-reported",
+      "producer": "Simulation.OnboardTelemetry via EngineeringTelemetryObserver",
+      "consumers": [
+        "native-dashboard",
+        "nominal-result",
+        "report"
+      ],
+      "required": true,
+      "save": true,
+      "purpose": "GNSS GCRS位置",
+      "window": [
+        0,
+        86400
+      ],
+      "missingDecision": "FAIL"
+    },
+    {
+      "semanticId": "DASH.gnssPosition[2]",
+      "path": "onboardTelemetry.gnssPosition[2]",
+      "aliasCandidates": [],
+      "previousPath": null,
+      "unit": "m",
+      "dimensions": [],
+      "timeKind": "continuous",
+      "identity": "onboard-reported",
+      "producer": "Simulation.OnboardTelemetry via EngineeringTelemetryObserver",
+      "consumers": [
+        "native-dashboard",
+        "nominal-result",
+        "report"
+      ],
+      "required": true,
+      "save": true,
+      "purpose": "GNSS GCRS位置",
+      "window": [
+        0,
+        86400
+      ],
+      "missingDecision": "FAIL"
+    },
+    {
+      "semanticId": "DASH.gnssPosition[3]",
+      "path": "onboardTelemetry.gnssPosition[3]",
+      "aliasCandidates": [],
+      "previousPath": null,
+      "unit": "m",
+      "dimensions": [],
+      "timeKind": "continuous",
+      "identity": "onboard-reported",
+      "producer": "Simulation.OnboardTelemetry via EngineeringTelemetryObserver",
+      "consumers": [
+        "native-dashboard",
+        "nominal-result",
+        "report"
+      ],
+      "required": true,
+      "save": true,
+      "purpose": "GNSS GCRS位置",
+      "window": [
+        0,
+        86400
+      ],
+      "missingDecision": "FAIL"
+    },
+    {
+      "semanticId": "DASH.gnssVelocity[1]",
+      "path": "onboardTelemetry.gnssVelocity[1]",
+      "aliasCandidates": [],
+      "previousPath": null,
+      "unit": "m/s",
+      "dimensions": [],
+      "timeKind": "continuous",
+      "identity": "onboard-reported",
+      "producer": "Simulation.OnboardTelemetry via EngineeringTelemetryObserver",
+      "consumers": [
+        "native-dashboard",
+        "nominal-result",
+        "report"
+      ],
+      "required": true,
+      "save": true,
+      "purpose": "GNSS GCRS速度",
+      "window": [
+        0,
+        86400
+      ],
+      "missingDecision": "FAIL"
+    },
+    {
+      "semanticId": "DASH.gnssVelocity[2]",
+      "path": "onboardTelemetry.gnssVelocity[2]",
+      "aliasCandidates": [],
+      "previousPath": null,
+      "unit": "m/s",
+      "dimensions": [],
+      "timeKind": "continuous",
+      "identity": "onboard-reported",
+      "producer": "Simulation.OnboardTelemetry via EngineeringTelemetryObserver",
+      "consumers": [
+        "native-dashboard",
+        "nominal-result",
+        "report"
+      ],
+      "required": true,
+      "save": true,
+      "purpose": "GNSS GCRS速度",
+      "window": [
+        0,
+        86400
+      ],
+      "missingDecision": "FAIL"
+    },
+    {
+      "semanticId": "DASH.gnssVelocity[3]",
+      "path": "onboardTelemetry.gnssVelocity[3]",
+      "aliasCandidates": [],
+      "previousPath": null,
+      "unit": "m/s",
+      "dimensions": [],
+      "timeKind": "continuous",
+      "identity": "onboard-reported",
+      "producer": "Simulation.OnboardTelemetry via EngineeringTelemetryObserver",
+      "consumers": [
+        "native-dashboard",
+        "nominal-result",
+        "report"
+      ],
+      "required": true,
+      "save": true,
+      "purpose": "GNSS GCRS速度",
+      "window": [
+        0,
+        86400
+      ],
+      "missingDecision": "FAIL"
+    },
+    {
+      "semanticId": "DASH.gnssFix",
+      "path": "onboardTelemetry.gnssFix",
+      "aliasCandidates": [],
+      "previousPath": null,
+      "unit": "",
+      "dimensions": [],
+      "timeKind": "discrete",
+      "identity": "onboard-reported",
+      "producer": "Simulation.OnboardTelemetry via EngineeringTelemetryObserver",
+      "consumers": [
+        "native-dashboard",
+        "nominal-result",
+        "report"
+      ],
+      "required": true,
+      "save": true,
+      "purpose": "GNSS有效标志",
+      "window": [
+        0,
+        86400
+      ],
+      "missingDecision": "FAIL"
+    },
+    {
+      "semanticId": "DASH.missionMode",
+      "path": "onboardTelemetry.missionMode",
+      "aliasCandidates": [],
+      "previousPath": null,
+      "unit": "",
+      "dimensions": [],
+      "timeKind": "discrete",
+      "identity": "onboard-reported",
+      "producer": "Simulation.OnboardTelemetry via EngineeringTelemetryObserver",
+      "consumers": [
+        "native-dashboard",
+        "nominal-result",
+        "report"
+      ],
+      "required": true,
+      "save": true,
+      "purpose": "任务模式",
+      "window": [
+        0,
+        86400
+      ],
+      "missingDecision": "FAIL"
+    },
+    {
+      "semanticId": "DASH.executionStatus",
+      "path": "onboardTelemetry.executionStatus",
+      "aliasCandidates": [],
+      "previousPath": null,
+      "unit": "",
+      "dimensions": [],
+      "timeKind": "discrete",
+      "identity": "onboard-reported",
+      "producer": "Simulation.OnboardTelemetry via EngineeringTelemetryObserver",
+      "consumers": [
+        "native-dashboard",
+        "nominal-result",
+        "report"
+      ],
+      "required": true,
+      "save": true,
+      "purpose": "执行状态",
+      "window": [
+        0,
+        86400
+      ],
+      "missingDecision": "FAIL"
+    },
+    {
+      "semanticId": "DASH.requestId",
+      "path": "onboardTelemetry.requestId",
+      "aliasCandidates": [],
+      "previousPath": null,
+      "unit": "",
+      "dimensions": [],
+      "timeKind": "discrete",
+      "identity": "onboard-reported",
+      "producer": "Simulation.OnboardTelemetry via EngineeringTelemetryObserver",
+      "consumers": [
+        "native-dashboard",
+        "nominal-result",
+        "report"
+      ],
+      "required": true,
+      "save": true,
+      "purpose": "当前/最近请求ID",
+      "window": [
+        0,
+        86400
+      ],
+      "missingDecision": "FAIL"
+    },
+    {
+      "semanticId": "DASH.activeTargetId",
+      "path": "onboardTelemetry.activeTargetId",
+      "aliasCandidates": [],
+      "previousPath": null,
+      "unit": "",
+      "dimensions": [],
+      "timeKind": "discrete",
+      "identity": "onboard-reported",
+      "producer": "Simulation.OnboardTelemetry via EngineeringTelemetryObserver",
+      "consumers": [
+        "native-dashboard",
+        "nominal-result",
+        "report"
+      ],
+      "required": true,
+      "save": true,
+      "purpose": "锁存目标ID",
+      "window": [
+        0,
+        86400
+      ],
+      "missingDecision": "FAIL"
+    },
+    {
+      "semanticId": "DASH.activeStationId",
+      "path": "onboardTelemetry.activeStationId",
+      "aliasCandidates": [],
+      "previousPath": null,
+      "unit": "",
+      "dimensions": [],
+      "timeKind": "discrete",
+      "identity": "onboard-reported",
+      "producer": "Simulation.OnboardTelemetry via EngineeringTelemetryObserver",
+      "consumers": [
+        "native-dashboard",
+        "nominal-result",
+        "report"
+      ],
+      "required": true,
+      "save": true,
+      "purpose": "锁存地面站ID",
+      "window": [
+        0,
+        86400
+      ],
+      "missingDecision": "FAIL"
+    },
+    {
+      "semanticId": "DASH.completedImagingCount",
+      "path": "onboardTelemetry.completedImagingCount",
+      "aliasCandidates": [],
+      "previousPath": null,
+      "unit": "",
+      "dimensions": [],
+      "timeKind": "discrete",
+      "identity": "onboard-reported",
+      "producer": "Simulation.OnboardTelemetry via EngineeringTelemetryObserver",
+      "consumers": [
+        "native-dashboard",
+        "nominal-result",
+        "report"
+      ],
+      "required": true,
+      "save": true,
+      "purpose": "完整成像计数",
+      "window": [
+        0,
+        86400
+      ],
+      "missingDecision": "FAIL"
+    },
+    {
+      "semanticId": "DASH.completedDownlinkCount",
+      "path": "onboardTelemetry.completedDownlinkCount",
+      "aliasCandidates": [],
+      "previousPath": null,
+      "unit": "",
+      "dimensions": [],
+      "timeKind": "discrete",
+      "identity": "onboard-reported",
+      "producer": "Simulation.OnboardTelemetry via EngineeringTelemetryObserver",
+      "consumers": [
+        "native-dashboard",
+        "nominal-result",
+        "report"
+      ],
+      "required": true,
+      "save": true,
+      "purpose": "下传完成计数",
+      "window": [
+        0,
+        86400
+      ],
+      "missingDecision": "FAIL"
+    },
+    {
+      "semanticId": "DASH.lastCompletedTargetId",
+      "path": "onboardTelemetry.lastCompletedTargetId",
+      "aliasCandidates": [],
+      "previousPath": null,
+      "unit": "",
+      "dimensions": [],
+      "timeKind": "discrete",
+      "identity": "onboard-reported",
+      "producer": "Simulation.OnboardTelemetry via EngineeringTelemetryObserver",
+      "consumers": [
+        "native-dashboard",
+        "nominal-result",
+        "report"
+      ],
+      "required": true,
+      "save": true,
+      "purpose": "最近完成目标ID",
+      "window": [
+        0,
+        86400
+      ],
+      "missingDecision": "FAIL"
+    },
+    {
+      "semanticId": "DASH.lastTerminalRequestId",
+      "path": "onboardTelemetry.lastTerminalRequestId",
+      "aliasCandidates": [],
+      "previousPath": null,
+      "unit": "",
+      "dimensions": [],
+      "timeKind": "discrete",
+      "identity": "onboard-reported",
+      "producer": "Simulation.OnboardTelemetry via EngineeringTelemetryObserver",
+      "consumers": [
+        "native-dashboard",
+        "nominal-result",
+        "report"
+      ],
+      "required": true,
+      "save": true,
+      "purpose": "最近终止请求ID",
+      "window": [
+        0,
+        86400
+      ],
+      "missingDecision": "FAIL"
+    },
+    {
+      "semanticId": "DASH.lastTerminalReasonCode",
+      "path": "onboardTelemetry.lastTerminalReasonCode",
+      "aliasCandidates": [],
+      "previousPath": null,
+      "unit": "",
+      "dimensions": [],
+      "timeKind": "discrete",
+      "identity": "onboard-reported",
+      "producer": "Simulation.OnboardTelemetry via EngineeringTelemetryObserver",
+      "consumers": [
+        "native-dashboard",
+        "nominal-result",
+        "report"
+      ],
+      "required": true,
+      "save": true,
+      "purpose": "最近终止原因枚举码（1 表示无失败）",
+      "window": [
+        0,
+        86400
+      ],
+      "missingDecision": "FAIL"
+    },
+    {
+      "semanticId": "DASH.cameraStatus",
+      "path": "onboardTelemetry.cameraStatus",
+      "aliasCandidates": [],
+      "previousPath": null,
+      "unit": "",
+      "dimensions": [],
+      "timeKind": "discrete",
+      "identity": "onboard-reported",
+      "producer": "Simulation.OnboardTelemetry via EngineeringTelemetryObserver",
+      "consumers": [
+        "native-dashboard",
+        "nominal-result",
+        "report"
+      ],
+      "required": true,
+      "save": true,
+      "purpose": "相机工作状态",
+      "window": [
+        0,
+        86400
+      ],
+      "missingDecision": "FAIL"
+    },
+    {
+      "semanticId": "DASH.transmitterStatus",
+      "path": "onboardTelemetry.transmitterStatus",
+      "aliasCandidates": [],
+      "previousPath": null,
+      "unit": "",
+      "dimensions": [],
+      "timeKind": "discrete",
+      "identity": "onboard-reported",
+      "producer": "Simulation.OnboardTelemetry via EngineeringTelemetryObserver",
+      "consumers": [
+        "native-dashboard",
+        "nominal-result",
+        "report"
+      ],
+      "required": true,
+      "save": true,
+      "purpose": "X波段发射状态",
+      "window": [
+        0,
+        86400
+      ],
+      "missingDecision": "FAIL"
+    },
+    {
+      "semanticId": "DASH.storedBytes",
+      "path": "onboardTelemetry.storedBytes",
+      "aliasCandidates": [],
+      "previousPath": null,
+      "unit": "byte",
+      "dimensions": [],
+      "timeKind": "continuous",
+      "identity": "onboard-reported",
+      "producer": "Simulation.OnboardTelemetry via EngineeringTelemetryObserver",
+      "consumers": [
+        "native-dashboard",
+        "nominal-result",
+        "report"
+      ],
+      "required": true,
+      "save": true,
+      "purpose": "有效存储量",
+      "window": [
+        0,
+        86400
+      ],
+      "missingDecision": "FAIL"
+    },
+    {
+      "semanticId": "DASH.acceptedWriteRate",
+      "path": "onboardTelemetry.acceptedWriteRate",
+      "aliasCandidates": [],
+      "previousPath": null,
+      "unit": "byte/s",
+      "dimensions": [],
+      "timeKind": "continuous",
+      "identity": "onboard-reported",
+      "producer": "Simulation.OnboardTelemetry via EngineeringTelemetryObserver",
+      "consumers": [
+        "native-dashboard",
+        "nominal-result",
+        "report"
+      ],
+      "required": true,
+      "save": true,
+      "purpose": "记录器实际写率",
+      "window": [
+        0,
+        86400
+      ],
+      "missingDecision": "FAIL"
+    },
+    {
+      "semanticId": "DASH.actualReadRate",
+      "path": "onboardTelemetry.actualReadRate",
+      "aliasCandidates": [],
+      "previousPath": null,
+      "unit": "byte/s",
+      "dimensions": [],
+      "timeKind": "continuous",
+      "identity": "onboard-reported",
+      "producer": "Simulation.OnboardTelemetry via EngineeringTelemetryObserver",
+      "consumers": [
+        "native-dashboard",
+        "nominal-result",
+        "report"
+      ],
+      "required": true,
+      "save": true,
+      "purpose": "真实下传读率",
+      "window": [
+        0,
+        86400
+      ],
+      "missingDecision": "FAIL"
+    },
+    {
+      "semanticId": "DASH.validImageBytes",
+      "path": "onboardTelemetry.validImageBytes",
+      "aliasCandidates": [],
+      "previousPath": null,
+      "unit": "byte",
+      "dimensions": [],
+      "timeKind": "continuous",
+      "identity": "onboard-reported",
+      "producer": "Simulation.OnboardTelemetry via EngineeringTelemetryObserver",
+      "consumers": [
+        "native-dashboard",
+        "nominal-result",
+        "report"
+      ],
+      "required": true,
+      "save": true,
+      "purpose": "最近完整图有效字节",
+      "window": [
+        0,
+        86400
+      ],
+      "missingDecision": "FAIL"
+    },
+    {
+      "semanticId": "DASH.imagingOpportunity",
+      "path": "onboardTelemetry.imagingOpportunity",
+      "aliasCandidates": [],
+      "previousPath": null,
+      "unit": "",
+      "dimensions": [],
+      "timeKind": "discrete",
+      "identity": "onboard-reported",
+      "producer": "Simulation.OnboardTelemetry via EngineeringTelemetryObserver",
+      "consumers": [
+        "native-dashboard",
+        "nominal-result",
+        "report"
+      ],
+      "required": true,
+      "save": true,
+      "purpose": "成像几何机会",
+      "window": [
+        0,
+        86400
+      ],
+      "missingDecision": "FAIL"
+    },
+    {
+      "semanticId": "DASH.downlinkOpportunity",
+      "path": "onboardTelemetry.downlinkOpportunity",
+      "aliasCandidates": [],
+      "previousPath": null,
+      "unit": "",
+      "dimensions": [],
+      "timeKind": "discrete",
+      "identity": "onboard-reported",
+      "producer": "Simulation.OnboardTelemetry via EngineeringTelemetryObserver",
+      "consumers": [
+        "native-dashboard",
+        "nominal-result",
+        "report"
+      ],
+      "required": true,
+      "save": true,
+      "purpose": "地面站机会",
+      "window": [
+        0,
+        86400
+      ],
+      "missingDecision": "FAIL"
+    }
+  ],
+  "requiredChecks": {
+    "P-IDENTITY": {
+      "required": true,
+      "status": "NOT_CHECKED",
+      "evidence": null
+    },
+    "P-CONFIG": {
+      "required": true,
+      "status": "NOT_CHECKED",
+      "evidence": null
+    },
+    "P-CONTRACTS": {
+      "required": true,
+      "status": "NOT_CHECKED",
+      "evidence": null
+    },
+    "P-STRUCTURE": {
+      "required": true,
+      "status": "NOT_CHECKED",
+      "evidence": null
+    },
+    "P-DASHBOARD": {
+      "required": true,
+      "status": "NOT_CHECKED",
+      "evidence": null
+    },
+    "P-MAT": {
+      "required": true,
+      "status": "NOT_CHECKED",
+      "evidence": null
+    },
+    "P-RESULT-SIZE": {
+      "required": true,
+      "status": "NOT_CHECKED",
+      "evidence": null
+    },
+    "V10-MISSION": {
+      "required": true,
+      "status": "NOT_CHECKED",
+      "evidence": null
+    },
+    "PH-09": {
+      "required": true,
+      "status": "NOT_CHECKED",
+      "evidence": null
+    }
+  },
+  "physics_acceptance": {
+    "PH-09": {
+      "description": "物理电芯SOC独立电量账",
+      "required": true,
+      "scenario": "NOMINAL_FULL; separate local battery fixture is documented in the release note",
+      "rawSemanticIds": [
+        "BAT.SOC",
+        "BAT.I_CELL"
+      ],
+      "formula": "SOC_physical(t)-SOC_physical(0)-integral(I_stack_charge)/(Np*Qnom)",
+      "tolerance": {
+        "absoluteSOC": 1e-06
+      },
+      "precision": "float64",
+      "timeHandling": "all raw event rows retained; split at duplicate timestamps with zero elapsed charge; nonuniform segmentwise Simpson quadrature with symmetric end trapezoid averaging; terminal residual gated and full maximum reported",
+      "status": "NOT_CHECKED"
+    }
+  },
+  "timePolicy": {
+    "nominalStartSeconds": 0,
+    "nominalStopSeconds": 86400,
+    "gridToleranceSeconds": 1e-06,
+    "discreteInterpolation": "none",
+    "continuousIntegration": "raw event segment trapezoid",
+    "discreteIntegration": "post-event hold"
+  }
+}

@@ -1,8 +1,8 @@
 within OneSatSim.Foundation.Calculations;
 model PowerDistributionStatusCalculation "PDB通道状态派生"
-  Modelica.Blocks.Interfaces.RealInput pdCurrent[24](each unit="A") annotation(Placement(transformation(extent={{-120,35},{-80,55}})));
-  Modelica.Blocks.Interfaces.IntegerInput equipmentStatus[6] annotation(Placement(transformation(extent={{-120,-55},{-80,-35}})));
-  Modelica.Blocks.Interfaces.IntegerOutput pdState[24] annotation(Placement(transformation(extent={{80,-10},{100,10}})));
+  Modelica.Blocks.Interfaces.RealInput pdCurrent[24](each unit="A")  "pd电流 [A]" annotation(Placement(visible=true, transformation(origin={-185,16}, extent={{-7,-7},{7,7}}, rotation=0), iconVisible=true, iconTransformation(origin={-89,80}, extent={{-6,-6},{6,6}}, rotation=0)));
+  Modelica.Blocks.Interfaces.IntegerInput equipmentStatus[6]  "计算/接口量 equipmentStatus" annotation(Placement(visible=true, transformation(origin={-89,-80}, extent={{-18.545455,-18.545455},{18.545455,18.545455}}, rotation=0), iconVisible=true, iconTransformation(origin={-89,-80}, extent={{-18.545455,-18.545455},{18.545455,18.545455}}, rotation=0)));
+  Modelica.Blocks.Interfaces.IntegerOutput pdState[24]  "pd状态" annotation(Placement(visible=true, transformation(origin={89,0}, extent={{-17.803636,-17.803636},{17.803636,17.803636}}, rotation=0), iconVisible=true, iconTransformation(origin={89,0}, extent={{-17.803636,-17.803636},{17.803636,17.803636}}, rotation=0)));
 equation
   pdState={
     if noEvent(abs(pdCurrent[1]) > 1e-5) then 170 else 0,
@@ -25,7 +25,15 @@ equation
     if noEvent(abs(pdCurrent[21]) > 1e-5) then 170 else 0,
     if noEvent(abs(pdCurrent[22]) > 1e-5) then 170 else 0,
     0,0};
-  annotation(
-    Icon(graphics={Rectangle(extent={{-100,65},{100,-65}},lineColor={180,105,20},fillColor={252,242,225},fillPattern=FillPattern.Solid),Text(extent={{-92,24},{92,-18}},textString="PDB 24 STATE")}),
-    Documentation(info="<html><h4>功能定位</h4><p>由24路实际配电电流和六类设备状态派生PDB通道状态字。</p><h4>输入与物理含义</h4><p>pdCurrent[1:24]为各支路电流，equipmentStatus[1:6]为基带、发射机及载荷设备状态。</p><h4>输出与物理含义</h4><p>pdState[1:24]为统一整数状态阵列，供PDB-S0工程遥测；170=powered，0=off or physically unused。</p><h4>主要计算关系</h4><p>有直接设备状态来源的通道优先使用设备状态，其余通道按电流是否超过最小工作阈值判定；未建模通道保持明确状态。</p><h4>状态、事件与假设</h4><p>纯代数、无锁存和故障诊断；状态表示通道是否工作，不等同于继电器触点、电流越限或故障码。</p><h4>调用与结果使用</h4><p>由PowerConditioningUnit调用。查看pdState时应同时核对对应pdCurrent和通道表，避免只凭状态字推断功率。</p></html>"));
+  annotation(Documentation(info="<html><h2>PDB通道状态派生</h2><p><b>类路径：</b><code>OneSatSim.Foundation.Calculations.PowerDistributionStatusCalculation</code>　<b>类型：</b>model</p><h3>用途与定位</h3><p>PDB通道状态派生</p><h3>在工程中使用</h3><p>当前直接使用位置：<a href=\"modelica://OneSatSim.Components.PowerConditioningUnit\">OneSatSim.Components.PowerConditioningUnit</a> 的 <code>distributionStatusCalculation</code>。</p><h3>接口、输入与输出</h3><table border=\"1\" cellspacing=\"0\" cellpadding=\"5\"><tr><th>名称/维数</th><th>类型</th><th>声明角色</th><th>单位</th><th>含义</th></tr><tr><td><code>pdCurrent[24]</code></td><td>Modelica.Blocks.Interfaces.RealInput</td><td>public</td><td>A</td><td>pd电流 [A]</td></tr><tr><td><code>equipmentStatus[6]</code></td><td>Modelica.Blocks.Interfaces.IntegerInput</td><td>public</td><td>按声明/类型合同</td><td>计算/接口量 equipmentStatus</td></tr><tr><td><code>pdState[24]</code></td><td>Modelica.Blocks.Interfaces.IntegerOutput</td><td>public</td><td>按声明/类型合同</td><td>pd状态</td></tr></table><h3>实现摘要</h3><p>以下表达式直接摘自本类，保留原始符号和单位体系；完整的条件分支、循环与初始化以源码为准。</p><pre>[equation] pdState={ if noEvent(abs(pdCurrent[1]) &gt; 1e-5) then 170 else 0, if equipmentStatus[1] &gt; 0 then 170 else 0, if equipmentStatus[2] &gt; 0 then 170 else 0, if equipmentStatus[3] &gt; 0 then 170 else 0, if equipmentStatus[4] &gt; 0 then 170 else 0, 0,0, if noEvent(abs(pdCurrent[8]) &gt; 1e-5) then 170 else 0, 0,0,0, if noEvent(abs(pdCurrent[12]) &gt; 1e-5) then 170 else 0, if noEvent(abs(pdCurrent[13]) &gt; 1e-5) then 170 else 0, if noEvent(abs(pdCurrent[14]) &gt; 1e-5) then 170 else 0, if noEvent(abs(pdCurrent[15]) &gt; 1e-5) then 170 else 0, if noEvent(abs(pdCurrent[16]) &gt; 1e-5) then 170 else 0, if equipmentStatus[5] &gt; …（完整表达式见源码）</pre></html>"),
+    Icon(coordinateSystem(extent={{-100,-100},{100,100}},preserveAspectRatio=true),graphics={
+      Rectangle(extent={{-100,-100},{100,100}},fillPattern=FillPattern.Solid,fillColor={245,158,11},lineColor={245,158,11},lineThickness=0,radius=0),
+      Line(points={{-48,0},{-14,-34},{48,42}},color={255,255,255},thickness=1.4,pattern=LinePattern.Solid,smooth=Smooth.None),
+      Line(points={{-45,-52},{45,-52}},color={255,255,255},thickness=1.4,pattern=LinePattern.Solid,smooth=Smooth.None)
+    }),
+    Diagram(coordinateSystem(extent={{-100,-100},{100,100}},preserveAspectRatio=true),graphics={
+      Rectangle(extent={{-100,-100},{100,100}},fillPattern=FillPattern.Solid,fillColor={245,158,11},lineColor={245,158,11},lineThickness=0,radius=0),
+      Line(points={{-48,0},{-14,-34},{48,42}},color={255,255,255},thickness=1.4,pattern=LinePattern.Solid,smooth=Smooth.None),
+      Line(points={{-45,-52},{45,-52}},color={255,255,255},thickness=1.4,pattern=LinePattern.Solid,smooth=Smooth.None)
+    }));
 end PowerDistributionStatusCalculation;

@@ -1,5 +1,51 @@
 within OneSatSim;
 package Simulation "仿真入口包"
-  annotation(Icon(graphics={Rectangle(extent={{-100,100},{100,-100}}, lineColor={25,95,145}, fillColor={228,242,250}, fillPattern=FillPattern.Solid), Polygon(points={{-28,45},{55,0},{-28,-45},{-28,45}}, fillColor={25,120,180}, fillPattern=FillPattern.Solid)}));
-  annotation(Documentation(info="<html><h4>包职责</h4><p><b>定位：</b>提供唯一可运行总体入口。</p><p><b>内容：</b>CompleteMission读取由根目录DesignConfig.xlsx生成的任务场景、初始条件与整星硬件配置；未设置覆盖时继承Modelica默认基线。</p><p><b>推荐阅读：</b>从CompleteMission开始，按onboardTelemetry字段导航到OBC和设备源头。</p><p><b>适用范围：</b>用于12U立方星多领域系统级总体仿真、场景对比、能量/热/姿态/任务联动和星上工程遥测导航。</p></html>"));
+
+  annotation(Documentation(info="<html><h2>仿真实验</h2><p><b>类路径：</b><code>OneSatSim.Simulation</code>　<b>类型：</b>package</p><h3>用途与定位</h3><p>仿真入口包</p><h3>阅读与调用</h3><p>本包用于组织类。按下表进入相应模型；包本身不单独启动仿真。</p><table border=\"1\" cellspacing=\"0\" cellpadding=\"5\"><tr><th>类</th><th>用途</th></tr><tr><td><a href=\"modelica://OneSatSim.Simulation.CompleteMission\">OneSatSim.Simulation.CompleteMission</a></td><td>完整任务仿真</td></tr><tr><td><a href=\"modelica://OneSatSim.Simulation.OnboardTelemetry\">OneSatSim.Simulation.OnboardTelemetry</a></td><td>只读星上工程遥测</td></tr><tr><td><a href=\"modelica://OneSatSim.Simulation.OrbitalEnvironment\">OneSatSim.Simulation.OrbitalEnvironment</a></td><td>轨道环境与几何装配</td></tr></table></html>"),
+    Icon(coordinateSystem(extent={{-100,-100},{100,100}}, preserveAspectRatio=true, grid={2,2}), graphics={
+      Rectangle(extent={{-89,-97},{89,95}}, lineColor={0,0,0}, fillColor={255,255,255}, fillPattern=FillPattern.Solid, lineThickness=0.6, radius=3),
+      Line(points={{-76,64},{76,64}}, color={219,223,227}, thickness=0.4, pattern=LinePattern.Solid),
+      Rectangle(extent={{-84,69},{-64,89}}, lineColor={0,0,0}, fillColor={73,112,158}, fillPattern=FillPattern.Solid, lineThickness=0.85, radius=0),
+      Text(extent={{-61,71},{76,86}}, textString="Package", fontSize=0, lineColor={0,0,0}, horizontalAlignment=TextAlignment.Center),
+      Polygon(points={{-68,-45},{-68,39},{-25,39},{-15,49},{66,49},{66,-45},{-68,-45}}, lineColor={0,0,0}, fillColor={242,245,247}, fillPattern=FillPattern.Solid, lineThickness=0.7),
+      Polygon(points={{-65,34},{68,34},{60,-45},{-68,-45},{-65,34}}, lineColor={0,0,0}, fillColor={255,255,255}, fillPattern=FillPattern.Solid, lineThickness=0.65),
+      Ellipse(extent={{-21,-20.6},{11.4,11.8}}, lineColor={0,0,0}, fillColor={239,246,250}, fillPattern=FillPattern.Solid, lineThickness=0.65, startAngle=0, endAngle=360),
+      Ellipse(extent={{-11.28,-20.6},{1.68,11.8}}, lineColor={113,122,132}, fillColor={255,255,255}, fillPattern=FillPattern.None, lineThickness=0.4, startAngle=0, endAngle=360),
+      Ellipse(extent={{-21,-10.07},{11.4,1.27}}, lineColor={113,122,132}, fillColor={255,255,255}, fillPattern=FillPattern.None, lineThickness=0.4, startAngle=0, endAngle=360),
+      Line(points={{-21,-4.4},{11.4,-4.4}}, color={113,122,132}, thickness=0.4, pattern=LinePattern.Solid),
+      Line(points={{-4.8,-20.6},{-4.8,11.8}}, color={113,122,132}, thickness=0.4, pattern=LinePattern.Solid),
+      Ellipse(extent={{-40.2,-23.6},{37.8,24.4}}, lineColor={73,112,158}, fillColor={255,255,255}, fillPattern=FillPattern.None, lineThickness=0.7, startAngle=0, endAngle=360),
+      Rectangle(extent={{24.6,10.6},{30.6,16.6}}, lineColor={0,0,0}, fillColor={255,255,255}, fillPattern=FillPattern.Solid, lineThickness=0.6, radius=0),
+      Rectangle(extent={{19.8,11.2},{24,16}}, lineColor={0,0,0}, fillColor={221,235,246}, fillPattern=FillPattern.Solid, lineThickness=0.45, radius=0),
+      Rectangle(extent={{31.2,11.2},{35.4,16}}, lineColor={0,0,0}, fillColor={221,235,246}, fillPattern=FillPattern.Solid, lineThickness=0.45, radius=0),
+      Line(points={{27.6,10.6},{1.8,4.6}}, color={73,112,158}, thickness=0.6, pattern=LinePattern.Dash),
+      Line(points={{27.6,10.6},{9,-10.4}}, color={73,112,158}, thickness=0.6, pattern=LinePattern.Dash),
+      Ellipse(extent={{0,2.8},{3.6,6.4}}, lineColor={73,112,158}, fillColor={255,255,255}, fillPattern=FillPattern.Solid, lineThickness=0.7, startAngle=0, endAngle=360),
+      Ellipse(extent={{7.2,-12.2},{10.8,-8.6}}, lineColor={73,112,158}, fillColor={255,255,255}, fillPattern=FillPattern.Solid, lineThickness=0.7, startAngle=0, endAngle=360),
+      Line(points={{-76,-58},{76,-58}}, color={219,223,227}, thickness=0.4, pattern=LinePattern.Solid),
+      Text(extent={{-80,-91},{80,-65}}, textString="Mission Simulation", fontSize=0, lineColor={0,0,0}, horizontalAlignment=TextAlignment.Center, textStyle={TextStyle.Bold})
+    }),
+    Diagram(coordinateSystem(extent={{-150,-145},{150,155}}, preserveAspectRatio=true, grid={2,2}), graphics={
+      Rectangle(extent={{-89,-97},{89,95}}, lineColor={0,0,0}, fillColor={255,255,255}, fillPattern=FillPattern.Solid, lineThickness=0.6, radius=3),
+      Line(points={{-76,64},{76,64}}, color={219,223,227}, thickness=0.4, pattern=LinePattern.Solid),
+      Rectangle(extent={{-84,69},{-64,89}}, lineColor={0,0,0}, fillColor={73,112,158}, fillPattern=FillPattern.Solid, lineThickness=0.85, radius=0),
+      Text(extent={{-61,71},{76,86}}, textString="Package", fontSize=0, lineColor={0,0,0}, horizontalAlignment=TextAlignment.Center),
+      Polygon(points={{-68,-45},{-68,39},{-25,39},{-15,49},{66,49},{66,-45},{-68,-45}}, lineColor={0,0,0}, fillColor={242,245,247}, fillPattern=FillPattern.Solid, lineThickness=0.7),
+      Polygon(points={{-65,34},{68,34},{60,-45},{-68,-45},{-65,34}}, lineColor={0,0,0}, fillColor={255,255,255}, fillPattern=FillPattern.Solid, lineThickness=0.65),
+      Ellipse(extent={{-21,-20.6},{11.4,11.8}}, lineColor={0,0,0}, fillColor={239,246,250}, fillPattern=FillPattern.Solid, lineThickness=0.65, startAngle=0, endAngle=360),
+      Ellipse(extent={{-11.28,-20.6},{1.68,11.8}}, lineColor={113,122,132}, fillColor={255,255,255}, fillPattern=FillPattern.None, lineThickness=0.4, startAngle=0, endAngle=360),
+      Ellipse(extent={{-21,-10.07},{11.4,1.27}}, lineColor={113,122,132}, fillColor={255,255,255}, fillPattern=FillPattern.None, lineThickness=0.4, startAngle=0, endAngle=360),
+      Line(points={{-21,-4.4},{11.4,-4.4}}, color={113,122,132}, thickness=0.4, pattern=LinePattern.Solid),
+      Line(points={{-4.8,-20.6},{-4.8,11.8}}, color={113,122,132}, thickness=0.4, pattern=LinePattern.Solid),
+      Ellipse(extent={{-40.2,-23.6},{37.8,24.4}}, lineColor={73,112,158}, fillColor={255,255,255}, fillPattern=FillPattern.None, lineThickness=0.7, startAngle=0, endAngle=360),
+      Rectangle(extent={{24.6,10.6},{30.6,16.6}}, lineColor={0,0,0}, fillColor={255,255,255}, fillPattern=FillPattern.Solid, lineThickness=0.6, radius=0),
+      Rectangle(extent={{19.8,11.2},{24,16}}, lineColor={0,0,0}, fillColor={221,235,246}, fillPattern=FillPattern.Solid, lineThickness=0.45, radius=0),
+      Rectangle(extent={{31.2,11.2},{35.4,16}}, lineColor={0,0,0}, fillColor={221,235,246}, fillPattern=FillPattern.Solid, lineThickness=0.45, radius=0),
+      Line(points={{27.6,10.6},{1.8,4.6}}, color={73,112,158}, thickness=0.6, pattern=LinePattern.Dash),
+      Line(points={{27.6,10.6},{9,-10.4}}, color={73,112,158}, thickness=0.6, pattern=LinePattern.Dash),
+      Ellipse(extent={{0,2.8},{3.6,6.4}}, lineColor={73,112,158}, fillColor={255,255,255}, fillPattern=FillPattern.Solid, lineThickness=0.7, startAngle=0, endAngle=360),
+      Ellipse(extent={{7.2,-12.2},{10.8,-8.6}}, lineColor={73,112,158}, fillColor={255,255,255}, fillPattern=FillPattern.Solid, lineThickness=0.7, startAngle=0, endAngle=360),
+      Line(points={{-76,-58},{76,-58}}, color={219,223,227}, thickness=0.4, pattern=LinePattern.Solid),
+      Text(extent={{-80,-91},{80,-65}}, textString="Mission Simulation", fontSize=0, lineColor={0,0,0}, horizontalAlignment=TextAlignment.Center, textStyle={TextStyle.Bold})
+    }));
 end Simulation;

@@ -1,5 +1,6 @@
-OrbitalEnvironmentCore
+OrbitalGeometry
 EphemerisEnvironmentReader
+EphemerisDataAdapter
 MissionOpportunityGenerator
 MissionPlanner
 MissionFeedbackAdapter
@@ -14,6 +15,8 @@ DownlinkSequencer
 SafeModeSequencer
 CommandAdapter
 EquivalentAOCSCore
+AOCSControlComputation
 AverageDCDCConverterCore
 EngineeringTelemetryObserver
 BatteryCellStackCore
+BatteryCellLimits

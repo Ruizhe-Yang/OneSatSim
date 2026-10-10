@@ -1,0 +1,48 @@
+[
+  {"name":"batterySOC","type":"Real","source":"SAT_S0_batterySOC","group":"电源","label":"BMS荷电状态","unit":"1"},
+  {"name":"batteryVoltage","type":"Real","source":"SAT_S0_batteryVoltage_V","group":"电源","label":"电池端电压","unit":"V"},
+  {"name":"batteryCurrent","type":"Real","source":"SAT_S0_batteryCurrent_A","group":"电源","label":"电池端电流(+放电)","unit":"A"},
+  {"name":"busVoltage","type":"Real","size":3,"source":"SAT_S0_busVoltage_V","group":"电源","label":"12/5/3.3V轨实测","unit":"V"},
+  {"name":"solarNetPower","type":"Real","source":"SOLAR_netDeliveredPower_W","group":"电源","label":"太阳阵净交付功率","unit":"W"},
+  {"name":"threeRailLoadPower","type":"Real","source":"POWER_threeRailOutputPower_W","group":"电源","label":"三轨输出负载功率","unit":"W"},
+  {"name":"batteryChargeAllowed","type":"Boolean","source":"BMS_chargeAllowed","group":"电源","label":"BMS允许充电","unit":""},
+
+  {"name":"batteryCellTemperature","type":"Real","source":"TCB_S0_thermistor_degC[31]","group":"热","label":"电芯温度","unit":"degC"},
+  {"name":"batteryCaseTemperature","type":"Real","source":"TCB_S0_thermistor_degC[32]","group":"热","label":"电池壳温度","unit":"degC"},
+  {"name":"obcCpuTemperature","type":"Real","source":"SAT_S3_cpuTemperature_degC","group":"热","label":"OBC CPU温度","unit":"degC"},
+  {"name":"obcBoardTemperature","type":"Real","source":"SAT_S3_boardTemperature_degC","group":"热","label":"OBC板温","unit":"degC"},
+  {"name":"cameraFocalTemperature","type":"Real","source":"TCB_S0_thermistor_degC[20]","group":"热","label":"相机焦面温度","unit":"degC"},
+  {"name":"cameraOpticsTemperature","type":"Real","source":"TCB_S0_thermistor_degC[21]","group":"热","label":"相机光机温度","unit":"degC"},
+  {"name":"transmitterTemperature","type":"Real","source":"THERM_transmitter_degC","group":"热","label":"X波段功放温度","unit":"degC"},
+
+  {"name":"attitudeQuaternion","type":"Real","size":4,"source":"SAT_S2_starY_q","group":"姿态","label":"Y星敏实测四元数","unit":"1"},
+  {"name":"bodyRate","type":"Real","size":3,"source":"SAT_S2_YH50_deg_s","group":"姿态","label":"机体系陀螺角速率","unit":"deg/s"},
+  {"name":"wheelSpeed","type":"Real","size":4,"source":"SAT_S2_wheel_rpm","group":"姿态","label":"四轮转速","unit":"rpm"},
+  {"name":"attitudeError","type":"Real","source":"SAT_S3_attitudeError_deg","group":"姿态","label":"指向误差","unit":"deg"},
+  {"name":"attitudeReadingValid","type":"Boolean","source":"ATT_starY_valid","group":"姿态","label":"星敏读数有效","unit":""},
+
+  {"name":"gnssPosition","type":"Real","size":3,"source":"SAT_S2_GNSS_position_m","group":"导航","label":"GNSS GCRS位置","unit":"m"},
+  {"name":"gnssVelocity","type":"Real","size":3,"source":"SAT_S2_GNSS_velocity_m_s","group":"导航","label":"GNSS GCRS速度","unit":"m/s"},
+  {"name":"gnssFix","type":"Integer","source":"GNSS_fix","group":"导航","label":"GNSS有效标志","unit":""},
+
+  {"name":"missionMode","type":"Integer","source":"SAT_S3_missionMode","group":"任务","label":"任务模式","unit":""},
+  {"name":"executionStatus","type":"Integer","source":"SAT_S3_commandExecutionStatus","group":"任务","label":"执行状态","unit":""},
+  {"name":"requestId","type":"Integer","source":"SAT_S3_commandId","group":"任务","label":"当前/最近请求ID","unit":""},
+  {"name":"activeTargetId","type":"Integer","source":"MISSION_targetIndex","group":"任务","label":"锁存目标ID","unit":""},
+  {"name":"activeStationId","type":"Integer","source":"MISSION_stationIndex","group":"任务","label":"锁存地面站ID","unit":""},
+  {"name":"completedImagingCount","type":"Integer","source":"MISSION_completedImagingCount","group":"任务","label":"完整成像计数","unit":""},
+  {"name":"completedDownlinkCount","type":"Integer","source":"MISSION_completedDownlinkCount","group":"任务","label":"下传完成计数","unit":""},
+  {"name":"lastCompletedTargetId","type":"Integer","source":"MISSION_lastCompletedTargetIndex","group":"任务","label":"最近完成目标ID","unit":""},
+  {"name":"lastTerminalRequestId","type":"Integer","source":"MISSION_lastTerminalRequestId","group":"任务","label":"最近终止请求ID","unit":""},
+  {"name":"lastTerminalReasonCode","type":"Integer","source":"MISSION_lastTerminalReasonCode","group":"任务","label":"最近终止原因码","unit":""},
+
+  {"name":"cameraStatus","type":"Integer","source":"Camera_status","group":"载荷/下传","label":"相机工作状态","unit":""},
+  {"name":"transmitterStatus","type":"Integer","source":"TRANSMITTER_status","group":"载荷/下传","label":"X波段发射状态","unit":""},
+  {"name":"storedBytes","type":"Real","source":"DATA_storedBytes","group":"载荷/下传","label":"有效存储量","unit":"byte"},
+  {"name":"acceptedWriteRate","type":"Real","source":"DATA_acceptedWriteRate_B_s","group":"载荷/下传","label":"记录器实际写率","unit":"byte/s"},
+  {"name":"actualReadRate","type":"Real","source":"DATA_actualReadRate_B_s","group":"载荷/下传","label":"真实下传读率","unit":"byte/s"},
+  {"name":"validImageBytes","type":"Real","source":"SAT_S3_imagingValidImageBytes","group":"载荷/下传","label":"最近完整图有效字节","unit":"byte"},
+
+  {"name":"imagingOpportunity","type":"Boolean","source":"SAT_S3_imagingOpportunity","group":"日内背景","label":"成像几何机会","unit":""},
+  {"name":"downlinkOpportunity","type":"Boolean","source":"SAT_S3_downlinkOpportunity","group":"日内背景","label":"地面站机会","unit":""}
+]

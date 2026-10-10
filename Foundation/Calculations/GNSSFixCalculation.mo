@@ -1,8 +1,20 @@
 within OneSatSim.Foundation.Calculations;
 model GNSSFixCalculation "GNSS定位状态计算"
-  Modelica.Blocks.Interfaces.BooleanInput eclipse annotation(Placement(transformation(extent={{-120,-20},{-80,20}})));
-  Modelica.Blocks.Interfaces.IntegerOutput fixStatus annotation(Placement(transformation(extent={{80,-10},{100,10}})));
+  Modelica.Blocks.Interfaces.BooleanInput eclipse  "计算/接口量 eclipse" annotation(Placement(visible=true, transformation(origin={-89,0}, extent={{-17.803636,-17.803636},{17.803636,17.803636}}, rotation=0), iconVisible=true, iconTransformation(origin={-89,0}, extent={{-17.803636,-17.803636},{17.803636,17.803636}}, rotation=0)));
+  Modelica.Blocks.Interfaces.IntegerOutput fixStatus  "计算/接口量 fixStatus" annotation(Placement(visible=true, transformation(origin={89,0}, extent={{-17.803636,-17.803636},{17.803636,17.803636}}, rotation=0), iconVisible=true, iconTransformation(origin={89,0}, extent={{-17.803636,-17.803636},{17.803636,17.803636}}, rotation=0)));
 equation
   fixStatus=if eclipse then 2 else 3;
-  annotation(Icon(graphics={Rectangle(extent={{-100,70},{100,-70}},lineColor={40,110,80},fillColor={232,246,239},fillPattern=FillPattern.Solid),Line(points={{-70,0},{65,0}},color={40,110,80},arrow={Arrow.None,Arrow.Filled}),Text(extent={{-90,45},{90,-45}},textString="GNSS FIX")}),Documentation(info="<html><h4>功能定位</h4><p>提供总体仿真所需的低阶GNSS定位状态码。</p><h4>输入与物理含义</h4><p>eclipse为环境日影标志，在当前等效中用于区分两种可用工作状态。</p><h4>输出与物理含义</h4><p>fixStatus在日影时为2、日照时为3，两者均表示模型约定的有效定位状态类别。</p><h4>主要计算关系</h4><p>用单一条件表达式根据eclipse选择状态码。</p><h4>状态、事件与假设</h4><p>纯代数、无捕获状态；不模拟可见星数、DOP、伪距、钟差、导航滤波或失锁。不能据此评估GNSS精度。</p><h4>调用与结果使用</h4><p>由GPSReceiverUnit（历史类名，当前按GNSS语义使用）调用。用户应同时查看位置、速度参考系与历元；fixStatus只用于任务级状态映射。</p></html>"));
+  annotation(Documentation(info="<html><h2>GNSS定位状态计算</h2><p><b>类路径：</b><code>OneSatSim.Foundation.Calculations.GNSSFixCalculation</code>　<b>类型：</b>model</p><h3>用途与定位</h3><p>GNSS定位状态计算</p><h3>在工程中使用</h3><p>当前直接使用位置：<a href=\"modelica://OneSatSim.Components.GPSReceiverUnit\">OneSatSim.Components.GPSReceiverUnit</a> 的 <code>fixCalculation</code>。</p><h3>接口、输入与输出</h3><table border=\"1\" cellspacing=\"0\" cellpadding=\"5\"><tr><th>名称/维数</th><th>类型</th><th>声明角色</th><th>单位</th><th>含义</th></tr><tr><td><code>eclipse</code></td><td>Modelica.Blocks.Interfaces.BooleanInput</td><td>public</td><td>按声明/类型合同</td><td>计算/接口量 eclipse</td></tr><tr><td><code>fixStatus</code></td><td>Modelica.Blocks.Interfaces.IntegerOutput</td><td>public</td><td>按声明/类型合同</td><td>计算/接口量 fixStatus</td></tr></table><h3>实现摘要</h3><p>以下表达式直接摘自本类，保留原始符号和单位体系；完整的条件分支、循环与初始化以源码为准。</p><pre>[equation] fixStatus=if eclipse then 2 else 3;</pre></html>"),
+    Icon(coordinateSystem(extent={{-100,-100},{100,100}},preserveAspectRatio=true),graphics={
+      Rectangle(extent={{-100,-100},{100,100}},fillPattern=FillPattern.Solid,fillColor={0,166,81},lineColor={0,166,81},lineThickness=0,radius=0),
+      Ellipse(extent={{-33,-33},{33,33}},lineColor={255,255,255},fillColor={255,255,255},fillPattern=FillPattern.None,lineThickness=1.4,startAngle=0,endAngle=360),
+      Line(points={{-56,0},{56,0}},color={255,255,255},thickness=1.4,pattern=LinePattern.Solid,smooth=Smooth.None),
+      Line(points={{0,-56},{0,56}},color={255,255,255},thickness=1.4,pattern=LinePattern.Solid,smooth=Smooth.None)
+    }),
+    Diagram(coordinateSystem(extent={{-100,-100},{100,100}},preserveAspectRatio=true),graphics={
+      Rectangle(extent={{-100,-100},{100,100}},fillPattern=FillPattern.Solid,fillColor={0,166,81},lineColor={0,166,81},lineThickness=0,radius=0),
+      Ellipse(extent={{-33,-33},{33,33}},lineColor={255,255,255},fillColor={255,255,255},fillPattern=FillPattern.None,lineThickness=1.4,startAngle=0,endAngle=360),
+      Line(points={{-56,0},{56,0}},color={255,255,255},thickness=1.4,pattern=LinePattern.Solid,smooth=Smooth.None),
+      Line(points={{0,-56},{0,56}},color={255,255,255},thickness=1.4,pattern=LinePattern.Solid,smooth=Smooth.None)
+    }));
 end GNSSFixCalculation;

@@ -1,0 +1,2248 @@
+{
+  "schema": "MOSAIC-AUXILIARY-DIFF-0.8",
+  "baseVersion": "1.1.5",
+  "releaseVersion": "1.1.6",
+  "scope": "DOCUMENTATION_NAMES_AND_CONNECTION_LINE_COLORS_ONLY",
+  "status": "STATIC_AUXILIARY_ONLY",
+  "method": "Source-span Documentation/class-comment edits and connect-Line.color edits; every other Modelica token remains protected, except explicitly versioned root release annotation. No ordinary string, uses, experiment, Evaluate, points or width is exempt.",
+  "moFiles": [
+    {
+      "file": "Components/AntennaUnit.mo",
+      "beforeSHA256": "135a52e395737649d010b05302b3c16488ce5624bee2371164248c783fc00670",
+      "afterSHA256": "526587d71d2f1d96c7bc7706ae925d51aced4a9942ac7cdf73b87422054c5190",
+      "protectedBeforeSHA256": "b7d645e485262f309fc9e1f4d966b6de815b3a54f03419b3c0975a2f503a29a7",
+      "protectedAfterSHA256": "b7d645e485262f309fc9e1f4d966b6de815b3a54f03419b3c0975a2f503a29a7",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Components/BatteryUnit.mo",
+      "beforeSHA256": "1bbbfea26e03704c545325f861f7926495cb43f3907a66d42207186dc5f4e52d",
+      "afterSHA256": "a08f2ced1a2450a92f6f9fc76300e5741c2058ffe1b5896bfb9c83ad8b0a3a57",
+      "protectedBeforeSHA256": "909c1955d136b66c150a8ca04b9550ec7994dba513090cab9a30ba4f33d41528",
+      "protectedAfterSHA256": "909c1955d136b66c150a8ca04b9550ec7994dba513090cab9a30ba4f33d41528",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Components/BodyMountedSolarArrayMinusXUnit.mo",
+      "beforeSHA256": "d82ed16953d549d59ef4c88fdd62518dcf6931280349c32eb81fc43648e3eec6",
+      "afterSHA256": "22c361a2df39f103a12f786f56fe1fef048ef10513bd7f9ffe7790b77f283342",
+      "protectedBeforeSHA256": "d47e561ecd6068b5ea75fb8e2d6f23a1f4e76fce7a23231e89ecf1af5e1d849f",
+      "protectedAfterSHA256": "d47e561ecd6068b5ea75fb8e2d6f23a1f4e76fce7a23231e89ecf1af5e1d849f",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Components/BodyMountedSolarArrayPlusXUnit.mo",
+      "beforeSHA256": "3c5bed6541d1db99f8d541dd74c1e722b7da8ee3c884217a49fff87f277d2d57",
+      "afterSHA256": "7633654d3cab85724b685ac9b6826512a9d3ae29faadc80aa52499fd0acb1e51",
+      "protectedBeforeSHA256": "2da811871dfb52619e251277d088a40203231785883be3282cf120166dcf11af",
+      "protectedAfterSHA256": "2da811871dfb52619e251277d088a40203231785883be3282cf120166dcf11af",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Components/BodyMountedSolarArrayPlusYUnit.mo",
+      "beforeSHA256": "b91e926c9bde1279a968d8d90138eeb0ab3bd9ea23f9c81cbbc43d17ac3de025",
+      "afterSHA256": "59fbb6f2b845da0640311a41f90bd8fb66d3b1060646654bdda0b48f5d160c5a",
+      "protectedBeforeSHA256": "3e9e25831e81eb4c19b370ca7433dea63df42a391b298edeea2f6068b2c1547b",
+      "protectedAfterSHA256": "3e9e25831e81eb4c19b370ca7433dea63df42a391b298edeea2f6068b2c1547b",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Components/DataRecorderUnit.mo",
+      "beforeSHA256": "74a55582b537b96a32ba01c04ce4a34b710909a7d2564ec48519c3f27cb382cc",
+      "afterSHA256": "0fe630ba082cbb2f779164de68d7b9a6ee07d4bb7e4610856faed3ad06fd7186",
+      "protectedBeforeSHA256": "c3fa401d37db297c5a9fa610ff188dc535d1faf64294615cdcdfa124f307436d",
+      "protectedAfterSHA256": "c3fa401d37db297c5a9fa610ff188dc535d1faf64294615cdcdfa124f307436d",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Components/EarthObservationCameraUnit.mo",
+      "beforeSHA256": "ac5ea446dd7217e0161bbf46ee6d0ca78673b5298aa85fed4a431cc01d8144fe",
+      "afterSHA256": "84a388abde5bc24926f9ae26afbc24e5bd57aa242b25fc758a9897245ec43244",
+      "protectedBeforeSHA256": "7ec95748163703119cba2e22beeb9b9beb79d14519961b03b7c3b37972628d3f",
+      "protectedAfterSHA256": "7ec95748163703119cba2e22beeb9b9beb79d14519961b03b7c3b37972628d3f",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Components/FotonAmurPayloadUnit.mo",
+      "beforeSHA256": "526349001f846f02258a01f66afdf79e37f72f7b3ca3c3b547d9e11114bb6e1f",
+      "afterSHA256": "98c1a347a2c24aa6d2b4103795637d7e2d09351eaa9c96f6caccf9b034bf7ec1",
+      "protectedBeforeSHA256": "8f525cfaf0db17afd6b34a4f96ef3e579bcd74cec06fbc609a90cb598e14ebe8",
+      "protectedAfterSHA256": "8f525cfaf0db17afd6b34a4f96ef3e579bcd74cec06fbc609a90cb598e14ebe8",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Components/GNCComputerUnit.mo",
+      "beforeSHA256": "5d8322716dace44b99f6f8494b3c3476ed5fddbf9eb35a0a85e481dea6748bf2",
+      "afterSHA256": "33d6218693329cf167936b45447be38f05794e92f4d2b30f2122bf0212fa16a8",
+      "protectedBeforeSHA256": "db32fb78f801451230731a520c4d0f5bf6955d771e892e62cefa6311f727d644",
+      "protectedAfterSHA256": "db32fb78f801451230731a520c4d0f5bf6955d771e892e62cefa6311f727d644",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Components/GPSReceiverUnit.mo",
+      "beforeSHA256": "92a01f93af8bf13d2d85a3e02faafa1ff7165939246962f10929f086c203396f",
+      "afterSHA256": "756518fd1fdffae756ebea4f8927e68120fc6134e12b434095d4c4b6c6876176",
+      "protectedBeforeSHA256": "91eb3ea2f201b4d9f8808dc70e36990c43c6edde1e6ae7e4a49d4baed92eee88",
+      "protectedAfterSHA256": "91eb3ea2f201b4d9f8808dc70e36990c43c6edde1e6ae7e4a49d4baed92eee88",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Components/HeaterRadiatorUnit.mo",
+      "beforeSHA256": "fa11125ace6fb2a57fb8a7afda61197099dcfa5492bb5cb56c31f3dba05014c3",
+      "afterSHA256": "55b7e7edbad1f02e750b453522e40095fa93b4d71de91a23d663698818a32b80",
+      "protectedBeforeSHA256": "a4b702db3acbeb090b733f4b27a49cd2dbed858e7373559fc0666a7c434c638c",
+      "protectedAfterSHA256": "a4b702db3acbeb090b733f4b27a49cd2dbed858e7373559fc0666a7c434c638c",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Components/LowRateTelemetryTransmitterUnit.mo",
+      "beforeSHA256": "c5cd87478ef5164b568aea3fa565902c068464854b27d86750b2d21a020befff",
+      "afterSHA256": "64edc9bd4361c1cbdda78e9ebec2c48d3f45df5f27d545af7f371f5de2d7bb3d",
+      "protectedBeforeSHA256": "df3c6268193618ed663988abae1bef6708378a606c457b46fc9266f7264f430b",
+      "protectedAfterSHA256": "df3c6268193618ed663988abae1bef6708378a606c457b46fc9266f7264f430b",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Components/MEMSIMUUnit.mo",
+      "beforeSHA256": "0b9efdcec3a5db65011559d20b6b84a4890d3c80e93d88ab9b396d82ba2b0e7d",
+      "afterSHA256": "8f7196c41803dd5621fb671f493a741c7649f638e447ee32ab98031f9effed5f",
+      "protectedBeforeSHA256": "eab9933f493e7497d04c8ce6c05058fc420d45c2b0535070eb4ae561fb85ba99",
+      "protectedAfterSHA256": "eab9933f493e7497d04c8ce6c05058fc420d45c2b0535070eb4ae561fb85ba99",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Components/MagnetometerUnit.mo",
+      "beforeSHA256": "7a858ee9988c337fafc72d62b893cf48282449e1261a4416f7b9cb28b550cd34",
+      "afterSHA256": "06f370f1297a03c54e0d3f21179aac03c714c069c7d43b5b9984902c5eb79be6",
+      "protectedBeforeSHA256": "9281a30817e35a0d0955d703af6c6ffcacaeeb7450e37d3b64d28c4694caf104",
+      "protectedAfterSHA256": "9281a30817e35a0d0955d703af6c6ffcacaeeb7450e37d3b64d28c4694caf104",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Components/MagnetorquerUnit.mo",
+      "beforeSHA256": "8cb6aeb9c2e2b530a0a68a5e388e82fa17523704446b5dcd5d61ba6b11fb17cb",
+      "afterSHA256": "e329e78e5d358dd1d378bb9f5a8e7cbf93325642ff9448840b078c7d0261aaeb",
+      "protectedBeforeSHA256": "e6e6451192cf2c917a09e0781aa8e0ebc0f508ffb4120f7935dc3e9739542495",
+      "protectedAfterSHA256": "e6e6451192cf2c917a09e0781aa8e0ebc0f508ffb4120f7935dc3e9739542495",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Components/MissionControlUnit.mo",
+      "beforeSHA256": "e12ce9a8462fd7425ee1defed40ce7bd65f11e219e96b8a395fe8bfba390fed5",
+      "afterSHA256": "ca5141c4cc927babb51449dfe3b15220fc186b73d53fadad32346b6f6b359dd2",
+      "protectedBeforeSHA256": "1e214af594f269cbaa8738def7401cae0ad30f2a3463ae8911c59ee40353bebd",
+      "protectedAfterSHA256": "1e214af594f269cbaa8738def7401cae0ad30f2a3463ae8911c59ee40353bebd",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Components/NaviEnhancePayloadUnit.mo",
+      "beforeSHA256": "c947838c9ad2b716fb71b1694b845c56f66bb24ddf675c951c259dabaef84007",
+      "afterSHA256": "9609e62347c022bd9e2bb92d89e73283bf9efa8953ba9ff1a26b3d86833ed1d0",
+      "protectedBeforeSHA256": "d09190552f0567ff2cafd5e8be2cb131e21c9cdeedbc624303407d8d42a1b94b",
+      "protectedAfterSHA256": "d09190552f0567ff2cafd5e8be2cb131e21c9cdeedbc624303407d8d42a1b94b",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Components/OnboardComputerUnit.mo",
+      "beforeSHA256": "03711f316fa6398df21512c522a3a6319f44322a7854fed81815b14cd69aecc6",
+      "afterSHA256": "3d4bf863abbd1b30770e25047ae2617de38d2f443cdeb06a602efb32e1f2a691",
+      "protectedBeforeSHA256": "26766744eb0c6df301bc490684429301806ca905dfbcdc4dd603ddd50c961994",
+      "protectedAfterSHA256": "26766744eb0c6df301bc490684429301806ca905dfbcdc4dd603ddd50c961994",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Components/PowerConditioningUnit.mo",
+      "beforeSHA256": "a153a65379586b043ea1747058ee670c7fcd55833e63761cf9b91246a00b664e",
+      "afterSHA256": "38417ca453a4b0c47cbde2ee76c5406805791a0fd7f80e22282be3390bbe926d",
+      "protectedBeforeSHA256": "b3389a14ef4741cfaab5621091856cc7144f23c709722046b82287fef98391d7",
+      "protectedAfterSHA256": "b3389a14ef4741cfaab5621091856cc7144f23c709722046b82287fef98391d7",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Components/RadioReceiverUnit.mo",
+      "beforeSHA256": "f08020e06fd88e97d41ab8bd583532725c739dae8654fe64f7df22eeb5c94adb",
+      "afterSHA256": "01fd6d0e3c83c2c5bcf97176a97cc5a1ad12a6fa6829f26329259825bb614730",
+      "protectedBeforeSHA256": "8aca244cd448f04b38a0f1f9327c909776d3a27677540ae149e661d10937a309",
+      "protectedAfterSHA256": "8aca244cd448f04b38a0f1f9327c909776d3a27677540ae149e661d10937a309",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Components/RateGyroUnit.mo",
+      "beforeSHA256": "8c5ea71a88881c52acccc01f2e405b83c4b914f070b9e343c88c1e4fa7509b94",
+      "afterSHA256": "74696c024f1337b5e0947af61ad32d8b1897d3e519c8e840e7bc20cabfd0938b",
+      "protectedBeforeSHA256": "82b23b46de96d48a4808b43b6f4454417c5342f9bc4eca7b5fac8a46b478fd1a",
+      "protectedAfterSHA256": "82b23b46de96d48a4808b43b6f4454417c5342f9bc4eca7b5fac8a46b478fd1a",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Components/ReactionWheelSUnit.mo",
+      "beforeSHA256": "c469435e102faa4782d38f804cb7130076a1d228a463526d41ba81bb3fb4166f",
+      "afterSHA256": "a6b1bd1e14380cf27da052aa0c47ea02a8e9bdc36849df529abbe1333680311f",
+      "protectedBeforeSHA256": "a5660682471a8759d2f52f25a5f9b335e123bfc29541e884cce92e83801a6fff",
+      "protectedAfterSHA256": "a5660682471a8759d2f52f25a5f9b335e123bfc29541e884cce92e83801a6fff",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Components/ReactionWheelXUnit.mo",
+      "beforeSHA256": "4f16e6e40f3cec9fe909a32d3d04d02fb132d465a515d4b15069838b4d5a8a0c",
+      "afterSHA256": "cb9e6c6a70f38aa8cc4642355ae86a7ce2acc22bbcb50b0a4476e850b4dfac3c",
+      "protectedBeforeSHA256": "99578b592e7e57672f97a44777fe113b3bb66d0faf24b5c395596d61de8432df",
+      "protectedAfterSHA256": "99578b592e7e57672f97a44777fe113b3bb66d0faf24b5c395596d61de8432df",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Components/ReactionWheelYUnit.mo",
+      "beforeSHA256": "22ac27a3690db96029028867833bca58ce822a0a855d1452c932d2e91aecdc2a",
+      "afterSHA256": "42092f7a7a5e593e63371c3aefcabb206afadfd92a473829c279249f5df49f99",
+      "protectedBeforeSHA256": "585b20773ac6e7c0f3e0d114ada55b15d977984a1cf9c49dce3ed6beaab9cd14",
+      "protectedAfterSHA256": "585b20773ac6e7c0f3e0d114ada55b15d977984a1cf9c49dce3ed6beaab9cd14",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Components/ReactionWheelZUnit.mo",
+      "beforeSHA256": "3fb674b0ab7aac8d617689259fa065e28e54c686176c6c2ce5365ed3a6aca907",
+      "afterSHA256": "0abeef7d17ff3aef3663db0fb26b0f9a10545bf215316ef05db9e3392124a9e9",
+      "protectedBeforeSHA256": "7f05670eae5106f4df0b7bd399dd9e3004ba6e4204b0a01a88dbebcb93f1f5d4",
+      "protectedAfterSHA256": "7f05670eae5106f4df0b7bd399dd9e3004ba6e4204b0a01a88dbebcb93f1f5d4",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Components/SelfieCameraUnit.mo",
+      "beforeSHA256": "f7e97093319ffd80986bfa9377ea231be1842104cd24eb555bcf949d150387a0",
+      "afterSHA256": "55fd23ee0ac1e3046e8d304994e6862bb278e29c8b44c624e7c3a12f45755af7",
+      "protectedBeforeSHA256": "2ccec3453ebb01b0d8943c980723b3f70f20e3fe858c07faf6d52e5bc6df4f0b",
+      "protectedAfterSHA256": "2ccec3453ebb01b0d8943c980723b3f70f20e3fe858c07faf6d52e5bc6df4f0b",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Components/SpaceTimePayloadUnit.mo",
+      "beforeSHA256": "31ae7e0f0de9f449cd6c1de72afbc26cdc6ccb2eaaaccc6622b900773a180292",
+      "afterSHA256": "748c42eab2b1eeba32cfda6ba956dc8634e4c456c5d67cd199115f4a66453150",
+      "protectedBeforeSHA256": "2a5843fc48a99473d1219e827bddbf5c18a2547148b109a91ebfc8bacfa63e2d",
+      "protectedAfterSHA256": "2a5843fc48a99473d1219e827bddbf5c18a2547148b109a91ebfc8bacfa63e2d",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Components/StarTrackerYUnit.mo",
+      "beforeSHA256": "92d24216172f69058f6e30b854cad304d783c773709cbfbd7356fb9c6c08c4dd",
+      "afterSHA256": "dab7c7f8b345ecdc4c6fb16566af2e5eb4a796b28ba78e4a06e2595ed1f1893c",
+      "protectedBeforeSHA256": "8c68f73139b7a9f3ef0f6caf3022cb6ed77287c4a13a9c766b33bf3aac40cc4a",
+      "protectedAfterSHA256": "8c68f73139b7a9f3ef0f6caf3022cb6ed77287c4a13a9c766b33bf3aac40cc4a",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Components/StarTrackerZUnit.mo",
+      "beforeSHA256": "38803149eac1ff3a867b3e5d7269f378564871ddf08ece65071c4211ac81bd3b",
+      "afterSHA256": "9af30ddec7c86559b7f614c31ed4a4353c5c87c83b8c3adebffb13edd58ca806",
+      "protectedBeforeSHA256": "fe8c7d243027ab87c0d55d04bd3ac5918cbe330289edad136c59aec1b13baa6b",
+      "protectedAfterSHA256": "fe8c7d243027ab87c0d55d04bd3ac5918cbe330289edad136c59aec1b13baa6b",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Components/StructureAssembly12U.mo",
+      "beforeSHA256": "4ecbb44e249caff4f14b28e3aca7d884f9fc88e2d7a6a2f9bee1f40415b7282a",
+      "afterSHA256": "9b85834400acc015c72c364f7ba3d9442f7199005c464433060a234cc3a01bd2",
+      "protectedBeforeSHA256": "b53cce93f4a6cf33507f497b20b6dc1fca32c81cb95a39433d6ec6ffe7e2bc09",
+      "protectedAfterSHA256": "b53cce93f4a6cf33507f497b20b6dc1fca32c81cb95a39433d6ec6ffe7e2bc09",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Components/SunSensorUnit.mo",
+      "beforeSHA256": "4db1f31e172177f9437eb445d475b2937f932c30d0693acd8ed3bf845620d457",
+      "afterSHA256": "8a507fe8a95484074e7c0292e500c937b05b2f2381c795cd501e0c67b397b7bf",
+      "protectedBeforeSHA256": "dddb843cd726fd7d51ed8a1e16f157d9f457ea965faf3364ce2812b8f3ae70e1",
+      "protectedAfterSHA256": "dddb843cd726fd7d51ed8a1e16f157d9f457ea965faf3364ce2812b8f3ae70e1",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Components/ThermalControllerUnit.mo",
+      "beforeSHA256": "200894e105295e26c0b79e6d86cca8af511d2d83b8c4cedbbda89d22a87cf54a",
+      "afterSHA256": "973baa86fb0b55d4c02136ef422e8f9141014ffc0f8e69536c3ced3caad5b9e1",
+      "protectedBeforeSHA256": "f7d7a36044285b74b6ac1a55207d7027750b19f1d4cb9d3db90d3db6540ec7e4",
+      "protectedAfterSHA256": "f7d7a36044285b74b6ac1a55207d7027750b19f1d4cb9d3db90d3db6540ec7e4",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Components/XBandTransmitterUnit.mo",
+      "beforeSHA256": "e79a07d952735ab8f1730353afd491417d55c33ad1d4307dbb70ea91acf48442",
+      "afterSHA256": "af3f21beac7d15b50192d64d8a1ab48cb15c8cb77d743a07b65bff19452b2b56",
+      "protectedBeforeSHA256": "4a3ca65c8f8aa26ce54d105f2ffc14c359f37720bb3b6df520e2459f343efae7",
+      "protectedAfterSHA256": "4a3ca65c8f8aa26ce54d105f2ffc14c359f37720bb3b6df520e2459f343efae7",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Components/package.mo",
+      "beforeSHA256": "8eae258cbbd77cc82037851c191615db5ee5197c1fd0b3f64408e83886a8f0e2",
+      "afterSHA256": "079bfa4284e6c573943aebc73c60280bb68caa9920d27a3a4c7c72c644bd15a9",
+      "protectedBeforeSHA256": "dcb1fdd2df65251108be9d0a3ce032bc5a6c0130fab155cfb50982f2790805cd",
+      "protectedAfterSHA256": "dcb1fdd2df65251108be9d0a3ce032bc5a6c0130fab155cfb50982f2790805cd",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Foundation/Calculations/CommandStatusCalculation.mo",
+      "beforeSHA256": "4de2c2488f6d65ffde72862eef3302d6be5a1ab5a2f80bc32ae45a9173b17f32",
+      "afterSHA256": "3637ab50981176c463447b9d257f886413d7506b5baaac29f1f3214fdb624732",
+      "protectedBeforeSHA256": "582385fc61826afca2cff5e52bb25f3396f29f971001ffb0e32f17790e91689d",
+      "protectedAfterSHA256": "582385fc61826afca2cff5e52bb25f3396f29f971001ffb0e32f17790e91689d",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Foundation/Calculations/DataRecorderCalculation.mo",
+      "beforeSHA256": "e7e7958d1b7fdad0211bf80fd7aaec9e171f93b89b6a5ab23534776b5a63dc7d",
+      "afterSHA256": "e5ee14d2c9c42aacdde8b83b3ff4ce7f671ebeb095cd166a8dc1b9f1522fb7b6",
+      "protectedBeforeSHA256": "829fd8d47350d45c8cb6107f6451ace8e2ad68c4f78b3ce5a2777ee45bfce71c",
+      "protectedAfterSHA256": "829fd8d47350d45c8cb6107f6451ace8e2ad68c4f78b3ce5a2777ee45bfce71c",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Foundation/Calculations/EarthObservationCameraCalculation.mo",
+      "beforeSHA256": "2f5bcb31f12c8e35f6d7a540a76dde8ad90b362d820cc3646a808f135e4b5486",
+      "afterSHA256": "bc5dafaa8abfa3ed855e17accecb3353adba823312017f35a2afa844e7a0e0f9",
+      "protectedBeforeSHA256": "7bd0d84635a836b62bc32e3f14b17923cec1e79ef55897e06b03dfbc59f75d4d",
+      "protectedAfterSHA256": "7bd0d84635a836b62bc32e3f14b17923cec1e79ef55897e06b03dfbc59f75d4d",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Foundation/Calculations/ExternalOrbitalHeatCalculation.mo",
+      "beforeSHA256": "3b248eb9afc7011fc30b67c6272b47b176c14c038160e7f6d40341df990596c4",
+      "afterSHA256": "63c33b65694c3022e2cc4de7e69a2d0bc2c3b12ae04b0883a86cfd93884f1833",
+      "protectedBeforeSHA256": "52d80a0cfe646016ad7c9834842f2559f71d0856d90de1a5b8b54a7c4cda489a",
+      "protectedAfterSHA256": "52d80a0cfe646016ad7c9834842f2559f71d0856d90de1a5b8b54a7c4cda489a",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Foundation/Calculations/FotonAmurCalculation.mo",
+      "beforeSHA256": "f2730ea3f2e340ea963172446187cda7cbd223ba513a09f5f81cf73b4f27ffe7",
+      "afterSHA256": "3f532bd8d7038ed680530c25071dba4b5c5ba0f1ef6a3bf104b4f14a31b82ec3",
+      "protectedBeforeSHA256": "b725f92953bb1513ec622edeec095f5caaa1a5392b5957600db1378eca2ec854",
+      "protectedAfterSHA256": "b725f92953bb1513ec622edeec095f5caaa1a5392b5957600db1378eca2ec854",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Foundation/Calculations/GNSSFixCalculation.mo",
+      "beforeSHA256": "ccd7fe61cc767d018e5b070159cae3adef6f4d50c6bc42645445e0cccad96cf6",
+      "afterSHA256": "93f2db84aacec9e44943512a8f79afe21e9bd6a10033a1959041d26e01d91965",
+      "protectedBeforeSHA256": "909e9cae7a53da79bf85c56b1ed60384fde110087deb5542bee0b2e9fba906ac",
+      "protectedAfterSHA256": "909e9cae7a53da79bf85c56b1ed60384fde110087deb5542bee0b2e9fba906ac",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Foundation/Calculations/HeaterChannelCalculation.mo",
+      "beforeSHA256": "40c028457220e1ae5666dea9d36451ca96331fb357ac1b474dcac6412d96c8c4",
+      "afterSHA256": "5c6f2324850a91dff4d11a24a493d115443b1bad6616d8c189135f7efaa224cd",
+      "protectedBeforeSHA256": "4dee2230b64432b493ca8cffc517b753203dfe35e041bd57f8713228d8d0d696",
+      "protectedAfterSHA256": "4dee2230b64432b493ca8cffc517b753203dfe35e041bd57f8713228d8d0d696",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Foundation/Calculations/InertialVectorToBody.mo",
+      "beforeSHA256": "6e2b737402d14b3d8a83a0531d134321f20ea8f1b23f97ec665639dac0069721",
+      "afterSHA256": "13107226563a0e09d8a7596bd2f81cca2b7933ae55b5a1de6d410b7c4212fc1d",
+      "protectedBeforeSHA256": "1fa140fbfc34a8922da6f5364a80b95bed9393b939dd97ef774da175a458fa34",
+      "protectedAfterSHA256": "1fa140fbfc34a8922da6f5364a80b95bed9393b939dd97ef774da175a458fa34",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Foundation/Calculations/MagnetometerCalculation.mo",
+      "beforeSHA256": "7f661eb4feca251f74d4877784a38a666e28c19a885228006154cbd05688d25c",
+      "afterSHA256": "b69b8e8d75e3386cb4190a82a8ee59a9be193e15682a0c2ded1764763e22e36a",
+      "protectedBeforeSHA256": "784c93ab41b4a5d6a6c5eeac2358c5ee5eefcdbe681a48ca2c544660e1e097c6",
+      "protectedAfterSHA256": "784c93ab41b4a5d6a6c5eeac2358c5ee5eefcdbe681a48ca2c544660e1e097c6",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Foundation/Calculations/MomentumUnloadingCalculation.mo",
+      "beforeSHA256": "ec4d760c4b81e3fbe9a284c699c847c09a0fb02c329b3872cf3f99ea3ba3ce8f",
+      "afterSHA256": "c0045e995fb8c416f2e01dc649a37e4683211ef0e3cb345b73e4b24fec001bc4",
+      "protectedBeforeSHA256": "6ce18a30a7653a4410eaf6aea5a09455ac0a4d118ab48a6c83cc89fd4f943957",
+      "protectedAfterSHA256": "6ce18a30a7653a4410eaf6aea5a09455ac0a4d118ab48a6c83cc89fd4f943957",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Foundation/Calculations/OrbitalAccelerationCalculation.mo",
+      "beforeSHA256": "5ddd8ec028d99a05f3e2c625c980ca35f590d57e33902f120e15abd02a213c61",
+      "afterSHA256": "24302b1fb688eb5cf036d83a9239889eb76751c503b754fc7fc31c47701d205e",
+      "protectedBeforeSHA256": "b19784d9371f6090e4ea332c604aad5e051a9e1dbb54ef20e8e51aa5308c9789",
+      "protectedAfterSHA256": "b19784d9371f6090e4ea332c604aad5e051a9e1dbb54ef20e8e51aa5308c9789",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Foundation/Calculations/PayloadCaptureCalculation.mo",
+      "beforeSHA256": "f0bbff36a021af11fcc931f5eaa3b7fadb0e390ee31a04f756e11a7ff83df50a",
+      "afterSHA256": "84281a087f1cc9723729dee36d37fbec8caaf69d64a4e41f8a387c4e49edb689",
+      "protectedBeforeSHA256": "ba1cfa4347c7d0132292974d8e797d45c7d04cab6147ecc8c60cfcd4381d7b0a",
+      "protectedAfterSHA256": "ba1cfa4347c7d0132292974d8e797d45c7d04cab6147ecc8c60cfcd4381d7b0a",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Foundation/Calculations/PointingModeEquipmentCalculation.mo",
+      "beforeSHA256": "f9f8162013e8ce39f746b70df7a47a4f39edc1e3da7a5516763638de1f78da78",
+      "afterSHA256": "1a993704d270d779dd5f5787d24eb81d7843869cf4a7464f61dc1c67b6ecd72f",
+      "protectedBeforeSHA256": "2831fc711cb8f6f2069209f1913a7a679264ac0eae2914838629ae889ecfac6e",
+      "protectedAfterSHA256": "2831fc711cb8f6f2069209f1913a7a679264ac0eae2914838629ae889ecfac6e",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Foundation/Calculations/PowerConditioningCalculation.mo",
+      "beforeSHA256": "573ae574f8f0dabcb2bf9d640f46c4d65fb24eebf0c18945990f77703f66eceb",
+      "afterSHA256": "622a9487c86e7210cbc8423ea49492acce21377b21fa61f176503b66b6be1a2d",
+      "protectedBeforeSHA256": "ece7c11d5eb9f77d788875f09b597776a3812ca0e9727b85effdeafa37e11d58",
+      "protectedAfterSHA256": "ece7c11d5eb9f77d788875f09b597776a3812ca0e9727b85effdeafa37e11d58",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Foundation/Calculations/PowerDistributionStatusCalculation.mo",
+      "beforeSHA256": "b39d66b54a4e678224f07c6541ef919b87cbee745952d6db84065dd0771505fb",
+      "afterSHA256": "da0822e5dfd2eab7af46bd2961e9ff2fa47ad527aa14e5729de4160b050640e5",
+      "protectedBeforeSHA256": "3bce9de1db6d2c48a9489bf482a01161717243267fbfb0e8ea637b271e9f7e91",
+      "protectedAfterSHA256": "3bce9de1db6d2c48a9489bf482a01161717243267fbfb0e8ea637b271e9f7e91",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Foundation/Calculations/RateGyroModeCalculation.mo",
+      "beforeSHA256": "9ff727eaf6ce6b72ec59115fb0db4c45f3e108e49360ac1cabf220736f8b2942",
+      "afterSHA256": "a7eda2f02854025924a7bfac80f443ec4eeb0c19f6a22de0a35131321d8148d4",
+      "protectedBeforeSHA256": "4474095b2944f8041d09919f44591c86b70c2850b00538f1a34675bfd93df497",
+      "protectedAfterSHA256": "4474095b2944f8041d09919f44591c86b70c2850b00538f1a34675bfd93df497",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Foundation/Calculations/ReactionWheelPowerCalculation.mo",
+      "beforeSHA256": "f36ea4b25979f0108b1840e1ec4384ddcd3281e5a39e7b454924b6720903e081",
+      "afterSHA256": "ab983bf32d6dafa32704a2b4a97ed82d64d5898c53f9be62074e65b711499718",
+      "protectedBeforeSHA256": "e52602fe529c89ffde8e1642813266c1c7efcbef626a193ca78b5897f3b0e7e6",
+      "protectedAfterSHA256": "e52602fe529c89ffde8e1642813266c1c7efcbef626a193ca78b5897f3b0e7e6",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Foundation/Calculations/ReactionWheelTelemetryCalculation.mo",
+      "beforeSHA256": "0a4c6b6ec07146834794444cc04daa97ec8ae543681de7bcf870fcd15af7d827",
+      "afterSHA256": "f0dbd17d950384eb51b523dec611085467fa357799cadf305f97e42a0fb7d52f",
+      "protectedBeforeSHA256": "5f4f38a236c41e49d81dc470eaeb12d7a2a11d4a3cd0e1ff634857af6cb7a65b",
+      "protectedAfterSHA256": "5f4f38a236c41e49d81dc470eaeb12d7a2a11d4a3cd0e1ff634857af6cb7a65b",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Foundation/Calculations/SolarArrayPerformanceCalculation.mo",
+      "beforeSHA256": "aeceabf96a3a2f107b99773df2c8cff7aba3fd548b173e7219c83caf67ae89f1",
+      "afterSHA256": "d474f8118c4cc3bb5efced5455c99beaad240ac4d9d590aa5e31007059a398a2",
+      "protectedBeforeSHA256": "40ab9c4080e05da727a82b89dfdf0fe30b9bb82cbd83deb5f8ddcbd2bc6f4c76",
+      "protectedAfterSHA256": "40ab9c4080e05da727a82b89dfdf0fe30b9bb82cbd83deb5f8ddcbd2bc6f4c76",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Foundation/Calculations/StarQuaternionCalculation.mo",
+      "beforeSHA256": "493703a0b5de10c905260e3f9c7ad21026b68aac74cf4b652ee55b3bbfce39d7",
+      "afterSHA256": "d1f125b430d806a8f887bfd95d2537406450834af14cefcc8dd87834eae2aecc",
+      "protectedBeforeSHA256": "00e501e7e7af84dae8d0e662725256313afdf553b98dacb9d36acd5280d19036",
+      "protectedAfterSHA256": "00e501e7e7af84dae8d0e662725256313afdf553b98dacb9d36acd5280d19036",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Foundation/Calculations/StarTrackerCalculation.mo",
+      "beforeSHA256": "fda40faa94bafaa8875554eb0b658953fc11fb8375fbf9c54508acab834ed97f",
+      "afterSHA256": "69f5bd2680e33ce0d58dabed4bf3a8477453f5253014f47f4387c06901ff7214",
+      "protectedBeforeSHA256": "e1fb27342fcae029816092db784e59b2b094cdea89b4de6664c422df323e3f40",
+      "protectedAfterSHA256": "e1fb27342fcae029816092db784e59b2b094cdea89b4de6664c422df323e3f40",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Foundation/Calculations/SunSensorCalculation.mo",
+      "beforeSHA256": "c16c1cf604a29fe151fb4d0940a7654345614ba2788c5b97e986fb42108793f5",
+      "afterSHA256": "288de2b69484c368ba48402eb24e9e49867f9b1723cbc0dd6d665c81923942b4",
+      "protectedBeforeSHA256": "2835100aa497796ec1b5da71dd963f482394bad7ee54cef2ae3da79e0aaf1fa0",
+      "protectedAfterSHA256": "2835100aa497796ec1b5da71dd963f482394bad7ee54cef2ae3da79e0aaf1fa0",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Foundation/Calculations/WheelSpeedServoCalculation.mo",
+      "beforeSHA256": "8d9f6a8b9dbb1cfb5c7cd59707cb923365ff2e2a2ca158086def008e2a72096a",
+      "afterSHA256": "9b1d9c47bd8a103a47a665d82d68ac600d579faa49ee2d3a15c05a02b85d1496",
+      "protectedBeforeSHA256": "ea5ab24022887064ba1738d3f964b16f6b8e896d226e3018bcab46c1a8cec10f",
+      "protectedAfterSHA256": "ea5ab24022887064ba1738d3f964b16f6b8e896d226e3018bcab46c1a8cec10f",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Foundation/Calculations/XBandTransmissionCalculation.mo",
+      "beforeSHA256": "f36f1a47754b4a35997aa670b3fe9ace3ede5901c8158a90d1ac330757006ddd",
+      "afterSHA256": "c96514595ab05fd3f3ab9e0c13427e654c6de70816cc68eeb8667233b7c5ef25",
+      "protectedBeforeSHA256": "0c0b948946fc815703ddb55c122d48990fa1af82d679d110a8f223563d99ea4d",
+      "protectedAfterSHA256": "0c0b948946fc815703ddb55c122d48990fa1af82d679d110a8f223563d99ea4d",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Foundation/Calculations/package.mo",
+      "beforeSHA256": "9a7aa7735cd3e636c24db23739c73c1720889dd0878203a32618c40a5a8e8e31",
+      "afterSHA256": "1fe5f285a7eecbd9f731f650d21b3e5fded434b842e4a5515c2a46156a5c39cf",
+      "protectedBeforeSHA256": "de9a4c1217c2d1db377876086a37e58fc7ce6ed4ec4ab067e2c383dbec236dc4",
+      "protectedAfterSHA256": "de9a4c1217c2d1db377876086a37e58fc7ce6ed4ec4ab067e2c383dbec236dc4",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Foundation/Functions/estimateGroundContactDuration.mo",
+      "beforeSHA256": "ea71ddae09b6c268d69292b38e3417e894386c87d6762496f9379d0b0b2be108",
+      "afterSHA256": "055f9b5f6f01e08fa57d3918329d6616b570480d0cc5a3803c4cf4c4b6f2e3be",
+      "protectedBeforeSHA256": "a95d57fa2e936c805d9743b28751c3b7759a6396a34dbb03c354fbdfeac280c1",
+      "protectedAfterSHA256": "a95d57fa2e936c805d9743b28751c3b7759a6396a34dbb03c354fbdfeac280c1",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Foundation/Functions/package.mo",
+      "beforeSHA256": "c9cc684ce7021a10e81acc1776a46ab356c25cce0a98a06cee47a2baa0eb1585",
+      "afterSHA256": "6cdb2a3e5f9a9b903f7053c6d32f524e807dac621eed7eb8fca169ad7d06e35d",
+      "protectedBeforeSHA256": "d3b1f5fc1d9484b4a8b2af6b80a519d1b90bb1cd91712e6c0b1b3424800021e0",
+      "protectedAfterSHA256": "d3b1f5fc1d9484b4a8b2af6b80a519d1b90bb1cd91712e6c0b1b3424800021e0",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Foundation/Interfaces/ActiveGeometrySignals.mo",
+      "beforeSHA256": "292307b45feb8918c07b766a4ff1d04bbbba886a9ab2c1f05e212e295008985d",
+      "afterSHA256": "ebcf7772f329891d0c65d7b7e61bba5d9fb45d6f6da764c7f003adcc9ac01934",
+      "protectedBeforeSHA256": "e28dc01de3f9099ac06e0aa52c4a9edf11488fcf9f83ff604cf21f168e4143b9",
+      "protectedAfterSHA256": "e28dc01de3f9099ac06e0aa52c4a9edf11488fcf9f83ff604cf21f168e4143b9",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Foundation/Interfaces/ActiveMissionSelectionInput.mo",
+      "beforeSHA256": "8d6eca244ba14cbbd87736a2dde6aaebf668042d8ee64bca0e48414a7051850d",
+      "afterSHA256": "9e4348c073fe5fcafa865f3414aeb3ea3d15a883ad5b71814f73836d08ab62fd",
+      "protectedBeforeSHA256": "bee8758612557c7d72cd226119740d971f003ac4418b92506c5502d9a9caf814",
+      "protectedAfterSHA256": "bee8758612557c7d72cd226119740d971f003ac4418b92506c5502d9a9caf814",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Foundation/Interfaces/ActiveMissionSelectionOutput.mo",
+      "beforeSHA256": "00cfc4ff43f3dc8ed2513fe4d8e18fef2c41785f7fee89626ff9e8da7d33aeae",
+      "afterSHA256": "21b1942849fe7103c84c8dc9333939c6e7cf0bf1bfe4b16d4263536bd19dcd08",
+      "protectedBeforeSHA256": "5bf4ca41dd629f725066d6c27a4b58d4e0ae51d5dcc02a569051ef53d87680d1",
+      "protectedAfterSHA256": "5bf4ca41dd629f725066d6c27a4b58d4e0ae51d5dcc02a569051ef53d87680d1",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Foundation/Interfaces/ArbiterDecisionSignals.mo",
+      "beforeSHA256": "fc3f2d17f210d290d5553a5ac6d756f60d5f5161f9cb59aea1547c3cc432bf3d",
+      "afterSHA256": "dc6242456d913b656f5d7b69fac95e828e8bfbfe1842e710a9762be37da931c7",
+      "protectedBeforeSHA256": "ca9ece4476a793fb4033736e01b4df4c790637c3d26b78341c0cb481ededc4ac",
+      "protectedAfterSHA256": "ca9ece4476a793fb4033736e01b4df4c790637c3d26b78341c0cb481ededc4ac",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Foundation/Interfaces/AttitudeControlStateInput.mo",
+      "beforeSHA256": "a958d0481006d3d1128846d2e97124e53caba0535d336baec239d00f2e76c82f",
+      "afterSHA256": "f31e00f9195e7d2329ec5af20077e92ba7d681669e9a4a6b45d68cca08c50246",
+      "protectedBeforeSHA256": "25b057ff901ee6f8d11cec169d5db2e3a1fea4828e47fa5035f5df93c6a6dbec",
+      "protectedAfterSHA256": "25b057ff901ee6f8d11cec169d5db2e3a1fea4828e47fa5035f5df93c6a6dbec",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Foundation/Interfaces/AttitudeControlStateOutput.mo",
+      "beforeSHA256": "33a8ae9f52442e0d95cca316cede56bde50c43ed961c79a1b4714705acc05209",
+      "afterSHA256": "96f0fb28fbd54be7ed5eb55b8e3838324f051bc5aa19aab6001b01032718bd13",
+      "protectedBeforeSHA256": "045d7fe20fe12bf11ebd336182a85adbc0522b51cb34f2d82dbd1db020ec5af8",
+      "protectedAfterSHA256": "045d7fe20fe12bf11ebd336182a85adbc0522b51cb34f2d82dbd1db020ec5af8",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Foundation/Interfaces/AttitudeControlStateSignal.mo",
+      "beforeSHA256": "309832b1bce5dc0ee5c9eb59de9441707fec89db64452f6105fee571cbf80f60",
+      "afterSHA256": "0817c931030dcb7a66afdcf503c7c5ce2538ea1f1fbb30572798bf3079e4892e",
+      "protectedBeforeSHA256": "6c84e0cc305e160e55acd5286b5dbeb90cbc40e0ec20953575306988f7a080d4",
+      "protectedAfterSHA256": "6c84e0cc305e160e55acd5286b5dbeb90cbc40e0ec20953575306988f7a080d4",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Foundation/Interfaces/AttitudeControlStateSignalBridge.mo",
+      "beforeSHA256": "77d60b441df2bc8ceda8d346efd93765758d6bb66e21d4d8624c2356708dcb94",
+      "afterSHA256": "7ea029637d063bdeb432329994cdac0a57bf61f70e2a4bf7ab9c7850a86d622b",
+      "protectedBeforeSHA256": "08dd13eb49d4ff1d7c25931d78185d981298cb5188012f0ff21158112c4f0361",
+      "protectedAfterSHA256": "08dd13eb49d4ff1d7c25931d78185d981298cb5188012f0ff21158112c4f0361",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Foundation/Interfaces/BooleanSignal.mo",
+      "beforeSHA256": "80ab30d748b62ca8656e1aeb17d1875a422b76078c4392e67546528563b969a4",
+      "afterSHA256": "140c5fc1350051f716ffadf4e973e5520803d1f8680b046a1920584527c10807",
+      "protectedBeforeSHA256": "e78508cff3818adc8e23166879215a206bea84d1ee5242fedff79e55b72bf9da",
+      "protectedAfterSHA256": "e78508cff3818adc8e23166879215a206bea84d1ee5242fedff79e55b72bf9da",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Foundation/Interfaces/BooleanSignalBridge.mo",
+      "beforeSHA256": "0e25b2a19299e77ba0eefc568ac4db7963473db6e1b89f5b19c400982ec1a48c",
+      "afterSHA256": "91c7b36f76087e44a4afe34158fe6a54679995087b3019a678943f7b0959a1f1",
+      "protectedBeforeSHA256": "ed6e94cdded2655d31efce7a4e1aa1d92b549eda9e548109b12cb903120bbd0e",
+      "protectedAfterSHA256": "ed6e94cdded2655d31efce7a4e1aa1d92b549eda9e548109b12cb903120bbd0e",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Foundation/Interfaces/BooleanSignalReader.mo",
+      "beforeSHA256": "5fe11e0f2304379b009cb4803c9642bad56134d164b4b4afbd872cba228d4798",
+      "afterSHA256": "9fed5c1590ce3b57f569782eac844100df528d4241456b53eb15dfc139114ea5",
+      "protectedBeforeSHA256": "5880eda68dfcf0822bcdf322e9b22cc402393f607377c64d603189bb075c3bb7",
+      "protectedAfterSHA256": "5880eda68dfcf0822bcdf322e9b22cc402393f607377c64d603189bb075c3bb7",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Foundation/Interfaces/CommandBus.mo",
+      "beforeSHA256": "5e95c9f6eb27f87f3cc5390d52ea2bf60c6ac5dda4a70f800000e0f4e95f023c",
+      "afterSHA256": "56863dc9425b9f6d1f02c23c1b02353deb3b31c3ceb11fa9b145b7f12f1eea6d",
+      "protectedBeforeSHA256": "7ca508ed6bbed5823ce50934143b33944ab1bfb38a6106045d4ecf82ce4e4811",
+      "protectedAfterSHA256": "7ca508ed6bbed5823ce50934143b33944ab1bfb38a6106045d4ecf82ce4e4811",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Foundation/Interfaces/CommandExecutionStatusSignal.mo",
+      "beforeSHA256": "58dbbbce6586e54c34e16373b5fec0aff443fc143f4f920365c25a8ff549911e",
+      "afterSHA256": "debb1c54502f11cf3651abf14dbe0b51c9cf5f60c9c07e4b0becb6876591bfb7",
+      "protectedBeforeSHA256": "fc4acb78efc27e789e44991616a1f8dd7c81e7a68fbb354ffe1b72507c0036ac",
+      "protectedAfterSHA256": "fc4acb78efc27e789e44991616a1f8dd7c81e7a68fbb354ffe1b72507c0036ac",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Foundation/Interfaces/CommandStatusBus.mo",
+      "beforeSHA256": "4ace6dc7717eaf1fd4c4e36aaf9a1a2f048b413c2fa14a0180f7cc5e6f19101e",
+      "afterSHA256": "540d89e3e62664b7e466b7250629c217150526f0d9e68795d54c7436416e867c",
+      "protectedBeforeSHA256": "c930f0208a8e40fafce8d298938e6a1b08c69ed726f79cb0cbeb2f9042e18bda",
+      "protectedAfterSHA256": "c930f0208a8e40fafce8d298938e6a1b08c69ed726f79cb0cbeb2f9042e18bda",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Foundation/Interfaces/CommandTypeInput.mo",
+      "beforeSHA256": "8df3fb7360d486be880b276838a67413fad89d7a73b3dbf3bef44f10bcae6577",
+      "afterSHA256": "66a22e5d584f63715f7a39274662f258b46ac51991ae7546df46891af7ffc74d",
+      "protectedBeforeSHA256": "086ed9e5ac4a9b187092836ed5e32e83bff8df29cc1a79261ccc0f5464f11aaf",
+      "protectedAfterSHA256": "086ed9e5ac4a9b187092836ed5e32e83bff8df29cc1a79261ccc0f5464f11aaf",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Foundation/Interfaces/CommandTypeOutput.mo",
+      "beforeSHA256": "a28a7ac39568ece3ddef6b8d153dc45d639e2f32b5b85342017416c760b861f2",
+      "afterSHA256": "c17ae7ee5f3b0e9dc1ce22a8d3763a61aa227f596cb7481c590dab62f54aec7e",
+      "protectedBeforeSHA256": "d6601be53da7ee6d67629c00c24d4aa951b487f008bfca60c2443dcf5b48547c",
+      "protectedAfterSHA256": "d6601be53da7ee6d67629c00c24d4aa951b487f008bfca60c2443dcf5b48547c",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Foundation/Interfaces/CommandTypeSignal.mo",
+      "beforeSHA256": "199a134fcfc64115f49015771ae02f88138d6f7857726cac38c00d0efc0591e5",
+      "afterSHA256": "018187e92b2d95e308ef41b0b6df1d79838fcbc569115615649c64676f7dd5d0",
+      "protectedBeforeSHA256": "68d2f5c5335b0d062c57d0ab4614e464e24ccffae6bd9e5da62be2e75406d306",
+      "protectedAfterSHA256": "68d2f5c5335b0d062c57d0ab4614e464e24ccffae6bd9e5da62be2e75406d306",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Foundation/Interfaces/ControlModeInput.mo",
+      "beforeSHA256": "e02b1e739ba8aa41e4db7e16cc35e6c375d65a90ab06d52a76fa37ec46884160",
+      "afterSHA256": "bf78a282cffea6ce979ce2b7552d9f86f09b0e3f62d5f8ce8b2ef31e84f0bf51",
+      "protectedBeforeSHA256": "f6982b643b192e26b7cd08c0009ce20c5c96bdeacca0a2c828997deac2e1a556",
+      "protectedAfterSHA256": "f6982b643b192e26b7cd08c0009ce20c5c96bdeacca0a2c828997deac2e1a556",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Foundation/Interfaces/ControlModeOutput.mo",
+      "beforeSHA256": "0927754a4101e57f496bbc1f6358d28ac535e360a359bf68ca92d68fea792224",
+      "afterSHA256": "3f5f40233ed6258016630e46abb40025e855a556d80c8e3c3b20a0854c603b0c",
+      "protectedBeforeSHA256": "e1462d559e69a832389ba22e41ccbe631eb848a60240a089db032b69e92bb11a",
+      "protectedAfterSHA256": "e1462d559e69a832389ba22e41ccbe631eb848a60240a089db032b69e92bb11a",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Foundation/Interfaces/ControlModeSignal.mo",
+      "beforeSHA256": "c14bd285bdc72c1bd300496754f02cc67280c5d8a26f790f22fe3d5ee4907dd0",
+      "afterSHA256": "16ef91ab95a0f85e564fa6c76346403e687b069473fe93db8665358f1959d24e",
+      "protectedBeforeSHA256": "a13e97058e9305f8c7d8589e91fd9fe290964739febf574436d60a0ae2b28f2f",
+      "protectedAfterSHA256": "a13e97058e9305f8c7d8589e91fd9fe290964739febf574436d60a0ae2b28f2f",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Foundation/Interfaces/ControlModeSignalBridge.mo",
+      "beforeSHA256": "e7af884b0ce345cce536e65c16fa279b88771518f6b6e8c928efc20e6f1bb68b",
+      "afterSHA256": "0dcf3fd245da5ceff2f997790ceb9501b51b96aaafb317f786edc8d48e24dd4b",
+      "protectedBeforeSHA256": "05277444142c8daeb404f4b6f8d347fbd086fd8f004dec2c70610a578d34fb24",
+      "protectedAfterSHA256": "05277444142c8daeb404f4b6f8d347fbd086fd8f004dec2c70610a578d34fb24",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Foundation/Interfaces/DeviceStatusBus.mo",
+      "beforeSHA256": "7627a46c18bbb95300a80acb09b032472f89408773a692585185e9cf85630338",
+      "afterSHA256": "10770db4007014f0faf65f1a850df9620c1dc9440afe8ee87e133f361490795b",
+      "protectedBeforeSHA256": "f7a680c9222e4d853a2ceea8135f815f5affdbf0ed23f70a5033ea77b8d43dcb",
+      "protectedAfterSHA256": "f7a680c9222e4d853a2ceea8135f815f5affdbf0ed23f70a5033ea77b8d43dcb",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Foundation/Interfaces/DownlinkActionSignals.mo",
+      "beforeSHA256": "c8d98f5e49eb0b3d892e760e09132239323eefd9ba43d813dc30fb46b2c070bd",
+      "afterSHA256": "b776d1485abec3fa3c5e759f5c109487947c27106a5d7267f71239aa5db622a1",
+      "protectedBeforeSHA256": "56edb2ff0959148aa8d93d26572dbabfabd483e63c2c323706e7895538344eae",
+      "protectedAfterSHA256": "56edb2ff0959148aa8d93d26572dbabfabd483e63c2c323706e7895538344eae",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Foundation/Interfaces/DownlinkPhaseSignal.mo",
+      "beforeSHA256": "cb92f9e512e7ddcd561975cf4a3f8bbea4a9abee9b6e00f19af3c916d5db220f",
+      "afterSHA256": "e2e52b28fa8ef3b3c95570f3205a2b6103f773ea8b9d53cbd47194a70a416462",
+      "protectedBeforeSHA256": "28b283a3d6502f0d0a07a5b7d8b517b5f905f1a211579a00320c125a43d2717b",
+      "protectedAfterSHA256": "28b283a3d6502f0d0a07a5b7d8b517b5f905f1a211579a00320c125a43d2717b",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Foundation/Interfaces/EnvironmentPort.mo",
+      "beforeSHA256": "b419aaa81971f5ea01c8382fc4f8784c8181c15680d0a2f5bdaac19dd1c4b02d",
+      "afterSHA256": "0d1f3912b89dbc8db901a916916baa26d153299a32be9ace8836d631863e1182",
+      "protectedBeforeSHA256": "931f602b4ffee2a3a65002e25a4ef679a97be8517bb2c0442206dd80763d3c85",
+      "protectedAfterSHA256": "931f602b4ffee2a3a65002e25a4ef679a97be8517bb2c0442206dd80763d3c85",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Foundation/Interfaces/EphemerisPort.mo",
+      "beforeSHA256": "70fbf7e158899083108a81aa0b47446c765563b4e4ac9061033186a236739135",
+      "afterSHA256": "ec41ff6365a11bd691f0fd149fd334be8a3101821eb4fd0f9da553133ed8f307",
+      "protectedBeforeSHA256": "92d059995d6d39e1ff2278df37f5d84e1cc8284c34b361c8883e996908a37a7d",
+      "protectedAfterSHA256": "92d059995d6d39e1ff2278df37f5d84e1cc8284c34b361c8883e996908a37a7d",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Foundation/Interfaces/ImagingActionSignals.mo",
+      "beforeSHA256": "9dad55184109ffd2ca3332a5f1ee3e1d690b39ad7e7429377e9a0d56e1543467",
+      "afterSHA256": "fabcc8a99f35b46288400594f320872fb23ca05981b9806e3220fe2f57086227",
+      "protectedBeforeSHA256": "3f4097686046ef48fc9f319f7a13d69963703e3b037c7b6edd8c704cd2829d8a",
+      "protectedAfterSHA256": "3f4097686046ef48fc9f319f7a13d69963703e3b037c7b6edd8c704cd2829d8a",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Foundation/Interfaces/ImagingPhaseInput.mo",
+      "beforeSHA256": "bb2c658f3c83f968f3e891de6ef87c7a6639889be909f2b6fa73294e80a33dc4",
+      "afterSHA256": "3744e9d002c3c0c2fddd98ccb8cc88d4461470c614490ead484cf81733972779",
+      "protectedBeforeSHA256": "0069936aedb1ec61c25856d6c08efc05812afa90b6a47494194a783fb2e73e44",
+      "protectedAfterSHA256": "0069936aedb1ec61c25856d6c08efc05812afa90b6a47494194a783fb2e73e44",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Foundation/Interfaces/ImagingPhaseOutput.mo",
+      "beforeSHA256": "41b9397ed6188eff2854e9c2f8cd8f1013ce5ed644495ae8d5132d466c70b447",
+      "afterSHA256": "1b18b120be8a84fdb559a6e697611576414c4ee4c3300e9e3a6b139b7d286819",
+      "protectedBeforeSHA256": "91aabf7f2c7f366b2b6cafb376a54ebefa198854947776e262f4ad124a5141af",
+      "protectedAfterSHA256": "91aabf7f2c7f366b2b6cafb376a54ebefa198854947776e262f4ad124a5141af",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Foundation/Interfaces/ImagingPhaseSignal.mo",
+      "beforeSHA256": "66d76cc92ef003d550d1b3a29f7b7f27564ebd7ef86012f2184398bfeac89828",
+      "afterSHA256": "6417d457003ab4d9cd0375d5b13dc99eddc3f5c0c2a03df1f5aeea6a5325912a",
+      "protectedBeforeSHA256": "721994d4e7d4d17e05b3fe8532a8bcecb00c172c770b7f64505b75632052077e",
+      "protectedAfterSHA256": "721994d4e7d4d17e05b3fe8532a8bcecb00c172c770b7f64505b75632052077e",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Foundation/Interfaces/InformationPort.mo",
+      "beforeSHA256": "baa85f3e1429ebb9b1d7dd7cb154ff857c01807c1102870a4f527ac4c8d6437d",
+      "afterSHA256": "a20a07489576d805f65c9755b3bcd1ccb7efad3e08bede58ec5979cb70323579",
+      "protectedBeforeSHA256": "d6bbdd526e9077906a12db44369184d1c3d84e5835d1062153a6a0a501c0ed27",
+      "protectedAfterSHA256": "d6bbdd526e9077906a12db44369184d1c3d84e5835d1062153a6a0a501c0ed27",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Foundation/Interfaces/IntegerSignal.mo",
+      "beforeSHA256": "22461717194ab4f636538797023ca988e9a77d8dfca873119aee0ea60cf9e00d",
+      "afterSHA256": "0f6840ae7080fad44c543db742bf3fd816251b4deb56adcb915560a8382c263c",
+      "protectedBeforeSHA256": "4b485b853bd21d1826646af86707302ae0a13e51f53e124a1f059ec94d3424f9",
+      "protectedAfterSHA256": "4b485b853bd21d1826646af86707302ae0a13e51f53e124a1f059ec94d3424f9",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Foundation/Interfaces/IntegerSignalBridge.mo",
+      "beforeSHA256": "672382a2edd2ac197f5bf3e849df35e45b89efd29ad1a276dd566ff4430be68a",
+      "afterSHA256": "efbadc98e261fd1bdc709e48b1a4ce76f65ab4fe63691e76cb173cd455e48337",
+      "protectedBeforeSHA256": "05ff1c4ad91bb7d31ba5357c0396d3a717eb44848ed19839516a7286e93d3cee",
+      "protectedAfterSHA256": "05ff1c4ad91bb7d31ba5357c0396d3a717eb44848ed19839516a7286e93d3cee",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Foundation/Interfaces/IntegerSignalReader.mo",
+      "beforeSHA256": "69c7b17983dbddeb81af1cba3d55c480caad0bd6207f3086046a5966a2cfa67d",
+      "afterSHA256": "15180a68bef4565a687c76d51167138e4097ba81a40c974313f72728d439c4f1",
+      "protectedBeforeSHA256": "59911c1edb12ffdc4affeb74bcbf47e24e19ca4ac10ccee1d1bce3f7ba0d75fa",
+      "protectedAfterSHA256": "59911c1edb12ffdc4affeb74bcbf47e24e19ca4ac10ccee1d1bce3f7ba0d75fa",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Foundation/Interfaces/MechanicalPort.mo",
+      "beforeSHA256": "a17df43fc857d425ada0121b5140da023c2b8fd25b4e975ef0fd5bdd7f5c386d",
+      "afterSHA256": "adb96870fc7d3f50c5df367074ba5a55d83e15b2d82d4a87d1d6681dc4cd950c",
+      "protectedBeforeSHA256": "1292a8206b86664977bbf088cad104806beb98b3241638e00729159d7a2e13f3",
+      "protectedAfterSHA256": "1292a8206b86664977bbf088cad104806beb98b3241638e00729159d7a2e13f3",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Foundation/Interfaces/MissionFeedbackBus.mo",
+      "beforeSHA256": "c2052365cd09f84fba15dd4de03203e80a81ae46dffc4a8d6e3a44d479170ec4",
+      "afterSHA256": "1c564766c439aad6500c5b9eba6fb69176311a9ef3ec330f201756fc0714e517",
+      "protectedBeforeSHA256": "1b079886e59b549ce3237def077e3d357bf670c2fb80fe32c3d32c4267d15b91",
+      "protectedAfterSHA256": "1b079886e59b549ce3237def077e3d357bf670c2fb80fe32c3d32c4267d15b91",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Foundation/Interfaces/MissionModeSignal.mo",
+      "beforeSHA256": "90c7410b1ddd680a35fc0121264fe06842af856f8e72ebeac86d35735234845c",
+      "afterSHA256": "1f0d9ad2527b9b8dfa05c133695e01a5d17394552eec567233abd498aec32fd9",
+      "protectedBeforeSHA256": "fecf2ad881f7a857f3e5bf49f90a800a7a2a6e7f2c4ac59fb29c667fe3ebf173",
+      "protectedAfterSHA256": "fecf2ad881f7a857f3e5bf49f90a800a7a2a6e7f2c4ac59fb29c667fe3ebf173",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Foundation/Interfaces/MissionSelectionPublisher.mo",
+      "beforeSHA256": "2d0f15b39a957eec6666c0fd1760d05bb6fc353d90235c61de588e0bb3b6c622",
+      "afterSHA256": "32182451dfbe563bca601178fc581bdf5771d61aea7fb6077bd744701cb47a44",
+      "protectedBeforeSHA256": "0930aeb31151ade6e955cd9bd04fd29f70288271c95bdd8690a9029370856c8d",
+      "protectedAfterSHA256": "0930aeb31151ade6e955cd9bd04fd29f70288271c95bdd8690a9029370856c8d",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Foundation/Interfaces/MissionSelectionReader.mo",
+      "beforeSHA256": "9d20e05bd4f78d76c9fb958b4ebe589ee7bd613fc2e1e63c3e4476d9eaac5922",
+      "afterSHA256": "e57c32612116527d0d3e76e5b1edc2235ce616aba8c56b6b499819f864a33d50",
+      "protectedBeforeSHA256": "4da9e6f7b76a1466df016db63dabda7f84e02801a5d5205af2a040616f9b9f7f",
+      "protectedAfterSHA256": "4da9e6f7b76a1466df016db63dabda7f84e02801a5d5205af2a040616f9b9f7f",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Foundation/Interfaces/MissionStateSignals.mo",
+      "beforeSHA256": "25953d022d01e75a9f14bebb575c12512b8293ea1aa80d088aaa63d238d476c4",
+      "afterSHA256": "2a5c50478f3af3d0c8df05a9aa176e6d48c8cbdd895b7ce4402f51f4d44d42e5",
+      "protectedBeforeSHA256": "093747a42be7f712cf186ab0851941eb4fd4ebd11de5e0fff8df881946a37969",
+      "protectedAfterSHA256": "093747a42be7f712cf186ab0851941eb4fd4ebd11de5e0fff8df881946a37969",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Foundation/Interfaces/OnboardTelemetryPort.mo",
+      "beforeSHA256": "756317ac50faf3bd73f78460c18f17185720a636dabedfeaa20d89008d15a24d",
+      "afterSHA256": "0dc09228078e3809e470e2fb5b6f96a4e3f1d492e04415abf4bac776766d8765",
+      "protectedBeforeSHA256": "9fe8be6c598bf7978c8e7c634e53e684c94582bcd9165f682aa925602850349b",
+      "protectedAfterSHA256": "9fe8be6c598bf7978c8e7c634e53e684c94582bcd9165f682aa925602850349b",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Foundation/Interfaces/OpportunityBooleanReader.mo",
+      "beforeSHA256": "78f49439151ccc0ae8d80522f18602e4a5df09a1183c0ef22749fcd3098823ca",
+      "afterSHA256": "0037d716efb1a87b639c662cff4990c30c7a884a6fe53639dcc36a0522dd8cf8",
+      "protectedBeforeSHA256": "1b8b4c6d36edf2ca6eadf257da7c5ed600845f6eb05b02d48f13715f646aaa67",
+      "protectedAfterSHA256": "1b8b4c6d36edf2ca6eadf257da7c5ed600845f6eb05b02d48f13715f646aaa67",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Foundation/Interfaces/OpportunityIntegerReader.mo",
+      "beforeSHA256": "94d3a041dda313f8bb986eb6b0dea2061657b89012b65f11efc429c68aefe0bb",
+      "afterSHA256": "07f9fc6e9c0062e45eb58c9cb138c493c4f7edd066f5da589f63de46e8dbfb43",
+      "protectedBeforeSHA256": "33af0976f7de88507548dc39b2744a95ba754ad55069023d54791f7c01c9bc99",
+      "protectedAfterSHA256": "33af0976f7de88507548dc39b2744a95ba754ad55069023d54791f7c01c9bc99",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Foundation/Interfaces/OpportunitySignals.mo",
+      "beforeSHA256": "935490aa1d625c6ea66697802c34111137aca54cd8db64567fc65a4445f52ae1",
+      "afterSHA256": "52c0b42bc97c94b244ebefebdee280e6993f5ed97ea0a4a4291cc7f3f6dafa63",
+      "protectedBeforeSHA256": "82680ef561f3b1e154d8f53c1113752b6c8587cd8ed61d7593ab8c7da9bb36bd",
+      "protectedAfterSHA256": "82680ef561f3b1e154d8f53c1113752b6c8587cd8ed61d7593ab8c7da9bb36bd",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Foundation/Interfaces/PayloadDataPort.mo",
+      "beforeSHA256": "90c208e5ef41d046582b48a22934bfeb2937ef7be67df986ac178d43962daaf8",
+      "afterSHA256": "1989ff6a065c891c25b8d90e31d61bf9c1f43a99ba78fb423ccaf1a1d8b29ed9",
+      "protectedBeforeSHA256": "0ee14b2fc35a96962ee0a00c00defd46dbb65e47badc9db079b720a1ab11587c",
+      "protectedAfterSHA256": "0ee14b2fc35a96962ee0a00c00defd46dbb65e47badc9db079b720a1ab11587c",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Foundation/Interfaces/PlannerRequestSignals.mo",
+      "beforeSHA256": "86d0d6f85395845a241e26e421fdc2acbbb49f3550d27aaf5373f71f9d350a85",
+      "afterSHA256": "0a30cc8d9fe38322bd9d7c51a15665826bea9c07c24a8802be49d7584daf3887",
+      "protectedBeforeSHA256": "fc59f27edf1782c71caed93787533ae83661534845d6aa34ffb5bf34f1d956a7",
+      "protectedAfterSHA256": "fc59f27edf1782c71caed93787533ae83661534845d6aa34ffb5bf34f1d956a7",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Foundation/Interfaces/PowerPort.mo",
+      "beforeSHA256": "c5a2da4d4922fe1ce56ec544e508891f77335c50a765c6dfa7136a0a23c7136f",
+      "afterSHA256": "df3f6faaa2aa41233392f28fb1cbd4b1464d8b35e2da864994554e5a6480bab5",
+      "protectedBeforeSHA256": "ad3a3ddd2c1347c2e57dac448cb24321b21bfe8d98812304a606b200c6d57dbc",
+      "protectedAfterSHA256": "ad3a3ddd2c1347c2e57dac448cb24321b21bfe8d98812304a606b200c6d57dbc",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Foundation/Interfaces/RealSignal.mo",
+      "beforeSHA256": "012b3c632855d7a86e6898b33e4d0147a069096035b98075753ce87af02b36aa",
+      "afterSHA256": "e4c5ce57676de3e0773bbeb4e74b4f7719d1736df9f61505a23e774238ecad95",
+      "protectedBeforeSHA256": "90533549ad31e9bf678652e286639efed3f658a6a18b6a275f3c3aae49a336d3",
+      "protectedAfterSHA256": "90533549ad31e9bf678652e286639efed3f658a6a18b6a275f3c3aae49a336d3",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Foundation/Interfaces/RealSignalBridge.mo",
+      "beforeSHA256": "7afbcf1d8b55c5989367046a4fc917eb21fec624332f1acee4971b9be3eebb26",
+      "afterSHA256": "41241338853b33fb42427e8b2ec615be2f26e08808fe83a52ed7b670fa6a2c3b",
+      "protectedBeforeSHA256": "2a439dd60c4c7fc0bd8dd3c70dd8c17ff5d89dd2c0bb5595eddecdaf27b7077f",
+      "protectedAfterSHA256": "2a439dd60c4c7fc0bd8dd3c70dd8c17ff5d89dd2c0bb5595eddecdaf27b7077f",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Foundation/Interfaces/RealSignalReader.mo",
+      "beforeSHA256": "7e87d1b33590c53a1af93067507c9be3c76b1cf66f2a49bd8758edbc2111a48b",
+      "afterSHA256": "87d019b85c476393b1c868b19f5c18d3e7347abb90a653d4de17ef527bc9442a",
+      "protectedBeforeSHA256": "581cb954d74b2e7d54b6a80c6620c4631ac739ad398eb8fcd3de33a2a02c4239",
+      "protectedAfterSHA256": "581cb954d74b2e7d54b6a80c6620c4631ac739ad398eb8fcd3de33a2a02c4239",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Foundation/Interfaces/RejectReasonInput.mo",
+      "beforeSHA256": "2f19ea9d898a32c8bacc064b37c7634c7ca84d36b6bac57384974faac077d13e",
+      "afterSHA256": "1ddba2eb8e2de2787973fd228e517ddeab5348c119a8411d23de964e1813f125",
+      "protectedBeforeSHA256": "a1cd62f6bb87a22089cb6523215c349fd38e1adabd558480b23bbee141bdfb7a",
+      "protectedAfterSHA256": "a1cd62f6bb87a22089cb6523215c349fd38e1adabd558480b23bbee141bdfb7a",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Foundation/Interfaces/RejectReasonOutput.mo",
+      "beforeSHA256": "bd47e5056b5b846162219f95c096efe72f6aaf6e2a750848942794115eb0f435",
+      "afterSHA256": "887e0e104f9b20e0647b507520f72ce7329956f6c0d1a6f76625e6db270d09a0",
+      "protectedBeforeSHA256": "2fe99a8914df706f0e44b6c8f839fa793b61c1ef9a5ee18d12c8351d9ed589f5",
+      "protectedAfterSHA256": "2fe99a8914df706f0e44b6c8f839fa793b61c1ef9a5ee18d12c8351d9ed589f5",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Foundation/Interfaces/RejectReasonSignal.mo",
+      "beforeSHA256": "54223c68c9b1d70867a13ed7f68b34922f939b77b98cb0afd92011c3bba9aa1f",
+      "afterSHA256": "ea0309e25a51bca5b4937187058088d3618277252da61a77417b887af4c8b87e",
+      "protectedBeforeSHA256": "187f03b66f05bafada1c3be3e9450d159629a8ec773ffa6505ced1ace6b7ffec",
+      "protectedAfterSHA256": "187f03b66f05bafada1c3be3e9450d159629a8ec773ffa6505ced1ace6b7ffec",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Foundation/Interfaces/SafeModeActionSignals.mo",
+      "beforeSHA256": "b1a46d80d16444125c4879e6f03807c37998cba637874d5d830aa6d23939fba9",
+      "afterSHA256": "1d89ca48d8612b7e39c9cd46eb042f25619bad428fa2e3a90742b9f8ebfa5287",
+      "protectedBeforeSHA256": "124db796f24ce21f7686f64ac515270cda5b104291b33c750ebdc3cb2db51280",
+      "protectedAfterSHA256": "124db796f24ce21f7686f64ac515270cda5b104291b33c750ebdc3cb2db51280",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Foundation/Interfaces/SafetySignals.mo",
+      "beforeSHA256": "ae58a8d599c98f8c32a06fb3b7a78fb9a21603b011c2554bfe2fdf9b213c2d11",
+      "afterSHA256": "56fd5856ed8efdc32688edc78085a72f2f5306360beec15e0f7b7d7006dd8821",
+      "protectedBeforeSHA256": "87848cced3c1dbac525980a37977edaaf4fa74761207dc1e0b557f610407e77e",
+      "protectedAfterSHA256": "87848cced3c1dbac525980a37977edaaf4fa74761207dc1e0b557f610407e77e",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Foundation/Interfaces/SourcePowerPort.mo",
+      "beforeSHA256": "004067eaf29bdc4e25839692ecc7213a687d06481261e99cfb73f0c3de673394",
+      "afterSHA256": "e6c19311566d576dcb82b6f94917491c3b63bd253c4f0324d61d39be7905a970",
+      "protectedBeforeSHA256": "f424084b283a052d6767b70314b8af5254a5655e9dc3e793f6de9e3080a7c3e8",
+      "protectedAfterSHA256": "f424084b283a052d6767b70314b8af5254a5655e9dc3e793f6de9e3080a7c3e8",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Foundation/Interfaces/ThermalPort.mo",
+      "beforeSHA256": "55499fabde0cf4467e5d7d9ccd8a21334b87a9a99fc70af0b2dae9525390c85c",
+      "afterSHA256": "56cd24804b44317a5acb2a0b58e214653b9d4d30c1abf9ab089053ba8faff0f3",
+      "protectedBeforeSHA256": "0ca935e3aed94c884ff1b9ca033d41398d498e6ed8152ad82dea899e7bdce836",
+      "protectedAfterSHA256": "0ca935e3aed94c884ff1b9ca033d41398d498e6ed8152ad82dea899e7bdce836",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Foundation/Interfaces/package.mo",
+      "beforeSHA256": "4490feacb5204023700aa76f9edb4f1a374ac405726cb8d02fe669cf584397ca",
+      "afterSHA256": "308510ac993a1d66f974045ca7928368a223cbfdb95c2fb35099ce5d9cb0cdf0",
+      "protectedBeforeSHA256": "68bc250bfe20d676baf934b6e37a90ee6a521a8099e654b4e513c7f2a5dfc603",
+      "protectedAfterSHA256": "68bc250bfe20d676baf934b6e37a90ee6a521a8099e654b4e513c7f2a5dfc603",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Foundation/Models/AOCSControlComputation.mo",
+      "beforeSHA256": "4080a5d271ee84ff227f74e157b277249825270d3202a1e2f807c446a9ee0c47",
+      "afterSHA256": "28dc56bdcf1f453735f38fbe9ec6745fd45fd0eb170571ddde8a02e4c3d406dc",
+      "protectedBeforeSHA256": "0f70fe607f574dcee9e08f34b0adb638272c2f79e2e0c0930aef7c53b1ebd36c",
+      "protectedAfterSHA256": "0f70fe607f574dcee9e08f34b0adb638272c2f79e2e0c0930aef7c53b1ebd36c",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Foundation/Models/AverageDCDCConverterCore.mo",
+      "beforeSHA256": "6c64a4bcb46044cb7557e56f6c0d77d3856c3f398e61f0432688215581f90a39",
+      "afterSHA256": "85acf33f2e7462f3b3f452a32ac611c8cbd9addd8525695219736ec2e9e66d79",
+      "protectedBeforeSHA256": "03fa87bc26050a343d00426de082c83ced986252e40b937b70e75dba6a0aaf75",
+      "protectedAfterSHA256": "03fa87bc26050a343d00426de082c83ced986252e40b937b70e75dba6a0aaf75",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Foundation/Models/BatteryCellLimits.mo",
+      "beforeSHA256": "8fe5c8f44922a1a997c7d75f1051e50b7b2f489237233d00ef8f3e9323309459",
+      "afterSHA256": "096ca0ec5355a2e686fa95782a9e393a47b4e9290c4c2f5ff1601053693a1677",
+      "protectedBeforeSHA256": "fcacd2c752a87785d59aca9b757f23c18a4853ff9254b79afa58a2638d127ca2",
+      "protectedAfterSHA256": "fcacd2c752a87785d59aca9b757f23c18a4853ff9254b79afa58a2638d127ca2",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Foundation/Models/BatteryCellStackCore.mo",
+      "beforeSHA256": "2d8d23629da92c114b7ab5bc5cfc0a23ac6d9f76f31eb2cb3d6505d83e573d3c",
+      "afterSHA256": "37e71fdf625a6f713fb4c6e02c73d59f5f77fe20a49a84f2d1aa372545b8992d",
+      "protectedBeforeSHA256": "7b668d2c22429d37c8c2b189e0b8aac36f79b8dd99e4e0b4c2ae374b85af05b2",
+      "protectedAfterSHA256": "7b668d2c22429d37c8c2b189e0b8aac36f79b8dd99e4e0b4c2ae374b85af05b2",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Foundation/Models/CommandAdapter.mo",
+      "beforeSHA256": "c47c318d277cd9edb358401a2d6a2230a543e2a879348454a4f7687d351efa8c",
+      "afterSHA256": "5c0575e552c3475baa60cbf256c6c9497b597dcf22da6dff308550a2d6cf2bf9",
+      "protectedBeforeSHA256": "3c7ff2a28e7afbe088a048ab6c25337fd2648d69813ee4bb7221edc110e72819",
+      "protectedAfterSHA256": "3c7ff2a28e7afbe088a048ab6c25337fd2648d69813ee4bb7221edc110e72819",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Foundation/Models/CommandArbiter.mo",
+      "beforeSHA256": "ec028809d443f938b896bd13ba01b0096a0dfaedf0312bafc35a707d0798f92c",
+      "afterSHA256": "60d6b9be3ac8cb21aac5cbd4d43b5e3dc8902c1637b7b441bb7fc1ab35252d4e",
+      "protectedBeforeSHA256": "efca8e7a05dbb3c104a3e2d3fcd7713cd069094819398c4436bc91c56e242273",
+      "protectedAfterSHA256": "efca8e7a05dbb3c104a3e2d3fcd7713cd069094819398c4436bc91c56e242273",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Foundation/Models/DownlinkSequencer.mo",
+      "beforeSHA256": "f2f5e3383e6b0b92196649a4f9d9e5cdfe0221a63d0783f1507f9a38d08cf11b",
+      "afterSHA256": "e0cf46012f26ae7571aa64ba5d6df62041535bba879097fb8317e4f12befc72d",
+      "protectedBeforeSHA256": "fd274ea3bb072d745a5d85610bb2b5a7ee7e7e3c8fcc028cc75edb67df990297",
+      "protectedAfterSHA256": "fd274ea3bb072d745a5d85610bb2b5a7ee7e7e3c8fcc028cc75edb67df990297",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Foundation/Models/EngineeringTelemetryObserver.mo",
+      "beforeSHA256": "59f2072efddd25d651eb082bb1db9051c125aaa332a371d90cd5b1b346aed3cc",
+      "afterSHA256": "f6407725ede1571019f0d7628787bf1126136cef1a71d2ff368778d2098bb56f",
+      "protectedBeforeSHA256": "a7d1e9207cf4f11187a2830f4301cc5e574c26eaef6f6bda1ac184101e3fecc8",
+      "protectedAfterSHA256": "a7d1e9207cf4f11187a2830f4301cc5e574c26eaef6f6bda1ac184101e3fecc8",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Foundation/Models/EphemerisDataAdapter.mo",
+      "beforeSHA256": "d495c8ff4f9f6ba01216de5d80f138c89bc369b70a6d4f187ce046896c5adaab",
+      "afterSHA256": "03ad97d093f56c3dd5eaa3f904886f4f1c59cbe54c1a13c7927d5255f53a5041",
+      "protectedBeforeSHA256": "2f17f4dd47ba4b9be95cf82bbf21bef121ca03bebe7cf00a61dd0bd59c467814",
+      "protectedAfterSHA256": "2f17f4dd47ba4b9be95cf82bbf21bef121ca03bebe7cf00a61dd0bd59c467814",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Foundation/Models/EphemerisEnvironmentReader.mo",
+      "beforeSHA256": "2725bcf4550031d48a67d8a6c54b9e47ef76ae8c5397a43cbc50bde6706d46ae",
+      "afterSHA256": "e39eb7cd6b28660937e8fb6544c71b9d569782c8530428349f1735f775c9df8e",
+      "protectedBeforeSHA256": "dac74aa993c0795f8021dfc37beb0d8f98a8b8acdedb52ff74a80cd941d35f3b",
+      "protectedAfterSHA256": "dac74aa993c0795f8021dfc37beb0d8f98a8b8acdedb52ff74a80cd941d35f3b",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Foundation/Models/EquivalentAOCSCore.mo",
+      "beforeSHA256": "880c967e99b5b9fae6257315b5a3a863a6a675f0577259645e8c14cf19b7806f",
+      "afterSHA256": "15f561721c4152716b6dbb8394b9c777cd91a5a2f0f2b9699e18cf5d1b22b6eb",
+      "protectedBeforeSHA256": "d87f7f66fdce458f0122e4d5d5bd7db9c85ab31038b179fb52f9cc2973eeef51",
+      "protectedAfterSHA256": "d87f7f66fdce458f0122e4d5d5bd7db9c85ab31038b179fb52f9cc2973eeef51",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Foundation/Models/ImagingSequencer.mo",
+      "beforeSHA256": "3dfd203c8269cb8520be04b410db16bbf2b0c92635a9c803470bde69fb40b329",
+      "afterSHA256": "c87bd50949729473ea79747aa3a35cf2e05b3ccad610991998103e175dc2f7cb",
+      "protectedBeforeSHA256": "2755d3411311b4a7fc9728736735b814bb94946b854f06661093fdc2a6d3d7f0",
+      "protectedAfterSHA256": "2755d3411311b4a7fc9728736735b814bb94946b854f06661093fdc2a6d3d7f0",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Foundation/Models/MissionActionRequestMailbox.mo",
+      "beforeSHA256": "a423d7b1985ac0ab4932643774740cd7e704244609ea1ae4aaf61277b70b5b3a",
+      "afterSHA256": "2e89ddcaf2dcfd3a217748fa81d400c6417a4952312f62ae13901b62231f8af9",
+      "protectedBeforeSHA256": "ea186b6c3c1b9f1326c9fa7cfc1d4a5afaae34572ca4d8e909f881d459fa3a45",
+      "protectedAfterSHA256": "ea186b6c3c1b9f1326c9fa7cfc1d4a5afaae34572ca4d8e909f881d459fa3a45",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Foundation/Models/MissionActionResultMailbox.mo",
+      "beforeSHA256": "ebc5211fedeb0cdfc4da0f8ad31a7c7e8dd8ba2e7506e414da04fa5b4a46c5ba",
+      "afterSHA256": "47783aca5c5b953a5679260335ffddd378469d5b5b1418a1cfa956e02f3c9fa7",
+      "protectedBeforeSHA256": "2e9bfc30021505d60eb08817b13907febad7ee82dc916bf2ce91bf328aa8812b",
+      "protectedAfterSHA256": "2e9bfc30021505d60eb08817b13907febad7ee82dc916bf2ce91bf328aa8812b",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Foundation/Models/MissionFeedbackAdapter.mo",
+      "beforeSHA256": "32493c32ff6cf75ef53b8634beb38efd40c4c4afe34afb35dae3231121f7f9a2",
+      "afterSHA256": "f0cd25a655a7014f459f793401ced592042875a51889e98983d5249e4c2f2413",
+      "protectedBeforeSHA256": "b3ba23a0b4c114436f0da6e92613290ef21fcac915df676f2fc15c31985db433",
+      "protectedAfterSHA256": "b3ba23a0b4c114436f0da6e92613290ef21fcac915df676f2fc15c31985db433",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Foundation/Models/MissionGeometryEventMailbox.mo",
+      "beforeSHA256": "c5355cdbabd03ab50bf4a2be9850fc9e96b14ec4a2b569b21bcdb00840de4df3",
+      "afterSHA256": "c210adcea15d7a76cf2374f929edd6466e8e3b84c21d166898cd4b89496327c9",
+      "protectedBeforeSHA256": "7359631e8953fdf1dd3512f57cfa45e2e13c60e2f7a7d8eb4cd46893c2fd5efc",
+      "protectedAfterSHA256": "7359631e8953fdf1dd3512f57cfa45e2e13c60e2f7a7d8eb4cd46893c2fd5efc",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Foundation/Models/MissionOpportunityGenerator.mo",
+      "beforeSHA256": "618a8a8c869e283e73e9a5940c013e845cf003795bd3310121b7169c5f0c2f6c",
+      "afterSHA256": "eb21a13f4c5bce6df7ff8e4228ac7092df9c8f0206c74d4ef2678a2194a4fef5",
+      "protectedBeforeSHA256": "9648447746e4389ba36ee4f2ce054b7ac95d2ba570223a3917a92050f74599ec",
+      "protectedAfterSHA256": "9648447746e4389ba36ee4f2ce054b7ac95d2ba570223a3917a92050f74599ec",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Foundation/Models/MissionPlanner.mo",
+      "beforeSHA256": "7056a3c25985ee1362f530740b43969ce2965adbd3987ab1245cc5bd7758859a",
+      "afterSHA256": "d9d490b33dd39ec2931e1ddcfb1484e0855d33e11d9fe9c69f6f523e69238b52",
+      "protectedBeforeSHA256": "d752a19bc765ea8d69d7f055cf2ab89da3c3a042afd74ebe85172dea70ced7bf",
+      "protectedAfterSHA256": "d752a19bc765ea8d69d7f055cf2ab89da3c3a042afd74ebe85172dea70ced7bf",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Foundation/Models/MissionStateMachine.mo",
+      "beforeSHA256": "c86142251253343a7cdb38f260791c9f09ef0c2b5c6128650603e032c86ca99e",
+      "afterSHA256": "329e39066cefcfb6c463368fedb7a2955bbad18048ab0afd9c575e0f71d12f6c",
+      "protectedBeforeSHA256": "d88aaae1e42b41bb82ac81c636a1ca456ceeccd2d1d4ed93b5a643205e4345ca",
+      "protectedAfterSHA256": "d88aaae1e42b41bb82ac81c636a1ca456ceeccd2d1d4ed93b5a643205e4345ca",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Foundation/Models/OrbitalGeometry.mo",
+      "beforeSHA256": "16f4775559b5f1439a7405a751cdeb8004bf75eb59b72404df100968b78e6e71",
+      "afterSHA256": "d3c4bf36e94b9e47b7b98485d18b2c32f5d36382175586420478967c1b95de3b",
+      "protectedBeforeSHA256": "fd631f10f933a83443955aa58ffe9f846b995f2262814716f27b716b1e40507b",
+      "protectedAfterSHA256": "fd631f10f933a83443955aa58ffe9f846b995f2262814716f27b716b1e40507b",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Foundation/Models/SafeModeSequencer.mo",
+      "beforeSHA256": "defa4cec1584fcfad9525103524c3676660b54eee0c2fe3feea50f40d1db555f",
+      "afterSHA256": "ccbc7c4c1eb4f8061845369d82ff5e6e3d6f0bf647fa15584cd569abe58c1a28",
+      "protectedBeforeSHA256": "916af1ae427c9a65c80cfefdc39c9e6bc5ac3b6b9bfaa7d85aab627bac929b2a",
+      "protectedAfterSHA256": "916af1ae427c9a65c80cfefdc39c9e6bc5ac3b6b9bfaa7d85aab627bac929b2a",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Foundation/Models/SafetyMonitor.mo",
+      "beforeSHA256": "27733cc058499fa2664f0fc1bc3d3af964c368d2c04d66343b2d1fb8f4ac5ffd",
+      "afterSHA256": "93dfc5b1a16781378b5fe181b7e0fe403a2a37d442c7a08032e9b4ac577935eb",
+      "protectedBeforeSHA256": "86d89ed5171e121f89fa25ceadc9a1d09108bb5a345454c59a200179f0fc2172",
+      "protectedAfterSHA256": "86d89ed5171e121f89fa25ceadc9a1d09108bb5a345454c59a200179f0fc2172",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Foundation/Models/package.mo",
+      "beforeSHA256": "fd155736c3bd5a4de45ca57a992e5bb790c60c5e9f07beea09b929cc47fd685f",
+      "afterSHA256": "541d24ac28886a8e66809438551ee9eb7250420bac08dc63b5465d6c0bb2ac8e",
+      "protectedBeforeSHA256": "302f3e9ac2aebffd2a969e802c41451168a83dd2b3387a25d03d04f556faa7e6",
+      "protectedAfterSHA256": "302f3e9ac2aebffd2a969e802c41451168a83dd2b3387a25d03d04f556faa7e6",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Foundation/SignalRouting/RealSignalForward.mo",
+      "beforeSHA256": "f185a1327392a1713af8cb001bea470621c7720511cc623ee95d6df9dbc1e868",
+      "afterSHA256": "f531d5dc0893a9d61e9dcfd4b857261b1049676a2ab08c637ea66ce1fde4fffa",
+      "protectedBeforeSHA256": "009781f409870c6f069e0e62c026eac9cea21cdf819ba25ee27ea02511685fba",
+      "protectedAfterSHA256": "009781f409870c6f069e0e62c026eac9cea21cdf819ba25ee27ea02511685fba",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Foundation/SignalRouting/package.mo",
+      "beforeSHA256": "11a8e02958dbc50d9927f6859d1acfefce18aaf8a1dbc24db29774ad5f5c1638",
+      "afterSHA256": "d89b51dfbb7cbc296bda65894749916ea586bf2020662f2f8afd931240ff71e6",
+      "protectedBeforeSHA256": "330a968bb5f488b8b2d6142fe38c1a32da4dcef70e9a39a6e7dd503cb02af56a",
+      "protectedAfterSHA256": "330a968bb5f488b8b2d6142fe38c1a32da4dcef70e9a39a6e7dd503cb02af56a",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Foundation/Types/AttitudeControlState.mo",
+      "beforeSHA256": "5a3ad89a9515dca5673295d3f9a9adb939f4fa7418d896bea93bf769aa7984f2",
+      "afterSHA256": "f2428049b0f7143cf5dfbdd03e1a40679d689c3c67574c30897889b001db9f87",
+      "protectedBeforeSHA256": "ab2069d76a576cc99614ffb3cb26febd634b5a0c5e06d2363b8e5f4d5068861c",
+      "protectedAfterSHA256": "ab2069d76a576cc99614ffb3cb26febd634b5a0c5e06d2363b8e5f4d5068861c",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Foundation/Types/CommandExecutionStatus.mo",
+      "beforeSHA256": "54730742c74193f2a2b977c1869879161711e5239eaffd5d5a62f51a7288d512",
+      "afterSHA256": "dff8345464c0fa851daa47b3645eaea6c4cc926b0e64733003af14b63a09f721",
+      "protectedBeforeSHA256": "3893ad9856020994de9210377d217510eac9d1898524d4d1a3670607f03421c1",
+      "protectedAfterSHA256": "3893ad9856020994de9210377d217510eac9d1898524d4d1a3670607f03421c1",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Foundation/Types/CommandType.mo",
+      "beforeSHA256": "570e65411c87cc9a94f34b516bba29ae8425cf182995ce93f6cc36e64c1f567f",
+      "afterSHA256": "d8622132477a03e934394897e2f81c7980ac4680b77bfc7f3473815f8e13648f",
+      "protectedBeforeSHA256": "0395c35d573dae204343587c5b974240c4882d59dbe9fa617f4c47fc85510c60",
+      "protectedAfterSHA256": "0395c35d573dae204343587c5b974240c4882d59dbe9fa617f4c47fc85510c60",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Foundation/Types/ControlMode.mo",
+      "beforeSHA256": "ca0902997589a0c93584ea54d2858d81f34a5f735a78862d25901b4dc3f60ae9",
+      "afterSHA256": "360d01dbb1954666068129d1d7f731189d7153066404c287745e32d09da28d70",
+      "protectedBeforeSHA256": "e56dd17f5669b199cd30a14e4d8909d61aafbf9bdefa87c6ead26f54c0b90763",
+      "protectedAfterSHA256": "e56dd17f5669b199cd30a14e4d8909d61aafbf9bdefa87c6ead26f54c0b90763",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Foundation/Types/DownlinkPhase.mo",
+      "beforeSHA256": "5da27b7e4c3ddf7b86d878a4009b99b4c3454d65ff0aa969bf16d2de8719baf2",
+      "afterSHA256": "5dc796a848228f5be25ddc4e9c20fb9f9a1d538958fd2831af7a6cf78d504b82",
+      "protectedBeforeSHA256": "a013394fb62c042327446a944ae2c7c19028d5491da58eea5965e09291862147",
+      "protectedAfterSHA256": "a013394fb62c042327446a944ae2c7c19028d5491da58eea5965e09291862147",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Foundation/Types/ImagingCapabilities.mo",
+      "beforeSHA256": "1195fc3eaa89cd95f52fe87e0337f4eba23f08e7eff27d6aba21853230e6f943",
+      "afterSHA256": "6fb6e5d743c713573e14ea18963a0dbdfcab0c187006a69814f06d6fc11a73ca",
+      "protectedBeforeSHA256": "ccc2c3405366ca776255dfc90f3e550eb6643c7d70d9e05e9f2e03bc6254d4a5",
+      "protectedAfterSHA256": "ccc2c3405366ca776255dfc90f3e550eb6643c7d70d9e05e9f2e03bc6254d4a5",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Foundation/Types/ImagingPhase.mo",
+      "beforeSHA256": "07837748a75e3e70fcf2f4ee333e89c20add1a43d6ac4158c26259cb3410c092",
+      "afterSHA256": "97b3d1760b23e5d1faed75c36fd4db290862b45d395e2d4727de3e1864b0906a",
+      "protectedBeforeSHA256": "f956cf5fdd4924550859cd28e37ab3687e3cd8af45119c5e7a2f321c1247b488",
+      "protectedAfterSHA256": "f956cf5fdd4924550859cd28e37ab3687e3cd8af45119c5e7a2f321c1247b488",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Foundation/Types/MassProperties.mo",
+      "beforeSHA256": "4af30010e09313eaa84e7ca90875a099f7d343066cd4f2af415e51d82694f0a1",
+      "afterSHA256": "19fb5ef0a7d3a828440f2be3ba8b55d14c6ac33802b55174632ea04595f365d7",
+      "protectedBeforeSHA256": "623a9a4829ef063263509d7f664942f0d2c6c360116e178f0ba2e3879d3635ff",
+      "protectedAfterSHA256": "623a9a4829ef063263509d7f664942f0d2c6c360116e178f0ba2e3879d3635ff",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Foundation/Types/MissionMode.mo",
+      "beforeSHA256": "3e9b411150f666b646c028bd4f4730159d61698c1be0f5d771df72f0f74b313c",
+      "afterSHA256": "c16e6179ecc0a3c1ceb56b756e66a0e09a80b590f92e29a3fdec17a6fd15dd66",
+      "protectedBeforeSHA256": "0330b5fb24f7571ddd41d2677e7a8eb31f1f31fcd1cbb08fad4197d6a77363c0",
+      "protectedAfterSHA256": "0330b5fb24f7571ddd41d2677e7a8eb31f1f31fcd1cbb08fad4197d6a77363c0",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Foundation/Types/RejectReason.mo",
+      "beforeSHA256": "3629e1af136f8bf9ac9405f23062e38f71bfd254bf2d12397f625d7359df63ac",
+      "afterSHA256": "4ed1c795a823e05506ef4c4cd2cf016480bd972a897150267a7d55a1490cb81b",
+      "protectedBeforeSHA256": "38e65787810fa6c90b061434086a67be8cb19f436ae822cdbc776ea0958209c7",
+      "protectedAfterSHA256": "38e65787810fa6c90b061434086a67be8cb19f436ae822cdbc776ea0958209c7",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Foundation/Types/SurfaceGeometry.mo",
+      "beforeSHA256": "4a0bd2a1005837b4e4b3388ef2e7aafba8a88739480df991369000cefe252a3f",
+      "afterSHA256": "d9a9e3dcdf056a4d3793664aebd99b7f75f68fb1a112426f0f910acf4f96ff45",
+      "protectedBeforeSHA256": "d5605682708c301f7d28dbde29c00519193fa1900c712f06d0c0dc342c1f97fd",
+      "protectedAfterSHA256": "d5605682708c301f7d28dbde29c00519193fa1900c712f06d0c0dc342c1f97fd",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Foundation/Types/TelemetryCatalog.mo",
+      "beforeSHA256": "25f8be1663500477cdeb56ef37970ac96c0d7832e899f948e5fc339a1701e699",
+      "afterSHA256": "c929feba2e0d09fbb50780f0db690b56db31c938bc4185c9fda9c6afecdaf718",
+      "protectedBeforeSHA256": "ae02514ad305f6e14dcccf346c551c694471cd56fa7610a8e8da960bd6b6824a",
+      "protectedAfterSHA256": "ae02514ad305f6e14dcccf346c551c694471cd56fa7610a8e8da960bd6b6824a",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Foundation/Types/WheelGroupCapabilities.mo",
+      "beforeSHA256": "7152ad66ec562bdac4e12f0abbd6dd6784cce87b035b9fa802bdba24645cc869",
+      "afterSHA256": "f7b46144c10e03ed43665777f036d8802189b58f50a6b434a22142e797c9eb38",
+      "protectedBeforeSHA256": "9a9956a7011e2399ab31c47f1e10a98707fbd768fd7714ae438e92066e496e1a",
+      "protectedAfterSHA256": "9a9956a7011e2399ab31c47f1e10a98707fbd768fd7714ae438e92066e496e1a",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Foundation/Types/package.mo",
+      "beforeSHA256": "4624ce7918002be708aca686dd0ae8caedac279ea1366309114380679d2c8c6b",
+      "afterSHA256": "c90fca5e8ba465933071334cb52b9477aee584efe7f3f2d5fe563dc2f30952d7",
+      "protectedBeforeSHA256": "8dc27466d6cbac2fcce9b19387ad41320fe8aaf545a3a49b43ff79a08d8b5590",
+      "protectedAfterSHA256": "8dc27466d6cbac2fcce9b19387ad41320fe8aaf545a3a49b43ff79a08d8b5590",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Foundation/package.mo",
+      "beforeSHA256": "3edf05dd4b8f15cf8c9aea80748277fe0700993ac5d18aedfd04abb4eedc5eef",
+      "afterSHA256": "8f0af869c7995e3de54d25fb2dc92bbd0a5be40b22e38e0780a8670af30ddae4",
+      "protectedBeforeSHA256": "b6ed7b1337e78386f337571f29ee90a29b387c7e30547d958ac745060bc6c72d",
+      "protectedAfterSHA256": "b6ed7b1337e78386f337571f29ee90a29b387c7e30547d958ac745060bc6c72d",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Scenarios/DefaultScenario.mo",
+      "beforeSHA256": "616d70f1556de1f8521bc3f10a59b7a2e5dfdbd18e6fd8968adfb08dcfd0e7b9",
+      "afterSHA256": "9b5db748be6f631edc842558e91c52a0ecfe3b69384dd10b01d107d23e2d7550",
+      "protectedBeforeSHA256": "bab6e87ffcdaae43f7d16f3dcabcd80b3ef8944d027480de01b36ce9aac0ffc1",
+      "protectedAfterSHA256": "bab6e87ffcdaae43f7d16f3dcabcd80b3ef8944d027480de01b36ce9aac0ffc1",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Scenarios/DefaultSpacecraftDesignConfig.mo",
+      "beforeSHA256": "74b485d17cc88a52711b3dae196d9fa07c1eef97d1310954063dee77adea5f0c",
+      "afterSHA256": "14c083c48b02a47d741292eee915f1574e26261b02ae28fb1a3952fc7664b543",
+      "protectedBeforeSHA256": "6df81b621bec76fa1baa42b4fb287855cd490491c637aca7be765cef006feffb",
+      "protectedAfterSHA256": "6df81b621bec76fa1baa42b4fb287855cd490491c637aca7be765cef006feffb",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Scenarios/DesignConfigRecords/AntennaComponentConfig.mo",
+      "beforeSHA256": "e3f0abe1f0dd56eb7325bf5e20f3bfe1603ae46c4c8d2e5bffcce2ed8d37d55c",
+      "afterSHA256": "30599fdcbf6fb2c08eb5538b45a3cd24c5f4302e7dc3ee3c87c48ff3cf12cdc3",
+      "protectedBeforeSHA256": "28dfd440fbd515db249876329871235893b17b1b677f7b58fa44bab9151e6b94",
+      "protectedAfterSHA256": "28dfd440fbd515db249876329871235893b17b1b677f7b58fa44bab9151e6b94",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Scenarios/DesignConfigRecords/BasebandComponentConfig.mo",
+      "beforeSHA256": "618f5e1858145e946a9288301687fb02947a45a969fa7f707ddcf5d580e1efe4",
+      "afterSHA256": "f046ad3876923721b094499c8bef9a625e7f3d3c62c24892b4f6ba1a4b9d3d96",
+      "protectedBeforeSHA256": "49db355c119fda5903cd4f9ef99e2ca94784d7e9e1592e681069b6bbabe5f84f",
+      "protectedAfterSHA256": "49db355c119fda5903cd4f9ef99e2ca94784d7e9e1592e681069b6bbabe5f84f",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Scenarios/DesignConfigRecords/BatteryComponentConfig.mo",
+      "beforeSHA256": "ff6865ccd4306dbd9fe94f797cac63b715da025aa465b01c815647524729c669",
+      "afterSHA256": "425a7ad08914bd7bb4a2192d3a0136b6fa1476c7389500a804740daba2e57715",
+      "protectedBeforeSHA256": "ed6a890a1739a6819d76cd53790148c8dce04cb474aabc24fc5880496125f98e",
+      "protectedAfterSHA256": "ed6a890a1739a6819d76cd53790148c8dce04cb474aabc24fc5880496125f98e",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Scenarios/DesignConfigRecords/CommunicationDesignConfig.mo",
+      "beforeSHA256": "c861eeb1412eaf0bb4713fce9f9a8ee373ad2ffc74a6d0423df9b8b2312509d9",
+      "afterSHA256": "a19b4a75c1e570888e794d36a1cbce18fab8de0fa74db755acad24b508a4d421",
+      "protectedBeforeSHA256": "71d82a618a26d9e0f73a8719d93dd092c62f50f8dd89ed0406f7edf1f5940461",
+      "protectedAfterSHA256": "71d82a618a26d9e0f73a8719d93dd092c62f50f8dd89ed0406f7edf1f5940461",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Scenarios/DesignConfigRecords/ComputerComponentConfig.mo",
+      "beforeSHA256": "e40c5f0818cd1498204a88024fa8062439de5152701858b5770760972a684460",
+      "afterSHA256": "402c5f32b78e58c854e94a23a067644a5c47ea535ac34168ad59cfe2a9d6efbc",
+      "protectedBeforeSHA256": "7146f434cb23dbab54d972563b68a0757247b79a0e35799a1c9be91eaa053a3b",
+      "protectedAfterSHA256": "7146f434cb23dbab54d972563b68a0757247b79a0e35799a1c9be91eaa053a3b",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Scenarios/DesignConfigRecords/ControllerComponentConfig.mo",
+      "beforeSHA256": "794b2722d049e0488006aba49aa7e31260f53447307e940459a04a6ea61438ac",
+      "afterSHA256": "8921e66d571a6a59f1b36e35f232406666e85d2d8d2d0fbca85248edab4a735b",
+      "protectedBeforeSHA256": "89c6e7b280122c34c113cba01e57cba5080828df2ee27721271f274bc54858bf",
+      "protectedAfterSHA256": "89c6e7b280122c34c113cba01e57cba5080828df2ee27721271f274bc54858bf",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Scenarios/DesignConfigRecords/DataHandlingDesignConfig.mo",
+      "beforeSHA256": "16c079377a28b9e5b5c9323fc8effc8eba0ab4d44eea49103e03715d08096ceb",
+      "afterSHA256": "49518cf22e817b8caf5725f7c3a20e81a6bca7b6358168bd583a67db630b1beb",
+      "protectedBeforeSHA256": "76ec0bd9a167af94e96555dcfa5bc33d494dc5acfa195d22b78935ea139ddf2c",
+      "protectedAfterSHA256": "76ec0bd9a167af94e96555dcfa5bc33d494dc5acfa195d22b78935ea139ddf2c",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Scenarios/DesignConfigRecords/EarthCameraComponentConfig.mo",
+      "beforeSHA256": "2ca62852fee3b9a4bc4543a910d5085a6cbb818113c8cc9201b6e9980e49b53e",
+      "afterSHA256": "a0f52b0d95f5e160565083d2b365ce1311d5441077f6daf37ecf8348fe33be04",
+      "protectedBeforeSHA256": "dbab4284cdc3718cd2c962fb829be52b9387961d7c531463cfeaa13c10888c38",
+      "protectedAfterSHA256": "dbab4284cdc3718cd2c962fb829be52b9387961d7c531463cfeaa13c10888c38",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Scenarios/DesignConfigRecords/EpsDesignConfig.mo",
+      "beforeSHA256": "6324eabccf92a282a59a700055d53f6303e3333e02073b9da73162d48d8ebfa7",
+      "afterSHA256": "4717c1cb7b5af26b68b5df4fdf9ca7b73d4cb0f7ec1c6375d2fb973513085af1",
+      "protectedBeforeSHA256": "0b839222c9b4a3214c2b621e61443d4aa790f3a380cf66877b6e0df570143133",
+      "protectedAfterSHA256": "0b839222c9b4a3214c2b621e61443d4aa790f3a380cf66877b6e0df570143133",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Scenarios/DesignConfigRecords/FotonAmurComponentConfig.mo",
+      "beforeSHA256": "4f0020072f7a59387e7c2e9a28baa449357708f1ebbdfefcc0a6395d899905ee",
+      "afterSHA256": "5631a03e104ce66effc48743cbb1d6210a4222048fb6f1c78c6a55d12a8c5082",
+      "protectedBeforeSHA256": "f7c3582e70af308d0276404688d17276d1560a5d0b4fbe5a29fc1cebd40fcbc0",
+      "protectedAfterSHA256": "f7c3582e70af308d0276404688d17276d1560a5d0b4fbe5a29fc1cebd40fcbc0",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Scenarios/DesignConfigRecords/GncDesignConfig.mo",
+      "beforeSHA256": "897aad769d3ad7d8e9bf7463e306f8321df969cdd2b63476cd0a4376b49ad3c8",
+      "afterSHA256": "764ba560e7a84af0c8ba0c447c53f72efd8b4f47ebe7857a1514f3d0cba335bf",
+      "protectedBeforeSHA256": "83ee1663c7572e75a0185a73ba8fc78467deef85779bfd09e08c703dfaf5aad3",
+      "protectedAfterSHA256": "83ee1663c7572e75a0185a73ba8fc78467deef85779bfd09e08c703dfaf5aad3",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Scenarios/DesignConfigRecords/GnssComponentConfig.mo",
+      "beforeSHA256": "85d8674c6f63e8373d429b92b6ae18a51721111657d6fa6f4c8dc91fdba1319c",
+      "afterSHA256": "8bea34fe501be40746d69b970a46324c898553f16705101ce2afc00cca1fc881",
+      "protectedBeforeSHA256": "79129d962f8728043b740cff5c87acd7a41a54b6662ff74956b98a32f869ffd4",
+      "protectedAfterSHA256": "79129d962f8728043b740cff5c87acd7a41a54b6662ff74956b98a32f869ffd4",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Scenarios/DesignConfigRecords/HeatersComponentConfig.mo",
+      "beforeSHA256": "9a7e2e03b99f0118d4446ada41ce6127ed9caa9da553de681ee21e021c824a16",
+      "afterSHA256": "18397040b7af03383b7dd5e2e3bb4fc4badbc2020000b381aa20723cf6a0f64d",
+      "protectedBeforeSHA256": "b6894fced7176a76d0dc107a452371994b0c38a9af1f51b6c7e4472822c0a6a8",
+      "protectedAfterSHA256": "b6894fced7176a76d0dc107a452371994b0c38a9af1f51b6c7e4472822c0a6a8",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Scenarios/DesignConfigRecords/MagnetometerComponentConfig.mo",
+      "beforeSHA256": "250099564e7990304d65b963aca618c789c066a93f4b4a65c42fd61f068cb8df",
+      "afterSHA256": "e9f9fb67b454b1dd623b8b2ef41f65d7880f44c3d57a9177cace7a7b54450548",
+      "protectedBeforeSHA256": "a2609722063f23eb02d856f958140d2c8a417668d9567f730a84f6e9f092ae60",
+      "protectedAfterSHA256": "a2609722063f23eb02d856f958140d2c8a417668d9567f730a84f6e9f092ae60",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Scenarios/DesignConfigRecords/MagnetorquerComponentConfig.mo",
+      "beforeSHA256": "b6c5d2f74c1907a0a07e5b1496bffd1a55da0f3d0c6cac1f34afa9ffaf963f3c",
+      "afterSHA256": "6cf3da962288105881957f29a5a35a618ef28d1b8b6fb950dd7397c18e79ed1a",
+      "protectedBeforeSHA256": "83ebc098275314cf329fa8ec3110f4256f4af4b3ea02c93af1a045b64bd1420c",
+      "protectedAfterSHA256": "83ebc098275314cf329fa8ec3110f4256f4af4b3ea02c93af1a045b64bd1420c",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Scenarios/DesignConfigRecords/MemsIMUComponentConfig.mo",
+      "beforeSHA256": "98b1ea5dfe10cef5ddf26245633eac4c78f335bed65193c774e0dca6774de158",
+      "afterSHA256": "4459f876fcec990aac03ed5903ea0aa4d0d4f76d14d4be41a26dae867f172897",
+      "protectedBeforeSHA256": "1999ee7476eddddc2e8e28063ed97f5eb323ed9ac83499504b6f69115cb38a8f",
+      "protectedAfterSHA256": "1999ee7476eddddc2e8e28063ed97f5eb323ed9ac83499504b6f69115cb38a8f",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Scenarios/DesignConfigRecords/NaviEnhanceComponentConfig.mo",
+      "beforeSHA256": "e5f5473bd73fd4931881fdcf9343faf9d38cfcff677cca9701db744a8298b9e5",
+      "afterSHA256": "e12b79320be9ba5c878582c6988385494af743ede49957aa34f5fcea98accbfd",
+      "protectedBeforeSHA256": "9d80c94e36fa5b98324c0745a6c2404266beaa50f6d160a6e5051210cd99f6cd",
+      "protectedAfterSHA256": "9d80c94e36fa5b98324c0745a6c2404266beaa50f6d160a6e5051210cd99f6cd",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Scenarios/DesignConfigRecords/NavigationDesignConfig.mo",
+      "beforeSHA256": "8b983b8ab21db9dd2c41f24690ce80e4a3a8caf2999c79ac0cd048b61fbd92c6",
+      "afterSHA256": "8965bcc6769ead49027064b0f7920640ff8e2f0d69a25b878044d3617682a212",
+      "protectedBeforeSHA256": "67d558f294b3fe71c32d1049e45398e01e8adc8cd320c5991d05ecb0c9e8ab01",
+      "protectedAfterSHA256": "67d558f294b3fe71c32d1049e45398e01e8adc8cd320c5991d05ecb0c9e8ab01",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Scenarios/DesignConfigRecords/ObcComponentConfig.mo",
+      "beforeSHA256": "15a6bfe000f8c22376855cd3a6cbc45e9369e316aa2e56166efb864221f933c7",
+      "afterSHA256": "0f5eed16fa354b6854b307de00d16fc03943d3cbe5839139af0513a529d2a4d9",
+      "protectedBeforeSHA256": "79e291a60990d688fbc445effb96e1f3b285142016743da18102ac00bcfaa0ce",
+      "protectedAfterSHA256": "79e291a60990d688fbc445effb96e1f3b285142016743da18102ac00bcfaa0ce",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Scenarios/DesignConfigRecords/OverallComponentConfig.mo",
+      "beforeSHA256": "618224b47a51de347b22f7544f336bc339f860c648251ced2d3dccfaf5eb1c3b",
+      "afterSHA256": "40c07da6018b58258ac83b04f56beb885db789b919bc062cc883c6533802b46e",
+      "protectedBeforeSHA256": "4df0dfc7bd691f63211cea337e860fdcfca3ac9dfb68bb3abfefdf94369a7e45",
+      "protectedAfterSHA256": "4df0dfc7bd691f63211cea337e860fdcfca3ac9dfb68bb3abfefdf94369a7e45",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Scenarios/DesignConfigRecords/PayloadDesignConfig.mo",
+      "beforeSHA256": "c1f14790b448b2f2c3438dc37f8521e323e6a9e408afa736afe42ffdf3382a50",
+      "afterSHA256": "f6f0faf94629ebba45875e4976ea18254d0e6a131385551acd1822ba8666a5bd",
+      "protectedBeforeSHA256": "2c3f8bcd6375e42013afebec59f6a63d8cdb729b0f7f97dd881deccc4496d224",
+      "protectedAfterSHA256": "2c3f8bcd6375e42013afebec59f6a63d8cdb729b0f7f97dd881deccc4496d224",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Scenarios/DesignConfigRecords/PcduComponentConfig.mo",
+      "beforeSHA256": "51852b6c2cabab326355c7c9307cb7f0f53bed98684c2c6ae943f7dd367879c6",
+      "afterSHA256": "1c6073f1498f453a1cc16e03e87d9f935a7c8c2385e8bc1b84c3ef69aeecb9e2",
+      "protectedBeforeSHA256": "19bba957e94273452344a2cb3263479e3f7f35b6819d82a4e8300442bfe1d899",
+      "protectedAfterSHA256": "19bba957e94273452344a2cb3263479e3f7f35b6819d82a4e8300442bfe1d899",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Scenarios/DesignConfigRecords/RateGyroComponentConfig.mo",
+      "beforeSHA256": "271aeb4cd483080a5b0f1684848083016af7b80eefeb9cc2e925a72a95f3d7a0",
+      "afterSHA256": "fd66226b7e395c4f878bcbe96271a324f8f7df9119695e757222234125dc023e",
+      "protectedBeforeSHA256": "cc5cee922985848b0d5adcc9fe91747da080b017cf53e76fab13ab508bdd430c",
+      "protectedAfterSHA256": "cc5cee922985848b0d5adcc9fe91747da080b017cf53e76fab13ab508bdd430c",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Scenarios/DesignConfigRecords/RecorderComponentConfig.mo",
+      "beforeSHA256": "822bbcb957dc3f004b13af6bf2eb9e3a05849f236b1fbbec77819f3050b55c30",
+      "afterSHA256": "9f3737c2b1846a3f75a8a6fe903b96f03abd129f0c13976d18b65afd02f285c8",
+      "protectedBeforeSHA256": "1096c0560dfe1f407642aa602078f64295c9fa7ed3e9c17abe8aa9f6eb324989",
+      "protectedAfterSHA256": "1096c0560dfe1f407642aa602078f64295c9fa7ed3e9c17abe8aa9f6eb324989",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Scenarios/DesignConfigRecords/SelfieCameraComponentConfig.mo",
+      "beforeSHA256": "119fc16c4089c00b0caeadd79b06e765b5f86a25f45468a88bf1dcc75199963c",
+      "afterSHA256": "503eb1cf7d244bf141ebb62c80e406e91a181a30b3f13dd640f49775e97d14a3",
+      "protectedBeforeSHA256": "24b75efeae2d6f58d0f13210dcec95579b15a0df307167c6e32e7c4f91b6bdfd",
+      "protectedAfterSHA256": "24b75efeae2d6f58d0f13210dcec95579b15a0df307167c6e32e7c4f91b6bdfd",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Scenarios/DesignConfigRecords/SolarArrayMinusXComponentConfig.mo",
+      "beforeSHA256": "5c66459335f4fa027468035ff718e9ff94f3f7a70a47e950f6c231c743585a17",
+      "afterSHA256": "8e2d6f344d1ecf93a18c34e9c3c3edf29ff171e9b87b3352e4cf413c17d7bc52",
+      "protectedBeforeSHA256": "50a9077df3a35a2677f25418a36eb50625f0199c6b4f8fdf876eee7b92d9e5d8",
+      "protectedAfterSHA256": "50a9077df3a35a2677f25418a36eb50625f0199c6b4f8fdf876eee7b92d9e5d8",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Scenarios/DesignConfigRecords/SolarArrayPlusXComponentConfig.mo",
+      "beforeSHA256": "c68df822feb07b699bdf274bf76ef73ce2bb642200aa8cce45e57ac9382758a0",
+      "afterSHA256": "391425b21195e5f07b7b0deb63afabab79ce3a2435a5a13632cc2709923d23d2",
+      "protectedBeforeSHA256": "c9328fd39d60c8cbcbcd68eef91bf53fa77a9bf0ae567cb907b01502fb80a6ad",
+      "protectedAfterSHA256": "c9328fd39d60c8cbcbcd68eef91bf53fa77a9bf0ae567cb907b01502fb80a6ad",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Scenarios/DesignConfigRecords/SolarArrayPlusYComponentConfig.mo",
+      "beforeSHA256": "21b4fb0801df42f41cb309de793054db9ec56713a876e719d010415bf72122c2",
+      "afterSHA256": "89ff824d1608dc33bc462f7938a3d9d6d96f64755acd61a3b062c7b27bd1eb81",
+      "protectedBeforeSHA256": "5e16020eea4b045077d9eccf91f985da559a8a69370a56d5d098a2b19e88fdc8",
+      "protectedAfterSHA256": "5e16020eea4b045077d9eccf91f985da559a8a69370a56d5d098a2b19e88fdc8",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Scenarios/DesignConfigRecords/SpaceTimeComponentConfig.mo",
+      "beforeSHA256": "b4a0cb3deff600d11ebaff3c15018a36358840d46c4bb50f17ae4890abbd4574",
+      "afterSHA256": "5e72361191b7e306fa124048739fbeeefdffcd626d113d024139b660d42e13d7",
+      "protectedBeforeSHA256": "f9af40b806a10ece5f2a0ecfc373785cc37df80d6519077b22f271e13d468834",
+      "protectedAfterSHA256": "f9af40b806a10ece5f2a0ecfc373785cc37df80d6519077b22f271e13d468834",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Scenarios/DesignConfigRecords/StarYComponentConfig.mo",
+      "beforeSHA256": "b2057092fd88f2874a5c1813de134658141c2b9ca047e58a0a2015470ba8840d",
+      "afterSHA256": "e6b1ceb9aa2777edacc45ed0f4233dc22361824b64bba6a957d19018e7f99894",
+      "protectedBeforeSHA256": "0c97e687ab2fb5f06440ae5b10aa66fff11b8f29c432b1dd217d80720ad7c6bd",
+      "protectedAfterSHA256": "0c97e687ab2fb5f06440ae5b10aa66fff11b8f29c432b1dd217d80720ad7c6bd",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Scenarios/DesignConfigRecords/StarZComponentConfig.mo",
+      "beforeSHA256": "3327de4d0303f773c03051e0eac3e6fa201b64960ef90b40f0a800060b250164",
+      "afterSHA256": "acd1132b16e716ec40b5ea69e5ad71b2d650fbc2a473c1eac4c1944f5f8e7cfa",
+      "protectedBeforeSHA256": "ce49c7129858cb428913142f7ac729d66daeb3a56f0ab493cc23feeaebdc9146",
+      "protectedAfterSHA256": "ce49c7129858cb428913142f7ac729d66daeb3a56f0ab493cc23feeaebdc9146",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Scenarios/DesignConfigRecords/StructureComponentConfig.mo",
+      "beforeSHA256": "500dfab83c45e2303780235e168769356eec32efa040dbab7a503cffcb2c3485",
+      "afterSHA256": "4579ff17080b9450e61a3dfd8e1428150d940aa9c27fa3c171c37651f15aaf18",
+      "protectedBeforeSHA256": "11e58036ff7d04239feb6af2179751147f026acdfcb96b655814114753b51539",
+      "protectedAfterSHA256": "11e58036ff7d04239feb6af2179751147f026acdfcb96b655814114753b51539",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Scenarios/DesignConfigRecords/StructureDesignConfig.mo",
+      "beforeSHA256": "506b4c113edec4e7aa25b8b2e7377135688f231fb0b011fe1df0dd51011e335c",
+      "afterSHA256": "54b3f880d999e3f8f83a64d3361cf3e98bdf300fbdfa2b73b707da2c76562635",
+      "protectedBeforeSHA256": "90c715b3d7a6e5c3db9c19bead77104983c675be7abfba1aae51953bbc292941",
+      "protectedAfterSHA256": "90c715b3d7a6e5c3db9c19bead77104983c675be7abfba1aae51953bbc292941",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Scenarios/DesignConfigRecords/SunSensorComponentConfig.mo",
+      "beforeSHA256": "bf52886eaad8b1868b210558189abb555e50fa02b6a121c04da813d6fe22591d",
+      "afterSHA256": "1a32f953f7269f4087957024066c097ce27996043d0ddc0683607d473c117e91",
+      "protectedBeforeSHA256": "c55022d7dab08dd838e0ce3c87ae7afd92a0d6e56569aefe0c95c2eb54c6db02",
+      "protectedAfterSHA256": "c55022d7dab08dd838e0ce3c87ae7afd92a0d6e56569aefe0c95c2eb54c6db02",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Scenarios/DesignConfigRecords/ThermalControlDesignConfig.mo",
+      "beforeSHA256": "40bbfe72ee82932288d2e7727d1cd5d1e72e810454be0429dbdbc207c920c7d3",
+      "afterSHA256": "afcf253eb743a94faaef521b2fbe95c0018ad615ef2ae45aa2f7174c8d56e107",
+      "protectedBeforeSHA256": "02594eb3c8d0c325149574ee6753ecc68db211ae46fa4a7d9cbc55abcbee7eaf",
+      "protectedAfterSHA256": "02594eb3c8d0c325149574ee6753ecc68db211ae46fa4a7d9cbc55abcbee7eaf",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Scenarios/DesignConfigRecords/TtcReceiverComponentConfig.mo",
+      "beforeSHA256": "e70eab073509d4af1be479a797a169bd32752db1f4fb39ee2bcd1d44655ce5a5",
+      "afterSHA256": "e2b519d139a0de8cc5d3a3b081818408111bde6943c7f5c3b16fd8de97af2034",
+      "protectedBeforeSHA256": "c1ed2585b08aab0217ef9b55c9890b90d23332902e6ed21e52bf3d343b51ca99",
+      "protectedAfterSHA256": "c1ed2585b08aab0217ef9b55c9890b90d23332902e6ed21e52bf3d343b51ca99",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Scenarios/DesignConfigRecords/WheelSComponentConfig.mo",
+      "beforeSHA256": "4c46c217e377290c09fc5a747b5cad944651042a9fac32e06e733598e0ea57e4",
+      "afterSHA256": "aea53e4bba0912cb7f8104e3c8dc40c33c984853f3d8352017b52122d99004cc",
+      "protectedBeforeSHA256": "64fdda2a960aa20456dfeb507aa861df1ac8f89ff5bb1dd00798d3c87ff9552f",
+      "protectedAfterSHA256": "64fdda2a960aa20456dfeb507aa861df1ac8f89ff5bb1dd00798d3c87ff9552f",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Scenarios/DesignConfigRecords/WheelXComponentConfig.mo",
+      "beforeSHA256": "418ec1e57817544b8dabb7d2d9bbf02755629f2b2f5ffdf320a71c3371381b9a",
+      "afterSHA256": "de5b68ab89ba278513d368de009077f6659eeaa4fa9e71dea2fe5b87fe0904e9",
+      "protectedBeforeSHA256": "646ccb9a7532dbafc28bd2b8b80c807c7ecd5946eb89d97bd5735188e5a6f04e",
+      "protectedAfterSHA256": "646ccb9a7532dbafc28bd2b8b80c807c7ecd5946eb89d97bd5735188e5a6f04e",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Scenarios/DesignConfigRecords/WheelYComponentConfig.mo",
+      "beforeSHA256": "17143073f04671179efc92cd700d19a8ec742bbfd7642599bddf787b1d55eafd",
+      "afterSHA256": "c1a70955d3307958e85b3bc1330dac7ec3eb0035cb38dce63c400551a59fc163",
+      "protectedBeforeSHA256": "464a8bec677059c35fd0f65fcde6b4064d3a07732e1603db9a8fc080012c6bc0",
+      "protectedAfterSHA256": "464a8bec677059c35fd0f65fcde6b4064d3a07732e1603db9a8fc080012c6bc0",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Scenarios/DesignConfigRecords/WheelZComponentConfig.mo",
+      "beforeSHA256": "11cbacedf3920e1d94e9d746eb039b1640312958c99475857273c87d6d3581e8",
+      "afterSHA256": "757e081a4074ee04effd77d12fb5db2425399873c0c4461f106eb0da009b081a",
+      "protectedBeforeSHA256": "94a4644575b428ce0366ebc4684dd050a4539390d65ced28c74be42c26561462",
+      "protectedAfterSHA256": "94a4644575b428ce0366ebc4684dd050a4539390d65ced28c74be42c26561462",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Scenarios/DesignConfigRecords/XbandComponentConfig.mo",
+      "beforeSHA256": "8e44fe024cf3ec9c26236b63571377dcc7c0a632dd95647fdeb5255caded5707",
+      "afterSHA256": "d99f6fc2046cfea1842802790990aa9038baf2ad80515b6fd68f8c2ca261c868",
+      "protectedBeforeSHA256": "c41765705d087e5a17414e0a15356b647e92296b85bb1a0414ea0a72bfff5e9c",
+      "protectedAfterSHA256": "c41765705d087e5a17414e0a15356b647e92296b85bb1a0414ea0a72bfff5e9c",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Scenarios/DesignConfigRecords/package.mo",
+      "beforeSHA256": "c4b46e382ac857a8545e64766afbe29dacd8804ae5a26fd388dd11af4a3dbebe",
+      "afterSHA256": "62c428ae1f87b268cba476c414ac1e352442501b4cd43a3b7722170e0c297a1e",
+      "protectedBeforeSHA256": "c9cc2f79412b424575786a6ee9804894549afc2abe766791edd550dbc4780a86",
+      "protectedAfterSHA256": "c9cc2f79412b424575786a6ee9804894549afc2abe766791edd550dbc4780a86",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Scenarios/GeneratedEnvironmentData.mo",
+      "beforeSHA256": "d9c62496855d521ae9b59f80ea74468d74bb52b0180d0661575677893e69ea53",
+      "afterSHA256": "1879f6684244f38d601e5c0187fabe247b18db09e8cdd9d7e570ac0989b4b39d",
+      "protectedBeforeSHA256": "698a53f70644eb389bc3a9dc2112cc52cdfcd4b080af20289b02aed1d8efc1ce",
+      "protectedAfterSHA256": "698a53f70644eb389bc3a9dc2112cc52cdfcd4b080af20289b02aed1d8efc1ce",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Scenarios/GeneratedMassProperties.mo",
+      "beforeSHA256": "99a31c137a91e5a8487e1f429c3a8cd037d8ceaa2cf58b737f83c9dee3959a8c",
+      "afterSHA256": "6c4f459b3c38d01b245edff0c61c7f745c8e2ef875d03ffd45d86dae62c55fb8",
+      "protectedBeforeSHA256": "179ef077b5f9cc64cb99621efb277b2bf6089d96f6e25fef4edd41264aa64e5d",
+      "protectedAfterSHA256": "179ef077b5f9cc64cb99621efb277b2bf6089d96f6e25fef4edd41264aa64e5d",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Scenarios/GeneratedScenario.mo",
+      "beforeSHA256": "cdbd427783763296c8494bc0cd3f1cb3240eba31dfc37b54e58df042e1f19fe8",
+      "afterSHA256": "8788dac6f36b150bd3cc42f9d80f99b494c464b7f3d55fba5e840e6fe3d6e42e",
+      "protectedBeforeSHA256": "e169bd31b6c80a472379106f13bd8e25ff9ef9a695d0338e8b7268f001856e6e",
+      "protectedAfterSHA256": "e169bd31b6c80a472379106f13bd8e25ff9ef9a695d0338e8b7268f001856e6e",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Scenarios/GeneratedSpacecraftDesignConfig.mo",
+      "beforeSHA256": "6255a2239596395e8e20138a37ba6e08fe2e4b393d88011ebfb0ab3fc85e3ad4",
+      "afterSHA256": "86b7387e5fa9c94a43e5867e55ec64b9c7ee90744525d14d7f3a1debc4ea0e12",
+      "protectedBeforeSHA256": "a9eef6a74ece9d0a2104769d09dabb805b11460fa18e8c8d75a9a5dcc11ffb9c",
+      "protectedAfterSHA256": "a9eef6a74ece9d0a2104769d09dabb805b11460fa18e8c8d75a9a5dcc11ffb9c",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Scenarios/GroundStationConfig.mo",
+      "beforeSHA256": "a6e3983fe0be8fb0930fd190378c3c5198cb053b59a350fbcda9c5bc1b8db3d1",
+      "afterSHA256": "301a3dc67db6ae7c3274d82f83a0dcd54fd12ce982dd76cad5fb166748289e0a",
+      "protectedBeforeSHA256": "5f31543a608a55a6c028dd7b3a3ef1a7e9d6ac4b1299b5694d964869e171855c",
+      "protectedAfterSHA256": "5f31543a608a55a6c028dd7b3a3ef1a7e9d6ac4b1299b5694d964869e171855c",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Scenarios/ImagingTargetConfig.mo",
+      "beforeSHA256": "5ef42b5dafaff41300008d47440a08026238b4902caa4e6eb98745697d7d0293",
+      "afterSHA256": "40bd157b740996bebc61c1162216c2482a326333d3e7bd9ff4eba0a3895b80f5",
+      "protectedBeforeSHA256": "0143b417da70635d0294711e866aa2426e956af906e1dcbddc96828c70523090",
+      "protectedAfterSHA256": "0143b417da70635d0294711e866aa2426e956af906e1dcbddc96828c70523090",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Scenarios/InitialConditionConfig.mo",
+      "beforeSHA256": "7e5998c82ac6f6c7ffcca9e0b804a1c605570f7c67a17b7ea796d71c313d636e",
+      "afterSHA256": "ba89847f5e40f3f6005fa5e3496aac476731579821c0f986cca3719a76bee9db",
+      "protectedBeforeSHA256": "367df05fa3d916cbcd68d71569d5e07ec96a93becacb5c650dfac68a2990fb93",
+      "protectedAfterSHA256": "367df05fa3d916cbcd68d71569d5e07ec96a93becacb5c650dfac68a2990fb93",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Scenarios/OrbitConfig.mo",
+      "beforeSHA256": "bb59af6bbac21e56c1ab05d150bc921fadb5f358e94a0d1c735798df10650b6e",
+      "afterSHA256": "59964b5db80b74ebf9b04561a34b932f9d58e17e7e0633ed600e52966ecd2911",
+      "protectedBeforeSHA256": "98cd556d753ed3c3443407b831ea9f226d86e0683de20901bcce48d6cd07a920",
+      "protectedAfterSHA256": "98cd556d753ed3c3443407b831ea9f226d86e0683de20901bcce48d6cd07a920",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Scenarios/ScenarioConfig.mo",
+      "beforeSHA256": "482988db99cb927cb1fb0e76a66fc9e8d9a1e3b95ed5f802a2fffdcaa37c6195",
+      "afterSHA256": "35a6f6626a33cfa7061fc7727b99aecd4289bd7b2092173dfa8457848d80f239",
+      "protectedBeforeSHA256": "a3df33bfbe03e440e6ceb8b913e52932dcc1ebce018fc050f7bb1707d0c735d4",
+      "protectedAfterSHA256": "a3df33bfbe03e440e6ceb8b913e52932dcc1ebce018fc050f7bb1707d0c735d4",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Scenarios/SpacecraftDesignConfig.mo",
+      "beforeSHA256": "41a1061139056dfdd52ab2bc147f1edac17daa2a680f64547fbd6bbec47532b5",
+      "afterSHA256": "c4c58815bd01050c97491b9d1da08b3adcc9a4f9ddc8f567a717107dfb0e450a",
+      "protectedBeforeSHA256": "9c6af6034e5db68451c50eb30b15c5597cb7cb9d55aff3e49ce12d361ab88660",
+      "protectedAfterSHA256": "9c6af6034e5db68451c50eb30b15c5597cb7cb9d55aff3e49ce12d361ab88660",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Scenarios/package.mo",
+      "beforeSHA256": "c5da636f3025d59056964e7cce6e3d2f463c780916d76df88a1a028252575749",
+      "afterSHA256": "069efdf0db99372cc1da30b8cade709943f23c94063682f8fdd0e0698580f7f1",
+      "protectedBeforeSHA256": "341afe458505d53a7b5259054721a97d6150dc52f22e11a1d924cff4c09518a1",
+      "protectedAfterSHA256": "341afe458505d53a7b5259054721a97d6150dc52f22e11a1d924cff4c09518a1",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Simulation/CompleteMission.mo",
+      "beforeSHA256": "9845cd6fefe6513930b565a69bf2bf9dc4cc82325df6a6618c3ca67fd01ba61a",
+      "afterSHA256": "680b0720805cca5bb8fd38acd73de8dead39c34b0193b4a9394d3411d54c0adc",
+      "protectedBeforeSHA256": "c0cb2804b6dde04a5a8b1e7e8166cfe8e668533827283cac824f71a8abcb913a",
+      "protectedAfterSHA256": "c0cb2804b6dde04a5a8b1e7e8166cfe8e668533827283cac824f71a8abcb913a",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Simulation/OnboardTelemetry.mo",
+      "beforeSHA256": "5ed89bc3cb87ca642fdf9e69419cb81d2cdb150a4a0fb59d62a589b41a26a828",
+      "afterSHA256": "36105f15886f241acbdbb8ce40fc8f99efbd34c67d80ccc6b699451e8b5898b5",
+      "protectedBeforeSHA256": "5e4756497a067b6084c8d818a38e202b6a9ff20d3b422a686c16eb3bff2874f3",
+      "protectedAfterSHA256": "5e4756497a067b6084c8d818a38e202b6a9ff20d3b422a686c16eb3bff2874f3",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Simulation/OrbitalEnvironment.mo",
+      "beforeSHA256": "d0bb59ffbbd6e05cab59d8d7d800e17a977478ad0e6f0a59b83d1d3bdcdabaac",
+      "afterSHA256": "bffb7d1d5c851ab33991d8ed97e7ec2493128273c0b8723004bca5b71e8d4b1b",
+      "protectedBeforeSHA256": "eb53b2507a5af959f2ab0d764eeabc7deeb613cffa931281e2e97c53886323f9",
+      "protectedAfterSHA256": "eb53b2507a5af959f2ab0d764eeabc7deeb613cffa931281e2e97c53886323f9",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Simulation/package.mo",
+      "beforeSHA256": "df67988fe67a00ec6645b7859cab823aab47220121327baba447926027cad053",
+      "afterSHA256": "df3671255d2bf807244bfaddbca4e9c69a2882497743382d82577744906bbc38",
+      "protectedBeforeSHA256": "02997edf6e99978a5eaa6672ce579e93e1e1f637f91398032b9e8fb017f90d3c",
+      "protectedAfterSHA256": "02997edf6e99978a5eaa6672ce579e93e1e1f637f91398032b9e8fb017f90d3c",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Systems/Four_systems/ElectricalOverall.mo",
+      "beforeSHA256": "e37cee2c47b63126dae1463a08cde2ebe74a53499c9fdf0537dd63b2b5718bf1",
+      "afterSHA256": "ad6b258fe4447806e27500b931d8f880caa34169c0e7497a950a6423ae666c07",
+      "protectedBeforeSHA256": "671736d9c0b523a8705adeb6f60ab57c31f9b94166f1c30b38b7526ad4b6e4f8",
+      "protectedAfterSHA256": "671736d9c0b523a8705adeb6f60ab57c31f9b94166f1c30b38b7526ad4b6e4f8",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Systems/Four_systems/InformationOverall.mo",
+      "beforeSHA256": "ccc3cfc8e9f3275ed0fff5f0019d4d93bf1b5095f0f8f5e7b76b5a1b05c262ed",
+      "afterSHA256": "06b5177b824ee338cd7f40bc7238893560c89337af9716726442b766e63827fc",
+      "protectedBeforeSHA256": "09e9a99c4f8125470bff7754380271b7633d0a3c44fb90f5546e810566f0ef91",
+      "protectedAfterSHA256": "09e9a99c4f8125470bff7754380271b7633d0a3c44fb90f5546e810566f0ef91",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Systems/Four_systems/MechanicsOverall.mo",
+      "beforeSHA256": "c19d91db5cec20f8c58701855981ef5e1f341198c11b1c053225faf441627d0e",
+      "afterSHA256": "a53fa0b70a8941c287c2fc2391470f90cddba2fb599a53800c6564a1ffce9503",
+      "protectedBeforeSHA256": "83049c1a537cc670df3f30a9f288a125f0fd9ec5d8810ed83704ad39eec9093c",
+      "protectedAfterSHA256": "83049c1a537cc670df3f30a9f288a125f0fd9ec5d8810ed83704ad39eec9093c",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Systems/Four_systems/ThermalOverall.mo",
+      "beforeSHA256": "89568f2c1033514692ed470735dff2fccd86146332ecb0865fb424d75d7545df",
+      "afterSHA256": "45f7138c1e1b7bcbf66a0fa3ea41faf09a76f8d4a6020adc802bc1797aaa3e2b",
+      "protectedBeforeSHA256": "d9d44f64568c8f5dfb8f503c7299f2d619aed1122349f566171085afcad072d2",
+      "protectedAfterSHA256": "d9d44f64568c8f5dfb8f503c7299f2d619aed1122349f566171085afcad072d2",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Systems/Four_systems/package.mo",
+      "beforeSHA256": "46aacef91473db042dc3f519557590749b741f53a82eb036e9deeafb28ec09e6",
+      "afterSHA256": "1c02d18dd84cdc65c168fb231aa3c49eb0da77b4950c2545220e75e7ddb7f8e7",
+      "protectedBeforeSHA256": "54851537f5835e6b173e807d50dad83bd9660308a14600f922fad0b3d300309a",
+      "protectedAfterSHA256": "54851537f5835e6b173e807d50dad83bd9660308a14600f922fad0b3d300309a",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Systems/N_systems/CommunicationSystem.mo",
+      "beforeSHA256": "6b124d086bd7ce21205dea0ff72a69c37f757fa3e35373513e87a05c262dcc95",
+      "afterSHA256": "1673bcd176ca35d928775ce2485b4118045879517f0eda30687f52a4785cfc89",
+      "protectedBeforeSHA256": "487a7350ff1977a2403c7eb31b6d1551f91d59c002f84e434318b122db0bcbc3",
+      "protectedAfterSHA256": "487a7350ff1977a2403c7eb31b6d1551f91d59c002f84e434318b122db0bcbc3",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Systems/N_systems/DataHandlingSystem.mo",
+      "beforeSHA256": "50dc897a2d30f4c1e55a67dabde3081a3bc158afa5c078151804cd53cc24e545",
+      "afterSHA256": "2482a324aa2f22f31ab8fed6cdd529d36e802dab6be419e10d764f625ba54cce",
+      "protectedBeforeSHA256": "03b55f369598ea91e76d257529bc7f05ff6f2acb87d27f1119ac41ccf1bd9812",
+      "protectedAfterSHA256": "03b55f369598ea91e76d257529bc7f05ff6f2acb87d27f1119ac41ccf1bd9812",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Systems/N_systems/ElectricalPowerSystem.mo",
+      "beforeSHA256": "67cb50fc0302724867ce3b0c92443ebe70eae56d20b210b78bce9631147db6ad",
+      "afterSHA256": "c113a267f8508fad57fcb2919bb211f471d4622315a5a35349a195385ff5754d",
+      "protectedBeforeSHA256": "72ad848d6c88e70989a12ff5e2084d9eec4bfd938549c5e50385b2f9d2c98d75",
+      "protectedAfterSHA256": "72ad848d6c88e70989a12ff5e2084d9eec4bfd938549c5e50385b2f9d2c98d75",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Systems/N_systems/GNCSystem.mo",
+      "beforeSHA256": "d0b145646d8d78fd2a7b8e210a15cfae1bb0f6d2f4feca65497b2e1bdb028273",
+      "afterSHA256": "4969b81539701d628c9ed1b2a2411717f1fa571f4188d56c067a959fcbe5417f",
+      "protectedBeforeSHA256": "20b3d5d4aa5b0f5f4d580dbf908338f1714dcb867aa30c83a849b7d5a0287f5d",
+      "protectedAfterSHA256": "20b3d5d4aa5b0f5f4d580dbf908338f1714dcb867aa30c83a849b7d5a0287f5d",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Systems/N_systems/NavigationSystem.mo",
+      "beforeSHA256": "749a8ee34c64054ab52b329913298cd55d8bc4371901fbb013b9b32e9171a4ec",
+      "afterSHA256": "dec69158f974191e302fc1fad8abf2ce4ffc11b79af879d44d7557b687c34de2",
+      "protectedBeforeSHA256": "f3405d74a65c8b584327e8af51fc1554cfe95d51f906b9a903376bd71bd7e372",
+      "protectedAfterSHA256": "f3405d74a65c8b584327e8af51fc1554cfe95d51f906b9a903376bd71bd7e372",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Systems/N_systems/PayloadSystem.mo",
+      "beforeSHA256": "a6c4cfcaa7f0bb9de884a3c53e521212dd6df8a06de6ca88c7c837e555052bfe",
+      "afterSHA256": "acd254345f71ba83075d0460a62fc6ff7292d6b00a3e1a8152b25cd62cdfa5e6",
+      "protectedBeforeSHA256": "02a3adb054a972702d4f6b2bc037d9a23aa51d4b43ce7753502029e1dab69c2e",
+      "protectedAfterSHA256": "02a3adb054a972702d4f6b2bc037d9a23aa51d4b43ce7753502029e1dab69c2e",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Systems/N_systems/StructureSystem.mo",
+      "beforeSHA256": "edc3eb5501e0f16080ee6a8440022776e5ef58b93f22a4c6a39cadb2625c03a3",
+      "afterSHA256": "a84648da35790315ea008fd5cd5896d1a495ef4c3e733046cdbf66f2665355d1",
+      "protectedBeforeSHA256": "dc2aef79837dd05e257d95dd2515790ef039fd7f899157a5b8c93a235639ad71",
+      "protectedAfterSHA256": "dc2aef79837dd05e257d95dd2515790ef039fd7f899157a5b8c93a235639ad71",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Systems/N_systems/ThermalControlSystem.mo",
+      "beforeSHA256": "fa7a00d9966d17d18ccf9391a70d4970260bf18ff897f5bbadf66f147d5a0f91",
+      "afterSHA256": "d66735592e462d568ae21a6692c280fe2ad0365b326a8fab8935335ba3bf698f",
+      "protectedBeforeSHA256": "d86323d8e0b744da3725d2bf42dbfae951009f6cab1df404ce8479c396bf7d54",
+      "protectedAfterSHA256": "d86323d8e0b744da3725d2bf42dbfae951009f6cab1df404ce8479c396bf7d54",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Systems/N_systems/package.mo",
+      "beforeSHA256": "124be898d30d32bfed6ddfb8f487bdda5bc6f427060b00bcd5368755707df23b",
+      "afterSHA256": "7834eaba96bfa1bd7b8222754e4b6b1cfbe0001fa60a4a4945e0bd34402c1237",
+      "protectedBeforeSHA256": "655acec064cb497876ce46dc6f89d84f557a098a982cc04a53d1daeeadb94717",
+      "protectedAfterSHA256": "655acec064cb497876ce46dc6f89d84f557a098a982cc04a53d1daeeadb94717",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Systems/SpacecraftSystem.mo",
+      "beforeSHA256": "baa9e41fa8e3647e36eda60798c57235a5524c3bd53248f94c2d51882a08240a",
+      "afterSHA256": "93b9908a389cbd92a70c3aeed0ea3c083673d295228be46f199132949ec58839",
+      "protectedBeforeSHA256": "5c661dd179a4ae2b4d171033da924c7ed0a43b0c3a2defa7a0fda5d7041fb017",
+      "protectedAfterSHA256": "5c661dd179a4ae2b4d171033da924c7ed0a43b0c3a2defa7a0fda5d7041fb017",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "Systems/package.mo",
+      "beforeSHA256": "dce9da1b5c9dc6ee9de3a540ce3487f59aa7ee12ff06ec39a9b57904c7250626",
+      "afterSHA256": "d3a05a04cfd3490378b6b8e6115a16431bc6ea94023b9f329c0005c730c2fe55",
+      "protectedBeforeSHA256": "172dd1bcd60c5212e4a9a06c90e185e8679881bca4031f9562b81aade1c0b261",
+      "protectedAfterSHA256": "172dd1bcd60c5212e4a9a06c90e185e8679881bca4031f9562b81aade1c0b261",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    },
+    {
+      "file": "package.mo",
+      "beforeSHA256": "377f8b08c6cc417dd2c2d4b007b3e374fb9f57ff08dfbfa3157f11725324ba91",
+      "afterSHA256": "59b2ef2eb0275a9caa7962169efa78602fbbfb305e5f068867fbe404f817521b",
+      "protectedBeforeSHA256": "648ef1eb83b38cc462706f2013246bde8ef7ed67c872978cf07369d0687bf66a",
+      "protectedAfterSHA256": "648ef1eb83b38cc462706f2013246bde8ef7ed67c872978cf07369d0687bf66a",
+      "status": "AUXILIARY_ONLY",
+      "classCount": 1
+    }
+  ],
+  "protectedAssets": [
+    {
+      "file": "package.order",
+      "sha256": "fe85e0c0ef23901cb0ccc9d39dbb319dabc53f1e0f5a7737f91ea55c066a6c4f"
+    },
+    {
+      "file": "DesignConfig.xlsx",
+      "sha256": "4f5d5f09aa91ef940ba130f5710d08512a316aefad6150f6eed83407a7e6ef34"
+    },
+    {
+      "file": "MOSAIC-12UCubeSat.png",
+      "sha256": "7e55f595b2ee344881a6e83f87bff5bb1e484f56efea46fe328897efa411012e"
+    },
+    {
+      "file": "Scenarios/package.order",
+      "sha256": "47a1515c14cd94aa2e7149408e030fb7c58e2f131702158599d490a4632a5f4c"
+    },
+    {
+      "file": "Components/package.order",
+      "sha256": "dbc8bc015c274b8e864ee6b1cd6cfa3259b34c5897d7c213215d3874e24a80c7"
+    },
+    {
+      "file": "Simulation/package.order",
+      "sha256": "6e0f8ad2840c8340809b2d7e55de87c2719764f34ebbc3e16ed9240e85b789e4"
+    },
+    {
+      "file": "Scripts/requirements-ephemeris.txt",
+      "sha256": "697572946d849f3481d0d13f5766a1c6464ae8eca0bb67c596d5923200a04630"
+    },
+    {
+      "file": "Scripts/dashboard_signals.json",
+      "sha256": "f94c557f308af97df361802a864f5caef683796ec48cd2bd99adbc68025b093e"
+    },
+    {
+      "file": "Scripts/requirements-runner.txt",
+      "sha256": "81b616aa4b10f1288dbdc6b7d92cd3fa7743fc2c00640d8fe62ad383c6cc517a"
+    },
+    {
+      "file": "Systems/package.order",
+      "sha256": "bec046630d9e09e8d2b11fe217014ae115f74e393ab4383ab5c549e5e4072024"
+    },
+    {
+      "file": "Foundation/package.order",
+      "sha256": "8e4fdc4eb325df1007a5e735cde3d02aeeb2965adf36243ccdce8899a6263f9d"
+    },
+    {
+      "file": "Foundation/Interfaces/package.order",
+      "sha256": "0640daac4de18077095f3f41379603fa95e7747d605b74d75311bde917a159e2"
+    },
+    {
+      "file": "Foundation/Calculations/package.order",
+      "sha256": "53dec4bc74fcc5ec6cc03d77523b33743fc3654400b3460adcb13e834a38f054"
+    },
+    {
+      "file": "Foundation/Types/package.order",
+      "sha256": "3a26c4ccbbf4cb3bfa6f67a1c2e61f65f4ef1c9a65a53e08f703a0c43bf1e8e1"
+    },
+    {
+      "file": "Foundation/Functions/package.order",
+      "sha256": "9c0e95934a412a9b5312880ca98349d1c7cd6d127571bcfbdc4cfd4b13769722"
+    },
+    {
+      "file": "Foundation/Models/package.order",
+      "sha256": "e7c15a7cc8f3f8287820b2edaf5f0bf9d1ab09fb1cae19e2ef7987c1bff6da56"
+    },
+    {
+      "file": "Foundation/SignalRouting/package.order",
+      "sha256": "f9b315d03452b5407a68602b31dfbd19b6828d0aa6c5f9b11f19db21d00fde1d"
+    },
+    {
+      "file": "Systems/Four_systems/package.order",
+      "sha256": "51d9a967cb2b294429079b93836ea7a01c3ff6031951efeb761a6871ec4621da"
+    },
+    {
+      "file": "Systems/N_systems/package.order",
+      "sha256": "a4f07a39c0b52edcc3e5b89c7c40cccf491a0e954a04f78ba16e6cfcdb2275a6"
+    },
+    {
+      "file": "Scripts/ConfigSupport/generated_simulation_flags.txt",
+      "sha256": "f455f63f9be57c42b8b390fe67a8b0db7aca04e00b54cc53977e22d55b6ae720"
+    },
+    {
+      "file": "Scripts/ConfigSupport/current_snapshot.json",
+      "sha256": "a0e55ad4a7450eb2c91ea0f1c67ff4d5ed8c71f02200926991e03690ae559807"
+    },
+    {
+      "file": "Scripts/Contracts/results.json",
+      "sha256": "1d0ac4fbc5f1d99e21d20ce436289c34c1f812a7ba069fefcb8df4d72d689a6f"
+    },
+    {
+      "file": "Scripts/Contracts/parameters.json",
+      "sha256": "cd27ab9e0df4b8ec8b3e953330a1f82e70024fe22210f1d92e99fa4725f1ec2c"
+    },
+    {
+      "file": "Scripts/Contracts/diagram_topology.json",
+      "sha256": "73007bdc5370676ee70fe85799c5f7a75d8a35150051369b4cb4afab1f771949"
+    },
+    {
+      "file": "Scripts/vendor/jplephem/LICENSE.txt",
+      "sha256": "31bbf940baa5da362ef4e16ccda663cf09a096673b9eac30413f899c1055981d"
+    },
+    {
+      "file": "Scripts/Inputs/Ephemeris/Leap_Second.dat",
+      "sha256": "6cb6f5d4b819f2e568e25db4b0b26d89dedf031fdffb18bc94d40f4e94e268d7"
+    },
+    {
+      "file": "Scripts/Inputs/Ephemeris/de440s.bsp",
+      "sha256": "c1c7feeab882263fc493a9d5a5b2ddd71b54826cdf65d8d17a76126b260a49f2"
+    },
+    {
+      "file": "Scenarios/DesignConfigRecords/package.order",
+      "sha256": "25579e6964cb0bf0f49b212d11a766e7b7f3a48615388d09d5c01a571d05ccd7"
+    }
+  ],
+  "generatorManifestChangedKeys": [
+    "defaultRecordSHA256",
+    "generated",
+    "documentationPatch",
+    "auxiliaryHashRefreshScope"
+  ],
+  "simulation": "NOT_RUN",
+  "compiler": "NOT_RUN",
+  "gui": "NOT_CHECKED"
+}

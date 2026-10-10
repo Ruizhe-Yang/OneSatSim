@@ -1,0 +1,25 @@
+{
+  "scope": "AUXILIARY_ONLY",
+  "base_archive_version": "1.1.4",
+  "release_version": "1.1.5",
+  "standard": "MOSAIC 0.7",
+  "protected_modelica_tokens": "UNCHANGED",
+  "compile": "NOT_RUN",
+  "simulation": "NOT_RUN",
+  "gui": "NOT_CHECKED",
+  "historicalEvidence": "Original run evidence remains scoped to the supplied baseline. No new run has been performed.",
+  "ledger": "Scripts/DocumentationSupport/auxiliary_change_ledger.json",
+  "sourceInventory": {
+    "files": 235,
+    "classes": 235,
+    "model_block": 108,
+    "declarations": 3617,
+    "version": "1.1.5"
+  },
+  "documentationSupportHashes": {
+    "modelica_support.py": "2beadcea7b7b16231613d639109c984aa69b09a9fe235da036912284355a3d7b",
+    "documentation_support.py": "9652d9734a63cffd60df79d20afe21d5909f4b360f13bb9f0b66d9406152d22e",
+    "__init__.py": "aa45a4f9702e434d3eb5763a93de4667347d1258b0f83f381bdc96347e9abf88"
+  },
+  "catalogSHA256": "897ea9b9d0246a73762c4ed42a65b1fb722c0a234514ceeec555515ccc9a4042"
+}

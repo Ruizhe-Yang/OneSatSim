@@ -1,0 +1,9 @@
+{
+  "cube": {
+    "source_files_tested": 235,
+    "enrichment_protected_tokens": "UNCHANGED",
+    "idempotence": "PASS",
+    "deleted_sections_not_regenerated": "PASS",
+    "test_kind": "Offline documentation/palette hook only; actual config math generator not executed"
+  }
+}

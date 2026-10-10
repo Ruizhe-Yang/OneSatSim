@@ -1,0 +1,39 @@
+{
+  "generationUTC": "2026-10-09T09:46:45.594648+00:00",
+  "entryModel": "OneSatSim.Simulation.CompleteMission",
+  "workbookSHA256": "4f5d5f09aa91ef940ba130f5710d08512a316aefad6150f6eed83407a7e6ef34",
+  "defaultRecordSHA256": "74b485d17cc88a52711b3dae196d9fa07c1eef97d1310954063dee77adea5f0c",
+  "generatorSHA256": "161a71bd0fac7eff2b1562f83f02b436cccaebfcb78636058f8a3c07fbcd3823",
+  "schemaSHA256": "e759a1a7561fd1a89ee6b7747d4bc57aa61f268e7fb1a5290347f24585a0d1ad",
+  "unitRulesSHA256": "bbbb5a5f1835db67a460ae9ccc9696f117571233fed5ec03826e3e55d2cdd406",
+  "ephemerisGeneratorSHA256": "f53dd4e514a004eef90b6fe1a8435841819140e234b66c878667f5269f3c6b0a",
+  "embeddedGeneratorSHA256": "0a7f139314e0fdc13c622fe0b07940de09135f12a02b46a9d03359d895e17bb2",
+  "massGeneratorSHA256": "554c46e4845c9daf20b2ce22df6e3d9aa5c7866dc36ae866ee565ceaa19010f7",
+  "transactionSHA256": "1a441ecb510914acbeb3a4660d2be8e4c22d50acb983253a511ff76e1c4ded2b",
+  "generated": {
+    "DesignConfig.xlsx": "4f5d5f09aa91ef940ba130f5710d08512a316aefad6150f6eed83407a7e6ef34",
+    "Scenarios/GeneratedSpacecraftDesignConfig.mo": "6255a2239596395e8e20138a37ba6e08fe2e4b393d88011ebfb0ab3fc85e3ad4",
+    "Scenarios/GeneratedScenario.mo": "cdbd427783763296c8494bc0cd3f1cb3240eba31dfc37b54e58df042e1f19fe8",
+    "Scenarios/GeneratedEnvironmentData.mo": "d9c62496855d521ae9b59f80ea74468d74bb52b0180d0661575677893e69ea53",
+    "Scenarios/GeneratedMassProperties.mo": "99a31c137a91e5a8487e1f429c3a8cd037d8ceaa2cf58b737f83c9dee3959a8c",
+    "Simulation/CompleteMission.mo": "9845cd6fefe6513930b565a69bf2bf9dc4cc82325df6a6618c3ca67fd01ba61a",
+    "Scripts/ConfigSupport/generated_simulation_flags.txt": "f455f63f9be57c42b8b390fe67a8b0db7aca04e00b54cc53977e22d55b6ae720"
+  },
+  "parameterCount": 559,
+  "environmentTableSHA256": "52c098772698e2ca0ce8ce99ae68e33d725dcec5fa9d0c52b64e02cf9502533b",
+  "documentationPatch": {
+    "scope": "AUXILIARY_ONLY",
+    "base_archive_version": "1.1.4",
+    "release_version": "1.1.5",
+    "standard": "MOSAIC 0.7",
+    "protected_modelica_tokens": "UNCHANGED",
+    "compile": "NOT_RUN",
+    "simulation": "NOT_RUN",
+    "gui": "NOT_CHECKED",
+    "historicalEvidence": "Original run evidence remains scoped to the supplied baseline. No new run has been performed.",
+    "ledger": "Scripts/DocumentationSupport/auxiliary_change_ledger.json"
+  },
+  "auxiliaryHashRefreshScope": "Only current file-byte fingerprints are refreshed after Documentation/string-comment changes. Original numeric configuration, validation status and timestamps refer to the supplied baseline.",
+  "currentDocumentationPatchCompilation": "NOT_RUN",
+  "currentDocumentationPatchSimulation": "NOT_RUN"
+}

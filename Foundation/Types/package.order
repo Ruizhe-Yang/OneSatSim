@@ -1,5 +1,8 @@
 TelemetryCatalog
 MassProperties
+WheelGroupCapabilities
+ImagingCapabilities
+SurfaceGeometry
 CommandType
 RejectReason
 MissionMode

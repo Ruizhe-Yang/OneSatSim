@@ -1,12 +1,112 @@
 within OneSatSim.Scenarios;
 record SpacecraftDesignConfig "整星分层硬件设计配置类型"
-  parameter DesignConfigRecords.CommunicationDesignConfig communication;
-  parameter DesignConfigRecords.DataHandlingDesignConfig dataHandling;
-  parameter DesignConfigRecords.EpsDesignConfig eps;
-  parameter DesignConfigRecords.GncDesignConfig gnc;
-  parameter DesignConfigRecords.NavigationDesignConfig navigation;
-  parameter DesignConfigRecords.PayloadDesignConfig payload;
-  parameter DesignConfigRecords.StructureDesignConfig structure;
-  parameter DesignConfigRecords.ThermalControlDesignConfig thermalControl;
-  annotation(Documentation(info="<html><h4>功能定位</h4><p>按EPS、GNC、Payload、DataHandling、Communication、Navigation、ThermalControl与Structure八个专业分系统聚合设备配置。</p><h4>适用边界</h4><p>仅包含硬件和设备功能参数；任务控制律、场景初值与仿真设置不属于本记录。</p></html>"));
+  parameter DesignConfigRecords.CommunicationDesignConfig communication "配置项 communication" ;
+  parameter DesignConfigRecords.DataHandlingDesignConfig dataHandling "数据Handling" ;
+  parameter DesignConfigRecords.EpsDesignConfig eps "配置项 eps" ;
+  parameter DesignConfigRecords.GncDesignConfig gnc "配置项 gnc" ;
+  parameter DesignConfigRecords.NavigationDesignConfig navigation "导航" ;
+  parameter DesignConfigRecords.PayloadDesignConfig payload "配置项 payload" ;
+  parameter DesignConfigRecords.StructureDesignConfig structure "配置项 structure" ;
+  parameter DesignConfigRecords.ThermalControlDesignConfig thermalControl "热学控制" ;
+  annotation(Documentation(info="<html><h2>整星分层硬件设计配置类型</h2><p><b>类路径：</b><code>OneSatSim.Scenarios.SpacecraftDesignConfig</code>　<b>类型：</b>record</p><h3>用途与定位</h3><p>整星分层硬件设计配置类型</p><h3>配置与调用</h3><p>由使用者声明或传入本类型；记录与常量保存静态配置，不单独代表一套物理状态。修改设计输入后应通过项目既有离线配置入口生成生效快照。</p><h3>配置与参数</h3><p>下面列出当前源码表达式，仅用于阅读；当前参数对话框、生效配置记录与原有配置工具仍是使用依据。本页不新增默认值或换算。</p><table border=\"1\" cellspacing=\"0\" cellpadding=\"5\"><tr><th>参数</th><th>类型</th><th>用途</th><th>源码表达式</th></tr><tr><td><code>communication</code></td><td>DesignConfigRecords.CommunicationDesignConfig</td><td>配置项 communication</td><td><code>由调用方、继承或默认声明提供</code></td></tr><tr><td><code>dataHandling</code></td><td>DesignConfigRecords.DataHandlingDesignConfig</td><td>数据Handling</td><td><code>由调用方、继承或默认声明提供</code></td></tr><tr><td><code>eps</code></td><td>DesignConfigRecords.EpsDesignConfig</td><td>配置项 eps</td><td><code>由调用方、继承或默认声明提供</code></td></tr><tr><td><code>gnc</code></td><td>DesignConfigRecords.GncDesignConfig</td><td>配置项 gnc</td><td><code>由调用方、继承或默认声明提供</code></td></tr><tr><td><code>navigation</code></td><td>DesignConfigRecords.NavigationDesignConfig</td><td>导航</td><td><code>由调用方、继承或默认声明提供</code></td></tr><tr><td><code>payload</code></td><td>DesignConfigRecords.PayloadDesignConfig</td><td>配置项 payload</td><td><code>由调用方、继承或默认声明提供</code></td></tr><tr><td><code>structure</code></td><td>DesignConfigRecords.StructureDesignConfig</td><td>配置项 structure</td><td><code>由调用方、继承或默认声明提供</code></td></tr><tr><td><code>thermalControl</code></td><td>DesignConfigRecords.ThermalControlDesignConfig</td><td>热学控制</td><td><code>由调用方、继承或默认声明提供</code></td></tr></table></html>"),
+    Icon(coordinateSystem(extent={{-100,-100},{100,100}}, preserveAspectRatio=true, grid={2,2}), graphics={
+      Rectangle(extent={{-89,-97},{89,95}}, lineColor={0,0,0}, fillColor={255,255,255}, fillPattern=FillPattern.Solid, lineThickness=0.6, radius=3),
+      Line(points={{-76,64},{76,64}}, color={219,223,227}, thickness=0.4, pattern=LinePattern.Solid),
+      Rectangle(extent={{-84,69},{-64,89}}, lineColor={0,0,0}, fillColor={73,112,158}, fillPattern=FillPattern.Solid, lineThickness=0.85, radius=0),
+      Text(extent={{-61,71},{76,86}}, textString="Configuration", fontSize=0, lineColor={0,0,0}, horizontalAlignment=TextAlignment.Center),
+      Polygon(points={{-55,52},{40,52},{58,34},{58,-49},{-55,-49},{-55,52}}, lineColor={0,0,0}, fillColor={255,255,255}, fillPattern=FillPattern.Solid, lineThickness=0.65),
+      Line(points={{40,52},{40,34},{58,34}}, color={0,0,0}, thickness=0.6, pattern=LinePattern.Solid),
+      Polygon(points={{-21,31.8},{11.4,39},{25.2,27.6},{-7.2,20.4},{-21,31.8}}, lineColor={0,0,0}, fillColor={242,245,247}, fillPattern=FillPattern.Solid, lineThickness=0.7),
+      Polygon(points={{-21,31.8},{-7.2,20.4},{-7.2,-15.6},{-21,-4.2},{-21,31.8}}, lineColor={0,0,0}, fillColor={255,255,255}, fillPattern=FillPattern.Solid, lineThickness=0.7),
+      Polygon(points={{-7.2,20.4},{25.2,27.6},{25.2,-8.4},{-7.2,-15.6},{-7.2,20.4}}, lineColor={0,0,0}, fillColor={246,247,248}, fillPattern=FillPattern.Solid, lineThickness=0.7),
+      Line(points={{-21,19.8},{-7.2,8.4},{25.2,15.6}}, color={113,122,132}, thickness=0.45, pattern=LinePattern.Solid),
+      Line(points={{-21,7.8},{-7.2,-3.6},{25.2,3.6}}, color={113,122,132}, thickness=0.45, pattern=LinePattern.Solid),
+      Line(points={{-4.608,20.976},{-4.608,-15.024}}, color={0,0,0}, thickness=0.65, pattern=LinePattern.Solid),
+      Line(points={{22.608,27.024},{22.608,-8.976}}, color={0,0,0}, thickness=0.65, pattern=LinePattern.Solid),
+      Polygon(points={{-4.8,18.6},{0.6,19.8},{0.6,11.4},{-4.8,10.2},{-4.8,18.6}}, lineColor={0,0,0}, fillColor={218,234,245}, fillPattern=FillPattern.Solid, lineThickness=0.35),
+      Polygon(points={{-4.8,8.4},{0.6,9.6},{0.6,1.2},{-4.8,0},{-4.8,8.4}}, lineColor={0,0,0}, fillColor={218,234,245}, fillPattern=FillPattern.Solid, lineThickness=0.35),
+      Polygon(points={{-4.8,-1.8},{0.6,-0.6},{0.6,-9},{-4.8,-10.2},{-4.8,-1.8}}, lineColor={0,0,0}, fillColor={218,234,245}, fillPattern=FillPattern.Solid, lineThickness=0.35),
+      Polygon(points={{2.1,20.13},{7.5,21.33},{7.5,12.93},{2.1,11.73},{2.1,20.13}}, lineColor={0,0,0}, fillColor={218,234,245}, fillPattern=FillPattern.Solid, lineThickness=0.35),
+      Polygon(points={{2.1,9.93},{7.5,11.13},{7.5,2.73},{2.1,1.53},{2.1,9.93}}, lineColor={0,0,0}, fillColor={218,234,245}, fillPattern=FillPattern.Solid, lineThickness=0.35),
+      Polygon(points={{2.1,-0.27},{7.5,0.93},{7.5,-7.47},{2.1,-8.67},{2.1,-0.27}}, lineColor={0,0,0}, fillColor={218,234,245}, fillPattern=FillPattern.Solid, lineThickness=0.35),
+      Polygon(points={{9,21.66},{14.4,22.86},{14.4,14.46},{9,13.26},{9,21.66}}, lineColor={0,0,0}, fillColor={218,234,245}, fillPattern=FillPattern.Solid, lineThickness=0.35),
+      Polygon(points={{9,11.46},{14.4,12.66},{14.4,4.26},{9,3.06},{9,11.46}}, lineColor={0,0,0}, fillColor={218,234,245}, fillPattern=FillPattern.Solid, lineThickness=0.35),
+      Polygon(points={{9,1.26},{14.4,2.46},{14.4,-5.94},{9,-7.14},{9,1.26}}, lineColor={0,0,0}, fillColor={218,234,245}, fillPattern=FillPattern.Solid, lineThickness=0.35),
+      Polygon(points={{15.9,23.19},{21.3,24.39},{21.3,15.99},{15.9,14.79},{15.9,23.19}}, lineColor={0,0,0}, fillColor={218,234,245}, fillPattern=FillPattern.Solid, lineThickness=0.35),
+      Polygon(points={{15.9,12.99},{21.3,14.19},{21.3,5.79},{15.9,4.59},{15.9,12.99}}, lineColor={0,0,0}, fillColor={218,234,245}, fillPattern=FillPattern.Solid, lineThickness=0.35),
+      Polygon(points={{15.9,2.79},{21.3,3.99},{21.3,-4.41},{15.9,-5.61},{15.9,2.79}}, lineColor={0,0,0}, fillColor={218,234,245}, fillPattern=FillPattern.Solid, lineThickness=0.35),
+      Polygon(points={{-18.6,27},{-10.2,20.4},{-10.2,12.6},{-18.6,19.2},{-18.6,27}}, lineColor={0,0,0}, fillColor={230,240,247}, fillPattern=FillPattern.Solid, lineThickness=0.35),
+      Polygon(points={{-18.6,16.8},{-10.2,10.2},{-10.2,2.4},{-18.6,9},{-18.6,16.8}}, lineColor={0,0,0}, fillColor={230,240,247}, fillPattern=FillPattern.Solid, lineThickness=0.35),
+      Polygon(points={{-18.6,6.6},{-10.2,0},{-10.2,-7.8},{-18.6,-1.2},{-18.6,6.6}}, lineColor={0,0,0}, fillColor={230,240,247}, fillPattern=FillPattern.Solid, lineThickness=0.35),
+      Ellipse(extent={{-3.6,27.6},{6,35.4}}, lineColor={0,0,0}, fillColor={255,255,255}, fillPattern=FillPattern.Solid, lineThickness=0.6, startAngle=0, endAngle=360),
+      Ellipse(extent={{-1.2,29.4},{3.6,33.6}}, lineColor={0,0,0}, fillColor={223,233,238}, fillPattern=FillPattern.Solid, lineThickness=0.5, startAngle=0, endAngle=360),
+      Ellipse(extent={{-22.02,30.78},{-19.98,32.82}}, lineColor={0,0,0}, fillColor={255,255,255}, fillPattern=FillPattern.Solid, lineThickness=0.45, startAngle=0, endAngle=360),
+      Line(points={{-21.51,31.8},{-20.49,31.8}}, color={113,122,132}, thickness=0.4, pattern=LinePattern.Solid),
+      Ellipse(extent={{-8.22,19.38},{-6.18,21.42}}, lineColor={0,0,0}, fillColor={255,255,255}, fillPattern=FillPattern.Solid, lineThickness=0.45, startAngle=0, endAngle=360),
+      Line(points={{-7.71,20.4},{-6.69,20.4}}, color={113,122,132}, thickness=0.4, pattern=LinePattern.Solid),
+      Ellipse(extent={{24.18,26.58},{26.22,28.62}}, lineColor={0,0,0}, fillColor={255,255,255}, fillPattern=FillPattern.Solid, lineThickness=0.45, startAngle=0, endAngle=360),
+      Line(points={{24.69,27.6},{25.71,27.6}}, color={113,122,132}, thickness=0.4, pattern=LinePattern.Solid),
+      Ellipse(extent={{-22.02,-5.22},{-19.98,-3.18}}, lineColor={0,0,0}, fillColor={255,255,255}, fillPattern=FillPattern.Solid, lineThickness=0.45, startAngle=0, endAngle=360),
+      Line(points={{-21.51,-4.2},{-20.49,-4.2}}, color={113,122,132}, thickness=0.4, pattern=LinePattern.Solid),
+      Ellipse(extent={{-8.22,-16.62},{-6.18,-14.58}}, lineColor={0,0,0}, fillColor={255,255,255}, fillPattern=FillPattern.Solid, lineThickness=0.45, startAngle=0, endAngle=360),
+      Line(points={{-7.71,-15.6},{-6.69,-15.6}}, color={113,122,132}, thickness=0.4, pattern=LinePattern.Solid),
+      Ellipse(extent={{24.18,-9.42},{26.22,-7.38}}, lineColor={0,0,0}, fillColor={255,255,255}, fillPattern=FillPattern.Solid, lineThickness=0.45, startAngle=0, endAngle=360),
+      Line(points={{24.69,-8.4},{25.71,-8.4}}, color={113,122,132}, thickness=0.4, pattern=LinePattern.Solid),
+      Line(points={{-42,-28},{44,-28}}, color={113,122,132}, thickness=0.45, pattern=LinePattern.Solid),
+      Line(points={{-42,-38},{44,-38}}, color={113,122,132}, thickness=0.45, pattern=LinePattern.Solid),
+      Line(points={{-16,-23},{-16,-43}}, color={113,122,132}, thickness=0.4, pattern=LinePattern.Solid),
+      Line(points={{15,-23},{15,-43}}, color={113,122,132}, thickness=0.4, pattern=LinePattern.Solid),
+      Line(points={{-76,-58},{76,-58}}, color={219,223,227}, thickness=0.4, pattern=LinePattern.Solid),
+      Text(extent={{-80,-91},{80,-65}}, textString="Spacecraft Design", fontSize=0, lineColor={0,0,0}, horizontalAlignment=TextAlignment.Center, textStyle={TextStyle.Bold})
+    }),
+    Diagram(coordinateSystem(extent={{-150,-145},{150,155}}, preserveAspectRatio=true, grid={2,2}), graphics={
+      Rectangle(extent={{-89,-97},{89,95}}, lineColor={0,0,0}, fillColor={255,255,255}, fillPattern=FillPattern.Solid, lineThickness=0.6, radius=3),
+      Line(points={{-76,64},{76,64}}, color={219,223,227}, thickness=0.4, pattern=LinePattern.Solid),
+      Rectangle(extent={{-84,69},{-64,89}}, lineColor={0,0,0}, fillColor={73,112,158}, fillPattern=FillPattern.Solid, lineThickness=0.85, radius=0),
+      Text(extent={{-61,71},{76,86}}, textString="Configuration", fontSize=0, lineColor={0,0,0}, horizontalAlignment=TextAlignment.Center),
+      Polygon(points={{-55,52},{40,52},{58,34},{58,-49},{-55,-49},{-55,52}}, lineColor={0,0,0}, fillColor={255,255,255}, fillPattern=FillPattern.Solid, lineThickness=0.65),
+      Line(points={{40,52},{40,34},{58,34}}, color={0,0,0}, thickness=0.6, pattern=LinePattern.Solid),
+      Polygon(points={{-21,31.8},{11.4,39},{25.2,27.6},{-7.2,20.4},{-21,31.8}}, lineColor={0,0,0}, fillColor={242,245,247}, fillPattern=FillPattern.Solid, lineThickness=0.7),
+      Polygon(points={{-21,31.8},{-7.2,20.4},{-7.2,-15.6},{-21,-4.2},{-21,31.8}}, lineColor={0,0,0}, fillColor={255,255,255}, fillPattern=FillPattern.Solid, lineThickness=0.7),
+      Polygon(points={{-7.2,20.4},{25.2,27.6},{25.2,-8.4},{-7.2,-15.6},{-7.2,20.4}}, lineColor={0,0,0}, fillColor={246,247,248}, fillPattern=FillPattern.Solid, lineThickness=0.7),
+      Line(points={{-21,19.8},{-7.2,8.4},{25.2,15.6}}, color={113,122,132}, thickness=0.45, pattern=LinePattern.Solid),
+      Line(points={{-21,7.8},{-7.2,-3.6},{25.2,3.6}}, color={113,122,132}, thickness=0.45, pattern=LinePattern.Solid),
+      Line(points={{-4.608,20.976},{-4.608,-15.024}}, color={0,0,0}, thickness=0.65, pattern=LinePattern.Solid),
+      Line(points={{22.608,27.024},{22.608,-8.976}}, color={0,0,0}, thickness=0.65, pattern=LinePattern.Solid),
+      Polygon(points={{-4.8,18.6},{0.6,19.8},{0.6,11.4},{-4.8,10.2},{-4.8,18.6}}, lineColor={0,0,0}, fillColor={218,234,245}, fillPattern=FillPattern.Solid, lineThickness=0.35),
+      Polygon(points={{-4.8,8.4},{0.6,9.6},{0.6,1.2},{-4.8,0},{-4.8,8.4}}, lineColor={0,0,0}, fillColor={218,234,245}, fillPattern=FillPattern.Solid, lineThickness=0.35),
+      Polygon(points={{-4.8,-1.8},{0.6,-0.6},{0.6,-9},{-4.8,-10.2},{-4.8,-1.8}}, lineColor={0,0,0}, fillColor={218,234,245}, fillPattern=FillPattern.Solid, lineThickness=0.35),
+      Polygon(points={{2.1,20.13},{7.5,21.33},{7.5,12.93},{2.1,11.73},{2.1,20.13}}, lineColor={0,0,0}, fillColor={218,234,245}, fillPattern=FillPattern.Solid, lineThickness=0.35),
+      Polygon(points={{2.1,9.93},{7.5,11.13},{7.5,2.73},{2.1,1.53},{2.1,9.93}}, lineColor={0,0,0}, fillColor={218,234,245}, fillPattern=FillPattern.Solid, lineThickness=0.35),
+      Polygon(points={{2.1,-0.27},{7.5,0.93},{7.5,-7.47},{2.1,-8.67},{2.1,-0.27}}, lineColor={0,0,0}, fillColor={218,234,245}, fillPattern=FillPattern.Solid, lineThickness=0.35),
+      Polygon(points={{9,21.66},{14.4,22.86},{14.4,14.46},{9,13.26},{9,21.66}}, lineColor={0,0,0}, fillColor={218,234,245}, fillPattern=FillPattern.Solid, lineThickness=0.35),
+      Polygon(points={{9,11.46},{14.4,12.66},{14.4,4.26},{9,3.06},{9,11.46}}, lineColor={0,0,0}, fillColor={218,234,245}, fillPattern=FillPattern.Solid, lineThickness=0.35),
+      Polygon(points={{9,1.26},{14.4,2.46},{14.4,-5.94},{9,-7.14},{9,1.26}}, lineColor={0,0,0}, fillColor={218,234,245}, fillPattern=FillPattern.Solid, lineThickness=0.35),
+      Polygon(points={{15.9,23.19},{21.3,24.39},{21.3,15.99},{15.9,14.79},{15.9,23.19}}, lineColor={0,0,0}, fillColor={218,234,245}, fillPattern=FillPattern.Solid, lineThickness=0.35),
+      Polygon(points={{15.9,12.99},{21.3,14.19},{21.3,5.79},{15.9,4.59},{15.9,12.99}}, lineColor={0,0,0}, fillColor={218,234,245}, fillPattern=FillPattern.Solid, lineThickness=0.35),
+      Polygon(points={{15.9,2.79},{21.3,3.99},{21.3,-4.41},{15.9,-5.61},{15.9,2.79}}, lineColor={0,0,0}, fillColor={218,234,245}, fillPattern=FillPattern.Solid, lineThickness=0.35),
+      Polygon(points={{-18.6,27},{-10.2,20.4},{-10.2,12.6},{-18.6,19.2},{-18.6,27}}, lineColor={0,0,0}, fillColor={230,240,247}, fillPattern=FillPattern.Solid, lineThickness=0.35),
+      Polygon(points={{-18.6,16.8},{-10.2,10.2},{-10.2,2.4},{-18.6,9},{-18.6,16.8}}, lineColor={0,0,0}, fillColor={230,240,247}, fillPattern=FillPattern.Solid, lineThickness=0.35),
+      Polygon(points={{-18.6,6.6},{-10.2,0},{-10.2,-7.8},{-18.6,-1.2},{-18.6,6.6}}, lineColor={0,0,0}, fillColor={230,240,247}, fillPattern=FillPattern.Solid, lineThickness=0.35),
+      Ellipse(extent={{-3.6,27.6},{6,35.4}}, lineColor={0,0,0}, fillColor={255,255,255}, fillPattern=FillPattern.Solid, lineThickness=0.6, startAngle=0, endAngle=360),
+      Ellipse(extent={{-1.2,29.4},{3.6,33.6}}, lineColor={0,0,0}, fillColor={223,233,238}, fillPattern=FillPattern.Solid, lineThickness=0.5, startAngle=0, endAngle=360),
+      Ellipse(extent={{-22.02,30.78},{-19.98,32.82}}, lineColor={0,0,0}, fillColor={255,255,255}, fillPattern=FillPattern.Solid, lineThickness=0.45, startAngle=0, endAngle=360),
+      Line(points={{-21.51,31.8},{-20.49,31.8}}, color={113,122,132}, thickness=0.4, pattern=LinePattern.Solid),
+      Ellipse(extent={{-8.22,19.38},{-6.18,21.42}}, lineColor={0,0,0}, fillColor={255,255,255}, fillPattern=FillPattern.Solid, lineThickness=0.45, startAngle=0, endAngle=360),
+      Line(points={{-7.71,20.4},{-6.69,20.4}}, color={113,122,132}, thickness=0.4, pattern=LinePattern.Solid),
+      Ellipse(extent={{24.18,26.58},{26.22,28.62}}, lineColor={0,0,0}, fillColor={255,255,255}, fillPattern=FillPattern.Solid, lineThickness=0.45, startAngle=0, endAngle=360),
+      Line(points={{24.69,27.6},{25.71,27.6}}, color={113,122,132}, thickness=0.4, pattern=LinePattern.Solid),
+      Ellipse(extent={{-22.02,-5.22},{-19.98,-3.18}}, lineColor={0,0,0}, fillColor={255,255,255}, fillPattern=FillPattern.Solid, lineThickness=0.45, startAngle=0, endAngle=360),
+      Line(points={{-21.51,-4.2},{-20.49,-4.2}}, color={113,122,132}, thickness=0.4, pattern=LinePattern.Solid),
+      Ellipse(extent={{-8.22,-16.62},{-6.18,-14.58}}, lineColor={0,0,0}, fillColor={255,255,255}, fillPattern=FillPattern.Solid, lineThickness=0.45, startAngle=0, endAngle=360),
+      Line(points={{-7.71,-15.6},{-6.69,-15.6}}, color={113,122,132}, thickness=0.4, pattern=LinePattern.Solid),
+      Ellipse(extent={{24.18,-9.42},{26.22,-7.38}}, lineColor={0,0,0}, fillColor={255,255,255}, fillPattern=FillPattern.Solid, lineThickness=0.45, startAngle=0, endAngle=360),
+      Line(points={{24.69,-8.4},{25.71,-8.4}}, color={113,122,132}, thickness=0.4, pattern=LinePattern.Solid),
+      Line(points={{-42,-28},{44,-28}}, color={113,122,132}, thickness=0.45, pattern=LinePattern.Solid),
+      Line(points={{-42,-38},{44,-38}}, color={113,122,132}, thickness=0.45, pattern=LinePattern.Solid),
+      Line(points={{-16,-23},{-16,-43}}, color={113,122,132}, thickness=0.4, pattern=LinePattern.Solid),
+      Line(points={{15,-23},{15,-43}}, color={113,122,132}, thickness=0.4, pattern=LinePattern.Solid),
+      Line(points={{-76,-58},{76,-58}}, color={219,223,227}, thickness=0.4, pattern=LinePattern.Solid),
+      Text(extent={{-80,-91},{80,-65}}, textString="Spacecraft Design", fontSize=0, lineColor={0,0,0}, horizontalAlignment=TextAlignment.Center, textStyle={TextStyle.Bold})
+    }));
 end SpacecraftDesignConfig;

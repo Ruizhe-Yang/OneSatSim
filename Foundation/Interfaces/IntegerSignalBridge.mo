@@ -1,12 +1,20 @@
 within OneSatSim.Foundation.Interfaces;
 model IntegerSignalBridge "整数因果输出到可扩展信息总线的无状态恒等桥"
-  Modelica.Blocks.Interfaces.IntegerInput u
-    annotation(Placement(transformation(extent={{-110,-10},{-90,10}})));
-  Modelica.Blocks.Interfaces.IntegerOutput y
-    annotation(Placement(transformation(extent={{90,-10},{110,10}})));
+  Modelica.Blocks.Interfaces.IntegerInput u 
+     "输入信号" annotation(Placement(visible=true, transformation(origin={-89,0}, extent={{-16.56,-16.56},{16.56,16.56}}, rotation=0), iconVisible=true, iconTransformation(origin={-89,0}, extent={{-16.56,-16.56},{16.56,16.56}}, rotation=0)));
+  Modelica.Blocks.Interfaces.IntegerOutput y 
+     "输出信号" annotation(Placement(visible=true, transformation(origin={89,0}, extent={{-16.56,-16.56},{16.56,16.56}}, rotation=0), iconVisible=true, iconTransformation(origin={89,0}, extent={{-16.56,-16.56},{16.56,16.56}}, rotation=0)));
 equation
   y=u;
-  annotation(
-    Icon(graphics={Rectangle(extent={{-100,55},{100,-55}},lineColor={180,100,20},fillColor={252,244,230},fillPattern=FillPattern.Solid),Line(points={{-72,0},{72,0}},color={180,100,20},arrow={Arrow.None,Arrow.Filled}),Text(extent={{-30,35},{30,-35}},textString="=")}),
-    Documentation(info="<html><h4>功能定位</h4><p>组件因果整数输出到可扩展信息总线之间的无状态恒等适配器。</p><h4>实现边界</h4><p>u为IntegerInput、y为IntegerOutput，仅实现y=u；不包含参数、动态状态、采样、滤波、限幅、延迟或通信行为。</p><h4>连接方向与使用</h4><p>左侧u接收因果状态码，右侧y发布到可扩展总线字段。桥接不解释状态码、不量化也不保持；总线字段进入因果计算时应使用IntegerSignalReader。</p></html>"));
+  annotation(Documentation(info="<html><h2>整数因果输出到可扩展信息总线的无状态恒等桥</h2><p><b>类路径：</b><code>OneSatSim.Foundation.Interfaces.IntegerSignalBridge</code>　<b>类型：</b>model</p><h3>用途与定位</h3><p>整数因果输出到可扩展信息总线的无状态恒等桥</p><h3>在工程中使用</h3><p>当前直接使用位置：<a href=\"modelica://OneSatSim.Components.DataRecorderUnit\">OneSatSim.Components.DataRecorderUnit</a> 的 <code>informationIntegerBridge</code>；<a href=\"modelica://OneSatSim.Components.EarthObservationCameraUnit\">OneSatSim.Components.EarthObservationCameraUnit</a> 的 <code>informationIntegerBridge</code>；<a href=\"modelica://OneSatSim.Components.FotonAmurPayloadUnit\">OneSatSim.Components.FotonAmurPayloadUnit</a> 的 <code>informationIntegerBridge</code>；<a href=\"modelica://OneSatSim.Components.GPSReceiverUnit\">OneSatSim.Components.GPSReceiverUnit</a> 的 <code>informationIntegerBridge</code>；<a href=\"modelica://OneSatSim.Components.LowRateTelemetryTransmitterUnit\">OneSatSim.Components.LowRateTelemetryTransmitterUnit</a> 的 <code>informationIntegerBridge</code>；<a href=\"modelica://OneSatSim.Components.NaviEnhancePayloadUnit\">OneSatSim.Components.NaviEnhancePayloadUnit</a> 的 <code>informationIntegerBridge</code>；<a href=\"modelica://OneSatSim.Components.OnboardComputerUnit\">OneSatSim.Components.OnboardComputerUnit</a> 的 <code>informationIntegerBridge</code>；<a href=\"modelica://OneSatSim.Components.PowerConditioningUnit\">OneSatSim.Components.PowerConditioningUnit</a> 的 <code>informationIntegerBridge</code>；另有12处，见源码引用。</p><h3>接口、输入与输出</h3><table border=\"1\" cellspacing=\"0\" cellpadding=\"5\"><tr><th>名称/维数</th><th>类型</th><th>声明角色</th><th>单位</th><th>含义</th></tr><tr><td><code>u</code></td><td>Modelica.Blocks.Interfaces.IntegerInput</td><td>public</td><td>按声明/类型合同</td><td>输入信号</td></tr><tr><td><code>y</code></td><td>Modelica.Blocks.Interfaces.IntegerOutput</td><td>public</td><td>按声明/类型合同</td><td>输出信号</td></tr></table><h3>实现摘要</h3><p>以下表达式直接摘自本类，保留原始符号和单位体系；完整的条件分支、循环与初始化以源码为准。</p><pre>[equation] y=u;</pre></html>"),
+    Icon(coordinateSystem(extent={{-100,-100},{100,100}},preserveAspectRatio=true),graphics={
+      Rectangle(extent={{-100,-100},{100,100}},fillPattern=FillPattern.Solid,fillColor={255,109,0},lineColor={255,109,0},lineThickness=0,radius=0),
+      Line(points={{-55,-44},{-20,-44},{-20,-4},{16,-4},{16,36},{55,36}},color={255,255,255},thickness=1.4,pattern=LinePattern.Solid,smooth=Smooth.None),
+      Ellipse(extent={{-62,-51},{-48,-37}},lineColor={255,255,255},fillColor={255,255,255},fillPattern=FillPattern.Solid,lineThickness=1.4,startAngle=0,endAngle=360)
+    }),
+    Diagram(coordinateSystem(extent={{-100,-100},{100,100}},preserveAspectRatio=true),graphics={
+      Rectangle(extent={{-100,-100},{100,100}},fillPattern=FillPattern.Solid,fillColor={255,109,0},lineColor={255,109,0},lineThickness=0,radius=0),
+      Line(points={{-55,-44},{-20,-44},{-20,-4},{16,-4},{16,36},{55,36}},color={255,255,255},thickness=1.4,pattern=LinePattern.Solid,smooth=Smooth.None),
+      Ellipse(extent={{-62,-51},{-48,-37}},lineColor={255,255,255},fillColor={255,255,255},fillPattern=FillPattern.Solid,lineThickness=1.4,startAngle=0,endAngle=360)
+    }));
 end IntegerSignalBridge;
